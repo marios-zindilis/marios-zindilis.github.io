@@ -2,6 +2,6 @@
 
 git add --all --verbose
 
-git commit --all --message $(date +%Y-%m-%d-%H-%M-%)
+git commit --all --message $(date +%Y-%m-%d-%H-%M-%S)
 
 git push
