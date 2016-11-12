@@ -60,19 +60,19 @@
 </header>
 
 
-
-    <div class="container">
-
-    <div class="page-content">
-      <div class="wrapper">
+  <div class="container">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">MediaWiki: Διαγραφή άρθρου από τη βάση δεδομένων</h1>
-    <p class="post-meta"><time datetime="2011-08-15T00:00:00+01:00" itemprop="datePublished">Aug 15, 2011</time></p>
+    <p class="post-meta">
+      <time datetime="2011-08-15T00:00:00+01:00" itemprop="datePublished">2011-08-15</time>
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Marios Zindilis</span></span>
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <section class="post-content" itemprop="articleBody">
     <p>Υπάρχουν περιπτώσεις στο MediaWiki που ένα άρθρο δεν μπορεί να διαγραφεί μέσω της συνηθισμένης διεπαφής, οπότε χρειάζεται σκάλισμα της βάσης δεδομένων. Αυτός ο οδηγός περιγράφει τον τρόπο.</p>
 
 <p>Προτού προχωρήσετε σε οποιαδήποτε παρέμβαση στη βάση δεδομένων σας, οπωσδήποτε πρέπει να κρατήσετε ένα <strong>αντίγραφο ασφαλείας</strong> ολόκληρης της βάσης. Επίσης, αν το Wiki σας έχει έντονη δραστηριότητα, μπορείτε προσωρινά να αποτρέψετε οποιεσδήποτε αλλαγές στις σελίδες, προσθέτωντας μια γραμμή στο αρχείο LocalSettings.php: <code>$wgReadOnly = 'Το Wiki είναι προσωρινά μη διαθέσιμο για επεξεργασία.';</code>.</p>
@@ -94,16 +94,20 @@
 
 <p>Τέλος, από τον πίνακα <strong>text</strong> θα πρέπει να διαγράψετε τα κείμενα των παλιών αναθεωρήσεων της σελίδας. Το πεδίο <code>old_id</code> αυτού του πίνακα, είναι ίδιο με το <code>rev_text_id</code> που κρατήσατε προηγουμένως. Μπορείτε λοιπόν να διαγράψετε ένα ένα τα κείμενα, εκτελώντας επανηλειμμένα κάτι σαν <code>DELETE FROM my_database.mw_text WHERE mw_text.old_id = 100</code>, αλλάζωντας το «100» σε ό,τι αντιστοιχεί στα δικά σας δεδομένα.</p>
 
-  </div>
+  </section>
+
+  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  
+    Last modified: <span itemprop="dateModified">2011-08-15</span>
+  
+  
+    &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>
+  
+  </footer>
 
 </article>
 
-      </div>
-    </div>
-
-
-    </div>
-
+  </div>
 
   <!--footer id="site-footer">
   <div class="container">
@@ -134,8 +138,7 @@
   </div>
 </footer>
 
-
-    <script
+      <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
       integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
       crossorigin="anonymous"></script>
@@ -175,5 +178,7 @@
         document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
       });
     </script>
+
+
   </body>
 </html>

@@ -58,19 +58,19 @@
 </header>
 
 
-
-    <div class="container">
-
-    <div class="page-content">
-      <div class="wrapper">
+  <div class="container">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Install Oracle Virtualbox on Linux Mint 17</h1>
-    <p class="post-meta"><time datetime="2014-10-01T00:00:00+01:00" itemprop="datePublished">Oct 1, 2014</time></p>
+    <p class="post-meta">
+      <time datetime="2014-10-01T00:00:00+01:00" itemprop="datePublished">2014-10-01</time>
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Marios Zindilis</span></span>
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <section class="post-content" itemprop="articleBody">
     <p>This is a quick tip on how to install the closed-source version of Virtualbox, 
 currently at version 4.3.16, on a machine with Linux Mint 17. The open-source 
 version of Virtualbox is available in the default repositories for Linux Mint, 
@@ -113,16 +113,20 @@ sudo apt-get install linux-headers-`uname -r`
   <li>Check <a href="https://www.virtualbox.org/">virtualbox.org</a> for the latest version.</li>
 </ul>
 
-  </div>
+  </section>
+
+  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  
+    Last modified: <span itemprop="dateModified">2015-03-23</span>
+  
+  
+    &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>
+  
+  </footer>
 
 </article>
 
-      </div>
-    </div>
-
-
-    </div>
-
+  </div>
 
   <!--footer id="site-footer">
   <div class="container">
@@ -153,8 +157,7 @@ sudo apt-get install linux-headers-`uname -r`
   </div>
 </footer>
 
-
-    <script
+      <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
       integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
       crossorigin="anonymous"></script>
@@ -194,5 +197,7 @@ sudo apt-get install linux-headers-`uname -r`
         document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
       });
     </script>
+
+
   </body>
 </html>

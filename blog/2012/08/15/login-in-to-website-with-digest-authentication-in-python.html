@@ -58,19 +58,19 @@
 </header>
 
 
-
-    <div class="container">
-
-    <div class="page-content">
-      <div class="wrapper">
+  <div class="container">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Login in to website with Digest authentication in Python</h1>
-    <p class="post-meta"><time datetime="2012-08-15T00:00:00+01:00" itemprop="datePublished">Aug 15, 2012</time></p>
+    <p class="post-meta">
+      <time datetime="2012-08-15T00:00:00+01:00" itemprop="datePublished">2012-08-15</time>
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Marios Zindilis</span></span>
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <section class="post-content" itemprop="articleBody">
     <p>Websites that use HTTP authentication, can use one of a couple of 
 authentication methods, like Basic or <strong>Digest</strong>. When first opened, the 
 website returns a 401 message, along with a string that contains the 
@@ -109,16 +109,20 @@ webpage returned after the authentication, and can be read with
 something like <code class="highlighter-rouge">for line in page_content</code> or parsed as 
 HTML/XML.</p>
 
-  </div>
+  </section>
+
+  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  
+    Last modified: <span itemprop="dateModified">2012-08-15</span>
+  
+  
+    &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>
+  
+  </footer>
 
 </article>
 
-      </div>
-    </div>
-
-
-    </div>
-
+  </div>
 
   <!--footer id="site-footer">
   <div class="container">
@@ -149,8 +153,7 @@ HTML/XML.</p>
   </div>
 </footer>
 
-
-    <script
+      <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
       integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
       crossorigin="anonymous"></script>
@@ -190,5 +193,7 @@ HTML/XML.</p>
         document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
       });
     </script>
+
+
   </body>
 </html>

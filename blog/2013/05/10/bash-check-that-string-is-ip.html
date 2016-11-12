@@ -58,19 +58,19 @@
 </header>
 
 
-
-    <div class="container">
-
-    <div class="page-content">
-      <div class="wrapper">
+  <div class="container">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Bash: Check that string is IP</h1>
-    <p class="post-meta"><time datetime="2013-05-10T00:00:00+01:00" itemprop="datePublished">May 10, 2013</time></p>
+    <p class="post-meta">
+      <time datetime="2013-05-10T00:00:00+01:00" itemprop="datePublished">2013-05-10</time>
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Marios Zindilis</span></span>
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <section class="post-content" itemprop="articleBody">
     <p class="lead">Assuming that we have a Bash script that accepts a parameter 
 that is supposed to be an IP Address, this article lists a couple of 
 (practically useless) ways of verifying that input <em>without using regular 
@@ -173,16 +173,20 @@ commented and suggested the use of regular expressions, which in
 retrospect made all the above pretty useless. The expression that I 
 found working best is the one at <a href="http://www.geekzilla.co.uk/View0CBFD9A7-621D-4B0C-9554-91FD48AADC77.htm">IP Address regular expression</a>.</p>
 
-  </div>
+  </section>
+
+  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  
+    Last modified: <span itemprop="dateModified">2015-03-23</span>
+  
+  
+    &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>
+  
+  </footer>
 
 </article>
 
-      </div>
-    </div>
-
-
-    </div>
-
+  </div>
 
   <!--footer id="site-footer">
   <div class="container">
@@ -213,8 +217,7 @@ found working best is the one at <a href="http://www.geekzilla.co.uk/View0CBFD9A
   </div>
 </footer>
 
-
-    <script
+      <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
       integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
       crossorigin="anonymous"></script>
@@ -254,5 +257,7 @@ found working best is the one at <a href="http://www.geekzilla.co.uk/View0CBFD9A
         document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
       });
     </script>
+
+
   </body>
 </html>

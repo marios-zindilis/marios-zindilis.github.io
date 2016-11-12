@@ -58,19 +58,19 @@
 </header>
 
 
-
-    <div class="container">
-
-    <div class="page-content">
-      <div class="wrapper">
+  <div class="container">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Reading #8</h1>
-    <p class="post-meta"><time datetime="2011-04-03T00:00:00+01:00" itemprop="datePublished">Apr 3, 2011</time></p>
+    <p class="post-meta">
+      <time datetime="2011-04-03T00:00:00+01:00" itemprop="datePublished">2011-04-03</time>
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Marios Zindilis</span></span>
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <section class="post-content" itemprop="articleBody">
     <p>Not much reading done for the past couple of days. I am occupied elsewhere, plus I ‘m doing some research that might or might not result in a monster post soon.</p>
 
 <h3>Free and Open Source related stuff</h3>
@@ -82,16 +82,20 @@
 
 <p>Digging a bit further, I found the <a href="http://popcon.ubuntu.com/main/translations/by_inst">list of translations sorted by number of installations</a>, which shows some more realistic results: greek language pack is the 123rd in number of installations (33rd if sorted by “vote”, which better indicates recently -less than one month- used installations). 123rd in installations Vs 33rd in usage, I suppose can be interpreted as: “We install less but use more of the installed base”, in other words we have more decisive people :)</p>
 
-  </div>
+  </section>
+
+  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  
+    Last modified: <span itemprop="dateModified">2011-04-03</span>
+  
+  
+    &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>
+  
+  </footer>
 
 </article>
 
-      </div>
-    </div>
-
-
-    </div>
-
+  </div>
 
   <!--footer id="site-footer">
   <div class="container">
@@ -122,8 +126,7 @@
   </div>
 </footer>
 
-
-    <script
+      <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
       integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
       crossorigin="anonymous"></script>
@@ -163,5 +166,7 @@
         document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
       });
     </script>
+
+
   </body>
 </html>

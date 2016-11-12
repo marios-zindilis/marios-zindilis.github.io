@@ -58,19 +58,19 @@
 </header>
 
 
-
-    <div class="container">
-
-    <div class="page-content">
-      <div class="wrapper">
+  <div class="container">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Change pptpd port on CentOS</h1>
-    <p class="post-meta"><time datetime="2014-09-17T00:00:00+01:00" itemprop="datePublished">Sep 17, 2014</time></p>
+    <p class="post-meta">
+      <time datetime="2014-09-17T00:00:00+01:00" itemprop="datePublished">2014-09-17</time>
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Marios Zindilis</span></span>
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <section class="post-content" itemprop="articleBody">
     <p>I was testing Point-to-Point Tunneling today, between a CentOS 6 server running 
 <code class="highlighter-rouge">pptpd</code>, and some Mikrotik routers as the clients, and I wanted to change the 
 listening port on the <code class="highlighter-rouge">pptpd</code> side. After searching and reading a bit of 
@@ -119,16 +119,20 @@ look into this file to get the port number (and protocol) for its service.</p>
 <p>So, <code class="highlighter-rouge">pptpd</code> is actually doing the right thing here, looking at this file to 
 find its port. I wonder which other servers do the same thing.</p>
 
-  </div>
+  </section>
+
+  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  
+    Last modified: <span itemprop="dateModified">2014-09-20</span>
+  
+  
+    &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>
+  
+  </footer>
 
 </article>
 
-      </div>
-    </div>
-
-
-    </div>
-
+  </div>
 
   <!--footer id="site-footer">
   <div class="container">
@@ -159,8 +163,7 @@ find its port. I wonder which other servers do the same thing.</p>
   </div>
 </footer>
 
-
-    <script
+      <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
       integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
       crossorigin="anonymous"></script>
@@ -200,5 +203,7 @@ find its port. I wonder which other servers do the same thing.</p>
         document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
       });
     </script>
+
+
   </body>
 </html>

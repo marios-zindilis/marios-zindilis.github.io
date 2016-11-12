@@ -58,19 +58,19 @@
 </header>
 
 
-
-    <div class="container">
-
-    <div class="page-content">
-      <div class="wrapper">
+  <div class="container">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Regular expressions in python-markdown2 (part 1)</h1>
-    <p class="post-meta"><time datetime="2015-11-07T00:00:00+00:00" itemprop="datePublished">Nov 7, 2015</time></p>
+    <p class="post-meta">
+      <time datetime="2015-11-07T00:00:00+00:00" itemprop="datePublished">2015-11-07</time>
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Marios Zindilis</span></span>
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <section class="post-content" itemprop="articleBody">
     <p class="lead">This article is a look into the performance of one of the
 regular expressions used in the 
 <a href="https://github.com/trentm/python-markdown2" title="python-markdown2 on Github"> python-markdown2</a> Python module for 
@@ -123,16 +123,20 @@ half to do it with <code class="highlighter-rouge">str.replace()</code>. Thus, f
 who is pondering on converting 30 million books from Markdown to HTML, the 
 answer is: Go with <code class="highlighter-rouge">str.replace()</code>. For the rest of us it’s still 42.</p>
 
-  </div>
+  </section>
+
+  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  
+    Last modified: <span itemprop="dateModified">2016-05-08</span>
+  
+  
+    &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>
+  
+  </footer>
 
 </article>
 
-      </div>
-    </div>
-
-
-    </div>
-
+  </div>
 
   <!--footer id="site-footer">
   <div class="container">
@@ -163,8 +167,7 @@ answer is: Go with <code class="highlighter-rouge">str.replace()</code>. For the
   </div>
 </footer>
 
-
-    <script
+      <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
       integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
       crossorigin="anonymous"></script>
@@ -204,5 +207,7 @@ answer is: Go with <code class="highlighter-rouge">str.replace()</code>. For the
         document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
       });
     </script>
+
+
   </body>
 </html>

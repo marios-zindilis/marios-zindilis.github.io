@@ -58,19 +58,19 @@
 </header>
 
 
-
-    <div class="container">
-
-    <div class="page-content">
-      <div class="wrapper">
+  <div class="container">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Γιατί το WordPress δεν παίζεται #1</h1>
-    <p class="post-meta"><time datetime="2011-03-22T00:00:00+00:00" itemprop="datePublished">Mar 22, 2011</time></p>
+    <p class="post-meta">
+      <time datetime="2011-03-22T00:00:00+00:00" itemprop="datePublished">2011-03-22</time>
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Marios Zindilis</span></span>
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <section class="post-content" itemprop="articleBody">
     <h3>Ή αλλιώς, πώς να φτιάξετε έναν φάκελο με αρχεία για κατέβασμα από το ιστολόγιό σας.</h3>
 
 <p>Για να δημιουργήσετε έναν υποφάκελο με αρχεία προς κατέβασμα από το ιστολόγιό σας, φτιάξτε τον υποφάκελο στον εξυπηρετητή, και προσθέστε αυτούσιο ή προσαρμοσμένο το εξής αρχείο ως <code class="highlighter-rouge">index.php</code>:</p>
@@ -118,16 +118,20 @@
   <li><a href="/blog/2011/03/22/γιατί-το-wordpress-δεν-παίζεται-2.el.html">Γιατί το WordPress δεν παίζεται #2</a></li>
 </ol>
 
-  </div>
+  </section>
+
+  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  
+    Last modified: <span itemprop="dateModified">2011-03-22</span>
+  
+  
+    &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>
+  
+  </footer>
 
 </article>
 
-      </div>
-    </div>
-
-
-    </div>
-
+  </div>
 
   <!--footer id="site-footer">
   <div class="container">
@@ -158,8 +162,7 @@
   </div>
 </footer>
 
-
-    <script
+      <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
       integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
       crossorigin="anonymous"></script>
@@ -199,5 +202,7 @@
         document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
       });
     </script>
+
+
   </body>
 </html>

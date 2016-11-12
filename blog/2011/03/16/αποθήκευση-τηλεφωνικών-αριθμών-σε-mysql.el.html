@@ -58,19 +58,19 @@
 </header>
 
 
-
-    <div class="container">
-
-    <div class="page-content">
-      <div class="wrapper">
+  <div class="container">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Αποθήκευση τηλεφωνικών αριθμών σε MySQL</h1>
-    <p class="post-meta"><time datetime="2011-03-16T00:00:00+00:00" itemprop="datePublished">Mar 16, 2011</time></p>
+    <p class="post-meta">
+      <time datetime="2011-03-16T00:00:00+00:00" itemprop="datePublished">2011-03-16</time>
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Marios Zindilis</span></span>
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <section class="post-content" itemprop="articleBody">
     <p>Γράφω πρώτα το συμπέρασμα, για όποιον βαριέται να διαβάσει το υπόλοιπο κείμενο:</p>
 
 <blockquote>Αποθηκεύστε τους τηλεφωνικούς αριθμούς ως <code>VARCHAR(20)</code>, εκτός και αν υπάρχει σημαντικός λόγος γιατί να κάνετε κάτι διαφορετικό. Επιπλέον, χρησιμοποιήστε κώδικα σε επίπεδο εφαρμογής για 2 ενέργειες: Α. για να αφαιρέσετε από την είσοδο του χρήστη οποιουσδήποτε μη αριθμητικούς χαρακτήρες, πριν από την εισαγωγή στη βάση (π.χ. παύλες, κενά, παρενθέσεις), και Β. για να μορφοποιήσετε τον αριθμό με μη αριθμητικούς χαρακτήρες, πριν από την έξοδο στο χρήστη, ώστε να βελτιώσετε την αναγνωσιμότητα (π.χ. με παύλες, κενά, παρενθέσεις).</blockquote>
@@ -85,16 +85,20 @@
 Σημειώστε ότι, παρόμοιο σκεπτικό ισχύει και την αποθήκευση Ταχυδρομικού Κώδικα, πόσω μάλλον που μερικές χώρες (π.χ. Ηνωμένο Βασίλειο, Καναδάς) χρησιμοποιούν και γράμματα του αλφαβήτου στους Τ.Κ.
 </li></ol>
 
-  </div>
+  </section>
+
+  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  
+    Last modified: <span itemprop="dateModified">2011-03-16</span>
+  
+  
+    &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>
+  
+  </footer>
 
 </article>
 
-      </div>
-    </div>
-
-
-    </div>
-
+  </div>
 
   <!--footer id="site-footer">
   <div class="container">
@@ -125,8 +129,7 @@
   </div>
 </footer>
 
-
-    <script
+      <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
       integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
       crossorigin="anonymous"></script>
@@ -166,5 +169,7 @@
         document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
       });
     </script>
+
+
   </body>
 </html>

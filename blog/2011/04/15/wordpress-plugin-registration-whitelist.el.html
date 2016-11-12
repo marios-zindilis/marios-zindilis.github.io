@@ -58,19 +58,19 @@
 </header>
 
 
-
-    <div class="container">
-
-    <div class="page-content">
-      <div class="wrapper">
+  <div class="container">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Πρόσθετο WordPress: Αντιστοίχιση διεύθυνσης email με Λευκή λίστα κατά την εγγραφή νέου χρήστη</h1>
-    <p class="post-meta"><time datetime="2011-04-15T00:00:00+01:00" itemprop="datePublished">Apr 15, 2011</time></p>
+    <p class="post-meta">
+      <time datetime="2011-04-15T00:00:00+01:00" itemprop="datePublished">2011-04-15</time>
+      • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Marios Zindilis</span></span>
+    </p>
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <section class="post-content" itemprop="articleBody">
     <p>Με αφορμή μια ερώτηση από χρήστη στο <a href="http://www.wordpress.gr/forum/thread-779.html">ελληνικό φόρουμ του WordPress</a>, 
 έφτιαξα ένα σχετικά απλό πρόσθετο για το WordPress, με το οποίο ο διαχειριστής 
 δημιουργεί μία λευκή λίστα με domains, σύμφωνα με τα οποία ελέγχεται η 
@@ -87,16 +87,20 @@
 <li><a href="http://codex.wordpress.org/Administration_Menus">Codex: Administration Menus</a></li>
 <li><a href="http://codex.wordpress.org/Plugin_API/Action_Reference">Codex: Action reference</a></li></ul>
 
-  </div>
+  </section>
+
+  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  
+    Last modified: <span itemprop="dateModified">2011-04-15</span>
+  
+  
+    &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>
+  
+  </footer>
 
 </article>
 
-      </div>
-    </div>
-
-
-    </div>
-
+  </div>
 
   <!--footer id="site-footer">
   <div class="container">
@@ -127,8 +131,7 @@
   </div>
 </footer>
 
-
-    <script
+      <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
       integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
       crossorigin="anonymous"></script>
@@ -168,5 +171,7 @@
         document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
       });
     </script>
+
+
   </body>
 </html>
