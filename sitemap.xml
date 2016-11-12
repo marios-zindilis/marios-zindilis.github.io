@@ -1,0 +1,1465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://zindilis.com/</loc>
+  </url>
+  <url>
+    <loc>https://zindilis.com/docs/</loc>
+  </url>
+  <url>
+    <loc>https://zindilis.com/projects/</loc>
+  </url>
+  <url>
+    <loc>https://zindilis.com/about/</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2016/10/23/control-vlc-with-python.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2015/12/06/hex-primary-key-in-django-model.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2015/11/22/regex-in-python-markdown2-pt2.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2015/11/07/regex-in-python-markdown2-pt1.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2015/10/25/links-notes-from-pycon-2015.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2015/10/24/migrate-on-premise-mysql-to-rds.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2015/10/23/webinar-recording-from-imperva.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2015/09/05/run-firefox-3-on-ubuntu-15-04.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2015/06/18/stale-nfs-causes-backuppc-filelistreceive-failure.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2015/04/27/vmware-evaluation-expired.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2014/12/14/raspberry-pi-security-bootstrap.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2014/10/01/install-oracle-virtualbox-on-linux-mint-17.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2014/09/17/change-pptpd-port-on-centos.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2014/05/16/apache-logs-with-iso-date-format.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2014/03/29/google-suggestions-in-firefox-on-mint.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2014/02/28/bandwidth-still-relevant.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2014/02/12/contribute-on-github.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2014/01/26/google-server-migration-paper.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2014/01/24/fedora-ask-in-greek.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2013/05/25/centos-6-install-opendcim.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2013/05/10/bash-check-that-string-is-ip.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2012/11/13/how-to-create-a-large-mysql-db-for-tests.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2012/09/09/running-multiple-instances-of-thunderbird.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2012/08/15/login-in-to-website-with-digest-authentication-in-python.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2012/05/11/mediawiki-upgrade-to-1-19-0-regression.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2012/05/01/facepalm-of-the-day-2.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2012/04/21/%CF%81%CF%8D%CE%B8%CE%BC%CE%B9%CF%83%CE%B7-centos-6-%CF%89%CF%82-router.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2012/04/04/bash-tips.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2012/03/27/facepalm-of-the-day.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2012/02/02/%CF%84%CE%B1%CE%BE%CE%B9%CE%BD%CF%8C%CE%BC%CE%B7%CF%83%CE%B7-%CF%86%CE%B1%CE%BA%CE%AD%CE%BB%CF%89%CE%BD-%CE%BA%CE%B1%CF%84%CE%AC-%CE%BC%CE%AD%CE%B3%CE%B5%CE%B8%CE%BF%CF%82.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2012/01/03/%CE%AD%CF%81%CE%B3%CE%B1-%CF%83%CF%84%CE%BF-public-domain-%CE%B1%CF%80%CF%8C-1-%CE%B9%CE%B1%CE%BD%CE%BF%CF%85%CE%B1%CF%81%CE%AF%CE%BF%CF%85-2013.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/11/19/%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7-guake-%CF%83%CE%B5-centos6.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/10/29/links-for-week-43-2011.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/10/16/links-for-week-41-2011.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/10/08/links-for-week-40-2011.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/10/01/links-for-week-39-2011.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/08/18/reading-12.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/08/15/mediawiki-%CE%B4%CE%B9%CE%B1%CE%B3%CF%81%CE%B1%CF%86%CE%AE-%CE%AC%CF%81%CE%B8%CF%81%CE%BF%CF%85-%CE%B1%CF%80%CF%8C-%CE%B2%CE%AC%CF%83%CE%B7-%CE%B4%CE%B5%CE%B4%CE%BF%CE%BC%CE%AD%CE%BD%CF%89%CE%BD.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/07/31/reading-11.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/07/21/reading-10.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/07/06/virtualbox-%CF%86%CF%81%CE%AD%CF%83%CE%BA%CE%B9%CE%B1-%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7-%CE%BB%CE%B5%CE%B9%CF%84%CE%BF%CF%85%CF%81%CE%B3%CE%B9%CE%BA%CE%BF%CF%8D.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/07/06/reading-9.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/06/29/%CE%BD%CE%B1%CF%85%CF%84%CE%AF%CE%BB%CE%BF%CF%82-%CE%BC%CE%B1%CE%B6%CE%B9%CE%BA%CE%AE-%CF%83%CE%BC%CE%AF%CE%BA%CF%81%CF%85%CE%BD%CF%83%CE%B7-%CE%B5%CE%B9%CE%BA%CF%8C%CE%BD%CF%89%CE%BD.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/06/17/fedora-15-minimal-server.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/06/04/mediawiki-%CE%B5%CE%BC%CF%86%CE%AC%CE%BD%CE%B9%CF%83%CE%B7-%CF%80%CE%B5%CF%81%CE%B9%CE%B5%CF%87%CE%BF%CE%BC%CE%AD%CE%BD%CE%BF%CF%85-%CE%BC%CF%8C%CE%BD%CE%BF-%CF%83%CE%B5-%CF%83%CF%85%CE%BD%CE%B4.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/05/07/%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7-%CE%BF%CE%B4%CE%B7%CE%B3%CF%8E%CE%BD-broadcom-%CF%83%CE%B5-fedora-15.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/04/23/git-symlinks-and-hardlinks.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/04/15/wordpress-plugin-registration-whitelist.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/04/03/reading-8.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/04/01/reading-7.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/30/reading-6.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/28/%CE%BA%CE%B1%CE%B9%CE%BD%CE%BF%CF%8D%CF%81%CE%B9%CE%BF-%CE%BA%CE%BF%CF%83%CE%BA%CE%B9%CE%BD%CE%AC%CE%BA%CE%B9-dell-inspiron-n5010.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/27/reading-5.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/23/reading-4.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/22/%CE%B3%CE%B9%CE%B1%CF%84%CE%AF-%CF%84%CE%BF-wordpress-%CE%B4%CE%B5%CE%BD-%CF%80%CE%B1%CE%AF%CE%B6%CE%B5%CF%84%CE%B1%CE%B9-2.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/22/%CE%B3%CE%B9%CE%B1%CF%84%CE%AF-%CF%84%CE%BF-wordpress-%CE%B4%CE%B5%CE%BD-%CF%80%CE%B1%CE%AF%CE%B6%CE%B5%CF%84%CE%B1%CE%B9-1.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/16/%CE%B1%CF%80%CE%BF%CE%B8%CE%AE%CE%BA%CE%B5%CF%85%CF%83%CE%B7-%CF%84%CE%B7%CE%BB%CE%B5%CF%86%CF%89%CE%BD%CE%B9%CE%BA%CF%8E%CE%BD-%CE%B1%CF%81%CE%B9%CE%B8%CE%BC%CF%8E%CE%BD-%CF%83%CE%B5-mysql.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/12/%CE%B3%CE%B9%CE%B1%CF%84%CE%AF-%CF%84%CE%BF-wordpress-%CE%B4%CE%B5%CE%BD-%CF%80%CE%B1%CE%AF%CE%B6%CE%B5%CF%84%CE%B1%CE%B9-0.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/12/honey-i-broke-the-server.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/10/reading-3.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/03/05/more-reading-2.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/02/27/opensuse-installation-in-a-virtual-machine.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/02/26/more-ubuntu.html</loc>
+  </url>
+
+  <url>
+    <loc>/blog/2011/02/25/hello-world.html</loc>
+  </url>
+
+
+  <url>
+    <loc>/docs/accelerated-x.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/acl.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/amanda.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/ansible.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/apache-benchmarks.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/apache-disable-default-modules.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/apache-logs-to-remote-syslog.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/apache2-basic-authentication.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/arp-scan.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/audacity.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/awk.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/backuppc.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/bash-scripting.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/bash-special-variables.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/bluefish.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-6-convert-mbr-to-gpt.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-6-enable-epel-repository.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-6-install-motion.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-6-install-opendcim-2.1.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-6-install-syslog-ng.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-6-nfs-server.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-6-prepare-new-server.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-7.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-add-hard-disk.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-install-hp-sim.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-install-request-tracker-4.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/centos-show-ip-address-in-etc-issue.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/champions-of-regnum.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cheese.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cheese.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/chef.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/access-class.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/alias.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/back-pressure.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/bandwidth.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/banner-login.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/banner-motd.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/clock.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/default-interface.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/enable-password.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/enable-secret.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/hostname.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/late-collision.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/login-local.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/mac-address-table-aging-time.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/reload.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/service-timestamps-log-datetime.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/show-interface.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/show-ip-eigrp-interfaces-detail.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/show-port-security.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/show-vlan.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/show-vtp-status.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/switchport-mode-access.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/switchport-port-security-mac-address-sticky.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/switchport-port-security.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/switchport-trunk-encapsulation-dot1q.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/switchport-trunk-encapsulation-isl.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/switchport-trunk-encapsulation-negotiate.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/write-erase.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cisco/%CF%83%CF%85%CE%BD%CF%84%CE%BF%CE%BC%CE%B5%CF%8D%CF%83%CE%B5%CE%B9%CF%82-%CF%80%CE%BB%CE%B7%CE%BA%CF%84%CF%81%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%BF%CF%85.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/citrix-xenserver-6.2.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/contribute-on-github.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/corosync.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cream.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/cron.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/crontab.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/curl.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/delgroup.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/dhcrelay.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/dig.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/dirname.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/dm-cache.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/dracut.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/drbd.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/easy_install.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/elk.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/exportfs.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/facter.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/faraday.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/fedora-16-%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7-apache-mysql-php.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/ffmpeg.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/filesystems.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/find.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/firefox.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/flowchart-and-diagram-editors.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/free-books.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/free.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/ftp.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/gedit.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/getfacl.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/gimp.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/git.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/gitpython-clone-remote-repository.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/gitpython.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/glusterfs.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/gnome-paint.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/gnutls.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/haproxy.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/hive-rise.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/hp-msa2040.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/hpacucli.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/ifconfig.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/</loc>
+  </url>
+
+  <url>
+    <loc>/docs/inkscape.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/juniper/</loc>
+  </url>
+
+  <url>
+    <loc>/docs/juniper/jncia-study-material.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/juniper/juniper-acronyms.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/juniper/juniper-junos-online-help.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/juniper/routing-policy-examples.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/juniper/set-system-host-name.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/keepalived.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/killall.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/kmotion.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/kvm.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/less.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/less.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/boot/grub/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/boot/grub/menu.lst.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/boot/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/X11/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/X11/xorg.conf.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/deluser.conf.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/deluser.conf.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/filesystems.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/hosts.allow.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/lilo.conf.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/lilo.conf.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/modprobe.d/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/my.cnf.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/pam.d/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/shadow.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/shells.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/snmp/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/snmp/snmpd.conf.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/sysconfig/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/sysconfig/iptables.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/sysconfig/network-scripts/ifcfg-eth0.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/sysconfig/network-scripts/ifcfg-eth0.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/etc/sysconfig/network-scripts/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/usr/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/usr/lib/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/usr/lib/modprobe.d/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/usr/share/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/usr/share/misc/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/usr/share/misc/pci.ids.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/var/ftp/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/var/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/var/lib/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/var/lib/libvirt/images/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lfs/var/lib/libvirt/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/libreoffice.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/linux-backup-tools.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/linux-disk-performance-benchmarking.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/linux-mint-on-lenovo-g505s.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/linux-mint.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/linux-show-network-routes.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lnx-bbc.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/logging-in-linux.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lpic2-notes.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/lpic2-revision.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mail-tools.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/motion.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mutagen.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/max_allowed_packet.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/myisamchk.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/mysql-create-test-database.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/mysql-enable-logging.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/mysql-fabric.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/mysql-replication-skip-one.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/mysql-workbench.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/mysqldump.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/mysqlhotcopy.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/sakila-example-queries.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/mysql/show-privileges-for-all-users.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/netapp/controller-failover.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/netapp/</loc>
+  </url>
+
+  <url>
+    <loc>/docs/netapp/netapp-serial-console-settings.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/netapp/replace-disk-on-fas.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/netstat.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/network-interface-bonding.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/nfs-stack-restart.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/nsnake.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/ntfsfix.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/ntpdate.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/ocs-inventory-ng.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/opendcim.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/openssl.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/openstack.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/oracle-database.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/osquery.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/pacemaker.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/parted.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/peppermintos.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/perdition.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/pgtune-configuration-changes.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/postfix.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/postgresql.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/presentation-tools.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/procmail.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/project-management-tools.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/puppet.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/puppy-arcade.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/pysphere-get-virtual-machines.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/pysphere.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/python-colored-output.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/rancid.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/raspberry-pi-security-bootstrap.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/regular-expressions.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/rhcsa.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/rhel-setup-ftp-repository.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/rhel-setup-http-repository.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/rhel-yum-install-from-dvd.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/rhel.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/route.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/rpm.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/ryzom.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/salt.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/samba-bind-to-ip.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/samba-security-options.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/screen.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/amazon-web-services-security.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/annual-loss-expectancy.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/annual-rate-of-occurence.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/ghost.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/nikto.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/residual-risk.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/security-links-cheatsheet.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/single-loss-expectancy.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/threat-intelligence.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sec/waf.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/smartmontools.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/smbpasswd.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/subversion.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sudo.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sunflower.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/sysdig.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/syslog-ng.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/syslog.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/system-config-display.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/system-v-init.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/systemback.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/systemd.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/taiga.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/tail.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/tailf.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/tcpdump.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/tcptrack.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/thunderbird.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/timeshift.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/top.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/tune2fs.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/ubuntu-10.10-install-apache-php-mysql.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/ubuntu-encrypted-directory.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/uget.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/unetbootin.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/vim.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/virsh.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/virtualbox.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/vmware/build-vmware-4-tools-on-centos-6.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/vmware/</loc>
+  </url>
+
+  <url>
+    <loc>/docs/vmware/memory-ballooning.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/vmware/transparent-page-sharing.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/vmware/vmdk.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/vmware/vmware-acronyms.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/web.py/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/web.py/subapplications.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/web.py/web.py-deployment-ubuntu.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/wfs/index.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/wowza.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/x.org.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/xargs.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/xdotool.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/xf86config.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/xfree86-3.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/xfree86-4.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/xmpp.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/xorgcfg.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/yum.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/yum.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zenoss/cannot-set-device-ip.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zenoss/</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zenoss/zendmd-add-device-to-group.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zenoss/zendmd-get-device-serial-numbers.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zenoss/zendmd-get-devices.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zenoss/zendmd-get-events.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zenoss/zendmd-get-groups.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zenoss/zenoss-3.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zenoss/zenoss-4.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zentyal.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/zimbra.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/%CE%B4%CE%B9%CE%B1%CF%87%CE%B5%CE%AF%CF%81%CE%B9%CF%83%CE%B7-%CF%87%CF%81%CE%B7%CF%83%CF%84%CF%8E%CE%BD-%CF%83%CF%84%CE%B7%CE%BD-mysql.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/%CE%BC%CE%B5%CF%84%CE%B1%CE%B2%CE%BB%CE%B7%CF%84%CE%AD%CF%82-%CF%80%CE%B5%CF%81%CE%B9%CE%B2%CE%AC%CE%BB%CE%BB%CE%BF%CE%BD%CF%84%CE%BF%CF%82.el.html</loc>
+  </url>
+
+  <url>
+    <loc>/docs/%CF%81%CF%8D%CE%B8%CE%BC%CE%B9%CF%83%CE%B7-centos-6-%CF%89%CF%82-router.el.html</loc>
+  </url>
+
+</urlset>

@@ -58,9 +58,9 @@
 
 <p>To back up a database named <code class="highlighter-rouge">stuff</code>:</p>
 
-<p><code class="highlighter-rouge">bash
-time mysqldump -u root -p stuff | gzip &gt; stuff.sql.gz
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">time </span>mysqldump -u root -p stuff | gzip &gt; stuff.sql.gz
+</code></pre>
+</div>
 
 <p>This pipes the clear text output from <code class="highlighter-rouge">mysqldump</code> directly into <code class="highlighter-rouge">gzip</code>, 
 and prints the duration of the operation in the end.</p>
@@ -69,9 +69,9 @@ and prints the duration of the operation in the end.</p>
 
 <p>To restore the <code class="highlighter-rouge">stuff</code> database:</p>
 
-<p><code class="highlighter-rouge">bash
-time gunzip -c stuff.sql.gz | pv | mysql -u root -p stuff
-</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">time </span>gunzip -c stuff.sql.gz | pv | mysql -u root -p stuff
+</code></pre>
+</div>
 
 <p>This decompresses the dump back in clear text, and feeds it to <code class="highlighter-rouge">mysql</code> 
 through <code class="highlighter-rouge">pv</code>, which adds the perk of an indication of progress.</p>
@@ -97,6 +97,7 @@ through <code class="highlighter-rouge">pv</code>, which adds the perk of an ind
 <footer id="site-footer" class="footer-distributed">
   <div class="container">
             <div class="footer-right">
+                <a href="/feed.xml"><i class="fa fa-rss"></i></a>
                 <a href="https://www.facebook.com/zindilis"><i class="fa fa-facebook"></i></a>
                 <a href="https://twitter.com/MariosZindilis"><i class="fa fa-twitter"></i></a>
                 <a href="https://www.linkedin.com/in/zindilis"><i class="fa fa-linkedin"></i></a>

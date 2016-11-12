@@ -10,6 +10,9 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
+  background-color: #292c2f;
+  color: white;
+  padding: 45px 50px;
   /* Set the fixed height of the footer here */
   /* height: 60px; */
   /* line-height: 60px; */ /* Vertically center the text there */
@@ -188,20 +191,7 @@ pre, .highlight {
 
 
 
-.footer-distributed{
-    background-color: #292c2f;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-    box-sizing: border-box;
-    width: 100%;
-    text-align: left;
-    font: normal 16px sans-serif;
-
-    padding: 45px 50px;
-    margin-top: 80px;
-}
-
 .footer-distributed .footer-left p{
-    color:  #8f9296;
     font-size: 14px;
     margin: 0;
 }
@@ -211,25 +201,24 @@ pre, .highlight {
 .footer-distributed p.footer-links{
     font-size:18px;
     font-weight: bold;
-    color:  #ffffff;
     margin: 0 0 10px;
     padding: 0;
 }
 
 .footer-distributed p.footer-links a{
+    color: white;
     display:inline-block;
     line-height: 1.8;
     text-decoration: none;
-    color:  inherit;
 }
 
 .footer-distributed .footer-right{
     float: right;
     margin-top: 6px;
-    max-width: 180px;
 }
 
 .footer-distributed .footer-right a{
+  color: white;
     display: inline-block;
     width: 35px;
     height: 35px;
@@ -237,7 +226,6 @@ pre, .highlight {
     border-radius: 2px;
 
     font-size: 20px;
-    color: #ffffff;
     text-align: center;
     line-height: 35px;
 
@@ -247,6 +235,9 @@ pre, .highlight {
 /* If you don't want the footer to be responsive, remove these media queries */
 
 @media (max-width: 600px) {
+  #site-footer {
+    padding: 25px 30px;
+  }
 
     .footer-distributed .footer-left,
     .footer-distributed .footer-right{
