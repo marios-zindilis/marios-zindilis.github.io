@@ -15,258 +15,386 @@
 
   <url>
     <loc>https://zindilis.com/blog/2016/10/23/control-vlc-with-python.html</loc>
+    <lastmod>2016-10-23</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2015/12/06/hex-primary-key-in-django-model.html</loc>
+    <lastmod>2015-12-06</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2015/11/22/regex-in-python-markdown2-pt2.html</loc>
+    <lastmod>2016-05-15</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2015/11/07/regex-in-python-markdown2-pt1.html</loc>
+    <lastmod>2016-05-08</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2015/10/25/links-notes-from-pycon-2015.html</loc>
+    <lastmod>2015-10-25</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2015/10/24/migrate-on-premise-mysql-to-rds.html</loc>
+    <lastmod>2015-10-24</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2015/10/23/webinar-recording-from-imperva.html</loc>
+    <lastmod>2015-12-24</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2015/09/05/run-firefox-3-on-ubuntu-15-04.html</loc>
+    <lastmod>2015-09-05</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2015/06/18/stale-nfs-causes-backuppc-filelistreceive-failure.html</loc>
+    <lastmod>2015-06-18</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2015/04/27/vmware-evaluation-expired.html</loc>
+    <lastmod>2015-10-23</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2014/12/14/raspberry-pi-security-bootstrap.html</loc>
+    <lastmod>2015-03-23</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2014/10/01/install-oracle-virtualbox-on-linux-mint-17.html</loc>
+    <lastmod>2015-03-23</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2014/09/17/change-pptpd-port-on-centos.html</loc>
+    <lastmod>2014-09-20</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2014/05/16/apache-logs-with-iso-date-format.html</loc>
+    <lastmod>2014-05-16</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2014/03/29/google-suggestions-in-firefox-on-mint.html</loc>
+    <lastmod>2014-03-29</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2014/02/28/bandwidth-still-relevant.html</loc>
+    <lastmod>2014-02-28</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2014/02/12/contribute-on-github.html</loc>
+    <lastmod>2014-02-12</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2014/01/26/google-server-migration-paper.html</loc>
+    <lastmod>2014-01-26</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2014/01/24/fedora-ask-in-greek.html</loc>
+    <lastmod>2014-01-26</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2013/05/25/centos-6-install-opendcim.html</loc>
+    <lastmod>2014-01-23</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2013/05/10/bash-check-that-string-is-ip.html</loc>
+    <lastmod>2015-03-23</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2012/11/13/how-to-create-a-large-mysql-db-for-tests.html</loc>
+    <lastmod>2012-11-13</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2012/09/09/running-multiple-instances-of-thunderbird.html</loc>
+    <lastmod>2012-09-09</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2012/08/15/login-in-to-website-with-digest-authentication-in-python.html</loc>
+    <lastmod>2012-08-15</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2012/05/11/mediawiki-upgrade-to-1-19-0-regression.html</loc>
+    <lastmod>2012-05-11</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2012/05/01/facepalm-of-the-day-2.html</loc>
+    <lastmod>2014-01-26</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2012/04/21/%CF%81%CF%8D%CE%B8%CE%BC%CE%B9%CF%83%CE%B7-centos-6-%CF%89%CF%82-router.el.html</loc>
+    <lastmod>2012-04-21</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2012/04/04/bash-tips.el.html</loc>
+    <lastmod>2014-01-26</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2012/03/27/facepalm-of-the-day.html</loc>
+    <lastmod>2012-03-27</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2012/02/02/%CF%84%CE%B1%CE%BE%CE%B9%CE%BD%CF%8C%CE%BC%CE%B7%CF%83%CE%B7-%CF%86%CE%B1%CE%BA%CE%AD%CE%BB%CF%89%CE%BD-%CE%BA%CE%B1%CF%84%CE%AC-%CE%BC%CE%AD%CE%B3%CE%B5%CE%B8%CE%BF%CF%82.el.html</loc>
+    <lastmod>2012-02-02</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2012/01/03/%CE%AD%CF%81%CE%B3%CE%B1-%CF%83%CF%84%CE%BF-public-domain-%CE%B1%CF%80%CF%8C-1-%CE%B9%CE%B1%CE%BD%CE%BF%CF%85%CE%B1%CF%81%CE%AF%CE%BF%CF%85-2013.el.html</loc>
+    <lastmod>2013-01-03</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/11/19/%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7-guake-%CF%83%CE%B5-centos6.el.html</loc>
+    <lastmod>2011-11-19</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/10/29/links-for-week-43-2011.el.html</loc>
+    <lastmod>2011-10-29</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/10/16/links-for-week-41-2011.el.html</loc>
+    <lastmod>2011-10-16</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/10/08/links-for-week-40-2011.el.html</loc>
+    <lastmod>2011-10-08</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/10/01/links-for-week-39-2011.el.html</loc>
+    <lastmod>2015-03-26</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/08/18/reading-12.html</loc>
+    <lastmod>2015-01-26</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/08/15/mediawiki-%CE%B4%CE%B9%CE%B1%CE%B3%CF%81%CE%B1%CF%86%CE%AE-%CE%AC%CF%81%CE%B8%CF%81%CE%BF%CF%85-%CE%B1%CF%80%CF%8C-%CE%B2%CE%AC%CF%83%CE%B7-%CE%B4%CE%B5%CE%B4%CE%BF%CE%BC%CE%AD%CE%BD%CF%89%CE%BD.el.html</loc>
+    <lastmod>2011-08-15</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/07/31/reading-11.html</loc>
+    <lastmod>2011-07-31</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/07/21/reading-10.html</loc>
+    <lastmod>2011-07-21</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/07/06/virtualbox-%CF%86%CF%81%CE%AD%CF%83%CE%BA%CE%B9%CE%B1-%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7-%CE%BB%CE%B5%CE%B9%CF%84%CE%BF%CF%85%CF%81%CE%B3%CE%B9%CE%BA%CE%BF%CF%8D.el.html</loc>
+    <lastmod>2011-07-06</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/07/06/reading-9.html</loc>
+    <lastmod>2011-07-06</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/06/29/%CE%BD%CE%B1%CF%85%CF%84%CE%AF%CE%BB%CE%BF%CF%82-%CE%BC%CE%B1%CE%B6%CE%B9%CE%BA%CE%AE-%CF%83%CE%BC%CE%AF%CE%BA%CF%81%CF%85%CE%BD%CF%83%CE%B7-%CE%B5%CE%B9%CE%BA%CF%8C%CE%BD%CF%89%CE%BD.el.html</loc>
+    <lastmod>2011-06-29</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/06/17/fedora-15-minimal-server.el.html</loc>
+    <lastmod>2011-06-17</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/06/04/mediawiki-%CE%B5%CE%BC%CF%86%CE%AC%CE%BD%CE%B9%CF%83%CE%B7-%CF%80%CE%B5%CF%81%CE%B9%CE%B5%CF%87%CE%BF%CE%BC%CE%AD%CE%BD%CE%BF%CF%85-%CE%BC%CF%8C%CE%BD%CE%BF-%CF%83%CE%B5-%CF%83%CF%85%CE%BD%CE%B4.el.html</loc>
+    <lastmod>2011-06-04</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/05/07/%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7-%CE%BF%CE%B4%CE%B7%CE%B3%CF%8E%CE%BD-broadcom-%CF%83%CE%B5-fedora-15.el.html</loc>
+    <lastmod>2011-05-07</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/04/23/git-symlinks-and-hardlinks.el.html</loc>
+    <lastmod>2011-04-23</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/04/15/wordpress-plugin-registration-whitelist.el.html</loc>
+    <lastmod>2011-04-15</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/04/03/reading-8.html</loc>
+    <lastmod>2011-04-03</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/04/01/reading-7.html</loc>
+    <lastmod>2011-04-01</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/30/reading-6.html</loc>
+    <lastmod>2011-03-30</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/28/%CE%BA%CE%B1%CE%B9%CE%BD%CE%BF%CF%8D%CF%81%CE%B9%CE%BF-%CE%BA%CE%BF%CF%83%CE%BA%CE%B9%CE%BD%CE%AC%CE%BA%CE%B9-dell-inspiron-n5010.el.html</loc>
+    <lastmod>2011-03-28</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/27/reading-5.html</loc>
+    <lastmod>2011-03-27</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/23/reading-4.html</loc>
+    <lastmod>2011-03-23</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/22/%CE%B3%CE%B9%CE%B1%CF%84%CE%AF-%CF%84%CE%BF-wordpress-%CE%B4%CE%B5%CE%BD-%CF%80%CE%B1%CE%AF%CE%B6%CE%B5%CF%84%CE%B1%CE%B9-2.el.html</loc>
+    <lastmod>2011-03-22</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/22/%CE%B3%CE%B9%CE%B1%CF%84%CE%AF-%CF%84%CE%BF-wordpress-%CE%B4%CE%B5%CE%BD-%CF%80%CE%B1%CE%AF%CE%B6%CE%B5%CF%84%CE%B1%CE%B9-1.el.html</loc>
+    <lastmod>2011-03-22</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/16/%CE%B1%CF%80%CE%BF%CE%B8%CE%AE%CE%BA%CE%B5%CF%85%CF%83%CE%B7-%CF%84%CE%B7%CE%BB%CE%B5%CF%86%CF%89%CE%BD%CE%B9%CE%BA%CF%8E%CE%BD-%CE%B1%CF%81%CE%B9%CE%B8%CE%BC%CF%8E%CE%BD-%CF%83%CE%B5-mysql.el.html</loc>
+    <lastmod>2011-03-16</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/12/%CE%B3%CE%B9%CE%B1%CF%84%CE%AF-%CF%84%CE%BF-wordpress-%CE%B4%CE%B5%CE%BD-%CF%80%CE%B1%CE%AF%CE%B6%CE%B5%CF%84%CE%B1%CE%B9-0.el.html</loc>
+    <lastmod>2011-03-12</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/12/honey-i-broke-the-server.html</loc>
+    <lastmod>2011-03-12</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/10/reading-3.html</loc>
+    <lastmod>2011-03-10</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/03/05/more-reading-2.html</loc>
+    <lastmod>2011-03-05</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/02/27/opensuse-installation-in-a-virtual-machine.el.html</loc>
+    <lastmod>2011-02-27</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/02/26/more-ubuntu.html</loc>
+    <lastmod>2011-02-26</lastmod>
+    
   </url>
 
   <url>
     <loc>https://zindilis.com/blog/2011/02/25/hello-world.html</loc>
+    <lastmod>2014-07-26</lastmod>
+    
   </url>
 
 
