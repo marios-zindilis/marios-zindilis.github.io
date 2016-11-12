@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - find (el)</title>
+  <meta name="description" content="Το πρόγραμμα find αναζητά αρχεία, μέσα σε κάποια συγκεκριμένη ιεραρχία φακέλων.">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/find.el.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">find (el)</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Το πρόγραμμα <code class="highlighter-rouge">find</code> αναζητά αρχεία, μέσα σε κάποια συγκεκριμένη ιεραρχία 
+φακέλων.</p>
+
+<h2 id="find">Χρήση του <code class="highlighter-rouge">find</code></h2>
+
+<p>Στην πιο απλή του μορφή το <code>find</code> μπορεί να εκτελεστεί χωρίς 
+επιλογές/παραμέτρους, οπότε εμφανίζει όλα τα αρχεία που βρίσκονται στον 
+τρέχοντα φάκελο και στους υποφακέλους του, δεδομένου ότι ο χρήστης που 
+εκτελεί την εντολή έχει δικαιώματα ανάγνωσης των περιεχομένων εκείνων 
+των φακέλων.</p>
+
+<p>Σε μια πιο παραμετροποιήσιμη μορφή χρήσης, μπορεί να δεκτεί δύο 
+παραμέτρους: τον φάκελο στον οποίο θα ψάξει (συμπεριλαμβάνοντας και τους 
+υποφακέλους) και ένα μοτίβο (κανονική έκφραση) το οποίο θα προσπαθήσει 
+να ταιρίαξει με τα ονόματα των περιεχόμενων αρχείων και φακέλων.</p>
+
+<p>Για παράδειγμα, η πιο κάτω ιεραρχία φακέλων δείχνει έναν φάκελο με το 
+όνομα «Μουσική», με υποφακέλους με ονόματα καλλιτεχνών, με υποφακέλους 
+με ονόματα δίσκων. Μέσα στα ονόματα των δίσκων συμπεριλαμβάνεται σε 
+παρένθεση η χρονολογία κυκλοφορίας κάθε δίσκου. Σχηματικά:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Μουσική
+ |_ Φιλαρμονική Άνω Κάτω Χωριού
+     |_ Κάλαντα (1990)
+     |_ Χαρούμενα τραγούδια (1992)
+     |_ Λυπημένα τραγούδια (1995)
+</code></pre>
+</div>
+
+<p>Αν θέλετε να βρείτε μέσα σε μια τέτοια δομή φακέλων όλους τους δίσκους 
+που κυκλοφόρησαν, για παράδειγμα, το 1995, θα δίνατε την εντολή:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">find Μουσική -name <span class="s1">'*(1995)'</span></code></pre></figure>
+
+<p>Στην πιο πάνω εντολή, το αστεράκι παίζει το ρόλο του μπαλαντέρ, δηλαδή 
+οποιοδήποτε όνομα αρχείου ή φακέλου μέσα στο «Μουσική» το οποίο ξεκινάει 
+με <em>οτιδήποτε</em> και τελειώνει με «(1995)» θα ταιριάξει.</p>
+
+<p>Αν δίνατε την εντολή <code>find Μουσική</code> (παραλείποντας δηλαδή το 
+όνομα για το οποίο ψάχνετε), θα σας επέστρεφε μια λίστα με <strong>όλα</strong> τα 
+περιεχόμενα, αρχεία και υποφακέλους που περιέχονται στο «Μουσική». Αν 
+δίνατε <code>find -name '*(1970)'</code> (παραλείποντας δηλαδή τον φάκελο 
+στον οποίο θέλετε να ψάξετε), τότε το <code class="highlighter-rouge">find</code> ψάχνει απλά στο φάκελο μέσα 
+στον οποίο εκτελέστηκε η εντολή.</p>
+
+<p>Είναι ακόμα δυνατή η αναζήτηση αρχείων βάσει του χρήστη στον οποίο 
+ανήκουν, είτε με την επιλογή <code>-user</code> και παράμετρο το όνομα 
+χρήστη, είτε με την επιλογή <code>-uid</code> και παράμετρο τον αριθμό ID 
+του χρήστη. Αντίστοιχα, για αναζήτηση βάσει του group στο οποίο ανήκουν 
+τα αρχεία/φάκελοι, χρησιμοποιείται η επιλογή <code>-group</code> ή 
+<code>-gid</code>.</p>
+
+<p>Τα πιο πάνω παραδείγμα δείχνουν την πιο στοιχειώδη λειτουργία του 
+<code>find</code>. Πέρα από αυτά, υπάρχουν πάρα πολλές ακόμα παράμετροι, 
+οι οποίες τεκμηριώνονται στο εγχειρίδιο του <code>find</code> (εκτελέστε 
+<code>man find</code>), και οι οποίες επιτρέπουν αρκετά πιο συγκεκριμένο 
+προσδιορισμό των αρχείων που θα επιστραφούν. Συγκεκριμένα, μερικά από τα 
+κριτήρια που μπορείτε να ορίσετε είναι:</p>
+
+<ul>
+  <li>αν θα ακολουθούνται οι συμβολικοί σύνδεσμοι,</li>
+  <li>το ελάχιστο και το μέγιστο βάθος στην ιεραρχία των υποφακέλων,</li>
+  <li>αν θα συνεχίζεται η αναζήτηση και σε άλλα συστήματα αρχείων τα οποία είναι προσαρτημένα στην ιεραρχία φακέλων,</li>
+  <li>μέγεθος, ιδιοκτήτης, δικαιώματα πρόσβασης, ημερομηνία δημιουργίας ή τροποποίησης αρχείων, και</li>
+  <li>πάρα, πάρα πολλά ακόμα.</li>
+</ul>
+
+<h2 id="section">Δείτε επίσης</h2>
+
+<ul>
+  <li><a href="/docs/man/find.1.html">Σελίδα man για το find</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

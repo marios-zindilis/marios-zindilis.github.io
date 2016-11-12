@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - mysqlhotcopy</title>
+  <meta name="description" content="mysqlhotcopy is a Perl script for backing up MySQL tables stored in either the MyISAM or ARCHIVE engines. It works very fast because it doesn’t dump the cont...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/mysql/mysqlhotcopy.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">mysqlhotcopy</h1>
+  </header>
+
+  <div class="post-content">
+    <p><strong>mysqlhotcopy</strong> is a Perl script for backing up MySQL tables stored in either 
+the MyISAM or ARCHIVE engines. It works very fast because it doesn’t dump the 
+contents of the tables. Instead it takes advantage of the fact that MyISAM 
+tables are contained in separate files, and simply locks the tables and copies 
+the flat files.</p>
+
+<h2 id="example-setup">Example Setup</h2>
+
+<ol>
+  <li>
+    <p>Create a user in MySQL for running <code class="highlighter-rouge">mysqlhotcopy</code>. The user will need to be 
+granted the <code class="highlighter-rouge">SELECT</code>, <code class="highlighter-rouge">RELOAD</code> and <code class="highlighter-rouge">LOCK TABLES</code> privileges on the
+databases that will be backed up. In this example, I want all databases to 
+be backed up:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; CREATE USER `mysqlhotcopy`;
+mysql&gt; GRANT SELECT, RELOAD, LOCK TABLES ON *.* TO `mysqlhotcopy`@`localhost`;
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Create a daily cron job to backup every database, except for 
+<code class="highlighter-rouge">information_schema</code>, which is a dynamic schema created my the MySQL server 
+itself and does not exist as files on the filesystem. An example script is:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="k">for </span>database <span class="k">in</span> <span class="k">$(</span>mysql --user mysqlhotcopy           <span class="se">\</span>
+                        --batch                       <span class="se">\</span>
+                        --skip-column-names           <span class="se">\</span>
+                        --execute <span class="s1">'SHOW DATABASES;'</span> | <span class="se">\</span>
+                  grep -v <span class="s1">'^information_schema$'</span><span class="k">)</span>
+<span class="k">do
+    </span>mysqlhotcopy <span class="nv">$database</span> /root/mysql-dumps/ --allowold --keepold --user<span class="o">=</span>mysqlhotcopy
+<span class="k">done</span>
+</code></pre>
+    </div>
+
+    <p>This script maintains one previous copy of the databases, by renaming the 
+directory, appending the suffix <code class="highlighter-rouge">_old</code> to the name.</p>
+  </li>
+</ol>
+
+<h2 id="see-also">See also</h2>
+
+<ul>
+  <li><a href="http://dev.mysql.com/doc/refman/5.6/en/mysqlhotcopy.html">mysqlhotcopy - A Database Backup Program</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

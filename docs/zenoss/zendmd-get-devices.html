@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Get Devices from Zenoss with ZenDMD</title>
+  <meta name="description" content="A simple example:">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/zenoss/zendmd-get-devices.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Get Devices from Zenoss with ZenDMD</h1>
+  </header>
+
+  <div class="post-content">
+    <p>A simple example:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">Globals</span>
+<span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
+<span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
+
+<span class="n">Devices</span> <span class="o">=</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevicesGen</span><span class="p">()</span></code></pre></figure>
+
+<h2 id="filter-by-device-class">Filter by Device Class</h2>
+
+<p>If you only want to select the devices from a specific class, for 
+example the class <code class="highlighter-rouge">/Servers/Linux</code>, you could do:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getOrganizer</span><span class="p">(</span><span class="s">'/Servers/Linux'</span><span class="p">)</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+    <span class="k">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span></code></pre></figure>
+
+<p>Otherwise, if you want to separate that specific class name out of a 
+list of <em>all</em> the devices, you could do:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">Device</span><span class="o">.</span><span class="n">getDeviceClassName</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'/Server/Linux'</span><span class="p">):</span>
+        <span class="k">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span></code></pre></figure>
+
+<h2 id="get-devices-by-group">Get Devices by Group</h2>
+
+<p>If you only want to select the devices from a specific group, for example the 
+group <code class="highlighter-rouge">/Customers/VIP/Acme</code> you could do:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">Customers</span><span class="o">.</span><span class="n">VIP</span><span class="o">.</span><span class="n">Acme</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+    <span class="k">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span></code></pre></figure>
+
+<p>If your group contains whitespace, for exampe <code class="highlighter-rouge">/Customers/VIP/Acme Anvils</code>, 
+then you can use a different approach:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">Customers</span><span class="o">.</span><span class="n">VIP</span><span class="p">,</span> <span class="s">'Acme Anvils'</span><span class="p">)</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+    <span class="k">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span></code></pre></figure>
+
+<h2 id="find-specific-device">Find Specific Device</h2>
+
+<p>This example is from the <code class="highlighter-rouge">zendmd</code> Python interpreter, run as user <code class="highlighter-rouge">zenoss</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Device=find('my-big-server')
+&gt;&gt;&gt; print Device.title
+my-big-server
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

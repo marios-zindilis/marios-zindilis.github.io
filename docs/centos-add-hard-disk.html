@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Add a hard disk on a CentOS 6 system</title>
+  <meta name="description" content="This document shows how to add a 50GB hard disk on a CentOS 6 system, prepare it for usage with LVM, and mount it as the MySQL data directory. This was teste...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/centos-add-hard-disk.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Add a hard disk on a CentOS 6 system</h1>
+  </header>
+
+  <div class="post-content">
+    <p>This document shows how to add a 50GB hard disk on a CentOS 6 system, 
+prepare it for usage with <abbr title="Logical Volume Management">LVM</abbr>, 
+and mount it as the MySQL data directory. This was tested on a VMware 
+Player virtual machine, with CentOS 6.4, and should be safe to run on any 
+6.x CentOS version.</p>
+
+<h2 id="addition-of-new-hard-disk">Addition of new hard disk</h2>
+
+<p>The new disk was added on the CentOS 6.4 machine in VMware Player. The 
+operating system doesn’t see it yet, this is the previous status:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/mapper/vg_c6-lv_root
+                       18G  1.3G   16G   8% /
+tmpfs                 947M     0  947M   0% /dev/shm
+/dev/sda1             194M   89M   96M  49% /boot
+
+[root@c6 ~]# pvs
+  PV         VG    Fmt  Attr PSize  PFree
+  /dev/sda2  vg_c6 lvm2 a--  19.80g    0 
+
+[root@c6 ~]# vgs
+  VG    #PV #LV #SN Attr   VSize  VFree
+  vg_c6   1   2   0 wz--n- 19.80g    0 
+
+[root@c6 ~]# lvs
+  LV      VG    Attr      LSize  Pool Origin Data%  Move Log Cpy%Sync Convert
+  lv_root vg_c6 -wi-ao--- 17.80g
+  lv_swap vg_c6 -wi-ao---  2.00g
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">fdisk</code> sees the new <code class="highlighter-rouge">/dev/sdb</code> disk:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# fdisk -l
+
+Disk /dev/sda: 21.5 GB, 21474836480 bytes
+255 heads, 63 sectors/track, 2610 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00072251
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *           1          26      204800   83  Linux
+Partition 1 does not end on cylinder boundary.
+/dev/sda2              26        2611    20765696   8e  Linux LVM
+
+Disk /dev/sdb: 53.7 GB, 53687091200 bytes
+255 heads, 63 sectors/track, 6527 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/mapper/vg_c6-lv_root: 19.1 GB, 19113443328 bytes
+255 heads, 63 sectors/track, 2323 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/mapper/vg_c6-lv_swap: 2147 MB, 2147483648 bytes
+255 heads, 63 sectors/track, 261 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+</code></pre>
+</div>
+
+<h2 id="create-a-partition-table">Create a partition table</h2>
+
+<p>The first step to make this disk usable by the system, is to create a 
+partition table on it, with <code class="highlighter-rouge">fdisk</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# fdisk /dev/sdb
+</code></pre>
+</div>
+
+<p>Print the current partition table with <code class="highlighter-rouge">p</code>. At the moment, there are no 
+partitions, so the output is empty:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Command (m for help): p
+
+Disk /dev/sdb: 53.7 GB, 53687091200 bytes
+255 heads, 63 sectors/track, 6527 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x1fdf1a3e
+
+   Device Boot      Start         End      Blocks   Id  System
+</code></pre>
+</div>
+
+<p>Create a new primary partition, with <code class="highlighter-rouge">n</code>, and allow it to occupy the 
+entire drive space:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Command (m for help): n
+Command action
+   e   extended
+   p   primary partition (1-4)
+p
+Partition number (1-4): 1
+First cylinder (1-6527, default 1): 
+Using default value 1
+Last cylinder, +cylinders or +size{K,M,G} (1-6527, default 6527): 
+Using default value 6527
+</code></pre>
+</div>
+
+<p>Print the partition table again to verify:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Command (m for help): p
+
+Disk /dev/sdb: 53.7 GB, 53687091200 bytes
+255 heads, 63 sectors/track, 6527 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x1fdf1a3e
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1               1        6527    52428096   83  Linux
+</code></pre>
+</div>
+
+<p>In the above output, the type of the partition is <code class="highlighter-rouge">Linux</code>, which is not 
+what we need. With <code class="highlighter-rouge">t</code>, set the type of the partition to <code class="highlighter-rouge">8e</code>, i.e. 
+Linux LVM:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Command (m for help): t
+Selected partition 1
+Hex code (type L to list codes): 8e
+Changed system type of partition 1 to 8e (Linux LVM)
+</code></pre>
+</div>
+
+<p>Print the partition table once more, to verify:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Command (m for help): p 
+
+Disk /dev/sdb: 53.7 GB, 53687091200 bytes
+255 heads, 63 sectors/track, 6527 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x1fdf1a3e
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1               1        6527    52428096   8e  Linux LVM
+</code></pre>
+</div>
+
+<p>That’s more like it! Now save the new partition table with <code class="highlighter-rouge">w</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Command (m for help): w
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+Syncing disks.
+</code></pre>
+</div>
+
+<p>Partial output of <code class="highlighter-rouge">fdisk -l</code> now shows that the partition is available 
+to the operating system for further handling:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# fdisk -l
+Disk /dev/sdb: 53.7 GB, 53687091200 bytes
+255 heads, 63 sectors/track, 6527 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x1fdf1a3e
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1               1        6527    52428096   8e  Linux LVM
+</code></pre>
+</div>
+
+<h2 id="create-lvm-physical-volume-volume-group-and-logical-volume">Create LVM Physical Volume, Volume Group and Logical Volume</h2>
+
+<p>Next step is to create a new LVM Physical Volume:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# pvcreate /dev/sdb1
+  Physical volume "/dev/sdb1" successfully created
+</code></pre>
+</div>
+
+<p>The new PV now appears in <code class="highlighter-rouge">pvs</code> output:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# pvs
+  PV         VG    Fmt  Attr PSize  PFree 
+  /dev/sda2  vg_c6 lvm2 a--  19.80g     0 
+  /dev/sdb1        lvm2 a--  50.00g 50.00g
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">pvdisplay</code> will now list the new physical volume, but it will be noted 
+as non-allocatable, in other words non usable yet, because it contains 
+no Volume Group:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/sda2
+  VG Name               vg_c6
+  PV Size               19.80 GiB / not usable 3.00 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              5069
+  Free PE               0
+  Allocated PE          5069
+  PV UUID               LqOFBg-4lUi-Uen7-2vtO-EFkf-Cp8p-XvLiHX
+   
+  "/dev/sdb1" is a new physical volume of "50.00 GiB"
+  --- NEW Physical volume ---
+  PV Name               /dev/sdb1
+  VG Name               
+  PV Size               50.00 GiB
+  Allocatable           NO
+  PE Size               0   
+  Total PE              0
+  Free PE               0
+  Allocated PE          0
+  PV UUID               6Nv0Xf-72ao-Nfph-TfvN-26FS-ssE8-QrEsXx
+</code></pre>
+</div>
+
+<p>Create a new LVM Volume Group with <code class="highlighter-rouge">vgcreate</code>. In this example, the 
+Volume Group name is <code class="highlighter-rouge">vg_mysql</code>, because it’s intended for use as the 
+data directory of a MySQL server, but it can be anything.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# vgcreate vg_mysql /dev/sdb1
+  Volume group "vg_mysql" successfully created
+</code></pre>
+</div>
+
+<p>The new VG will now show up in the output of <code class="highlighter-rouge">vgs</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# vgs
+  VG       #PV #LV #SN Attr   VSize  VFree 
+  vg_c6      1   2   0 wz--n- 19.80g     0 
+  vg_mysql   1   0   0 wz--n- 50.00g 50.00g
+</code></pre>
+</div>
+
+<p>Now the output of <code class="highlighter-rouge">pvdisplay</code> will change, to show that the Physical 
+Volume is actually usable:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/sdb1
+  VG Name               vg_mysql
+  PV Size               50.00 GiB / not usable 3.31 MiB
+  Allocatable           yes 
+  PE Size               4.00 MiB
+  Total PE              12799
+  Free PE               12799
+  Allocated PE          0
+  PV UUID               6Nv0Xf-72ao-Nfph-TfvN-26FS-ssE8-QrEsXx
+   
+  --- Physical volume ---
+  PV Name               /dev/sda2
+  VG Name               vg_c6
+  PV Size               19.80 GiB / not usable 3.00 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              5069
+  Free PE               0
+  Allocated PE          5069
+  PV UUID               LqOFBg-4lUi-Uen7-2vtO-EFkf-Cp8p-XvLiHX
+</code></pre>
+</div>
+
+<p>Now that a Volume Group was created inside the Physical Volume, none of 
+the space on the Physical Volume is free any more, as shown in the 
+output of <code class="highlighter-rouge">pvdisplay</code> above, but all of the space in the Volume Group is 
+free, as shown by <code class="highlighter-rouge">vgdisplay</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# vgdisplay
+  --- Volume group ---
+  VG Name               vg_mysql
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  1
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                0
+  Open LV               0
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               50.00 GiB
+  PE Size               4.00 MiB
+  Total PE              12799
+  Alloc PE / Size       0 / 0   
+  Free  PE / Size       12799 / 50.00 GiB
+  VG UUID               cwEyOs-rIqq-hc5J-cl45-kSZ0-i4dV-HiGE2l
+   
+  --- Volume group ---
+  VG Name               vg_c6
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  3
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               2
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               19.80 GiB
+  PE Size               4.00 MiB
+  Total PE              5069
+  Alloc PE / Size       5069 / 19.80 GiB
+  Free  PE / Size       0 / 0   
+  VG UUID               pp0134-mUkA-x3jp-FeVr-0ixo-Lxa4-eX1PCx
+</code></pre>
+</div>
+
+<p>Next, create an LVM Logical Volume with <code class="highlighter-rouge">lvcreate</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# lvcreate -L 51196M -n lv_mysql vg_mysql
+  Logical volume "lv_mysql" created
+</code></pre>
+</div>
+
+<p>In the above command, the size 51196M is the number of Physical Extends 
+(12799) multiplied by the size of the Physical Extend (4.0 MBytes). This 
+will cause the Logical Volume to occupy all of the Volume Group. Verify 
+with <code class="highlighter-rouge">lvs</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# lvs
+  LV       VG       Attr      LSize  Pool Origin Data%  Move Log Cpy%Sync Convert
+  lv_root  vg_c6    -wi-ao--- 17.80g                                             
+  lv_swap  vg_c6    -wi-ao---  2.00g                                             
+  lv_mysql vg_mysql -wi-a---- 50.00g
+</code></pre>
+</div>
+
+<h2 id="creating-the-filesystem">Creating the filesystem</h2>
+
+<p>The next step is to create a filesystem inside the LVM Logical Volume. 
+The choice of filesystem depends on a multitude of factors, but for 
+this example let’s stick with <code class="highlighter-rouge">ext4</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# mkfs.ext4 /dev/vg_mysql/lv_mysql 
+mke2fs 1.41.12 (17-May-2010)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+3276800 inodes, 13106176 blocks
+655308 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=0
+400 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+	4096000, 7962624, 11239424
+
+Writing inode tables: done                            
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+This filesystem will be automatically checked every 39 mounts or
+180 days, whichever comes first.  Use tune2fs -c or -i to override.
+</code></pre>
+</div>
+
+<h2 id="mounting-the-filesystem">Mounting the filesystem</h2>
+
+<p>The last step in this procedure, is to actually mount the brand new 
+filesystem at a mountpoint inside our filesystem hierarchy.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# mkdir /mnt/test
+[root@c6 ~]# mount /dev/vg_mysql/lv_mysql /mnt/test
+[root@c6 ~]# mount | grep mysql
+/dev/mapper/vg_mysql-lv_mysql on /mnt/test type ext4 (rw)
+</code></pre>
+</div>
+
+<p>This verifies that our filesystem has been created, and can be mounted.</p>
+
+<h2 id="setting-up-mysql-in-the-new-logical-volume">Setting up MySQL in the new Logical Volume</h2>
+
+<p>Very briefly, what you need to do to set up MySQL’s data directory to 
+be the new Logical Volume is:</p>
+
+<ol>
+  <li>
+    <p>Install, start, enable and automatically configure the MySQL Server:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 ~]# yum -y install mysql-server
+[root@c6 ~]# service mysqld start
+[root@c6 ~]# chkconfig mysqld on
+[root@c6 ~]# mysql_secure_installation
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Stop MySQL, back the original data directory up, mount the new one, 
+and copy all the data over:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 lib]# service mysqld stop
+[root@c6 lib]# cd /var/lib
+[root@c6 lib]# mv mysql mysql-original
+[root@c6 lib]# mkdir mysql
+[root@c6 lib]# mount /dev/vg_mysql/lv_mysql /var/lib/mysql
+[root@c6 lib]# chown mysql:mysql mysql
+[root@c6 lib]# cp -Rpv mysql-original/* mysql/
+[root@c6 lib]# rm -rf mysql/lost+found/
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Finally, start the MySQL server again:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 lib]# service mysqld start
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p>That’s it. You can now see that the new LVM Logical Volume is mounted, 
+and is being used for MySQL:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@c6 lib]# df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/mapper/vg_c6-lv_root
+                       18G   17G   22M 100% /
+tmpfs                 947M     0  947M   0% /dev/shm
+/dev/sda1             194M   89M   96M  48% /boot
+/dev/mapper/vg_mysql-lv_mysql
+                       50G  201M   47G   1% /var/lib/mysql
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Example queries on the Sakila MySQL database</title>
+  <meta name="description" content="Sakila is a sample database provided by MySQL, meant to be used in tests and documentation examples. This page lists some example queries against that database.">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/mysql/sakila-example-queries.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Example queries on the Sakila MySQL database</h1>
+  </header>
+
+  <div class="post-content">
+    <p class="lead">
+<a href="http://dev.mysql.com/doc/sakila/en/index.html"><b>Sakila</b></a> is a 
+sample database provided by MySQL, meant to be used in tests and documentation 
+examples. This page lists some example queries against that database.
+</p>
+
+<p>Get a non-normalized selection of actors and films in which they played:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>  <span class="n">actor</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span> 
+        <span class="n">actor</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> 
+        <span class="n">film</span><span class="p">.</span><span class="n">title</span> 
+<span class="k">FROM</span> <span class="n">actor</span><span class="p">,</span> <span class="n">film</span><span class="p">,</span> <span class="n">film_actor</span> 
+<span class="k">WHERE</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">actor_id</span> <span class="o">=</span> <span class="n">actor</span><span class="p">.</span><span class="n">actor_id</span> 
+<span class="k">AND</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">film_id</span> <span class="o">=</span> <span class="n">film</span><span class="p">.</span><span class="n">film_id</span><span class="p">;</span></code></pre></figure>
+
+<p>Get the same result with double <code class="highlighter-rouge">INNER JOIN</code>:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">actor</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">actor</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">film</span><span class="p">.</span><span class="n">title</span> 
+<span class="k">FROM</span> <span class="n">film_actor</span> 
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">actor</span> <span class="k">ON</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">actor_id</span> <span class="o">=</span> <span class="n">actor</span><span class="p">.</span><span class="n">actor_id</span> 
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">film</span> <span class="k">ON</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">film_id</span> <span class="o">=</span> <span class="n">film</span><span class="p">.</span><span class="n">film_id</span><span class="p">;</span></code></pre></figure>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

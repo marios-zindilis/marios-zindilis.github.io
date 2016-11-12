@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Install Motion on CentOS 6</title>
+  <meta name="description" content="These are some very very brief instructions on how to install Motion on a CentOS 6 system.">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/centos-6-install-motion.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Install Motion on CentOS 6</h1>
+  </header>
+
+  <div class="post-content">
+    <p>These are some very very brief instructions on how to install 
+<a href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">Motion</a> 
+on a CentOS 6 system.</p>
+
+<h2 id="install-prerequisites">Install Prerequisites</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>yum -y install gcc make
+yum -y install libjpeg-turbo libjpeg-turbo-devel
+</code></pre>
+</div>
+
+<h2 id="install-motion">Install Motion</h2>
+
+<p>Download Motion, e.g. as a <code class="highlighter-rouge">.tgz</code> from SourceForge:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd /root/
+wget http://downloads.sourceforge.net/project/motion/motion%20-%203.2/3.2.12/motion-3.2.12.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fmotion%2Ffiles%2Fmotion%2520-%25203.2%2F3.2.12%2F&amp;ts=1385393313&amp;use_mirror=garr
+</code></pre>
+</div>
+
+<p>Untar:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>tar zxvf motion-3.2.12.tar.gz
+</code></pre>
+</div>
+
+<p>Install:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd /root/motion-3.2.12/
+./configure
+make
+make install
+</code></pre>
+</div>
+
+<p>This will install motion in its default location, in subdirectories of 
+<code class="highlighter-rouge">/usr/local/</code>, e.g:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">/usr/local/bin/</code> for executables,</li>
+  <li><code class="highlighter-rouge">/usr/local/man/</code> for man pages,</li>
+  <li><code class="highlighter-rouge">/usr/local/etc/</code> for configuration files,</li>
+  <li><code class="highlighter-rouge">/usr/local/docs/</code> for documentation,</li>
+  <li><code class="highlighter-rouge">/usr/local/share/</code> for configuration examples, etc.</li>
+</ul>
+
+<p>Finally, before starting <code class="highlighter-rouge">motion</code> you need to copy the default 
+configuration file <code class="highlighter-rouge">motion-dist.conf</code> to <code class="highlighter-rouge">motion.conf</code> (by default in 
+<code class="highlighter-rouge">/usr/local/etc/</code>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

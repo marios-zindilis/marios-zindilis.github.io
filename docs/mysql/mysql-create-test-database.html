@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Create test databases in MySQL</title>
+  <meta name="description" content="Sometimes you need to create some database on a development MySQL server, to run some tests on, and you want to populate it with many records, to make your t...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/mysql/mysql-create-test-database.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Create test databases in MySQL</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Sometimes you need to create some database on a development MySQL server, to 
+run some tests on, and you want to populate it with many records, to make your 
+tests more meaningful. This document lists a couple of quick and dirty ways 
+that I use to achieve that.</p>
+
+<h2 id="using-usrsharedictwords">Using <code class="highlighter-rouge">/usr/share/dict/words</code></h2>
+
+<p>On most Linux distributions, there is a file at <code class="highlighter-rouge">/usr/share/dict/words</code> which 
+simply contains a list of words, each on a separate line. On my Linux Mint 
+15 installation, I count more than 99000 lines. The following commands will put 
+those words in a table called <code class="highlighter-rouge">words</code>, in a database called <code class="highlighter-rouge">test</code>, one word 
+per table row.</p>
+
+<p>Create the table:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; CREATE TABLE words (id INT AUTO_INCREMENT, word VARCHAR(256));
+</code></pre>
+</div>
+
+<p>Populate the table with the words. I ‘m using double quotes to wrap the words, 
+since many of them already contain a single quote:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>while read word; do mysql test -e "INSERT INTO words (word) VALUES (\"$word\")"; done &lt; /usr/share/dict/words
+</code></pre>
+</div>
+
+<h2 id="using-varlogmessages">Using <code class="highlighter-rouge">/var/log/messages</code></h2>
+
+<p>I have also used the contents of <code class="highlighter-rouge">/var/log/messages</code> to populate a table, and 
+that is documented in the blog post <a href="/blog/2012/11/13/how-to-create-a-large-mysql-db-for-tests.html">How to create a large MySQL database for 
+tests</a>. That is 
+a painfully slow method, but can create tables that are many GigaBytes in size, 
+which might be necessary for some tests.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

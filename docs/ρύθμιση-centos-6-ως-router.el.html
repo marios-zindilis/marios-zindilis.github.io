@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Ρύθμιση CentOS 6 ως Router</title>
+  <meta name="description" content="Αυτός ο οδηγός περιγράφει τη ρύθμιση ενός συστήματος με CentOS 6 ώστε να λειτουργεί ως δρομολογητής δικτύου (router). Έχει ελεγχθεί ότι δουλεύει σε «φρέσκια»...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/%CF%81%CF%8D%CE%B8%CE%BC%CE%B9%CF%83%CE%B7-centos-6-%CF%89%CF%82-router.el.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Ρύθμιση CentOS 6 ως Router</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Αυτός ο οδηγός περιγράφει τη ρύθμιση ενός συστήματος με CentOS 6 ώστε να 
+λειτουργεί ως δρομολογητής δικτύου (router). Έχει ελεγχθεί ότι δουλεύει 
+σε «φρέσκια» εγκατάσταση του λειτουργικού, ενημερωμένη στα πιο πρόσφατα 
+πακέτα που διατίθενται στα βασικά αποθετήρια. Δεν αποκλείεται να δουλεύει 
+σε προηγούμενες εκδόσεις του CentOS ή σε άλλες διανομές βασισμένες σε 
+RedHat.</p>
+
+<h2 id="section">Υλικό</h2>
+
+<p>Ένα σύστημα το οποίο προορίζεται να λειτουργήσει ως δρομολογητής, τυπικά 
+χρειάζεται τουλάχιστον δύο κάρτες δικτύου. Κατά τα άλλα, δεν χρειάζεται άλλο 
+υλικό.</p>
+
+<p>Σημείωση: Είναι δυνατή η δρομολόγηση μεταξύ διαφορετικών δικτύων από την ίδια 
+κάρτα δικτύου, αλλά αυτό δεν περιγράφεται σε αυτόν τον οδηγό.</p>
+
+<h2 id="section-1">Λογισμικό</h2>
+
+<p>Το λογισμικό που απαιτείται βρίσκεται ήδη στην βασική εγκατάσταση του 
+CentOS 6. Σε αυτόν τον οδηγό χρησιμοποιείται η υπηρεσία <code class="highlighter-rouge">network</code> για 
+ρύθμιση των διεπαφών δικτύου, ο πυρήνας <code class="highlighter-rouge">Linux</code> για τη δρομολόγηση, 
+και το <code class="highlighter-rouge">iptables</code> για <abbr title="Network Address Translation">NAT</abbr>.</p>
+
+<h2 id="section-2">Ρυθμίσεις</h2>
+
+<p>Πριν από άλλες ρυθμίσεις, προσωπικά προτιμώ να απενεργοποιώ τον 
+NetworkManager και να ενεργοποιώ την υπηρεσία <code class="highlighter-rouge">network</code>. Αυτό είναι 
+προαιρετικό για τη συνέχεια του οδηγού:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>chkconfig NetworkManager off
+service NetworkManager stop
+chkconfig network on
+service network start
+</code></pre>
+</div>
+
+<h2 id="section-3">Παραμετροποίηση διεπαφών δικτύου</h2>
+
+<p>Το σύστημα αναφοράς έχει δύο διεπαφές δικτύου, τις <code class="highlighter-rouge">eth0</code> και <code class="highlighter-rouge">eth1</code>. Η 
+πρώτη έχει μια public διεύθυνση IP, την 77.88.99.111, την οποία αναθέτει 
+ο πάροχος υπηρεσιών διαδικτύου. Η δεύτερη έχει την ιδιωτική διεύθυνση 
+192.168.1.1, η οποία θα είναι και το default gateway για τα υπόλοιπα 
+συστήματα στο εσωτερικό δίκτυο.</p>
+
+<p>Ολόκληρο το αρχείο παραμετροποίησης της <code class="highlighter-rouge">eth0</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@centos6 ~]$ cat /etc/sysconfig/network-scripts/ifcfg-eth0
+TYPE=Ethernet
+BOOTPROTO=none
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+NAME=eth0
+UUID=d30441e3-4212-4b24-b25a-d9c36b0aebd6
+ONBOOT=yes
+HWADDR=00:1C:C0:0D:36:C6
+IPADDR=78.158.136.212
+PREFIX=24
+GATEWAY=78.158.136.254
+NM_CONTROLLED=no
+</code></pre>
+</div>
+
+<p>Ολόκληρο το αρχείο παραμετροποίησης της <code class="highlighter-rouge">eth1</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@centos6 ~]$ cat /etc/sysconfig/network-scripts/ifcfg-eth1
+TYPE=Ethernet
+BOOTPROTO=none
+DEFROUTE=no
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+NAME=eth1
+ONBOOT=yes
+HWADDR=00:05:5D:2E:FF:65
+IPADDR=192.168.1.254
+PREFIX=24
+GATEWAY=192.168.1.254
+NM_CONTROLLED=no
+</code></pre>
+</div>
+
+<p>Μερικές από τις παραμέτρους εξηγούνται <a href="/docs/etc-sysconfig-network-scripts-ifcfg-eth0.el.html">εδώ</a>. 
+Για αυτόν τον οδηγό, ειδική σημασία έχει κυρίως η παράμετρος DEFROUTE, η 
+οποία καθορίζει κατά πόσο θα δημιουργείται αυτόματα μια προεπιλεγμένη 
+διαδρομή δικτύου (default route) κατά την ενεργοποίηση της διεπαφής. 
+Στην διεπαφή με την δημόσια IP η τιμή είναι “yes”, στην άλλη “no”.</p>
+
+<h2 id="section-4">Παραμετροποίηση πυρήνα</h2>
+
+<p>Τέλος, για να επιτρέπεται η ροή πακέτων δικτύου από τη μια διεπαφή στην 
+άλλη, και από συστήματα στο εσωτερικό δίκτυο προς το διαδίκτυο, πρέπει 
+να κάνετε μερικές αλλαγές στους κανόνες του <code class="highlighter-rouge">iptables</code>. Αν εξετάσετε 
+την αρχική ρύθμιση στο αρχείο <code class="highlighter-rouge">/etc/sysconfig/iptables</code> θα δείτε τη 
+γραμμή:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+</code></pre>
+</div>
+
+<p>Αφαιρέστε την, για να επιτρέπεται η προώθηση πακέτων:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@centos6 ~]$ iptables -t filter -D FORWARD -j REJECT --reject-with icmp-host-prohibited
+</code></pre>
+</div>
+
+<p>Δύο ακόμη κανόνες χρειάζονται για να επιτρέπεται η ροή δικτύου μεταξύ των δύο διεπαφών:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@centos6 ~]$ iptables -t filter -A FORWARD -i eth1 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+[root@centos6 ~]$ iptables -t filter -A FORWARD -i eth0 -o eth1 -j ACCEPT
+</code></pre>
+</div>
+
+<p>Ρύθμιση NAT:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@centos6 ~]$ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+</code></pre>
+</div>
+
+<p>Προσέξτε ότι στην ρύθμιση NAT, χρησιμοποιείται η διεπαφή δικτύου που έχει την δημόσια IP.</p>
+
+<h2 id="section-5">Σύνοψη</h2>
+
+<p>Με τις ρυθμίσεις που περιγράφηκαν στο πιο πάνω άρθρο μπορείτε να χρησιμοποιήσετε έναν υπολογιστή με δύο κάρτες δικτύου ως δρομολογητή (router). Με μερικές ακόμη προσθήκες (καλή ρύθμιση firewall, προσθήκη εξυπηρετητή DHCP, κ.α), ένα σύστημα ταπεινών επιδόσεων μπορεί να εξυπηρετεί λαμπρά ως σπιτικό gateway προς το διαδίκτυο.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

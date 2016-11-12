@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Control VLC with Python</title>
+  <meta name="description" content="VLC is an amazing media player, or rather amedia-related Swiss army knife. It has a surprising number of different controlinterfaces, some of which allow acc...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/blog/2016/10/23/control-vlc-with-python.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Control VLC with Python</h1>
+    <p class="post-meta"><time datetime="2016-10-23T00:00:00+01:00" itemprop="datePublished">Oct 23, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><a href="http://www.videolan.org/vlc/"><strong>VLC</strong></a> is an amazing media player, or rather a
+media-related Swiss army knife. It has a surprising number of different control
+<a href="https://wiki.videolan.org/Interfaces/">interfaces</a>, some of which allow 
+access over a network, such as the HTTP, Telnet and RC interfaces. It also has
+a <a href="https://www.olivieraubert.net/vlc/python-ctypes/doc/">Python API</a> but just
+looking at the documentation is terrifying…</p>
+
+<p>I did some experimenting with controlling VLC from Python using VLC’s
+<a href="https://wiki.videolan.org/documentation:modules/rc/">Remote Control Interface</a> (see <a href="http://getluky.net/2006/04/19/vlcs-awesome-rc-interface/">this</a> as well), and wrote a small 
+proof-of-concept code snippet. Here’s how to use it:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">vlc</span> <span class="kn">import</span> <span class="n">VLC</span>
+
+<span class="n">vlc</span> <span class="o">=</span> <span class="n">VLC</span><span class="p">()</span>
+<span class="n">vlc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">'/path/to/some/file.avi'</span><span class="p">)</span>
+<span class="n">vlc</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+<span class="n">vlc</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<span class="n">vlc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span></code></pre></figure>
+
+<p>The code is not production-grade. I will not be developing this any more, so I
+am putting it here for anyone to grap and hopefully do something useful with. 
+I’ve only tested this on my Ubuntu machine, and it requires both VLC and 
+<code class="highlighter-rouge">screen</code> to be installed. It also uses <code class="highlighter-rouge">subprocess.run()</code> to start VLC, which
+is not available in any version of Python earlier than 3.5.</p>
+
+<p>Here’s the library/wrapper, drop it anywhere in your Python <code class="highlighter-rouge">PATH</code>:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+
+<span class="k">class</span> <span class="nc">VLC</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SCREEN_NAME</span> <span class="o">=</span> <span class="s">'vlc'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">HOST</span> <span class="o">=</span> <span class="s">'localhost'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PORT</span> <span class="o">=</span> <span class="mi">8888</span>
+
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="s">'screen'</span><span class="p">,</span> <span class="s">'-ls'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">SCREEN_NAME</span><span class="p">,],</span>
+            <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cmd</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
+                <span class="s">'screen'</span><span class="p">,</span>
+                <span class="s">'-dmS'</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">SCREEN_NAME</span><span class="p">,</span>
+                <span class="s">'vlc'</span><span class="p">,</span>
+                <span class="s">'-I'</span><span class="p">,</span>
+                <span class="s">'rc'</span><span class="p">,</span>
+                <span class="s">'--rc-host'</span><span class="p">,</span>
+                <span class="s">'</span><span class="si">%</span><span class="s">s:</span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">HOST</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">PORT</span><span class="p">)</span>
+            <span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">SOCK</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SOCK</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">HOST</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">PORT</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">):</span>
+        <span class="s">'''Prepare a command and send it to VLC'''</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cmd</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">):</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SOCK</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pause</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s">'pause'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s">'play'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s">'stop'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">prev</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s">'prev'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s">'next'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s">'add </span><span class="si">%</span><span class="s">s'</span>  <span class="o">%</span> <span class="p">(</span><span class="n">path</span><span class="p">,))</span>
+
+    <span class="k">def</span> <span class="nf">enqueue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s">'enqueue </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">path</span><span class="p">,))</span>
+
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s">'clear'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s">'shutdown'</span><span class="p">)</span></code></pre></figure>
+
+<p>Good luck using this for your scripts :)</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

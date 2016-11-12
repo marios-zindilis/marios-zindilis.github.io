@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Disk Performance Benchmarking in Linux</title>
+  <meta name="description" content="This page is a dump of notes on disk benchmarking in Linux, and is in great need of editing! Use at own peril.">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/linux-disk-performance-benchmarking.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Disk Performance Benchmarking in Linux</h1>
+  </header>
+
+  <div class="post-content">
+    <p>This page is a dump of notes on <strong>disk benchmarking in Linux</strong>, and is 
+in great need of editing! Use at own peril.</p>
+
+<ul>
+  <li>http://www.westnet.com/~gsmith/content/postgresql/pg-disktesting.htm</li>
+  <li>http://archive09.linux.com/feature/139742</li>
+</ul>
+
+<h2 id="hdparm"><code class="highlighter-rouge">hdparm</code></h2>
+
+<h3 id="buffered-disk-reads-bypasses-cache">Buffered disk reads (bypasses cache)</h3>
+
+<p>This method reads data sequentially from the disk, disregarding file boundaries.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">mariosz@super-mario:~$ </span>sudo hdparm -t /dev/sdb
+/dev/sdb:
+ Timing buffered disk reads: 228 MB <span class="k">in  </span>3.02 seconds <span class="o">=</span>  75.52 MB/sec</code></pre></figure>
+
+<h3 id="cached-reads">Cached reads</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">mariosz@super-mario:~$ </span>sudo hdparm -T /dev/sdb
+/dev/sdb:
+ Timing cached reads:   3158 MB <span class="k">in  </span>2.00 seconds <span class="o">=</span> 1579.16 MB/sec</code></pre></figure>
+
+<h2 id="dd"><code class="highlighter-rouge">dd</code></h2>
+
+<h3 id="writes">Writes</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">mariosz@super-mario:~$ </span>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>testfile <span class="nv">bs</span><span class="o">=</span>8k <span class="nv">count</span><span class="o">=</span>100k; rm -f testfile
+102400+0 records <span class="k">in
+</span>102400+0 records out
+838860800 bytes <span class="o">(</span>839 MB<span class="o">)</span> copied, 12.7363 s, 65.9 MB/s</code></pre></figure>
+
+<h3 id="writes-and-cache-out">Writes and Cache-out</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">mariosz@super-mario:~$ </span><span class="nb">time </span>sh -c <span class="s2">"dd if=/dev/zero of=testfile bs=8k count=100k; sync"</span> ; rm -f testfile
+102400+0 records <span class="k">in
+</span>102400+0 records out
+838860800 bytes <span class="o">(</span>839 MB<span class="o">)</span> copied, 12.6832 s, 66.1 MB/s
+real	0m19.304s
+user	0m0.020s
+sys	0m1.232s</code></pre></figure>
+
+<h2 id="install-iozone">Install iozone</h2>
+<ol>
+  <li>Go to [http://www.iozone.org/], get link of latest build.</li>
+  <li>wget http://www.iozone.org/src/current/iozone-3-420.i386.rpm</li>
+  <li>yum install iozone-3-420.i386.rpm</li>
+</ol>
+
+<p>If you also need to create graphs from the results of <code class="highlighter-rouge">iozone</code>, you can
+additionally install <code class="highlighter-rouge">gnuplot</code>:
+<code class="highlighter-rouge">yum install gnuplot</code></p>
+
+<h2 id="using-iozone">Using iozone</h2>
+<ul>
+  <li>[http://www.thegeekstuff.com/2011/05/iozone-examples/]</li>
+</ul>
+
+<h2 id="bonnie">Bonnie++</h2>
+
+<p>The <code class="highlighter-rouge">bonnie++</code> benchmark is available on <a href="/docs/centos-6-enable-epel-repository.html">EPEL</a> 
+repository for CentOS. Note that it will put load on the system on which 
+it runs, so it’s better run during less productive times.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>root@centos-6-3-minimal ~]# bonnie++ -u root</code></pre></figure>
+
+<p>Bonnie++ will output its data twice, once in an ASCII formatted table, 
+and once more in a single line CSV. Echo the contents of the CSV line 
+through bon_csv2html to get a more readable HTML table.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

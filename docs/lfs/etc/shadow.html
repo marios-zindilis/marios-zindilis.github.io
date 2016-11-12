@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - /etc/shadow</title>
+  <meta name="description" content="The fields, delimited by : are:">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/lfs/etc/shadow.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">/etc/shadow</h1>
+  </header>
+
+  <div class="post-content">
+    <p>The fields, delimited by <code class="highlighter-rouge">:</code> are:</p>
+
+<ol>
+  <li>Username</li>
+  <li>Password (hashed)</li>
+  <li>Last password change (in days since 1970-01-01)</li>
+</ol>
+
+<h2 id="fields">Fields</h2>
+
+<p>Notes on specific fields.</p>
+
+<h3 id="username">Username</h3>
+
+<p>Fairly straightforward. The lenght used to be restricted to 8 characters 
+maximum in very old distributions, now it’s 32 characters on most 
+distributions.</p>
+
+<h3 id="password">Password</h3>
+
+<p>An empty field, will allow the user to login without providing a 
+password, whereas a field that starts with, or only contains an asterisk 
+<code class="highlighter-rouge">*</code> indicates a disabled account.</p>
+
+<p>The first characters of this field define the hashing algorithm, one of:</p>
+
+<ol>
+  <li>MD5 - password starts with <code class="highlighter-rouge">$1$</code></li>
+  <li>Blowfish - password starts with <code class="highlighter-rouge">$2a$</code></li>
+  <li>SHA-256 - password starts with <code class="highlighter-rouge">$5$</code></li>
+  <li>SHA-512 - password starts with <code class="highlighter-rouge">$6$</code></li>
+</ol>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

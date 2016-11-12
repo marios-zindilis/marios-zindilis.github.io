@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - X.Org</title>
+  <meta name="description" content="Ο εξυπηρετητής X X.Org χειρίζεται την απεικόνιση του γραφικού περιβάλλοντος. Είναι ο προεπιλεγμένος εξυπηρετητής γραφικών των περισσότερων διανομών Linux από...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/x.org.el.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">X.Org</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Ο εξυπηρετητής X <strong>X.Org</strong> χειρίζεται την απεικόνιση του γραφικού 
+περιβάλλοντος. Είναι ο προεπιλεγμένος εξυπηρετητής γραφικών των 
+περισσότερων διανομών Linux από το 2004 και μετά, οπότε αντικατέστησε 
+τους <a href="/docs/xfree86-3.el.html">XFree86 3</a> και <a href="/docs/xfree86-4.el.html">XFree86 4</a>, 
+για λόγους άδειας χρήσης λογισμικού των τελευταίων.</p>
+
+<h2 id="section">Ρύθμιση</h2>
+
+<p>Η ρύθμιση του X.Org μπορεί να γίνει είτε με επεξεργασία του αρχείου 
+ρυθμίσεων, είτε με βοηθητικά εργαλεία, όπως το <code class="highlighter-rouge">Xorg</code> που εγκαθίσταται 
+μαζί με τον εξυπηρετητή, το <a href="/docs/system-config-display.el.html">system-config-display</a> 
+(σε συστήματα Red Hat, Fedora ή CentOS) και το <a href="xorgcfg.el.html">xorgcfg</a>.</p>
+
+<h2 id="xorg">Εργαλείο Xorg</h2>
+
+<p>Για μια αρχική ρύθμιση του X.Org, ενώ δεν τρέχει ο εξυπηρετητής, εκτελέστε:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Xorg -configure
+</code></pre>
+</div>
+
+<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code class="highlighter-rouge">xorg.conf.new</code> μέσα 
+στον φάκελο <code class="highlighter-rouge">/root</code>, το οποίο μπορείτε να χρησιμοποιήσετε για να 
+προσθέσετε τις δικές σας τροποποιήσεις.</p>
+
+<h2 id="section-1">Δείτε επίσης</h2>
+
+<ul>
+  <li>Ιστότοπος <a href="http://www.x.org/">x.org</a></li>
+  <li>Άλλοι εξυπηρετητές γραφικών: <a href="/docs/xfree86-3.el.html">XFree86 3</a>, 
+<a href="/docs/xfree86-4.el.html">XFree86 4</a>, <a href="/docs/accelerated-x.el.html">Accelerated-X</a>.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

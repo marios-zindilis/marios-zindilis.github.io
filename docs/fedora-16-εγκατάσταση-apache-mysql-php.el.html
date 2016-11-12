@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Εγκατάσταση Apache, MySQL και PHP σε Fedora 16</title>
+  <meta name="description" content="Βήματα για εγκατάσταση της στοίβας λογισμικού σε Fedora 16:">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/fedora-16-%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7-apache-mysql-php.el.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Εγκατάσταση Apache, MySQL και PHP σε Fedora 16</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Βήματα για εγκατάσταση της στοίβας λογισμικού σε Fedora 16:</p>
+
+<h2 id="apache-2">Εγκατάσταση Apache 2</h2>
+
+<p>Σε αντίθεση με προηγούμενες εκδόσεις, στο Fedora 16 δεν είναι προεγκατεστημένος ο Apache. Mπορείτε να τον εγκαταστήσετε με:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum install httpd</code></pre></figure>
+
+<p>Κατά την εγκατάσταση, δημιουργείται στο σύστημα ένας χρήστης με το όνομα 
+<code class="highlighter-rouge">apache</code>, και ένα group με το ίδιο όνομα. Το home directory του χρήστη 
+<code class="highlighter-rouge">apache</code> είναι το <code class="highlighter-rouge">/var/www</code>. Αυτές τις προεπιλογές μπορείτε να τις αλλάξετε στη συνέχεια.</p>
+
+<p>Για να ρυθμίσετε την αυτόματη εκκίνηση του Apache κατά την εκκίνηση του συστήματος:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl <span class="nb">enable </span>http.service</code></pre></figure>
+
+<p>Αυτό ορίζει ότι ο Apache θα ξεκινήσει αυτόματα την επόμενη φορά που θα ξεκινήσει το σύστημα. Προαιρετικά, για να δοκιμάσετε τη λειτουργία του εξυπηρετητή αυτή τη στιγμή, μπορείτε να τον εκκινήσετε χειροκίνητα με:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl start httpd.service</code></pre></figure>
+
+<h2 id="php-5">Εγκατάσταση PHP 5</h2>
+
+<p>Για την εγκατάσταση της PHP 5 απλά εκτελέστε:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum install php</code></pre></figure>
+
+<p>Αν θέλετε, μπορείτε σε αυτό το σημείο να επιβεβαιώσετε ότι λειτουργεί η 
+PHP, επανεκκινώντας τον Apache, και βάζωντας ένα αρχείο <code class="highlighter-rouge">.php</code> μέσα στο 
+<code class="highlighter-rouge">/var/www/html</code>, το οποίο θα περιέχει μόνο την γραμμή:</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="nb">phpinfo</span><span class="p">();</span> <span class="cp">?&gt;</span></code></pre></figure>
+
+<p>Αυτό το αρχείο μπορείτε να το δείτε μόνο σε έναν περιηγητή ιστού στον 
+ίδιο υπολογιστή στον οποίο κάνετε την εγκατάσταση, επειδή δεν έχετε 
+ανοίξει ακόμα την πρόσβαση από άλλους υπολογιστές.</p>
+
+<h2 id="mysql-5">Εγκατάσταση MySQL 5</h2>
+
+<p>Για την εγκατάσταση του εξυπηρετητή MySQL 5 εκτελέστε:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum install mysql-server</code></pre></figure>
+
+<p>Αμέσως μετά την εγκατάσταση, συνίσταται να εκκινήσετε την υπηρεσία 
+<code class="highlighter-rouge">mysqld</code> χειροκίνητα, και να εκτελέσετε το <code class="highlighter-rouge">mysql_secure_installation</code>, 
+το οποίο θα ορίσει ένα συνθηματικό για τον χρήστη root της MySQL, και 
+θα σας δώσει τη δυνατότητα να διαγράψετε μερικούς πίνακες και δεδομένα 
+που δημιουργούνται κατά την εγκατάσταση της βάσης, για δοκιμαστικό σκοπό:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl start mysqld.service
+mysql_secure_installation</code></pre></figure>
+
+<p>Στη συνέχεια, ρυθμίστε και την MySQL να ξεκινάει κατά την εκκίνηση του υπολογιστή:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl <span class="nb">enable </span>mysqld.service</code></pre></figure>
+
+<p>Τέλος, συνδέστε την PHP με την MySQL:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum install php-mysql</code></pre></figure>
+
+<p>Για να δουλέψουν όλα μαζί την <strong>πρώτη</strong> φορά, θα πρέπει να εκκινήσετε 
+χειροκίνητα τον <code class="highlighter-rouge">httpd</code> και την <code class="highlighter-rouge">mysqld</code> (αν δεν το έχετε ήδη κάνει σε 
+ένα από τα προηγούμενα βήματα), ή απλά να επανεκκινήσετε το σύστημα 
+(οπότε θα ξεκινήσουν από μόνα τους, αφού τα έχετε ορίσει με το <code class="highlighter-rouge">systemctl enable</code>).</p>
+
+<h2 id="web">Άνοιγμα θύρας για τον εξυπηρετητή Web</h2>
+
+<p>Από προεπιλογή, το Fedora είναι ρυθμισμένο να μην δέχεται συνδέσεις στη 
+θύρα 80 από άλλους υπολογιστές. Με άλλα λόγια, θα μπορείτε να δείτε την 
+αρχική σελίδα του εξυπηρετητή αν περιηγηθείτε στη διεύθυνση <code class="highlighter-rouge">http://localhost/</code> 
+στον ίδιο τον υπολογιστή που τρέχει τον Apache, αλλά όχι σε οποιονδήποτε 
+άλλο υπολογιστή, ακόμα και στο τοπικό δίκτυο. Για να το πετύχετε αυτό, 
+θα πρέπει να ορίσετε έναν επιπλέον κανόνα στο <code class="highlighter-rouge">iptables</code>. Σημειώστε ότι 
+στη συνέχεια «ανοίγουμε» την πόρτα 80 στην οποία «ακούει» από προεπιλογή 
+ο εξυπηρετητής. Μπορείτε να το αλλάξετε αυτό στο αρχείο 
+<code class="highlighter-rouge">/etc/httpd/conf/httpd.conf</code> στη γραμμή <code class="highlighter-rouge">Listen 80</code>.</p>
+
+<p>Για να αλλάξετε τους κανόνες ανοίξτε το αρχείο <a href="/docs/etc-sysconfig-iptables.el.html">/etc/sysconfig/iptables</a> 
+και προσθέστε την ακόλουθη γραμμή πριν από την εντολή <code class="highlighter-rouge">COMMIT</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</code></pre></figure>
+
+<p>Στη συνέχεια επανεκκινήστε το iptables με:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl restart iptables.service</code></pre></figure>
+
+<p>Αν και πάλι δεν μπορείτε να δείτε σελίδες στον εξυπηρετητή σας, ίσως 
+κάνατε κάποιο λάθος στο αρχείο ρυθμίσεων του <code class="highlighter-rouge">iptables</code>. Δοκιμάστε 
+προσωρινά να απενεργοποιήσετε το <code class="highlighter-rouge">iptables</code> με την εντολή <code class="highlighter-rouge">systemctl stop iptables.service</code> 
+και δοκιμάστε ξανά από άλλον υπολογιστή να δείτε κάποια σελίδα στον 
+εξυπηρετητή. Αν ανοίγει, τότε σημαίνει ότι το πρόβλημα είναι στις 
+ρυθμίσεις του <code class="highlighter-rouge">iptables</code> και θα πρέπει να το ψάξετε περισσότερο. Το 
+ακόλουθο παράδειγμα είναι από ένα αρχείο <code class="highlighter-rouge">iptables</code> το οποίο λειτουργεί 
+όπως πρέπει:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>root@docs sysconfig]# cat iptables
+<span class="c"># Firewall configuration written by system-config-firewall</span>
+<span class="c"># Manual customization of this file is not recommended.</span>
+<span class="k">*</span>filter
+:INPUT ACCEPT <span class="o">[</span>0:0]
+:FORWARD ACCEPT <span class="o">[</span>0:0]
+:OUTPUT ACCEPT <span class="o">[</span>0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT</code></pre></figure>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

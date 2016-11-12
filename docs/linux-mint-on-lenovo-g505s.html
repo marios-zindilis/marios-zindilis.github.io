@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Linux Mint 15 Installation on Lenovo G505s</title>
+  <meta name="description" content="This document contains a few tips for installing Linux Mint 15 on a Lenovo G505s laptop.">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/linux-mint-on-lenovo-g505s.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Linux Mint 15 Installation on Lenovo G505s</h1>
+  </header>
+
+  <div class="post-content">
+    <p>This document contains a few tips for installing Linux Mint 15 on a 
+Lenovo G505s laptop.</p>
+
+<p>Here is a list of hardware components that work out of the box:</p>
+
+<ul>
+  <li>Touchpad: Pointer navigation, click on pad, left and right click 
+buttons, scrolling and imitating middle click with pressing both left
+and right click buttons, all work fine.</li>
+  <li>Networking, wired and wireless work fine as well.</li>
+  <li>Function buttons that work, with their position in parentheses:
+    <ul>
+      <li>Mute (F1),</li>
+      <li>Volume Down (F2),</li>
+      <li>Volume Up (F3),</li>
+      <li>Close Current Application (F4),</li>
+      <li>Refresh (F5),</li>
+      <li>Activate/Deactivate Touchpad (F6),</li>
+      <li>Toggle Airplane Mode (F7),</li>
+      <li>Turn off/Turn on Monitor (F9),</li>
+      <li>Toggle External Display (F10),</li>
+      <li>Decrease Brightness (F11),</li>
+      <li>Increase Brightness (F12).</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Here is a list of hardware components that do NOT work out of the box:</p>
+
+<ul>
+  <li>
+    <p>Graphics card: At the time of this writing (October 2013), the 
+version of the graphics drivers that Mint comes with does not 
+properly support the card on this laptop, neither the open source 
+<code class="highlighter-rouge">xserver-xorg-driver-ati</code> nor the proprietary <code class="highlighter-rouge">fglrx</code>.
+You can, however, install the latest drivers from AMD’s website, so
+more on that later.</p>
+  </li>
+  <li>
+    <p>Hotkey for displaying all running applications (F8). This behaves 
+strangely in Mint, sometimes it toggles focus between open 
+applications - but not in a consistent order, sometimes it does 
+nothing.</p>
+  </li>
+</ul>
+
+<h2 id="disable-uefi">Disable UEFI</h2>
+<p>As with most modern PCs and laptops, Lenovo G505s comes with UEFI 
+enabled by default. To disable it:</p>
+
+<ol>
+  <li>Shutdown.</li>
+  <li>Power on the laptop by pressing the small “one-button-restore” 
+button, next to the big power-on button.</li>
+  <li>Select “BIOS Setup”.</li>
+  <li>Once in BIOS, select the “Boot” tab.</li>
+  <li>Change the value of <code class="highlighter-rouge">Boot Mode</code> to <code class="highlighter-rouge">Legacy Support</code>.</li>
+  <li>Change the value of <code class="highlighter-rouge">Boot Priority</code> to <code class="highlighter-rouge">Legacy First</code>.</li>
+  <li>Save changes and exit (keyboard Fn+F10).</li>
+</ol>
+
+<h2 id="disable-fast-startup">Disable Fast StartUp</h2>
+<p>Windows 8 have a feature called Fast StartUp enabled by default, which
+saves the state of a user session to disk before a shutdown. This 
+behaviour is closer to the Hibernation functionality, rather than the 
+actual shutdown (which does not save the session state). The effect of 
+this feature, is that during booting Linux Mint 15, you will see 
+several filesystem related errors, like <code class="highlighter-rouge">metadata kept in windows 
+cache refused to mount</code>.</p>
+
+<p>To disable Fast StartUp:</p>
+
+<ol>
+  <li>Boot in Windows 8.</li>
+  <li>Activate the bottom left hot corner, right click on it. open 
+Control Panel.</li>
+  <li>Select Power Options.</li>
+  <li>Select “Choose what the power button does”.</li>
+  <li>Select “Change settings that are currently unavailable”.</li>
+  <li>Deactivate the box labelled “Turn on fast startup”.</li>
+  <li>Shutdown.</li>
+</ol>
+
+<p>You should not see those errors again, as Windows will do a clean 
+shutdown from now on.</p>
+
+<h2 id="boot-from-linux-mint-15-installation-dvd">Boot from Linux Mint 15 Installation DVD</h2>
+<p>To proceed with the installation, boot from the Linux Mint 15 
+Installation Disk:</p>
+
+<ol>
+  <li>If the laptop is on, shut it down.</li>
+  <li>Power on the laptop by pressing the small “one-button-restore”
+button, next to the big power-on button.</li>
+  <li>Select “Boot menu”.</li>
+  <li>Select “SATA ODD” (Optical Disk Drive).</li>
+  <li>Proceed normally with installation. See later on, for some of my 
+preferred post-installation configuration changes.</li>
+</ol>
+
+<h2 id="post-installation-configuration-changes">Post-Installation Configuration Changes</h2>
+<p>The following list aims to bring the system closer to my personal 
+preferences, and is not required to get the system working.</p>
+
+<ol>
+  <li>Reverse function keys: On Lenovo G505s, the function keys and 
+hotkeys are reversed, meaning that when you hit F12, the monitor’s
+brightness increases, instead of whatever function F12 is actually 
+configured to perform. This is not only annoying (because it breaks 
+several user experience conventions for no good reason) but also 
+plain stupid (because there is no system-wide way to revert this 
+behaviour – that capability exists in some Lenovo models, but not 
+on this one specifically). 
+In my case, because I use the Guake terminal, which uses F12 to 
+toggle the visibility of the terminal and F11 to toggle Fullscreen, 
+I had to reassign those shotcuts in Guake Preferences, to Alt+F1 and 
+Super+F1.</li>
+  <li>Add the “Euro” symbol on the default US English keyboard layout. 
+Go to System Settings -&gt; Regional Settigs -&gt; Layouts -&gt; Options and 
+expand the “Adding currency signs to certain keys” drop-down list. 
+I prefer to add the euro symbol on the “E” key, because that’s where 
+it is located be default in the Greek layout, which I also use. 
+Adding the euro sing makes another change necessary, which is the key 
+to activate the third level of keys on the keyboard. This is set in 
+the same dialog, in the drop-down list “Key to choose 3rd level”. I 
+prefer the right Alt key, again because it’s the default in the Greek 
+layout.</li>
+  <li>Markdown syntax highlighting in Vim per: http://www.vim.org/scripts/script.php?script_id=2882</li>
+</ol>
+
+<h2 id="post-installation-customization">Post-Installation Customization</h2>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install -y guake
+sudo apt-get install -y vlc
+sudo apt-get install -y ia32-libs
+sudo apt-get install -y fmp2
+sudo apt-get install -y skype
+sudo apt-get install -y rdesktop</code></pre></figure>
+
+<h2 id="amd-graphics-drivers-installation">AMD Graphics Drivers Installation</h2>
+<p>As I mentioned above, the graphics drivers don’t work out of the box, 
+so you will need to download and install the latest version from AMD’s 
+website. At the time of this writing, the latest stable driver version 
+is 13.4.</p>
+
+<ol>
+  <li>
+    <p>Download the drivers from <a href="http://support.amd.com/us/gpudownload/linux/Pages/radeon_linux.aspx" title="AMD Drivers for Linux">AMD’s Website</a></p>
+  </li>
+  <li>
+    <p>Install dependencies:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install dpkg-dev
+sudo apt-get install debhelper
+sudo apt-get install dh-modaliases
+sudo apt-get install execstack 
+</code></pre>
+    </div>
+
+    <p>Note that if you haven’t installed <code class="highlighter-rouge">ia32-libs</code> already, you will 
+have to do so now.</p>
+  </li>
+  <li>
+    <p>Unzip the downloaded file <code class="highlighter-rouge">.zip</code> file, you will get a <code class="highlighter-rouge">.run</code> file.</p>
+  </li>
+  <li>
+    <p>Make it executable with <code class="highlighter-rouge">chmod +x</code>.</p>
+  </li>
+  <li>
+    <p>Build with:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>./amd-driver-installer-catalyst-13-4-x86.x86_64.run --buildpkg Ubuntu/raring`
+</code></pre>
+    </div>
+
+    <p>This will generate 3 <code class="highlighter-rouge">.deb</code> files:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>fglrx_12.104-0ubuntu1_amd64.deb 
+fglrx-dev_12.104-0ubuntu1_amd64.deb 
+fglrx-amdcccle_12.104-0ubuntu1_amd64.deb
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Install all the <code class="highlighter-rouge">.deb</code> files with <code class="highlighter-rouge">sudo dpgk -i *.deb</code>.</p>
+  </li>
+  <li>
+    <p>Reboot and enjoy.</p>
+  </li>
+</ol>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

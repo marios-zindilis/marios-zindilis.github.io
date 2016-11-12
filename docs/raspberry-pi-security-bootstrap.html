@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Raspberry Pi Security Bootstrap</title>
+  <meta name="description" content="These are my notes on the first steps of improving security on a new Raspberry Pi. The default configuration that an RPi comes with might be suitable for a d...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/raspberry-pi-security-bootstrap.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Raspberry Pi Security Bootstrap</h1>
+  </header>
+
+  <div class="post-content">
+    <p class="lead">These are my notes on the first steps of improving security on 
+a new Raspberry Pi. The default configuration that an RPi comes with might be 
+suitable for a development environment in a private or isolated network, but 
+if you intend on exposing your RPi to the world then you need to tweak that 
+configuration to be more robust. The commands mentioned here have been tested 
+on a Raspberry Pi B+, running a fresh installation of 
+<a href="http://www.raspbian.org/">Raspbian</a>.</p>
+
+<div class="z-callout z-callout-danger"><h4>Disclaimer</h4>
+<p>Security is fluid and open-ended. The following are mere suggestions. 
+Taking these steps will hopefully reduce your exposure, but does not guarantee 
+complete safety. Nothing does.</p></div>
+
+<h2 id="user-configuration">User configuration</h2>
+
+<ol>
+  <li>
+    <p>This goes without saying: <strong>Change the default user’s password</strong>. By 
+default,     the RPi user is <code class="highlighter-rouge">pi</code> and her password is <code class="highlighter-rouge">raspberry</code>. Change 
+that as soon as you get your operating system runnning, either by running 
+<code class="highlighter-rouge">passwd</code> as the <code class="highlighter-rouge">pi</code> user, or by running <code class="highlighter-rouge">sudo raspi-config</code> and selecting 
+the option for password change.</p>
+  </li>
+  <li>
+    <p><strong>Change the default user’s <code class="highlighter-rouge">sudo</code> configuration</strong>. By default, the <code class="highlighter-rouge">pi</code> 
+user can execute anything with <code class="highlighter-rouge">sudo</code>, without providing a password. As 
+the <code class="highlighter-rouge">pi</code> user, do:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo visudo
+</code></pre>
+    </div>
+
+    <p>…and the change the line:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>pi ALL=(ALL) NOPASSWD: ALL
+</code></pre>
+    </div>
+
+    <p>…to:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>pi ALL=(ALL) ALL
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Additionally, you might want to <strong>disable the default <code class="highlighter-rouge">pi</code> user</strong> 
+altogether, and create another user that you will use on your RPi. As the 
+user <code class="highlighter-rouge">pi</code>, do:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo adduser myuser
+</code></pre>
+    </div>
+
+    <p>…and answer the questions. Only the password question is important, the 
+rest can be left blank. Then, to make the new user a sudoer, do:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo visudo
+</code></pre>
+    </div>
+
+    <p>…and add this line in the end of the file:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>myuser ALL=(ALL) ALL
+</code></pre>
+    </div>
+
+    <p>Additionally, since login will be disabled for <code class="highlighter-rouge">pi</code>, you might as well 
+comment out the line in <code class="highlighter-rouge">/etc/sudoers</code> that refers to that user. Finally, 
+to disable login for the default <code class="highlighter-rouge">pi</code> user, logout from <code class="highlighter-rouge">pi</code> and login as 
+the new user that you created, and do:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo usermod --lock pi
+sudo usermod --shell /sbin/nologin pi
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h2 id="ssh-configuration">SSH Configuration</h2>
+
+<ol>
+  <li>
+    <p><strong>Forbid SSH login for user <code class="highlighter-rouge">root</code></strong>. If your RPi is exposed to the world, 
+it will get attacked with SSH attempts for common usernames and passwords, 
+which is yet another reason to disable the default <code class="highlighter-rouge">pi</code> username. Another 
+username that your RPi will be hammered with is <code class="highlighter-rouge">root</code>. Now, you can’t 
+disable the root account, but you can disallow logins for it. To do that, 
+edit the file <code class="highlighter-rouge">/etc/ssh/sshd_config</code>, and change the line:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>PermitRootLogin yes
+</code></pre>
+    </div>
+
+    <p>…with:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>PermitRootLogin no
+</code></pre>
+    </div>
+
+    <p>…and then restart the SSH daemon:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo service ssh restart
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><strong>Restrict Incoming IPs for SSH</strong>, using entries in <code class="highlighter-rouge">/etc/hosts.allow</code> and 
+<code class="highlighter-rouge">/etc/hosts.deny</code>. For example, I allow SSH on my RPi from my internal LAN 
+subnets (192.168.x.x), and from one public IP only (1.2.3.4 in this 
+example). To achieve that, put in <code class="highlighter-rouge">/etc/hosts.allow</code>:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sshd: 192.168. 1.2.3.4
+</code></pre>
+    </div>
+
+    <p>…and in <code class="highlighter-rouge">/etc/hosts.deny</code>:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sshd: ALL
+</code></pre>
+    </div>
+
+    <p>Attempting to login to the RPi from a restricted host will return an 
+ error to the client:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>marios@wst ~ $ ssh myuser@192.168.23.123
+ssh_exchange_identification: Connection closed by remote host
+</code></pre>
+    </div>
+
+    <p>…and will also create a log in <code class="highlighter-rouge">/var/log/auth.log</code>:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>Dec 13 11:40:48 rpi sshd[3456]: refused connect from 172.16.1.2 (172.16.1.2)
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h2 id="firewall-configuration-with-iptables">Firewall Configuration with <code class="highlighter-rouge">iptables</code></h2>
+
+<p>On my RPi running a freshly installed Raspbian OS, <code class="highlighter-rouge">iptables</code> was already 
+installed, and it was running  with an empty rule set, i.e. all traffic was 
+allowed in all directions. Furthermore, Raspbian does not include a SysV 
+script for the <code class="highlighter-rouge">iptables</code> service, but this functionality is offered by the 
+<code class="highlighter-rouge">iptables-persistent</code> package.</p>
+
+<ol>
+  <li>
+    <p>Install <code class="highlighter-rouge">iptables-persistent</code>, to help make the <code class="highlighter-rouge">iptables</code> rules survive a 
+reboot:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install iptables-persistent
+</code></pre>
+    </div>
+
+    <p>If you accept the defaults during the installation, the currently running 
+empty rule set of <code class="highlighter-rouge">iptables</code> will be saved in <code class="highlighter-rouge">/etc/iptables/rules.v4</code>.
+After the installation, you can manage your firewall with:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>service iptables-persistent {start|restart|reload|force-reload|save|flush}
+</code></pre>
+    </div>
+
+    <p>Here are the contents of that file, with the default configuration of the 
+firewall:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code># Generated by iptables-save v1.4.14 on Sat Dec 13 14:23:03 2014
+*filter
+:INPUT ACCEPT [1291:113154]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [828:105910]
+COMMIT
+# Completed on Sat Dec 13 14:23:03 2014
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Next, you will need to add some rules to the <code class="highlighter-rouge">iptables</code> configuration, to 
+start blocking some traffic. There are two methods that you can apply:</p>
+
+    <p>A.  Replace the line <code class="highlighter-rouge">:INPUT ACCEPT</code> that defines a default policy to 
+    accept all incoming traffic), with <code class="highlighter-rouge">:INPUT DROP</code>, and then define 
+    rules that will only allow selected traffic through the firewall.</p>
+
+    <p>B.  Keep the default <code class="highlighter-rouge">:INPUT ACCEPT</code> policy for incoming traffic, but have 
+    one last rule that rejects all incoming traffic.</p>
+
+    <p>I’m going with the second option, simply because of the convenience of 
+copying rules from one of my CentOS machines :) Here it is then, my rules 
+file, implementing only the restriction to SSH port to the same IPs that 
+I mentioned earlier:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --source 192.168.0.0/16 --dport 22 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --source 1.2.3.4/32     --dport 22 -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h2 id="summary">Summary</h2>
+
+<p>With these measures taken to improve the security of my Raspberry Pi, I am now 
+more confident that I can assign it a public IP and expose it the the world, 
+without it being a very easy target.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

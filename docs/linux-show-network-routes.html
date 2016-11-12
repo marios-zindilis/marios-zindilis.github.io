@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Display network routes on Linux</title>
+  <meta name="description" content="With netstat">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/linux-show-network-routes.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Display network routes on Linux</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="with-netstat">With <code class="highlighter-rouge">netstat</code></h2>
+
+<p>Run <code class="highlighter-rouge">netstat -r</code> or <code class="highlighter-rouge">netstat --route</code>. Add <code class="highlighter-rouge">-n</code> or <code class="highlighter-rouge">--numeric</code> for 
+numeric output. Example from a laptop, on which all traffic is routed 
+out the wireless interface:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>marios@rocko ~ $ netstat -rvn
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         192.168.88.1    0.0.0.0         UG        0 0          0 wlan0
+169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 wlan0
+192.168.88.0    0.0.0.0         255.255.255.0   U         0 0          0 wlan0
+</code></pre>
+</div>
+
+<h2 id="with-route">With <code class="highlighter-rouge">route</code></h2>
+
+<p>Run <code class="highlighter-rouge">route</code> with optional <code class="highlighter-rouge">-n</code> for numeric output. The result is almost 
+identical to that of <code class="highlighter-rouge">netstat</code>. Example from the same machine as above:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>marios@rocko ~ $ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.88.1    0.0.0.0         UG    0      0        0 wlan0
+169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 wlan0
+192.168.88.0    0.0.0.0         255.255.255.0   U     9      0        0 wlan0
+</code></pre>
+</div>
+
+<h2 id="with-ip">With <code class="highlighter-rouge">ip</code></h2>
+
+<p>Run <code class="highlighter-rouge">ip route</code>. Example from the same machine as above:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>marios@rocko ~ $ ip route
+default via 192.168.88.1 dev wlan0  proto static 
+169.254.0.0/16 dev wlan0  scope link  metric 1000 
+192.168.88.0/24 dev wlan0  proto kernel  scope link  src 192.168.88.253  metric 9
+</code></pre>
+</div>
+
+<h2 id="see-also">See Also</h2>
+
+<ul>
+  <li><a href="/docs/man/netstat.8.html">Man Page for <code class="highlighter-rouge">netstat</code></a></li>
+  <li><a href="/docs/man/route.8.html">Man Page for <code class="highlighter-rouge">route</code></a></li>
+  <li><a href="/docs/man/ip.7.html">Man Page for <code class="highlighter-rouge">ip</code></a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

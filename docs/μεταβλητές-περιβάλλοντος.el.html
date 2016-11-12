@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Μεταβλητές περιβάλλοντος</title>
+  <meta name="description" content="Ένας κατάλογος με μεταβλητές περιβάλλοντος, με περιγραφή των περιεχομένων τους. Ο κατάλογος δεν είναι πλήρης, ούτε και υπάρχουν όλες οι μεταβλητές σε όλες τι...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/%CE%BC%CE%B5%CF%84%CE%B1%CE%B2%CE%BB%CE%B7%CF%84%CE%AD%CF%82-%CF%80%CE%B5%CF%81%CE%B9%CE%B2%CE%AC%CE%BB%CE%BB%CE%BF%CE%BD%CF%84%CE%BF%CF%82.el.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Μεταβλητές περιβάλλοντος</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Ένας κατάλογος με μεταβλητές περιβάλλοντος, με περιγραφή των περιεχομένων τους. 
+Ο κατάλογος δεν είναι πλήρης, ούτε και υπάρχουν όλες οι μεταβλητές σε όλες τις 
+διανομές, ή σε όλες τις εκδόσεις της ίδιας διανομής.</p>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th> Όνομα </th>
+			<th> Περιγραφή</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><code>$BASH_VERSINFO</code></td>
+			<td>Περιέχει μόνο την κύρια έκδοση του Bash, π.χ. <code>4</code>.</td>
+		<tr>
+			<td><code>$BASH_VERSION</code></td>
+			<td>Περιέχει την πλήρη έκδοση του Bash, π.χ. <code>4.2.45(1)-release</code></td>
+		</tr>
+		<tr>
+			<td><code>$EDITOR</code></td>
+			<td>Περιέχει την προτίμηση σε επεξεργαστή κειμένου (π.χ. Vi, Emacs).</td>
+		</tr>
+		<tr>
+			<td><code>$LANG</code></td>
+			<td>Περιέχει το locale που χρησιμοποιείται στο σύστημα σε περίπτωση που δεν 
+				είναι ορισμένες οι μεταβλητές τοπικότητας (μπορείτε να τις δείτε με 
+				την εντολή <code>locale</code>).</td>
+		</tr>
+		<tr>
+			<td><code>$MAILCHECK</code></td>
+			<td>Καθορίζει πόσο συχνά (σε δευτερόλεπτα) το BASH θα ελέγχει αν ο χρήστης έχει 
+				email, οπότε και εμφανίζει ένα μήνυμα όμοιο με <code>You have new mail in /var/spool/mail/root</code> 
+				πριν από το prompt.</td>
+		</tr>
+		<tr>
+			<th> <code>$OLDPWD</code></th>
+			<td> Περιέχει την απόλυτη διαδρομή του αμέσως προηγούμενου φακέλου στον οποίο βρισκόταν ο χρήστης.</td>
+		</tr>
+		<tr>
+			<th> <code>$PATH </code></th>
+			<td> Μια λίστα από διαδρομές φακέλων (χωρισμένες μεταξύ τους με διπλή τελεία 
+				<code>:</code>), στους οποίους αναζητά το κέλυφος τα εκτελέσιμα αρχεία 
+				των εντολών που πληκτρολογεί ο χρήστης. Αν υπάρχουν περισσότερα από ένα 
+				εκτελέσιμα με το ίδιο όνομα, έχει προτεραιότητα εκείνο του οποίου η 
+				διαδρομή συναντάται νωρίτερα στην <code>$PATH</code>.</td>
+		</tr>
+		<tr>
+			<th> <code>$PWD</code></th>
+			<td> Περιέχει την απόλυτη διαδρομή του φακέλου στον οποίο βρίσκεται εκείνη τη στιγμή ο χρήστης.</td>
+		</tr>
+		<tr>
+			<th> <code>$SHELL</code></th>
+			<td> Περιέχει την απόλυτη διαδρομή του κελύφους που χρησιμοποιείται. Στις περισσότερες 
+				διανομές, από προεπιλογή είναι το <code>/bin/bash</code>.</td>
+		</tr>
+		<tr>
+			<th> <code>$XDISPLAYMANAGER</code></th>
+			<td> Η τιμή είναι είτε <code>XDM</code>, είτε <code>GDM</code>, είτε <code>KDM</code>, 
+				ανάλογα με τον προεπιλεγμένο διαχειριστή παραθύρων του γραφικού περιβάλλοντος. 
+				Η τιμή συχνά καθορίζεται μέσα στο αρχείο <code>/etc/sysconfig/desktop</code>.</td>
+		</tr>
+        <tr>
+            <th> <code>$HOME</code></th>
+            <td> Η μεταβλητή `$HOME` περιέχει τη διαδρομή για τον προσωπικό 
+                φάκελο του χρήστη. Μπορεί να φανεί χρήσιμη σε περιβάλλοντα στα 
+                οποία οι προσωπικοί φάκελοι των χρηστών συνδέονται σε πολλά 
+                συστήματα ταυτόχρονα μέσω δικτύου (για παράδειγμα μέσω NFS), 
+                και η σύνδεση γίνεται σε διαδρομή διαφορετική από την 
+                προεπιλεγμένη, για παράδειγμα στο <code>/usr/homes</code> αντί 
+                στο <code>/home</code>.</td>
+        </tr>
+	
+
+</tr></tbody></table>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

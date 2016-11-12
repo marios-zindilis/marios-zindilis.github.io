@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Bash Special Variables</title>
+  <meta name="description" content="  A couple of notes on special variables available in the Bash shell.">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/bash-special-variables.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Bash Special Variables</h1>
+  </header>
+
+  <div class="post-content">
+    <p class="lead">
+  A couple of notes on special variables available in the Bash shell.
+</p>
+
+<h2 id="name-of-the-script"><code class="highlighter-rouge">$0</code>: Name of the script</h2>
+
+<p>The special variable <code class="highlighter-rouge">$0</code> contains the name of the script. It is useful when 
+returning usage instructions to the user that run the script. For example:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> --option-1 --option-2"</span>;</code></pre></figure>
+
+<h2 id="number-of-arguments"><code class="highlighter-rouge">$#</code>: Number of arguments</h2>
+
+<p>The special variable <code class="highlighter-rouge">$#</code> contains the number of arguments passed to the 
+script. If no arguments are passed, it is equal to 0. It is useful to examine 
+the value of this variable before taking further actions, if a script <em>must</em> 
+be run with a minimum number of arguments.</p>
+
+<p>Here is an example of <code class="highlighter-rouge">$#</code> used together with <code class="highlighter-rouge">$0</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-eq 0 <span class="o">]</span>; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"Insufficient number of arguments!"</span>;
+    <span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> /path/to/file"</span>;
+<span class="k">fi</span></code></pre></figure>
+
+<h2 id="most-recent-exit-code"><code class="highlighter-rouge">$?</code>: Most recent exit code</h2>
+
+<p>The special variable <code class="highlighter-rouge">$?</code> contains the exit code of the most recently 
+executed command. It is useful to examine this to determine whether or 
+not the previous command completed succesfully or returned an error.</p>
+
+<p>Typically, commands that complete succesfully return an exit code equal 
+to 0, with other values indicating different errors, but check each 
+command’s documentation to verify this.</p>
+
+<p>In the following example, the existense of the word “test” in a file 
+is checked:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">grep <span class="nb">test</span> /path/to/file &gt; /dev/null;
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq 0 <span class="o">]</span>; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"/path/to/file contains the word 'test'"</span>;
+<span class="k">else
+    </span><span class="nb">echo</span> <span class="s2">"/path/to/file does not contain the word 'test'"</span>;
+<span class="k">fi</span></code></pre></figure>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Bind Samba server to specific IP</title>
+  <meta name="description" content="By default, a Samba server will listen for connections on all the interfaces of the host. This can be verified by:">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/samba-bind-to-ip.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Bind Samba server to specific IP</h1>
+  </header>
+
+  <div class="post-content">
+    <p>By default, a Samba server will listen for connections on <strong>all</strong> the 
+interfaces of the host. This can be verified by:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># netstat -tulpn | egrep "samba|smbd|nmbd|winbind"
+tcp    0    0 0.0.0.0:139         0.0.0.0:*       LISTEN      30352/smbd
+tcp    0    0 0.0.0.0:445         0.0.0.0:*       LISTEN      30352/smbd
+tcp    0    0 :::139              :::*            LISTEN      30352/smbd
+tcp    0    0 :::445              :::*            LISTEN      30352/smbd
+</code></pre>
+</div>
+
+<p>To bind the server to a specific IP or interface, add the following 
+lines to the <code class="highlighter-rouge">[global]</code> section of Samba’s configuration:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>bind interfaces only = yes
+interfaces = lo eth0
+</code></pre>
+</div>
+
+<p>That will make the server listen to connections only to <code class="highlighter-rouge">lo</code> and <code class="highlighter-rouge">eth0</code>. 
+The value of the <code class="highlighter-rouge">interfaces</code> parameter, can also be an IP, like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>interfaces = 10.1.2.3
+</code></pre>
+</div>
+
+<p>For further information, see the <code class="highlighter-rouge">man</code> page for <code class="highlighter-rouge">smb.conf</code>.</p>
+
+<h2 id="see-also">See also</h2>
+
+<ul>
+  <li>The <a href="http://wiki.samba.org/index.php/Samba_port_usage">Samba port usage</a>
+article in the Samba Wiki explains a bit more on why it might be 
+necessary to have the server listening on the <code class="highlighter-rouge">lo</code> interface.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

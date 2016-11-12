@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Enable logging in MySQL</title>
+  <meta name="description" content="These are some haphazardly written notes on logging in MySQL. For consistency, create a new subdirectory in /var/log/ and assign ownership to the user under ...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/mysql/mysql-enable-logging.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Enable logging in MySQL</h1>
+  </header>
+
+  <div class="post-content">
+    <p>These are some haphazardly written notes on logging in MySQL. For consistency, 
+create a new subdirectory in <code class="highlighter-rouge">/var/log/</code> and assign ownership to the user under 
+which your MySQL server is running - by default that would be the <code class="highlighter-rouge">mysql</code> user:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir /var/log/mysqld/
+chown mysql:mysql /var/log/mysqld
+</code></pre>
+</div>
+
+<p>I like to name the directory <code class="highlighter-rouge">mysqld</code> instead of <code class="highlighter-rouge">mysql</code>, to clarify 
+that the logs in that directory are those of the <strong>MySQL Server</strong> and 
+not those of the MySQL Client.</p>
+
+<h2 id="slow-query-log">Slow Query Log</h2>
+
+<p>The slow query log contains queries the execution of which took more 
+than the value of the <code class="highlighter-rouge">long_query_time</code> variable, which by default is 
+10 seconds.</p>
+
+<p>To enable the slow query log on the next start of <code class="highlighter-rouge">mysqld</code>, add the 
+following line in your MySQL server’s configuration file (<code class="highlighter-rouge">/etc/my.cnf</code> 
+by default), in the <code class="highlighter-rouge">[mysqld]</code> section:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>slow-query-log
+slow_query_log_file=/var/log/mysqld/slow-queries.log
+</code></pre>
+</div>
+
+<p>Create the file and assign ownership to the <code class="highlighter-rouge">mysql</code> user:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>touch /var/log/mysqld/slow-queries.log
+chown mysql:mysql /var/log/mysqld/slow-queries.log
+</code></pre>
+</div>
+
+<p>Finally, either restart the server to enable the logging, or enable it 
+on the already running server with:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; SET GLOBAL slow_query_log_file='/var/log/mysqld/slow-queries.log';
+mysql&gt; SET GLOBAL slow_query_log=1;
+</code></pre>
+</div>
+
+<p>In any of those cases, the values of the global variables 
+<code class="highlighter-rouge">slow_query_log</code> and <code class="highlighter-rouge">slow_query_log_file</code>, should change from the 
+default:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; show variables like 'slow_query_log%';
++---------------------+----------------------------------+
+| Variable_name       | Value                            |
++---------------------+----------------------------------+
+| slow_query_log      | OFF                              |
+| slow_query_log_file | /var/run/mysqld/mysqld-slow.log  |
++---------------------+----------------------------------+
+</code></pre>
+</div>
+
+<p>To:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; show variables like 'slow_query_log%';
++---------------------+----------------------------------+
+| Variable_name       | Value                            |
++---------------------+----------------------------------+
+| slow_query_log      | ON                               |
+| slow_query_log_file | /var/log/mysqld/slow-queries.log |
++---------------------+----------------------------------+
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

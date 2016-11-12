@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Get Zenoss Events from ZenDMD</title>
+  <meta name="description" content="#!/usr/bin/env python    import Globalsfrom Products.ZenUtils.ZenScriptBase import ZenScriptBaseDMD = ZenScriptBase(connect=True).dmd  Events = DMD.ZenEventM...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/zenoss/zendmd-get-events.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Get Zenoss Events from ZenDMD</h1>
+  </header>
+
+  <div class="post-content">
+    
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+    
+<span class="kn">import</span> <span class="nn">Globals</span>
+<span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
+<span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
+  
+<span class="n">Events</span> <span class="o">=</span> <span class="n">DMD</span><span class="o">.</span><span class="n">ZenEventManager</span><span class="o">.</span><span class="n">getEventList</span><span class="p">()</span></code></pre></figure>
+
+<p>Each <code class="highlighter-rouge">Event</code> in <code class="highlighter-rouge">Events</code> (iterable) offers:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">__ac_permissions__</code></li>
+  <li><code class="highlighter-rouge">__allow_access_to_unprotected_subobjects__</code></li>
+  <li><code class="highlighter-rouge">__doc__</code></li>
+  <li><code class="highlighter-rouge">__implemented__</code></li>
+  <li><code class="highlighter-rouge">__init__</code></li>
+  <li><code class="highlighter-rouge">__module__</code></li>
+  <li><code class="highlighter-rouge">__providedBy__</code></li>
+  <li><code class="highlighter-rouge">__provides__</code></li>
+  <li><code class="highlighter-rouge">_action</code></li>
+  <li><code class="highlighter-rouge">_baseurl</code></li>
+  <li><code class="highlighter-rouge">_clearClasses</code></li>
+  <li><code class="highlighter-rouge">_fields</code></li>
+  <li><code class="highlighter-rouge">_zem</code></li>
+  <li><code class="highlighter-rouge">clearClasses</code></li>
+  <li><code class="highlighter-rouge">component</code></li>
+  <li><code class="highlighter-rouge">count</code></li>
+  <li><code class="highlighter-rouge">device</code></li>
+  <li><code class="highlighter-rouge">eventClass</code></li>
+  <li><code class="highlighter-rouge">eventKey</code></li>
+  <li><code class="highlighter-rouge">eventPermission</code></li>
+  <li><code class="highlighter-rouge">eventState</code></li>
+  <li><code class="highlighter-rouge">evid</code></li>
+  <li><code class="highlighter-rouge">firstTime</code></li>
+  <li><code class="highlighter-rouge">getCssClass</code></li>
+  <li><code class="highlighter-rouge">getDataList</code></li>
+  <li><code class="highlighter-rouge">getDedupFields</code></li>
+  <li><code class="highlighter-rouge">getEventData</code></li>
+  <li><code class="highlighter-rouge">getEventDetailHref</code></li>
+  <li><code class="highlighter-rouge">getEventFields</code></li>
+  <li><code class="highlighter-rouge">getStateFor</code></li>
+  <li><code class="highlighter-rouge">getStateToCopy</code></li>
+  <li><code class="highlighter-rouge">getStateToCopyFor</code></li>
+  <li><code class="highlighter-rouge">getTypeToCopy</code></li>
+  <li><code class="highlighter-rouge">getTypeToCopyFor</code></li>
+  <li><code class="highlighter-rouge">jellyFor</code></li>
+  <li><code class="highlighter-rouge">lastTime</code></li>
+  <li><code class="highlighter-rouge">processUniqueID</code></li>
+  <li><code class="highlighter-rouge">setCopyableState</code></li>
+  <li><code class="highlighter-rouge">setStateFor</code></li>
+  <li><code class="highlighter-rouge">severity</code></li>
+  <li><code class="highlighter-rouge">summary</code></li>
+  <li><code class="highlighter-rouge">unjellyFor</code></li>
+  <li><code class="highlighter-rouge">updateFromDict</code></li>
+  <li><code class="highlighter-rouge">updateFromFields</code></li>
+  <li><code class="highlighter-rouge">zem</code></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - getfacl</title>
+  <meta name="description" content="Μερικά συστήματα αρχείων όπως τα ext2, ext3, ext4, ReiserFS, JFS, XFS, υποστηρίζουν τον ορισμό επιπλέον ιδιοτήτων-δικαιωμάτων πρόσβασης στα αρχεία, τα οποία ...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/getfacl.el.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">getfacl</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Μερικά συστήματα αρχείων όπως τα ext2, ext3, ext4, ReiserFS, JFS, XFS, 
+υποστηρίζουν τον ορισμό επιπλέον ιδιοτήτων-δικαιωμάτων πρόσβασης στα 
+αρχεία, τα οποία λειτουργούν ως λίστες ελέγχου πρόσβασης (Access 
+Control Lists). Στα συστήματα αυτά, η εντολή <code class="highlighter-rouge">getfacl</code> δείχνει αυτά τα 
+δικαιώματα ανά χρήστη.</p>
+
+<p>Σε ένα αρχείο στο οποίο δεν έχουν οριστεί κανόνες ACL επιπλέον από τα 
+απλά δικαιώματα πρόσβασης, το αποτέλεσμα της <code class="highlighter-rouge">getfacl</code> είναι αντίστοιχο 
+με την έξοδο της <code class="highlighter-rouge">ls -l</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ls -l route.pdf 
+-rw-rw-r-- 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
+<span class="gp">$ </span>getfacl route.pdf
+<span class="c"># file: route.pdf</span>
+<span class="c"># owner: mariosz</span>
+<span class="c"># group: mariosz</span>
+user::rw-
+group::rw-
+other::r--</code></pre></figure>
+
+<p>Αν σε αυτό το αρχείο οριστούν δικαιώματα ACL, τότε πλέον αλλάζουν τα 
+αποτελέσματα και των δύο εντολών, και το αρχείο συμπεριφέρεται διαφορετικά:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>setfacl -m user:another:r-- route.pdf 
+ 
+<span class="gp">$ </span>ls -l route.pdf
+-rw-rw-r--+ 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
+ 
+<span class="gp">$ </span>getfacl route.pdf 
+<span class="c"># file: route.pdf</span>
+<span class="c"># owner: mariosz</span>
+<span class="c"># group: mariosz</span>
+user::rw-
+user:another:r--
+group::rw-
+mask::rw-
+other::r--</code></pre></figure>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

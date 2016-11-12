@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - XFree86 3</title>
+  <meta name="description" content="Ο εξυπηρετητής X XFree86 3 είναι η παλιά και πλέον ξεπερασμένη έκδοση της σειράς XFree 86. Η τελευταία έκδοση είναι η 4.8.0, η οποία όμως δεν είναι προς τα π...">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/xfree86-3.el.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">XFree86 3</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Ο εξυπηρετητής X <strong>XFree86 3</strong> είναι η παλιά και πλέον ξεπερασμένη 
+έκδοση της σειράς XFree 86. Η τελευταία έκδοση είναι η <a href="xfree86-4.el.html">4.8.0</a>, 
+η οποία όμως δεν είναι προς τα πίσω συμβατή με την έκδοση 3. Η έκδοση 3 
+είναι πιθανόν να βρεθεί σε παλιά συστήματα, με κάρτες γραφικών που δεν 
+υποστηρίζονται από τους νεότερους εξυπηρετητές <a href="xfree86-4.el.html">XFree86 4</a> 
+και <a href="x.org.el.html">X.Org</a>. Από το 2004 περίπου, και οι δύο εκδόσεις 
+του XFree 86 έχουν αντικατασταθεί από τον X.Org, σε όλες τις διανομές.</p>
+
+<h2 id="section">Ρύθμιση</h2>
+
+<p>Η ρύθμιση του XFree86 3 μπορεί να γίνει είτε με επεξεργασία του αρχείου 
+ρυθμίσεων, είτε με χρήση βοηθητικών εργαλείων, όπως τα <a href="/docs/xf86config.el.html">xf86config</a>, 
+<a href="/docs/xconfigurator.el.html">Xconfigurator</a> και <a href="xf86setup.el.html">XF86Setup</a>.</p>
+
+<h2 id="section-1">Αρχείο ρυθμίσεων</h2>
+
+<p>Το αρχείο ρυθμίσεων του XFree 86 3 ονομάζεται <code class="highlighter-rouge">XF86Config</code>, και συνήθως 
+βρίσκεται στο <code class="highlighter-rouge">/etc</code> ή στο <code class="highlighter-rouge">/etc/X11</code>. Ωστόσο, η παρουσία αυτού του 
+αρχείου σε ένα σύστημα δεν συνεπάγεται την λειτουργία του XFree 86 3, 
+μια που και η έκδοση 4 μπορεί να χρησιμοποιεί το ίδιο όνομα για το 
+αρχείο ρυθμίσεών της.</p>
+
+<p>Τα αρχεία ρυθμίσεων των εκδόσεων 3 και 4 είναι παρόμοια. Οι βασικές 
+διαφορές είναι:</p>
+
+<ol>
+  <li>Στην έκδοση 3 δεν υπάρχει η λέξη-κλειδί <code class="highlighter-rouge">Option</code>, αλλά τα ονόματα 
+των επιλογών και οι τιμές τους συντάσσονται ως ζεύγη κλειδιών-τιμών.</li>
+  <li>Στην έκδοση 3 δεν υπάρχει η ενότητα <code class="highlighter-rouge">ServerLayout</code>.</li>
+  <li>Στην έκδοση 3 δεν υπάρχουν στις ενότητες οι οντότητες <code class="highlighter-rouge">Identifier</code> 
+και <code class="highlighter-rouge">Driver</code>. Αυτό κάνει την έκδοση 3 λιγότερο ευέλικτη, αφού σε 
+κάθε αρχείο ρυθμίσεων μπορεί να οριστεί μόνο μία φορά κάθε συσκευή 
+(π.χ. μόνο ένα πληκτρολόγιο, μόνο ένα ποντίκι, μόνο μία κάρτα 
+γραφικών).</li>
+  <li>Στην έκδοση 3 οι ρυθμίσεις του ποντικιού ανήκουν στην ενότητα <code class="highlighter-rouge">Pointer</code>, 
+ενώ στην 4 ανήκουν στην <code class="highlighter-rouge">InputDevice</code>, όπως και του πληκτρολογίου.</li>
+</ol>
+
+<h2 id="xfree86">Εργαλείο XFree86</h2>
+
+<p>Για μια αρχική ρύθμιση του XFree86, ενώ δεν τρέχει ο εξυπηρετητής, εκτελέστε:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>XFree86 -configure
+</code></pre>
+</div>
+
+<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code class="highlighter-rouge">XFree86Config.new</code> μέσα 
+στον φάκελο <code class="highlighter-rouge">/root</code>, το οποίο μπορείτε να χρησιμοποιήσετε για να 
+προσθέσετε τις δικές σας τροποποιήσεις.</p>
+
+<h2 id="section-2">Δείτε επίσης</h2>
+
+<ul>
+  <li>Ιστότοπος <a href="http://www.xfree86.org/">xfree86.org</a></li>
+  <li>Άλλοι εξυπηρετητές γραφικών: <a href="/docs/xfree86-4.el.html">XFree86 4</a>, 
+<a href="/docs/x.org.el.html">X.Org</a>, <a href="/docs/accelerated-x.el.html">Accelerated-X</a>.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>

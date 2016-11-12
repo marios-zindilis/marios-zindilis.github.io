@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - LPIC-2 Revision</title>
+  <meta name="description" content="My list of topics to revise, before taking the LPIC-2 exam. Note that this list was compiled before the exam objectives’ revision in October 2013.">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/zindilis.com.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://zindilis.com/docs/lpic2-revision.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+</head>
+
+<body style="padding-top:5rem;">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div> <!-- class="container" -->
+  </nav>
+
+
+
+    <div class="container">
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">LPIC-2 Revision</h1>
+  </header>
+
+  <div class="post-content">
+    <p>My list of topics to revise, before taking the LPIC-2 exam. Note that this 
+list was compiled before the exam objectives’ revision in October 2013.</p>
+
+<h2 id="dhcp">DHCP</h2>
+<ul>
+  <li>Example Servers: bigpie1, sds1, nicds1, officesrv</li>
+  <li>CentOS Install DHCP</li>
+  <li>dhcpd.conf</li>
+</ul>
+
+<h2 id="ldap">LDAP</h2>
+<ul>
+  <li>Example Servers: ldap-master, ldap-slave</li>
+  <li>Locate and examine LDIF files</li>
+  <li>ldapadd, slappasswd, ldappasswd, ldapdelete, getent, ldapsearch</li>
+</ul>
+
+<h2 id="routing">Routing</h2>
+<ul>
+  <li>/proc/sys/net/ipv4/ip_forward and sysctl.conf equivalent</li>
+  <li>RIP with routed</li>
+</ul>
+
+<h2 id="iptables">iptables</h2>
+<ul>
+  <li>iptables chains, default policies</li>
+  <li>flush tables, add rules</li>
+  <li>configure NAT</li>
+</ul>
+
+<h2 id="ssh">SSH</h2>
+<ul>
+  <li>/etc/ssh/sshd_config</li>
+  <li>Generate SSH keys with ssh-keygen</li>
+  <li>Copy files scp</li>
+  <li>Connect with ssh-agent</li>
+  <li>Port Tunnelling with SSH</li>
+  <li>Securing SSH with TCP Wrappers</li>
+</ul>
+
+<h2 id="samba">Samba</h2>
+<ul>
+  <li>/etc/samba/smb.conf</li>
+  <li>/etc/samba/username.map</li>
+  <li>Samba Password Options</li>
+  <li>nmblookup -MS-</li>
+  <li>Configure Shares with Samba</li>
+  <li>Configure Printer Shares with Samba</li>
+  <li>testparm, nmblookup, smbstatus, smbclient, mount -t cifs</li>
+</ul>
+
+<h2 id="nfs">NFS</h2>
+<ul>
+  <li>Support programs: rpc.idmapd, rpc.mount.d, rpc.nfsd, rpc.statd, portmap</li>
+  <li>Setting up exports with NFS in /etc/exports, and on the fly with exportfs</li>
+  <li>showmount, nfsstat, rpcinfo</li>
+  <li>Mount over NFS</li>
+</ul>
+
+<h2 id="ftp">FTP</h2>
+<ul>
+  <li>Passive Vs Active FTP Modes</li>
+  <li>CentOS install Pure-FTPd</li>
+  <li>/etc/pure-ftpd/pure-ftpd.conf</li>
+  <li>CentOS install vsftpd</li>
+  <li>/etc/vsftpd/vsftpd.conf</li>
+</ul>
+
+<h2 id="apache">Apache</h2>
+<ul>
+  <li>/etc/httpd/conf/httpd.conf</li>
+  <li>access.conf, ports.conf, mime.types, magic, mods-available, mods-enabled</li>
+  <li>Enabling user homes</li>
+  <li>Service Virtual Domains</li>
+  <li>Enabling CGI, PHP, Perl</li>
+  <li>Enabling SSL</li>
+  <li>User access with htpasswd, mod_auth</li>
+  <li>apache2ctl</li>
+  <li>Apache Logs</li>
+</ul>
+
+<h2 id="squid">Squid</h2>
+<ul>
+  <li>Example Servers: proxy1.linux.dom (kong), proxy2.linux.dom</li>
+  <li>Squid configuration</li>
+  <li>Client configuration for proxy</li>
+</ul>
+
+<h2 id="sendmail">Sendmail</h2>
+<ul>
+  <li>Sendmail configuration files: /etc/mail/sendmail.mc -&gt; /etc/mail/sendmail.cf, access.db, aliases.db</li>
+  <li>Configure hostname, relay, incoming emails</li>
+  <li>Sendmail log files</li>
+</ul>
+
+<h2 id="postfix">Postfix</h2>
+<ul>
+  <li>Postfix configuration files: /etc/postfix.main.cf</li>
+  <li>Configure incoming emails, relay</li>
+  <li>Postfix log files</li>
+</ul>
+
+<h2 id="procmail">Procmail</h2>
+<ul>
+  <li>Creating Procmail filters</li>
+</ul>
+
+<h2 id="courier">Courier</h2>
+<ul>
+  <li>Courier configuration</li>
+</ul>
+
+<h2 id="dovecot">Dovecot</h2>
+<ul>
+  <li>Dovecot configuration</li>
+</ul>
+
+<h2 id="pam">PAM</h2>
+<ul>
+  <li>PAM Basics, PAM Stacks, Examples of PAM Modules</li>
+  <li>PAM Configuration, NSS Configuration</li>
+</ul>
+
+<h2 id="tcp-wrappers">TCP Wrappers</h2>
+<ul>
+  <li>/etc/hosts.allow, /etc/hosts.deny</li>
+  <li>Calling TCP Wrappers from /etc/inetd</li>
+  <li>/etc/xinetd</li>
+</ul>
+
+<h2 id="snort">Snort</h2>
+<ul>
+  <li>Network Design for SNORT</li>
+</ul>
+
+<h2 id="fail2ban">Fail2Ban</h2>
+<ul>
+  <li>Fail2Ban configuration</li>
+</ul>
+
+<h2 id="bootloaders">Bootloaders</h2>
+<ul>
+  <li>Identifying active bootloader on a system (based on files on disk or with bootinfoscript)</li>
+  <li>LILO Error Messages</li>
+  <li>GRUB Legacy Error Messages</li>
+  <li>GRUB2 Error Messages and Rescue Console</li>
+</ul>
+
+<h2 id="boot-time-troubleshooting">Boot Time Troubleshooting</h2>
+<ul>
+  <li>initrd</li>
+  <li>dmesg</li>
+  <li>/etc/inittab, runlevel, SysV and Upstart</li>
+</ul>
+
+<h2 id="hardware-troubleshooting">Hardware Troubleshooting</h2>
+<ul>
+  <li>Hardware detection (/proc/cpuinfo, lspci, lsusb, lsdev, lsmod)</li>
+</ul>
+
+<h2 id="log-files-troubleshooting">Log files Troubleshooting</h2>
+<ul>
+  <li>Helpful files: syslog, messages, dmesg or boot.log, secure, cron, lastlog</li>
+  <li>Scanning Log Files with head, tail, less, grep, logcheck</li>
+  <li>syslogd configuration</li>
+  <li>Logrotate configuration</li>
+</ul>
+
+<h2 id="software-troubleshooting">Software Troubleshooting</h2>
+<ul>
+  <li>strace and ltrace, ldd, lsof, strings</li>
+  <li>Library Dependencies</li>
+  <li>Kernel options in /proc/, sysctl, /etc/sysctl.conf</li>
+  <li>init and the process tree</li>
+  <li>top</li>
+</ul>
+
+<h2 id="troubleshooting-login-and-accounts">Troubleshooting Login and Accounts</h2>
+<ul>
+  <li>Logins with login, XDM, KDM, GDM, getty</li>
+  <li>Network Logins with Telnet, SSH, X, XDMCP, VNC</li>
+  <li>Users management with usermod</li>
+  <li>Login variables in /etc/login.defs, /etc/profile, /etc/bashrc, ~/.profile, ~/.bashrc</li>
+</ul>
+
+<h2 id="cron">Cron</h2>
+<ul>
+  <li>Schedule Jobs with Cron</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+<footer>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Marios Zindilis</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Marios Zindilis</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li> github link
+          </li>
+          
+
+          
+          <li> twitter link
+          </li>
+          
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+      </div> <!-- class="container" -->
+    </footer>
+  </body>
+</html>
