@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+git add --all --verbose
+
+git commit --all --message $(date +%Y-%m-%d-%H-%M-%)
+
+git push
