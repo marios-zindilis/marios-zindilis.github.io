@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">myisamchk</h1>
+  <header>
+    <h1 itemprop="name headline">myisamchk</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>The <code class="highlighter-rouge">myisamchk</code> utility comes with a standard MySQL server installation, 
 and can check, repair and optimize MyISAM tables faster than the <code class="highlighter-rouge">CHECK 
 TABLE</code>, <code class="highlighter-rouge">REPAIR TABLE</code> and <code class="highlighter-rouge">OPTIMIZE TABLE</code> SQL commands.</p>
@@ -73,8 +73,20 @@ TABLE</code>, <code class="highlighter-rouge">REPAIR TABLE</code> and <code clas
   <li><a href="http://www.techrepublic.com/article/checking-and-repairing-mysql-tables/">Checking and repairing MySQL tables</a></li>
 </ul>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

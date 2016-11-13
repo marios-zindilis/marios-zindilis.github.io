@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">web.py Subapplications</h1>
+  <header>
+    <h1 itemprop="name headline">web.py Subapplications</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>To better organize your source code in a web.py application, you can break it 
 down in subapplications. Those subapplications will be imported as Python 
 modules in your main web.py script (which, in the below examples is 
@@ -103,8 +103,20 @@ very beginning of your main application script:</p>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()))))</span></code></pre></figure>
 
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

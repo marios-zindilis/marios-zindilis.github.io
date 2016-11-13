@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">/etc/modprobe.d/</h1>
+  <header>
+    <h1 itemprop="name headline">/etc/modprobe.d/</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>On CentOS and probably other RedHat-based distributions, <code class="highlighter-rouge">/etc/modprobe.d/</code> 
 is the directory which contains configurations for loading kernel modules, 
 module aliases and module blacklists, that are specific to the host, and not 
@@ -77,8 +77,20 @@ shipped by packages (those should go in <a href="/docs/lfs/usr/lib/modprobe.d/">
   <li><a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a></li>
 </ul>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

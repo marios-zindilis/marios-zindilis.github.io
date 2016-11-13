@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">show vlan (Cisco)</h1>
+  <header>
+    <h1 itemprop="name headline">show vlan (Cisco)</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p><code class="highlighter-rouge">show vlan</code> lists the Vlans and the ports on which each is configured. 
 Trunk ports don’t show up in this list.</p>
 
@@ -76,8 +76,20 @@ networks. In the <code class="highlighter-rouge">status</code> column, those net
 <code class="highlighter-rouge">act/unsup</code> or <code class="highlighter-rouge">active/unsupported</code>, since most new switches don’t even 
 have ports to use on those old types of networks any more.</p>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,18 +55,30 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">/var/lib/libvirt/images/</h1>
+  <header>
+    <h1 itemprop="name headline">/var/lib/libvirt/images/</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>By default, <code class="highlighter-rouge">/var/lib/libvirt/images/</code> is where KVM stores its Virtual Machine 
 images on RHEL6 and CentOS6.</p>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

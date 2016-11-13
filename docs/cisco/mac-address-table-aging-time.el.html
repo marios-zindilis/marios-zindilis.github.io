@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">mac-address-table aging-time</h1>
+  <header>
+    <h1 itemprop="name headline">mac-address-table aging-time</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>Με την εντολή αυτή μπορείτε να καθορίσετε αν και κάθε πόσο χρόνο θα 
 διαγράφονται οι καταγραφές στον πίνακα διευθύνσεων MAC (MAC address 
 table) μιας συσκευής. Αν δοθεί η τιμή 0, τότε δεν διαγράφονται <strong>ποτέ</strong> 
@@ -82,8 +82,20 @@ table) μιας συσκευής. Αν δοθεί η τιμή 0, τότε δεν
 </dt><dd> Μερικές παλιότερες συσκευές δεν υποστηρίζουν την τιμή 0, δηλαδή δεν υποστηρίζουν την απενεργοποίηση της διαγραφής των διευθύνσεων από τον πίνακα. Σε αυτή την περίπτωση, η πλησιέστερη λύση είναι ο ορισμός της μεταβλητής $TIME στην μεγαλύτερη τιμή που επιτρέπει η συσκευή.
 </dd></dl>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

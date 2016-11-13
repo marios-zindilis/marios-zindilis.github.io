@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">Skip one record on MySQL replication slave</h1>
+  <header>
+    <h1 itemprop="name headline">Skip one record on MySQL replication slave</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>MySQL replication can break for a wide multitude of reasons. The 
 following is a quick and dirty way to resume replication, if the error 
 that appears in the output of <code class="highlighter-rouge">SHOW SLAVE STATUS\G</code> indicates that 
@@ -84,8 +84,20 @@ mysql&gt; SHOW SLAVE STATUS\G
 <p>Hopefully your replication will resume after this, and the value of 
 your <code class="highlighter-rouge">Seconds_Behind_Master</code> will quickly be depleted.</p>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

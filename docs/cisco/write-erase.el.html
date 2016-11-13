@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,21 +55,33 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">write erase</h1>
+  <header>
+    <h1 itemprop="name headline">write erase</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>Η εντολή <code class="highlighter-rouge">write erase</code> διαγράφει την παραμετροποίηση εκκίνησης 
 (startup-config). Αν ακολουθήσει επανεκκίνηση της συσκευής, όλες οι 
 ρυθμίσεις που έχουν γίνει χάνονται οριστικά.</p>
 
 <p>Συνώνυμα: <code class="highlighter-rouge">erase startup-config</code> και <code class="highlighter-rouge">erase nvram:</code>.</p>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

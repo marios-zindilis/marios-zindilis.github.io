@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">/etc/shells</h1>
+  <header>
+    <h1 itemprop="name headline">/etc/shells</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>The <code class="highlighter-rouge">/etc/shells</code> file is a list of valid shells on the system.</p>
 
 <p>Example from an Ubuntu 12.10 Desktop system:</p>
@@ -90,8 +90,20 @@
   <li><a href="http://utcc.utoronto.ca/~cks/space/blog/unix/EtcShellsUsage">What <code class="highlighter-rouge">/etc/shells</code> is and isn’t</a></li>
 </ul>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

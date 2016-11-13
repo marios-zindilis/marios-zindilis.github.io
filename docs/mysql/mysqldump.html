@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,22 +55,22 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">mysqldump</h1>
+  <header>
+    <h1 itemprop="name headline">mysqldump</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>These are my favorite MySQL backup and restore one-liners.</p>
 
 <h2 id="backup">Backup</h2>
 
 <p>To back up a database named <code class="highlighter-rouge">stuff</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">time </span>mysqldump -u root -p stuff | gzip &gt; stuff.sql.gz
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+time mysqldump -u root -p stuff | gzip &gt; stuff.sql.gz
+</code></p>
 
 <p>This pipes the clear text output from <code class="highlighter-rouge">mysqldump</code> directly into <code class="highlighter-rouge">gzip</code>, 
 and prints the duration of the operation in the end.</p>
@@ -79,15 +79,27 @@ and prints the duration of the operation in the end.</p>
 
 <p>To restore the <code class="highlighter-rouge">stuff</code> database:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nb">time </span>gunzip -c stuff.sql.gz | pv | mysql -u root -p stuff
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">bash
+time gunzip -c stuff.sql.gz | pv | mysql -u root -p stuff
+</code></p>
 
 <p>This decompresses the dump back in clear text, and feeds it to <code class="highlighter-rouge">mysql</code> 
 through <code class="highlighter-rouge">pv</code>, which adds the perk of an indication of progress.</p>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

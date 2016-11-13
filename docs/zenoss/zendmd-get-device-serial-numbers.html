@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Marios Zindilis - Zendmd Get Device Serial Numbers</title>
+  <title>Marios Zindilis</title>
   <meta name="description" content="To get a list of devices in Zenoss that have a Serial Number defined, run the following script as user zenoss. It will display the Device Title, the Serial N...">
 
   <link
@@ -18,7 +18,7 @@
   <link rel="canonical" href="https://zindilis.com/docs/zenoss/zendmd-get-device-serial-numbers.html">
   <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
   
-  <meta property="og:title" content="Zendmd Get Device Serial Numbers">
+  <meta property="og:title" content="Marios Zindilis">
 
 
   <meta property="og:type" content="article">
@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">Zendmd Get Device Serial Numbers</h1>
+  <header>
+    <h1 itemprop="name headline"></h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>To get a list of devices in Zenoss that have a <strong>Serial Number</strong> 
 defined, run the following script as user <code class="highlighter-rouge">zenoss</code>. It will display the 
 Device Title, the Serial Number, and -as an added bonus- the Hardware 
@@ -78,8 +78,20 @@ Manufacturer.</p>
         <span class="k">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWSerialNumber</span><span class="p">(),</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWManufacturerName</span><span class="p">()</span></code></pre></figure>
 
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

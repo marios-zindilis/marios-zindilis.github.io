@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">Cisco: banner login</h1>
+  <header>
+    <h1 itemprop="name headline">Cisco: banner login</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>With <code class="highlighter-rouge">banner login</code> you can set a message that will be displayed to the 
 user when she connects to a VTY line.</p>
 
@@ -71,8 +71,20 @@ user when she connects to a VTY line.</p>
   <li><a href="/docs/cisco/banner-motd.html">banner motd</a></li>
 </ul>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

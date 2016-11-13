@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">bandwidth (Εντολή Cisco)</h1>
+  <header>
+    <h1 itemprop="name headline">bandwidth (Εντολή Cisco)</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>Με την εντολή <code class="highlighter-rouge">bandwidth</code> μπορείτε να ορίσετε το εύρος ζώνης μιας 
 διεπαφής σε συσκευές Cisco. Η μονάδα μέτρησης είναι Kilobits / Second 
 (Kbps). Αν δεν οριστεί ρητά, το εύρος από προεπιλογή είναι (σε Kbps):</p>
@@ -82,8 +82,20 @@ Metric, και μερικών παραμέτρων του QoS και του SNMP
 άλλης από τις τιμές που συνυπολογίζονται στο Metric, για το λόγο ότι το 
 bandwidth επηρεάζει και άλλα πράγματα, άσχετα με την δρομολόγηση.</p>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

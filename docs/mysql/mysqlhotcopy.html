@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">mysqlhotcopy</h1>
+  <header>
+    <h1 itemprop="name headline">mysqlhotcopy</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p><strong>mysqlhotcopy</strong> is a Perl script for backing up MySQL tables stored in either 
 the MyISAM or ARCHIVE engines. It works very fast because it doesn’t dump the 
 contents of the tables. Instead it takes advantage of the fact that MyISAM 
@@ -111,8 +111,20 @@ directory, appending the suffix <code class="highlighter-rouge">_old</code> to t
   <li><a href="http://dev.mysql.com/doc/refman/5.6/en/mysqlhotcopy.html">mysqlhotcopy - A Database Backup Program</a></li>
 </ul>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

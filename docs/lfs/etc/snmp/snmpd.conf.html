@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">/etc/snmp/snmpd.conf</h1>
+  <header>
+    <h1 itemprop="name headline">/etc/snmp/snmpd.conf</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>Sometimes, <code class="highlighter-rouge">snmpd</code> will report the wrong speed of a network interface. For 
 example, the following output shows a speed of 10Mbps, whereas the ethernet 
 port on the server is actually working at 100Mbps:</p>
@@ -83,8 +83,20 @@ the <code class="highlighter-rouge">interface</code> directive in <code class="h
 
 <!-- Links -->
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

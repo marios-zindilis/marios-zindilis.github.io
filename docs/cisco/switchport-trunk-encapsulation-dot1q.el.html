@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">switchport trunk encapsulation dot1q</h1>
+  <header>
+    <h1 itemprop="name headline">switchport trunk encapsulation dot1q</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>Η εντολή <code class="highlighter-rouge">switchport trunk encapsulation dot1q</code> καθορίζει το 
 encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία ήδη 
 λειτουργεί ως trunk. Η παράμετρος <code class="highlighter-rouge">dot1q</code> καθορίζει την τιμή στο 
@@ -78,8 +78,20 @@ encapsulation στο οποίο θα λειτουργεί μια διεπαφή,
 και για αυτόματη διαπραγμάτευση του encapsulation μεταξύ των δύο συσκευών δείτε το 
 <a href="/docs/cisco/switchport-trunk-encapsulation-negotiate.el.html">switchport trunk encapsulation negotiate</a>.</p>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

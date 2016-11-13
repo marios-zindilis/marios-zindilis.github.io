@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">Example queries on the Sakila MySQL database</h1>
+  <header>
+    <h1 itemprop="name headline">Example queries on the Sakila MySQL database</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p class="lead">
 <a href="http://dev.mysql.com/doc/sakila/en/index.html"><b>Sakila</b></a> is a 
 sample database provided by MySQL, meant to be used in tests and documentation 
@@ -85,8 +85,20 @@ examples. This page lists some example queries against that database.
 <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">film</span> <span class="k">ON</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">film_id</span> <span class="o">=</span> <span class="n">film</span><span class="p">.</span><span class="n">film_id</span><span class="p">;</span></code></pre></figure>
 
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

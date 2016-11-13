@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,19 +55,31 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">/usr/share/misc/pci.ids</h1>
+  <header>
+    <h1 itemprop="name headline">/usr/share/misc/pci.ids</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>This file is a list of hexadecimal PCI IDs of manufacturers and device 
 models. It is the list that tools like <code class="highlighter-rouge">lspci</code> use by default to 
 translate between the IDs and their human-readable equivalent names.</p>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

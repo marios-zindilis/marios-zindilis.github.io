@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,21 +55,33 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">Back-Pressure on Cisco Switches</h1>
+  <header>
+    <h1 itemprop="name headline">Back-Pressure on Cisco Switches</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     <p>The <code class="highlighter-rouge">back-pressure</code> feature on Cisco switches is a workaround to the 
 inability to apply proper flow control on half-duplex links. It causes 
 the Cisco switch to send fake packets on the link, thus controlling the 
 transmission from the remote side, since only one side can send at a 
 time on a half-duplex link.</p>
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

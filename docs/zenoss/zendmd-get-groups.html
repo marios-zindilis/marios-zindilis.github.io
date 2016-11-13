@@ -33,7 +33,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -55,13 +55,13 @@
 
 
   <div class="container">
-        <article class="post">
+        <article itemscope itemtype="http://schema.org/Article">
 
-  <header class="post-header">
-    <h1 class="post-title">Get Device Groups in Zenoss with ZenDMD</h1>
+  <header>
+    <h1 itemprop="name headline">Get Device Groups in Zenoss with ZenDMD</h1>
   </header>
 
-  <div class="post-content">
+  <section itemprop="articleBody">
     
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">Globals</span>
 <span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
@@ -76,8 +76,20 @@
     <span class="k">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">getPrimaryId</span><span class="p">()</span></code></pre></figure>
 
 
-  </div>
+  </section>
 
+  <footer id="post-footer">
+  
+  
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
 </article>
 
   </div>

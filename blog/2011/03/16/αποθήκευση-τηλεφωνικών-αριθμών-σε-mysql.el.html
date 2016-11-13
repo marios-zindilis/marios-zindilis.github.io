@@ -37,7 +37,7 @@
 </head>
 
 
-<body style="padding-top:5rem;">
+<body>
   <header class="site-header">
   <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
     <div class="container">
@@ -59,10 +59,10 @@
 
 
   <div class="container">
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Αποθήκευση τηλεφωνικών αριθμών σε MySQL</h1>
+  <header>
+    <h1 itemprop="name headline">Αποθήκευση τηλεφωνικών αριθμών σε MySQL</h1>
     <p class="post-meta">
       <time datetime="2011-03-16T00:00:00+00:00" itemprop="datePublished">2011-03-16</time>
       • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -70,7 +70,7 @@
     </p>
   </header>
 
-  <section class="post-content" itemprop="articleBody">
+  <section itemprop="articleBody">
     <p>Γράφω πρώτα το συμπέρασμα, για όποιον βαριέται να διαβάσει το υπόλοιπο κείμενο:</p>
 
 <blockquote>Αποθηκεύστε τους τηλεφωνικούς αριθμούς ως <code>VARCHAR(20)</code>, εκτός και αν υπάρχει σημαντικός λόγος γιατί να κάνετε κάτι διαφορετικό. Επιπλέον, χρησιμοποιήστε κώδικα σε επίπεδο εφαρμογής για 2 ενέργειες: Α. για να αφαιρέσετε από την είσοδο του χρήστη οποιουσδήποτε μη αριθμητικούς χαρακτήρες, πριν από την εισαγωγή στη βάση (π.χ. παύλες, κενά, παρενθέσεις), και Β. για να μορφοποιήσετε τον αριθμό με μη αριθμητικούς χαρακτήρες, πριν από την έξοδο στο χρήστη, ώστε να βελτιώσετε την αναγνωσιμότητα (π.χ. με παύλες, κενά, παρενθέσεις).</blockquote>
@@ -87,7 +87,7 @@
 
   </section>
 
-  <footer id="post-footer" style="font-size: 80%; border-top: 1px dashed #DDD; margin-top: 2rem; padding: 0.5rem;">
+  <footer id="post-footer">
   
     Last modified: <span itemprop="dateModified">2011-03-16</span>
   
