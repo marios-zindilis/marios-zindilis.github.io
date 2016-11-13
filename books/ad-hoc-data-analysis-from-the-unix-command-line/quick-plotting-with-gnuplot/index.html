@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Quick Plotting With gnuplot</title>
+  <meta name="description" content="Example - creating a scatter plot">
+
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css"
+    integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/css/zindilis.com.css">
+  <link rel="canonical" href="https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/quick-plotting-with-gnuplot/">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+  
+  <meta property="og:title" content="Quick Plotting With gnuplot">
+
+
+  <meta property="og:type" content="website">
+
+
+
+</head>
+
+
+<body>
+  <header class="site-header">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand fload-md-left float-xs-none" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-md-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+  <div class="container">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Quick Plotting With gnuplot</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="example---creating-a-scatter-plot">Example - creating a scatter plot</h2>
+
+<p>Does the early bird get the worm? Let’s look at the relationship between the 
+time a person leaves for work and their income. Income is recorded in columns 
+297-303, and the time a person leaves for work is recorded in columns 196-198, 
+encoded in ten minute intervals. This pipeline extracts, cleans and formats the 
+data:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c196-198,297-303 | grep -v <span class="s2">"^000"</span> | 
+grep -v <span class="s2">" $"</span> | perl -pe <span class="s1">'substr($_,3,0)=" ";'</span> &gt; time_vs_income</code></pre></figure>
+
+<p>The <code class="highlighter-rouge">grep</code>s knock out records for which either field is null, and the perl 
+script inserts a space between the two columns so <code class="highlighter-rouge">gnuplot</code> can parse the 
+columns apart. Plotting in gnuplot is simple:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>gnuplot
+
+        G N U P L O T
+        Linux version 3.7 patchlevel 1
+        last modified Fri Oct 22 18:00:00 BST 1999
+
+Terminal <span class="nb">type set </span>to <span class="s1">'x11'</span>
+<span class="gp">gnuplot&gt; </span>plot <span class="s1">'time_vs_income'</span> with points</code></pre></figure>
+
+<p>And the resulting plot:</p>
+
+<p><img src="time-vs-income.gif" alt="GnuPlot Graph" title="GnuPlot Graph of Time Over Income" /></p>
+
+<p>Recall that 0 on the x-axis is midnight, and 20 is 200 minutes after midnight 
+or about 3:20am. Increased density in the beginning of the traditional 1st and 
+2nd shift periods is apparent. Folks who work regular business hours clearly 
+have higher incomes. It would be interesting to compute the average income in 
+each time bucket, but that makes a pretty hairy command line perl script. Here 
+is it in all its gruesome glory:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c196-198,297-303 | grep -v <span class="s2">"^000"</span> | 
+grep -v <span class="s2">" $"</span> | perl -ne <span class="s1">'/(\d{3})(\d{7})/; $sum{$1}+=$2; $count{$1}++; END { foreach $k
+(keys(%count)) {print $k," ",$sum{$k}/$count{$k},"\n"}}'</span> | sort -n &gt; time_vs_avgincome</code></pre></figure>
+
+<p>You can plot the result for yourself if you’re curious.</p>
+
+<h2 id="example---creating-a-bar-chart-with-gnuplot">Example - Creating a bar chart with gnuplot</h2>
+
+<p>Let’s look at historic immigration rates among Washingtonians. Year of 
+immigration is recorded in columns 78-81, and 0000 means the person is a native 
+born citizen. We can apply the usual tricks with <code class="highlighter-rouge">cut</code>, <code class="highlighter-rouge">grep</code>, <code class="highlighter-rouge">sort</code>, and 
+<code class="highlighter-rouge">uniq</code>, but it’s a bit hard to see the patterns when scrolling back and forth 
+in text output, it would nicer if we could see a plot.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c78-81 | grep -v 0000 | sort | uniq -c | head -10
+ 2 1910
+ 7 1914
+12 1919
+ 7 1920
+ 6 1921
+ 5 1922
+ 7 1923
+ 5 1924
+ 8 1925</code></pre></figure>
+
+<p>Gnuplot is a fine graphing tool for this purpose, but it wants the category 
+label to come first, and the count to come second, so we need to write a perl 
+script to reverse <code class="highlighter-rouge">uniq</code>’s output and stick the result in a file. See 
+<code class="highlighter-rouge">perlrun(1)</code> for details on the <code class="highlighter-rouge">-a</code> and <code class="highlighter-rouge">-F</code> options to perl.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c78-81 | grep -v 0000 | sort | uniq -c |
+perl -lape <span class="s1">'chomp $F[-1]; $_ = join " ", reverse @F'</span> &gt; year_of_immigration</code></pre></figure>
+
+<p>Now we can make a bar chart from the contents of the file with gnuplot.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">gnuplot&gt; </span>plot <span class="s1">'year_of_immigration'</span> with impulses</code></pre></figure>
+
+<p>Here’s the graph gnuplot creates:</p>
+
+<p><img src="year-of-immigration.gif" alt="GnuPlot Graph" title="GnuPlot Graph of Year of Immigration" /></p>
+
+<p>Be a bit careful interpreting this plot, only people who are still alive can be 
+counted, so it naturally goes up and to the right (people who immigrated more 
+recently have a better chance of still being alive). That said, there seems to 
+have been an increase in immigration after the end of World War II, and also a 
+spike after the end if the Vietnam war. I remain at a loss to explain the spike 
+around 1980, consult your local historian.</p>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://gnuplot.sourceforge.net/demo/">Several demos of GnuPlot</a></li>
+</ul>
+
+
+  </div>
+
+</article>
+
+  </div>
+
+  <!--footer id="site-footer">
+  <div class="container">
+
+
+  </div>
+</footer-->
+
+<footer id="site-footer" class="footer-distributed">
+  <div class="container">
+            <div class="footer-right">
+                <a href="/feed.xml"><i class="fa fa-rss"></i></a>
+                <a href="https://www.facebook.com/zindilis"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/MariosZindilis"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/zindilis"><i class="fa fa-linkedin"></i></a>
+                <a href="https://github.com/marios-zindilis"><i class="fa fa-github"></i></a>
+            </div>
+
+            <div class="footer-left">
+                <p class="footer-links">
+                    <a href="/">Home</a> · 
+                    <a href="/docs/">Docs</a> ·
+                    <a href="/projects/">Projects</a> ·
+                    <a href="/about/">About</a>
+                </p>
+                <p>Marios Zindilis</p>
+            </div>
+  </div>
+</footer>
+
+      <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+      integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"
+      integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"
+      integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK"
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      // set padding-bottom of body to height of footer.site-footer:
+      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
+      // http://stackoverflow.com/a/14570614
+      var observeDOM = (function(){
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+          eventListenerSupported = window.addEventListener;
+
+        return function(obj, callback){
+          if( MutationObserver ){
+          // define a new observer
+            var obs = new MutationObserver(function(mutations, observer){
+              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
+              callback();
+            });
+            // have the observer observe foo for changes in children
+            obs.observe( obj, { childList:true, subtree:true });
+          }
+          else if( eventListenerSupported ){
+            obj.addEventListener('DOMNodeInserted', callback, false);
+            obj.addEventListener('DOMNodeRemoved', callback, false);
+          }
+        }
+      })();
+      observeDOM(document.getElementById('site-footer') ,function(){
+        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
+      });
+    </script>
+
+
+  </body>
+</html>

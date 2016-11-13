@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Rewriting The Data With Inline perl</title>
+  <meta name="description" content="  “I’m reminded of the day my daughter came in, looked over my shoulder at some Perl 4 code, and said, ‘What is that, swearing?’”– Larry Wall">
+
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css"
+    integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/css/zindilis.com.css">
+  <link rel="canonical" href="https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/rewriting-the-data-with-inline-perl/">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+  
+  <meta property="og:title" content="Rewriting The Data With Inline perl">
+
+
+  <meta property="og:type" content="website">
+
+
+
+</head>
+
+
+<body>
+  <header class="site-header">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand fload-md-left float-xs-none" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-md-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+  <div class="container">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Rewriting The Data With Inline perl</h1>
+  </header>
+
+  <div class="post-content">
+    <blockquote>
+  <p>“I’m reminded of the day my daughter came in, looked over my shoulder at some 
+Perl 4 code, and said, ‘What is that, swearing?’”
+– Larry Wall</p>
+</blockquote>
+
+<h2 id="command-line-perl">Command Line perl</h2>
+
+<p>A tutorial on perl is beyond the scope of this document; if you don’t know 
+perl, you should learn at least a little bit. If you invoke perl like 
+<code class="highlighter-rouge">perl -n -e '#a perl statement'</code> the <code class="highlighter-rouge">-n</code> option causes perl to wrap your <code class="highlighter-rouge">-e</code> 
+argument in a implicit <code class="highlighter-rouge">while</code> loop like this:</p>
+
+<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1"># a perl statement</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This loop reads standard input a line at a time into the variable <code class="highlighter-rouge">$_</code>, and 
+then executes the statement(s) give by the <code class="highlighter-rouge">-e</code> argument. Given <code class="highlighter-rouge">-p</code> instead of 
+<code class="highlighter-rouge">-n</code>, perl to adds a <code class="highlighter-rouge">print</code> statement to the loop as well:</p>
+
+<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1"># a perl statement</span>
+   <span class="k">print</span> <span class="nv">$_</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="example---using-perl-to-create-an-indicator-variable">Example - Using perl to create an indicator variable</h2>
+
+<p>Education level is recorded in columns 53-54 as ordered set of categories, 
+where 11 and above indicates a college degree. Let’s condense this to a single 
+indicator variable for completed college or not. The raw data:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c53-54 | head -5
+12
+11
+06
+03
+08</code></pre></figure>
+
+<p>And once passed through the perl script:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c53-54 | 
+perl -ne <span class="s1">'print $_&gt;=11?1:0,"\n"'</span> | head -5
+1
+1
+0
+0
+0</code></pre></figure>
+
+<p>And the final result:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">~/census_data&gt;cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c53-54 |
+perl -ne <span class="s1">'print $_&gt;=11?1:0,"\n"'</span> | sort | uniq -c
+37507 0
+21643 1</code></pre></figure>
+
+<p>About 36% of Washingtonians have a college degree.</p>
+
+<h2 id="example---computing-conditional-probability-of-membership-in-two-sets">Example - computing conditional probability of membership in two sets</h2>
+
+<p>Let’s look at the relationship between education level and whether or not 
+people ride their bikes to work. People’s mode of transportation to work is 
+encoded as a series of categories in columns 191-192, where category 9 
+indicates a bicycle. We’ll use an inline perl script to rewrite both education 
+level and mode of transportation:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c53-54,191-192 | 
+perl -ne <span class="s1">'print substr($_,0,2)&gt;=11?1:0,substr($_,2,2)==9?1:0,"\n";'</span> | 
+sort | uniq -c 
+37452 00
+   55 01
+21532 10
+  111 11</code></pre></figure>
+
+<p><code class="highlighter-rouge">55/(55+36447) = 0.15%</code> of non college educated people ride their bike to work. 
+<code class="highlighter-rouge">111/(111+20219) = 0.56%</code> of college educated people ride their bike to work.</p>
+
+<p>Sociological interpretation is left as an exercise for the reader.</p>
+
+<h2 id="example---a-histogram-with-custom-bucket-size">Example - A histogram with custom bucket size</h2>
+
+<p>Suppose we wanted to take a look at distribution of personal incomes. The 
+normal trick of <code class="highlighter-rouge">sort</code> and <code class="highlighter-rouge">uniq</code> would work, but the personal income in the 
+census data has resolution down to the $10 level, so the output would be very 
+long and it would be hard to quickly see the pattern. We can use perl to round 
+the income data down to the nearest $10,000 on the fly. Before the inline perl 
+script:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c297-303 | head -4
+0018000
+0004100
+0004300
+0005300</code></pre></figure>
+
+<p>And after:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c297-303 | 
+perl -pe <span class="s1">'$_=10000*int($_/10000)."\n"'</span> | head -4
+10000
+0
+0
+0</code></pre></figure>
+
+<p>And finally, the distribution (up to $100,000). The extra <code class="highlighter-rouge">grep [0-9]</code> ensures 
+that blank records are not considered in the distribution.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c297-303 | grep <span class="o">[</span>0-9] |
+perl -pe <span class="s1">'$_=10000*int($_/10000)."\n"'</span> | sort -n | uniq -c | head -12
+   20 -10000
+15193      0
+ 8038  10000
+ 6776  20000
+ 5436  30000
+ 3685  40000
+ 2370  50000
+ 1536  60000
+  899  70000
+  521  80000
+  326  90000
+  283 100000</code></pre></figure>
+
+<h2 id="example---finding-the-median-or-any-percentile-of-a-distribution">Example - Finding the median (or any percentile) of a distribution</h2>
+
+<p>If we sort all the incomes in order and had a way to pluck out the middle 
+number, we could easily get the median. I’ll give two ways to do this. The 
+first uses <code class="highlighter-rouge">cat -n</code>. If given the <code class="highlighter-rouge">-n</code> option, <code class="highlighter-rouge">cat</code> prepends line numbers to 
+each line. We see that there are 46,359 non blank records, so the 23179th one 
+in sorted order is the median.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c297-303 | grep <span class="o">[</span>0-9] | wc -l
+46359 
+<span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c297-303 | grep <span class="o">[</span>0-9] | sort | 
+cat -n | grep <span class="s2">"^ *23179"</span>
+23179 0019900</code></pre></figure>
+
+<p>An even simpler method, using head and tail:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c297-303 | grep <span class="o">[</span>0-9] | sort |
+head -23179| tail -1
+0019900</code></pre></figure>
+
+<p>The median income in Washington state in 2000 was $19,900.</p>
+
+<h2 id="example---finding-the-average-of-a-distribution">Example - Finding the average of a distribution</h2>
+
+<p>What about the average? One way to compute the average is to accumulate a 
+running sum with perl, and do the division by hand at the end:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c297-303 | grep <span class="o">[</span>0-9] | 
+perl -ne <span class="s1">'print  $sum+=$_,"\n";'</span> | cat -n | tail -1
+46359 1314603988</code></pre></figure>
+
+<p>$1314603988/ 46359 = $28357.0393666818</p>
+
+<p>You could also get perl to do this division with an <code class="highlighter-rouge">END</code> block which perl will 
+execute only after it has exhausted standard input:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c297-303 | grep <span class="o">[</span>0-9] | 
+perl -ne <span class="s1">'$sum += $_; $count++; END {print $sum/$count,"\n";}'</span> 
+28357.0393666818</code></pre></figure>
+
+
+  </div>
+
+</article>
+
+  </div>
+
+  <!--footer id="site-footer">
+  <div class="container">
+
+
+  </div>
+</footer-->
+
+<footer id="site-footer" class="footer-distributed">
+  <div class="container">
+            <div class="footer-right">
+                <a href="/feed.xml"><i class="fa fa-rss"></i></a>
+                <a href="https://www.facebook.com/zindilis"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/MariosZindilis"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/zindilis"><i class="fa fa-linkedin"></i></a>
+                <a href="https://github.com/marios-zindilis"><i class="fa fa-github"></i></a>
+            </div>
+
+            <div class="footer-left">
+                <p class="footer-links">
+                    <a href="/">Home</a> · 
+                    <a href="/docs/">Docs</a> ·
+                    <a href="/projects/">Projects</a> ·
+                    <a href="/about/">About</a>
+                </p>
+                <p>Marios Zindilis</p>
+            </div>
+  </div>
+</footer>
+
+      <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+      integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"
+      integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"
+      integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK"
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      // set padding-bottom of body to height of footer.site-footer:
+      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
+      // http://stackoverflow.com/a/14570614
+      var observeDOM = (function(){
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+          eventListenerSupported = window.addEventListener;
+
+        return function(obj, callback){
+          if( MutationObserver ){
+          // define a new observer
+            var obs = new MutationObserver(function(mutations, observer){
+              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
+              callback();
+            });
+            // have the observer observe foo for changes in children
+            obs.observe( obj, { childList:true, subtree:true });
+          }
+          else if( eventListenerSupported ){
+            obj.addEventListener('DOMNodeInserted', callback, false);
+            obj.addEventListener('DOMNodeRemoved', callback, false);
+          }
+        }
+      })();
+      observeDOM(document.getElementById('site-footer') ,function(){
+        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
+      });
+    </script>
+
+
+  </body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Standard Input, Standard Output, Redirection and Pipes</title>
+  <meta name="description" content="  “This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, beca...">
+
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css"
+    integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/css/zindilis.com.css">
+  <link rel="canonical" href="https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/standard-input-standard-output-redirection-and-pipes/">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+  
+  <meta property="og:title" content="Standard Input, Standard Output, Redirection and Pipes">
+
+
+  <meta property="og:type" content="website">
+
+
+
+</head>
+
+
+<body>
+  <header class="site-header">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand fload-md-left float-xs-none" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-md-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+  <div class="container">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Standard Input, Standard Output, Redirection and Pipes</h1>
+  </header>
+
+  <div class="post-content">
+    <blockquote>
+  <p>“This is the Unix philosophy: Write programs that do one thing and do it 
+well. Write programs to work together. Write programs to handle text streams, 
+because that is a universal interface.” 
+– Doug McIlroy, the inventor of Unix pipes</p>
+</blockquote>
+
+<p>The commands I’m going to talk about here are called filters. Data passes 
+through them and they modify it a bit on the way. These commands read data from 
+their <strong>standard input</strong> and write data to their <strong>standard output</strong>. By 
+default, standard input is your keyboard and standard output is your screen. 
+For example, the <code class="highlighter-rouge">tr</code> command is a filter that translates one set of characters 
+to another. This invocation of <code class="highlighter-rouge">tr</code> turns all lower case characters to upper 
+case characters:</p>
+
+<p>You type:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>tr <span class="s2">"[:lower:]"</span> <span class="s2">"[:upper:]"</span>
+hello</code></pre></figure>
+
+<p>You get:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HELLO
+</code></pre>
+</div>
+
+<p>Then type:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">i feel like shouting</code></pre></figure>
+
+<p>You get:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>I FEEL LIKE SHOUTING
+</code></pre>
+</div>
+
+<p>You can exit from this with <code class="highlighter-rouge">[ctrl-d]</code>. This tells the command line that you’re 
+done entering input.</p>
+
+<p>You can tell your shell to connect standard output to a file instead of your 
+screen using the <code class="highlighter-rouge">&gt;</code> operator. The term for this is <strong>redirection</strong>. One would 
+talk about <strong>redirecting</strong> the output of <code class="highlighter-rouge">tr</code> to a file. Later you can use the 
+<code class="highlighter-rouge">cat</code> command to write the file to your screen.</p>
+
+<p>You type:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>tr a-z A-Z &gt; tr_output
+this is a <span class="nb">test</span>
+<span class="o">[</span>ctrl-d]
+<span class="gp">$ </span>cat tr_output</code></pre></figure>
+
+<p>You get:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>THIS IS A TEST
+</code></pre>
+</div>
+
+<p>Many Unix commands that take a file as an argument will read from standard 
+input if not given a file. For example, the <code class="highlighter-rouge">grep</code> command searches a file for 
+a string and prints the lines that match. If I wanted to find my entry in the 
+password file I might say:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep jrauser /etc/passwd
+jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
+
+<p>But I could also redirect a file to <code class="highlighter-rouge">grep</code>’s standard input using the <code class="highlighter-rouge">&lt;</code> 
+operator. You can see that the <code class="highlighter-rouge">&lt;</code> and <code class="highlighter-rouge">&gt;</code> operators are like little arrows 
+that indicate the flow of data.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep jrauser &lt; /etc/passwd
+jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
+
+<p>You can use the pipe <code class="highlighter-rouge">|</code> operator to connect the standard output of one command 
+to the standard input of the next. The <code class="highlighter-rouge">cat</code> command reads a file and writes it 
+to its standard output, so yet another way to find my entry in the password 
+file is:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat /etc/passwd | grep jrauser
+jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
+
+<p>For a slightly more interesting example, the <code class="highlighter-rouge">mail</code> command will send a message 
+it reads from standard input. Let’s send my entry in the password file to me in 
+an email.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat /etc/passwd | grep jrauser | mail -s <span class="s2">"passwd entry"</span> jrauser@example.com</code></pre></figure>
+
+<h2 id="using-output-with-headers">Using output with headers</h2>
+
+<p>In many situations, you end up with output that has a first line that is a 
+header describing the data, and subsequent lines that are the data. An example 
+is <code class="highlighter-rouge">ps</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ps | head -5
+  PID TTY           TIME CMD
+22313 ttys000    0:00.86 -bash
+31537 ttys001    0:00.06 -bash
+22341 ttys002    0:00.28 -bash
+70093 ttys002    0:00.00 head -5</code></pre></figure>
+
+<p>If you wish to manipulate the data but not the header use <code class="highlighter-rouge">tail</code> with the <code class="highlighter-rouge">-n</code> 
+switch to start at line 2. For example:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ps | tail -n +2 | grep bash | head -5
+22313 ttys000    0:00.86 -bash
+31537 ttys001    0:00.06 -bash
+22341 ttys002    0:00.28 -bash
+70120 ttys002    0:00.00 -bash</code></pre></figure>
+
+<p>This output shows only <code class="highlighter-rouge">bash</code> processes because of <code class="highlighter-rouge">grep</code>.</p>
+
+
+  </div>
+
+</article>
+
+  </div>
+
+  <!--footer id="site-footer">
+  <div class="container">
+
+
+  </div>
+</footer-->
+
+<footer id="site-footer" class="footer-distributed">
+  <div class="container">
+            <div class="footer-right">
+                <a href="/feed.xml"><i class="fa fa-rss"></i></a>
+                <a href="https://www.facebook.com/zindilis"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/MariosZindilis"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/zindilis"><i class="fa fa-linkedin"></i></a>
+                <a href="https://github.com/marios-zindilis"><i class="fa fa-github"></i></a>
+            </div>
+
+            <div class="footer-left">
+                <p class="footer-links">
+                    <a href="/">Home</a> · 
+                    <a href="/docs/">Docs</a> ·
+                    <a href="/projects/">Projects</a> ·
+                    <a href="/about/">About</a>
+                </p>
+                <p>Marios Zindilis</p>
+            </div>
+  </div>
+</footer>
+
+      <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+      integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"
+      integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"
+      integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK"
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      // set padding-bottom of body to height of footer.site-footer:
+      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
+      // http://stackoverflow.com/a/14570614
+      var observeDOM = (function(){
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+          eventListenerSupported = window.addEventListener;
+
+        return function(obj, callback){
+          if( MutationObserver ){
+          // define a new observer
+            var obs = new MutationObserver(function(mutations, observer){
+              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
+              callback();
+            });
+            // have the observer observe foo for changes in children
+            obs.observe( obj, { childList:true, subtree:true });
+          }
+          else if( eventListenerSupported ){
+            obj.addEventListener('DOMNodeInserted', callback, false);
+            obj.addEventListener('DOMNodeRemoved', callback, false);
+          }
+        }
+      })();
+      observeDOM(document.getElementById('site-footer') ,function(){
+        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
+      });
+    </script>
+
+
+  </body>
+</html>

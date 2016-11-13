@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marios Zindilis - Joining The Data with join</title>
+  <meta name="description" content="Please note: join assumes that that input data is sorted based on the key on which the join is going to take place.">
+
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css"
+    integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/css/zindilis.com.css">
+  <link rel="canonical" href="https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/joining-the-data-together-with-join/">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+  
+  <meta property="og:title" content="Joining The Data with join">
+
+
+  <meta property="og:type" content="website">
+
+
+
+</head>
+
+
+<body>
+  <header class="site-header">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand fload-md-left float-xs-none" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-md-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+  <div class="container">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Joining The Data with join</h1>
+  </header>
+
+  <div class="post-content">
+    <p><strong>Please note</strong>: <code class="highlighter-rouge">join</code> assumes that that input data is sorted based on the key 
+on which the join is going to take place.</p>
+
+<h2 id="delimited-data">Delimited data</h2>
+
+<p>In delimited data, elements of a record are separated by a special ‘delimiter’ 
+character. In the CSV files, fields are delimited by commas or tabs:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat j1
+1,a
+1,b
+2,c
+2,d
+2,e
+3,f
+3,g
+4,h
+4,i
+5,j</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat j2
+1,A
+1,B
+1,C
+2,D
+2,E
+4,F
+4,G
+5,H
+6,I
+6,J</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 j1 j2
+1,a,A
+1,a,B
+1,a,C
+1,b,A
+1,b,B
+1,b,C
+2,c,D
+2,c,E
+2,d,D
+2,d,E
+2,e,D
+2,e,E
+3,f,
+3,g,
+4,h,F
+4,h,G
+4,i,F
+4,i,G
+5,j,H
+6,,I
+6,,J</code></pre></figure>
+
+<p>Explanation of options:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"-t ,"          Input and output field separator is "," (for CSV)
+"-a 1"          Output a line for every line of j1 not matched in j2
+"-a 2"          Output a line for every line of j2 not matched in j1
+"-o 0,1.2,2.2"  Output field format specification
+</code></pre>
+</div>
+
+<p>For the last option, <code class="highlighter-rouge">0</code> denotes the match (join) field (needed when using 
+<code class="highlighter-rouge">-a</code>), <code class="highlighter-rouge">1.2</code> denotes field 2 from file 1 (“j1”) and <code class="highlighter-rouge">2.2</code> denotes field 2 from 
+file 2 (“j2”).</p>
+
+<p>Using the <code class="highlighter-rouge">-a</code> option creates a full outer join as in SQL.</p>
+
+<p>This command must be given two and only two input files.</p>
+
+<h2 id="multi-file-joins">Multi-file Joins</h2>
+
+<p>To join several files you can loop through them.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 j1 j2 &gt; J</code></pre></figure>
+
+<p>File “J” is now the full outer join of “j1”, “j2”.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 J j3 &gt; J</code></pre></figure>
+
+<p>and so on through j4, j5…</p>
+
+<p>For many files this is best done with a loop:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="k">for </span>i <span class="k">in</span> <span class="k">*</span> ; <span class="k">do </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 J <span class="nv">$i</span> &gt; J ; <span class="k">done</span></code></pre></figure>
+
+<h2 id="sorted-data-note">Sorted Data Note</h2>
+
+<p><code class="highlighter-rouge">join</code> assumes that the input data has been sorted by the field to be joined. 
+See section on <code class="highlighter-rouge">sort</code> for details.</p>
+
+
+  </div>
+
+</article>
+
+  </div>
+
+  <!--footer id="site-footer">
+  <div class="container">
+
+
+  </div>
+</footer-->
+
+<footer id="site-footer" class="footer-distributed">
+  <div class="container">
+            <div class="footer-right">
+                <a href="/feed.xml"><i class="fa fa-rss"></i></a>
+                <a href="https://www.facebook.com/zindilis"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/MariosZindilis"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/zindilis"><i class="fa fa-linkedin"></i></a>
+                <a href="https://github.com/marios-zindilis"><i class="fa fa-github"></i></a>
+            </div>
+
+            <div class="footer-left">
+                <p class="footer-links">
+                    <a href="/">Home</a> · 
+                    <a href="/docs/">Docs</a> ·
+                    <a href="/projects/">Projects</a> ·
+                    <a href="/about/">About</a>
+                </p>
+                <p>Marios Zindilis</p>
+            </div>
+  </div>
+</footer>
+
+      <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+      integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"
+      integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"
+      integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK"
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      // set padding-bottom of body to height of footer.site-footer:
+      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
+      // http://stackoverflow.com/a/14570614
+      var observeDOM = (function(){
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+          eventListenerSupported = window.addEventListener;
+
+        return function(obj, callback){
+          if( MutationObserver ){
+          // define a new observer
+            var obs = new MutationObserver(function(mutations, observer){
+              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
+              callback();
+            });
+            // have the observer observe foo for changes in children
+            obs.observe( obj, { childList:true, subtree:true });
+          }
+          else if( eventListenerSupported ){
+            obj.addEventListener('DOMNodeInserted', callback, false);
+            obj.addEventListener('DOMNodeRemoved', callback, false);
+          }
+        }
+      })();
+      observeDOM(document.getElementById('site-footer') ,function(){
+        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
+      });
+    </script>
+
+
+  </body>
+</html>
