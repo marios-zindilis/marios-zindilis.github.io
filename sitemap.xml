@@ -1594,4 +1594,49 @@
     <loc>https://zindilis.com/docs/%CF%81%CF%8D%CE%B8%CE%BC%CE%B9%CF%83%CE%B7-centos-6-%CF%89%CF%82-router.el.html</loc>
   </url>
 
+
+  <url>
+    <loc>https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/appendices/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/counting-part-1-grep-and-wc/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/counting-part-2-sort-and-uniq/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/joining-the-data-together-with-join/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/picking-the-data-apart-with-cut/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/preliminaries/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/quick-plotting-with-gnuplot/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/rewriting-the-data-with-inline-perl/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/standard-input-standard-output-redirection-and-pipes/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/books/</loc>
+  </url>
+
 </urlset>
