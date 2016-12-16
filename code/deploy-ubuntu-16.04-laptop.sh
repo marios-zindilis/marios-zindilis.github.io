@@ -16,19 +16,21 @@ sudo apt-get install --yes encfs
 sudo apt-get install --yes vim
 sudo apt-get install --yes git
 sudo apt-get install --yes pylint
-sudo apt-get install --yes apache2
-sudo apt-get install --yes mysql-server 
-sudo apt-get install --yes php-mysql
-sudo apt-get install --yes php libapache2-mod-php php-mcrypt
+# sudo apt-get install --yes apache2
+# sudo apt-get install --yes mysql-server 
+# sudo apt-get install --yes php-mysql
+# sudo apt-get install --yes php libapache2-mod-php php-mcrypt
 sudo apt-get install --yes chromium-browser
 sudo apt-get install --yes python-setuptools
 sudo apt-get install --yes python-pip
 sudo apt-get install --yes python3-pip
 sudo apt-get install --yes guake guake-indicator
+sudo apt-get install --yes nemo
 
+gconftool-2 --install-schema-file=/usr/share/gconf/schemas/guake.schemas
 gsettings set com.canonical.Unity.Lenses remote-content-search "'none'"
 
-cat << EOF > .config/autostart/guake.desktop
+cat << EOF > ~/.config/autostart/guake.desktop
 [Desktop Entry]
 Type=Application
 Exec=guake-indicator
@@ -45,12 +47,9 @@ sudo sed -i 's/Exec=firefox %u/Exec=firefox --private-window %u/' /usr/share/app
 sudo sed -i 's/Exec=chromium-browser %U/Exec=chromium-browser --incognito %U/' /usr/share/applications/chromium-browser.desktop
 sudo sed -i 's/enabled=1/enabled=0/' /etc/default/apport
 
-sudo echo '127.0.0.1 s1.2mdn.net' >> /etc/hosts
-
 git config --global user.email "marios@zindilis.com"
 git config --global user.name "Marios Zindilis"
 git config --global push.default simple
 
-# install nemo (Cinnamon File Manager)
-# install Flatabulous theme, activate with unity-tweak-tool
-# install ultraflat icon theme
+sudo sh -c 'echo "[Seat:*]" > /etc/lightdm/lightdm.conf.d/50-no-guest.conf'
+sudo sh -c 'echo "allow-guest=false" >> /etc/lightdm/lightdm.conf.d/50-no-guest.conf'
