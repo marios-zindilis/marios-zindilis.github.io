@@ -69,7 +69,7 @@
 
   <section itemprop="articleBody">
     <p>To get a list of devices in Zenoss that have a <strong>Serial Number</strong> 
-defined, run the following script as user <code class="highlighter-rouge">zenoss</code>. It will display the 
+defined, run the following script as user <code>zenoss</code>. It will display the 
 Device Title, the Serial Number, and -as an added bonus- the Hardware 
 Manufacturer.</p>
 
@@ -82,7 +82,6 @@ Manufacturer.</p>
 <span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">Devices</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWSerialNumber</span><span class="p">():</span>
         <span class="k">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWSerialNumber</span><span class="p">(),</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWManufacturerName</span><span class="p">()</span></code></pre></figure>
-
 
   </section>
 

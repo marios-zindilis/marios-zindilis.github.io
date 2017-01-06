@@ -73,20 +73,22 @@
   <section itemprop="articleBody">
     <p class="lead">This article is a look into the performance of one of the
 regular expressions used in the
-<a href="https://github.com/trentm/python-markdown2" title="python-markdown2 on Github"> python-markdown2</a> Python module for
+<a href="https://github.com/trentm/python-markdown2" 
+title="python-markdown2 on Github"> python-markdown2</a> Python module for
 converting Markdown syntax to HTML. It was initially written for pure fun, and
 in celebration of its own pointlessness, but eventually the changes proposed
 here made it upstream in
-<a href="https://github.com/trentm/python-markdown2/pull/207" title="python-markdown2 pull request 207">pull request 207</a>.</p>
+<a href="https://github.com/trentm/python-markdown2/pull/207" 
+title="python-markdown2 pull request 207">pull request 207</a>.</p>
 
-<h2 id="replace-tabs-with-spaces">Replace tabs with spaces</h2>
+<h2>Replace tabs with spaces</h2>
 
 <p>This snippet of code replaces tab characters with a predefined number of 
 spaces. It is a Python port of the Perl code mentioned by 
-<a href="http://search.cpan.org/~bartl/" title="Bart Lateur">Bart Lateur</a> in a post about 
+<a href="http://search.cpan.org/%7Ebartl/" title="Bart Lateur">Bart Lateur</a> in a post about 
 <a href="http://www.nntp.perl.org/group/perl.macperl.anyperl/2002/03/msg154.html" title="Perl Tabs to Spaces">turning tabs to spaces in Perl</a>.</p>
 
-<h3 id="a-detour-to-perl">A detour to Perl</h3>
+<h3>A detour to Perl</h3>
 
 <p>The initial post in that thread was replacing tabs like this:</p>
 
@@ -101,13 +103,13 @@ four. So, the suggested substitution in Perl becomes:</p>
 
 <figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="sr">s/(.*?)\t/$1.(' ' x (4-length($1)%4))/ge</span><span class="p">;</span></code></pre></figure>
 
-<p>There are two flags used there: <code class="highlighter-rouge">g</code> applies the substitution for all matches of 
-the left pattern (<code class="highlighter-rouge">(.*?)\t</code>). Without that flag, only the first match would be 
-processed. The second flag, <code class="highlighter-rouge">e</code>, forces the substitute 
-(<code class="highlighter-rouge">$1.(' ' x (4-length($1)%4))</code>) to be evaluated as an expression itself. 
+<p>There are two flags used there: <code>g</code> applies the substitution for all matches of 
+the left pattern (<code>(.*?)\t</code>). Without that flag, only the first match would be 
+processed. The second flag, <code>e</code>, forces the substitute 
+(<code>$1.(&#39; &#39; x (4-length($1)%4))</code>) to be evaluated as an expression itself. 
 Without this flag, the second part would be handled as a raw string.</p>
 
-<h3 id="back-to-python">Back to Python</h3>
+<h3>Back to Python</h3>
 
 <p>Here is the Python code, cleaned up a little:</p>
 
@@ -124,21 +126,21 @@ Without this flag, the second part would be handled as a raw string.</p>
         <span class="k">return</span> <span class="n">text</span>
     <span class="k">return</span> <span class="n">_detab_re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="n">_detab_sub</span><span class="p">,</span> <span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></code></pre></figure>
 
-<h4 id="explanation">Explanation</h4>
+<h4>Explanation</h4>
 
-<p>The <code class="highlighter-rouge">_detab_re</code> object is a compiled Regular Expression object, built with the 
+<p>The <code>_detab_re</code> object is a compiled Regular Expression object, built with the 
 same pattern as the one used in the Perl example, and with the multiline flag 
-enabled (<code class="highlighter-rouge">re.M</code>). You can test this out at <a href="http://regexr.com/3c8o7" title="Tabs to spaces regular expression">RegExr</a>. The <code class="highlighter-rouge">subn()</code> 
+enabled (<code>re.M</code>). You can test this out at <a href="http://regexr.com/3c8o7" title="Tabs to spaces regular expression">RegExr</a>. The <code>subn()</code> 
 method of that object is called in the last line. It takes two parameters: the 
-<code class="highlighter-rouge">_detab_sub()</code> function, and the text to be processed. For every match of the 
-pattern, <code class="highlighter-rouge">_detab_sub()</code> is called, and the matched string is passed to the 
-<code class="highlighter-rouge">_detab_sub()</code> function for processing. Finally, <code class="highlighter-rouge">subn()</code> returns a tuple with 
+<code>_detab_sub()</code> function, and the text to be processed. For every match of the 
+pattern, <code>_detab_sub()</code> is called, and the matched string is passed to the 
+<code>_detab_sub()</code> function for processing. Finally, <code>subn()</code> returns a tuple with 
 the text with the pattern substituted, and the number of substitutions that
-happened. From that result, only the text is kept, with that <code class="highlighter-rouge">subn()[0]</code>, 
-which seems a bit redundant, since the <code class="highlighter-rouge">sub()</code> method would do that without 
-requiring the <code class="highlighter-rouge">[0]</code> subscription.</p>
+happened. From that result, only the text is kept, with that <code>subn()[0]</code>, 
+which seems a bit redundant, since the <code>sub()</code> method would do that without 
+requiring the <code>[0]</code> subscription.</p>
 
-<h4 id="no-regular-expressions-please">No regular expressions please</h4>
+<h4>No regular expressions please</h4>
 
 <p>Here is a Python snippet that does the same thing as the previous one, without 
 using regular expressions:</p>
@@ -163,11 +165,11 @@ using regular expressions:</p>
         <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_detab_no_re_sub</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
     <span class="k">return</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="performance">Performance</h4>
+<h4>Performance</h4>
 
 <p>In the <a href="/blog/2015/11/07/regex-in-python-markdown2-pt1.html" title="Regular expressions in python-markdown2 (part 1)">previous article on regular expressions in python-markdown2</a> I 
-dismissed the difference between a substring substitution with <code class="highlighter-rouge">re.sub()</code> 
-versus <code class="highlighter-rouge">str.replace()</code> as being negligible, but in this case it seems that it 
+dismissed the difference between a substring substitution with <code>re.sub()</code> 
+versus <code>str.replace()</code> as being negligible, but in this case it seems that it 
 is more substantial. This simple example already indicates some difference:</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">text</span> <span class="o">=</span> <span class="s">'''
@@ -209,7 +211,7 @@ wc -l bzip2.c
 <p>That is significant difference, not using regular expressions makes the 
 process about 8 times faster.</p>
 
-<h3 id="conclusion">Conclusion</h3>
+<h3>Conclusion</h3>
 
 <p>Based on this article, and on the previous one, I would prefer to use other 
 methods for substring replacements than regular expressions.</p>

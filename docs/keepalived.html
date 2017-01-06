@@ -69,29 +69,29 @@
     <p>Notes:</p>
 
 <ul>
-  <li><strong><code class="highlighter-rouge">lb_algo</code></strong> determines <em>which</em> real server gets to serve a request, and 
+<li>  <strong><code>lb_algo</code></strong> determines <em>which</em> real server gets to serve a request, and 
 possible algorithms include round-robin (weighted or not), least-connections 
 (weighted or not), etc (see RHEL docs).</li>
-  <li><strong><code class="highlighter-rouge">lb_kind</code></strong> determines <em>how</em> the real server receives the request, and 
+<li>  <strong><code>lb_kind</code></strong> determines <em>how</em> the real server receives the request, and 
 the supported methods on RHEL 7 are NAT and DR.</li>
 </ul>
 
-<h2 id="lbkind-dr"><code class="highlighter-rouge">lb_kind DR</code></h2>
+<h2><code>lb_kind DR</code></h2>
 
 <p>Notes:</p>
 
 <ul>
-  <li>The load balancers and the real servers need to be on the same network 
+<li>  The load balancers and the real servers need to be on the same network 
 segment</li>
-  <li>The Virtual IP is configured on all real servers, and real servers need to 
+<li>  The Virtual IP is configured on all real servers, and real servers need to 
 be configured to ignore ARP requests for the virtual IP. This can be 
-achieved with either <code class="highlighter-rouge">arptables</code>, or <code class="highlighter-rouge">iptables</code> or <code class="highlighter-rouge">sysctl</code> configuration.</li>
+achieved with either <code>arptables</code>, or <code>iptables</code> or <code>sysctl</code> configuration.</li>
 </ul>
 
-<h2 id="see-also">See also</h2>
+<h2>See also</h2>
 
 <ul>
-  <li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Load_Balancer_Administration/">keepalived documentation for RHEL 7</a></li>
+<li>  <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Load_Balancer_Administration/">keepalived documentation for RHEL 7</a></li>
 </ul>
 
   </section>

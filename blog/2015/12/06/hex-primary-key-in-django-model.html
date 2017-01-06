@@ -77,9 +77,9 @@
 be a hexadecimal string of 8 characters instead of an integer.</p>
 
 <p>I wrote this earlier today, and it works fine, but I have a bad feeling about
-it. I don’t know why yet, but something doesn’t feel right. Nevertheless, I am
+it. I don&#39;t know why yet, but something doesn&#39;t feel right. Nevertheless, I am
 putting it here as a note to myself. You should probably not use it. If you do,
-note that if you exhaust the possible IDs, <code class="highlighter-rouge">generate_id()</code> will recurse 
+note that if you exhaust the possible IDs, <code>generate_id()</code> will recurse 
 forever.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
@@ -107,7 +107,6 @@ forever.</p>
         <span class="n">default</span> <span class="o">=</span> <span class="n">generate_id</span>
     <span class="p">)</span>
     <span class="n">first_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span></code></pre></figure>
-
 
   </section>
 

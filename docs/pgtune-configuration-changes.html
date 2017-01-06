@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - PostgreSQL Configuration Changes with pgtune</title>
-  <meta name="description" content="This is an example run of the pgtune script, which examines a system’s hardware and proposes changes to PostgreSQL configuration, to better utilize the capab...">
+  <meta name="description" content="This is an example run of the pgtune script, which examines a system&#39;s hardware and proposes changes to PostgreSQL configuration, to better utilize the c...">
 
   <link
     rel="stylesheet"
@@ -64,30 +64,27 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>This is an example run of the <code class="highlighter-rouge">pgtune</code> script, which examines a system’s 
+    <p>This is an example run of the <code>pgtune</code> script, which examines a system&#39;s 
 hardware and proposes changes to PostgreSQL configuration, to better 
 utilize the capabilities of the hardware for the benefit of the database.</p>
 
 <p>The following configuration differences are from an example of a VM 
 running with 2x Intel Quad @2.33GHz CPUs and 2GB of RAM. The commands 
 run to create the new configuration file with pgtune were:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>pgtune -i /var/lib/pgsql/9.2/data/postgresql.conf -o /var/lib/pgsql/9.2/data/postgresql2.conf
+<div class="highlight"><pre><code class="language-" data-lang="">pgtune -i /var/lib/pgsql/9.2/data/postgresql.conf -o /var/lib/pgsql/9.2/data/postgresql2.conf
 mv postgresql.conf postgresql-factory-default.conf
 mv postgresql2.conf postgresql.conf
 chown postgres:postgres postgresql.conf
 service postgresql restart
-</code></pre>
-</div>
-
-<h2 id="differences">Differences</h2>
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt; max_connections = 100
+</code></pre></div>
+<h2>Differences</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt; max_connections = 100
 &gt; max_connections = 80
 ---
 &lt; shared_buffers = 32MB
 &gt; shared_buffers = 448MB
 ---
-&lt; #default_statistics_target = 100	
+&lt; #default_statistics_target = 100  
 &gt; default_statistics_target = 50 
 ---
 &lt; #maintenance_work_mem = 16MB
@@ -110,9 +107,7 @@ service postgresql restart
 ---
 &lt; #checkpoint_segments = 3
 &gt; checkpoint_segments = 16 
-</code></pre>
-</div>
-
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

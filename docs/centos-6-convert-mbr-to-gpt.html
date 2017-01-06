@@ -69,52 +69,40 @@ disk, as opposed to an MBR one. This, however, is not possible during
 the installation of CentOS, so you might need to handle it either 
 before the installation (e.g: with booting a Live CD that supports GPT 
 and creating the partition table before the installation) or after the 
-installation, with the use of <code class="highlighter-rouge">gdisk</code>.</p>
+installation, with the use of <code>gdisk</code>.</p>
 
-<p>Using <code class="highlighter-rouge">gdisk</code> is actually very easy, although you should keep in mind 
+<p>Using <code>gdisk</code> is actually very easy, although you should keep in mind 
 that there is no guarrantee that your data will be safe.</p>
 
 <p>For this example, installation of CentOS 6.2 was done on a system with 
 one 3 TB disk. During the installation, the following partitions were 
 created:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>/dev/sda1  0.5 GB /boot
+<div class="highlight"><pre><code class="language-" data-lang="">/dev/sda1  0.5 GB /boot
 /dev/sda2 13.0 GB LVM PV (4GB swap, 9GB /root)
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>This left almost all of the 3 TB on the disk available.</p>
 
-<p>After the installation is done, download <code class="highlighter-rouge">gdisk</code> for CentOS 6 from 
+<p>After the installation is done, download <code>gdisk</code> for CentOS 6 from 
 <a href="http://download.opensuse.org/repositories/home:/srs5694/CentOS_CentOS-6/x86_64/">OpenSUSE Build Service</a>. 
-You can also find more versions of <code class="highlighter-rouge">gdisk</code> at <a href="http://www.rodsbooks.com/gdisk/download.html">rodsbooks.com</a>.
+You can also find more versions of <code>gdisk</code> at <a href="http://www.rodsbooks.com/gdisk/download.html">rodsbooks.com</a>.
 Example download:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>wget http://download.opensuse.org/repositories/home:/srs5694/CentOS_CentOS-6/x86_64/gdisk-0.8.8-133.1.x86_64.rpm
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">wget http://download.opensuse.org/repositories/home:/srs5694/CentOS_CentOS-6/x86_64/gdisk-0.8.8-133.1.x86_64.rpm
+</code></pre></div>
 <p>After the download completes, install with:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum install gdisk-0.8.8-133.1.x86_64.rpm
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">yum install gdisk-0.8.8-133.1.x86_64.rpm
+</code></pre></div>
 <p>You can now very simply convert the MBR partition table to GPT with:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>gdisk /dev/sda
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">gdisk /dev/sda
+</code></pre></div>
 <p>The new GPT will be available on the next reboot. You can then create 
 a partition bigger than 2 TB in the unallocated space, either with 
-<code class="highlighter-rouge">gdisk</code> or with <code class="highlighter-rouge">parted</code>, then create a filesystem inside it with <code class="highlighter-rouge">mkfs</code>, 
-and finally mount it and start using it!</p>
+<code>gdisk</code> or with <code>parted</code>, then create a filesystem inside it with <code>mkfs</code>, 
+and finally mount it and start using it! </p>
 
-<h2 id="see-also">See Also</h2>
+<h2>See Also</h2>
 
 <ul>
-  <li><a href="http://www.rodsbooks.com/gdisk/">gdisk WebSite</a></li>
+<li>  <a href="http://www.rodsbooks.com/gdisk/">gdisk WebSite</a></li>
 </ul>
 
   </section>

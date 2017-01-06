@@ -6,9 +6,187 @@
 </description>
     <link>https://zindilis.com/</link>
     <atom:link href="https://zindilis.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 16 Dec 2016 08:34:00 +0000</pubDate>
-    <lastBuildDate>Fri, 16 Dec 2016 08:34:00 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Jan 2017 01:31:02 +0000</pubDate>
+    <lastBuildDate>Fri, 06 Jan 2017 01:31:02 +0000</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      
+        <item>
+          <title>Single-App Django Project Anatomy</title>
+          <description>&lt;p&gt;I watched a talk from DjangoCon 2014 called &lt;a href=&quot;https://www.youtube.com/watch?v=ajEDo1semzs&quot; title=&quot;DjangoCon 2014 - Anatomy of a Django Project&quot;&gt;Anatomy of a Django Project&lt;/a&gt;,
+in which &lt;a href=&quot;http://mlavin.org/&quot; title=&quot;Mark Lavin&quot;&gt;Mark Lavin&lt;/a&gt; examines the location of some of the files that are
+automatically created by &lt;code&gt;django-admin startproject myproject&lt;/code&gt; and by
+&lt;code&gt;django-admin startapp myapp&lt;/code&gt; (or &lt;code&gt;manage.py startapp myapp&lt;/code&gt;, they are the
+same thing). Two themes from that talk resonated with me:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Django projects are still Python code.&lt;/strong&gt; Many people who use Django,
+myself included, often forget that Django is still Python code. You can
+move files around if you want, you can rename them, you can do whatever
+you could do if your code was &lt;em&gt;not&lt;/em&gt; a Django website, as long as modules
+are still able to import one another when needed. This article show you
+how to do something along those lines.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Naming the project and the app for single-app projects kinda sucks.&lt;/strong&gt;
+Sometimes you want to create a single-app Django project. Perhaps you are
+certain that your project will only ever contain one app, or maybe it is a
+proof-of-concept thing that you&amp;#39;re tinkering with. You start a boilerplate
+project with &lt;code&gt;django-admin startproject something_awesome&lt;/code&gt;, only to
+discover that you can&amp;#39;t name your app &lt;code&gt;something_awesome&lt;/code&gt; because that
+namespace is already occupied, in the form of a directory in which Django
+holds some project-wide files. You then end up naming your app &lt;code&gt;core&lt;/code&gt;, or
+&lt;code&gt;common&lt;/code&gt;, or &lt;code&gt;main&lt;/code&gt;, or something that is not cool, and most importantly
+it&amp;#39;s not semantic. This articles shows you how to overcome this hurdle.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;Anatomy of a Default Django Project&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;#39;s take a look at the file structure of a default Django project with one
+app. To create one, do something like:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;django-admin startproject something_awesome
+cd something_awesome
+django-admin startapp core
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here&amp;#39;s the file structure that Django created for you:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ tree
+.
+├── core
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── manage.py
+└── something_awesome
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can see that the &lt;code&gt;something_awesome&lt;/code&gt; directory is used to hold a few files,
+those are project-wide files. You can&amp;#39;t name your app &lt;code&gt;something_awesome&lt;/code&gt;, so
+you had to name it &lt;code&gt;core&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Simpler Structure for Single-App Projects&lt;/h2&gt;
+
+&lt;p&gt;Here&amp;#39;s how to create a simpler structure, if you&amp;#39;re only creating a single-app
+website.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create the Django project:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;django-admin startproject something_awesome
+cd something_awesome
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is the file structure after that command:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ tree
+.
+├── manage.py
+└── something_awesome
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Move everything from the &lt;code&gt;something_awesome&lt;/code&gt; directory to the project root,
+then remove that directory and &lt;code&gt;__init__.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;mv something_awesome/* .
+rmdir something_awesome
+rm __init__.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here&amp;#39;s the new structure:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ tree
+.
+├── manage.py
+├── settings.py
+├── urls.py
+└── wsgi.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix the location of &lt;code&gt;settings&lt;/code&gt; in &lt;code&gt;manage.py&lt;/code&gt;. Here&amp;#39;s the diff: &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;span class=&quot;gd&quot;&gt;--- manage.py-orig  2017-01-05 07:02:21.078737918 +0000
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+++ manage.py   2017-01-05 07:02:35.314857268 +0000
+&lt;/span&gt;&lt;span class=&quot;gu&quot;&gt;@@ -3,7 +3,7 @@
+&lt;/span&gt; import sys
+
+ if __name__ == &quot;__main__&quot;:
+&lt;span class=&quot;gd&quot;&gt;-    os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;something_awesome.settings&quot;)
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+    os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;settings&quot;)
+&lt;/span&gt;     try:
+         from django.core.management import execute_from_command_line
+     except ImportError:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix &lt;code&gt;settings.py&lt;/code&gt;. Here&amp;#39;s the diff:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;span class=&quot;gd&quot;&gt;--- settings.py-orig    2017-01-06 01:06:54.082362856 +0000
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+++ settings.py 2017-01-06 01:07:27.427015777 +0000
+&lt;/span&gt;&lt;span class=&quot;gu&quot;&gt;@@ -49,7 +49,7 @@
+&lt;/span&gt;     &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+ ]
+
+&lt;span class=&quot;gd&quot;&gt;-ROOT_URLCONF = &#39;something_awesome.urls&#39;
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+ROOT_URLCONF = &#39;urls&#39;
+&lt;/span&gt;
+ TEMPLATES = [
+     {
+&lt;span class=&quot;gu&quot;&gt;@@ -67,7 +67,7 @@
+&lt;/span&gt;     },
+ ]
+
+&lt;span class=&quot;gd&quot;&gt;-WSGI_APPLICATION = &#39;something_awesome.wsgi.application&#39;
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+WSGI_APPLICATION = &#39;wsgi.application&#39;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix &lt;code&gt;wsgi.py&lt;/code&gt;. Here&amp;#39;s the diff:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;span class=&quot;gd&quot;&gt;--- wsgi.py-orig    2017-01-06 01:09:38.145285387 +0000
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+++ wsgi.py 2017-01-06 01:09:56.393573270 +0000
+&lt;/span&gt;&lt;span class=&quot;gu&quot;&gt;@@ -11,6 +11,6 @@
+&lt;/span&gt;
+ from django.core.wsgi import get_wsgi_application
+
+&lt;span class=&quot;gd&quot;&gt;-os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;something_awesome.settings&quot;)
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;settings&quot;)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;At this point you have a Django project with a &lt;em&gt;flat&lt;/em&gt; file structure, with
+no directory occupying the cool name that you came up with. You can now
+create an app called whatever you want, e.g:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;./manage.py startapp something_awesome
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here&amp;#39;s the new structure:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ tree
+.
+├── manage.py
+├── settings.py
+├── something_awesome
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── urls.py
+└── wsgi.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can now get on with developing your application in this simpler setup.&lt;/p&gt;
+
+&lt;h2&gt;Final Thoughts&lt;/h2&gt;
+
+&lt;p&gt;As I mentioned in the beginning, never forget that Django is just Python code.
+You, as the developer, have the power to manipulate it however you want. If you
+are interested in this matter, check out the DjangoCon 
+&lt;a href=&quot;https://www.youtube.com/watch?v=ajEDo1semzs&quot; title=&quot;DjangoCon 2014 - Anatomy of a Django Project&quot;&gt;Anatomy of a Django Project&lt;/a&gt; talk on Youtube.&lt;/p&gt;
+</description>
+          <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+          <link>https://zindilis.com/blog/2017/01/06/django-anatomy-for-single-app.html</link>
+          <guid isPermaLink="true">https://zindilis.com/blog/2017/01/06/django-anatomy-for-single-app.html</guid>
+          
+          <category>django</category>
+          
+          
+        </item>
+      
     
       
         <item>
@@ -18,11 +196,11 @@ media-related Swiss army knife. It has a surprising number of different control
 &lt;a href=&quot;https://wiki.videolan.org/Interfaces/&quot;&gt;interfaces&lt;/a&gt;, some of which allow 
 access over a network, such as the HTTP, Telnet and RC interfaces. It also has
 a &lt;a href=&quot;https://www.olivieraubert.net/vlc/python-ctypes/doc/&quot;&gt;Python API&lt;/a&gt; but just
-looking at the documentation is terrifying…&lt;/p&gt;
+looking at the documentation is terrifying...&lt;/p&gt;
 
-&lt;p&gt;I did some experimenting with controlling VLC from Python using VLC’s
+&lt;p&gt;I did some experimenting with controlling VLC from Python using VLC&amp;#39;s
 &lt;a href=&quot;https://wiki.videolan.org/documentation:modules/rc/&quot;&gt;Remote Control Interface&lt;/a&gt; (see &lt;a href=&quot;http://getluky.net/2006/04/19/vlcs-awesome-rc-interface/&quot;&gt;this&lt;/a&gt; as well), and wrote a small 
-proof-of-concept code snippet. Here’s how to use it:&lt;/p&gt;
+proof-of-concept code snippet. Here&amp;#39;s how to use it:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;vlc&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VLC&lt;/span&gt;
 
@@ -34,11 +212,11 @@ proof-of-concept code snippet. Here’s how to use it:&lt;/p&gt;
 
 &lt;p&gt;The code is not production-grade. I will not be developing this any more, so I
 am putting it here for anyone to grap and hopefully do something useful with. 
-I’ve only tested this on my Ubuntu machine, and it requires both VLC and 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;screen&lt;/code&gt; to be installed. It also uses &lt;code class=&quot;highlighter-rouge&quot;&gt;subprocess.run()&lt;/code&gt; to start VLC, which
+I&amp;#39;ve only tested this on my Ubuntu machine, and it requires both VLC and 
+&lt;code&gt;screen&lt;/code&gt; to be installed. It also uses &lt;code&gt;subprocess.run()&lt;/code&gt; to start VLC, which
 is not available in any version of Python earlier than 3.5.&lt;/p&gt;
 
-&lt;p&gt;Here’s the library/wrapper, drop it anywhere in your Python &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Here&amp;#39;s the library/wrapper, drop it anywhere in your Python &lt;code&gt;PATH&lt;/code&gt;:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
@@ -103,7 +281,6 @@ is not available in any version of Python earlier than 3.5.&lt;/p&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;shutdown&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Good luck using this for your scripts :)&lt;/p&gt;
-
 </description>
           <pubDate>Sun, 23 Oct 2016 00:00:00 +0100</pubDate>
           <link>https://zindilis.com/blog/2016/10/23/control-vlc-with-python.html</link>
@@ -115,8 +292,6 @@ is not available in any version of Python earlier than 3.5.&lt;/p&gt;
           
           
         </item>
-      
-    
       
     
       

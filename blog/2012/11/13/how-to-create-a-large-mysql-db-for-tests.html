@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - How to create a large MySQL database for tests</title>
-  <meta name="description" content="I wanted to create a fairly big MySQL database (~30GB on disk) for tests. I created a ‘test’ database, and a ‘table2’ table, with a ‘content’ field with data...">
+  <meta name="description" content="I wanted to create a fairly big MySQL database (~30GB on disk) for tests. I created a &#39;test&#39; database, and a &#39;table2&#39; table, with a &#39;cont...">
 
   <link
     rel="stylesheet"
@@ -72,8 +72,8 @@
 
   <section itemprop="articleBody">
     <p>I wanted to create a fairly big MySQL database (~30GB on disk) for 
-tests. I created a ‘<code class="highlighter-rouge">test</code>’ database, and a ‘<code class="highlighter-rouge">table2</code>’ table, with a 
-‘<code class="highlighter-rouge">content</code>’ field with datatype <code class="highlighter-rouge">TEXT</code>. Here’s what I run from Bash:</p>
+tests. I created a &#39;<code>test</code>&#39; database, and a &#39;<code>table2</code>&#39; table, with a 
+&#39;<code>content</code>&#39; field with datatype <code>TEXT</code>. Here&#39;s what I run from Bash:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">marios@mysql-server:~$ </span><span class="nb">time </span><span class="k">for </span>i <span class="k">in</span> <span class="sb">`</span>seq 1 500000<span class="sb">`</span>; <span class="se">\</span>
 <span class="k">do </span><span class="nb">echo</span> <span class="nv">$i</span> of 500000; <span class="se">\</span>
@@ -91,7 +91,6 @@ the desirable size, like:</p>
 
 <figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="n">table2</span> <span class="k">like</span> <span class="k">table</span><span class="p">;</span>
 <span class="k">insert</span> <span class="k">into</span> <span class="n">table2</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span><span class="p">;</span></code></pre></figure>
-
 
   </section>
 

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - mysqlhotcopy</title>
-  <meta name="description" content="mysqlhotcopy is a Perl script for backing up MySQL tables stored in either the MyISAM or ARCHIVE engines. It works very fast because it doesn’t dump the cont...">
+  <meta name="description" content="mysqlhotcopy is a Perl script for backing up MySQL tables stored in either the MyISAM or ARCHIVE engines. It works very fast because it doesn&#39;t dump the ...">
 
   <link
     rel="stylesheet"
@@ -63,31 +63,25 @@
 
   <section itemprop="articleBody">
     <p><strong>mysqlhotcopy</strong> is a Perl script for backing up MySQL tables stored in either 
-the MyISAM or ARCHIVE engines. It works very fast because it doesn’t dump the 
+the MyISAM or ARCHIVE engines. It works very fast because it doesn&#39;t dump the 
 contents of the tables. Instead it takes advantage of the fact that MyISAM 
 tables are contained in separate files, and simply locks the tables and copies 
 the flat files.</p>
 
-<h2 id="example-setup">Example Setup</h2>
+<h2>Example Setup</h2>
 
 <ol>
-  <li>
-    <p>Create a user in MySQL for running <code class="highlighter-rouge">mysqlhotcopy</code>. The user will need to be 
-granted the <code class="highlighter-rouge">SELECT</code>, <code class="highlighter-rouge">RELOAD</code> and <code class="highlighter-rouge">LOCK TABLES</code> privileges on the
+<li><p>Create a user in MySQL for running <code>mysqlhotcopy</code>. The user will need to be 
+granted the <code>SELECT</code>, <code>RELOAD</code> and <code>LOCK TABLES</code> privileges on the
 databases that will be backed up. In this example, I want all databases to 
 be backed up:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; CREATE USER `mysqlhotcopy`;
+<div class="highlight"><pre><code class="language-" data-lang="">mysql&gt; CREATE USER `mysqlhotcopy`;
 mysql&gt; GRANT SELECT, RELOAD, LOCK TABLES ON *.* TO `mysqlhotcopy`@`localhost`;
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Create a daily cron job to backup every database, except for 
-<code class="highlighter-rouge">information_schema</code>, which is a dynamic schema created my the MySQL server 
+</code></pre></div></li>
+<li><p>Create a daily cron job to backup every database, except for 
+<code>information_schema</code>, which is a dynamic schema created my the MySQL server 
 itself and does not exist as files on the filesystem. An example script is:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<div class="highlight"><pre><code class="language-" data-lang=""><span class="c">#!/bin/bash</span>
 
 <span class="k">for </span>database <span class="k">in</span> <span class="k">$(</span>mysql --user mysqlhotcopy           <span class="se">\</span>
                         --batch                       <span class="se">\</span>
@@ -97,18 +91,15 @@ itself and does not exist as files on the filesystem. An example script is:</p>
 <span class="k">do
     </span>mysqlhotcopy <span class="nv">$database</span> /root/mysql-dumps/ --allowold --keepold --user<span class="o">=</span>mysqlhotcopy
 <span class="k">done</span>
-</code></pre>
-    </div>
-
-    <p>This script maintains one previous copy of the databases, by renaming the 
-directory, appending the suffix <code class="highlighter-rouge">_old</code> to the name.</p>
-  </li>
+</code></pre></div>
+<p>This script maintains one previous copy of the databases, by renaming the 
+directory, appending the suffix <code>_old</code> to the name. </p></li>
 </ol>
 
-<h2 id="see-also">See also</h2>
+<h2>See also</h2>
 
 <ul>
-  <li><a href="http://dev.mysql.com/doc/refman/5.6/en/mysqlhotcopy.html">mysqlhotcopy - A Database Backup Program</a></li>
+<li>  <a href="http://dev.mysql.com/doc/refman/5.6/en/mysqlhotcopy.html">mysqlhotcopy - A Database Backup Program</a></li>
 </ul>
 
   </section>

@@ -66,24 +66,23 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>These are some notes on the <abbr title="File Transfer Protocol">FTP</abbr> 
-protocol, and on the <code class="highlighter-rouge">ftp</code> command line client.</p>
+    <p>These are some notes on the <abbr title='File Transfer Protocol'>FTP</abbr> 
+protocol, and on the <code>ftp</code> command line client.</p>
 
-<h2 id="active-vs-passive-mode">Active Vs Passive Mode</h2>
+<h2>Active Vs Passive Mode</h2>
 
 <p>Two network connection are required for FTP transfers. In <strong>active 
-mode</strong>, the client initiates a connection to the server’s port 21, and 
-the server initiates a connection back to the client’s port 21. This 
-incoming connection (from the client’s point of view) is often blocked 
+mode</strong>, the client initiates a connection to the server&#39;s port 21, and 
+the server initiates a connection back to the client&#39;s port 21. This 
+incoming connection (from the client&#39;s point of view) is often blocked 
 by firewalls, and/or not available in <abbr title="Local Area Network">
 LANs</abbr> that are <abbr title="Network Address Translation">NAT</abbr>ed. 
 To overcome this problem, in <strong>passive mode</strong>, the client initiates 
 both connections to the server.</p>
 
-<p>In the <code class="highlighter-rouge">ftp</code> CLI utility, the default mode is active. You can switch 
-between modes with the <code class="highlighter-rouge">passive</code> command:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>marios@zindilis.net ~ $ ftp
+<p>In the <code>ftp</code> CLI utility, the default mode is active. You can switch 
+between modes with the <code>passive</code> command:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">marios@zindilis.net ~ $ ftp
 ftp&gt; open ftp.zindilis.net
 Name (ftp.zindilis.net:marios): 
 331 Please specify the password.
@@ -93,12 +92,10 @@ Passive mode on.
 ftp&gt; passive
 Passive mode off.
 ftp&gt; 
-</code></pre>
-</div>
+</code></pre></div>
+<p>There is no <code>active</code> command, modes are toggled with <code>passive</code>.</p>
 
-<p>There is no <code class="highlighter-rouge">active</code> command, modes are toggled with <code class="highlighter-rouge">passive</code>.</p>
-
-<h2 id="ascii-vs-binary-transfers">ASCII Vs Binary Transfers</h2>
+<h2>ASCII Vs Binary Transfers</h2>
 
 <p>There are two transfer modes, ASCII and Binary. In <strong>ASCII</strong>, files are 
 transferred as characters, some of which (like newlines) are converted 
@@ -106,12 +103,11 @@ to match the operating system of the client. This works well for text
 files, but is almost certain to corrupt any other type of file. In 
 <strong>binary</strong> mode, files are transferred unaltered. This helps maintain 
 the integrity of files, but increases the possibility of text files 
-appearing broken when transferred between different operating systems.</p>
+appearing broken when transferred between different operating systems. </p>
 
-<p>In the <code class="highlighter-rouge">ftp</code> CLI utility, the commands <code class="highlighter-rouge">ascii</code> and <code class="highlighter-rouge">binary</code> switch 
+<p>In the <code>ftp</code> CLI utility, the commands <code>ascii</code> and <code>binary</code> switch 
 transfer modes:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>marios@zindilis.net ~ $ ftp
+<div class="highlight"><pre><code class="language-" data-lang="">marios@zindilis.net ~ $ ftp
 ftp&gt; open ftp.zindilis.net
 Name (ftp.zindilis.net:marios): 
 331 Please specify the password.
@@ -121,10 +117,7 @@ ftp&gt; ascii
 ftp&gt; binary
 200 Switching to Binary mode.
 ftp&gt; 
-</code></pre>
-</div>
-
-
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

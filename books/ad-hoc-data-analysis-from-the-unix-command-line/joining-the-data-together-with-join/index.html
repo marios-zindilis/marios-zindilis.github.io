@@ -57,12 +57,12 @@
   </header>
 
   <div class="post-content">
-    <p><strong>Please note</strong>: <code class="highlighter-rouge">join</code> assumes that that input data is sorted based on the key 
+    <p><strong>Please note</strong>: <code>join</code> assumes that that input data is sorted based on the key 
 on which the join is going to take place.</p>
 
-<h2 id="delimited-data">Delimited data</h2>
+<h2>Delimited data</h2>
 
-<p>In delimited data, elements of a record are separated by a special ‘delimiter’ 
+<p>In delimited data, elements of a record are separated by a special &#39;delimiter&#39; 
 character. In the CSV files, fields are delimited by commas or tabs:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat j1
@@ -113,43 +113,39 @@ character. In the CSV files, fields are delimited by commas or tabs:</p>
 6,,J</code></pre></figure>
 
 <p>Explanation of options:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>"-t ,"          Input and output field separator is "," (for CSV)
+<div class="highlight"><pre><code class="language-" data-lang="">"-t ,"          Input and output field separator is "," (for CSV)
 "-a 1"          Output a line for every line of j1 not matched in j2
 "-a 2"          Output a line for every line of j2 not matched in j1
 "-o 0,1.2,2.2"  Output field format specification
-</code></pre>
-</div>
+</code></pre></div>
+<p>For the last option, <code>0</code> denotes the match (join) field (needed when using 
+<code>-a</code>), <code>1.2</code> denotes field 2 from file 1 (&quot;j1&quot;) and <code>2.2</code> denotes field 2 from 
+file 2 (&quot;j2&quot;).</p>
 
-<p>For the last option, <code class="highlighter-rouge">0</code> denotes the match (join) field (needed when using 
-<code class="highlighter-rouge">-a</code>), <code class="highlighter-rouge">1.2</code> denotes field 2 from file 1 (“j1”) and <code class="highlighter-rouge">2.2</code> denotes field 2 from 
-file 2 (“j2”).</p>
-
-<p>Using the <code class="highlighter-rouge">-a</code> option creates a full outer join as in SQL.</p>
+<p>Using the <code>-a</code> option creates a full outer join as in SQL.</p>
 
 <p>This command must be given two and only two input files.</p>
 
-<h2 id="multi-file-joins">Multi-file Joins</h2>
+<h2>Multi-file Joins</h2>
 
 <p>To join several files you can loop through them.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 j1 j2 &gt; J</code></pre></figure>
 
-<p>File “J” is now the full outer join of “j1”, “j2”.</p>
+<p>File &quot;J&quot; is now the full outer join of &quot;j1&quot;, &quot;j2&quot;.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 J j3 &gt; J</code></pre></figure>
 
-<p>and so on through j4, j5…</p>
+<p>and so on through j4, j5&hellip;</p>
 
 <p>For many files this is best done with a loop:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="k">for </span>i <span class="k">in</span> <span class="k">*</span> ; <span class="k">do </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 J <span class="nv">$i</span> &gt; J ; <span class="k">done</span></code></pre></figure>
 
-<h2 id="sorted-data-note">Sorted Data Note</h2>
+<h2>Sorted Data Note</h2>
 
-<p><code class="highlighter-rouge">join</code> assumes that the input data has been sorted by the field to be joined. 
-See section on <code class="highlighter-rouge">sort</code> for details.</p>
-
+<p><code>join</code> assumes that the input data has been sorted by the field to be joined. 
+See section on <code>sort</code> for details.</p>
 
   </div>
 

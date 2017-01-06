@@ -73,23 +73,24 @@
   <section itemprop="articleBody">
     <p class="lead">This article is a look into the performance of one of the
 regular expressions used in the 
-<a href="https://github.com/trentm/python-markdown2" title="python-markdown2 on Github"> python-markdown2</a> Python module for 
+<a href="https://github.com/trentm/python-markdown2" 
+title="python-markdown2 on Github"> python-markdown2</a> Python module for 
 converting Markdown syntax to HTML. It was initially written for pure fun, and 
 in celebration of its own pointlessness, but eventually the changes proposed
 here made it upstream in
 <a href="https://github.com/trentm/python-markdown2/pull/204">pull request 
 204</a>.</p>
 
-<h2 id="standardize-line-endings">Standardize line endings</h2>
+<h2>Standardize line endings</h2>
 
 <p>This regular expression appears very early in the conversion process:</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">"</span><span class="se">\r\n</span><span class="s">|</span><span class="se">\r</span><span class="s">"</span><span class="p">,</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span></code></pre></figure>
 
-<p>Its use is fairly obvious: it changes all single carriage returns (<code class="highlighter-rouge">\r</code>) and 
-all carriage returns followed by a newline (<code class="highlighter-rouge">\r\n</code>) to single newlines (<code class="highlighter-rouge">\n</code>).
-The same effect can be achieved in Python with two <code class="highlighter-rouge">str.replace()</code> statements 
-and in fact that would be much faster. The following example uses <code class="highlighter-rouge">timeit</code>, 
+<p>Its use is fairly obvious: it changes all single carriage returns (<code>\r</code>) and 
+all carriage returns followed by a newline (<code>\r\n</code>) to single newlines (<code>\n</code>).
+The same effect can be achieved in Python with two <code>str.replace()</code> statements 
+and in fact that would be much faster. The following example uses <code>timeit</code>, 
 which comes with the IPython shell:</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">%</span><span class="n">timeit</span> <span class="s">'Apples</span><span class="se">\r\n</span><span class="s">Oranges</span><span class="se">\r\n</span><span class="s">Kiwis</span><span class="se">\r</span><span class="s">Grapes</span><span class="se">\r</span><span class="s">'</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'</span><span class="se">\r\n</span><span class="s">'</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
@@ -101,27 +102,27 @@ which comes with the IPython shell:</p>
 <span class="o">%</span><span class="n">timeit</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'</span><span class="err">\</span><span class="s">r</span><span class="err">\</span><span class="s">n|</span><span class="err">\</span><span class="s">r'</span><span class="p">,</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="s">'Apples</span><span class="se">\r\n</span><span class="s">Oranges</span><span class="se">\r\n</span><span class="s">Kiwis</span><span class="se">\r</span><span class="s">Grapes</span><span class="se">\r</span><span class="s">'</span><span class="p">)</span>
 <span class="mi">100000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">2.31</span> <span class="n">us</span> <span class="n">per</span> <span class="n">loop</span></code></pre></figure>
 
-<p>So the two runs of <code class="highlighter-rouge">str.replace()</code> add up to 465 nanoseconds, whereas one run 
-of <code class="highlighter-rouge">re.sub()</code> takes 2.31 microseconds, that is 2310 nanoseconds, or about 
-<strong>five times slower</strong>.</p>
+<p>So the two runs of <code>str.replace()</code> add up to 465 nanoseconds, whereas one run 
+of <code>re.sub()</code> takes 2.31 microseconds, that is 2310 nanoseconds, or about 
+<strong>five times slower</strong>. </p>
 
 <p>The question is: <em>Does it matter?</em> Well, my copy of 
-<em>The Hitch Hiker’s Guide to the Galaxy</em> that includes all five books in the 
+<em>The Hitch Hiker&#39;s Guide to the Galaxy</em> that includes all five books in the 
 series, is 776 pages long, and each full page has 42 lines (yes, I counted 
 twice, and now I am wondering if it was done on purpose). Following up on the 
 previous calculations, if you had to convert that book from Markdown to HTML, 
 (about 32592 lines), it would take you a whole 0.02 seconds to do that with 
-<code class="highlighter-rouge">re.sub()</code>, or about 0.004 seconds to do that with <code class="highlighter-rouge">str.replace()</code>. 
+<code>re.sub()</code>, or about 0.004 seconds to do that with <code>str.replace()</code>. 
 Therefore, the answer to my previous question: <em>Does it matter?</em> is 42.</p>
 
-<p>Now the question becomes: <em>Does it <strong>really</strong> matter?</em> Well, if you had to 
+<p>Now the question becomes: <em>Does it *</em>really** matter?* Well, if you had to 
 convert all 30 million paperback books that Amazon has for sale (number found 
 through a search on amazon.com), and assuming each book is as healthy in size 
 as <abbr title="The Hitch Hicker's Guide To The Galaxy">THHGTTG</abbr>, then it 
-would take you a week to do that with <code class="highlighter-rouge">re.sub()</code>, but only a day and a 
-half to do it with <code class="highlighter-rouge">str.replace()</code>. Thus, for the Python developer out there 
+would take you a week to do that with <code>re.sub()</code>, but only a day and a 
+half to do it with <code>str.replace()</code>. Thus, for the Python developer out there 
 who is pondering on converting 30 million books from Markdown to HTML, the 
-answer is: Go with <code class="highlighter-rouge">str.replace()</code>. For the rest of us it’s still 42.</p>
+answer is: Go with <code>str.replace()</code>. For the rest of us it&#39;s still 42.</p>
 
   </section>
 

@@ -62,21 +62,21 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>Η εντολή <code class="highlighter-rouge">switchport trunk encapsulation dot1q</code> καθορίζει το 
+    <p>Η εντολή <code>switchport trunk encapsulation dot1q</code> καθορίζει το 
 encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία ήδη 
-λειτουργεί ως trunk. Η παράμετρος <code class="highlighter-rouge">dot1q</code> καθορίζει την τιμή στο 
+λειτουργεί ως trunk. Η παράμετρος <code>dot1q</code> καθορίζει την τιμή στο 
 πρότυπο IEEE 802.1q.</p>
 
 <p>Υπάρχουν δύο πρότυπα λειτουργίας για διεπαφές trunk, το 802.1q και το ISL. Το πρότυπο ISL (Inter-Switch Link) αναπτύχθηκε από τη Cisco πολύ νωρίτερα από το 802.1q. Μια βασική του διαφορά από το 802.1q είναι ότι περικλείει το Ethernet Frame σε ένα επιπλέον ζεύγος header και trailer. Αντίθετα, το 802.1q προσθέτει μόνο ένα επιπλέον πεδίο στο υφιστάμενο header του Ethernet frame, και αναγκαστικά επανυπολογίζει το Frame Check Sequence (FCS) στο trailer.</p>
 
-<p>Πρακτικά, το ISL δεν χρησιμοποιείται πλέον σήμερα, και σε νεότερες συσκευές η ίδια η Cisco έχει σταματήσει να το υποστηρίζει. Αναφέρεται ακόμα στην τεκμηρίωση για σκοπούς συμβατότητας με παλαιότερες συσκευές. Οι συσκευές που δεν προσφέρουν άλλη δυνατότητα ρύθμισης, λειτουργούν από προεπιλογή σε dot1q.</p>
+<p>Πρακτικά, το ISL δεν χρησιμοποιείται πλέον σήμερα, και σε νεότερες συσκευές η ίδια η Cisco έχει σταματήσει να το υποστηρίζει. Αναφέρεται ακόμα στην τεκμηρίωση για σκοπούς συμβατότητας με παλαιότερες συσκευές. Οι συσκευές που δεν προσφέρουν άλλη δυνατότητα ρύθμισης, λειτουργούν από προεπιλογή σε dot1q. </p>
 
-<h2 id="section">Δείτε επίσης</h2>
+<h2>Δείτε επίσης</h2>
 
-<p>Η εντολή <code class="highlighter-rouge">switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές. 
-Η βασική εναλλακτική του <code class="highlighter-rouge">dot1q</code> είναι η <a href="/docs/cisco/switchport-trunk-encapsulation-isl.el.html">switchport trunk encapsulation isl</a>, 
+<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές. 
+Η βασική εναλλακτική του <code>dot1q</code> είναι η <a href="/docs/cisco/switchport-trunk-encapsulation-isl.el.html">switchport trunk encapsulation isl</a>, 
 και για αυτόματη διαπραγμάτευση του encapsulation μεταξύ των δύο συσκευών δείτε το 
-<a href="/docs/cisco/switchport-trunk-encapsulation-negotiate.el.html">switchport trunk encapsulation negotiate</a>.</p>
+<a href="/docs/cisco/switchport-trunk-encapsulation-negotiate.el.html">switchport trunk encapsulation negotiate</a>. </p>
 
   </section>
 

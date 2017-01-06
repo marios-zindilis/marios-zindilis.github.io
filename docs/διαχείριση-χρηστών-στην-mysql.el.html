@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - Διαχείριση χρηστών στην MySQL</title>
-  <meta name="description" content="Μερικές εντολές για διαχείριση χρηστών στο διαδραστικό περιβάλλον γραμμής εντολών της MySQL 5.">
+  <meta name="description" content="Μερικές εντολές για διαχείριση χρηστών στο διαδραστικό περιβάλλον γραμμής εντολών της MySQL 5. ">
 
   <link
     rel="stylesheet"
@@ -65,66 +65,47 @@
 
   <section itemprop="articleBody">
     <p>Μερικές εντολές για διαχείριση χρηστών στο διαδραστικό περιβάλλον γραμμής 
-εντολών της MySQL 5.</p>
+εντολών της MySQL 5. </p>
 
-<h2 id="section">Δημιουργία χρήστη</h2>
+<h2>Δημιουργία χρήστη</h2>
 
 <p>Στη γραμμή εντολών της MySQL:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>create user 'username'@'localhost' identified by 'password';
-</code></pre>
-</div>
-
-<h2 id="section-1">Διαγραφή χρήστη</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">create user 'username'@'localhost' identified by 'password';
+</code></pre></div>
+<h2>Διαγραφή χρήστη</h2>
 
 <p>Αν ο χρήστης διαγραφεί απλά με:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>delete from mysql.users where User='username';
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">delete from mysql.users where User='username';
+</code></pre></div>
 <p>τότε μετά δεν επιτρέπεται η δημιουργία του ξανά, εκτός και αν γίνει:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>flush privileges;
-</code></pre>
-</div>
-
-<h2 id="section-2">Καθορισμός δικαιωμάτων</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">flush privileges;
+</code></pre></div>
+<h2>Καθορισμός δικαιωμάτων</h2>
 
 <p>Καθορισμός δικαιωμάτων του χρήση σε συγκεκριμένη βάση/πίνακες:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>grant all privileges on database.table to 'username'@'localhost';
-</code></pre>
-</div>
-
-<p>Το database.table μπορεί να είναι <code class="highlighter-rouge">database.*</code> για όλους τους πίνακες στη 
-database ή <code class="highlighter-rouge">*.*</code> για όλους τους πίνακες σε όλες τις βάσεις.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">grant all privileges on database.table to 'username'@'localhost';
+</code></pre></div>
+<p>Το database.table μπορεί να είναι <code>database.*</code> για όλους τους πίνακες στη 
+database ή <code>*.*</code> για όλους τους πίνακες σε όλες τις βάσεις.</p>
 
 <p>Αν χρησιμοποιείτε τον ίδιο χρήστη για πολλές βάσεις δεδομένων, μπορείτε να 
 δείτε τι δικαιώματα έχει σε κάθε μία εκτελώντας:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">show grants for 'username'@'localhost';
+</code></pre></div>
+<h2>Αλλαγή συνθηματικού</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>show grants for 'username'@'localhost';
-</code></pre>
-</div>
+<p>SET PASSWORD FOR &#39;username&#39;@&#39;localhost&#39; = PASSWORD(&#39;new-password&#39;);</p>
 
-<h2 id="section-3">Αλλαγή συνθηματικού</h2>
-
-<p>SET PASSWORD FOR ‘username’@’localhost’ = PASSWORD(‘new-password’);</p>
-
-<h2 id="mysql-4">Σημειώσεις για την MySQL 4</h2>
+<h2>Σημειώσεις για την MySQL 4</h2>
 
 <p>Η MySQL 4 δεν υποστηρίζεται πλέον, όμως πολλοί εξυπηρετητές την έχουν 
 εγκατεστημένη για λόγους συμβατότητας με παλιές εφαρμογές. Σε αυτή την έκδοση, 
 η δημιουργία του χρήστη και η απόδοση δικαιωμάτων γίνεται σε ένα βήμα, απλά με 
-την εντολή <code class="highlighter-rouge">GRANT</code>. Για παράδειγμα, η ακόλουθη εντολή ταυτόχρονα δημιουργεί 
+την εντολή <code>GRANT</code>. Για παράδειγμα, η ακόλουθη εντολή ταυτόχρονα δημιουργεί 
 τον χρήστη αν αυτός δεν υπάρχει, και του δίνει όλα τα δικαιώματα πάνω στη βάση 
-δεδομένων <code class="highlighter-rouge">database</code>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>grant all privileges on database.* to 'username'@'localhost' identified by 'password';
-</code></pre>
-</div>
-
-
+δεδομένων <code>database</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">grant all privileges on database.* to 'username'@'localhost' identified by 'password';
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

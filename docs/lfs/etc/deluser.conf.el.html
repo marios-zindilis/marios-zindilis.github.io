@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - /etc/deluser.conf</title>
-  <meta name="description" content="Το αρχείο ρυθμίσεων /etc/deluser.conf περιέχει τις προεπιλογές του προγράμματος deluser, για διαγραφή των χρηστών. Ένα παράδειγμα αρχείου:">
+  <meta name="description" content="Το αρχείο ρυθμίσεων /etc/deluser.conf περιέχει τις προεπιλογές του προγράμματος deluser, για διαγραφή των χρηστών. Ένα παράδειγμα αρχείου: ">
 
   <link
     rel="stylesheet"
@@ -62,33 +62,30 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>Το αρχείο ρυθμίσεων <code class="highlighter-rouge">/etc/deluser.conf</code> περιέχει τις προεπιλογές του 
-προγράμματος <code class="highlighter-rouge">deluser</code>, για διαγραφή των χρηστών. Ένα παράδειγμα 
-αρχείου:</p>
+    <p>Το αρχείο ρυθμίσεων <code>/etc/deluser.conf</code> περιέχει τις προεπιλογές του 
+προγράμματος <code>deluser</code>, για διαγραφή των χρηστών. Ένα παράδειγμα 
+αρχείου: </p>
+<div class="highlight"><pre><code class="language-" data-lang=""># /etc/deluser.conf: 'deluser' configuration.
 
-<div class="highlighter-rouge"><pre class="highlight"><code># /etc/deluser.conf: 'deluser' configuration.
- 
 # Remove home directory and mail spool when user is removed
 REMOVE_HOME = 0
- 
+
 # Remove all files on the system owned by the user to be removed
 REMOVE_ALL_FILES = 0
- 
+
 # Backup files before removing them. This options has only an effect if
 # REMOVE_HOME or REMOVE_ALL_FILES is set.
 BACKUP = 0
- 
+
 # target directory for the backup file
 BACKUP_TO = "."
- 
+
 # delete a group even there are still users in this group
 ONLY_IF_EMPTY = 0
- 
+
 # exclude these filesystem types when searching for files of a user to backup
 EXCLUDE_FSTYPES = "(proc|sysfs|usbfs|devpts|tmpfs)"
-</code></pre>
-</div>
-
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

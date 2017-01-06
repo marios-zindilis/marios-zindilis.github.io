@@ -64,7 +64,7 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>The <code class="highlighter-rouge">security</code> option in the <code class="highlighter-rouge">[Global]</code> section of Samba configuration 
+    <p>The <code>security</code> option in the <code>[Global]</code> section of Samba configuration 
 defines what type of authentication is required for users to access 
 shares. There are five possible values for this option: Share, User, 
 Server, Domain and ADS.</p>
@@ -73,28 +73,28 @@ Server, Domain and ADS.</p>
 delegate authentication to another server on the network, and thus 
 require additional configuration.</p>
 
-<h2 id="security--server"><code class="highlighter-rouge">security = Server</code></h2>
+<h2><code>security = Server</code></h2>
+
 <p>This option makes the Samba server ask another server to authenticate 
 the user before granting access to the requested share.</p>
 
-<h2 id="security--domain"><code class="highlighter-rouge">security = Domain</code></h2>
+<h2><code>security = Domain</code></h2>
+
 <p>This option makes the Samba server a full member of a Domain, and asks 
 a Domain Controller to authenticate the user before granting access to 
 the requested share. A couple more options are required for Domain 
-security to work: <code class="highlighter-rouge">workgroup</code> (to define the domain), <code class="highlighter-rouge">password server</code> 
-(to define the Domain Controller) and <code class="highlighter-rouge">encrypt passwords</code> to be set to 
-<code class="highlighter-rouge">Yes</code> (or <code class="highlighter-rouge">True</code> or <code class="highlighter-rouge">1</code>).</p>
+security to work: <code>workgroup</code> (to define the domain), <code>password server</code> 
+(to define the Domain Controller) and <code>encrypt passwords</code> to be set to 
+<code>Yes</code> (or <code>True</code> or <code>1</code>).</p>
 
 <p>It is also required that the Samba server is joined in a Domain, which 
 can be done by any user with Domain Administration privileges (in the 
 following example, the user obiwan):</p>
+<div class="highlight"><pre><code class="language-" data-lang="">net join member -U obiwan
+</code></pre></div>
+<h2><code>security = ADS</code></h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>net join member -U obiwan
-</code></pre>
-</div>
-
-<h2 id="security--ads"><code class="highlighter-rouge">security = ADS</code></h2>
-<p>This option works similar to the <code class="highlighter-rouge">Domain</code> option, and requires the same 
+<p>This option works similar to the <code>Domain</code> option, and requires the same 
 additional options to be set, but uses an Active Directory server for 
 authentication, and utilizes newer AD protocols.</p>
 

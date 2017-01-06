@@ -67,33 +67,29 @@
     <p>Random tips for BackupPC:</p>
 
 <ol>
-  <li>
-    <p>On your client systems (those that will be backed up by BackupPC), rotate 
+<li><p>On your client systems (those that will be backed up by BackupPC), rotate 
 your logs (whether compressed or not) with dates in the filenames, instead 
-of appending prefixes such as <code class="highlighter-rouge">.1</code>, <code class="highlighter-rouge">.2</code>, <code class="highlighter-rouge">.3</code>, etc. The benefit from this 
+of appending prefixes such as <code>.1</code>, <code>.2</code>, <code>.3</code>, etc. The benefit from this 
 is that BackupPC will ignore old logs on new runs, since they will have the 
 same name and the same checksum. If you rotate logs with numbered names, 
 BackupPC will transfer them again, since the name will have changed. This 
-configuration is achieved with the <code class="highlighter-rouge">dateext</code> parameter set in <code class="highlighter-rouge">logrotate</code> 
-configuration file, which on CentOS 6 is at <code class="highlighter-rouge">/etc/logrotate.conf</code>, by 
-default.</p>
-  </li>
-  <li>
-    <p>If <code class="highlighter-rouge">mlocate</code> is installed on the BackupPC system, you should exclude the 
-backup directory from being indexed by the nightly run of <code class="highlighter-rouge">updatedb</code>, 
-otherwise <code class="highlighter-rouge">/var/lib/mlocate/mlocate.db</code> will become enormous. To exclude 
-the backup directory, edit <code class="highlighter-rouge">/etc/updatedb.conf</code> and append the directory 
-path to the end of the line for the <code class="highlighter-rouge">PRUNEPATHS</code> variable.</p>
-  </li>
+configuration is achieved with the <code>dateext</code> parameter set in <code>logrotate</code> 
+configuration file, which on CentOS 6 is at <code>/etc/logrotate.conf</code>, by 
+default.</p></li>
+<li><p>If <code>mlocate</code> is installed on the BackupPC system, you should exclude the 
+backup directory from being indexed by the nightly run of <code>updatedb</code>, 
+otherwise <code>/var/lib/mlocate/mlocate.db</code> will become enormous. To exclude 
+the backup directory, edit <code>/etc/updatedb.conf</code> and append the directory 
+path to the end of the line for the <code>PRUNEPATHS</code> variable.</p></li>
 </ol>
 
-<h2 id="see-also">See Also</h2>
+<h2>See Also</h2>
 
 <ul>
-  <li><strong>BackupPC Archive</strong> is a Perl script that maintains archive copies of 
+<li>  <strong>BackupPC Archive</strong> is a Perl script that maintains archive copies of 
 backups taken with BackupPC. <a href="https://github.com/marios-zindilis/backuppc-archive/" title="BackupPC Archive">Fork on GitHub</a>.</li>
-  <li><a href="http://www.michaelstowe.com/backuppc/" title="BackupPC Windows Client"><strong>BackupPC Windows Client</strong></a></li>
-  <li><a href="/blog/2015/06/18/stale-nfs-causes-backuppc-filelistreceive-failure.html" title="Stale NFS Mount Causes BackupPC fileListReceive() Failure">Stale NFS Mount Causes BackupPC <code class="highlighter-rouge">fileListReceive()</code> Failure</a></li>
+<li>  <a href="http://www.michaelstowe.com/backuppc/" title="BackupPC Windows Client"><strong>BackupPC Windows Client</strong></a></li>
+<li>  <a href="/blog/2015/06/18/stale-nfs-causes-backuppc-filelistreceive-failure.html" title="Stale NFS Mount Causes BackupPC fileListReceive() Failure">Stale NFS Mount Causes BackupPC <code>fileListReceive()</code> Failure</a></li>
 </ul>
 
 <!-- Links -->

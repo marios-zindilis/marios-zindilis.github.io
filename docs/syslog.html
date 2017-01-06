@@ -66,46 +66,43 @@
   </header>
 
   <section itemprop="articleBody">
-    <h2 id="syslog-facilities"><code class="highlighter-rouge">syslog</code> facilities</h2>
+    <h2><code>syslog</code> facilities</h2>
 
 <ul>
-  <li><code class="highlighter-rouge">auth</code>, a.k.a. <code class="highlighter-rouge">security</code></li>
-  <li><code class="highlighter-rouge">authpriv</code></li>
-  <li><code class="highlighter-rouge">cron</code></li>
-  <li><code class="highlighter-rouge">daemon</code></li>
-  <li><code class="highlighter-rouge">kern</code></li>
-  <li><code class="highlighter-rouge">lrp</code></li>
-  <li><code class="highlighter-rouge">mail</code></li>
-  <li><code class="highlighter-rouge">mark</code></li>
-  <li><code class="highlighter-rouge">news</code></li>
-  <li><code class="highlighter-rouge">security</code></li>
-  <li><code class="highlighter-rouge">syslog</code></li>
-  <li><code class="highlighter-rouge">user</code></li>
-  <li><code class="highlighter-rouge">uucp</code></li>
-  <li><code class="highlighter-rouge">local0</code> to <code class="highlighter-rouge">local7</code></li>
+<li>  <code>auth</code>, a.k.a. <code>security</code></li>
+<li>  <code>authpriv</code></li>
+<li>  <code>cron</code></li>
+<li>  <code>daemon</code></li>
+<li>  <code>kern</code></li>
+<li>  <code>lrp</code></li>
+<li>  <code>mail</code></li>
+<li>  <code>mark</code></li>
+<li>  <code>news</code></li>
+<li>  <code>security</code></li>
+<li>  <code>syslog</code></li>
+<li>  <code>user</code></li>
+<li>  <code>uucp</code></li>
+<li>  <code>local0</code> to <code>local7</code></li>
 </ul>
 
-<h2 id="syslog-priorities"><code class="highlighter-rouge">syslog</code> priorities</h2>
+<h2><code>syslog</code> priorities</h2>
 
-<p>A list of <code class="highlighter-rouge">syslog</code> priorities, sorted by importance, ascending:</p>
+<p>A list of <code>syslog</code> priorities, sorted by importance, ascending:</p>
 
 <ol>
-  <li><code class="highlighter-rouge">debug</code></li>
-  <li><code class="highlighter-rouge">info</code></li>
-  <li><code class="highlighter-rouge">notice</code></li>
-  <li><code class="highlighter-rouge">warning</code> (previously <code class="highlighter-rouge">warn</code>, now deprecated)</li>
-  <li><code class="highlighter-rouge">err</code> (previously <code class="highlighter-rouge">error</code>, now deprecated)</li>
-  <li><code class="highlighter-rouge">crit</code></li>
-  <li><code class="highlighter-rouge">alert</code></li>
-  <li><code class="highlighter-rouge">emerg</code> (previously <code class="highlighter-rouge">panic</code>, now deprecated)</li>
+<li> <code>debug</code></li>
+<li> <code>info</code></li>
+<li> <code>notice</code></li>
+<li> <code>warning</code> (previously <code>warn</code>, now deprecated)</li>
+<li> <code>err</code> (previously <code>error</code>, now deprecated)</li>
+<li> <code>crit</code></li>
+<li> <code>alert</code></li>
+<li> <code>emerg</code> (previously <code>panic</code>, now deprecated)</li>
 </ol>
 
-<h2 id="send-test-message-to-remote-syslog-server">Send test message to remote syslog server</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>echo '&lt;12&gt;sourcehost message text' | nc -v -u -w 0 12.34.56.78 514
-</code></pre>
-</div>
-
+<h2>Send test message to remote syslog server</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">echo '&lt;12&gt;sourcehost message text' | nc -v -u -w 0 12.34.56.78 514
+</code></pre></div>
 <p><a href="http://nelsonslog.wordpress.com/2013/04/19/faking-out-remote-syslog-via-netcat/">Source</a></p>
 
   </section>

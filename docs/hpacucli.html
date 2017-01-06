@@ -64,97 +64,69 @@
   </header>
 
   <section itemprop="articleBody">
-    <p><code class="highlighter-rouge">hpacucli</code> allows control of the RAID array controllers on HP servers.</p>
+    <p><code>hpacucli</code> allows control of the RAID array controllers on HP servers.</p>
 
-<h2 id="installation-on-centos">Installation on CentOS</h2>
+<h2>Installation on CentOS</h2>
 
 <ol>
-  <li>Download RPM from HP’s website (free account required).</li>
-  <li>
-    <p>Install, e.g:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>yum install hpacucli-9.40-12.0.x86_64.rpm
-</code></pre>
-    </div>
-  </li>
+<li> Download RPM from HP&#39;s website (free account required).</li>
+<li><p>Install, e.g:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">yum install hpacucli-9.40-12.0.x86_64.rpm
+</code></pre></div></li>
 </ol>
 
-<h2 id="usage">Usage</h2>
+<h2>Usage</h2>
 
-<h3 id="status-of-all-controllers">Status of All Controllers</h3>
+<h3>Status of All Controllers</h3>
 
 <p>To display the status of all RAID controllers:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>hpacucli ctrl all show status
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">hpacucli ctrl all show status
+</code></pre></div>
 <p>Example output:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Smart Array P410i in Slot 0 (Embedded)
+<div class="highlight"><pre><code class="language-" data-lang="">Smart Array P410i in Slot 0 (Embedded)
    Controller Status: OK
    Cache Status: OK
    Battery/Capacitor Status: OK
-</code></pre>
-</div>
-
-<h3 id="configuration-of-all-controllers">Configuration of All Controllers</h3>
+</code></pre></div>
+<h3>Configuration of All Controllers</h3>
 
 <p>To display the configuration of all RAID controllers:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>hpacucli ctrl all show config
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">hpacucli ctrl all show config
+</code></pre></div>
 <p>Example output:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">Smart Array P410i in Slot 0 (Embedded)    (sn: 5001438001AD7D90)
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Smart Array P410i in Slot 0 (Embedded)    (sn: 5001438001AD7D90)
- 
    array A (SAS, Unused Space: 0  MB)
- 
- 
+
+
       logicaldrive 1 (136.7 GB, RAID 1, OK)
- 
+
       physicaldrive 1I:1:1 (port 1I:box 1:bay 1, SAS, 146 GB, OK)
       physicaldrive 1I:1:2 (port 1I:box 1:bay 2, SAS, 146 GB, OK)
- 
-   SEP (Vendor ID PMCSIERA, Model  SRC 8x6G) 250 (WWID: 5123432101AB8D8F)
-</code></pre>
-</div>
 
-<h3 id="status-of-logical-drives">Status of Logical Drives</h3>
+   SEP (Vendor ID PMCSIERA, Model  SRC 8x6G) 250 (WWID: 5123432101AB8D8F)
+</code></pre></div>
+<h3>Status of Logical Drives</h3>
 
 <p>To display the status of all logical drives on a specific controller:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>hpacucli ctrl slot=0 ld all show status
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">hpacucli ctrl slot=0 ld all show status
+</code></pre></div>
 <p>Example output:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>   logicaldrive 1 (136.7 GB, 1): OK
-</code></pre>
-</div>
-
-<h3 id="status-of-all-physical-drives">Status of all physical drives</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">   logicaldrive 1 (136.7 GB, 1): OK
+</code></pre></div>
+<h3>Status of all physical drives</h3>
 
 <p>To display the status of all physical drives on a specific controller:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>hpacucli ctrl slot=0 pd all show status
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">hpacucli ctrl slot=0 pd all show status
+</code></pre></div>
 <p>Example output:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>   physicaldrive 1I:1:1 (port 1I:box 1:bay 1, 146 GB): OK
+<div class="highlight"><pre><code class="language-" data-lang="">   physicaldrive 1I:1:1 (port 1I:box 1:bay 1, 146 GB): OK
    physicaldrive 1I:1:2 (port 1I:box 1:bay 2, 146 GB): OK
-</code></pre>
-</div>
-
-<h2 id="see-also">See Also</h2>
+</code></pre></div>
+<h2>See Also</h2>
 
 <ul>
-  <li><a href="http://www.thegeekstuff.com/2014/07/hpacucli-examples/">17 hpacucli Command Examples for Linux on HP Servers</a></li>
+<li>  <a href="http://www.thegeekstuff.com/2014/07/hpacucli-examples/">17 hpacucli Command Examples for Linux on HP Servers</a></li>
 </ul>
 
   </section>

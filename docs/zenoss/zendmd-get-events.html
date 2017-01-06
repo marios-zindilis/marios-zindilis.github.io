@@ -62,8 +62,7 @@
   </header>
 
   <section itemprop="articleBody">
-    
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
     
 <span class="kn">import</span> <span class="nn">Globals</span>
 <span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
@@ -71,54 +70,54 @@
   
 <span class="n">Events</span> <span class="o">=</span> <span class="n">DMD</span><span class="o">.</span><span class="n">ZenEventManager</span><span class="o">.</span><span class="n">getEventList</span><span class="p">()</span></code></pre></figure>
 
-<p>Each <code class="highlighter-rouge">Event</code> in <code class="highlighter-rouge">Events</code> (iterable) offers:</p>
+<p>Each <code>Event</code> in <code>Events</code> (iterable) offers:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">__ac_permissions__</code></li>
-  <li><code class="highlighter-rouge">__allow_access_to_unprotected_subobjects__</code></li>
-  <li><code class="highlighter-rouge">__doc__</code></li>
-  <li><code class="highlighter-rouge">__implemented__</code></li>
-  <li><code class="highlighter-rouge">__init__</code></li>
-  <li><code class="highlighter-rouge">__module__</code></li>
-  <li><code class="highlighter-rouge">__providedBy__</code></li>
-  <li><code class="highlighter-rouge">__provides__</code></li>
-  <li><code class="highlighter-rouge">_action</code></li>
-  <li><code class="highlighter-rouge">_baseurl</code></li>
-  <li><code class="highlighter-rouge">_clearClasses</code></li>
-  <li><code class="highlighter-rouge">_fields</code></li>
-  <li><code class="highlighter-rouge">_zem</code></li>
-  <li><code class="highlighter-rouge">clearClasses</code></li>
-  <li><code class="highlighter-rouge">component</code></li>
-  <li><code class="highlighter-rouge">count</code></li>
-  <li><code class="highlighter-rouge">device</code></li>
-  <li><code class="highlighter-rouge">eventClass</code></li>
-  <li><code class="highlighter-rouge">eventKey</code></li>
-  <li><code class="highlighter-rouge">eventPermission</code></li>
-  <li><code class="highlighter-rouge">eventState</code></li>
-  <li><code class="highlighter-rouge">evid</code></li>
-  <li><code class="highlighter-rouge">firstTime</code></li>
-  <li><code class="highlighter-rouge">getCssClass</code></li>
-  <li><code class="highlighter-rouge">getDataList</code></li>
-  <li><code class="highlighter-rouge">getDedupFields</code></li>
-  <li><code class="highlighter-rouge">getEventData</code></li>
-  <li><code class="highlighter-rouge">getEventDetailHref</code></li>
-  <li><code class="highlighter-rouge">getEventFields</code></li>
-  <li><code class="highlighter-rouge">getStateFor</code></li>
-  <li><code class="highlighter-rouge">getStateToCopy</code></li>
-  <li><code class="highlighter-rouge">getStateToCopyFor</code></li>
-  <li><code class="highlighter-rouge">getTypeToCopy</code></li>
-  <li><code class="highlighter-rouge">getTypeToCopyFor</code></li>
-  <li><code class="highlighter-rouge">jellyFor</code></li>
-  <li><code class="highlighter-rouge">lastTime</code></li>
-  <li><code class="highlighter-rouge">processUniqueID</code></li>
-  <li><code class="highlighter-rouge">setCopyableState</code></li>
-  <li><code class="highlighter-rouge">setStateFor</code></li>
-  <li><code class="highlighter-rouge">severity</code></li>
-  <li><code class="highlighter-rouge">summary</code></li>
-  <li><code class="highlighter-rouge">unjellyFor</code></li>
-  <li><code class="highlighter-rouge">updateFromDict</code></li>
-  <li><code class="highlighter-rouge">updateFromFields</code></li>
-  <li><code class="highlighter-rouge">zem</code></li>
+<li>  <code>__ac_permissions__</code></li>
+<li>  <code>__allow_access_to_unprotected_subobjects__</code></li>
+<li>  <code>__doc__</code></li>
+<li>  <code>__implemented__</code></li>
+<li>  <code>__init__</code></li>
+<li>  <code>__module__</code></li>
+<li>  <code>__providedBy__</code></li>
+<li>  <code>__provides__</code></li>
+<li>  <code>_action</code></li>
+<li>  <code>_baseurl</code></li>
+<li>  <code>_clearClasses</code></li>
+<li>  <code>_fields</code></li>
+<li>  <code>_zem</code></li>
+<li>  <code>clearClasses</code></li>
+<li>  <code>component</code></li>
+<li>  <code>count</code></li>
+<li>  <code>device</code></li>
+<li>  <code>eventClass</code></li>
+<li>  <code>eventKey</code></li>
+<li>  <code>eventPermission</code></li>
+<li>  <code>eventState</code></li>
+<li>  <code>evid</code></li>
+<li>  <code>firstTime</code></li>
+<li>  <code>getCssClass</code></li>
+<li>  <code>getDataList</code></li>
+<li>  <code>getDedupFields</code></li>
+<li>  <code>getEventData</code></li>
+<li>  <code>getEventDetailHref</code></li>
+<li>  <code>getEventFields</code></li>
+<li>  <code>getStateFor</code></li>
+<li>  <code>getStateToCopy</code></li>
+<li>  <code>getStateToCopyFor</code></li>
+<li>  <code>getTypeToCopy</code></li>
+<li>  <code>getTypeToCopyFor</code></li>
+<li>  <code>jellyFor</code></li>
+<li>  <code>lastTime</code></li>
+<li>  <code>processUniqueID</code></li>
+<li>  <code>setCopyableState</code></li>
+<li>  <code>setStateFor</code></li>
+<li>  <code>severity</code></li>
+<li>  <code>summary</code></li>
+<li>  <code>unjellyFor</code></li>
+<li>  <code>updateFromDict</code></li>
+<li>  <code>updateFromFields</code></li>
+<li>  <code>zem</code></li>
 </ul>
 
   </section>

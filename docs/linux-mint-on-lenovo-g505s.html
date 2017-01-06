@@ -72,131 +72,131 @@ Lenovo G505s laptop.</p>
 <p>Here is a list of hardware components that work out of the box:</p>
 
 <ul>
-  <li>Touchpad: Pointer navigation, click on pad, left and right click 
+<li>  Touchpad: Pointer navigation, click on pad, left and right click 
 buttons, scrolling and imitating middle click with pressing both left
 and right click buttons, all work fine.</li>
-  <li>Networking, wired and wireless work fine as well.</li>
-  <li>Function buttons that work, with their position in parentheses:
-    <ul>
-      <li>Mute (F1),</li>
-      <li>Volume Down (F2),</li>
-      <li>Volume Up (F3),</li>
-      <li>Close Current Application (F4),</li>
-      <li>Refresh (F5),</li>
-      <li>Activate/Deactivate Touchpad (F6),</li>
-      <li>Toggle Airplane Mode (F7),</li>
-      <li>Turn off/Turn on Monitor (F9),</li>
-      <li>Toggle External Display (F10),</li>
-      <li>Decrease Brightness (F11),</li>
-      <li>Increase Brightness (F12).</li>
-    </ul>
-  </li>
+<li>  Networking, wired and wireless work fine as well.</li>
+<li>  Function buttons that work, with their position in parentheses: 
+
+<ul>
+<li>  Mute (F1), </li>
+<li>  Volume Down (F2), </li>
+<li>  Volume Up (F3), </li>
+<li>  Close Current Application (F4), </li>
+<li>  Refresh (F5), </li>
+<li>  Activate/Deactivate Touchpad (F6), </li>
+<li>  Toggle Airplane Mode (F7),</li>
+<li>  Turn off/Turn on Monitor (F9),</li>
+<li>  Toggle External Display (F10),</li>
+<li>  Decrease Brightness (F11),</li>
+<li>  Increase Brightness (F12). </li>
+</ul></li>
 </ul>
 
 <p>Here is a list of hardware components that do NOT work out of the box:</p>
 
 <ul>
-  <li>
-    <p>Graphics card: At the time of this writing (October 2013), the 
+<li><p>Graphics card: At the time of this writing (October 2013), the 
 version of the graphics drivers that Mint comes with does not 
 properly support the card on this laptop, neither the open source 
-<code class="highlighter-rouge">xserver-xorg-driver-ati</code> nor the proprietary <code class="highlighter-rouge">fglrx</code>.
-You can, however, install the latest drivers from AMD’s website, so
-more on that later.</p>
-  </li>
-  <li>
-    <p>Hotkey for displaying all running applications (F8). This behaves 
+<code>xserver-xorg-driver-ati</code> nor the proprietary <code>fglrx</code>.
+You can, however, install the latest drivers from AMD&#39;s website, so
+more on that later.</p></li>
+<li><p>Hotkey for displaying all running applications (F8). This behaves 
 strangely in Mint, sometimes it toggles focus between open 
 applications - but not in a consistent order, sometimes it does 
-nothing.</p>
-  </li>
+nothing.</p></li>
 </ul>
 
-<h2 id="disable-uefi">Disable UEFI</h2>
+<h2>Disable UEFI</h2>
+
 <p>As with most modern PCs and laptops, Lenovo G505s comes with UEFI 
 enabled by default. To disable it:</p>
 
 <ol>
-  <li>Shutdown.</li>
-  <li>Power on the laptop by pressing the small “one-button-restore” 
+<li> Shutdown.</li>
+<li> Power on the laptop by pressing the small &quot;one-button-restore&quot; 
 button, next to the big power-on button.</li>
-  <li>Select “BIOS Setup”.</li>
-  <li>Once in BIOS, select the “Boot” tab.</li>
-  <li>Change the value of <code class="highlighter-rouge">Boot Mode</code> to <code class="highlighter-rouge">Legacy Support</code>.</li>
-  <li>Change the value of <code class="highlighter-rouge">Boot Priority</code> to <code class="highlighter-rouge">Legacy First</code>.</li>
-  <li>Save changes and exit (keyboard Fn+F10).</li>
+<li> Select &quot;BIOS Setup&quot;.</li>
+<li> Once in BIOS, select the &quot;Boot&quot; tab.</li>
+<li> Change the value of <code>Boot Mode</code> to <code>Legacy Support</code>.</li>
+<li> Change the value of <code>Boot Priority</code> to <code>Legacy First</code>.</li>
+<li> Save changes and exit (keyboard Fn+F10).</li>
 </ol>
 
-<h2 id="disable-fast-startup">Disable Fast StartUp</h2>
+<h2>Disable Fast StartUp</h2>
+
 <p>Windows 8 have a feature called Fast StartUp enabled by default, which
 saves the state of a user session to disk before a shutdown. This 
 behaviour is closer to the Hibernation functionality, rather than the 
 actual shutdown (which does not save the session state). The effect of 
 this feature, is that during booting Linux Mint 15, you will see 
-several filesystem related errors, like <code class="highlighter-rouge">metadata kept in windows 
-cache refused to mount</code>.</p>
+several filesystem related errors, like <code>metadata kept in windows 
+cache refused to mount</code>. </p>
 
 <p>To disable Fast StartUp:</p>
 
 <ol>
-  <li>Boot in Windows 8.</li>
-  <li>Activate the bottom left hot corner, right click on it. open 
+<li> Boot in Windows 8.</li>
+<li> Activate the bottom left hot corner, right click on it. open 
 Control Panel.</li>
-  <li>Select Power Options.</li>
-  <li>Select “Choose what the power button does”.</li>
-  <li>Select “Change settings that are currently unavailable”.</li>
-  <li>Deactivate the box labelled “Turn on fast startup”.</li>
-  <li>Shutdown.</li>
+<li> Select Power Options.</li>
+<li> Select &quot;Choose what the power button does&quot;.</li>
+<li> Select &quot;Change settings that are currently unavailable&quot;.</li>
+<li> Deactivate the box labelled &quot;Turn on fast startup&quot;.</li>
+<li> Shutdown.</li>
 </ol>
 
 <p>You should not see those errors again, as Windows will do a clean 
 shutdown from now on.</p>
 
-<h2 id="boot-from-linux-mint-15-installation-dvd">Boot from Linux Mint 15 Installation DVD</h2>
+<h2>Boot from Linux Mint 15 Installation DVD</h2>
+
 <p>To proceed with the installation, boot from the Linux Mint 15 
 Installation Disk:</p>
 
 <ol>
-  <li>If the laptop is on, shut it down.</li>
-  <li>Power on the laptop by pressing the small “one-button-restore”
+<li> If the laptop is on, shut it down.</li>
+<li> Power on the laptop by pressing the small &quot;one-button-restore&quot;
 button, next to the big power-on button.</li>
-  <li>Select “Boot menu”.</li>
-  <li>Select “SATA ODD” (Optical Disk Drive).</li>
-  <li>Proceed normally with installation. See later on, for some of my 
+<li> Select &quot;Boot menu&quot;.</li>
+<li> Select &quot;SATA ODD&quot; (Optical Disk Drive).</li>
+<li> Proceed normally with installation. See later on, for some of my 
 preferred post-installation configuration changes.</li>
 </ol>
 
-<h2 id="post-installation-configuration-changes">Post-Installation Configuration Changes</h2>
+<h2>Post-Installation Configuration Changes</h2>
+
 <p>The following list aims to bring the system closer to my personal 
 preferences, and is not required to get the system working.</p>
 
 <ol>
-  <li>Reverse function keys: On Lenovo G505s, the function keys and 
-hotkeys are reversed, meaning that when you hit F12, the monitor’s
+<li> Reverse function keys: On Lenovo G505s, the function keys and 
+hotkeys are reversed, meaning that when you hit F12, the monitor&#39;s
 brightness increases, instead of whatever function F12 is actually 
 configured to perform. This is not only annoying (because it breaks 
 several user experience conventions for no good reason) but also 
 plain stupid (because there is no system-wide way to revert this 
-behaviour – that capability exists in some Lenovo models, but not 
+behaviour -- that capability exists in some Lenovo models, but not 
 on this one specifically). 
 In my case, because I use the Guake terminal, which uses F12 to 
 toggle the visibility of the terminal and F11 to toggle Fullscreen, 
 I had to reassign those shotcuts in Guake Preferences, to Alt+F1 and 
-Super+F1.</li>
-  <li>Add the “Euro” symbol on the default US English keyboard layout. 
+Super+F1. </li>
+<li> Add the &quot;Euro&quot; symbol on the default US English keyboard layout. 
 Go to System Settings -&gt; Regional Settigs -&gt; Layouts -&gt; Options and 
-expand the “Adding currency signs to certain keys” drop-down list. 
-I prefer to add the euro symbol on the “E” key, because that’s where 
+expand the &quot;Adding currency signs to certain keys&quot; drop-down list. 
+I prefer to add the euro symbol on the &quot;E&quot; key, because that&#39;s where 
 it is located be default in the Greek layout, which I also use. 
 Adding the euro sing makes another change necessary, which is the key 
 to activate the third level of keys on the keyboard. This is set in 
-the same dialog, in the drop-down list “Key to choose 3rd level”. I 
-prefer the right Alt key, again because it’s the default in the Greek 
+the same dialog, in the drop-down list &quot;Key to choose 3rd level&quot;. I 
+prefer the right Alt key, again because it&#39;s the default in the Greek 
 layout.</li>
-  <li>Markdown syntax highlighting in Vim per: http://www.vim.org/scripts/script.php?script_id=2882</li>
+<li> Markdown syntax highlighting in Vim per: http://www.vim.org/scripts/script.php?script_id=2882</li>
 </ol>
 
-<h2 id="post-installation-customization">Post-Installation Customization</h2>
+<h2>Post-Installation Customization</h2>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install -y guake
 sudo apt-get install -y vlc
@@ -205,56 +205,35 @@ sudo apt-get install -y fmp2
 sudo apt-get install -y skype
 sudo apt-get install -y rdesktop</code></pre></figure>
 
-<h2 id="amd-graphics-drivers-installation">AMD Graphics Drivers Installation</h2>
-<p>As I mentioned above, the graphics drivers don’t work out of the box, 
-so you will need to download and install the latest version from AMD’s 
+<h2>AMD Graphics Drivers Installation</h2>
+
+<p>As I mentioned above, the graphics drivers don&#39;t work out of the box, 
+so you will need to download and install the latest version from AMD&#39;s 
 website. At the time of this writing, the latest stable driver version 
-is 13.4.</p>
+is 13.4. </p>
 
 <ol>
-  <li>
-    <p>Download the drivers from <a href="http://support.amd.com/us/gpudownload/linux/Pages/radeon_linux.aspx" title="AMD Drivers for Linux">AMD’s Website</a></p>
-  </li>
-  <li>
-    <p>Install dependencies:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install dpkg-dev
+<li><p>Download the drivers from <a href="http://support.amd.com/us/gpudownload/linux/Pages/radeon_linux.aspx" title="AMD Drivers for Linux">AMD&#39;s Website</a></p></li>
+<li><p>Install dependencies:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install dpkg-dev
 sudo apt-get install debhelper
 sudo apt-get install dh-modaliases
 sudo apt-get install execstack 
-</code></pre>
-    </div>
-
-    <p>Note that if you haven’t installed <code class="highlighter-rouge">ia32-libs</code> already, you will 
-have to do so now.</p>
-  </li>
-  <li>
-    <p>Unzip the downloaded file <code class="highlighter-rouge">.zip</code> file, you will get a <code class="highlighter-rouge">.run</code> file.</p>
-  </li>
-  <li>
-    <p>Make it executable with <code class="highlighter-rouge">chmod +x</code>.</p>
-  </li>
-  <li>
-    <p>Build with:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>./amd-driver-installer-catalyst-13-4-x86.x86_64.run --buildpkg Ubuntu/raring`
-</code></pre>
-    </div>
-
-    <p>This will generate 3 <code class="highlighter-rouge">.deb</code> files:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>fglrx_12.104-0ubuntu1_amd64.deb 
+</code></pre></div>
+<p>Note that if you haven&#39;t installed <code>ia32-libs</code> already, you will 
+have to do so now.</p></li>
+<li><p>Unzip the downloaded file <code>.zip</code> file, you will get a <code>.run</code> file.</p></li>
+<li><p>Make it executable with <code>chmod +x</code>.</p></li>
+<li><p>Build with:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">./amd-driver-installer-catalyst-13-4-x86.x86_64.run --buildpkg Ubuntu/raring`
+</code></pre></div>
+<p>This will generate 3 <code>.deb</code> files:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">fglrx_12.104-0ubuntu1_amd64.deb 
 fglrx-dev_12.104-0ubuntu1_amd64.deb 
 fglrx-amdcccle_12.104-0ubuntu1_amd64.deb
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Install all the <code class="highlighter-rouge">.deb</code> files with <code class="highlighter-rouge">sudo dpgk -i *.deb</code>.</p>
-  </li>
-  <li>
-    <p>Reboot and enjoy.</p>
-  </li>
+</code></pre></div></li>
+<li><p>Install all the <code>.deb</code> files with <code>sudo dpgk -i *.deb</code>.</p></li>
+<li><p>Reboot and enjoy.</p></li>
 </ol>
 
   </section>

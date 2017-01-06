@@ -64,40 +64,25 @@
   <section itemprop="articleBody">
     <p>After physically replacing the disk, the new disk might not be assigned to the 
 controller on which the old disk was assigned, depending on the value of the 
-<code class="highlighter-rouge">disk.auto_assign</code> option, which you can check with:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>options disk.auto_assign
-</code></pre>
-</div>
-
-<p>Even if the value of that option is <code class="highlighter-rouge">on</code>, the disk might still remain 
+<code>disk.auto_assign</code> option, which you can check with:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">options disk.auto_assign
+</code></pre></div>
+<p>Even if the value of that option is <code>on</code>, the disk might still remain 
 unassigned, in which case you will see a message for unassigned disks in the 
 end of the output of the command:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>disk show
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">disk show
+</code></pre></div>
 <p>You can see which disks are unassinged with</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>disk show -n
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">disk show -n
+</code></pre></div>
 <p>To assign a disk to a controller, SSH to that controller and do:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>disk assign XX.YY.ZZ
-</code></pre>
-</div>
-
-<p>… where <code class="highlighter-rouge">XX.YY.ZZ</code> is the name of the disk, as obtained by <code class="highlighter-rouge">disk show -n</code>.
+<div class="highlight"><pre><code class="language-" data-lang="">disk assign XX.YY.ZZ
+</code></pre></div>
+<p>... where <code>XX.YY.ZZ</code> is the name of the disk, as obtained by <code>disk show -n</code>.
 Example output:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>FAS&gt; disk assign 01.23.45
+<div class="highlight"><pre><code class="language-" data-lang="">FAS&gt; disk assign 01.23.45
 Fri May 13 00:00:02 [FAS:diskown.changingOwner:info]: changing ownership for disk 12.34.45 (S/N ABCDEF) from unowned (ID 1234567890) to FAS (ID 0987654321)  
-</code></pre>
-</div>
-
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

@@ -72,12 +72,10 @@
     <p>Δύο μικρά tips:</p>
 
 <ol>
-  <li>
-    <p>Για να δημιουργήσετε μια αντίστροφη σειρά αριθμών με το <code class="highlighter-rouge">seq</code>, από έναν 
+<li><p>Για να δημιουργήσετε μια αντίστροφη σειρά αριθμών με το <code>seq</code>, από έναν 
 μεγαλύτερο σε έναν μικρότερο ακέραιο, χρησιμοποιήστε το ως 
-<code class="highlighter-rouge">seq ΜΕΓΑΛΟΣ ΒΗΜΑ ΜΙΚΡΟΣ</code>, για παράδειγμα:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>$ seq 10 -1 1
+<code>seq ΜΕΓΑΛΟΣ ΒΗΜΑ ΜΙΚΡΟΣ</code>, για παράδειγμα:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ seq 10 -1 1
 10
 9
 8
@@ -88,24 +86,17 @@
 3
 2
 1
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Για να μορφοποιήσετε ακέραιους με με διαφορετικό πλήθος ψηφίων με μηδενικά 
-ώστε να εμφανίζονται με το ίδιο πλάτος, εκτυπώστε τους με την <code class="highlighter-rouge">printf</code>, 
-συντάσσοντάς την ως <code class="highlighter-rouge">printf "%0ΠΛΑΤΟΣd" ΑΚΕΡΑΙΟΣ</code>. Για παράδειγμα:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>printf "%04d" 1
+</code></pre></div></li>
+<li><p>Για να μορφοποιήσετε ακέραιους με με διαφορετικό πλήθος ψηφίων με μηδενικά 
+ώστε να εμφανίζονται με το ίδιο πλάτος, εκτυπώστε τους με την <code>printf</code>, 
+συντάσσοντάς την ως <code>printf &quot;%0ΠΛΑΤΟΣd&quot; ΑΚΕΡΑΙΟΣ</code>. Για παράδειγμα:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">printf "%04d" 1
 0001
-</code></pre>
-    </div>
-  </li>
+</code></pre></div></li>
 </ol>
 
 <p>Συνδυασμός των δύο:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>    $ for i in `seq 10 -1 1`; do echo `printf "%04d" $i`; done
+<div class="highlight"><pre><code class="language-" data-lang="">    $ for i in `seq 10 -1 1`; do echo `printf "%04d" $i`; done
     0010
     0009
     0008
@@ -116,17 +107,15 @@
     0003
     0002
     0001
-</code></pre>
-</div>
-
-<p>Το <code class="highlighter-rouge">echo</code> χρησιμοποιείται για να τυπώνει τον επόμενο αριθμό σε καινούρια 
+</code></pre></div>
+<p>Το <code>echo</code> χρησιμοποιείται για να τυπώνει τον επόμενο αριθμό σε καινούρια 
 γραμμή, αλλιώς εμφανίζονται συνεχόμενα.</p>
 
-<h2 id="section">Δείτε επίσης</h2>
+<h2>Δείτε επίσης</h2>
 
 <ul>
-  <li><a href="/docs/man/seq.1.html">Σελίδα Man για το seq</a></li>
-  <li><a href="/docs/man/printf.1.html">Σελίδα Man για το printf</a></li>
+<li>  <a href="/docs/man/seq.1.html">Σελίδα Man για το seq</a></li>
+<li>  <a href="/docs/man/printf.1.html">Σελίδα Man για το printf</a></li>
 </ul>
 
   </section>

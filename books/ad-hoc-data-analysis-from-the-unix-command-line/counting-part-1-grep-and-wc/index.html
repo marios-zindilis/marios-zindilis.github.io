@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - Counting Part 1 - grep and wc</title>
-  <meta name="description" content="  “90% of data analysis is counting” - John Rauser">
+  <meta name="description" content="&quot;90% of data analysis is counting&quot; - John Rauser">
 
   <link
     rel="stylesheet"
@@ -58,42 +58,41 @@
 
   <div class="post-content">
     <blockquote>
-  <p>“90% of data analysis is counting” - John Rauser</p>
+<p>&quot;90% of data analysis is counting&quot; - John Rauser</p>
 </blockquote>
 
-<p>…well, at least once you’ve figured out the right question to ask, which 
+<p>&hellip;well, at least once you&#39;ve figured out the right question to ask, which 
 is, perhaps, the other 90%.</p>
 
-<h2 id="example---counting-the-size-of-a-population">Example - Counting the size of a population</h2>
+<h2>Example - Counting the size of a population</h2>
 
-<p>The simplest command for counting things is <code class="highlighter-rouge">wc</code>, which stands for 
-<em>word count</em>. By default, <code class="highlighter-rouge">wc</code> prints the number of lines, words, and 
+<p>The simplest command for counting things is <code>wc</code>, which stands for 
+<em>word count</em>. By default, <code>wc</code> prints the number of lines, words, and 
 characters in a file.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>wc pums_53.dat
 85025 1219861 25659175 pums_53.dat</code></pre></figure>
 
 <p>Nearly always we just want to count the number of lines (records), which can be 
-done by giving the <code class="highlighter-rouge">-l</code> option to <code class="highlighter-rouge">wc</code>:</p>
+done by giving the <code>-l</code> option to <code>wc</code>:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>wc -l pums_53.dat
 85025 pums_53.dat</code></pre></figure>
 
-<h2 id="example---using-grep-to-select-a-subset">Example - Using grep to select a subset</h2>
+<h2>Example - Using grep to select a subset</h2>
 
 <p>So, recalling that this is a 1% sample, were there 8.5 million people in 
 Washington as of the 2000 census? Nope, the census data has two kinds of 
 records, one for households and one for persons. The first character of a 
-record, an H or P, indicates which kind of record it is. We can <code class="highlighter-rouge">grep</code> for and 
+record, an H or P, indicates which kind of record it is. We can <code>grep</code> for and 
 count just person records like this:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep -c <span class="s2">"^P"</span> pums_53.dat
 59150</code></pre></figure>
 
-<p>The caret <code class="highlighter-rouge">^</code> means that the <code class="highlighter-rouge">P</code> must occur at the beginning of the line. So 
+<p>The caret <code>^</code> means that the <code>P</code> must occur at the beginning of the line. So 
 there were about 5.9 million people in Washington State in 2000. Also 
-interesting, the average household had <code class="highlighter-rouge">59,150/(85,025-59,150) = 2.3</code> people.</p>
-
+interesting, the average household had <code>59,150/(85,025-59,150) = 2.3</code> people.</p>
 
   </div>
 

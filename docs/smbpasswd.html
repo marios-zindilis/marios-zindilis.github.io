@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - smbpasswd</title>
-  <meta name="description" content="smbpasswd is the Samba equivalent of the system’s passwd, it allows for the management of Samba user accounts.">
+  <meta name="description" content="smbpasswd is the Samba equivalent of the system&#39;s passwd, it allows for the management of Samba user accounts.">
 
   <link
     rel="stylesheet"
@@ -66,35 +66,30 @@
   </header>
 
   <section itemprop="articleBody">
-    <p><code class="highlighter-rouge">smbpasswd</code> is the Samba equivalent of the system’s <code class="highlighter-rouge">passwd</code>, it allows 
+    <p><code>smbpasswd</code> is the Samba equivalent of the system&#39;s <code>passwd</code>, it allows 
 for the management of Samba user accounts.</p>
 
-<h2 id="add-a-user">Add a user</h2>
-<p>To add a user, use <code class="highlighter-rouge">smbpasswd</code> with the <code class="highlighter-rouge">-a</code> option, and the username as 
+<h2>Add a user</h2>
+
+<p>To add a user, use <code>smbpasswd</code> with the <code>-a</code> option, and the username as 
 the only required parameter, e.g:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>smbpasswd -a obiwan
-</code></pre>
-</div>
-
-<p>The very first time that you will run <code class="highlighter-rouge">smbpasswd</code> it will warn that a 
-user database does not yet exist. This is normal, and <code class="highlighter-rouge">smbpasswd</code> will 
+<div class="highlight"><pre><code class="language-" data-lang="">smbpasswd -a obiwan
+</code></pre></div>
+<p>The very first time that you will run <code>smbpasswd</code> it will warn that a 
+user database does not yet exist. This is normal, and <code>smbpasswd</code> will 
 generate that database.</p>
 
-<h2 id="change-a-password">Change a password</h2>
+<h2>Change a password</h2>
+
 <p>Users can change their own passwords, and root can change any other 
-user’s password. If the Samba server authenticates users against a 
-remote server, the server can be defined with the <code class="highlighter-rouge">-r</code> option.</p>
+user&#39;s password. If the Samba server authenticates users against a 
+remote server, the server can be defined with the <code>-r</code> option.</p>
 
 <p>For example, when used with a local user database (i.e. in conjunction 
-with a <code class="highlighter-rouge">security = User</code> setting in <code class="highlighter-rouge">[Global]</code>), a user can change 
+with a <code>security = User</code> setting in <code>[Global]</code>), a user can change 
 their password with just:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>obiwan@server ~ $ smbpasswd
-</code></pre>
-</div>
-
-
+<div class="highlight"><pre><code class="language-" data-lang="">obiwan@server ~ $ smbpasswd
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

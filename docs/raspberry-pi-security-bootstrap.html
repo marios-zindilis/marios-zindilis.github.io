@@ -64,198 +64,138 @@
   </header>
 
   <section itemprop="articleBody">
-    <p class="lead">These are my notes on the first steps of improving security on 
+    <p class='lead'>These are my notes on the first steps of improving security on 
 a new Raspberry Pi. The default configuration that an RPi comes with might be 
 suitable for a development environment in a private or isolated network, but 
 if you intend on exposing your RPi to the world then you need to tweak that 
 configuration to be more robust. The commands mentioned here have been tested 
 on a Raspberry Pi B+, running a fresh installation of 
-<a href="http://www.raspbian.org/">Raspbian</a>.</p>
+<a href='http://www.raspbian.org/'>Raspbian</a>.</p>
 
-<div class="z-callout z-callout-danger"><h4>Disclaimer</h4>
+<div class='z-callout z-callout-danger'><h4>Disclaimer</h4>
 <p>Security is fluid and open-ended. The following are mere suggestions. 
 Taking these steps will hopefully reduce your exposure, but does not guarantee 
 complete safety. Nothing does.</p></div>
 
-<h2 id="user-configuration">User configuration</h2>
+<h2>User configuration</h2>
 
 <ol>
-  <li>
-    <p>This goes without saying: <strong>Change the default user’s password</strong>. By 
-default,     the RPi user is <code class="highlighter-rouge">pi</code> and her password is <code class="highlighter-rouge">raspberry</code>. Change 
+<li><p>This goes without saying: <strong>Change the default user&#39;s password</strong>. By 
+default,     the RPi user is <code>pi</code> and her password is <code>raspberry</code>. Change 
 that as soon as you get your operating system runnning, either by running 
-<code class="highlighter-rouge">passwd</code> as the <code class="highlighter-rouge">pi</code> user, or by running <code class="highlighter-rouge">sudo raspi-config</code> and selecting 
-the option for password change.</p>
-  </li>
-  <li>
-    <p><strong>Change the default user’s <code class="highlighter-rouge">sudo</code> configuration</strong>. By default, the <code class="highlighter-rouge">pi</code> 
-user can execute anything with <code class="highlighter-rouge">sudo</code>, without providing a password. As 
-the <code class="highlighter-rouge">pi</code> user, do:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo visudo
-</code></pre>
-    </div>
-
-    <p>…and the change the line:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>pi ALL=(ALL) NOPASSWD: ALL
-</code></pre>
-    </div>
-
-    <p>…to:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>pi ALL=(ALL) ALL
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Additionally, you might want to <strong>disable the default <code class="highlighter-rouge">pi</code> user</strong> 
+<code>passwd</code> as the <code>pi</code> user, or by running <code>sudo raspi-config</code> and selecting 
+the option for password change.</p></li>
+<li><p><strong>Change the default user&#39;s <code>sudo</code> configuration</strong>. By default, the <code>pi</code> 
+user can execute anything with <code>sudo</code>, without providing a password. As 
+the <code>pi</code> user, do:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo visudo
+</code></pre></div>
+<p>...and the change the line:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">pi ALL=(ALL) NOPASSWD: ALL
+</code></pre></div>
+<p>...to:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">pi ALL=(ALL) ALL
+</code></pre></div></li>
+<li><p>Additionally, you might want to <strong>disable the default <code>pi</code> user</strong> 
 altogether, and create another user that you will use on your RPi. As the 
-user <code class="highlighter-rouge">pi</code>, do:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo adduser myuser
-</code></pre>
-    </div>
-
-    <p>…and answer the questions. Only the password question is important, the 
+user <code>pi</code>, do:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo adduser myuser
+</code></pre></div>
+<p>...and answer the questions. Only the password question is important, the 
 rest can be left blank. Then, to make the new user a sudoer, do:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo visudo
-</code></pre>
-    </div>
-
-    <p>…and add this line in the end of the file:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>myuser ALL=(ALL) ALL
-</code></pre>
-    </div>
-
-    <p>Additionally, since login will be disabled for <code class="highlighter-rouge">pi</code>, you might as well 
-comment out the line in <code class="highlighter-rouge">/etc/sudoers</code> that refers to that user. Finally, 
-to disable login for the default <code class="highlighter-rouge">pi</code> user, logout from <code class="highlighter-rouge">pi</code> and login as 
+<div class="highlight"><pre><code class="language-" data-lang="">sudo visudo
+</code></pre></div>
+<p>...and add this line in the end of the file:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">myuser ALL=(ALL) ALL
+</code></pre></div>
+<p>Additionally, since login will be disabled for <code>pi</code>, you might as well 
+comment out the line in <code>/etc/sudoers</code> that refers to that user. Finally, 
+to disable login for the default <code>pi</code> user, logout from <code>pi</code> and login as 
 the new user that you created, and do:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo usermod --lock pi
+<div class="highlight"><pre><code class="language-" data-lang="">sudo usermod --lock pi
 sudo usermod --shell /sbin/nologin pi
-</code></pre>
-    </div>
-  </li>
+</code></pre></div></li>
 </ol>
 
-<h2 id="ssh-configuration">SSH Configuration</h2>
+<h2>SSH Configuration</h2>
 
 <ol>
-  <li>
-    <p><strong>Forbid SSH login for user <code class="highlighter-rouge">root</code></strong>. If your RPi is exposed to the world, 
+<li><p><strong>Forbid SSH login for user <code>root</code></strong>. If your RPi is exposed to the world, 
 it will get attacked with SSH attempts for common usernames and passwords, 
-which is yet another reason to disable the default <code class="highlighter-rouge">pi</code> username. Another 
-username that your RPi will be hammered with is <code class="highlighter-rouge">root</code>. Now, you can’t 
+which is yet another reason to disable the default <code>pi</code> username. Another 
+username that your RPi will be hammered with is <code>root</code>. Now, you can&#39;t 
 disable the root account, but you can disallow logins for it. To do that, 
-edit the file <code class="highlighter-rouge">/etc/ssh/sshd_config</code>, and change the line:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>PermitRootLogin yes
-</code></pre>
-    </div>
-
-    <p>…with:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>PermitRootLogin no
-</code></pre>
-    </div>
-
-    <p>…and then restart the SSH daemon:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo service ssh restart
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p><strong>Restrict Incoming IPs for SSH</strong>, using entries in <code class="highlighter-rouge">/etc/hosts.allow</code> and 
-<code class="highlighter-rouge">/etc/hosts.deny</code>. For example, I allow SSH on my RPi from my internal LAN 
+edit the file <code>/etc/ssh/sshd_config</code>, and change the line:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">PermitRootLogin yes
+</code></pre></div>
+<p>...with:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">PermitRootLogin no
+</code></pre></div>
+<p>...and then restart the SSH daemon:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo service ssh restart
+</code></pre></div></li>
+<li><p><strong>Restrict Incoming IPs for SSH</strong>, using entries in <code>/etc/hosts.allow</code> and 
+<code>/etc/hosts.deny</code>. For example, I allow SSH on my RPi from my internal LAN 
 subnets (192.168.x.x), and from one public IP only (1.2.3.4 in this 
-example). To achieve that, put in <code class="highlighter-rouge">/etc/hosts.allow</code>:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sshd: 192.168. 1.2.3.4
-</code></pre>
-    </div>
-
-    <p>…and in <code class="highlighter-rouge">/etc/hosts.deny</code>:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sshd: ALL
-</code></pre>
-    </div>
-
-    <p>Attempting to login to the RPi from a restricted host will return an 
+example). To achieve that, put in <code>/etc/hosts.allow</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sshd: 192.168. 1.2.3.4
+</code></pre></div>
+<p>...and in <code>/etc/hosts.deny</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sshd: ALL
+</code></pre></div>
+<p>Attempting to login to the RPi from a restricted host will return an 
  error to the client:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>marios@wst ~ $ ssh myuser@192.168.23.123
+<div class="highlight"><pre><code class="language-" data-lang="">marios@wst ~ $ ssh myuser@192.168.23.123
 ssh_exchange_identification: Connection closed by remote host
-</code></pre>
-    </div>
-
-    <p>…and will also create a log in <code class="highlighter-rouge">/var/log/auth.log</code>:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>Dec 13 11:40:48 rpi sshd[3456]: refused connect from 172.16.1.2 (172.16.1.2)
-</code></pre>
-    </div>
-  </li>
+</code></pre></div>
+<p>...and will also create a log in <code>/var/log/auth.log</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">Dec 13 11:40:48 rpi sshd[3456]: refused connect from 172.16.1.2 (172.16.1.2)
+</code></pre></div></li>
 </ol>
 
-<h2 id="firewall-configuration-with-iptables">Firewall Configuration with <code class="highlighter-rouge">iptables</code></h2>
+<h2>Firewall Configuration with <code>iptables</code></h2>
 
-<p>On my RPi running a freshly installed Raspbian OS, <code class="highlighter-rouge">iptables</code> was already 
+<p>On my RPi running a freshly installed Raspbian OS, <code>iptables</code> was already 
 installed, and it was running  with an empty rule set, i.e. all traffic was 
 allowed in all directions. Furthermore, Raspbian does not include a SysV 
-script for the <code class="highlighter-rouge">iptables</code> service, but this functionality is offered by the 
-<code class="highlighter-rouge">iptables-persistent</code> package.</p>
+script for the <code>iptables</code> service, but this functionality is offered by the 
+<code>iptables-persistent</code> package.</p>
 
 <ol>
-  <li>
-    <p>Install <code class="highlighter-rouge">iptables-persistent</code>, to help make the <code class="highlighter-rouge">iptables</code> rules survive a 
+<li><p>Install <code>iptables-persistent</code>, to help make the <code>iptables</code> rules survive a 
 reboot:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install iptables-persistent
-</code></pre>
-    </div>
-
-    <p>If you accept the defaults during the installation, the currently running 
-empty rule set of <code class="highlighter-rouge">iptables</code> will be saved in <code class="highlighter-rouge">/etc/iptables/rules.v4</code>.
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install iptables-persistent
+</code></pre></div>
+<p>If you accept the defaults during the installation, the currently running 
+empty rule set of <code>iptables</code> will be saved in <code>/etc/iptables/rules.v4</code>.
 After the installation, you can manage your firewall with:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>service iptables-persistent {start|restart|reload|force-reload|save|flush}
-</code></pre>
-    </div>
-
-    <p>Here are the contents of that file, with the default configuration of the 
+<div class="highlight"><pre><code class="language-" data-lang="">service iptables-persistent {start|restart|reload|force-reload|save|flush}
+</code></pre></div>
+<p>Here are the contents of that file, with the default configuration of the 
 firewall:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code># Generated by iptables-save v1.4.14 on Sat Dec 13 14:23:03 2014
+<div class="highlight"><pre><code class="language-" data-lang=""># Generated by iptables-save v1.4.14 on Sat Dec 13 14:23:03 2014
 *filter
 :INPUT ACCEPT [1291:113154]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [828:105910]
 COMMIT
 # Completed on Sat Dec 13 14:23:03 2014
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Next, you will need to add some rules to the <code class="highlighter-rouge">iptables</code> configuration, to 
+</code></pre></div></li>
+<li><p>Next, you will need to add some rules to the <code>iptables</code> configuration, to 
 start blocking some traffic. There are two methods that you can apply:</p>
 
-    <p>A.  Replace the line <code class="highlighter-rouge">:INPUT ACCEPT</code> that defines a default policy to 
-    accept all incoming traffic), with <code class="highlighter-rouge">:INPUT DROP</code>, and then define 
+<p>A.  Replace the line <code>:INPUT ACCEPT</code> that defines a default policy to 
+    accept all incoming traffic), with <code>:INPUT DROP</code>, and then define 
     rules that will only allow selected traffic through the firewall.</p>
 
-    <p>B.  Keep the default <code class="highlighter-rouge">:INPUT ACCEPT</code> policy for incoming traffic, but have 
-    one last rule that rejects all incoming traffic.</p>
+<p>B.  Keep the default <code>:INPUT ACCEPT</code> policy for incoming traffic, but have 
+    one last rule that rejects all incoming traffic. </p>
 
-    <p>I’m going with the second option, simply because of the convenience of 
+<p>I&#39;m going with the second option, simply because of the convenience of 
 copying rules from one of my CentOS machines :) Here it is then, my rules 
 file, implementing only the restriction to SSH port to the same IPs that 
 I mentioned earlier:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>*filter
+<div class="highlight"><pre><code class="language-" data-lang="">*filter
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
@@ -267,17 +207,14 @@ I mentioned earlier:</p>
 -A INPUT -j REJECT --reject-with icmp-host-prohibited
 -A FORWARD -j REJECT --reject-with icmp-host-prohibited
 COMMIT
-</code></pre>
-    </div>
-  </li>
+</code></pre></div></li>
 </ol>
 
-<h2 id="summary">Summary</h2>
+<h2>Summary</h2>
 
 <p>With these measures taken to improve the security of my Raspberry Pi, I am now 
 more confident that I can assign it a public IP and expose it the the world, 
 without it being a very easy target.</p>
-
 
   </section>
 

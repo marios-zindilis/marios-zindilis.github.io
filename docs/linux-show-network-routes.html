@@ -66,52 +66,43 @@
   </header>
 
   <section itemprop="articleBody">
-    <h2 id="with-netstat">With <code class="highlighter-rouge">netstat</code></h2>
+    <h2>With <code>netstat</code></h2>
 
-<p>Run <code class="highlighter-rouge">netstat -r</code> or <code class="highlighter-rouge">netstat --route</code>. Add <code class="highlighter-rouge">-n</code> or <code class="highlighter-rouge">--numeric</code> for 
+<p>Run <code>netstat -r</code> or <code>netstat --route</code>. Add <code>-n</code> or <code>--numeric</code> for 
 numeric output. Example from a laptop, on which all traffic is routed 
 out the wireless interface:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>marios@rocko ~ $ netstat -rvn
+<div class="highlight"><pre><code class="language-" data-lang="">marios@rocko ~ $ netstat -rvn
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
 0.0.0.0         192.168.88.1    0.0.0.0         UG        0 0          0 wlan0
 169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 wlan0
 192.168.88.0    0.0.0.0         255.255.255.0   U         0 0          0 wlan0
-</code></pre>
-</div>
+</code></pre></div>
+<h2>With <code>route</code></h2>
 
-<h2 id="with-route">With <code class="highlighter-rouge">route</code></h2>
-
-<p>Run <code class="highlighter-rouge">route</code> with optional <code class="highlighter-rouge">-n</code> for numeric output. The result is almost 
-identical to that of <code class="highlighter-rouge">netstat</code>. Example from the same machine as above:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>marios@rocko ~ $ route -n
+<p>Run <code>route</code> with optional <code>-n</code> for numeric output. The result is almost 
+identical to that of <code>netstat</code>. Example from the same machine as above:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">marios@rocko ~ $ route -n
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         192.168.88.1    0.0.0.0         UG    0      0        0 wlan0
 169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 wlan0
 192.168.88.0    0.0.0.0         255.255.255.0   U     9      0        0 wlan0
-</code></pre>
-</div>
+</code></pre></div>
+<h2>With <code>ip</code></h2>
 
-<h2 id="with-ip">With <code class="highlighter-rouge">ip</code></h2>
-
-<p>Run <code class="highlighter-rouge">ip route</code>. Example from the same machine as above:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>marios@rocko ~ $ ip route
+<p>Run <code>ip route</code>. Example from the same machine as above:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">marios@rocko ~ $ ip route
 default via 192.168.88.1 dev wlan0  proto static 
 169.254.0.0/16 dev wlan0  scope link  metric 1000 
 192.168.88.0/24 dev wlan0  proto kernel  scope link  src 192.168.88.253  metric 9
-</code></pre>
-</div>
-
-<h2 id="see-also">See Also</h2>
+</code></pre></div>
+<h2>See Also</h2>
 
 <ul>
-  <li><a href="/docs/man/netstat.8.html">Man Page for <code class="highlighter-rouge">netstat</code></a></li>
-  <li><a href="/docs/man/route.8.html">Man Page for <code class="highlighter-rouge">route</code></a></li>
-  <li><a href="/docs/man/ip.7.html">Man Page for <code class="highlighter-rouge">ip</code></a></li>
+<li>  <a href="/docs/man/netstat.8.html">Man Page for <code>netstat</code></a></li>
+<li>  <a href="/docs/man/route.8.html">Man Page for <code>route</code></a></li>
+<li>  <a href="/docs/man/ip.7.html">Man Page for <code>ip</code></a></li>
 </ul>
 
   </section>

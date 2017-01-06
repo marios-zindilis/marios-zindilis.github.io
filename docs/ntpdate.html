@@ -64,19 +64,19 @@
   </header>
 
   <section itemprop="articleBody">
-    <h2 id="troubleshooting-no-server-suitable-for-synchronization">Troubleshooting <code class="highlighter-rouge">no server suitable for synchronization</code></h2>
+    <h2>Troubleshooting <code>no server suitable for synchronization</code></h2>
 
-<p>If you have a cron jon periodically running <code class="highlighter-rouge">ntpdate</code> to update the 
-time on a system, you might at some point hit the <code class="highlighter-rouge">no server suitable 
+<p>If you have a cron jon periodically running <code>ntpdate</code> to update the 
+time on a system, you might at some point hit the <code>no server suitable 
 for synchronization</code> error. You can gain some insight into the problem 
-with running <code class="highlighter-rouge">ntpdate</code> with the <code class="highlighter-rouge">-d</code> option, which will show debugging 
-output from the actions of <code class="highlighter-rouge">ntpdate</code>, without actually changing the 
+with running <code>ntpdate</code> with the <code>-d</code> option, which will show debugging 
+output from the actions of <code>ntpdate</code>, without actually changing the 
 time on the system.</p>
 
 <p>One example cause of this issue is that the value of <strong>strata</strong> exceeds 
 a maximum value, in which case the NTP server is rejected by the system 
 as being <em>too far</em> from its own source. You should then focus on either 
-fixing the NTP server itself, or changing your <code class="highlighter-rouge">ntpdate</code> target to 
+fixing the NTP server itself, or changing your <code>ntpdate</code> target to 
 another system.</p>
 
   </section>

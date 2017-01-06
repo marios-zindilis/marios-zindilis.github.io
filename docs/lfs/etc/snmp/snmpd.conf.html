@@ -62,25 +62,19 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>Sometimes, <code class="highlighter-rouge">snmpd</code> will report the wrong speed of a network interface. For 
+    <p>Sometimes, <code>snmpd</code> will report the wrong speed of a network interface. For 
 example, the following output shows a speed of 10Mbps, whereas the ethernet 
 port on the server is actually working at 100Mbps:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>    IF-MIB::ifIndex.2 = INTEGER: 2
+<div class="highlight"><pre><code class="language-" data-lang="">    IF-MIB::ifIndex.2 = INTEGER: 2
     IF-MIB::ifDescr.2 = STRING: eth0
     IF-MIB::ifType.2 = INTEGER: ethernetCsmacd(6)
     IF-MIB::ifMtu.2 = INTEGER: 1500
     IF-MIB::ifSpeed.2 = Gauge32: 10000000
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>The <a href="http://www.net-snmp.org/wiki/index.php/FAQ:Agent_36" title="Wrong speed/type of network interfaces">Net-SNMP documentation mentions this</a>. This can be manually fixed with 
-the <code class="highlighter-rouge">interface</code> directive in <code class="highlighter-rouge">snmpd.conf</code>, for example:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>    interface eth0 6 100000000
-</code></pre>
-</div>
-
+the <code>interface</code> directive in <code>snmpd.conf</code>, for example:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    interface eth0 6 100000000
+</code></pre></div>
 <!-- Links -->
 
   </section>

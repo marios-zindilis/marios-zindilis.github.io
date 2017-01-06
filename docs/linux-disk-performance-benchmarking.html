@@ -68,13 +68,13 @@
 in great need of editing! Use at own peril.</p>
 
 <ul>
-  <li>http://www.westnet.com/~gsmith/content/postgresql/pg-disktesting.htm</li>
-  <li>http://archive09.linux.com/feature/139742</li>
+<li> http://www.westnet.com/~gsmith/content/postgresql/pg-disktesting.htm</li>
+<li> http://archive09.linux.com/feature/139742</li>
 </ul>
 
-<h2 id="hdparm"><code class="highlighter-rouge">hdparm</code></h2>
+<h2><code>hdparm</code></h2>
 
-<h3 id="buffered-disk-reads-bypasses-cache">Buffered disk reads (bypasses cache)</h3>
+<h3>Buffered disk reads (bypasses cache)</h3>
 
 <p>This method reads data sequentially from the disk, disregarding file boundaries.</p>
 
@@ -82,52 +82,54 @@ in great need of editing! Use at own peril.</p>
 /dev/sdb:
  Timing buffered disk reads: 228 MB <span class="k">in  </span>3.02 seconds <span class="o">=</span>  75.52 MB/sec</code></pre></figure>
 
-<h3 id="cached-reads">Cached reads</h3>
+<h3>Cached reads</h3>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">mariosz@super-mario:~$ </span>sudo hdparm -T /dev/sdb
 /dev/sdb:
  Timing cached reads:   3158 MB <span class="k">in  </span>2.00 seconds <span class="o">=</span> 1579.16 MB/sec</code></pre></figure>
 
-<h2 id="dd"><code class="highlighter-rouge">dd</code></h2>
+<h2><code>dd</code></h2>
 
-<h3 id="writes">Writes</h3>
+<h3>Writes</h3>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">mariosz@super-mario:~$ </span>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>testfile <span class="nv">bs</span><span class="o">=</span>8k <span class="nv">count</span><span class="o">=</span>100k; rm -f testfile
 102400+0 records <span class="k">in
 </span>102400+0 records out
 838860800 bytes <span class="o">(</span>839 MB<span class="o">)</span> copied, 12.7363 s, 65.9 MB/s</code></pre></figure>
 
-<h3 id="writes-and-cache-out">Writes and Cache-out</h3>
+<h3>Writes and Cache-out</h3>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">mariosz@super-mario:~$ </span><span class="nb">time </span>sh -c <span class="s2">"dd if=/dev/zero of=testfile bs=8k count=100k; sync"</span> ; rm -f testfile
 102400+0 records <span class="k">in
 </span>102400+0 records out
 838860800 bytes <span class="o">(</span>839 MB<span class="o">)</span> copied, 12.6832 s, 66.1 MB/s
-real	0m19.304s
-user	0m0.020s
-sys	0m1.232s</code></pre></figure>
+real    0m19.304s
+user    0m0.020s
+sys 0m1.232s</code></pre></figure>
 
-<h2 id="install-iozone">Install iozone</h2>
+<h2>Install iozone</h2>
+
 <ol>
-  <li>Go to [http://www.iozone.org/], get link of latest build.</li>
-  <li>wget http://www.iozone.org/src/current/iozone-3-420.i386.rpm</li>
-  <li>yum install iozone-3-420.i386.rpm</li>
+<li> Go to [http://www.iozone.org/], get link of latest build.</li>
+<li> wget http://www.iozone.org/src/current/iozone-3-420.i386.rpm</li>
+<li> yum install iozone-3-420.i386.rpm</li>
 </ol>
 
-<p>If you also need to create graphs from the results of <code class="highlighter-rouge">iozone</code>, you can
-additionally install <code class="highlighter-rouge">gnuplot</code>:
-<code class="highlighter-rouge">yum install gnuplot</code></p>
+<p>If you also need to create graphs from the results of <code>iozone</code>, you can
+additionally install <code>gnuplot</code>:
+<code>yum install gnuplot</code></p>
 
-<h2 id="using-iozone">Using iozone</h2>
+<h2>Using iozone</h2>
+
 <ul>
-  <li>[http://www.thegeekstuff.com/2011/05/iozone-examples/]</li>
+<li>  [http://www.thegeekstuff.com/2011/05/iozone-examples/]</li>
 </ul>
 
-<h2 id="bonnie">Bonnie++</h2>
+<h2>Bonnie++</h2>
 
-<p>The <code class="highlighter-rouge">bonnie++</code> benchmark is available on <a href="/docs/centos-6-enable-epel-repository.html">EPEL</a> 
+<p>The <code>bonnie++</code> benchmark is available on <a href="/docs/centos-6-enable-epel-repository.html">EPEL</a> 
 repository for CentOS. Note that it will put load on the system on which 
-it runs, so it’s better run during less productive times.</p>
+it runs, so it&#39;s better run during less productive times.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>root@centos-6-3-minimal ~]# bonnie++ -u root</code></pre></figure>
 

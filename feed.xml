@@ -6,9 +6,185 @@
 </description>
     <link>https://zindilis.com/</link>
     <atom:link href="https://zindilis.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 16 Dec 2016 08:34:00 +0000</pubDate>
-    <lastBuildDate>Fri, 16 Dec 2016 08:34:00 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Jan 2017 01:31:02 +0000</pubDate>
+    <lastBuildDate>Fri, 06 Jan 2017 01:31:02 +0000</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Single-App Django Project Anatomy</title>
+        <description>&lt;p&gt;I watched a talk from DjangoCon 2014 called &lt;a href=&quot;https://www.youtube.com/watch?v=ajEDo1semzs&quot; title=&quot;DjangoCon 2014 - Anatomy of a Django Project&quot;&gt;Anatomy of a Django Project&lt;/a&gt;,
+in which &lt;a href=&quot;http://mlavin.org/&quot; title=&quot;Mark Lavin&quot;&gt;Mark Lavin&lt;/a&gt; examines the location of some of the files that are
+automatically created by &lt;code&gt;django-admin startproject myproject&lt;/code&gt; and by
+&lt;code&gt;django-admin startapp myapp&lt;/code&gt; (or &lt;code&gt;manage.py startapp myapp&lt;/code&gt;, they are the
+same thing). Two themes from that talk resonated with me:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Django projects are still Python code.&lt;/strong&gt; Many people who use Django,
+myself included, often forget that Django is still Python code. You can
+move files around if you want, you can rename them, you can do whatever
+you could do if your code was &lt;em&gt;not&lt;/em&gt; a Django website, as long as modules
+are still able to import one another when needed. This article show you
+how to do something along those lines.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Naming the project and the app for single-app projects kinda sucks.&lt;/strong&gt;
+Sometimes you want to create a single-app Django project. Perhaps you are
+certain that your project will only ever contain one app, or maybe it is a
+proof-of-concept thing that you&amp;#39;re tinkering with. You start a boilerplate
+project with &lt;code&gt;django-admin startproject something_awesome&lt;/code&gt;, only to
+discover that you can&amp;#39;t name your app &lt;code&gt;something_awesome&lt;/code&gt; because that
+namespace is already occupied, in the form of a directory in which Django
+holds some project-wide files. You then end up naming your app &lt;code&gt;core&lt;/code&gt;, or
+&lt;code&gt;common&lt;/code&gt;, or &lt;code&gt;main&lt;/code&gt;, or something that is not cool, and most importantly
+it&amp;#39;s not semantic. This articles shows you how to overcome this hurdle.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;Anatomy of a Default Django Project&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;#39;s take a look at the file structure of a default Django project with one
+app. To create one, do something like:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;django-admin startproject something_awesome
+cd something_awesome
+django-admin startapp core
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here&amp;#39;s the file structure that Django created for you:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ tree
+.
+├── core
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── manage.py
+└── something_awesome
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can see that the &lt;code&gt;something_awesome&lt;/code&gt; directory is used to hold a few files,
+those are project-wide files. You can&amp;#39;t name your app &lt;code&gt;something_awesome&lt;/code&gt;, so
+you had to name it &lt;code&gt;core&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Simpler Structure for Single-App Projects&lt;/h2&gt;
+
+&lt;p&gt;Here&amp;#39;s how to create a simpler structure, if you&amp;#39;re only creating a single-app
+website.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create the Django project:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;django-admin startproject something_awesome
+cd something_awesome
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is the file structure after that command:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ tree
+.
+├── manage.py
+└── something_awesome
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Move everything from the &lt;code&gt;something_awesome&lt;/code&gt; directory to the project root,
+then remove that directory and &lt;code&gt;__init__.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;mv something_awesome/* .
+rmdir something_awesome
+rm __init__.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here&amp;#39;s the new structure:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ tree
+.
+├── manage.py
+├── settings.py
+├── urls.py
+└── wsgi.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix the location of &lt;code&gt;settings&lt;/code&gt; in &lt;code&gt;manage.py&lt;/code&gt;. Here&amp;#39;s the diff: &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;span class=&quot;gd&quot;&gt;--- manage.py-orig  2017-01-05 07:02:21.078737918 +0000
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+++ manage.py   2017-01-05 07:02:35.314857268 +0000
+&lt;/span&gt;&lt;span class=&quot;gu&quot;&gt;@@ -3,7 +3,7 @@
+&lt;/span&gt; import sys
+
+ if __name__ == &quot;__main__&quot;:
+&lt;span class=&quot;gd&quot;&gt;-    os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;something_awesome.settings&quot;)
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+    os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;settings&quot;)
+&lt;/span&gt;     try:
+         from django.core.management import execute_from_command_line
+     except ImportError:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix &lt;code&gt;settings.py&lt;/code&gt;. Here&amp;#39;s the diff:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;span class=&quot;gd&quot;&gt;--- settings.py-orig    2017-01-06 01:06:54.082362856 +0000
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+++ settings.py 2017-01-06 01:07:27.427015777 +0000
+&lt;/span&gt;&lt;span class=&quot;gu&quot;&gt;@@ -49,7 +49,7 @@
+&lt;/span&gt;     &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+ ]
+
+&lt;span class=&quot;gd&quot;&gt;-ROOT_URLCONF = &#39;something_awesome.urls&#39;
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+ROOT_URLCONF = &#39;urls&#39;
+&lt;/span&gt;
+ TEMPLATES = [
+     {
+&lt;span class=&quot;gu&quot;&gt;@@ -67,7 +67,7 @@
+&lt;/span&gt;     },
+ ]
+
+&lt;span class=&quot;gd&quot;&gt;-WSGI_APPLICATION = &#39;something_awesome.wsgi.application&#39;
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+WSGI_APPLICATION = &#39;wsgi.application&#39;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fix &lt;code&gt;wsgi.py&lt;/code&gt;. Here&amp;#39;s the diff:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;span class=&quot;gd&quot;&gt;--- wsgi.py-orig    2017-01-06 01:09:38.145285387 +0000
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+++ wsgi.py 2017-01-06 01:09:56.393573270 +0000
+&lt;/span&gt;&lt;span class=&quot;gu&quot;&gt;@@ -11,6 +11,6 @@
+&lt;/span&gt;
+ from django.core.wsgi import get_wsgi_application
+
+&lt;span class=&quot;gd&quot;&gt;-os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;something_awesome.settings&quot;)
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;settings&quot;)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;At this point you have a Django project with a &lt;em&gt;flat&lt;/em&gt; file structure, with
+no directory occupying the cool name that you came up with. You can now
+create an app called whatever you want, e.g:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;./manage.py startapp something_awesome
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here&amp;#39;s the new structure:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ tree
+.
+├── manage.py
+├── settings.py
+├── something_awesome
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── urls.py
+└── wsgi.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can now get on with developing your application in this simpler setup.&lt;/p&gt;
+
+&lt;h2&gt;Final Thoughts&lt;/h2&gt;
+
+&lt;p&gt;As I mentioned in the beginning, never forget that Django is just Python code.
+You, as the developer, have the power to manipulate it however you want. If you
+are interested in this matter, check out the DjangoCon 
+&lt;a href=&quot;https://www.youtube.com/watch?v=ajEDo1semzs&quot; title=&quot;DjangoCon 2014 - Anatomy of a Django Project&quot;&gt;Anatomy of a Django Project&lt;/a&gt; talk on Youtube.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 06 Jan 2017 00:00:00 +0000</pubDate>
+        <link>https://zindilis.com/blog/2017/01/06/django-anatomy-for-single-app.html</link>
+        <guid isPermaLink="true">https://zindilis.com/blog/2017/01/06/django-anatomy-for-single-app.html</guid>
+        
+        <category>django</category>
+        
+        
+      </item>
     
       <item>
         <title>Control VLC with Python</title>
@@ -17,11 +193,11 @@ media-related Swiss army knife. It has a surprising number of different control
 &lt;a href=&quot;https://wiki.videolan.org/Interfaces/&quot;&gt;interfaces&lt;/a&gt;, some of which allow 
 access over a network, such as the HTTP, Telnet and RC interfaces. It also has
 a &lt;a href=&quot;https://www.olivieraubert.net/vlc/python-ctypes/doc/&quot;&gt;Python API&lt;/a&gt; but just
-looking at the documentation is terrifying…&lt;/p&gt;
+looking at the documentation is terrifying...&lt;/p&gt;
 
-&lt;p&gt;I did some experimenting with controlling VLC from Python using VLC’s
+&lt;p&gt;I did some experimenting with controlling VLC from Python using VLC&amp;#39;s
 &lt;a href=&quot;https://wiki.videolan.org/documentation:modules/rc/&quot;&gt;Remote Control Interface&lt;/a&gt; (see &lt;a href=&quot;http://getluky.net/2006/04/19/vlcs-awesome-rc-interface/&quot;&gt;this&lt;/a&gt; as well), and wrote a small 
-proof-of-concept code snippet. Here’s how to use it:&lt;/p&gt;
+proof-of-concept code snippet. Here&amp;#39;s how to use it:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;vlc&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VLC&lt;/span&gt;
 
@@ -33,11 +209,11 @@ proof-of-concept code snippet. Here’s how to use it:&lt;/p&gt;
 
 &lt;p&gt;The code is not production-grade. I will not be developing this any more, so I
 am putting it here for anyone to grap and hopefully do something useful with. 
-I’ve only tested this on my Ubuntu machine, and it requires both VLC and 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;screen&lt;/code&gt; to be installed. It also uses &lt;code class=&quot;highlighter-rouge&quot;&gt;subprocess.run()&lt;/code&gt; to start VLC, which
+I&amp;#39;ve only tested this on my Ubuntu machine, and it requires both VLC and 
+&lt;code&gt;screen&lt;/code&gt; to be installed. It also uses &lt;code&gt;subprocess.run()&lt;/code&gt; to start VLC, which
 is not available in any version of Python earlier than 3.5.&lt;/p&gt;
 
-&lt;p&gt;Here’s the library/wrapper, drop it anywhere in your Python &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Here&amp;#39;s the library/wrapper, drop it anywhere in your Python &lt;code&gt;PATH&lt;/code&gt;:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
@@ -102,7 +278,6 @@ is not available in any version of Python earlier than 3.5.&lt;/p&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;shutdown&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Good luck using this for your scripts :)&lt;/p&gt;
-
 </description>
         <pubDate>Sun, 23 Oct 2016 00:00:00 +0100</pubDate>
         <link>https://zindilis.com/blog/2016/10/23/control-vlc-with-python.html</link>
@@ -121,9 +296,9 @@ is not available in any version of Python earlier than 3.5.&lt;/p&gt;
 be a hexadecimal string of 8 characters instead of an integer.&lt;/p&gt;
 
 &lt;p&gt;I wrote this earlier today, and it works fine, but I have a bad feeling about
-it. I don’t know why yet, but something doesn’t feel right. Nevertheless, I am
+it. I don&amp;#39;t know why yet, but something doesn&amp;#39;t feel right. Nevertheless, I am
 putting it here as a note to myself. You should probably not use it. If you do,
-note that if you exhaust the possible IDs, &lt;code class=&quot;highlighter-rouge&quot;&gt;generate_id()&lt;/code&gt; will recurse 
+note that if you exhaust the possible IDs, &lt;code&gt;generate_id()&lt;/code&gt; will recurse 
 forever.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
@@ -151,7 +326,6 @@ forever.&lt;/p&gt;
         &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generate_id&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;first_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CharField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max_length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;240&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
 </description>
         <pubDate>Sun, 06 Dec 2015 00:00:00 +0000</pubDate>
         <link>https://zindilis.com/blog/2015/12/06/hex-primary-key-in-django-model.html</link>
@@ -164,20 +338,22 @@ forever.&lt;/p&gt;
         <title>Regular expressions in python-markdown2 (part 2)</title>
         <description>&lt;p class=&quot;lead&quot;&gt;This article is a look into the performance of one of the
 regular expressions used in the
-&lt;a href=&quot;https://github.com/trentm/python-markdown2&quot; title=&quot;python-markdown2 on Github&quot;&gt; python-markdown2&lt;/a&gt; Python module for
+&lt;a href=&quot;https://github.com/trentm/python-markdown2&quot; 
+title=&quot;python-markdown2 on Github&quot;&gt; python-markdown2&lt;/a&gt; Python module for
 converting Markdown syntax to HTML. It was initially written for pure fun, and
 in celebration of its own pointlessness, but eventually the changes proposed
 here made it upstream in
-&lt;a href=&quot;https://github.com/trentm/python-markdown2/pull/207&quot; title=&quot;python-markdown2 pull request 207&quot;&gt;pull request 207&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&quot;https://github.com/trentm/python-markdown2/pull/207&quot; 
+title=&quot;python-markdown2 pull request 207&quot;&gt;pull request 207&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&quot;replace-tabs-with-spaces&quot;&gt;Replace tabs with spaces&lt;/h2&gt;
+&lt;h2&gt;Replace tabs with spaces&lt;/h2&gt;
 
 &lt;p&gt;This snippet of code replaces tab characters with a predefined number of 
 spaces. It is a Python port of the Perl code mentioned by 
-&lt;a href=&quot;http://search.cpan.org/~bartl/&quot; title=&quot;Bart Lateur&quot;&gt;Bart Lateur&lt;/a&gt; in a post about 
+&lt;a href=&quot;http://search.cpan.org/%7Ebartl/&quot; title=&quot;Bart Lateur&quot;&gt;Bart Lateur&lt;/a&gt; in a post about 
 &lt;a href=&quot;http://www.nntp.perl.org/group/perl.macperl.anyperl/2002/03/msg154.html&quot; title=&quot;Perl Tabs to Spaces&quot;&gt;turning tabs to spaces in Perl&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&quot;a-detour-to-perl&quot;&gt;A detour to Perl&lt;/h3&gt;
+&lt;h3&gt;A detour to Perl&lt;/h3&gt;
 
 &lt;p&gt;The initial post in that thread was replacing tabs like this:&lt;/p&gt;
 
@@ -192,13 +368,13 @@ four. So, the suggested substitution in Perl becomes:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-perl&quot; data-lang=&quot;perl&quot;&gt;&lt;span class=&quot;sr&quot;&gt;s/(.*?)\t/$1.(&#39; &#39; x (4-length($1)%4))/ge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;There are two flags used there: &lt;code class=&quot;highlighter-rouge&quot;&gt;g&lt;/code&gt; applies the substitution for all matches of 
-the left pattern (&lt;code class=&quot;highlighter-rouge&quot;&gt;(.*?)\t&lt;/code&gt;). Without that flag, only the first match would be 
-processed. The second flag, &lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt;, forces the substitute 
-(&lt;code class=&quot;highlighter-rouge&quot;&gt;$1.(&#39; &#39; x (4-length($1)%4))&lt;/code&gt;) to be evaluated as an expression itself. 
+&lt;p&gt;There are two flags used there: &lt;code&gt;g&lt;/code&gt; applies the substitution for all matches of 
+the left pattern (&lt;code&gt;(.*?)\t&lt;/code&gt;). Without that flag, only the first match would be 
+processed. The second flag, &lt;code&gt;e&lt;/code&gt;, forces the substitute 
+(&lt;code&gt;$1.(&amp;#39; &amp;#39; x (4-length($1)%4))&lt;/code&gt;) to be evaluated as an expression itself. 
 Without this flag, the second part would be handled as a raw string.&lt;/p&gt;
 
-&lt;h3 id=&quot;back-to-python&quot;&gt;Back to Python&lt;/h3&gt;
+&lt;h3&gt;Back to Python&lt;/h3&gt;
 
 &lt;p&gt;Here is the Python code, cleaned up a little:&lt;/p&gt;
 
@@ -215,21 +391,21 @@ Without this flag, the second part would be handled as a raw string.&lt;/p&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_detab_re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_detab_sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h4 id=&quot;explanation&quot;&gt;Explanation&lt;/h4&gt;
+&lt;h4&gt;Explanation&lt;/h4&gt;
 
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;_detab_re&lt;/code&gt; object is a compiled Regular Expression object, built with the 
+&lt;p&gt;The &lt;code&gt;_detab_re&lt;/code&gt; object is a compiled Regular Expression object, built with the 
 same pattern as the one used in the Perl example, and with the multiline flag 
-enabled (&lt;code class=&quot;highlighter-rouge&quot;&gt;re.M&lt;/code&gt;). You can test this out at &lt;a href=&quot;http://regexr.com/3c8o7&quot; title=&quot;Tabs to spaces regular expression&quot;&gt;RegExr&lt;/a&gt;. The &lt;code class=&quot;highlighter-rouge&quot;&gt;subn()&lt;/code&gt; 
+enabled (&lt;code&gt;re.M&lt;/code&gt;). You can test this out at &lt;a href=&quot;http://regexr.com/3c8o7&quot; title=&quot;Tabs to spaces regular expression&quot;&gt;RegExr&lt;/a&gt;. The &lt;code&gt;subn()&lt;/code&gt; 
 method of that object is called in the last line. It takes two parameters: the 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;_detab_sub()&lt;/code&gt; function, and the text to be processed. For every match of the 
-pattern, &lt;code class=&quot;highlighter-rouge&quot;&gt;_detab_sub()&lt;/code&gt; is called, and the matched string is passed to the 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;_detab_sub()&lt;/code&gt; function for processing. Finally, &lt;code class=&quot;highlighter-rouge&quot;&gt;subn()&lt;/code&gt; returns a tuple with 
+&lt;code&gt;_detab_sub()&lt;/code&gt; function, and the text to be processed. For every match of the 
+pattern, &lt;code&gt;_detab_sub()&lt;/code&gt; is called, and the matched string is passed to the 
+&lt;code&gt;_detab_sub()&lt;/code&gt; function for processing. Finally, &lt;code&gt;subn()&lt;/code&gt; returns a tuple with 
 the text with the pattern substituted, and the number of substitutions that
-happened. From that result, only the text is kept, with that &lt;code class=&quot;highlighter-rouge&quot;&gt;subn()[0]&lt;/code&gt;, 
-which seems a bit redundant, since the &lt;code class=&quot;highlighter-rouge&quot;&gt;sub()&lt;/code&gt; method would do that without 
-requiring the &lt;code class=&quot;highlighter-rouge&quot;&gt;[0]&lt;/code&gt; subscription.&lt;/p&gt;
+happened. From that result, only the text is kept, with that &lt;code&gt;subn()[0]&lt;/code&gt;, 
+which seems a bit redundant, since the &lt;code&gt;sub()&lt;/code&gt; method would do that without 
+requiring the &lt;code&gt;[0]&lt;/code&gt; subscription.&lt;/p&gt;
 
-&lt;h4 id=&quot;no-regular-expressions-please&quot;&gt;No regular expressions please&lt;/h4&gt;
+&lt;h4&gt;No regular expressions please&lt;/h4&gt;
 
 &lt;p&gt;Here is a Python snippet that does the same thing as the previous one, without 
 using regular expressions:&lt;/p&gt;
@@ -254,11 +430,11 @@ using regular expressions:&lt;/p&gt;
         &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_detab_no_re_sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h4 id=&quot;performance&quot;&gt;Performance&lt;/h4&gt;
+&lt;h4&gt;Performance&lt;/h4&gt;
 
 &lt;p&gt;In the &lt;a href=&quot;/blog/2015/11/07/regex-in-python-markdown2-pt1.html&quot; title=&quot;Regular expressions in python-markdown2 (part 1)&quot;&gt;previous article on regular expressions in python-markdown2&lt;/a&gt; I 
-dismissed the difference between a substring substitution with &lt;code class=&quot;highlighter-rouge&quot;&gt;re.sub()&lt;/code&gt; 
-versus &lt;code class=&quot;highlighter-rouge&quot;&gt;str.replace()&lt;/code&gt; as being negligible, but in this case it seems that it 
+dismissed the difference between a substring substitution with &lt;code&gt;re.sub()&lt;/code&gt; 
+versus &lt;code&gt;str.replace()&lt;/code&gt; as being negligible, but in this case it seems that it 
 is more substantial. This simple example already indicates some difference:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&#39;&#39;
@@ -300,7 +476,7 @@ wc -l bzip2.c
 &lt;p&gt;That is significant difference, not using regular expressions makes the 
 process about 8 times faster.&lt;/p&gt;
 
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
 
 &lt;p&gt;Based on this article, and on the previous one, I would prefer to use other 
 methods for substring replacements than regular expressions.&lt;/p&gt;
@@ -318,23 +494,24 @@ methods for substring replacements than regular expressions.&lt;/p&gt;
         <title>Regular expressions in python-markdown2 (part 1)</title>
         <description>&lt;p class=&quot;lead&quot;&gt;This article is a look into the performance of one of the
 regular expressions used in the 
-&lt;a href=&quot;https://github.com/trentm/python-markdown2&quot; title=&quot;python-markdown2 on Github&quot;&gt; python-markdown2&lt;/a&gt; Python module for 
+&lt;a href=&quot;https://github.com/trentm/python-markdown2&quot; 
+title=&quot;python-markdown2 on Github&quot;&gt; python-markdown2&lt;/a&gt; Python module for 
 converting Markdown syntax to HTML. It was initially written for pure fun, and 
 in celebration of its own pointlessness, but eventually the changes proposed
 here made it upstream in
 &lt;a href=&quot;https://github.com/trentm/python-markdown2/pull/204&quot;&gt;pull request 
 204&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&quot;standardize-line-endings&quot;&gt;Standardize line endings&lt;/h2&gt;
+&lt;h2&gt;Standardize line endings&lt;/h2&gt;
 
 &lt;p&gt;This regular expression appears very early in the conversion process:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Its use is fairly obvious: it changes all single carriage returns (&lt;code class=&quot;highlighter-rouge&quot;&gt;\r&lt;/code&gt;) and 
-all carriage returns followed by a newline (&lt;code class=&quot;highlighter-rouge&quot;&gt;\r\n&lt;/code&gt;) to single newlines (&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;).
-The same effect can be achieved in Python with two &lt;code class=&quot;highlighter-rouge&quot;&gt;str.replace()&lt;/code&gt; statements 
-and in fact that would be much faster. The following example uses &lt;code class=&quot;highlighter-rouge&quot;&gt;timeit&lt;/code&gt;, 
+&lt;p&gt;Its use is fairly obvious: it changes all single carriage returns (&lt;code&gt;\r&lt;/code&gt;) and 
+all carriage returns followed by a newline (&lt;code&gt;\r\n&lt;/code&gt;) to single newlines (&lt;code&gt;\n&lt;/code&gt;).
+The same effect can be achieved in Python with two &lt;code&gt;str.replace()&lt;/code&gt; statements 
+and in fact that would be much faster. The following example uses &lt;code&gt;timeit&lt;/code&gt;, 
 which comes with the IPython shell:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timeit&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;Apples&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Oranges&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Kiwis&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Grapes&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -346,27 +523,27 @@ which comes with the IPython shell:&lt;/p&gt;
 &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timeit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&#39;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;n|&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;Apples&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Oranges&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Kiwis&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Grapes&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;mi&quot;&gt;100000&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loops&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;best&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.31&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;us&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;per&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loop&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;So the two runs of &lt;code class=&quot;highlighter-rouge&quot;&gt;str.replace()&lt;/code&gt; add up to 465 nanoseconds, whereas one run 
-of &lt;code class=&quot;highlighter-rouge&quot;&gt;re.sub()&lt;/code&gt; takes 2.31 microseconds, that is 2310 nanoseconds, or about 
-&lt;strong&gt;five times slower&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;So the two runs of &lt;code&gt;str.replace()&lt;/code&gt; add up to 465 nanoseconds, whereas one run 
+of &lt;code&gt;re.sub()&lt;/code&gt; takes 2.31 microseconds, that is 2310 nanoseconds, or about 
+&lt;strong&gt;five times slower&lt;/strong&gt;. &lt;/p&gt;
 
 &lt;p&gt;The question is: &lt;em&gt;Does it matter?&lt;/em&gt; Well, my copy of 
-&lt;em&gt;The Hitch Hiker’s Guide to the Galaxy&lt;/em&gt; that includes all five books in the 
+&lt;em&gt;The Hitch Hiker&amp;#39;s Guide to the Galaxy&lt;/em&gt; that includes all five books in the 
 series, is 776 pages long, and each full page has 42 lines (yes, I counted 
 twice, and now I am wondering if it was done on purpose). Following up on the 
 previous calculations, if you had to convert that book from Markdown to HTML, 
 (about 32592 lines), it would take you a whole 0.02 seconds to do that with 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;re.sub()&lt;/code&gt;, or about 0.004 seconds to do that with &lt;code class=&quot;highlighter-rouge&quot;&gt;str.replace()&lt;/code&gt;. 
+&lt;code&gt;re.sub()&lt;/code&gt;, or about 0.004 seconds to do that with &lt;code&gt;str.replace()&lt;/code&gt;. 
 Therefore, the answer to my previous question: &lt;em&gt;Does it matter?&lt;/em&gt; is 42.&lt;/p&gt;
 
-&lt;p&gt;Now the question becomes: &lt;em&gt;Does it &lt;strong&gt;really&lt;/strong&gt; matter?&lt;/em&gt; Well, if you had to 
+&lt;p&gt;Now the question becomes: &lt;em&gt;Does it *&lt;/em&gt;really** matter?* Well, if you had to 
 convert all 30 million paperback books that Amazon has for sale (number found 
 through a search on amazon.com), and assuming each book is as healthy in size 
 as &lt;abbr title=&quot;The Hitch Hicker&#39;s Guide To The Galaxy&quot;&gt;THHGTTG&lt;/abbr&gt;, then it 
-would take you a week to do that with &lt;code class=&quot;highlighter-rouge&quot;&gt;re.sub()&lt;/code&gt;, but only a day and a 
-half to do it with &lt;code class=&quot;highlighter-rouge&quot;&gt;str.replace()&lt;/code&gt;. Thus, for the Python developer out there 
+would take you a week to do that with &lt;code&gt;re.sub()&lt;/code&gt;, but only a day and a 
+half to do it with &lt;code&gt;str.replace()&lt;/code&gt;. Thus, for the Python developer out there 
 who is pondering on converting 30 million books from Markdown to HTML, the 
-answer is: Go with &lt;code class=&quot;highlighter-rouge&quot;&gt;str.replace()&lt;/code&gt;. For the rest of us it’s still 42.&lt;/p&gt;
+answer is: Go with &lt;code&gt;str.replace()&lt;/code&gt;. For the rest of us it&amp;#39;s still 42.&lt;/p&gt;
 </description>
         <pubDate>Sat, 07 Nov 2015 00:00:00 +0000</pubDate>
         <link>https://zindilis.com/blog/2015/11/07/regex-in-python-markdown2-pt1.html</link>
@@ -387,10 +564,10 @@ I followed the latter track.&lt;/p&gt;
 took place on the 24&lt;sup&gt;th&lt;/sup&gt; and 25&lt;sup&gt;th&lt;/sup&gt; of October 2015.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/df3n5/redact-py&quot; title=&quot;Redact-Py Redis ORM&quot;&gt;redact-py&lt;/a&gt; is an Open Source Redis ORM, very simple to use and 
+&lt;li&gt;  &lt;a href=&quot;https://github.com/df3n5/redact-py&quot; title=&quot;Redact-Py Redis ORM&quot;&gt;redact-py&lt;/a&gt; is an Open Source Redis ORM, very simple to use and 
 with good performance.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.larryhastings.com/&quot; title=&quot;Larry Hastings&quot;&gt;Larry Hastings&lt;/a&gt; talked about 
-&lt;a href=&quot;https://www.youtube.com/watch?v=4zeHStBowEk&quot; title=&quot;Python&#39;s Infamous GIL&quot;&gt;Python’s Infamous GIL&lt;/a&gt; and the challenges of 
+&lt;li&gt;  &lt;a href=&quot;http://www.larryhastings.com/&quot; title=&quot;Larry Hastings&quot;&gt;Larry Hastings&lt;/a&gt; talked about 
+&lt;a href=&quot;https://www.youtube.com/watch?v=4zeHStBowEk&quot; title=&quot;Python&amp;#39;s Infamous GIL&quot;&gt;Python&amp;#39;s Infamous GIL&lt;/a&gt; and the challenges of 
 multithreadded Python software.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -405,14 +582,14 @@ multithreadded Python software.&lt;/li&gt;
     
       <item>
         <title>What I Learned While Migrating MySQL On-Premises To Amazon RDS</title>
-        <description>&lt;p&gt;I miss having the free time to attend Percona Webinars. They are really good.&lt;/p&gt;
+        <description>&lt;p&gt;I miss having the free time to attend Percona Webinars. They are really good. &lt;/p&gt;
 
 &lt;p&gt;This is a recording from a webinar presented by a Technical Account Manager at 
 Percona, regarding experiences gained from the migration of a sizeable MySQL 
-installation from onsite to AWS RDS. It’s packed with valuable technical 
-information, as are Percona webinars, typically.&lt;/p&gt;
+installation from onsite to AWS RDS. It&amp;#39;s packed with valuable technical 
+information, as are Percona webinars, typically. &lt;/p&gt;
 
-&lt;iframe width=&quot;960&quot; height=&quot;720&quot; src=&quot;https://www.youtube.com/embed/m7KdRoMciyY?rel=0&amp;amp;showinfo=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;iframe width=&quot;960&quot; height=&quot;720&quot; src=&quot;https://www.youtube.com/embed/m7KdRoMciyY?rel=0&amp;amp;showinfo=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
 </description>
         <pubDate>Sat, 24 Oct 2015 00:00:00 +0100</pubDate>
         <link>https://zindilis.com/blog/2015/10/24/migrate-on-premise-mysql-to-rds.html</link>
@@ -424,12 +601,12 @@ information, as are Percona webinars, typically.&lt;/p&gt;
       <item>
         <title>Webinar recording from Imperva</title>
         <description>&lt;p&gt;This is a recording of a webinar that I watched this week, titled 
-&lt;em&gt;“Balancing Ecommerce Security with Performance”&lt;/em&gt;. The talks refer to 
+&lt;em&gt;&amp;quot;Balancing Ecommerce Security with Performance&amp;quot;&lt;/em&gt;. The talks refer to 
 companies Imperva, American Eagle and Incapsula, and there is some product 
 plugging going on during the talks, however there is a some amount of 
 introductory web application security information.&lt;/p&gt;
 
-&lt;iframe id=&quot;viddler-d5910c77&quot; src=&quot;//www.viddler.com/embed/d5910c77/?f=1&amp;amp;autoplay=0&amp;amp;player=full&amp;amp;secret=69381656&amp;amp;disablebackwardseek=false&amp;amp;disableseek=false&amp;amp;disableforwardseek=false&amp;amp;make_responsive=false&amp;amp;loop=false&amp;amp;nologo=false&amp;amp;hd=false&quot; width=&quot;800&quot; height=&quot;492&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;iframe id=&quot;viddler-d5910c77&quot; src=&quot;//www.viddler.com/embed/d5910c77/?f=1&amp;autoplay=0&amp;player=full&amp;secret=69381656&amp;disablebackwardseek=false&amp;disableseek=false&amp;disableforwardseek=false&amp;make_responsive=false&amp;loop=false&amp;nologo=false&amp;hd=false&quot; width=&quot;800&quot; height=&quot;492&quot; allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;p&gt;The most useful bit in my opinion was pointing out &lt;a href=&quot;http://demo.testfire.net/&quot; title=&quot;Demo login website open to SQL Injection&quot;&gt;demo.testfire.net&lt;/a&gt;, a 
 test website that is open to SQL Injection for demostration purposes, and thus 
@@ -446,7 +623,7 @@ it can be useful as a security awareness training material.&lt;/p&gt;
     
       <item>
         <title>How to run Firefox 3.6 on Ubuntu 15.04</title>
-        <description>&lt;p class=&quot;head&quot;&gt;These instructions will allow you to run the ancient 3.6 
+        <description>&lt;p class=&#39;head&#39;&gt;These instructions will allow you to run the ancient 3.6 
 version of Firefox on a recent Ubuntu installation, namely 15.04, but it could 
 apply to versions of Debian, Ubuntu and Linux Mint released close to 15.04.&lt;/p&gt;
 
@@ -456,60 +633,49 @@ having to run some browser tests, written in Javascript as bookmarklets, that
 only last executed correctly in Firefox 3.6. Those tests access user 
 information that is not available to the Javascript engine in versions of 
 Firefox newer that 3.6, since Mozilla tightened its security and it is not 
-exposing the user’s visited history any more.&lt;/p&gt;
+exposing the user&amp;#39;s visited history any more.&lt;/p&gt;
 
 &lt;p&gt;Now, I suppose I could migrate my tests out of the browser, read the browsing 
-history from some SQLite file in the user’s Firefox profile, and simulate the 
+history from some SQLite file in the user&amp;#39;s Firefox profile, and simulate the 
 browser with something like Selenium, but I just cannot be bothered.&lt;/p&gt;
 
-&lt;h2 id=&quot;the-guide&quot;&gt;The guide&lt;/h2&gt;
+&lt;h2&gt;The guide&lt;/h2&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Download &lt;code class=&quot;highlighter-rouge&quot;&gt;firefox-3.6.tar.bz2&lt;/code&gt; from &lt;a href=&quot;https://ftp.mozilla.org/pub/firefox/releases/3.6/linux-i686/en-US/&quot;&gt;ftp.mozilla.org&lt;/a&gt;. 
-Decompressing this archive will give you a directory named &lt;code class=&quot;highlighter-rouge&quot;&gt;firefox&lt;/code&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Move the &lt;code class=&quot;highlighter-rouge&quot;&gt;firefox&lt;/code&gt; directory in &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/&lt;/code&gt;. The target of these instructions 
-is to get &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/firefox/firefox&lt;/code&gt; to execute without errors.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Trying to run &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/firefox/firefox&lt;/code&gt; now, results in ‘library missing’ 
-errors for &lt;code class=&quot;highlighter-rouge&quot;&gt;libgtk-2.0-0&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;libdbus-glib-1-2&lt;/code&gt;. Both these libraries 
+&lt;li&gt;&lt;p&gt;Download &lt;code&gt;firefox-3.6.tar.bz2&lt;/code&gt; from &lt;a href=&quot;https://ftp.mozilla.org/pub/firefox/releases/3.6/linux-i686/en-US/&quot;&gt;ftp.mozilla.org&lt;/a&gt;. 
+Decompressing this archive will give you a directory named &lt;code&gt;firefox&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Move the &lt;code&gt;firefox&lt;/code&gt; directory in &lt;code&gt;/opt/&lt;/code&gt;. The target of these instructions 
+is to get &lt;code&gt;/opt/firefox/firefox&lt;/code&gt; to execute without errors.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Trying to run &lt;code&gt;/opt/firefox/firefox&lt;/code&gt; now, results in &amp;#39;library missing&amp;#39; 
+errors for &lt;code&gt;libgtk-2.0-0&lt;/code&gt; and &lt;code&gt;libdbus-glib-1-2&lt;/code&gt;. Both these libraries 
 exist in an Ubuntu 15.04 installation, but they are 64bit libraries 
 whereas Firefox 3.6 was only ever released as a 32bit application.&lt;/p&gt;
 
-    &lt;p&gt;Both problems are solved by installing the 32bit versions of those 
+&lt;p&gt;Both problems are solved by installing the 32bit versions of those 
 libraries:&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install libgtk-2.0-0:i386
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo apt-get install libgtk-2.0-0:i386
 sudo apt-get install libdbus-glib-1-2:i386
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/firefox/firefox&lt;/code&gt; now and you should be able to enjoy the retro 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Run &lt;code&gt;/opt/firefox/firefox&lt;/code&gt; now and you should be able to enjoy the retro 
 experience of times gone by, with no Flash or any other plugin for that 
 matter. A note of caution: running such an old version of a browser is 
-very unsafe. Don’t do anything other than testing with it, use a clean 
-profile (run with &lt;code class=&quot;highlighter-rouge&quot;&gt;-P&lt;/code&gt; option and create a test profile), and if possible, 
-sandbox the application so that it can’t touch anything on your main 
-system.&lt;/p&gt;
-  &lt;/li&gt;
+very unsafe. Don&amp;#39;t do anything other than testing with it, use a clean 
+profile (run with &lt;code&gt;-P&lt;/code&gt; option and create a test profile), and if possible, 
+sandbox the application so that it can&amp;#39;t touch anything on your main 
+system.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;A note about library paths: Firefox 3.6 looks for libraries into its 
-installation directory (in this case &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/firefox/firefox&lt;/code&gt;), in addition to 
+installation directory (in this case &lt;code&gt;/opt/firefox/firefox&lt;/code&gt;), in addition to 
 directories in the library path. Therefore, if you hit an issue where the 
-browser can’t locate libraries that exist on the system, it is easier and 
+browser can&amp;#39;t locate libraries that exist on the system, it is easier and 
 probably safer to create symbolic links to those libraries in 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/firefox/firefox&lt;/code&gt; rather than altering your library path just to 
-accommodate the needs of this old application.&lt;/p&gt;
+&lt;code&gt;/opt/firefox/firefox&lt;/code&gt; rather than altering your library path just to 
+accommodate the needs of this old application. &lt;/p&gt;
 
 &lt;p&gt;Enjoy!&lt;/p&gt;
 
 &lt;!-- Links --&gt;
-
 </description>
         <pubDate>Sat, 05 Sep 2015 00:00:00 +0100</pubDate>
         <link>https://zindilis.com/blog/2015/09/05/run-firefox-3-on-ubuntu-15-04.html</link>
@@ -522,25 +688,19 @@ accommodate the needs of this old application.&lt;/p&gt;
         <title>Stale NFS Causes BackupPC fileListReceive Failure</title>
         <description>&lt;p&gt;Recently, one of my BackupPC clients running CentOS failed to backup, with the 
 contents of the host log being:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    2015-06-10 01:40:10 incr backup started back to 2015-05-16 08:56:42 (backup #600) for directory /
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;    2015-06-10 01:40:10 incr backup started back to 2015-05-16 08:56:42 (backup #600) for directory /
     2015-06-10 21:40:18 Aborting backup up after signal ALRM
     2015-06-10 21:40:18 Got fatal error during xfer (fileListReceive failed)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;…and the last bad XferLOG containing:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    fileListReceive() failed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;...and the last bad XferLOG containing:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;    fileListReceive() failed
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This happened a couple of times in a row, and the interval between the start 
 time of the backup and the failure was consistently 20 hours. While checking, 
-I noticed that an &lt;code class=&quot;highlighter-rouge&quot;&gt;rsync&lt;/code&gt; process started on the client by BackupPC was running 
-for about a week. I did an &lt;code class=&quot;highlighter-rouge&quot;&gt;strace -p &amp;lt;PID&amp;gt;&lt;/code&gt; on the process ID of &lt;code class=&quot;highlighter-rouge&quot;&gt;rsync&lt;/code&gt; and 
-noticed that it was trying to &lt;code class=&quot;highlighter-rouge&quot;&gt;stat&lt;/code&gt; an old NFS export, mounted from a server 
-that no longer exists.&lt;/p&gt;
+I noticed that an &lt;code&gt;rsync&lt;/code&gt; process started on the client by BackupPC was running 
+for about a week. I did an &lt;code&gt;strace -p &amp;lt;PID&amp;gt;&lt;/code&gt; on the process ID of &lt;code&gt;rsync&lt;/code&gt; and 
+noticed that it was trying to &lt;code&gt;stat&lt;/code&gt; an old NFS export, mounted from a server 
+that no longer exists. &lt;/p&gt;
 
 &lt;p&gt;Although &lt;a href=&quot;http://joelinoff.com/blog/?p=356&quot; title=&quot;How to fix stale NFS mounts on linux without rebooting&quot;&gt;there are other ways to fix this&lt;/a&gt;, it was OK for this host to be 
 rebooted at the time, problem solved.&lt;/p&gt;
@@ -550,25 +710,6 @@ rebooted at the time, problem solved.&lt;/p&gt;
         <pubDate>Thu, 18 Jun 2015 00:00:00 +0100</pubDate>
         <link>https://zindilis.com/blog/2015/06/18/stale-nfs-causes-backuppc-filelistreceive-failure.html</link>
         <guid isPermaLink="true">https://zindilis.com/blog/2015/06/18/stale-nfs-causes-backuppc-filelistreceive-failure.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Features disabled when VMware Evaluation Expires</title>
-        <description>&lt;p&gt;As a note to myself and a future reference, here is a list of features of 
-VMware ESXi 6 that get disabled when the 60-day evaluation period expires:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/static/img/vmware-6-evaluation-expired.png&quot; alt=&quot;List of features disabled when VMware Evaluation Expires&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I registered as a Beta tester and installed this evaluation version of ESXi 6 
-before it went into general availability, so there might be some differences 
-compared to GA versions, but it’s not likely.&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 27 Apr 2015 00:00:00 +0100</pubDate>
-        <link>https://zindilis.com/blog/2015/04/27/vmware-evaluation-expired.html</link>
-        <guid isPermaLink="true">https://zindilis.com/blog/2015/04/27/vmware-evaluation-expired.html</guid>
         
         
       </item>

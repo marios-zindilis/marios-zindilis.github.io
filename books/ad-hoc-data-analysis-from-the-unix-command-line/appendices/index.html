@@ -57,7 +57,7 @@
   </header>
 
   <div class="post-content">
-    <h2 id="appendix-a-pcalc-source-code">Appendix A: pcalc source code</h2>
+    <h2>Appendix A: pcalc source code</h2>
 
 <p>A perl read-eval-print loop. This makes a very handy calculator on the command 
 line. Example usage:</p>
@@ -95,37 +95,36 @@ line. Example usage:</p>
   <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
-<h2 id="appendix-b-random-unfinished-ideas">Appendix B: Random unfinished ideas</h2>
+<h2>Appendix B: Random unfinished ideas</h2>
 
-<p>Ideas too good to delete, but that aren’t fleshed out.</p>
+<p>Ideas too good to delete, but that aren&#39;t fleshed out.</p>
 
-<h3 id="micro-shell-scripts-from-the-command-line">Micro shell scripts from the command line</h3>
+<h3>Micro shell scripts from the command line</h3>
 
 <p>Example - which .so has the object I want?</p>
 
-<h3 id="using-backticks">Using backticks</h3>
+<h3>Using backticks</h3>
 
-<h4 id="example---killing-processes-by-name">Example - killing processes by name</h4>
+<h4>Example - killing processes by name</h4>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">kill</span> <span class="sb">`</span>ps auxww | grep httpd | grep -v grep | awk <span class="s1">'{print $2}'</span><span class="sb">`</span></code></pre></figure>
 
-<h4 id="example---tailing-the-most-recent-log-file-in-one-easy-step">Example - tailing the most recent log file in one easy step</h4>
+<h4>Example - tailing the most recent log file in one easy step</h4>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">tail -f <span class="sb">`</span>ls -rt <span class="k">*</span>log | tail -1<span class="sb">`</span></code></pre></figure>
 
-<h3 id="james-xargs-trick">James’ xargs trick</h3>
+<h3>James&#39; xargs trick</h3>
 
-<p>James uses <code class="highlighter-rouge">echo</code> with <code class="highlighter-rouge">xargs</code> and feeds one <code class="highlighter-rouge">xargs</code>’ output into another 
-<code class="highlighter-rouge">xargs</code> in clever ways to build up complex command lines.</p>
+<p>James uses <code>echo</code> with <code>xargs</code> and feeds one <code>xargs</code>&#39; output into another 
+<code>xargs</code> in clever ways to build up complex command lines.</p>
 
-<h3 id="also">Also</h3>
+<h3>Also</h3>
 
 <ul>
-  <li><code class="highlighter-rouge">tee(1)</code></li>
-  <li><code class="highlighter-rouge">perl + $/ == agrep</code></li>
-  <li>Example - Finding duplicate keys in two files</li>
+<li>  <code>tee(1)</code></li>
+<li>  <code>perl + $/ == agrep</code></li>
+<li>  Example - Finding duplicate keys in two files</li>
 </ul>
-
 
   </div>
 

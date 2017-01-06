@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - Install Motion on CentOS 6</title>
-  <meta name="description" content="These are some very very brief instructions on how to install Motion on a CentOS 6 system.">
+  <meta name="description" content="These are some very very brief instructions on how to install Motion on a CentOS 6 system. ">
 
   <link
     rel="stylesheet"
@@ -66,53 +66,41 @@
   <section itemprop="articleBody">
     <p>These are some very very brief instructions on how to install 
 <a href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">Motion</a> 
-on a CentOS 6 system.</p>
+on a CentOS 6 system. </p>
 
-<h2 id="install-prerequisites">Install Prerequisites</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum -y install gcc make
+<h2>Install Prerequisites</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">yum -y install gcc make
 yum -y install libjpeg-turbo libjpeg-turbo-devel
-</code></pre>
-</div>
+</code></pre></div>
+<h2>Install Motion</h2>
 
-<h2 id="install-motion">Install Motion</h2>
-
-<p>Download Motion, e.g. as a <code class="highlighter-rouge">.tgz</code> from SourceForge:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>cd /root/
+<p>Download Motion, e.g. as a <code>.tgz</code> from SourceForge:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">cd /root/
 wget http://downloads.sourceforge.net/project/motion/motion%20-%203.2/3.2.12/motion-3.2.12.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fmotion%2Ffiles%2Fmotion%2520-%25203.2%2F3.2.12%2F&amp;ts=1385393313&amp;use_mirror=garr
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Untar:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>tar zxvf motion-3.2.12.tar.gz
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">tar zxvf motion-3.2.12.tar.gz
+</code></pre></div>
 <p>Install:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>cd /root/motion-3.2.12/
+<div class="highlight"><pre><code class="language-" data-lang="">cd /root/motion-3.2.12/
 ./configure
 make
 make install
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>This will install motion in its default location, in subdirectories of 
-<code class="highlighter-rouge">/usr/local/</code>, e.g:</p>
+<code>/usr/local/</code>, e.g:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">/usr/local/bin/</code> for executables,</li>
-  <li><code class="highlighter-rouge">/usr/local/man/</code> for man pages,</li>
-  <li><code class="highlighter-rouge">/usr/local/etc/</code> for configuration files,</li>
-  <li><code class="highlighter-rouge">/usr/local/docs/</code> for documentation,</li>
-  <li><code class="highlighter-rouge">/usr/local/share/</code> for configuration examples, etc.</li>
+<li>  <code>/usr/local/bin/</code> for executables,</li>
+<li>  <code>/usr/local/man/</code> for man pages,</li>
+<li>  <code>/usr/local/etc/</code> for configuration files,</li>
+<li>  <code>/usr/local/docs/</code> for documentation,</li>
+<li>  <code>/usr/local/share/</code> for configuration examples, etc.</li>
 </ul>
 
-<p>Finally, before starting <code class="highlighter-rouge">motion</code> you need to copy the default 
-configuration file <code class="highlighter-rouge">motion-dist.conf</code> to <code class="highlighter-rouge">motion.conf</code> (by default in 
-<code class="highlighter-rouge">/usr/local/etc/</code>.</p>
+<p>Finally, before starting <code>motion</code> you need to copy the default 
+configuration file <code>motion-dist.conf</code> to <code>motion.conf</code> (by default in 
+<code>/usr/local/etc/</code>.</p>
 
   </section>
 

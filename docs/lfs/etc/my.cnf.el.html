@@ -62,29 +62,26 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>Το αρχείο <code class="highlighter-rouge">/etc/my.cnf</code> περιέχει τις ρυθμίσεις του MySQL Server.</p>
+    <p>Το αρχείο <code>/etc/my.cnf</code> περιέχει τις ρυθμίσεις του MySQL Server.</p>
 
 <p>Παράδειγμα αρχείου με τις προεπιλεγμένες ρυθμίσεις, από σύστημα με 
 Centos 4 και MySQL Server 4:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>[mysqld]
+<div class="highlight"><pre><code class="language-" data-lang="">[mysqld]
 datadir=/var/lib/mysql
 socket=/var/lib/mysql/mysql.sock
 user=mysql
 # Default to using old password format for compatibility with mysql 3.x
 # clients (those using the mysqlclient10 compatibility package).
 old_passwords=1
- 
+
 # Disabling symbolic-links is recommended to prevent assorted security risks;
 # to do so, uncomment this line:
 # symbolic-links=0
- 
+
 [mysqld_safe]
 err-log=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
-</code></pre>
-</div>
-
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

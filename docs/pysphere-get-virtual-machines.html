@@ -76,9 +76,8 @@ a VMware host, using <a href="/docs/pysphere.html">PySphere</a>.</p>
 
 <span class="n">vms</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">get_registered_vms</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">vm</span> <span class="ow">in</span> <span class="n">vms</span><span class="p">:</span>
-	<span class="n">virtual_machine</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">get_vm_by_path</span><span class="p">(</span><span class="n">vm</span><span class="p">)</span>
-	<span class="k">print</span> <span class="n">virtual_machine</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">'name'</span><span class="p">),</span> <span class="n">virtual_machine</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">'ip_address'</span><span class="p">)</span></code></pre></figure>
-
+    <span class="n">virtual_machine</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">get_vm_by_path</span><span class="p">(</span><span class="n">vm</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">virtual_machine</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">'name'</span><span class="p">),</span> <span class="n">virtual_machine</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s">'ip_address'</span><span class="p">)</span></code></pre></figure>
 
   </section>
 

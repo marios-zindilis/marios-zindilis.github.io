@@ -66,7 +66,7 @@
   </header>
 
   <section itemprop="articleBody">
-    <h2 id="group-installations">Group Installations</h2>
+    <h2>Group Installations</h2>
 
 <p>On CentOS, RHEL and probably other rpm-based distributions, it is 
 possible to install sets of packages that are teamed together in 
@@ -74,30 +74,18 @@ logical <strong>groups</strong>. These groups will install all packages that are
 required for a specific function.</p>
 
 <p>You can get a list of available package groups with:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum grouplist
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">yum grouplist
+</code></pre></div>
 <p>You can get a description of a group and the list of the packages that 
 will be installed with:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum groupinfo 'Group Name'
-</code></pre>
-</div>
-
-<p>…for example:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum groupinfo 'SNMP Support'
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">yum groupinfo 'Group Name'
+</code></pre></div>
+<p>...for example:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">yum groupinfo 'SNMP Support'
+</code></pre></div>
 <p>Finally, you can install a group of packages with:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum groupinstall 'Group Name'
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">yum groupinstall 'Group Name'
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

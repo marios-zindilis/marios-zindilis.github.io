@@ -66,71 +66,47 @@
 which means that there are no precompiled binaries for the kernel modules 
 required for the VM to talk to the host. This short guide shows you how to 
 manually compile the tools. Note that every time that you upgrade to a newer 
-kernel version, you will have to do this from scratch – you will have to 
-compile the tools against the new kernel’s headers.</p>
+kernel version, you will have to do this from scratch -- you will have to 
+compile the tools against the new kernel&#39;s headers.</p>
 
-<p>Here’s the procedure:</p>
+<p>Here&#39;s the procedure:</p>
 
 <ol>
-  <li>
-    <p>From the vSphere client, right click on the machine, open the “Guest” menu 
-and select “Install/Upgrade VMware Tools”. This will insert a virtual 
-optical drive in the VM.</p>
-  </li>
-  <li>
-    <p>Mount the virtual optical drive, <em>not</em> directly on the <code class="highlighter-rouge">/mnt</code> directory, 
+<li><p>From the vSphere client, right click on the machine, open the &quot;Guest&quot; menu 
+and select &quot;Install/Upgrade VMware Tools&quot;. This will insert a virtual 
+optical drive in the VM.</p></li>
+<li><p>Mount the virtual optical drive, <em>not</em> directly on the <code>/mnt</code> directory, 
 since that will be used later by the installer. For example:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>mkdir /mnt/vmware-tools
+<div class="highlight"><pre><code class="language-" data-lang="">mkdir /mnt/vmware-tools
 mount -o loop /dev/cdrom /mnt/vmware-tools
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Copy the tools in a writeable location (the mount point of the virtual 
+</code></pre></div></li>
+<li><p>Copy the tools in a writeable location (the mount point of the virtual 
 optical drive will be read-only) and decompress it. For example:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>cp /mnt/vmware-tools/VMwareTools-4*.tar.gz /root/
+<div class="highlight"><pre><code class="language-" data-lang="">cp /mnt/vmware-tools/VMwareTools-4*.tar.gz /root/
 cd /root/
 tar zxvf VMwareTools-4*.tar.gz
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Before starting the installation, install a C compiler and the kernel’s 
+</code></pre></div></li>
+<li><p>Before starting the installation, install a C compiler and the kernel&#39;s 
 source code, since the VMware tools installer will need the kernel headers 
 to include while compiling the modules. For example:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>yum install gcc
+<div class="highlight"><pre><code class="language-" data-lang="">yum install gcc
 yum install kernel-headers
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Next, start the installation. It will ask a lot of questions, on which you 
+</code></pre></div></li>
+<li><p>Next, start the installation. It will ask a lot of questions, on which you 
 can (most probably) accept the default answers.</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>cd /root/vmware-tools-distrib
+<div class="highlight"><pre><code class="language-" data-lang="">cd /root/vmware-tools-distrib
 ./vmware-install.pl
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Finally, even though you don’t normally need to reboot, do it anyway if you 
+</code></pre></div></li>
+<li><p>Finally, even though you don&#39;t normally need to reboot, do it anyway if you 
 can. That way you will verify that the kernel modules are properly loaded 
 after a reboot. You can check that with:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>[root@centos-6 ~]# lsmod | grep '^vm'
+<div class="highlight"><pre><code class="language-" data-lang="">[root@centos-6 ~]# lsmod | grep '^vm'
 vmmemctl                8642  0 
 vmware_balloon          7199  0 
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>If everything went fine, you might want to clean up the files you copied 
+</code></pre></div></li>
+<li><p>If everything went fine, you might want to clean up the files you copied 
 and extracted, although keeping them will speed up the reinstallation of 
-the tools in case you upgrade the kernel to a newer version.</p>
-  </li>
+the tools in case you upgrade the kernel to a newer version.</p></li>
 </ol>
 
   </section>

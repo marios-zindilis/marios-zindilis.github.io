@@ -64,8 +64,8 @@
   <section itemprop="articleBody">
     <p>MySQL replication can break for a wide multitude of reasons. The 
 following is a quick and dirty way to resume replication, if the error 
-that appears in the output of <code class="highlighter-rouge">SHOW SLAVE STATUS\G</code> indicates that 
-replication stopped at a specific record.</p>
+that appears in the output of <code>SHOW SLAVE STATUS\G</code> indicates that 
+replication stopped at a specific record. </p>
 
 <p>It is a <i>dirty</i> way, because immediately after using it the 
 database on the slave becomes different from that on the master by one 
@@ -73,16 +73,13 @@ record. If you can live with that, the skip-one method can help you
 quickly put the slave back in track.</p>
 
 <p>On the MySQL CLI:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; STOP SLAVE;
+<div class="highlight"><pre><code class="language-" data-lang="">mysql&gt; STOP SLAVE;
 mysql&gt; SET GLOBAL SQL_SLAVE_SKIP_COUNTER = 1;
 mysql&gt; START SLAVE;
 mysql&gt; SHOW SLAVE STATUS\G
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Hopefully your replication will resume after this, and the value of 
-your <code class="highlighter-rouge">Seconds_Behind_Master</code> will quickly be depleted.</p>
+your <code>Seconds_Behind_Master</code> will quickly be depleted.</p>
 
   </section>
 

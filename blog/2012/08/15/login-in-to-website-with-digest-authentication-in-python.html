@@ -79,15 +79,15 @@ enter their credentials. Here is how to login with Python to a website
 that uses Digest.</p>
 
 <p>First, verify the authentication type and get the Realm with 
-<code class="highlighter-rouge">curl</code>. The option <code class="highlighter-rouge">-I</code> only fetches the headers:</p>
+<code>curl</code>. The option <code>-I</code> only fetches the headers:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">[marios@zindilis.net]$ </span>curl -I http://example.com
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Digest <span class="nv">realm</span><span class="o">=</span><span class="s2">"Example Realm"</span>,  <span class="nv">nonce</span><span class="o">=</span><span class="s2">"1a7278f234efe7894dfd823"</span>, <span class="nv">algorithm</span><span class="o">=</span>MD5, <span class="nv">qop</span><span class="o">=</span><span class="s2">"auth"</span></code></pre></figure>
 
 <p>The significant parts from the output above is that the HTTP 
-Authentication method is <code class="highlighter-rouge">Digest</code> and that the realm is 
-<code class="highlighter-rouge">Example Realm</code>.</p>
+Authentication method is <code>Digest</code> and that the realm is 
+<code>Example Realm</code>.</p>
 
 <p>Now the Python part:</p>
 
@@ -104,9 +104,9 @@ Authentication method is <code class="highlighter-rouge">Digest</code> and that 
 <span class="n">urllib2</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span><span class="n">opener</span><span class="p">)</span>
 <span class="n">page_content</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span></code></pre></figure>
 
-<p>The <code class="highlighter-rouge">page_content</code> variable now contains the contents of the 
+<p>The <code>page_content</code> variable now contains the contents of the 
 webpage returned after the authentication, and can be read with 
-something like <code class="highlighter-rouge">for line in page_content</code> or parsed as 
+something like <code>for line in page_content</code> or parsed as 
 HTML/XML.</p>
 
   </section>

@@ -62,9 +62,8 @@
   </header>
 
   <section itemprop="articleBody">
-    <h2 id="match-neighbor-ip">Match Neighbor IP</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>policy-options {
+    <h2>Match Neighbor IP</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">policy-options {
     policy-statement bgp-incoming {
         term from-customer-ACME {
             from neighbor 1.2.3.4;
@@ -72,15 +71,12 @@
         }
     }
 }
-</code></pre>
-</div>
-
-<h2 id="multiple-match-conditions">Multiple Match Conditions</h2>
+</code></pre></div>
+<h2>Multiple Match Conditions</h2>
 
 <p>This policy will accept routes from a specific neighbor only if they 
 are tagged with a specific community:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>policy-options {
+<div class="highlight"><pre><code class="language-" data-lang="">policy-options {
     policy-statement bgp-incoming {
         term from-customer-ACME-accept {
             from {
@@ -97,9 +93,7 @@ are tagged with a specific community:</p>
         }
     }
 }
-</code></pre>
-</div>
-
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

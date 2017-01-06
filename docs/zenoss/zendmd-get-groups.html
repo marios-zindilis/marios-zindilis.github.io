@@ -62,19 +62,17 @@
   </header>
 
   <section itemprop="articleBody">
-    
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">Globals</span>
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">Globals</span>
 <span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
 <span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
    
 <span class="k">for</span> <span class="n">Group</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">getSubOrganizers</span><span class="p">():</span>
     <span class="k">print</span> <span class="n">Group</span><span class="o">.</span><span class="n">getPrimaryId</span><span class="p">()</span></code></pre></figure>
 
-<h2 id="get-all-devices-in-specific-group">Get all Devices in specific Group</h2>
+<h2>Get all Devices in specific Group</h2>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">Group</span><span class="o">.</span><span class="n">devices</span><span class="p">():</span>
     <span class="k">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">getPrimaryId</span><span class="p">()</span></code></pre></figure>
-
 
   </section>
 

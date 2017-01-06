@@ -66,28 +66,26 @@
   </header>
 
   <section itemprop="articleBody">
-    <h2 id="procmail-recipes-syntax">Procmail Recipes Syntax</h2>
+    <h2>Procmail Recipes Syntax</h2>
 
 <p>Very briefly:</p>
 
 <ul>
-  <li>A line starting with <code class="highlighter-rouge">:0</code> denotes the beginning of a new recipe.</li>
-  <li>A line starting with <code class="highlighter-rouge">*</code> denotes the definition of a <em>condition</em> 
+<li>  A line starting with <code>:0</code> denotes the beginning of a new recipe.</li>
+<li>  A line starting with <code>*</code> denotes the definition of a <em>condition</em> 
 inside a recipe.</li>
-  <li>
-    <p>The last line of a recipe is the <em>action</em>. Action lines can begin 
+<li><p>The last line of a recipe is the <em>action</em>. Action lines can begin 
 with:</p>
 
-    <ul>
-      <li><code class="highlighter-rouge">/</code> in which case the email is appended to a text file, 
+<ul>
+<li>  <code>/</code> in which case the email is appended to a text file, 
 mbox-style.</li>
-      <li><code class="highlighter-rouge">|</code> in which case the email is piped to a script for 
+<li>  <code>|</code> in which case the email is piped to a script for 
 further handling.</li>
-      <li><code class="highlighter-rouge">! user@example.com</code> in which case the email is forwarded 
-to the email address defined after the <code class="highlighter-rouge">!</code>.</li>
-      <li><code class="highlighter-rouge"><span class="p">{</span></code> which denotes the beginning of a nested recipe.</li>
-    </ul>
-  </li>
+<li>  <code>! user@example.com</code> in which case the email is forwarded 
+to the email address defined after the <code>!</code>.</li>
+<li>  <code>{</code> which denotes the beginning of a nested recipe.</li>
+</ul></li>
 </ul>
 
   </section>

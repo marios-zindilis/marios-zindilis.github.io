@@ -64,44 +64,30 @@
   </header>
 
   <section itemprop="articleBody">
-    <p><code class="highlighter-rouge">easy_install</code> is a tool for installing Python modules from PyPI.</p>
+    <p><code>easy_install</code> is a tool for installing Python modules from PyPI.</p>
 
-<h2 id="installation-on-centos">Installation on CentOS</h2>
-<p>On CentOS, <code class="highlighter-rouge">easy_install</code> is provided by the package <code class="highlighter-rouge">python-setuptools</code>:</p>
+<h2>Installation on CentOS</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>yum whatprovides */easy_install
+<p>On CentOS, <code>easy_install</code> is provided by the package <code>python-setuptools</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">yum whatprovides */easy_install
 ... 
 python-setuptools-0.6.10-3.el6.noarch : Easily build and distribute Python packages
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>To install it:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum -y install python-setuptools
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">yum -y install python-setuptools
+</code></pre></div>
 <p>You can then use it to install a module, by just providing the module 
 name as the only parameter, e.g:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>easy_install markdown2
-</code></pre>
-</div>
-
-<h2 id="usage">Usage</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">easy_install markdown2
+</code></pre></div>
+<h2>Usage</h2>
 
 <p>To install a Python module from PyPI:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo easy_install module_name
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">sudo easy_install module_name
+</code></pre></div>
 <p>To upgrade:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo easy_install --upgrade module_name
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">sudo easy_install --upgrade module_name
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

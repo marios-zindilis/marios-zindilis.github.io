@@ -64,27 +64,21 @@
   <section itemprop="articleBody">
     <p>These are my favorite MySQL backup and restore one-liners.</p>
 
-<h2 id="backup">Backup</h2>
+<h2>Backup</h2>
 
-<p>To back up a database named <code class="highlighter-rouge">stuff</code>:</p>
-
-<p><code class="highlighter-rouge">bash
-time mysqldump -u root -p stuff | gzip &gt; stuff.sql.gz
-</code></p>
-
-<p>This pipes the clear text output from <code class="highlighter-rouge">mysqldump</code> directly into <code class="highlighter-rouge">gzip</code>, 
+<p>To back up a database named <code>stuff</code>:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">time </span>mysqldump -u root -p stuff | gzip &gt; stuff.sql.gz
+</code></pre></div>
+<p>This pipes the clear text output from <code>mysqldump</code> directly into <code>gzip</code>, 
 and prints the duration of the operation in the end.</p>
 
-<h2 id="restore">Restore</h2>
+<h2>Restore</h2>
 
-<p>To restore the <code class="highlighter-rouge">stuff</code> database:</p>
-
-<p><code class="highlighter-rouge">bash
-time gunzip -c stuff.sql.gz | pv | mysql -u root -p stuff
-</code></p>
-
-<p>This decompresses the dump back in clear text, and feeds it to <code class="highlighter-rouge">mysql</code> 
-through <code class="highlighter-rouge">pv</code>, which adds the perk of an indication of progress.</p>
+<p>To restore the <code>stuff</code> database:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">time </span>gunzip -c stuff.sql.gz | pv | mysql -u root -p stuff
+</code></pre></div>
+<p>This decompresses the dump back in clear text, and feeds it to <code>mysql</code> 
+through <code>pv</code>, which adds the perk of an indication of progress.</p>
 
   </section>
 

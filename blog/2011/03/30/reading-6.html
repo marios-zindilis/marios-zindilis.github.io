@@ -80,21 +80,21 @@
     <li><a href="/blog/2011/03/30/reading-6.html">Reading #6</a></li>
 </ol>
 
-<h2 id="reading-6">Reading #6</h2>
+<h2>Reading #6</h2>
 
-<h3 id="free-and-open-source-related-stuff">Free and Open Source related stuff</h3>
-
-<ul>
-  <li><a href="http://www.itworld.com/internet/141635/yahoo-plans-open-source-code-non-core-technologies">Yahoo plans to open source code for non-core technologies</a></li>
-</ul>
-
-<h3 id="networking-related">Networking related</h3>
+<h3>Free and Open Source related stuff</h3>
 
 <ul>
-  <li><a href="http://www.pcpro.co.uk/features/366349/can-you-really-be-traced-from-your-ip-address">Can you really be traced by your IP?</a></li>
+<li> <a href="http://www.itworld.com/internet/141635/yahoo-plans-open-source-code-non-core-technologies">Yahoo plans to open source code for non-core technologies</a></li>
 </ul>
 
-<h3 id="misc-geek-reading">Misc geek reading</h3>
+<h3>Networking related</h3>
+
+<ul>
+<li><a href="http://www.pcpro.co.uk/features/366349/can-you-really-be-traced-from-your-ip-address">Can you really be traced by your IP?</a></li>
+</ul>
+
+<h3>Misc geek reading</h3>
 
 <ul>
 <li><a href="http://www.itworld.com/security/139794/with-hacking-music-can-take-control-your-car">Hacking 
@@ -113,9 +113,9 @@ danger! Newbies at work!</a>.</li>
 <li>Not as fun a read as the writer might have thought, but here's <a href="http://www.pcpro.co.uk/blogs/2011/03/08/a-letter-on-behalf-of-the-worlds-pc-fixers/">A letter on behalf of the world's PC fixers</a>. I conclude that the guy just never got any.</li><li>How <a href="http://www.stormdriver.com/blog/start-ups-in-the-maze-of-software-patents/">software patents choke startups</a>, how an <a href="http://www.techdirt.com/articles/20081107/0118162765.shtml">oilfield services corporation is patenting patent-trolling</a> and how to <a href="http://patentabsurdity.com/download.html">download a free video that explains some of this crazy shit</a>.</li>
 <li><a href="http://codex.wordpress.org/Changing_File_Permissions">Changing file permissions in WordPress</a>.</li></ul>
 
-<p>Regarding that last point, I did some testing and found that the minimum permissions for a php file to execute via the browser are 004, or ——-r– since php is running as “other”, or in my case as www-data. The “usual” permissions for php files are 644 or -rw-r–r–.</p>
+<p>Regarding that last point, I did some testing and found that the minimum permissions for a php file to execute via the browser are 004, or -------r-- since php is running as &quot;other&quot;, or in my case as www-data. The &quot;usual&quot; permissions for php files are 644 or -rw-r--r--.</p>
 
-<p>Now, the minimum permissions of the containing folder, are 001, or d——–x, but some scripts will not work if they are trying to read something in their own folder, or in another folder that has 001 permissions. The “usual” permissions for folders containing php files are 755 or drwxr-xr-x.</p>
+<p>Now, the minimum permissions of the containing folder, are 001, or d--------x, but some scripts will not work if they are trying to read something in their own folder, or in another folder that has 001 permissions. The &quot;usual&quot; permissions for folders containing php files are 755 or drwxr-xr-x.</p>
 
 <p>In a production environment, one may reduce permissions to some files, e.g. a config.php, to disallow unnecessary access.</p>
 

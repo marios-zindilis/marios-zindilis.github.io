@@ -68,38 +68,38 @@
   A couple of notes on special variables available in the Bash shell.
 </p>
 
-<h2 id="name-of-the-script"><code class="highlighter-rouge">$0</code>: Name of the script</h2>
+<h2><code>$0</code>: Name of the script</h2>
 
-<p>The special variable <code class="highlighter-rouge">$0</code> contains the name of the script. It is useful when 
+<p>The special variable <code>$0</code> contains the name of the script. It is useful when 
 returning usage instructions to the user that run the script. For example:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> --option-1 --option-2"</span>;</code></pre></figure>
 
-<h2 id="number-of-arguments"><code class="highlighter-rouge">$#</code>: Number of arguments</h2>
+<h2><code>$#</code>: Number of arguments</h2>
 
-<p>The special variable <code class="highlighter-rouge">$#</code> contains the number of arguments passed to the 
+<p>The special variable <code>$#</code> contains the number of arguments passed to the 
 script. If no arguments are passed, it is equal to 0. It is useful to examine 
 the value of this variable before taking further actions, if a script <em>must</em> 
-be run with a minimum number of arguments.</p>
+be run with a minimum number of arguments. </p>
 
-<p>Here is an example of <code class="highlighter-rouge">$#</code> used together with <code class="highlighter-rouge">$0</code>:</p>
+<p>Here is an example of <code>$#</code> used together with <code>$0</code>:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-eq 0 <span class="o">]</span>; <span class="k">then
     </span><span class="nb">echo</span> <span class="s2">"Insufficient number of arguments!"</span>;
     <span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> /path/to/file"</span>;
 <span class="k">fi</span></code></pre></figure>
 
-<h2 id="most-recent-exit-code"><code class="highlighter-rouge">$?</code>: Most recent exit code</h2>
+<h2><code>$?</code>: Most recent exit code</h2>
 
-<p>The special variable <code class="highlighter-rouge">$?</code> contains the exit code of the most recently 
+<p>The special variable <code>$?</code> contains the exit code of the most recently 
 executed command. It is useful to examine this to determine whether or 
-not the previous command completed succesfully or returned an error.</p>
+not the previous command completed succesfully or returned an error. </p>
 
 <p>Typically, commands that complete succesfully return an exit code equal 
 to 0, with other values indicating different errors, but check each 
-command’s documentation to verify this.</p>
+command&#39;s documentation to verify this.</p>
 
-<p>In the following example, the existense of the word “test” in a file 
+<p>In the following example, the existense of the word &quot;test&quot; in a file 
 is checked:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">grep <span class="nb">test</span> /path/to/file &gt; /dev/null;
@@ -108,7 +108,6 @@ is checked:</p>
 <span class="k">else
     </span><span class="nb">echo</span> <span class="s2">"/path/to/file does not contain the word 'test'"</span>;
 <span class="k">fi</span></code></pre></figure>
-
 
   </section>
 

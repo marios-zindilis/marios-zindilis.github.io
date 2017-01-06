@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - Counting Part 2 - sort and uniq</title>
-  <meta name="description" content="So far we’ve seen how to use cut, grep and wc to select and count records with certain qualities. But each set of records we’d like to count requires a separ...">
+  <meta name="description" content="So far we&#39;ve seen how to use cut, grep and wc to select and count records with certain qualities. But each set of records we&#39;d like to count requires...">
 
   <link
     rel="stylesheet"
@@ -57,15 +57,15 @@
   </header>
 
   <div class="post-content">
-    <p>So far we’ve seen how to use <code class="highlighter-rouge">cut</code>, <code class="highlighter-rouge">grep</code> and <code class="highlighter-rouge">wc</code> to select and count records 
-with certain qualities. But each set of records we’d like to count requires a 
+    <p>So far we&#39;ve seen how to use <code>cut</code>, <code>grep</code> and <code>wc</code> to select and count records 
+with certain qualities. But each set of records we&#39;d like to count requires a 
 separate command, as with counting the numbers of male and female names in the 
-most recent example. Combining the <code class="highlighter-rouge">uniq</code> and <code class="highlighter-rouge">sort</code> commands allows us to 
+most recent example. Combining the <code>uniq</code> and <code>sort</code> commands allows us to 
 count many groups at once.</p>
 
-<h2 id="uniq-and-sort">uniq and sort</h2>
+<h2>uniq and sort</h2>
 
-<p>The <code class="highlighter-rouge">uniq</code> command squashes out contiguous duplicate lines. That is, it copies 
+<p>The <code>uniq</code> command squashes out contiguous duplicate lines. That is, it copies 
 from its standard input to its standard output, but if a line is identical to 
 the immediately preceding line, the duplicate line is not written. For example:</p>
 
@@ -85,7 +85,7 @@ b
 a
 c</code></pre></figure>
 
-<p>Note that <code class="highlighter-rouge">a</code> is written twice because <code class="highlighter-rouge">uniq</code> compares only to the immediately 
+<p>Note that <code>a</code> is written twice because <code>uniq</code> compares only to the immediately 
 preceding line. If the data is sorted first, we get each distinct record just 
 once:</p>
 
@@ -94,7 +94,7 @@ a
 b
 c</code></pre></figure>
 
-<p>Finally, giving the <code class="highlighter-rouge">-c</code> option causes <code class="highlighter-rouge">uniq</code> to write counts associated with 
+<p>Finally, giving the <code>-c</code> option causes <code>uniq</code> to write counts associated with 
 each distinct entry:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sort foo | uniq -c
@@ -137,9 +137,9 @@ g, 75, 1.0
 i, 12, 1.5
 h, 3,  2.0</code></pre></figure>
 
-<h2 id="example---creating-a-histogram">Example - Creating a histogram</h2>
+<h2>Example - Creating a histogram</h2>
 
-<p>The combination of sort and <code class="highlighter-rouge">uniq -c</code> is extremely powerful. It allows one to 
+<p>The combination of sort and <code>uniq -c</code> is extremely powerful. It allows one to 
 create histograms from virtually any record oriented text data. Returning to 
 the name-to-gender mapping of the previous chapter, we could have gotten the 
 count of male and female names in one command like this:</p>
@@ -148,7 +148,7 @@ count of male and female names in one command like this:</p>
 3966 F
 1051 M</code></pre></figure>
 
-<h2 id="example---creating-another-histogram">Example - Creating another histogram</h2>
+<h2>Example - Creating another histogram</h2>
 
 <p>And returning to the census data, we can now easily compute the complete 
 distribution of occupants per household:</p>
@@ -169,35 +169,35 @@ distribution of occupants per household:</p>
    3 12
    3 13</code></pre></figure>
 
-<h2 id="example---verifying-a-primary-key">Example - Verifying a primary key</h2>
+<h2>Example - Verifying a primary key</h2>
 
 <p>This is a good opportunity to point out a big benefit of being able to play 
 with data in this fashion. It allows you to quickly spot potential problems in 
 a dataset. In the above example, why are there 1,796 households with 0 
-occupants? As another example of quickly verifying the integrity of data, let’s 
+occupants? As another example of quickly verifying the integrity of data, let&#39;s 
 make sure that household id is truly a unique identifier:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep <span class="s2">"^H"</span> pums_53.dat | cut -c2-8 | sort | uniq -c | grep -v <span class="s2">"^ *1 "</span> | wc -l
 0</code></pre></figure>
 
-<p>This <code class="highlighter-rouge">grep</code> invocation will print only lines that do not (because of the <code class="highlighter-rouge">-v</code> 
-flag) begin with a series of spaces followed by a <code class="highlighter-rouge">1</code> (the count from 
-<code class="highlighter-rouge">uniq -c</code>) followed by a tab (entered using the <code class="highlighter-rouge">control-v</code> trick). Since the 
+<p>This <code>grep</code> invocation will print only lines that do not (because of the <code>-v</code> 
+flag) begin with a series of spaces followed by a <code>1</code> (the count from 
+<code>uniq -c</code>) followed by a tab (entered using the <code>control-v</code> trick). Since the 
 number of lines written is zero, we know that each household id occurs once and 
 only once in the file.</p>
 
-<p>The technique of grepping <code class="highlighter-rouge">uniq</code>’s output for lines with a certain count is 
+<p>The technique of grepping <code>uniq</code>&#39;s output for lines with a certain count is 
 generally useful. One other common application is finding the set of 
 overlapping (duplicated) keys in a pair of files by grepping the output of 
-<code class="highlighter-rouge">uniq -c</code> for lines that begin with a <code class="highlighter-rouge">2</code>.</p>
+<code>uniq -c</code> for lines that begin with a <code>2</code>.</p>
 
-<h2 id="example---a-histogram-sorted-by-most-common-category">Example - A histogram sorted by most common category</h2>
+<h2>Example - A histogram sorted by most common category</h2>
 
-<p>Throwing an extra <code class="highlighter-rouge">sort</code> on the end of the pipeline will sort the histogram so 
+<p>Throwing an extra <code>sort</code> on the end of the pipeline will sort the histogram so 
 that the most common class is at the top (or bottom). This is useful when data 
-is categorical and does not have a natural order. You’ll want to give <code class="highlighter-rouge">sort</code> 
-the <code class="highlighter-rouge">-n</code> option so that it sorts the counts numerically instead of lexically, 
-and I like to give the <code class="highlighter-rouge">-r</code> option to reverse the sort so that the output is 
+is categorical and does not have a natural order. You&#39;ll want to give <code>sort</code> 
+the <code>-n</code> option so that it sorts the counts numerically instead of lexically, 
+and I like to give the <code>-r</code> option to reverse the sort so that the output is 
 sorted in descending order, but this just a stylistic issue. For example, here 
 is the distribution of household heating fuel from most common to least common:</p>
 
@@ -216,9 +216,9 @@ is the distribution of household heating fuel from most common to least common:<
 <p>Type 3, electricity, is most common, followed by type 1, gas. Type 7 is solar 
 power.</p>
 
-<h2 id="converting-the-histogram-to-proper-csv">Converting the histogram to proper CSV</h2>
+<h2>Converting the histogram to proper CSV</h2>
 
-<p>The output of <code class="highlighter-rouge">uniq -c</code> is not in proper CSV form. This makes is necessary to 
+<p>The output of <code>uniq -c</code> is not in proper CSV form. This makes is necessary to 
 convert the output if further operations on the output are wanted. Here we use 
 a bit of <strong>inline perl</strong> to rewrite the lines and reverse the order of the 
 fields:</p>
@@ -226,7 +226,6 @@ fields:</p>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cut -d<span class="s2">" "</span> -f2 gender.txt | sort | uniq -c | perl -pe <span class="s1">'s/^\s*([0-9]+) (\S+).*/$2, $1/'</span> 
 F, 3966
 M, 1051</code></pre></figure>
-
 
   </div>
 

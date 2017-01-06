@@ -71,46 +71,40 @@ both a remote server, as well as log them locally. There are benefits
 to both approaches -local and remote logging- and with this method you 
 will have them both.</p>
 
-<p>Two types of logs are described, the <code class="highlighter-rouge">CustomLog</code> and the <code class="highlighter-rouge">ErrorLog</code>. 
-Also, my preferred method of shipping logs is with <code class="highlighter-rouge">nc</code>, due to its 
-simplicity.</p>
+<p>Two types of logs are described, the <code>CustomLog</code> and the <code>ErrorLog</code>. 
+Also, my preferred method of shipping logs is with <code>nc</code>, due to its 
+simplicity. </p>
 
-<h2 id="customlog"><code class="highlighter-rouge">CustomLog</code></h2>
+<h2><code>CustomLog</code></h2>
 
-<p>The <code class="highlighter-rouge">CustomLog</code> is provided by the <code class="highlighter-rouge">log_config</code> module, which is 
+<p>The <code>CustomLog</code> is provided by the <code>log_config</code> module, which is 
 included in the default installation of Apache (at least on CentOS 6.5 
 and on Ubuntu 12.10 on which I tested). This module is flexible enough 
-to allow multiple <code class="highlighter-rouge">CustomLog</code> directives, so to get Apache to log in 
+to allow multiple <code>CustomLog</code> directives, so to get Apache to log in 
 both local files and to a remot syslog server you can use two lines:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>CustomLog logs/access_log combined
+<div class="highlight"><pre><code class="language-" data-lang="">CustomLog logs/access_log combined
 CustomLog "| nc -u -j syslog.example.com 514" combined
-</code></pre>
-</div>
+</code></pre></div>
+<p>You will need to adjust <code>syslog.example.com</code> to  your syslog server, 
+and possibly <code>514</code> to whatever port your server is listening to, if 
+it&#39;s not the default 514.</p>
 
-<p>You will need to adjust <code class="highlighter-rouge">syslog.example.com</code> to  your syslog server, 
-and possibly <code class="highlighter-rouge">514</code> to whatever port your server is listening to, if 
-it’s not the default 514.</p>
+<h2><code>ErrorLog</code></h2>
 
-<h2 id="errorlog"><code class="highlighter-rouge">ErrorLog</code></h2>
-
-<p>The <code class="highlighter-rouge">ErrorLog</code> is provided by the <code class="highlighter-rouge">core</code> module, and unfortunately it’s 
-not as flexible as <code class="highlighter-rouge">CustomLog</code>, so it doesn’t allow multiple <code class="highlighter-rouge">ErrorLog</code> 
+<p>The <code>ErrorLog</code> is provided by the <code>core</code> module, and unfortunately it&#39;s 
+not as flexible as <code>CustomLog</code>, so it doesn&#39;t allow multiple <code>ErrorLog</code> 
 directives. If you add more than one, only the one that occures last in 
 the configuration file will be used. Luckily, you can utilize the power 
-of <code class="highlighter-rouge">tee</code> to overcome this:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ErrorLog "| tee -a /var/log/httpd/error_log | nc -u -j syslog.example.com 514"
-</code></pre>
-</div>
-
-<h2 id="see-also">See also</h2>
+of <code>tee</code> to overcome this:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">ErrorLog "| tee -a /var/log/httpd/error_log | nc -u -j syslog.example.com 514"
+</code></pre></div>
+<h2>See also</h2>
 
 <ul>
-  <li><a href="http://www.fnal.gov/docs/products/apache/syslog_logs_notes.html">Sending web logs to Computer Security</a> 
-from Fermilab, source of the <code class="highlighter-rouge">tee</code> tip.</li>
-  <li><a href="http://mykospark.net/2011/01/apache-httpd-customlog-to-syslog-via-udp/">Apache HTTPD CustomLog to Syslog via UDP</a>, 
-source of the <code class="highlighter-rouge">nc -u -j</code> tip.</li>
+<li>  <a href="http://www.fnal.gov/docs/products/apache/syslog_logs_notes.html">Sending web logs to Computer Security</a> 
+from Fermilab, source of the <code>tee</code> tip.</li>
+<li>  <a href="http://mykospark.net/2011/01/apache-httpd-customlog-to-syslog-via-udp/">Apache HTTPD CustomLog to Syslog via UDP</a>, 
+source of the <code>nc -u -j</code> tip.</li>
 </ul>
 
   </section>

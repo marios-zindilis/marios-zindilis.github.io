@@ -80,11 +80,11 @@ media-related Swiss army knife. It has a surprising number of different control
 <a href="https://wiki.videolan.org/Interfaces/">interfaces</a>, some of which allow 
 access over a network, such as the HTTP, Telnet and RC interfaces. It also has
 a <a href="https://www.olivieraubert.net/vlc/python-ctypes/doc/">Python API</a> but just
-looking at the documentation is terrifying…</p>
+looking at the documentation is terrifying...</p>
 
-<p>I did some experimenting with controlling VLC from Python using VLC’s
+<p>I did some experimenting with controlling VLC from Python using VLC&#39;s
 <a href="https://wiki.videolan.org/documentation:modules/rc/">Remote Control Interface</a> (see <a href="http://getluky.net/2006/04/19/vlcs-awesome-rc-interface/">this</a> as well), and wrote a small 
-proof-of-concept code snippet. Here’s how to use it:</p>
+proof-of-concept code snippet. Here&#39;s how to use it:</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">vlc</span> <span class="kn">import</span> <span class="n">VLC</span>
 
@@ -96,11 +96,11 @@ proof-of-concept code snippet. Here’s how to use it:</p>
 
 <p>The code is not production-grade. I will not be developing this any more, so I
 am putting it here for anyone to grap and hopefully do something useful with. 
-I’ve only tested this on my Ubuntu machine, and it requires both VLC and 
-<code class="highlighter-rouge">screen</code> to be installed. It also uses <code class="highlighter-rouge">subprocess.run()</code> to start VLC, which
+I&#39;ve only tested this on my Ubuntu machine, and it requires both VLC and 
+<code>screen</code> to be installed. It also uses <code>subprocess.run()</code> to start VLC, which
 is not available in any version of Python earlier than 3.5.</p>
 
-<p>Here’s the library/wrapper, drop it anywhere in your Python <code class="highlighter-rouge">PATH</code>:</p>
+<p>Here&#39;s the library/wrapper, drop it anywhere in your Python <code>PATH</code>:</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
@@ -165,7 +165,6 @@ is not available in any version of Python earlier than 3.5.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s">'shutdown'</span><span class="p">)</span></code></pre></figure>
 
 <p>Good luck using this for your scripts :)</p>
-
 
   </section>
 

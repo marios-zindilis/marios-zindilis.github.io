@@ -80,37 +80,23 @@ easier to install.</p>
 <p>So, here we go:</p>
 
 <ol>
-  <li>
-    <p>Remove previously installed Virtualbox packages:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get purge virtualbox*
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Install dependencies:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install dkms
+<li><p>Remove previously installed Virtualbox packages:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get purge virtualbox*
+</code></pre></div></li>
+<li><p>Install dependencies:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install dkms
 sudo apt-get install linux-headers-`uname -r`
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Download Virtualbox from <a href="https://www.virtualbox.org/wiki/Linux_Downloads">Virtualbox Downloads</a>.</p>
-  </li>
-  <li>
-    <p>Install with <code class="highlighter-rouge">dpkg</code> (note that the filename might be different):</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo dpkg -i Downloads/virtualbox-4.3.deb
-</code></pre>
-    </div>
-  </li>
+</code></pre></div></li>
+<li><p>Download Virtualbox from <a href="https://www.virtualbox.org/wiki/Linux_Downloads">Virtualbox Downloads</a>.</p></li>
+<li><p>Install with <code>dpkg</code> (note that the filename might be different): </p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo dpkg -i Downloads/virtualbox-4.3.deb
+</code></pre></div></li>
 </ol>
 
-<h2 id="see-also">See also</h2>
+<h2>See also</h2>
 
 <ul>
-  <li>Check <a href="https://www.virtualbox.org/">virtualbox.org</a> for the latest version.</li>
+<li>  Check <a href="https://www.virtualbox.org/">virtualbox.org</a> for the latest version.</li>
 </ul>
 
   </section>

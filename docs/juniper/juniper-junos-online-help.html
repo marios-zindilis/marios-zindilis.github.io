@@ -64,45 +64,33 @@
   <section itemprop="articleBody">
     <p>Juniper devices have extensive help options in the CLI.</p>
 
-<h2 id="tip-of-the-day">Tip of the day</h2>
+<h2>Tip of the day</h2>
 
 <p>To view a very short tip, execute:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>marios@juniper&gt; help tip cli
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">marios@juniper&gt; help tip cli
+</code></pre></div>
 <p>This is not exactly a tip <em>of the day</em> - since you actually get a new 
-tip each time you execute that command. Still pretty cool though.</p>
+tip each time you execute that command. Still pretty cool though. </p>
 
-<h2 id="help-with-syslog-messages">Help with syslog messages</h2>
+<h2>Help with syslog messages</h2>
 
-<p>You can view an explanation of what a syslog message means with <code class="highlighter-rouge">help 
-syslog</code>. For example, for the <code class="highlighter-rouge">LOGIN_INFORMATION</code> message, execute:</p>
+<p>You can view an explanation of what a syslog message means with <code>help 
+syslog</code>. For example, for the <code>LOGIN_INFORMATION</code> message, execute:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">marios@juniper&gt; help syslog LOGIN_INFORMATION
+</code></pre></div>
+<h2>Search in help topics</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>marios@juniper&gt; help syslog LOGIN_INFORMATION
-</code></pre>
-</div>
-
-<h2 id="search-in-help-topics">Search in help topics</h2>
-
-<p>You can search in help topics with <code class="highlighter-rouge">help apropos</code>. This will return a 
+<p>You can search in help topics with <code>help apropos</code>. This will return a 
 list of help pages that contain the word you searched for. For example, 
-you can search for all pages that refer to <code class="highlighter-rouge">syslog</code> with:</p>
+you can search for all pages that refer to <code>syslog</code> with:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">marios@juniper&gt; help apropos syslog
+</code></pre></div>
+<h2>Topical help</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>marios@juniper&gt; help apropos syslog
-</code></pre>
-</div>
-
-<h2 id="topical-help">Topical help</h2>
-
-<p>To get help on a specific topic, start with <code class="highlighter-rouge">help topic</code>. For example, 
-for help on <code class="highlighter-rouge">syslog</code>, execute:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>marios@juniper&gt; help topic system syslog
-</code></pre>
-</div>
-
+<p>To get help on a specific topic, start with <code>help topic</code>. For example, 
+for help on <code>syslog</code>, execute:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">marios@juniper&gt; help topic system syslog
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

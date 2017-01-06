@@ -62,41 +62,31 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>Το αρχείο κανόνων του <code class="highlighter-rouge">iptables</code>.</p>
+    <p>Το αρχείο κανόνων του <code>iptables</code>.</p>
 
-<h2 id="section">Παραδείγματα</h2>
+<h2>Παραδείγματα</h2>
 
-<h3 id="section-1">Πρόσβαση ιστού</h3>
+<h3>Πρόσβαση ιστού</h3>
 
 <p>Μετά την εγκατάσταση κάποιου εξυπηρετητή ιστού (Apache, Lighttp, κλπ) 
 πρέπει να ανοίξετε την θύρα στην οποία «ακούει» ο εξυπηρετητής. Από 
-προεπιλογή είναι η 80. Ο πιο κάτω κανόνας στο αρχείο <code class="highlighter-rouge">/etc/sysconfig/iptables</code> 
+προεπιλογή είναι η 80. Ο πιο κάτω κανόνας στο αρχείο <code>/etc/sysconfig/iptables</code> 
 ανοίγει την πρόσβαση στη θύρα 80, ανεξάρτητα από την IP που ζητά πρόσβαση:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+</code></pre></div>
+<h3>Απομακρυσμένη πρόσβαση (ssh)</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-</code></pre>
-</div>
-
-<h3 id="ssh">Απομακρυσμένη πρόσβαση (ssh)</h3>
-
-<p>Για να επιτρέψετε την απομακρυσμένη πρόσβαση από οποιαδήποτε IP, μπορείτε να χρησιμοποιήσετε τον ίδιο κανόνα με το προηγούμενο παράδειγμα, αλλάζοντας απλά τον αριθμό της θύρας σε 22 (προεπιλεγμένη θύρα για το ssh). Για περισσότερη ασφάλεια, μπορείτε να περιορίσετε τις διευθύνσεις IP που θα έχουν δικαίωμα ssh στο σύστημα:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>-A INPUT -m state --state NEW -m tcp -p tcp --source 192.168.0.0/16 --dport 22 -j ACCEPT
+<p>Για να επιτρέψετε την απομακρυσμένη πρόσβαση από οποιαδήποτε IP, μπορείτε να χρησιμοποιήσετε τον ίδιο κανόνα με το προηγούμενο παράδειγμα, αλλάζοντας απλά τον αριθμό της θύρας σε 22 (προεπιλεγμένη θύρα για το ssh). Για περισσότερη ασφάλεια, μπορείτε να περιορίσετε τις διευθύνσεις IP που θα έχουν δικαίωμα ssh στο σύστημα: </p>
+<div class="highlight"><pre><code class="language-" data-lang="">-A INPUT -m state --state NEW -m tcp -p tcp --source 192.168.0.0/16 --dport 22 -j ACCEPT
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j DROP
-</code></pre>
-</div>
+</code></pre></div>
+<p>Στο πιο πάνω παράδειγμα, ο πρώτος κανόνας επιτρέπει την πρόσβαση σε οποιαδήποτε IP ξεκινά από «192.168», και την απαγορεύει σε οποιαδήποτε άλλη. </p>
 
-<p>Στο πιο πάνω παράδειγμα, ο πρώτος κανόνας επιτρέπει την πρόσβαση σε οποιαδήποτε IP ξεκινά από «192.168», και την απαγορεύει σε οποιαδήποτε άλλη.</p>
+<h3>Αποτροπή αποστολής email</h3>
 
-<h3 id="email">Αποτροπή αποστολής email</h3>
-
-<p>Αν δεν θέλετε οι χρήστες του συστήματος να στέλνουν email από το σύστημα, μπορείτε να απαγορεύσετε την έξοδο της θύρας 25:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>-A OUTPUT -p tcp -m tcp --sport 25 -j DROP
-</code></pre>
-</div>
-
-
+<p>Αν δεν θέλετε οι χρήστες του συστήματος να στέλνουν email από το σύστημα, μπορείτε να απαγορεύσετε την έξοδο της θύρας 25: </p>
+<div class="highlight"><pre><code class="language-" data-lang="">-A OUTPUT -p tcp -m tcp --sport 25 -j DROP
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

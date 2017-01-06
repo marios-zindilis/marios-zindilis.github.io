@@ -72,22 +72,16 @@
 
   <section itemprop="articleBody">
     <p>Μια εντολή για ταξινόμηση των φακέλων κατά μέγεθος στο Bash:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>du -hsm | sort -n
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">du -hsm | sort -n
+</code></pre></div>
 <p>Υπολογίζει το μέγεθος όλων των φακέλων σε MegaBytes και τους ταξινομεί 
-σε αύξουσα σειρά μεγέθους. Μια διαφορετική εκδοχή:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>du -s * | sort -n | cut -f 2 | xargs -d "\n" du -chs
-</code></pre>
-</div>
-
+σε αύξουσα σειρά μεγέθους. Μια διαφορετική εκδοχή: </p>
+<div class="highlight"><pre><code class="language-" data-lang="">du -s * | sort -n | cut -f 2 | xargs -d "\n" du -chs
+</code></pre></div>
 <p>Καλεί δύο φορές το <code>du</code>, την πρώτη για να πάρει τη λίστα με τους 
 φακέλους και το μέγεθος (σε bytes). Ταξινομεί αριθμητικά, και μετά πασάρει τη 
 λίστα με τα ονόματα μόνο των φακέλων -αυτή τη φορά ταξινομημένη κατά μέγεθος- 
-ξανά στο <code>du</code>. Η επιλογή <code>-d "\n"</code> του <code>xargs</code> 
+ξανά στο <code>du</code>. Η επιλογή <code>-d &quot;\n&quot;</code> του <code>xargs</code> 
 καθορίζει το delimiter. Αν παραληφθεί, οι φάκελοι στον οποίων το όνομα 
 περιέχονται διαστήματα θεωρούνται πολλαπλά ορίσματα.</p>
 

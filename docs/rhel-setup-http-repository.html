@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - Set up an HTTP Repository from RHEL DVD</title>
-  <meta name="description" content="RHEL can be installed from various different sources. One of them is over the network, from an HTTP accessible repository. Here’s how to create such a reposi...">
+  <meta name="description" content="RHEL can be installed from various different sources. One of them is over the network, from an HTTP accessible repository. Here&#39;s how to create such a re...">
 
   <link
     rel="stylesheet"
@@ -66,73 +66,44 @@
   </header>
 
   <section itemprop="articleBody">
-    <p><abbr title="RedHat Enterprise Linux">RHEL</abbr> can be installed from 
+    <p><abbr title='RedHat Enterprise Linux'>RHEL</abbr> can be installed from 
 various different sources. One of them is over the network, from an HTTP 
-accessible repository. Here’s how to create such a repository:</p>
+accessible repository. Here&#39;s how to create such a repository:</p>
 
 <ol>
-  <li>
-    <p>You will first need to install <code class="highlighter-rouge">httpd</code> from the RHEL DVD. See 
+<li><p>You will first need to install <code>httpd</code> from the RHEL DVD. See 
 <a href="/docs/rhel-yum-install-from-dvd.html">Install packages from RHEL DVD with yum</a> 
-on how to do that.</p>
-  </li>
-  <li>
-    <p>After you have installed <code class="highlighter-rouge">httpd</code>, enable it and start it:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>chkconfig httpd on
+on how to do that.</p></li>
+<li><p>After you have installed <code>httpd</code>, enable it and start it:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">chkconfig httpd on
 service httpd start
-</code></pre>
-    </div>
-
-    <p>At this point, you should be able to open <code class="highlighter-rouge">http://localhost/</code> from 
-the same system on which you are working.</p>
-  </li>
-  <li>
-    <p>Create a directory for the repository:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>mkdir /var/www/html/rhel
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Copy all the files from the DVD to the repository. Assuming that 
-either the DVD or the <code class="highlighter-rouge">.iso</code> image is mounted at <code class="highlighter-rouge">/media/rhel</code>:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>cp --recursive --archive /media/rhel/. /var/www/html/rhel/
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Change the SELinux context of the files in the repository:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>chcon --recursive --reference=/var/www/html/ /var/www/html/rhel/
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>At this point the repository is only accessible from the system on 
-which it runs, since <code class="highlighter-rouge">iptables</code> by default does not allow HTTP 
+</code></pre></div>
+<p>At this point, you should be able to open <code>http://localhost/</code> from 
+the same system on which you are working.</p></li>
+<li><p>Create a directory for the repository:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">mkdir /var/www/html/rhel
+</code></pre></div></li>
+<li><p>Copy all the files from the DVD to the repository. Assuming that 
+either the DVD or the <code>.iso</code> image is mounted at <code>/media/rhel</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">cp --recursive --archive /media/rhel/. /var/www/html/rhel/
+</code></pre></div></li>
+<li><p>Change the SELinux context of the files in the repository:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">chcon --recursive --reference=/var/www/html/ /var/www/html/rhel/
+</code></pre></div></li>
+<li><p>At this point the repository is only accessible from the system on 
+which it runs, since <code>iptables</code> by default does not allow HTTP 
 traffic from other hosts. To open this access, edit your 
-<code class="highlighter-rouge">/etc/sysconfig/iptables</code> and add this line before the <code class="highlighter-rouge">COMMIT</code> 
+<code>/etc/sysconfig/iptables</code> and add this line before the <code>COMMIT</code> 
 command:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-</code></pre>
-    </div>
-
-    <p>…and reload the firewall:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>service iptables reload
-</code></pre>
-    </div>
-
-    <p>Alternatively, you can do from the command line:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+<div class="highlight"><pre><code class="language-" data-lang="">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+</code></pre></div>
+<p>...and reload the firewall:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">service iptables reload
+</code></pre></div>
+<p>Alternatively, you can do from the command line:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
 service iptables save
-</code></pre>
-    </div>
-  </li>
+</code></pre></div></li>
 </ol>
 
   </section>

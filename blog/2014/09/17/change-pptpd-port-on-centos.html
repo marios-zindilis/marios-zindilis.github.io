@@ -72,51 +72,42 @@
 
   <section itemprop="articleBody">
     <p>I was testing Point-to-Point Tunneling today, between a CentOS 6 server running 
-<code class="highlighter-rouge">pptpd</code>, and some Mikrotik routers as the clients, and I wanted to change the 
-listening port on the <code class="highlighter-rouge">pptpd</code> side. After searching and reading a bit of 
-documentation for a while, I was surprised to find that <code class="highlighter-rouge">pptpd</code> respects the 
-record for <code class="highlighter-rouge">pptp</code> as defined in <code class="highlighter-rouge">/etc/services</code>.</p>
+<code>pptpd</code>, and some Mikrotik routers as the clients, and I wanted to change the 
+listening port on the <code>pptpd</code> side. After searching and reading a bit of 
+documentation for a while, I was surprised to find that <code>pptpd</code> respects the 
+record for <code>pptp</code> as defined in <code>/etc/services</code>.</p>
 
-<p>Therefore, to change the port on which <code class="highlighter-rouge">pptpd</code> listens, change the following 
+<p>Therefore, to change the port on which <code>pptpd</code> listens, change the following 
 two lines:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>pptp            1723/tcp                # pptp
+<div class="highlight"><pre><code class="language-" data-lang="">pptp            1723/tcp                # pptp
 pptp            1723/udp                # pptp
-</code></pre>
-</div>
-
-<p>…from the default 1723 to whatever you want, and restart the <code class="highlighter-rouge">pptpd</code> service.</p>
+</code></pre></div>
+<p>...from the default 1723 to whatever you want, and restart the <code>pptpd</code> service. </p>
 
 <p>Just in case, if you want to use a port that is already defined differently in 
-<code class="highlighter-rouge">/etc/services</code>, you might comment out the default entries to avoid confusion. 
+<code>/etc/services</code>, you might comment out the default entries to avoid confusion. 
 In my case, I used port 1821, so I commented out all the following lines:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># pptp            1723/tcp                # pptp
+<div class="highlight"><pre><code class="language-" data-lang=""># pptp            1723/tcp                # pptp
 # pptp            1723/udp                # pptp
 # donnyworld      1821/tcp                # donnyworld
 # donnyworld      1821/udp                # donnyworld
-</code></pre>
-</div>
-
-<p>…and added:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>pptp            1821/tcp                # pptp
+</code></pre></div>
+<p>...and added:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">pptp            1821/tcp                # pptp
 pptp            1821/udp                # pptp
-</code></pre>
-</div>
+</code></pre></div>
+<h2>A bit more on <code>/etc/services</code></h2>
 
-<h2 id="a-bit-more-on-etcservices">A bit more on <code class="highlighter-rouge">/etc/services</code></h2>
-
-<p>Quoting the <code class="highlighter-rouge">man</code> page for <code class="highlighter-rouge">services</code>:</p>
+<p>Quoting the <code>man</code> page for <code>services</code>:</p>
 
 <blockquote>
-  <p><strong>services</strong>  is  a  plain ASCII file providing a mapping between 
+<p><strong>services</strong>  is  a  plain ASCII file providing a mapping between 
 human-friendly textual names for internet services, and their underlying 
 assigned port numbers and protocol types.  Every networking program should 
 look into this file to get the port number (and protocol) for its service.</p>
 </blockquote>
 
-<p>So, <code class="highlighter-rouge">pptpd</code> is actually doing the right thing here, looking at this file to 
+<p>So, <code>pptpd</code> is actually doing the right thing here, looking at this file to 
 find its port. I wonder which other servers do the same thing.</p>
 
   </section>

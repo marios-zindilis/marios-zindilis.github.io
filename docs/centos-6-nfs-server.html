@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - Set up CentOS 6 as NFS Server</title>
-  <meta name="description" content="These are minimal instructions on how to set up an NFS server running on CentOS 6.">
+  <meta name="description" content="These are minimal instructions on how to set up an NFS server running on CentOS 6. ">
 
   <link
     rel="stylesheet"
@@ -67,30 +67,20 @@
 
   <section itemprop="articleBody">
     <p>These are minimal instructions on how to set up an NFS server running on 
-CentOS 6.</p>
+CentOS 6. </p>
 
 <ol>
-  <li>
-    <p>Install the required packages:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>yum install nfs-utils nfs-utils-lib
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Enable and start the required services:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>chkconfig rpcbind on 
+<li><p>Install the required packages:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">yum install nfs-utils nfs-utils-lib
+</code></pre></div></li>
+<li><p>Enable and start the required services:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">chkconfig rpcbind on 
 chkconfig nfs on
-    
+
 service rpcbind restart
 service nfs restart
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Create shares by editing: <code class="highlighter-rouge">/etc/exports</code></p>
-  </li>
+</code></pre></div></li>
+<li><p>Create shares by editing: <code>/etc/exports</code></p></li>
 </ol>
 
   </section>

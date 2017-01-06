@@ -62,37 +62,37 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>The fields, delimited by <code class="highlighter-rouge">:</code> are:</p>
+    <p>The fields, delimited by <code>:</code> are:</p>
 
 <ol>
-  <li>Username</li>
-  <li>Password (hashed)</li>
-  <li>Last password change (in days since 1970-01-01)</li>
+<li> Username</li>
+<li> Password (hashed)</li>
+<li> Last password change (in days since 1970-01-01)</li>
 </ol>
 
-<h2 id="fields">Fields</h2>
+<h2>Fields</h2>
 
 <p>Notes on specific fields.</p>
 
-<h3 id="username">Username</h3>
+<h3>Username</h3>
 
 <p>Fairly straightforward. The lenght used to be restricted to 8 characters 
-maximum in very old distributions, now it’s 32 characters on most 
+maximum in very old distributions, now it&#39;s 32 characters on most 
 distributions.</p>
 
-<h3 id="password">Password</h3>
+<h3>Password</h3>
 
 <p>An empty field, will allow the user to login without providing a 
 password, whereas a field that starts with, or only contains an asterisk 
-<code class="highlighter-rouge">*</code> indicates a disabled account.</p>
+<code>*</code> indicates a disabled account.</p>
 
 <p>The first characters of this field define the hashing algorithm, one of:</p>
 
 <ol>
-  <li>MD5 - password starts with <code class="highlighter-rouge">$1$</code></li>
-  <li>Blowfish - password starts with <code class="highlighter-rouge">$2a$</code></li>
-  <li>SHA-256 - password starts with <code class="highlighter-rouge">$5$</code></li>
-  <li>SHA-512 - password starts with <code class="highlighter-rouge">$6$</code></li>
+<li> MD5 - password starts with <code>$1$</code></li>
+<li> Blowfish - password starts with <code>$2a$</code></li>
+<li> SHA-256 - password starts with <code>$5$</code></li>
+<li> SHA-512 - password starts with <code>$6$</code></li>
 </ol>
 
   </section>

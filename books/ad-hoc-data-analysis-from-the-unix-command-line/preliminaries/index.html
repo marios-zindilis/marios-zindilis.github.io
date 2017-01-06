@@ -61,7 +61,7 @@
 Here's some preliminaries worth noting.
 </p>
 
-<h2 id="formatting">Formatting</h2>
+<h2>Formatting</h2>
 
 <p>These typesetting conventions will be used when presenting example interactions 
 at the command line:</p>
@@ -71,48 +71,42 @@ at the command line:</p>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">command </span>argument1 argument2 argument3</code></pre></figure>
 
 <p>You get:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>output line 1 
+<div class="highlight"><pre><code class="language-" data-lang="">output line 1 
 output line 2 
 output line 3 
 [...]
-</code></pre>
-</div>
-
-<p>The <code class="highlighter-rouge">$</code> is the shell prompt. What you type is shown in the <strong>You type</strong> section
+</code></pre></div>
+<p>The <code>$</code> is the shell prompt. What you type is shown in the <strong>You type</strong> section
 and command output is shown in the <strong>You get</strong> section.</p>
 
-<h2 id="example-data">Example data</h2>
+<h2>Example data</h2>
 
 <p>I will use the following sample files in the examples.</p>
 
-<h3 id="the-unix-password-file">The Unix password file</h3>
+<h3>The Unix password file</h3>
 
-<p>The password file can be found at <code class="highlighter-rouge">/etc/passwd</code>. Every user on the system has 
+<p>The password file can be found at <code>/etc/passwd</code>. Every user on the system has 
 one line (record) in the file. Each record has six fields separated by colon 
-(<code class="highlighter-rouge">:</code>) characters. The fields are username, encrypted password, userid, default 
+(<code>:</code>) characters. The fields are username, encrypted password, userid, default 
 group, home directory and default shell. We can look at the first few lines 
-with the <code class="highlighter-rouge">head</code> command, which prints just the first few lines of a file. 
-Correspondingly, the <code class="highlighter-rouge">tail</code> command prints just the last few lines.</p>
+with the <code>head</code> command, which prints just the first few lines of a file. 
+Correspondingly, the <code>tail</code> command prints just the last few lines.</p>
 
 <p>You type:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>head -5 /etc/passwd </code></pre></figure>
 
 <p>You get:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>root:x:0:0:root:/:/bin/bash 
+<div class="highlight"><pre><code class="language-" data-lang="">root:x:0:0:root:/:/bin/bash 
 bin:x:1:1:bin:/bin:/sbin/nologin 
 daemon:x:2:2:daemon:/sbin:/sbin/nologin 
 adm:x:3:4:adm:/var/adm:/sbin/nologin 
 lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
-</code></pre>
-</div>
-
-<h3 id="census-data">Census data</h3>
+</code></pre></div>
+<h3>Census data</h3>
 
 <p>The US Census releases Public Use Microdata Samples (PUMS) on <a href="http://www.census.gov/" title="US Census">its website</a>. 
-We will use the 1% sample of Washington state’s data, the <code class="highlighter-rouge">file pums_53.dat</code>, 
+We will use the 1% sample of Washington state&#39;s data, the <code>file pums_53.dat</code>, 
 which can be downloaded <a href="http://www2.census.gov/census_2000/datasets/PUMS/OnePercent/Washington/">here</a>.</p>
 
 <p>You type:</p>
@@ -120,50 +114,46 @@ which can be downloaded <a href="http://www2.census.gov/census_2000/datasets/PUM
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>head -2 pums_53.dat </code></pre></figure>
 
 <p>You get:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>H000011715349 53010 99979997 70 15872 639800 120020103814700280300000300409 
+<div class="highlight"><pre><code class="language-" data-lang="">H000011715349 53010 99979997 70 15872 639800 120020103814700280300000300409 
 02040201010103020 0 0 014000000100001000 0100650020 0 0 0 0 0000 0 0 0 0 0 
 05000000000004400000000010 76703521100000002640000000000
 P00001170100001401000010420010110000010147030400100012005003202200000 005301000
 000300530 53079 53 7602 76002020202020202200000400000000000000010005 30 53010
 70 9997 99970101006100200000001047904431M 701049-20116010 520460000000001800000
 00000000000000000000000000000000000000001800000018000208
-</code></pre>
-</div>
-
+</code></pre></div>
 <p><strong>Important note</strong>: The format of this data file is described in an excel 
 spreadsheet that can be downloaded <a href="http://ftp2.census.gov/census_2000/datasets/PUMS/FivePercent/5%25_PUMS_record_layout.xls">here</a>.</p>
 
-<h2 id="developer-efficiency-vs-computer-efficiency">Developer efficiency vs. computer efficiency</h2>
+<h2>Developer efficiency vs. computer efficiency</h2>
 
 <p>The techniques discussed here are usually extremely efficient in terms of 
 developer time, but generally less efficient in terms of compute resources 
 (CPU, I/O, memory). This kind of brute force and ignorance may be inelegant, 
-but when you don’t yet understand the scope of your problem, it is usually best 
+but when you don&#39;t yet understand the scope of your problem, it is usually best 
 to spend 30 seconds writing a program that will run for 3 hours than vice 
 versa.</p>
 
-<h2 id="the-online-manual">The online manual</h2>
+<h2>The online manual</h2>
 
-<p>The <code class="highlighter-rouge">man</code> command displays information about a given command (colloquially 
-referred to as the command’s “man page”). The online man pages are an extremely 
+<p>The <code>man</code> command displays information about a given command (colloquially 
+referred to as the command&#39;s &quot;man page&quot;). The online man pages are an extremely 
 valuable resource; if you do any serious work with the commands presented here, 
-you’ll eventually read all their man pages top to bottom. In Unix literature 
+you&#39;ll eventually read all their man pages top to bottom. In Unix literature 
 the man page for a command (or function, or file) is typically referred to as 
-<code class="highlighter-rouge">command(n)</code>. The number <code class="highlighter-rouge">n</code> specifies a section of the manual to disambiguate 
-entries which exist in multiple sections. So, <code class="highlighter-rouge">passwd(1)</code> is the man page for 
-the <code class="highlighter-rouge">passwd</code> <em>command</em>, and <code class="highlighter-rouge">passwd(5)</code> is the man page for the <code class="highlighter-rouge">passwd</code> 
+<code>command(n)</code>. The number <code>n</code> specifies a section of the manual to disambiguate 
+entries which exist in multiple sections. So, <code>passwd(1)</code> is the man page for 
+the <code>passwd</code> <em>command</em>, and <code>passwd(5)</code> is the man page for the <code>passwd</code> 
 <em>file</em>. On a Linux system you ask for a certain section of the manual by giving 
-the section number as the first argument as in <code class="highlighter-rouge">man 5 passwd</code>. Here’s what the 
-<code class="highlighter-rouge">man</code> command has to say about itself:</p>
+the section number as the first argument as in <code>man 5 passwd</code>. Here&#39;s what the 
+<code>man</code> command has to say about itself:</p>
 
 <p>You type:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>man man </code></pre></figure>
 
 <p>You get:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>man(1)                                                        man(1) 
+<div class="highlight"><pre><code class="language-" data-lang="">man(1)                                                        man(1) 
 NAME
        man - format and display the on-line manual pages 
        manpath - determine user's search path for man pages 
@@ -179,10 +169,7 @@ DESCRIPTION
        manual. name is normally the name of the manual page, 
        which is typically the name of a command, function, or 
        file. [...]
-</code></pre>
-</div>
-
-
+</code></pre></div>
   </div>
 
 </article>

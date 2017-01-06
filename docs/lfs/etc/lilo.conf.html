@@ -64,17 +64,14 @@
   <section itemprop="articleBody">
     <p>The LILO bootloader has long been deprecated, in favour of GRUB, 
 however it still has an install base on old systems that remain in 
-production. The <code class="highlighter-rouge">/etc/lilo.conf</code> file contains its configuration. After 
+production. The <code>/etc/lilo.conf</code> file contains its configuration. After 
 any change in that file, it is necessary to reinstall LILO, by simply 
-running <code class="highlighter-rouge">lilo</code>.</p>
+running <code>lilo</code>.</p>
 
 <p>Each installed kernel version will have a line in this file, beginning 
-with <code class="highlighter-rouge">image=</code>, followed by the path to the kernel file. For example:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>image=/boot/bzImage-2.6.28
-</code></pre>
-</div>
-
+with <code>image=</code>, followed by the path to the kernel file. For example:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">image=/boot/bzImage-2.6.28
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

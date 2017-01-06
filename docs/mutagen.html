@@ -68,22 +68,22 @@
   <section itemprop="articleBody">
     <p><strong>Mutagen</strong> is a Python module to handle audio metadata.</p>
 
-<h2 id="ufid-unique-file-identifier">UFID: Unique File Identifier</h2>
+<h2>UFID: Unique File Identifier</h2>
 
 <p>The unique file identifier is a reference to an external database that may 
 contain more information about the work tagged with it. Like many ID3 tags, it 
-can have multiple values. For example, you can link the song “<em>Black Sabbath</em>” 
-by “Black Sabbath” as <code class="highlighter-rouge">mt0030286828</code> in <a href="http://www.allmusic.com/" title="AllMusic">AllMusic</a>, and as 
-<code class="highlighter-rouge">153a3596-af03-36ed-976a-83fec8745732</code> in <a href="https://musicbrainz.org/" title="MusicBrainz">MusicBrainz</a>.</p>
+can have multiple values. For example, you can link the song &quot;<em>Black Sabbath</em>&quot; 
+by &quot;Black Sabbath&quot; as <code>mt0030286828</code> in <a href="http://www.allmusic.com/" title="AllMusic">AllMusic</a>, and as 
+<code>153a3596-af03-36ed-976a-83fec8745732</code> in <a href="https://musicbrainz.org/" title="MusicBrainz">MusicBrainz</a>. </p>
 
 <p>Note that according to the <a href="http://id3.org/id3v2.4.0-frames">definition of the UFID ID3 frame</a>, the URLs 
 should not be queries themselves. I guess that it might be a feature of the
 software that reads this tag to transform it to direct links. In the example
-used, those links would be:
-<a href="http://www.allmusic.com/song/black-sabbath-mt0030286828">http://www.allmusic.com/song/black-sabbath-mt0030286828</a> and
+used, those links would be: 
+<a href="http://www.allmusic.com/song/black-sabbath-mt0030286828">http://www.allmusic.com/song/black-sabbath-mt0030286828</a> and 
 <a href="https://musicbrainz.org/work/153a3596-af03-36ed-976a-83fec8745732">https://musicbrainz.org/work/153a3596-af03-36ed-976a-83fec8745732</a>.</p>
 
-<p>Let’s see how to write UFID and read it back in Python, with Mutagen.</p>
+<p>Let&#39;s see how to write UFID and read it back in Python, with Mutagen.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">mutagen</span> <span class="kn">import</span> <span class="n">id3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">song</span> <span class="o">=</span> <span class="n">id3</span><span class="o">.</span><span class="n">ID3</span><span class="p">(</span><span class="s">'test.mp3'</span><span class="p">)</span>
@@ -110,8 +110,8 @@ used, those links would be:
 <span class="o">&gt;&gt;&gt;</span> <span class="n">song</span><span class="p">[</span><span class="s">'UFID:https://musicbrainz.org/'</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
 <span class="s">'153a3596-af03-36ed-976a-83fec8745732'</span></code></pre></figure>
 
-<p>Note the use of <code class="highlighter-rouge">encode()</code> and <code class="highlighter-rouge">decode()</code> methods of <code class="highlighter-rouge">unicode</code> used for the 
-<code class="highlighter-rouge">data</code> part of the frame, as it expects its contents to be bytes.</p>
+<p>Note the use of <code>encode()</code> and <code>decode()</code> methods of <code>unicode</code> used for the 
+<code>data</code> part of the frame, as it expects its contents to be bytes.</p>
 
   </section>
 

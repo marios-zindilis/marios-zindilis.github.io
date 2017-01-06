@@ -62,38 +62,29 @@
   </header>
 
   <section itemprop="articleBody">
-    <p class="lead">File <code>/etc/hosts.allow</code> is one of the configuration 
+    <p class='lead'>File <code>/etc/hosts.allow</code> is one of the configuration 
 files of <b>TCP Wrappers</b>, effective either to servers launched via a 
 superserver such as <code>inetd</code>, or to servers that use 
 <code>libwrap</code>, such as the OpenSSH server (when compiled with 
 <code>--with-libwrap</code>, which is usually the default).</p>
 
 <p>The general syntax of the file is:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>server: hosts
-</code></pre>
-</div>
-
-<p>The <code class="highlighter-rouge">hosts</code> is a comma separated list, that can include full IP 
+<div class="highlight"><pre><code class="language-" data-lang="">server: hosts
+</code></pre></div>
+<p>The <code>hosts</code> is a comma separated list, that can include full IP 
 addresses, partial IP addresses, IP subnets in CIDR notation, 
 FQDNs, or domains. For example, the following line limits access to the 
-<code class="highlighter-rouge">sshd</code> server to a single host specified by IP, and to a subnet:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>sshd: 8.8.8.1 10.1.0.0/24
-</code></pre>
-</div>
-
-<p>Note that in order for any definitions in <code class="highlighter-rouge">/etc/hosts.allow</code> to be 
+<code>sshd</code> server to a single host specified by IP, and to a subnet:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sshd: 8.8.8.1 10.1.0.0/24
+</code></pre></div>
+<p>Note that in order for any definitions in <code>/etc/hosts.allow</code> to be 
 effective, the rest of the hosts <strong>need to be prohibited</strong> in 
-<code class="highlighter-rouge">/etc/hosts.deny</code>. Since <code class="highlighter-rouge">/etc/hosts.allow</code> takes precedence, it is safe 
-to disallow every host in <code class="highlighter-rouge">/etc/hosts.deny</code> and only selectively allow 
-specific access to the server in <code class="highlighter-rouge">/etc/hosts.allow</code>. To deny all hosts 
-except those specified in <code class="highlighter-rouge">/etc/hosts.allow</code>, add in <code class="highlighter-rouge">/etc/hosts.deny</code>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>sshd: ALL
-</code></pre>
-</div>
-
+<code>/etc/hosts.deny</code>. Since <code>/etc/hosts.allow</code> takes precedence, it is safe 
+to disallow every host in <code>/etc/hosts.deny</code> and only selectively allow 
+specific access to the server in <code>/etc/hosts.allow</code>. To deny all hosts 
+except those specified in <code>/etc/hosts.allow</code>, add in <code>/etc/hosts.deny</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sshd: ALL
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

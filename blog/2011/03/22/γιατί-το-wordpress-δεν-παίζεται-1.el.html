@@ -73,7 +73,7 @@
   <section itemprop="articleBody">
     <h3>Ή αλλιώς, πώς να φτιάξετε έναν φάκελο με αρχεία για κατέβασμα από το ιστολόγιό σας.</h3>
 
-<p>Για να δημιουργήσετε έναν υποφάκελο με αρχεία προς κατέβασμα από το ιστολόγιό σας, φτιάξτε τον υποφάκελο στον εξυπηρετητή, και προσθέστε αυτούσιο ή προσαρμοσμένο το εξής αρχείο ως <code class="highlighter-rouge">index.php</code>:</p>
+<p>Για να δημιουργήσετε έναν υποφάκελο με αρχεία προς κατέβασμα από το ιστολόγιό σας, φτιάξτε τον υποφάκελο στον εξυπηρετητή, και προσθέστε αυτούσιο ή προσαρμοσμένο το εξής αρχείο ως <code>index.php</code>:</p>
 
 <figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="nb">define</span><span class="p">(</span><span class="s1">'WP_USE_THEMES'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
@@ -99,23 +99,23 @@
   <span class="p">}</span>
 <span class="nx">get_footer</span><span class="p">();</span> <span class="cp">?&gt;</span></code></pre></figure>
 
-<p>Αν έχετε <code class="highlighter-rouge">.htaccess</code> στο ιστολόγιό σας, ίσως χρειάζεται να το 
+<p>Αν έχετε <code>.htaccess</code> στο ιστολόγιό σας, ίσως χρειάζεται να το 
 τροποιήσετε για να μην συμπεριλαμβάνει τον νέο σας υποφάκελο, 
 δείτε και την προηγούμενη δημοσίευση για αυτό το θέμα. Μπορείτε 
 επίσης να περιορίσετε την εμφάνιση της λίστας αρχείων σε 
 συνδεδεμένους χρήστες (επίσης και αυτό αναφέρεται στην προηγούμενη 
-δημοσίευση) με χρήση της συνάρτησης του WordPress: <code class="highlighter-rouge">if ( is_user_logged_in() )</code>, 
+δημοσίευση) με χρήση της συνάρτησης του WordPress: <code>if ( is_user_logged_in() )</code>, 
 αλλά αυτό δεν θα εμποδίσει κάποιον να κατεβάσει αρχεία αν έχει κατ’ 
 ευθείαν σύνδεσμο πάνω σε συγκεκριμένο αρχείο. Για το σκοπό αυτό, 
-χρειάζεστε επιπλέον προστασία, π.χ. με <code class="highlighter-rouge">.htaccess</code>.</p>
+χρειάζεστε επιπλέον προστασία, π.χ. με <code>.htaccess</code>.</p>
 
-<h2 id="section">Δείτε επίσης</h2>
+<h2>Δείτε επίσης</h2>
 
 <p>Δύο ακόμα άρθρα σε αυτή τη σειρά:</p>
 
 <ol>
-  <li><a href="/blog/2011/03/12/γιατί-το-wordpress-δεν-παίζεται-0.el.html">Γιατί το WordPress δεν παίζεται #0</a></li>
-  <li><a href="/blog/2011/03/22/γιατί-το-wordpress-δεν-παίζεται-2.el.html">Γιατί το WordPress δεν παίζεται #2</a></li>
+<li> <a href="/blog/2011/03/12/%CE%B3%CE%B9%CE%B1%CF%84%CE%AF-%CF%84%CE%BF-wordpress-%CE%B4%CE%B5%CE%BD-%CF%80%CE%B1%CE%AF%CE%B6%CE%B5%CF%84%CE%B1%CE%B9-0.el.html">Γιατί το WordPress δεν παίζεται #0</a></li>
+<li> <a href="/blog/2011/03/22/%CE%B3%CE%B9%CE%B1%CF%84%CE%AF-%CF%84%CE%BF-wordpress-%CE%B4%CE%B5%CE%BD-%CF%80%CE%B1%CE%AF%CE%B6%CE%B5%CF%84%CE%B1%CE%B9-2.el.html">Γιατί το WordPress δεν παίζεται #2</a></li>
 </ol>
 
   </section>

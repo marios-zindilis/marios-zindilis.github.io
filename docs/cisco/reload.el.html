@@ -62,10 +62,10 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>Η εντολή <code class="highlighter-rouge">reload</code> αναγκάζει μια συσκευή να επανεκκινήσει. Αν εκτελεστεί 
+    <p>Η εντολή <code>reload</code> αναγκάζει μια συσκευή να επανεκκινήσει. Αν εκτελεστεί 
 χωρίς παραμέτρους, η επανεκκίνηση γίνεται αμέσως.</p>
 
-<p>Με τη χρήση της εντολής <code class="highlighter-rouge">reload</code> είναι δυνατό να αποτραπεί η απώλεια της 
+<p>Με τη χρήση της εντολής <code>reload</code> είναι δυνατό να αποτραπεί η απώλεια της 
 σύνδεση στη συσκευή λόγω καινούριων ρυθμίσεων, η οποία σε αντίθετη 
 περίπτωση θα καθιστούσε αναγκαία την φυσική πρόσβαση στη συσκευή για την 
 αποκατάσταση των ρυθμίσεων. Για παράδειγμα, αν κάνετε κάποιες καινούριες 
@@ -77,32 +77,25 @@
 <p>Έτσι, και αν ακόμα κάνετε κάποια λάθος ρύθμιση και χάσετε τη σύνδεσή σας 
 στη συσκευή, αυτή θα επανεκκινήσει και θα φορτώσει τις προηγούμενες 
 ρυθμίσεις της. Αν αντιθέτως όλα πάνε καλά, θα ακυρώσετε την προγραμματισμένη 
-επανεκκίνηση.</p>
+επανεκκίνηση. </p>
 
 <p>Το πιο κάτω παράδειγμα θα κάνει τη συσκευή να επανεκκινήσει μετά από 10 
 λεπτά, ενώ ταυτόχρονα θα καταχωρηθεί και το σχόλιο «applying new 
 configuration» μέσα στο αρχείο καταγραφής της συσκευής (log):</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>router# reload in 10 applying new configuration
+<div class="highlight"><pre><code class="language-" data-lang="">router# reload in 10 applying new configuration
 Proceed with reload? [confirm]
 router#
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Αν θέλετε να ακυρώσετε μια προγραμματισμένη επανεκκίνηση, μπορείτε να το 
 κάνετε με:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>router# reload cancel 
+<div class="highlight"><pre><code class="language-" data-lang="">router# reload cancel 
 
 ***
 *** --- SHUTDOWN ABORTED ---
 ***
- 
+
 router#
-</code></pre>
-</div>
-
-
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

@@ -72,18 +72,18 @@
 είναι πιθανόν να βρεθεί σε παλιά συστήματα, με κάρτες γραφικών που δεν 
 υποστηρίζονται από τους νεότερους εξυπηρετητές <a href="xfree86-4.el.html">XFree86 4</a> 
 και <a href="x.org.el.html">X.Org</a>. Από το 2004 περίπου, και οι δύο εκδόσεις 
-του XFree 86 έχουν αντικατασταθεί από τον X.Org, σε όλες τις διανομές.</p>
+του XFree 86 έχουν αντικατασταθεί από τον X.Org, σε όλες τις διανομές. </p>
 
-<h2 id="section">Ρύθμιση</h2>
+<h2>Ρύθμιση</h2>
 
 <p>Η ρύθμιση του XFree86 3 μπορεί να γίνει είτε με επεξεργασία του αρχείου 
 ρυθμίσεων, είτε με χρήση βοηθητικών εργαλείων, όπως τα <a href="/docs/xf86config.el.html">xf86config</a>, 
 <a href="/docs/xconfigurator.el.html">Xconfigurator</a> και <a href="xf86setup.el.html">XF86Setup</a>.</p>
 
-<h2 id="section-1">Αρχείο ρυθμίσεων</h2>
+<h2>Αρχείο ρυθμίσεων</h2>
 
-<p>Το αρχείο ρυθμίσεων του XFree 86 3 ονομάζεται <code class="highlighter-rouge">XF86Config</code>, και συνήθως 
-βρίσκεται στο <code class="highlighter-rouge">/etc</code> ή στο <code class="highlighter-rouge">/etc/X11</code>. Ωστόσο, η παρουσία αυτού του 
+<p>Το αρχείο ρυθμίσεων του XFree 86 3 ονομάζεται <code>XF86Config</code>, και συνήθως 
+βρίσκεται στο <code>/etc</code> ή στο <code>/etc/X11</code>. Ωστόσο, η παρουσία αυτού του 
 αρχείου σε ένα σύστημα δεν συνεπάγεται την λειτουργία του XFree 86 3, 
 μια που και η έκδοση 4 μπορεί να χρησιμοποιεί το ίδιο όνομα για το 
 αρχείο ρυθμίσεών της.</p>
@@ -92,36 +92,33 @@
 διαφορές είναι:</p>
 
 <ol>
-  <li>Στην έκδοση 3 δεν υπάρχει η λέξη-κλειδί <code class="highlighter-rouge">Option</code>, αλλά τα ονόματα 
+<li> Στην έκδοση 3 δεν υπάρχει η λέξη-κλειδί <code>Option</code>, αλλά τα ονόματα 
 των επιλογών και οι τιμές τους συντάσσονται ως ζεύγη κλειδιών-τιμών.</li>
-  <li>Στην έκδοση 3 δεν υπάρχει η ενότητα <code class="highlighter-rouge">ServerLayout</code>.</li>
-  <li>Στην έκδοση 3 δεν υπάρχουν στις ενότητες οι οντότητες <code class="highlighter-rouge">Identifier</code> 
-και <code class="highlighter-rouge">Driver</code>. Αυτό κάνει την έκδοση 3 λιγότερο ευέλικτη, αφού σε 
+<li> Στην έκδοση 3 δεν υπάρχει η ενότητα <code>ServerLayout</code>.</li>
+<li> Στην έκδοση 3 δεν υπάρχουν στις ενότητες οι οντότητες <code>Identifier</code> 
+και <code>Driver</code>. Αυτό κάνει την έκδοση 3 λιγότερο ευέλικτη, αφού σε 
 κάθε αρχείο ρυθμίσεων μπορεί να οριστεί μόνο μία φορά κάθε συσκευή 
 (π.χ. μόνο ένα πληκτρολόγιο, μόνο ένα ποντίκι, μόνο μία κάρτα 
 γραφικών).</li>
-  <li>Στην έκδοση 3 οι ρυθμίσεις του ποντικιού ανήκουν στην ενότητα <code class="highlighter-rouge">Pointer</code>, 
-ενώ στην 4 ανήκουν στην <code class="highlighter-rouge">InputDevice</code>, όπως και του πληκτρολογίου.</li>
+<li> Στην έκδοση 3 οι ρυθμίσεις του ποντικιού ανήκουν στην ενότητα <code>Pointer</code>, 
+ενώ στην 4 ανήκουν στην <code>InputDevice</code>, όπως και του πληκτρολογίου. </li>
 </ol>
 
-<h2 id="xfree86">Εργαλείο XFree86</h2>
+<h2>Εργαλείο XFree86</h2>
 
 <p>Για μια αρχική ρύθμιση του XFree86, ενώ δεν τρέχει ο εξυπηρετητής, εκτελέστε:</p>
-
-<p><code class="highlighter-rouge">bash
-XFree86 -configure
-</code></p>
-
-<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code class="highlighter-rouge">XFree86Config.new</code> μέσα 
-στον φάκελο <code class="highlighter-rouge">/root</code>, το οποίο μπορείτε να χρησιμοποιήσετε για να 
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">XFree86 -configure
+</code></pre></div>
+<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code>XFree86Config.new</code> μέσα 
+στον φάκελο <code>/root</code>, το οποίο μπορείτε να χρησιμοποιήσετε για να 
 προσθέσετε τις δικές σας τροποποιήσεις.</p>
 
-<h2 id="section-2">Δείτε επίσης</h2>
+<h2>Δείτε επίσης</h2>
 
 <ul>
-  <li>Ιστότοπος <a href="http://www.xfree86.org/">xfree86.org</a></li>
-  <li>Άλλοι εξυπηρετητές γραφικών: <a href="/docs/xfree86-4.el.html">XFree86 4</a>, 
-<a href="/docs/x.org.el.html">X.Org</a>, <a href="/docs/accelerated-x.el.html">Accelerated-X</a>.</li>
+<li>  Ιστότοπος <a href="http://www.xfree86.org/">xfree86.org</a></li>
+<li>  Άλλοι εξυπηρετητές γραφικών: <a href="/docs/xfree86-4.el.html">XFree86 4</a>, 
+<a href="/docs/x.org.el.html">X.Org</a>, <a href="/docs/accelerated-x.el.html">Accelerated-X</a>. </li>
 </ul>
 
   </section>

@@ -63,8 +63,7 @@
 
   <section itemprop="articleBody">
     <p>Example script:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql   --silent \
+<div class="highlight"><pre><code class="language-" data-lang="">mysql   --silent \
         --skip-column-names \
         --user mysqldumper \
         --execute 'SELECT User, Host from mysql.user' | \
@@ -72,10 +71,8 @@
             mysql --user mysqldumper --execute "SHOW GRANTS FOR '$User'@'$Host'"; 
             echo "==========================="; 
         done
-</code></pre>
-</div>
-
-<p>The <code class="highlighter-rouge">mysqldumper</code> user only requires read permissions on the databases.</p>
+</code></pre></div>
+<p>The <code>mysqldumper</code> user only requires read permissions on the databases.</p>
 
   </section>
 

@@ -67,60 +67,44 @@
     <p>To enable <strong>basic authentication</strong> with Apache 2:</p>
 
 <ol>
-  <li>
-    <p>Create a set of credentials for the user, using <code class="highlighter-rouge">htpasswd</code>. The 
+<li><p>Create a set of credentials for the user, using <code>htpasswd</code>. The 
 syntax is:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>htpasswd /path/to/htpasswd/file username
-</code></pre>
-    </div>
-
-    <p>If the <code class="highlighter-rouge">htpasswd</code> file does not exist yet, pass the additional 
-option <code class="highlighter-rouge">-c</code> to create it. For example:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>htpasswd /etc/httpd/htpasswd marios
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Enter the user password twice. This will create an entry in that 
+<div class="highlight"><pre><code class="language-" data-lang="">htpasswd /path/to/htpasswd/file username
+</code></pre></div>
+<p>If the <code>htpasswd</code> file does not exist yet, pass the additional 
+option <code>-c</code> to create it. For example:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">htpasswd /etc/httpd/htpasswd marios
+</code></pre></div></li>
+<li><p>Enter the user password twice. This will create an entry in that 
 file, with a set of credentials, e.g:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>[marios@centos6 ~]$ grep marios /etc/httpd/htpasswd 
+<div class="highlight"><pre><code class="language-" data-lang="">[marios@centos6 ~]$ grep marios /etc/httpd/htpasswd 
 marios:3RoxtKn6QL9Uw
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Basic authentication can be applied to a directory on the web 
-server and its subdirectories with the <code class="highlighter-rouge">Directory</code> Apache directive, 
-or to a URL and whatever follows it, with the <code class="highlighter-rouge">Location</code> directove. 
+</code></pre></div></li>
+<li><p>Basic authentication can be applied to a directory on the web 
+server and its subdirectories with the <code>Directory</code> Apache directive, 
+or to a URL and whatever follows it, with the <code>Location</code> directove. 
 To apply it to a directory, add to your Apache configuration 
 something like:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>&lt;Directory /var/www/html/protected&gt;
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;Directory /var/www/html/protected&gt;
     AuthName "Protected"
     AuthType Basic
     AuthUserFile /etc/httpd/htpasswd
     Require user marios
 &lt;/Directory&gt;
-</code></pre>
-    </div>
-
-    <p>If you have multiple users, you can specify <code class="highlighter-rouge">Require valid-user</code>, 
-in which case all users with credentials in the <code class="highlighter-rouge">AuthUserFile</code> 
-will be allowed to login.</p>
-  </li>
+</code></pre></div>
+<p>If you have multiple users, you can specify <code>Require valid-user</code>, 
+in which case all users with credentials in the <code>AuthUserFile</code> 
+will be allowed to login.</p></li>
 </ol>
 
 <p>Optionally, you can further secure that specific directory or location 
-with an <code class="highlighter-rouge">AllowFrom</code> directive, and restrict the ranges of IP addresses 
+with an <code>AllowFrom</code> directive, and restrict the ranges of IP addresses 
 from which the directory or location will be accessible.</p>
 
-<h2 id="see-also">See Also</h2>
+<h2>See Also</h2>
 
 <ul>
-  <li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialApacheAddingLoginSiteProtection.html">Apache Web Login Authentication</a>, 
+<li>  <a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialApacheAddingLoginSiteProtection.html">Apache Web Login Authentication</a>, 
 a tutorial with many Apache authentication examples, including Basic.</li>
 </ul>
 

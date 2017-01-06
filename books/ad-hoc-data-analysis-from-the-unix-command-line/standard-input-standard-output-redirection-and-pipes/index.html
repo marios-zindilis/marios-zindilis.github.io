@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - Standard Input, Standard Output, Redirection and Pipes</title>
-  <meta name="description" content="  “This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, beca...">
+  <meta name="description" content="&quot;This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, b...">
 
   <link
     rel="stylesheet"
@@ -58,18 +58,18 @@
 
   <div class="post-content">
     <blockquote>
-  <p>“This is the Unix philosophy: Write programs that do one thing and do it 
+<p>&quot;This is the Unix philosophy: Write programs that do one thing and do it 
 well. Write programs to work together. Write programs to handle text streams, 
-because that is a universal interface.” 
-– Doug McIlroy, the inventor of Unix pipes</p>
+because that is a universal interface.&quot; 
+-- Doug McIlroy, the inventor of Unix pipes</p>
 </blockquote>
 
-<p>The commands I’m going to talk about here are called filters. Data passes 
+<p>The commands I&#39;m going to talk about here are called filters. Data passes 
 through them and they modify it a bit on the way. These commands read data from 
 their <strong>standard input</strong> and write data to their <strong>standard output</strong>. By 
 default, standard input is your keyboard and standard output is your screen. 
-For example, the <code class="highlighter-rouge">tr</code> command is a filter that translates one set of characters 
-to another. This invocation of <code class="highlighter-rouge">tr</code> turns all lower case characters to upper 
+For example, the <code>tr</code> command is a filter that translates one set of characters 
+to another. This invocation of <code>tr</code> turns all lower case characters to upper 
 case characters:</p>
 
 <p>You type:</p>
@@ -78,28 +78,22 @@ case characters:</p>
 hello</code></pre></figure>
 
 <p>You get:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>HELLO
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">HELLO
+</code></pre></div>
 <p>Then type:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">i feel like shouting</code></pre></figure>
 
 <p>You get:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>I FEEL LIKE SHOUTING
-</code></pre>
-</div>
-
-<p>You can exit from this with <code class="highlighter-rouge">[ctrl-d]</code>. This tells the command line that you’re 
+<div class="highlight"><pre><code class="language-" data-lang="">I FEEL LIKE SHOUTING
+</code></pre></div>
+<p>You can exit from this with <code>[ctrl-d]</code>. This tells the command line that you&#39;re 
 done entering input.</p>
 
 <p>You can tell your shell to connect standard output to a file instead of your 
-screen using the <code class="highlighter-rouge">&gt;</code> operator. The term for this is <strong>redirection</strong>. One would 
-talk about <strong>redirecting</strong> the output of <code class="highlighter-rouge">tr</code> to a file. Later you can use the 
-<code class="highlighter-rouge">cat</code> command to write the file to your screen.</p>
+screen using the <code>&gt;</code> operator. The term for this is <strong>redirection</strong>. One would 
+talk about <strong>redirecting</strong> the output of <code>tr</code> to a file. Later you can use the 
+<code>cat</code> command to write the file to your screen.</p>
 
 <p>You type:</p>
 
@@ -109,45 +103,42 @@ this is a <span class="nb">test</span>
 <span class="gp">$ </span>cat tr_output</code></pre></figure>
 
 <p>You get:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>THIS IS A TEST
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">THIS IS A TEST
+</code></pre></div>
 <p>Many Unix commands that take a file as an argument will read from standard 
-input if not given a file. For example, the <code class="highlighter-rouge">grep</code> command searches a file for 
+input if not given a file. For example, the <code>grep</code> command searches a file for 
 a string and prints the lines that match. If I wanted to find my entry in the 
 password file I might say:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep jrauser /etc/passwd
 jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
 
-<p>But I could also redirect a file to <code class="highlighter-rouge">grep</code>’s standard input using the <code class="highlighter-rouge">&lt;</code> 
-operator. You can see that the <code class="highlighter-rouge">&lt;</code> and <code class="highlighter-rouge">&gt;</code> operators are like little arrows 
+<p>But I could also redirect a file to <code>grep</code>&#39;s standard input using the <code>&lt;</code> 
+operator. You can see that the <code>&lt;</code> and <code>&gt;</code> operators are like little arrows 
 that indicate the flow of data.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep jrauser &lt; /etc/passwd
 jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
 
-<p>You can use the pipe <code class="highlighter-rouge">|</code> operator to connect the standard output of one command 
-to the standard input of the next. The <code class="highlighter-rouge">cat</code> command reads a file and writes it 
+<p>You can use the pipe <code>|</code> operator to connect the standard output of one command 
+to the standard input of the next. The <code>cat</code> command reads a file and writes it 
 to its standard output, so yet another way to find my entry in the password 
 file is:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat /etc/passwd | grep jrauser
 jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
 
-<p>For a slightly more interesting example, the <code class="highlighter-rouge">mail</code> command will send a message 
-it reads from standard input. Let’s send my entry in the password file to me in 
+<p>For a slightly more interesting example, the <code>mail</code> command will send a message 
+it reads from standard input. Let&#39;s send my entry in the password file to me in 
 an email.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat /etc/passwd | grep jrauser | mail -s <span class="s2">"passwd entry"</span> jrauser@example.com</code></pre></figure>
 
-<h2 id="using-output-with-headers">Using output with headers</h2>
+<h2>Using output with headers</h2>
 
 <p>In many situations, you end up with output that has a first line that is a 
 header describing the data, and subsequent lines that are the data. An example 
-is <code class="highlighter-rouge">ps</code>:</p>
+is <code>ps</code>:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ps | head -5
   PID TTY           TIME CMD
@@ -156,7 +147,7 @@ is <code class="highlighter-rouge">ps</code>:</p>
 22341 ttys002    0:00.28 -bash
 70093 ttys002    0:00.00 head -5</code></pre></figure>
 
-<p>If you wish to manipulate the data but not the header use <code class="highlighter-rouge">tail</code> with the <code class="highlighter-rouge">-n</code> 
+<p>If you wish to manipulate the data but not the header use <code>tail</code> with the <code>-n</code> 
 switch to start at line 2. For example:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ps | tail -n +2 | grep bash | head -5
@@ -165,8 +156,7 @@ switch to start at line 2. For example:</p>
 22341 ttys002    0:00.28 -bash
 70120 ttys002    0:00.00 -bash</code></pre></figure>
 
-<p>This output shows only <code class="highlighter-rouge">bash</code> processes because of <code class="highlighter-rouge">grep</code>.</p>
-
+<p>This output shows only <code>bash</code> processes because of <code>grep</code>.</p>
 
   </div>
 

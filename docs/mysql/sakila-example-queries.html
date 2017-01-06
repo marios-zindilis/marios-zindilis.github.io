@@ -62,8 +62,8 @@
   </header>
 
   <section itemprop="articleBody">
-    <p class="lead">
-<a href="http://dev.mysql.com/doc/sakila/en/index.html"><b>Sakila</b></a> is a 
+    <p class='lead'>
+<a href='http://dev.mysql.com/doc/sakila/en/index.html'><b>Sakila</b></a> is a 
 sample database provided by MySQL, meant to be used in tests and documentation 
 examples. This page lists some example queries against that database.
 </p>
@@ -77,13 +77,12 @@ examples. This page lists some example queries against that database.
 <span class="k">WHERE</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">actor_id</span> <span class="o">=</span> <span class="n">actor</span><span class="p">.</span><span class="n">actor_id</span> 
 <span class="k">AND</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">film_id</span> <span class="o">=</span> <span class="n">film</span><span class="p">.</span><span class="n">film_id</span><span class="p">;</span></code></pre></figure>
 
-<p>Get the same result with double <code class="highlighter-rouge">INNER JOIN</code>:</p>
+<p>Get the same result with double <code>INNER JOIN</code>:</p>
 
 <figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">actor</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">actor</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">film</span><span class="p">.</span><span class="n">title</span> 
 <span class="k">FROM</span> <span class="n">film_actor</span> 
 <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">actor</span> <span class="k">ON</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">actor_id</span> <span class="o">=</span> <span class="n">actor</span><span class="p">.</span><span class="n">actor_id</span> 
 <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">film</span> <span class="k">ON</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">film_id</span> <span class="o">=</span> <span class="n">film</span><span class="p">.</span><span class="n">film_id</span><span class="p">;</span></code></pre></figure>
-
 
   </section>
 

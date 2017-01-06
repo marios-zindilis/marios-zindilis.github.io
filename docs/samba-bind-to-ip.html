@@ -68,38 +68,29 @@
   <section itemprop="articleBody">
     <p>By default, a Samba server will listen for connections on <strong>all</strong> the 
 interfaces of the host. This can be verified by:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># netstat -tulpn | egrep "samba|smbd|nmbd|winbind"
+<div class="highlight"><pre><code class="language-" data-lang=""># netstat -tulpn | egrep "samba|smbd|nmbd|winbind"
 tcp    0    0 0.0.0.0:139         0.0.0.0:*       LISTEN      30352/smbd
 tcp    0    0 0.0.0.0:445         0.0.0.0:*       LISTEN      30352/smbd
 tcp    0    0 :::139              :::*            LISTEN      30352/smbd
 tcp    0    0 :::445              :::*            LISTEN      30352/smbd
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>To bind the server to a specific IP or interface, add the following 
-lines to the <code class="highlighter-rouge">[global]</code> section of Samba’s configuration:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>bind interfaces only = yes
+lines to the <code>[global]</code> section of Samba&#39;s configuration:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">bind interfaces only = yes
 interfaces = lo eth0
-</code></pre>
-</div>
+</code></pre></div>
+<p>That will make the server listen to connections only to <code>lo</code> and <code>eth0</code>. 
+The value of the <code>interfaces</code> parameter, can also be an IP, like:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">interfaces = 10.1.2.3
+</code></pre></div>
+<p>For further information, see the <code>man</code> page for <code>smb.conf</code>.</p>
 
-<p>That will make the server listen to connections only to <code class="highlighter-rouge">lo</code> and <code class="highlighter-rouge">eth0</code>. 
-The value of the <code class="highlighter-rouge">interfaces</code> parameter, can also be an IP, like:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>interfaces = 10.1.2.3
-</code></pre>
-</div>
-
-<p>For further information, see the <code class="highlighter-rouge">man</code> page for <code class="highlighter-rouge">smb.conf</code>.</p>
-
-<h2 id="see-also">See also</h2>
+<h2>See also</h2>
 
 <ul>
-  <li>The <a href="http://wiki.samba.org/index.php/Samba_port_usage">Samba port usage</a>
+<li>  The <a href="http://wiki.samba.org/index.php/Samba_port_usage">Samba port usage</a>
 article in the Samba Wiki explains a bit more on why it might be 
-necessary to have the server listening on the <code class="highlighter-rouge">lo</code> interface.</li>
+necessary to have the server listening on the <code>lo</code> interface.</li>
 </ul>
 
   </section>

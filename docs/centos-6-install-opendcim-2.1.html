@@ -68,177 +68,119 @@
 [openDCIM](/docs/opendcim.html) on a system running CentOS 6.x.</p>
 
 <p>This guide is released in the <strong>Public Domain</strong>, except from the section 
-“<em>Enable HTTPS</em>” which is a snippet from <a href="http://wiki.centos.org/HowTos/Https">CentOS Wiki</a> 
+&quot;<em>Enable HTTPS</em>&quot; which is a snippet from <a href="http://wiki.centos.org/HowTos/Https">CentOS Wiki</a> 
 and is licenced under <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 Unported License</a>.</p>
 
-<h2 id="software-used">Software Used</h2>
+<h2>Software Used</h2>
 
 <p>This guide has been tested with:</p>
 
 <ul>
-  <li>openDCIM version 2.1, the current version as of the writing of the 
+<li>  openDCIM version 2.1, the current version as of the writing of the 
 guide, but it should apply to previous versions, and possibly to 
-future ones as well.</li>
-  <li>CentOS 6.4 Minimal 64bit, with the latest updates as of 2013-05-25, 
+future ones as well. </li>
+<li>  CentOS 6.4 Minimal 64bit, with the latest updates as of 2013-05-25, 
 but it should apply to previous versions, and possibly to future 
 ones as well.</li>
-  <li>The <code class="highlighter-rouge">vim</code> editor is used in the commands below, because it adds nice 
+<li>  The <code>vim</code> editor is used in the commands below, because it adds nice 
 colored syntax highlighting when editing configuration files. If you 
-don’t have <code class="highlighter-rouge">vim</code>, you can use <code class="highlighter-rouge">vi</code>, which comes preinstalled with 
+don&#39;t have <code>vim</code>, you can use <code>vi</code>, which comes preinstalled with 
 CentOS, or any text editor of your choice.</li>
 </ul>
 
-<h2 id="install-apache-php-mysql">Install Apache, PHP, MySQL</h2>
+<h2>Install Apache, PHP, MySQL</h2>
 
 <p>Install, start and enable Apache:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum -y install httpd
+<div class="highlight"><pre><code class="language-" data-lang="">yum -y install httpd
 service httpd start
 chkconfig httpd on
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Install PHP, and the MBSTRING module required for internationalization:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum -y install php
+<div class="highlight"><pre><code class="language-" data-lang="">yum -y install php
 yum -y install php-mysql
 yum -y install php-mbstring
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Install, start and enable MySQL Server:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum -y install mysql-server
+<div class="highlight"><pre><code class="language-" data-lang="">yum -y install mysql-server
 service mysqld start
 chkconfig mysqld on
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Secure MySQL Server:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql_secure_installation
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">mysql_secure_installation
+</code></pre></div>
 <p>During this step, you will:</p>
 
 <ol>
-  <li>Set a root password</li>
-  <li>Remove anonymous users</li>
-  <li>Disallow root login remotely</li>
-  <li>Remove test database and access to it</li>
-  <li>Reload privilege tables</li>
+<li>Set a root password</li>
+<li>Remove anonymous users</li>
+<li>Disallow root login remotely</li>
+<li>Remove test database and access to it</li>
+<li>Reload privilege tables</li>
 </ol>
 
-<p>Create a database for openDCIM (change the database name <code class="highlighter-rouge">dcim</code> and the 
-password <code class="highlighter-rouge">dcimpassword</code> to something that suits you):</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql -u root -p
+<p>Create a database for openDCIM (change the database name <code>dcim</code> and the 
+password <code>dcimpassword</code> to something that suits you):</p>
+<div class="highlight"><pre><code class="language-" data-lang="">mysql -u root -p
 mysql&gt; create database dcim;
 mysql&gt; grant all privileges on dcim.* to 'dcim'@'localhost' identified by 'dcimpassword';
-</code></pre>
-</div>
-
-<h2 id="enable-https">Enable HTTPS</h2>
+</code></pre></div>
+<h2>Enable HTTPS</h2>
 
 <p>Install Apache SSL Module:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>yum -y install mod_ssl
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">yum -y install mod_ssl
+</code></pre></div>
 <p>Generate the necessary keys and copy them to the proper directories:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>cd /root
+<div class="highlight"><pre><code class="language-" data-lang="">cd /root
 openssl genrsa -out ca.key 1024 
 openssl req -new -key ca.key -out ca.csr
 openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt
 cp ca.crt /etc/pki/tls/certs
 cp ca.key /etc/pki/tls/private/ca.key
 cp ca.csr /etc/pki/tls/private/ca.csr
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>To let Apache know of the proper locations of the keys, edit 
-<code class="highlighter-rouge">/etc/httpd/conf/httpd.conf</code>…</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>vim +/SSLCertificateFile /etc/httpd/conf.d/ssl.conf
-</code></pre>
-</div>
-
-<p>… comment out the line…</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>SSLCertificateFile /etc/pki/tls/certs/localhost.crt
-</code></pre>
-</div>
-
-<p>… and substitute with:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>SSLCertificateFile /etc/pki/tls/certs/ca.crt
-</code></pre>
-</div>
-
-<p>Also comment out the line…</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
-</code></pre>
-</div>
-
-<p>… and substitute with:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>SSLCertificateKeyFile /etc/pki/tls/private/ca.key
-</code></pre>
-</div>
-
+<code>/etc/httpd/conf/httpd.conf</code>...</p>
+<div class="highlight"><pre><code class="language-" data-lang="">vim +/SSLCertificateFile /etc/httpd/conf.d/ssl.conf
+</code></pre></div>
+<p>... comment out the line...</p>
+<div class="highlight"><pre><code class="language-" data-lang="">SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+</code></pre></div>
+<p>... and substitute with:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">SSLCertificateFile /etc/pki/tls/certs/ca.crt
+</code></pre></div>
+<p>Also comment out the line...</p>
+<div class="highlight"><pre><code class="language-" data-lang="">SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+</code></pre></div>
+<p>... and substitute with:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">SSLCertificateKeyFile /etc/pki/tls/private/ca.key
+</code></pre></div>
 <p>To set the server name:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>vim +/ServerName /etc/httpd/conf/httpd.conf
-</code></pre>
-</div>
-
-<p>Find the line…</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>#ServerName www.example.com:80
-</code></pre>
-</div>
-
-<p>…and add below it:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ServerName opendcim.example.com:443
-</code></pre>
-</div>
-
-<p>Finally restart Apache…</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>service httpd restart
-</code></pre>
-</div>
-
-<h2 id="create-a-virtualhost">Create a VirtualHost</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>vim +/NameVirtualHost /etc/httpd/conf/httpd.conf
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">vim +/ServerName /etc/httpd/conf/httpd.conf
+</code></pre></div>
+<p>Find the line...</p>
+<div class="highlight"><pre><code class="language-" data-lang="">#ServerName www.example.com:80
+</code></pre></div>
+<p>...and add below it:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">ServerName opendcim.example.com:443
+</code></pre></div>
+<p>Finally restart Apache...</p>
+<div class="highlight"><pre><code class="language-" data-lang="">service httpd restart
+</code></pre></div>
+<h2>Create a VirtualHost</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">vim +/NameVirtualHost /etc/httpd/conf/httpd.conf
+</code></pre></div>
 <p>Find the line:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>#NameVirtualHost *:80
-</code></pre>
-</div>
-
-<p>… and add below it:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>NameVirtualHost *:443
-</code></pre>
-</div>
-
-<p>Now create a new configuration file for the openDCIM VirtualHost…</p>
+<div class="highlight"><pre><code class="language-" data-lang="">#NameVirtualHost *:80
+</code></pre></div>
+<p>... and add below it:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">NameVirtualHost *:443
+</code></pre></div>
+<p>Now create a new configuration file for the openDCIM VirtualHost...</p>
 
 <p>vim /etc/httpd/conf.d/opendcim.example.com.conf</p>
 
-<p>… add the lines…</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;VirtualHost *:443&gt;
+<p>... add the lines...</p>
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;VirtualHost *:443&gt;
   ServerAdmin marios@zindilis.com
   DocumentRoot /var/www/opendcim
   ServerName opendcim.zindilis.net
@@ -249,119 +191,87 @@ cp ca.csr /etc/pki/tls/private/ca.csr
     Require valid-user
   &lt;/Directory&gt;
 &lt;/VirtualHost&gt;
-</code></pre>
-</div>
-
-<h2 id="enable-user-authentication">Enable User Authentication</h2>
+</code></pre></div>
+<h2>Enable User Authentication</h2>
 
 <p>You have protected the openDCIM web directory with a requirement for 
 Basic authentication, with the lines already added in your Apache 
 configuration file above.</p>
 
 <p>Now, to create at least on user, do:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>touch /var/www/.htpasswd
+<div class="highlight"><pre><code class="language-" data-lang="">touch /var/www/.htpasswd
 htpasswd /var/www/.htpasswd Administrator
-</code></pre>
-</div>
+</code></pre></div>
+<p>You will be asked for a password for user &quot;Administrator&quot; twice.</p>
 
-<p>You will be asked for a password for user “Administrator” twice.</p>
+<h2>Open Web Access on Firewall</h2>
 
-<h2 id="open-web-access-on-firewall">Open Web Access on Firewall</h2>
-
-<p>The <code class="highlighter-rouge">iptables</code> firewall is enabled on CentOS by default, and blocks 
-access to HTTPS port 443. To allow it…</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>vim /etc/sysconfing/iptables
-</code></pre>
-</div>
-
-<p>… find the line…</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
-</code></pre>
-</div>
-
-<p>…and add below it:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
-</code></pre>
-</div>
-
+<p>The <code>iptables</code> firewall is enabled on CentOS by default, and blocks 
+access to HTTPS port 443. To allow it...</p>
+<div class="highlight"><pre><code class="language-" data-lang="">vim /etc/sysconfing/iptables
+</code></pre></div>
+<p>... find the line...</p>
+<div class="highlight"><pre><code class="language-" data-lang="">-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+</code></pre></div>
+<p>...and add below it:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">-A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+</code></pre></div>
 <p>Restart iptables:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>service iptables restart
-</code></pre>
-</div>
-
-<h2 id="download-and-install-opendcim">Download and Install openDCIM</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">service iptables restart
+</code></pre></div>
+<h2>Download and Install openDCIM</h2>
 
 <p>Download the latest version of openDCIM from <a href="http://www.opendcim.org/downloads.html">opendcim.com</a> 
 (version 2.1 at the time of writing this guide):</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>cd /var/www
+<div class="highlight"><pre><code class="language-" data-lang="">cd /var/www
 curl -O http://www.opendcim.org/packages/openDCIM-2.1.tar.gz
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Extract the archive and create a symbolic link:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>tar zxvf openDCIM-2.1.tar.gz
+<div class="highlight"><pre><code class="language-" data-lang="">tar zxvf openDCIM-2.1.tar.gz
 ln -s openDCIM-2.1 opendcim
-</code></pre>
-</div>
-
-<p>The symbolic link is not required. If you don’t want to create it, just 
-rename the directory <code class="highlighter-rouge">openDCIM-2.1</code> to <code class="highlighter-rouge">opendcim</code>. However, having a 
+</code></pre></div>
+<p>The symbolic link is not required. If you don&#39;t want to create it, just 
+rename the directory <code>openDCIM-2.1</code> to <code>opendcim</code>. However, having a 
 symbolic link in place allows you to find out the version of openDCIM at 
 a glance, and makes upgrades easier.</p>
 
 <p>Now, prepare the configuration file for access to the database:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>cd /var/www/opendcim
+<div class="highlight"><pre><code class="language-" data-lang="">cd /var/www/opendcim
 cp db.inc.php-dist db.inc.php
 vim db.inc.php
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Edit the following lines, to reflect your settings of database host (in 
-this example <code class="highlighter-rouge">localhost</code>), database name (<code class="highlighter-rouge">dcim</code>), and credentials that 
+this example <code>localhost</code>), database name (<code>dcim</code>), and credentials that 
 you assigned when creating the database:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$dbhost = 'localhost';
+<div class="highlight"><pre><code class="language-" data-lang="">$dbhost = 'localhost';
 $dbname = 'dcim';
 $dbuser = 'dcim';
 $dbpass = 'dcimpassword';
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Finally, restart Apache one last time:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>service httpd restart
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">service httpd restart
+</code></pre></div>
 <p>Now, you can open openDCIM in your browser to proceed with the 
 installation. If you have set up a DNS entry for a domain name to point 
-to your web server’s IP, you will go to something similar to <code class="highlighter-rouge">https://opendcim.example.com/</code>. 
-Otherwise, you can visit <code class="highlighter-rouge">https://IP_of_web_server/</code>.</p>
+to your web server&#39;s IP, you will go to something similar to <code>https://opendcim.example.com/</code>. 
+Otherwise, you can visit <code>https://IP_of_web_server/</code>. </p>
 
-<p>In any case, you will be asked to accept the web server’s HTTPS 
+<p>In any case, you will be asked to accept the web server&#39;s HTTPS 
 certificate. This will only happen once per browser. You will then be 
 asked for the Authentication credentials that you configured earlier 
-with <code class="highlighter-rouge">htpasswd</code>.</p>
+with <code>htpasswd</code>.</p>
 
-<p>To finish with the installation, follow <a href="http://www.youtube.com/watch?v=XzEI6Z8yhRg">Scott Milliken’s (lead 
+<p>To finish with the installation, follow <a href="http://www.youtube.com/watch?v=XzEI6Z8yhRg">Scott Milliken&#39;s (lead 
 developer) video tutorial on YouTube</a>, 
 starting from minute 09:00. He will walk you through the first settings 
 to get you started in the web interface.</p>
 
-<h2 id="additional-resources">Additional Resources</h2>
+<h2>Additional Resources</h2>
 
 <ul>
-  <li><a href="http://wiki.centos.org/HowTos/Https">How to setup HTTPS on CentOS</a></li>
-  <li><a href="http://www.youtube.com/watch?v=XzEI6Z8yhRg">openDCIM Installation Video Tutorial</a></li>
-  <li><a href="https://github.com/samilliken/openDCIM/blob/master/INSTALL">openDCIM INSTALL File on GitHub</a></li>
+<li>  <a href="http://wiki.centos.org/HowTos/Https">How to setup HTTPS on CentOS</a></li>
+<li>  <a href="http://www.youtube.com/watch?v=XzEI6Z8yhRg">openDCIM Installation Video Tutorial</a></li>
+<li>  <a href="https://github.com/samilliken/openDCIM/blob/master/INSTALL">openDCIM INSTALL File on GitHub</a></li>
 </ul>
 
   </section>

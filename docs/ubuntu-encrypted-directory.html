@@ -70,31 +70,19 @@ encrypted while stored on a cloud storage service, and decrypt them on-demand
 only when necessary.</p>
 
 <p>Install encfs:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install encfs
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install encfs
+</code></pre></div>
 <p>Link encrypted and decrypted direcories:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>encfs ~/.encrypted ~/visible
-</code></pre>
-</div>
-
-<p>If the directories don’t exist, encfs will ask to create them.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">encfs ~/.encrypted ~/visible
+</code></pre></div>
+<p>If the directories don&#39;t exist, encfs will ask to create them.</p>
 
 <p>To umount:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>fusermount -u ~/visible
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">fusermount -u ~/visible
+</code></pre></div>
 <p>To re-mount:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>encfs ~/.encrypted ~/visible
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">encfs ~/.encrypted ~/visible
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

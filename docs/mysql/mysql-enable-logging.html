@@ -63,74 +63,56 @@
 
   <section itemprop="articleBody">
     <p>These are some haphazardly written notes on logging in MySQL. For consistency, 
-create a new subdirectory in <code class="highlighter-rouge">/var/log/</code> and assign ownership to the user under 
-which your MySQL server is running - by default that would be the <code class="highlighter-rouge">mysql</code> user:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mkdir /var/log/mysqld/
+create a new subdirectory in <code>/var/log/</code> and assign ownership to the user under 
+which your MySQL server is running - by default that would be the <code>mysql</code> user:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">mkdir /var/log/mysqld/
 chown mysql:mysql /var/log/mysqld
-</code></pre>
-</div>
-
-<p>I like to name the directory <code class="highlighter-rouge">mysqld</code> instead of <code class="highlighter-rouge">mysql</code>, to clarify 
+</code></pre></div>
+<p>I like to name the directory <code>mysqld</code> instead of <code>mysql</code>, to clarify 
 that the logs in that directory are those of the <strong>MySQL Server</strong> and 
 not those of the MySQL Client.</p>
 
-<h2 id="slow-query-log">Slow Query Log</h2>
+<h2>Slow Query Log</h2>
 
 <p>The slow query log contains queries the execution of which took more 
-than the value of the <code class="highlighter-rouge">long_query_time</code> variable, which by default is 
-10 seconds.</p>
+than the value of the <code>long_query_time</code> variable, which by default is 
+10 seconds. </p>
 
-<p>To enable the slow query log on the next start of <code class="highlighter-rouge">mysqld</code>, add the 
-following line in your MySQL server’s configuration file (<code class="highlighter-rouge">/etc/my.cnf</code> 
-by default), in the <code class="highlighter-rouge">[mysqld]</code> section:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>slow-query-log
+<p>To enable the slow query log on the next start of <code>mysqld</code>, add the 
+following line in your MySQL server&#39;s configuration file (<code>/etc/my.cnf</code> 
+by default), in the <code>[mysqld]</code> section:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">slow-query-log
 slow_query_log_file=/var/log/mysqld/slow-queries.log
-</code></pre>
-</div>
-
-<p>Create the file and assign ownership to the <code class="highlighter-rouge">mysql</code> user:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>touch /var/log/mysqld/slow-queries.log
+</code></pre></div>
+<p>Create the file and assign ownership to the <code>mysql</code> user:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">touch /var/log/mysqld/slow-queries.log
 chown mysql:mysql /var/log/mysqld/slow-queries.log
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Finally, either restart the server to enable the logging, or enable it 
 on the already running server with:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; SET GLOBAL slow_query_log_file='/var/log/mysqld/slow-queries.log';
+<div class="highlight"><pre><code class="language-" data-lang="">mysql&gt; SET GLOBAL slow_query_log_file='/var/log/mysqld/slow-queries.log';
 mysql&gt; SET GLOBAL slow_query_log=1;
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>In any of those cases, the values of the global variables 
-<code class="highlighter-rouge">slow_query_log</code> and <code class="highlighter-rouge">slow_query_log_file</code>, should change from the 
+<code>slow_query_log</code> and <code>slow_query_log_file</code>, should change from the 
 default:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; show variables like 'slow_query_log%';
+<div class="highlight"><pre><code class="language-" data-lang="">mysql&gt; show variables like 'slow_query_log%';
 +---------------------+----------------------------------+
 | Variable_name       | Value                            |
 +---------------------+----------------------------------+
 | slow_query_log      | OFF                              |
 | slow_query_log_file | /var/run/mysqld/mysqld-slow.log  |
 +---------------------+----------------------------------+
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>To:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; show variables like 'slow_query_log%';
+<div class="highlight"><pre><code class="language-" data-lang="">mysql&gt; show variables like 'slow_query_log%';
 +---------------------+----------------------------------+
 | Variable_name       | Value                            |
 +---------------------+----------------------------------+
 | slow_query_log      | ON                               |
 | slow_query_log_file | /var/log/mysqld/slow-queries.log |
 +---------------------+----------------------------------+
-</code></pre>
-</div>
-
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

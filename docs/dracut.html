@@ -69,7 +69,7 @@
     <p>Copying from the man page:</p>
 
 <blockquote>
-  <p><strong>dracut</strong> creates an initial image used by the kernel for preloading the 
+<p><strong>dracut</strong> creates an initial image used by the kernel for preloading the 
 block device modules (such as IDE, SCSI or RAID) which are needed to access 
 the root filesystem.</p>
 </blockquote>
@@ -77,24 +77,17 @@ the root filesystem.</p>
 <p>dracut reads configuration files in <a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a> 
 and in <a href="/docs/lfs/etc/modprobe.d/">/etc/modprobe.d/</a> by default, unless run in 
 <em>generic</em> mode, in which case it ignores host-specific configuration in 
-<code class="highlighter-rouge">/etc/modprobe.d/</code>.</p>
+<code>/etc/modprobe.d/</code>.</p>
 
 <p>Again, copying from the man page:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>    -H, --hostonly
+<div class="highlight"><pre><code class="language-" data-lang="">    -H, --hostonly
         Host-Only mode: Install only what is needed for booting the local 
         host instead of a generic host.
-</code></pre>
-</div>
-
-<p>The default configuration is host-only. This is defined in <code class="highlighter-rouge">/etc/dracut.conf</code>, 
+</code></pre></div>
+<p>The default configuration is host-only. This is defined in <code>/etc/dracut.conf</code>, 
 in the line:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>    hostonly="yes"
-</code></pre>
-</div>
-
-
+<div class="highlight"><pre><code class="language-" data-lang="">    hostonly="yes"
+</code></pre></div>
   </section>
 
   <footer id="post-footer">

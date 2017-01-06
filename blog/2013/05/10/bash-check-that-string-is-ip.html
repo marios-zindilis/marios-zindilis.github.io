@@ -71,102 +71,105 @@
   </header>
 
   <section itemprop="articleBody">
-    <p class="lead">Assuming that we have a Bash script that accepts a parameter 
+    <p class='lead'>Assuming that we have a Bash script that accepts a parameter 
 that is supposed to be an IP Address, this article lists a couple of 
 (practically useless) ways of verifying that input <em>without using regular 
 expressions</em>, which is the sane thing to do. It is therefore an exercise in 
 futility :) </p>
 
-<h2 id="breakdown-of-the-conditions">Breakdown of the conditions</h2>
+<h2>Breakdown of the conditions</h2>
 
-<p>First, check that <strong>exactly three dots exist</strong> in the string:</p>
+<p>First, check that <strong>exactly three dots exist</strong> in the string:
 <pre>
-if [ `echo $IsIP | grep -o '\.' | wc -l` -ne 3 ]; then
-    echo "Parameter '$1' does not look like an IP Address.";
+if [ <code>echo $IsIP | grep -o &#39;\.&#39; | wc -l</code> -ne 3 ]; then
+    echo &quot;Parameter &#39;$1&#39; does not look like an IP Address.&quot;;
     exit 1;
 fi
-</pre>
+</pre></p>
 
-<p>Then, check that <strong>exactly four parts exist</strong> if the string is broken down by dots:</p>
+<p>Then, check that <strong>exactly four parts exist</strong> if the string is broken down by dots:
 <pre>
-if [ `echo $IsIP | tr '.' ' ' | wc -w` -ne 4 ]; then
-    echo "Parameter '$1' does not look like an IP Address.";
+if [ <code>echo $IsIP | tr &#39;.&#39; &#39; &#39; | wc -w</code> -ne 4 ]; then
+    echo &quot;Parameter &#39;$1&#39; does not look like an IP Address.&quot;;
     exit 1;
 fi
-</pre>
+</pre></p>
 
-<p>Then, check that <strong>all four parts are numeric</strong>:</p>
+<p>Then, check that <strong>all four parts are numeric</strong>:
 <pre>
-for OCTET in `echo $IsIP | tr '.' ' '; do
+for OCTET in `echo $IsIP | tr &#39;.&#39; &#39; &#39;; do
     if ! [[ $OCTET =~ ^[0-9]+$ ]]; then
-        echo "Parameter '$1' does not look like an IP Address.";
+        echo &quot;Parameter &#39;$1&#39; does not look like an IP Address.&quot;;
         exit 1;
     fi
 done
-</pre>
+</pre></p>
 
-<p>Finally check that <strong>all four parts are in the range 0 to 255</strong>:</p>
+<p>Finally check that <strong>all four parts are in the range 0 to 255</strong>:
 <pre>
-for OCTET in `echo $IsIP | tr '.' ' '; do
+for OCTET in `echo $IsIP | tr &#39;.&#39; &#39; &#39;; do
     if [[ $OCTET -lt 0 || $OCTET -gt 255 ]]; then
-        echo "Parameter '$IsIP' does not look like in IP Address (octet '$OCTET' in not in range 0-255).";
+        echo &quot;Parameter &#39;$IsIP&#39; does not look like in IP Address (octet &#39;$OCTET&#39; in not in range 0-255).&quot;;
     fi
 done
-</pre>
+</pre></p>
 
-<p>So the parameter passed to the script must fulfill the following four criteria:</p>
+<p>So the parameter passed to the script must fulfill the following four criteria:
 <ol>
 <li>Contain exactly three dots.</li>
 <li>Contain exactly four parts, if broken down by dots.</li>
 <li>All four parts are numeric.</li>
-<li>All four parts are between 0 and 255.</li></ol>
+<li>All four parts are between 0 and 255.</li></ol></p>
 
 <h2>A Bash function</h2>
-<p>Here’s the entire thing in the form of a Bash function, with an additional comment on what went wrong:</p>
-<pre>
-# Verify that the parameter passed is an IP Address:
-function is_IP() {
-if [ `echo $1 | grep -o '\.' | wc -l` -ne 3 ]; then
-        echo "Parameter '$1' does not look like an IP Address (does not contain 3 dots).";
+
+<p>Here&#39;s the entire thing in the form of a Bash function, with an additional comment on what went wrong:
+<pre></p>
+
+<h1>Verify that the parameter passed is an IP Address:</h1>
+
+<p>function is_IP() {
+if [ <code>echo $1 | grep -o &#39;\.&#39; | wc -l</code> -ne 3 ]; then
+        echo &quot;Parameter &#39;$1&#39; does not look like an IP Address (does not contain 3 dots).&quot;;
         exit 1;
-elif [ `echo $1 | tr '.' ' ' | wc -w` -ne 4 ]; then
-        echo "Parameter '$1' does not look like an IP Address (does not contain 4 octets).";
+elif [ <code>echo $1 | tr &#39;.&#39; &#39; &#39; | wc -w</code> -ne 4 ]; then
+        echo &quot;Parameter &#39;$1&#39; does not look like an IP Address (does not contain 4 octets).&quot;;
         exit 1;
 else
-        for OCTET in `echo $1 | tr '.' ' '`; do
+        for OCTET in <code>echo $1 | tr &#39;.&#39; &#39; &#39;</code>; do
                 if ! [[ $OCTET =~ ^[0-9]+$ ]]; then
-                        echo "Parameter '$1' does not look like in IP Address (octet '$OCTET' is not numeric).";
+                        echo &quot;Parameter &#39;$1&#39; does not look like in IP Address (octet &#39;$OCTET&#39; is not numeric).&quot;;
                         exit 1;
                 elif [[ $OCTET -lt 0 || $OCTET -gt 255 ]]; then
-                        echo "Parameter '$1' does not look like in IP Address (octet '$OCTET' in not in range 0-255).";
+                        echo &quot;Parameter &#39;$1&#39; does not look like in IP Address (octet &#39;$OCTET&#39; in not in range 0-255).&quot;;
                         exit 1;
                 fi
         done
-fi
+fi</p>
 
-return 0;
+<p>return 0;
 }
-</pre>
+</pre></p>
 
-<p>Example output of the function when saved as a standalone script:</p>
+<p>Example output of the function when saved as a standalone script:
 <pre>
-marios@yovan ~ $ ./is_IP 1234
-Parameter '1234' does not look like an IP Address (does not contain 3 dots).
-marios@yovan ~ $ ./is_IP 1234...
-Parameter '1234...' does not look like an IP Address (does not contain 4 octets).
-marios@yovan ~ $ ./is_IP 1.2.3.A
-Parameter '1.2.3.A' does not look like in IP Address (octet 'A' is not numeric).
-marios@yovan ~ $ ./is_IP 1.2.3.300
-Parameter '1.2.3.300' does not look like in IP Address (octet '300' in not in range 0-255).
+marios@yovan ~ $ ./is<em>IP 1234
+Parameter &#39;1234&#39; does not look like an IP Address (does not contain 3 dots).
+marios@yovan ~ $ ./is</em>IP 1234...
+Parameter &#39;1234...&#39; does not look like an IP Address (does not contain 4 octets).
+marios@yovan ~ $ ./is<em>IP 1.2.3.A
+Parameter &#39;1.2.3.A&#39; does not look like in IP Address (octet &#39;A&#39; is not numeric).
+marios@yovan ~ $ ./is</em>IP 1.2.3.300
+Parameter &#39;1.2.3.300&#39; does not look like in IP Address (octet &#39;300&#39; in not in range 0-255).
 marios@yovan ~ $ ./is_IP 1.2.3.4
 marios@yovan ~ $
-</pre>
+</pre></p>
 
 <p>If someone has any better ways to check this, or improvements on the above, please step forward :)</p>
 
 <p><a href="https://github.com/marios-zindilis/Scripts/tree/master/Bash" title="Fork this script on GitHub.">Fork these scripts on GitHub.</a></p>
 
-<h2 id="using-regular-expressions">Using Regular Expressions</h2>
+<h2>Using Regular Expressions</h2>
 
 <p>In an older blog platform that I used, <a href="http://efxa.org/">Efstathios Chatzikyriakidis</a> 
 commented and suggested the use of regular expressions, which in 

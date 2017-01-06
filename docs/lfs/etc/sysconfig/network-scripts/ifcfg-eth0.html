@@ -63,8 +63,7 @@
 
   <section itemprop="articleBody">
     <p>Example of a network interface configuration file:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># Hardware configuration:
+<div class="highlight"><pre><code class="language-" data-lang=""># Hardware configuration:
 UUID="46e26279-f69b-daf5-1b79-d03677b7178d"
 HWADDR=00:1C:C0:0D:36:C6
 DEVICE="p1p1"
@@ -72,7 +71,7 @@ TYPE="Ethernet"
 ONBOOT="yes"
 NAME=eth0
 NM_CONTROLLED="no"
- 
+
 # IPv4 configuration:
 BOOTPROTO="none"
 IPADDR0="192.168.1.100"
@@ -81,7 +80,7 @@ GATEWAY0="192.168.1.1"
 DNS1="192.168.1.53"
 DEFROUTE="yes"
 IPV4_FAILURE_FATAL="yes"
- 
+
 # IPv6 configuration:
 IPV6INIT="yes"
 IPV6_AUTOCONF=yes
@@ -89,12 +88,10 @@ IPV6_DEFROUTE=yes
 IPV6_FAILURE_FATAL=no
 IPV6_PEERDNS=yes
 IPV6_PEERROUTES=yes
-</code></pre>
-</div>
+</code></pre></div>
+<h2>Parameters</h2>
 
-<h2 id="parameters">Parameters</h2>
-
-<dl class="dl-horizontal">
+<dl class='dl-horizontal'>
 <dt><code>BOOTPROTO</code></dt>
 <dd>Can be set to <code>dhcp</code> if the interface will be 
 automatically configured by a DHCP server, or to <code>static</code> if 

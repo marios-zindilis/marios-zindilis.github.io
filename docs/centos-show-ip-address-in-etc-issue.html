@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - Display IP Address in /etc/issue on CentOS</title>
-  <meta name="description" content="I have several CentOS virtual machines that I only fire up when I need to test something, so I don’t give them static IPs. For my own convenience, I added th...">
+  <meta name="description" content="I have several CentOS virtual machines that I only fire up when I need to test something, so I don&#39;t give them static IPs. For my own convenience, I adde...">
 
   <link
     rel="stylesheet"
@@ -67,16 +67,16 @@
 
   <section itemprop="articleBody">
     <p>I have several CentOS virtual machines that I only fire up when I need 
-to test something, so I don’t give them static IPs. For my own 
-convenience, I added the following lines in <code class="highlighter-rouge">/etc/rc.local</code>, which 
+to test something, so I don&#39;t give them static IPs. For my own 
+convenience, I added the following lines in <code>/etc/rc.local</code>, which 
 get the IP Address that was leased to the machine by the DHCP server, 
-and change <code class="highlighter-rouge">/etc/issue</code> to display it:</p>
+and change <code>/etc/issue</code> to display it:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">IPADDR</span><span class="o">=</span><span class="k">$(</span>ifconfig eth1 | grep <span class="s1">'inet '</span> | cut -d <span class="s1">':'</span> -f 2 | cut -d <span class="s1">' '</span> -f 1<span class="k">)</span>
 sed -i <span class="s2">"s/IP Address:.*/IP Address: </span><span class="nv">$IPADDR</span><span class="s2">/"</span> /etc/issue</code></pre></figure>
 
 <p>This way, once the VM boots up and gets an IP from DHCP, that IP will 
-be displayed in the hypervisor’s console.</p>
+be displayed in the hypervisor&#39;s console.</p>
 
   </section>
 

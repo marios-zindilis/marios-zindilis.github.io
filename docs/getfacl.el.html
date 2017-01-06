@@ -69,12 +69,12 @@
     <p>Μερικά συστήματα αρχείων όπως τα ext2, ext3, ext4, ReiserFS, JFS, XFS, 
 υποστηρίζουν τον ορισμό επιπλέον ιδιοτήτων-δικαιωμάτων πρόσβασης στα 
 αρχεία, τα οποία λειτουργούν ως λίστες ελέγχου πρόσβασης (Access 
-Control Lists). Στα συστήματα αυτά, η εντολή <code class="highlighter-rouge">getfacl</code> δείχνει αυτά τα 
+Control Lists). Στα συστήματα αυτά, η εντολή <code>getfacl</code> δείχνει αυτά τα 
 δικαιώματα ανά χρήστη.</p>
 
 <p>Σε ένα αρχείο στο οποίο δεν έχουν οριστεί κανόνες ACL επιπλέον από τα 
-απλά δικαιώματα πρόσβασης, το αποτέλεσμα της <code class="highlighter-rouge">getfacl</code> είναι αντίστοιχο 
-με την έξοδο της <code class="highlighter-rouge">ls -l</code>:</p>
+απλά δικαιώματα πρόσβασης, το αποτέλεσμα της <code>getfacl</code> είναι αντίστοιχο 
+με την έξοδο της <code>ls -l</code>:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ls -l route.pdf 
 -rw-rw-r-- 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
@@ -103,7 +103,6 @@ user:another:r--
 group::rw-
 mask::rw-
 other::r--</code></pre></figure>
-
 
   </section>
 

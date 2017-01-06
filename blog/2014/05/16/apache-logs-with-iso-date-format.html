@@ -73,44 +73,31 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>Apache’s <code class="highlighter-rouge">mod_log_config</code> module (installed by default on CentOS 6) allows for 
-the <code class="highlighter-rouge">CustomLog</code> directive, which in turn takes a log format specification. The 
+    <p>Apache&#39;s <code>mod_log_config</code> module (installed by default on CentOS 6) allows for 
+the <code>CustomLog</code> directive, which in turn takes a log format specification. The 
 default log format string is usually:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>LogFormat "%h %l %u %t \"%r\" %&gt;s %b" common
-</code></pre>
-</div>
-
-<p>In the above line, <code class="highlighter-rouge">common</code> is the name of the log format, which is later 
-references in a <code class="highlighter-rouge">CustomLog</code> directive, for example:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>CustomLog logs/example.com-access_log common
-</code></pre>
-</div>
-
-<p>The meaning of the <code class="highlighter-rouge">%</code> fields is specified at <a href="http://httpd.apache.org/docs/2.2/mod/mod_log_config.html">the Apache documentation for 
-<code class="highlighter-rouge">mod_log_config</code></a>. 
-What is interesting is that the <code class="highlighter-rouge">%t</code> parameter can take an optional date 
-formatting string, in the form <code class="highlighter-rouge">%{date format}t</code>. The <code class="highlighter-rouge">date format</code> part 
-should be <code class="highlighter-rouge">strftime(3)</code>-compatible.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">LogFormat "%h %l %u %t \"%r\" %&gt;s %b" common
+</code></pre></div>
+<p>In the above line, <code>common</code> is the name of the log format, which is later 
+references in a <code>CustomLog</code> directive, for example:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">CustomLog logs/example.com-access_log common
+</code></pre></div>
+<p>The meaning of the <code>%</code> fields is specified at <a href="http://httpd.apache.org/docs/2.2/mod/mod_log_config.html">the Apache documentation for 
+<code>mod_log_config</code></a>. 
+What is interesting is that the <code>%t</code> parameter can take an optional date 
+formatting string, in the form <code>%{date format}t</code>. The <code>date format</code> part 
+should be <code>strftime(3)</code>-compatible.</p>
 
 <p>For example, the following date format will produce timestamps like 
-<code class="highlighter-rouge">2014-05-16 13:45:32</code>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>LogFormat "%h %l %u %{%Y-%m-%d %H:%M:%S}t \"%r\" %&gt;s %b" example
-</code></pre>
-</div>
-
-<p>You will then need to reference the <code class="highlighter-rouge">example</code> name of this log format 
+<code>2014-05-16 13:45:32</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">LogFormat "%h %l %u %{%Y-%m-%d %H:%M:%S}t \"%r\" %&gt;s %b" example
+</code></pre></div>
+<p>You will then need to reference the <code>example</code> name of this log format 
 specification as:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>CustomLog logs/example.com-access_log example.
-</code></pre>
-</div>
-
-<p>The <code class="highlighter-rouge">%</code> fields of <code class="highlighter-rouge">strftime</code> are listed in the <a href="/docs/man/library-calls/strftime.html">man page for 
-<code class="highlighter-rouge">strftime</code></a></p>
-
+<div class="highlight"><pre><code class="language-" data-lang="">CustomLog logs/example.com-access_log example.
+</code></pre></div>
+<p>The <code>%</code> fields of <code>strftime</code> are listed in the <a href="/docs/man/library-calls/strftime.html">man page for 
+<code>strftime</code></a></p>
 
   </section>
 

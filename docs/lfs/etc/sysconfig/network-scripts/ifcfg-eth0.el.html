@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - /etc/sysconfig/network-scripts/ifcfg-eth0</title>
-  <meta name="description" content="Παράδειγμα αρχείου ρύθμισης μιας διεπαφής δικτύου η οποία δεν ελέγχεται από τον NetworkManager:">
+  <meta name="description" content="Παράδειγμα αρχείου ρύθμισης μιας διεπαφής δικτύου η οποία δεν ελέγχεται από τον NetworkManager: ">
 
   <link
     rel="stylesheet"
@@ -62,9 +62,8 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>Παράδειγμα αρχείου ρύθμισης μιας διεπαφής δικτύου η οποία δεν ελέγχεται από τον NetworkManager:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># Ρυθμίσεις υλικού:
+    <p>Παράδειγμα αρχείου ρύθμισης μιας διεπαφής δικτύου η οποία δεν ελέγχεται από τον NetworkManager: </p>
+<div class="highlight"><pre><code class="language-" data-lang=""># Ρυθμίσεις υλικού:
 UUID="46e26279-f69b-daf5-1b79-d03677b7178d"
 HWADDR=00:1C:C0:0D:36:C6
 DEVICE="p1p1"
@@ -72,7 +71,7 @@ TYPE="Ethernet"
 ONBOOT="yes"
 NAME=eth0
 NM_CONTROLLED="no"
- 
+
 # Ρυθμίσεις IPv4:
 BOOTPROTO="none"
 IPADDR0="192.168.1.100"
@@ -81,7 +80,7 @@ GATEWAY0="192.168.1.1"
 DNS1="192.168.1.53"
 DEFROUTE="yes"
 IPV4_FAILURE_FATAL="yes"
- 
+
 # Ρυθμίσεις IPv6:
 IPV6INIT="yes"
 IPV6_AUTOCONF=yes
@@ -89,10 +88,8 @@ IPV6_DEFROUTE=yes
 IPV6_FAILURE_FATAL=no
 IPV6_PEERDNS=yes
 IPV6_PEERROUTES=yes
-</code></pre>
-</div>
-
-<h2 id="section">Παράμετροι</h2>
+</code></pre></div>
+<h2> Παράμετροι</h2>
 
 <dl>
 <dt><code>BOOTPROTO</code></dt>

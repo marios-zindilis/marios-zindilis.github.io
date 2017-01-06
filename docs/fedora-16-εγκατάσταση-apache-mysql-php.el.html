@@ -68,15 +68,15 @@
   <section itemprop="articleBody">
     <p>Βήματα για εγκατάσταση της στοίβας λογισμικού σε Fedora 16:</p>
 
-<h2 id="apache-2">Εγκατάσταση Apache 2</h2>
+<h2>Εγκατάσταση Apache 2</h2>
 
 <p>Σε αντίθεση με προηγούμενες εκδόσεις, στο Fedora 16 δεν είναι προεγκατεστημένος ο Apache. Mπορείτε να τον εγκαταστήσετε με:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum install httpd</code></pre></figure>
 
 <p>Κατά την εγκατάσταση, δημιουργείται στο σύστημα ένας χρήστης με το όνομα 
-<code class="highlighter-rouge">apache</code>, και ένα group με το ίδιο όνομα. Το home directory του χρήστη 
-<code class="highlighter-rouge">apache</code> είναι το <code class="highlighter-rouge">/var/www</code>. Αυτές τις προεπιλογές μπορείτε να τις αλλάξετε στη συνέχεια.</p>
+<code>apache</code>, και ένα group με το ίδιο όνομα. Το home directory του χρήστη 
+<code>apache</code> είναι το <code>/var/www</code>. Αυτές τις προεπιλογές μπορείτε να τις αλλάξετε στη συνέχεια.</p>
 
 <p>Για να ρυθμίσετε την αυτόματη εκκίνηση του Apache κατά την εκκίνηση του συστήματος:</p>
 
@@ -86,15 +86,15 @@
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl start httpd.service</code></pre></figure>
 
-<h2 id="php-5">Εγκατάσταση PHP 5</h2>
+<h2>Εγκατάσταση PHP 5</h2>
 
 <p>Για την εγκατάσταση της PHP 5 απλά εκτελέστε:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum install php</code></pre></figure>
 
 <p>Αν θέλετε, μπορείτε σε αυτό το σημείο να επιβεβαιώσετε ότι λειτουργεί η 
-PHP, επανεκκινώντας τον Apache, και βάζωντας ένα αρχείο <code class="highlighter-rouge">.php</code> μέσα στο 
-<code class="highlighter-rouge">/var/www/html</code>, το οποίο θα περιέχει μόνο την γραμμή:</p>
+PHP, επανεκκινώντας τον Apache, και βάζωντας ένα αρχείο <code>.php</code> μέσα στο 
+<code>/var/www/html</code>, το οποίο θα περιέχει μόνο την γραμμή: </p>
 
 <figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="nb">phpinfo</span><span class="p">();</span> <span class="cp">?&gt;</span></code></pre></figure>
 
@@ -102,14 +102,14 @@ PHP, επανεκκινώντας τον Apache, και βάζωντας ένα 
 ίδιο υπολογιστή στον οποίο κάνετε την εγκατάσταση, επειδή δεν έχετε 
 ανοίξει ακόμα την πρόσβαση από άλλους υπολογιστές.</p>
 
-<h2 id="mysql-5">Εγκατάσταση MySQL 5</h2>
+<h2>Εγκατάσταση MySQL 5</h2>
 
 <p>Για την εγκατάσταση του εξυπηρετητή MySQL 5 εκτελέστε:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum install mysql-server</code></pre></figure>
 
 <p>Αμέσως μετά την εγκατάσταση, συνίσταται να εκκινήσετε την υπηρεσία 
-<code class="highlighter-rouge">mysqld</code> χειροκίνητα, και να εκτελέσετε το <code class="highlighter-rouge">mysql_secure_installation</code>, 
+<code>mysqld</code> χειροκίνητα, και να εκτελέσετε το <code>mysql_secure_installation</code>, 
 το οποίο θα ορίσει ένα συνθηματικό για τον χρήστη root της MySQL, και 
 θα σας δώσει τη δυνατότητα να διαγράψετε μερικούς πίνακες και δεδομένα 
 που δημιουργούνται κατά την εγκατάσταση της βάσης, για δοκιμαστικό σκοπό:</p>
@@ -126,24 +126,24 @@ mysql_secure_installation</code></pre></figure>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum install php-mysql</code></pre></figure>
 
 <p>Για να δουλέψουν όλα μαζί την <strong>πρώτη</strong> φορά, θα πρέπει να εκκινήσετε 
-χειροκίνητα τον <code class="highlighter-rouge">httpd</code> και την <code class="highlighter-rouge">mysqld</code> (αν δεν το έχετε ήδη κάνει σε 
+χειροκίνητα τον <code>httpd</code> και την <code>mysqld</code> (αν δεν το έχετε ήδη κάνει σε 
 ένα από τα προηγούμενα βήματα), ή απλά να επανεκκινήσετε το σύστημα 
-(οπότε θα ξεκινήσουν από μόνα τους, αφού τα έχετε ορίσει με το <code class="highlighter-rouge">systemctl enable</code>).</p>
+(οπότε θα ξεκινήσουν από μόνα τους, αφού τα έχετε ορίσει με το <code>systemctl enable</code>).</p>
 
-<h2 id="web">Άνοιγμα θύρας για τον εξυπηρετητή Web</h2>
+<h2>Άνοιγμα θύρας για τον εξυπηρετητή Web</h2>
 
 <p>Από προεπιλογή, το Fedora είναι ρυθμισμένο να μην δέχεται συνδέσεις στη 
 θύρα 80 από άλλους υπολογιστές. Με άλλα λόγια, θα μπορείτε να δείτε την 
-αρχική σελίδα του εξυπηρετητή αν περιηγηθείτε στη διεύθυνση <code class="highlighter-rouge">http://localhost/</code> 
+αρχική σελίδα του εξυπηρετητή αν περιηγηθείτε στη διεύθυνση <code>http://localhost/</code> 
 στον ίδιο τον υπολογιστή που τρέχει τον Apache, αλλά όχι σε οποιονδήποτε 
 άλλο υπολογιστή, ακόμα και στο τοπικό δίκτυο. Για να το πετύχετε αυτό, 
-θα πρέπει να ορίσετε έναν επιπλέον κανόνα στο <code class="highlighter-rouge">iptables</code>. Σημειώστε ότι 
+θα πρέπει να ορίσετε έναν επιπλέον κανόνα στο <code>iptables</code>. Σημειώστε ότι 
 στη συνέχεια «ανοίγουμε» την πόρτα 80 στην οποία «ακούει» από προεπιλογή 
 ο εξυπηρετητής. Μπορείτε να το αλλάξετε αυτό στο αρχείο 
-<code class="highlighter-rouge">/etc/httpd/conf/httpd.conf</code> στη γραμμή <code class="highlighter-rouge">Listen 80</code>.</p>
+<code>/etc/httpd/conf/httpd.conf</code> στη γραμμή <code>Listen 80</code>.</p>
 
 <p>Για να αλλάξετε τους κανόνες ανοίξτε το αρχείο <a href="/docs/etc-sysconfig-iptables.el.html">/etc/sysconfig/iptables</a> 
-και προσθέστε την ακόλουθη γραμμή πριν από την εντολή <code class="highlighter-rouge">COMMIT</code>:</p>
+και προσθέστε την ακόλουθη γραμμή πριν από την εντολή <code>COMMIT</code>:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</code></pre></figure>
 
@@ -152,12 +152,12 @@ mysql_secure_installation</code></pre></figure>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl restart iptables.service</code></pre></figure>
 
 <p>Αν και πάλι δεν μπορείτε να δείτε σελίδες στον εξυπηρετητή σας, ίσως 
-κάνατε κάποιο λάθος στο αρχείο ρυθμίσεων του <code class="highlighter-rouge">iptables</code>. Δοκιμάστε 
-προσωρινά να απενεργοποιήσετε το <code class="highlighter-rouge">iptables</code> με την εντολή <code class="highlighter-rouge">systemctl stop iptables.service</code> 
+κάνατε κάποιο λάθος στο αρχείο ρυθμίσεων του <code>iptables</code>. Δοκιμάστε 
+προσωρινά να απενεργοποιήσετε το <code>iptables</code> με την εντολή <code>systemctl stop iptables.service</code> 
 και δοκιμάστε ξανά από άλλον υπολογιστή να δείτε κάποια σελίδα στον 
 εξυπηρετητή. Αν ανοίγει, τότε σημαίνει ότι το πρόβλημα είναι στις 
-ρυθμίσεις του <code class="highlighter-rouge">iptables</code> και θα πρέπει να το ψάξετε περισσότερο. Το 
-ακόλουθο παράδειγμα είναι από ένα αρχείο <code class="highlighter-rouge">iptables</code> το οποίο λειτουργεί 
+ρυθμίσεις του <code>iptables</code> και θα πρέπει να το ψάξετε περισσότερο. Το 
+ακόλουθο παράδειγμα είναι από ένα αρχείο <code>iptables</code> το οποίο λειτουργεί 
 όπως πρέπει:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>root@docs sysconfig]# cat iptables
@@ -174,7 +174,6 @@ mysql_secure_installation</code></pre></figure>
 -A INPUT -j REJECT --reject-with icmp-host-prohibited
 -A FORWARD -j REJECT --reject-with icmp-host-prohibited
 COMMIT</code></pre></figure>
-
 
   </section>
 

@@ -68,88 +68,55 @@
 installing a new server based on CentOS 6.</p>
 
 <ol>
-  <li>
-    <p>Make booting verbose, remove the portion <code class="highlighter-rouge">rgbh quiet</code> from the 
-<code class="highlighter-rouge">kernel</code> line in <code class="highlighter-rouge">/boot/grub/grub.conf</code>.</p>
-  </li>
-  <li>
-    <p>Install misc tools:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>yum -y install vim
+<li><p>Make booting verbose, remove the portion <code>rgbh quiet</code> from the 
+<code>kernel</code> line in <code>/boot/grub/grub.conf</code>.</p></li>
+<li><p>Install misc tools:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">yum -y install vim
 yum -y install wget
 yum -y install mlocate
 yum -y install iptraf
 yum -y install iotraf
 yum -y install man
 yum -y install nmap
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>CRON Configuration: Sometimes fresh Minimal CentOS installations don’t 
-come with Cron pre-installed. In such a case:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>yum -y install cronie cronie-anacron crontabs
-</code></pre>
-    </div>
-
-    <p>Then activate and enable the service:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>chkconfig crond on
+</code></pre></div></li>
+<li><p>CRON Configuration: Sometimes fresh Minimal CentOS installations don&#39;t 
+come with Cron pre-installed. In such a case: </p>
+<div class="highlight"><pre><code class="language-" data-lang="">yum -y install cronie cronie-anacron crontabs
+</code></pre></div>
+<p>Then activate and enable the service:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">chkconfig crond on
 service crond start
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>SNMP Configuration:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>yum -y install net-snmp
+</code></pre></div></li>
+<li><p>SNMP Configuration:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">yum -y install net-snmp
 chkconfig snmpd on
-</code></pre>
-    </div>
-
-    <p>In <code class="highlighter-rouge">/etc/snmp/snmpd.conf</code> change the community to something other than the 
-default <code class="highlighter-rouge">public</code>, for example change the line:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>com2sec notConfigUser  default       public
-</code></pre>
-    </div>
-
-    <p>To something like:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>com2sec notConfigUser  default       My_pr1vate_c0mmunity
-</code></pre>
-    </div>
-
-    <p>Also, if you are using an NMS like Zenoss that can poll all sorts of 
+</code></pre></div>
+<p>In <code>/etc/snmp/snmpd.conf</code> change the community to something other than the 
+default <code>public</code>, for example change the line:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">com2sec notConfigUser  default       public
+</code></pre></div>
+<p>To something like:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">com2sec notConfigUser  default       My_pr1vate_c0mmunity
+</code></pre></div>
+<p>Also, if you are using an NMS like Zenoss that can poll all sorts of 
 information from the device via SNMP, you can greatly expand the range of 
-data available with commenting out the following two lines…</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>view    systemview    included   .1.3.6.1.2.1.1
+data available with commenting out the following two lines...</p>
+<div class="highlight"><pre><code class="language-" data-lang="">view    systemview    included   .1.3.6.1.2.1.1
 view    systemview    included   .1.3.6.1.2.1.25.1.1
-</code></pre>
-    </div>
-
-    <p>…and substituting them with:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>view    systemview    included   .1
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Disable console blanking by editing <code class="highlighter-rouge">/boot/grub/grub.conf</code> and adding the 
-following at the end of the <code class="highlighter-rouge">kernel</code> line:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>consoleblank=0
-</code></pre>
-    </div>
-  </li>
+</code></pre></div>
+<p>...and substituting them with:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">view    systemview    included   .1
+</code></pre></div></li>
+<li><p>Disable console blanking by editing <code>/boot/grub/grub.conf</code> and adding the 
+following at the end of the <code>kernel</code> line:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">consoleblank=0
+</code></pre></div></li>
 </ol>
 
-<h2 id="sources">Sources</h2>
+<h2>Sources</h2>
 
 <ul>
-  <li>For the console blanking tip: <a href="http://utcc.utoronto.ca/~cks/space/blog/linux/ConsoleBlankingOff">You want to turn console blanking off on your Linux servers</a>.</li>
+<li>  For the console blanking tip: <a href="http://utcc.utoronto.ca/%7Ecks/space/blog/linux/ConsoleBlankingOff">You want to turn console blanking off on your Linux servers</a>.</li>
 </ul>
 
   </section>

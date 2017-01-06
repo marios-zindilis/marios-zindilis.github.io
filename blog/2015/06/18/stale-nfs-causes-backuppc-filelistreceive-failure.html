@@ -75,25 +75,19 @@
   <section itemprop="articleBody">
     <p>Recently, one of my BackupPC clients running CentOS failed to backup, with the 
 contents of the host log being:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>    2015-06-10 01:40:10 incr backup started back to 2015-05-16 08:56:42 (backup #600) for directory /
+<div class="highlight"><pre><code class="language-" data-lang="">    2015-06-10 01:40:10 incr backup started back to 2015-05-16 08:56:42 (backup #600) for directory /
     2015-06-10 21:40:18 Aborting backup up after signal ALRM
     2015-06-10 21:40:18 Got fatal error during xfer (fileListReceive failed)
-</code></pre>
-</div>
-
-<p>…and the last bad XferLOG containing:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>    fileListReceive() failed
-</code></pre>
-</div>
-
+</code></pre></div>
+<p>...and the last bad XferLOG containing:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    fileListReceive() failed
+</code></pre></div>
 <p>This happened a couple of times in a row, and the interval between the start 
 time of the backup and the failure was consistently 20 hours. While checking, 
-I noticed that an <code class="highlighter-rouge">rsync</code> process started on the client by BackupPC was running 
-for about a week. I did an <code class="highlighter-rouge">strace -p &lt;PID&gt;</code> on the process ID of <code class="highlighter-rouge">rsync</code> and 
-noticed that it was trying to <code class="highlighter-rouge">stat</code> an old NFS export, mounted from a server 
-that no longer exists.</p>
+I noticed that an <code>rsync</code> process started on the client by BackupPC was running 
+for about a week. I did an <code>strace -p &lt;PID&gt;</code> on the process ID of <code>rsync</code> and 
+noticed that it was trying to <code>stat</code> an old NFS export, mounted from a server 
+that no longer exists. </p>
 
 <p>Although <a href="http://joelinoff.com/blog/?p=356" title="How to fix stale NFS mounts on linux without rebooting">there are other ways to fix this</a>, it was OK for this host to be 
 rebooted at the time, problem solved.</p>

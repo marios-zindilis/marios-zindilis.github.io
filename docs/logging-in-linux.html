@@ -65,129 +65,129 @@
 
   <section itemprop="articleBody">
     <ul>
-  <li>syslogd, previously the de facto standard Linux implementation, 
+<li>  syslogd, previously the de facto standard Linux implementation, 
 used to be the default on Linux distributions.</li>
-  <li>klogd</li>
-  <li><a href="http://metalog.sourceforge.net/">metalog</a></li>
+<li>  klogd</li>
+<li>  <a href="http://metalog.sourceforge.net/">metalog</a></li>
 </ul>
 
-<h2 id="syslog-servers">Syslog Servers</h2>
+<h2>Syslog Servers</h2>
 
 <ul>
-  <li><a href="http://www.rsyslog.com/">rsyslog</a> is a free and open source syslog 
+<li>  <a href="http://www.rsyslog.com/">rsyslog</a> is a free and open source syslog 
 server, the default on recent Ubuntu and CentOS distributions. 
 Paid-for options include a Windows agent that sends the Event log 
 to an rsyslog server.</li>
-  <li><a href="http://www.balabit.com/network-security/syslog-ng/">syslog-ng</a> is 
+<li>  <a href="http://www.balabit.com/network-security/syslog-ng/">syslog-ng</a> is 
 a free and open source syslog server, with great configuration 
 options. Commercial extra options include encryption and and a 
 web interface.</li>
-  <li><a href="http://logstash.net/">LogStash</a> is free and open source, and 
+<li>  <a href="http://logstash.net/">LogStash</a> is free and open source, and 
 combines a syslog server with a web interface for searching and 
 graphing.</li>
-  <li><a href="http://graylog2.org/">Graylog2</a> is also free and open source, and 
+<li>  <a href="http://graylog2.org/">Graylog2</a> is also free and open source, and 
 like LogStash it combines the functionality of a syslog server with 
 that of an interface to search and graph the data.</li>
-  <li><a href="http://fluentd.org/">Fluentd</a> is a syslog server, capable of 
+<li>  <a href="http://fluentd.org/">Fluentd</a> is a syslog server, capable of 
 scaling up massively.</li>
 </ul>
 
-<h2 id="web-interfaces">Web Interfaces</h2>
+<h2>Web Interfaces</h2>
 
 <ul>
-  <li><a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a> is a web 
+<li>  <a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a> is a web 
 interface for logs collected with LogStash or with other data stored 
 in ElasticSearch.</li>
-  <li>[Octopussy] is a web interface with searching and graphing features.
+<li>  [Octopussy] is a web interface with searching and graphing features.
 Installation instructions exist for RedHat- and Debian-based 
 systems.</li>
-  <li><a href="http://loganalyzer.adiscon.com/">LogAnalyzer</a> is a web frontend 
+<li>  <a href="http://loganalyzer.adiscon.com/">LogAnalyzer</a> is a web frontend 
 for syslog, with some analysis and reporting capabilities.</li>
 </ul>
 
-<h2 id="free-and-open-source-log-analysis-software">Free and Open Source Log Analysis Software</h2>
+<h2>Free and Open Source Log Analysis Software</h2>
 
 <ul>
-  <li><a href="http://www.logreport.org/">LogReport</a> does log analysis and 
+<li>  <a href="http://www.logreport.org/">LogReport</a> does log analysis and 
 reporting, but it seems that its development has stopped.</li>
-  <li><a href="http://www.crypt.gen.nz/logsurfer/">LogSurfer</a> analyzes logs line 
+<li>  <a href="http://www.crypt.gen.nz/logsurfer/">LogSurfer</a> analyzes logs line 
 by line against predefined regular expressions, and can trigger 
 notifications.</li>
-  <li><a href="https://fedorahosted.org/epylog/">Epylog</a> is a time-based log 
+<li>  <a href="https://fedorahosted.org/epylog/">Epylog</a> is a time-based log 
 analysis tool, which sends reports and alerts by emails. It is a 
 replacement of logwatch.</li>
-  <li><a href="http://simple-evcorr.sourceforge.net/">SEC</a> does log analysis with 
+<li>  <a href="http://simple-evcorr.sourceforge.net/">SEC</a> does log analysis with 
 focus on event correlation.</li>
-  <li><a href="http://code.google.com/p/enterprise-log-search-and-archive/">ELSA</a> 
+<li>  <a href="http://code.google.com/p/enterprise-log-search-and-archive/">ELSA</a> 
 is an analysis and search tool for syslog-ng with MySQL for backend 
 and Sphinx for indexing.</li>
-  <li><a href="https://github.com/tobi/clarity">Clarity</a> is a simple web front 
+<li>  <a href="https://github.com/tobi/clarity">Clarity</a> is a simple web front 
 end for the contents of a directory with log files, with grep-like 
 and tail-f-like features.</li>
 </ul>
 
-<h2 id="non-free-or-closed-source-or-commercial-log-analysis-software">Non-Free or Closed Source or Commercial Log Analysis Software</h2>
+<h2>Non-Free or Closed Source or Commercial Log Analysis Software</h2>
 
 <ul>
-  <li><a href="http://www.logzilla.net/">LogZilla</a> is free of charge for up to 10 
+<li>  <a href="http://www.logzilla.net/">LogZilla</a> is free of charge for up to 10 
 devices and up to 1 million messages per day. Beyond those limits, 
 the price scales up according to the selected features. 
 Documentation includes instructions for RedHat- and Debian-based 
 systems.</li>
-  <li><a href="http://www.splunk.com/">Splunk</a> is free for up to 500 MBytes of 
+<li>  <a href="http://www.splunk.com/">Splunk</a> is free for up to 500 MBytes of 
 data per day. Download options include packages for 2.6+ Kernel 
 Linux distributions.</li>
-  <li><a href="http://www.cloudpelican.com/">CloudPelican</a> is still in development 
+<li>  <a href="http://www.cloudpelican.com/">CloudPelican</a> is still in development 
 as of this writing. Their website mentions that there is a free 
 version, but downloading the demo requires registration.</li>
-  <li><a href="http://www.xpolog.com/">XPOLog</a> is a freeware log analysis software 
+<li>  <a href="http://www.xpolog.com/">XPOLog</a> is a freeware log analysis software 
 with a standalone web server.</li>
-  <li><a href="http://www8.hp.com/us/en/software-solutions/software.html?compURI=1314386">HP ArcSight Logger</a> 
+<li>  <a href="http://www8.hp.com/us/en/software-solutions/software.html?compURI=1314386">HP ArcSight Logger</a> 
 is a log analysis commercial solution by HP.</li>
-  <li><a href="http://www.logscape.com/">LogScape</a> is a Linux based log analysis 
+<li>  <a href="http://www.logscape.com/">LogScape</a> is a Linux based log analysis 
 and indexing tool, with a free basic version.</li>
-  <li><a href="https://www.sumologic.com/">Sumo Logic</a> cloud based log management 
+<li>  <a href="https://www.sumologic.com/">Sumo Logic</a> cloud based log management 
 and analytics. Free version works for up to 500 MBytes of data per 
 day, up to three users and up to 7 days retention.</li>
-  <li><a href="http://www.sawmill.co.uk/">Sawmill</a> is a closed source analysis 
+<li>  <a href="http://www.sawmill.co.uk/">Sawmill</a> is a closed source analysis 
 tool, with free 30-day demo versions.</li>
-  <li><a href="https://www.loggly.com/">Loggly</a> offers log management, analysis 
+<li>  <a href="https://www.loggly.com/">Loggly</a> offers log management, analysis 
 and graphing. There is a free version for up to 200 MBytes of data 
 per day and 7-day retention.</li>
-  <li><a href="http://www.bitsteer.com/otus_about.html">Otus SIEM</a></li>
-  <li><a href="http://www.logrhythm.com/">LogRhythm</a> log management, analysis, 
+<li>  <a href="http://www.bitsteer.com/otus_about.html">Otus SIEM</a></li>
+<li>  <a href="http://www.logrhythm.com/">LogRhythm</a> log management, analysis, 
 SIEM, focused on security and forensics.</li>
 </ul>
 
-<h2 id="analytics-and-analysis">Analytics and Analysis</h2>
+<h2>Analytics and Analysis</h2>
 
 <ul>
-  <li><a href="http://en.wikipedia.org/wiki/List_of_web_analytics_software">List of web analytics software</a></li>
-  <li><a href="http://www.dmoz.org/Computers/Software/Internet/Site_Management/Log_Analysis/">Log Analysis</a> at DMOZ and 
+<li>  <a href="http://en.wikipedia.org/wiki/List_of_web_analytics_software">List of web analytics software</a></li>
+<li>  <a href="http://www.dmoz.org/Computers/Software/Internet/Site_Management/Log_Analysis/">Log Analysis</a> at DMOZ and 
 <a href="http://dir.yahoo.com/business_and_economy/business_to_business/communications_and_networking/internet_and_world_wide_web/network_management/traffic_management/log_analysis_tools/titles/">Log Analysis</a> at Yahoo.</li>
 </ul>
 
-<h2 id="for-windows">For Windows</h2>
+<h2>For Windows</h2>
 
 <ul>
-  <li><a href="http://www.intersectalliance.com/projects/SnareBackLog/index.html">Snare Backlog</a> 
+<li>  <a href="http://www.intersectalliance.com/projects/SnareBackLog/index.html">Snare Backlog</a> 
 is a logging server for Windows, that can collect data from several 
 standard sources, as well as from a wide range of operating systems 
 that run its agent.</li>
-  <li><a href="http://www.moonlit-software.com/logfaces/web/index.php">LogFaces</a> 
+<li>  <a href="http://www.moonlit-software.com/logfaces/web/index.php">LogFaces</a> 
 is a syslog server for Windows.</li>
-  <li><a href="http://www.aonaware.com/syslog.htm">Aonaware Syslog Server</a> is also 
+<li>  <a href="http://www.aonaware.com/syslog.htm">Aonaware Syslog Server</a> is also 
 a syslog server, both free and open source.</li>
-  <li><a href="http://www.microsoft.com/en-us/download/details.aspx?id=24659">Log Parser</a> 
+<li>  <a href="http://www.microsoft.com/en-us/download/details.aspx?id=24659">Log Parser</a> 
 is a search tool for logs and other data sources.</li>
 </ul>
 
-<h2 id="see-also">See Also</h2>
+<h2>See Also</h2>
 
 <ul>
-  <li><a href="http://www.thegeekstuff.com/2014/12/logstash-setup/">How to Setup Logstash on Linux with ElasticSearch, Redis, Nginx</a></li>
-  <li><a href="http://engineering.laterooms.com/elks-in-laterooms/">ELKs in LateRooms</a></li>
-  <li><a href="http://xmodulo.com/open-source-log-monitoring-tools-linux.html">What are good open-source log monitoring tools on Linux</a></li>
+<li>  <a href="http://www.thegeekstuff.com/2014/12/logstash-setup/">How to Setup Logstash on Linux with ElasticSearch, Redis, Nginx</a></li>
+<li>  <a href="http://engineering.laterooms.com/elks-in-laterooms/">ELKs in LateRooms</a></li>
+<li>  <a href="http://xmodulo.com/open-source-log-monitoring-tools-linux.html">What are good open-source log monitoring tools on Linux</a></li>
 </ul>
 
   </section>

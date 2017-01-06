@@ -57,13 +57,13 @@
   </header>
 
   <div class="post-content">
-    <h2 id="fixed-width-data">Fixed width data</h2>
+    <h2>Fixed width data</h2>
 
 <p>How many households had just 1 person? Referring to the file layout, we see 
 that the 106th and 107th characters of a household record indicate the number 
-of people in the household. We can use the <code class="highlighter-rouge">cut</code> command to pull out just that 
-bit of data from each record. The argument <code class="highlighter-rouge">-c106-107</code> instructs <code class="highlighter-rouge">cut</code> to print 
-the 106th through 107th characters of each line. The <code class="highlighter-rouge">head</code> command prints just 
+of people in the household. We can use the <code>cut</code> command to pull out just that 
+bit of data from each record. The argument <code>-c106-107</code> instructs <code>cut</code> to print 
+the 106th through 107th characters of each line. The <code>head</code> command prints just 
 the first few lines of a file (or its standard input).</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>census_data&gt;grep <span class="s2">"^H"</span> pums_53.dat  | cut -c106-107 | head -5
@@ -73,7 +73,7 @@ the first few lines of a file (or its standard input).</p>
 02 
 02</code></pre></figure>
 
-<p>You can give <code class="highlighter-rouge">cut</code> a comma separated list to pull out multiple ranges. To see 
+<p>You can give <code>cut</code> a comma separated list to pull out multiple ranges. To see 
 the household id along with the number of occupants of the household:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>census_data&gt;grep <span class="s2">"^H"</span> pums_53.dat  | cut -c2-8,106-107 | head -5
@@ -83,9 +83,9 @@ the household id along with the number of occupants of the household:</p>
 000242102 
 000250202</code></pre></figure>
 
-<p>The <code class="highlighter-rouge">-c</code> argument is used for working with so called “fixed-width” data. Data 
+<p>The <code>-c</code> argument is used for working with so called &quot;fixed-width&quot; data. Data 
 where the columns of a record are found at certain offset in bytes from the 
-beginning of a record. Fixed width data abounds on a Unix system. <code class="highlighter-rouge">ls -l</code> 
+beginning of a record. Fixed width data abounds on a Unix system. <code>ls -l</code> 
 writes its output in a fixed width format:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ls -l /etc | head -5
@@ -95,7 +95,7 @@ drwxr-xr-x    4 root     root        4096 Oct  8  2003 alchemist
 -rw-r--r--    1 root     root        1048 Aug 31  2001 aliases 
 -rw-r--r--    1 root     root       12288 Oct  8  2003 aliases.db</code></pre></figure>
 
-<p>As does <code class="highlighter-rouge">ps</code>:</p>
+<p>As does <code>ps</code>:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ps -u<span class="s1">'
 USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND 
@@ -110,7 +110,7 @@ Washington:</p>
 
 <p>7,192, or about 28% of households have only one occupant.</p>
 
-<h2 id="delimited-data">Delimited data</h2>
+<h2>Delimited data</h2>
 
 <p>In delimited data, elements of a record are separated by a special 
 <strong>delimiter</strong> character. In the password file, fields are delimited by colons:</p>
@@ -122,14 +122,14 @@ daemon:x:2:2:daemon:/sbin:/sbin/nologin
 adm:x:3:4:adm:/var/adm:/sbin/nologin 
 lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</code></pre></figure>
 
-<p>The 7th column of the password file is the user’s login shell. How many people 
+<p>The 7th column of the password file is the user&#39;s login shell. How many people 
 use bash as their shell?</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cut -d: -f7 /etc/passwd | grep -c /bin/bash 
 170</code></pre></figure>
 
-<p>You can give either <code class="highlighter-rouge">-c</code> or <code class="highlighter-rouge">-f</code> a comma separated list, so to see a few users 
-that use <code class="highlighter-rouge">tcsh</code> as their shell:</p>
+<p>You can give either <code>-c</code> or <code>-f</code> a comma separated list, so to see a few users 
+that use <code>tcsh</code> as their shell:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cut -d: -f1,7 /etc/passwd | grep /bin/tcsh | head -5
 iglass:/bin/tcsh
@@ -138,14 +138,14 @@ dsedaris:/bin/tcsh
 skine:/bin/tcsh
 jhitt:/bin/tcsh</code></pre></figure>
 
-<h3 id="tricky-delimiters">Tricky delimiters</h3>
+<h3>Tricky delimiters</h3>
 
 <p>The space character is a common delimiter. Unfortunately, your shell probably 
 discards all extra whitespace on the command line. You can sneak a space 
-character past your shell by wrapping it in quotes, like: <code class="highlighter-rouge">cut -d" " -f 5</code>.</p>
+character past your shell by wrapping it in quotes, like: <code>cut -d&quot; &quot; -f 5</code>.</p>
 
 <p>The tab character is another common delimiter. It can be hard to spot, because 
-on the screen it just looks like any other white space. The <code class="highlighter-rouge">od</code> (octal dump) 
+on the screen it just looks like any other white space. The <code>od</code> (octal dump) 
 command can give you insight into the precise formatting of a file. For 
 instance I have a file which maps first names to genders (with 95% 
 probability). When casually inspected, it looks like fixed width data:</p>
@@ -171,19 +171,19 @@ ABDUL           M</code></pre></figure>
 0000100 040 040 040 011 115 012 101 102 105 040 040 040 040 040 040 040 
                      <span class="se">\t</span>   M  <span class="se">\n</span>   A   B   E</code></pre></figure>
 
-<p>The first thing to do is read your system’s manpage on <code class="highlighter-rouge">cut</code>: it may already 
+<p>The first thing to do is read your system&#39;s manpage on <code>cut</code>: it may already 
 delimit by tab by default. If not, it requires a bit of trickery to get a tab 
-character past your shell to the <code class="highlighter-rouge">cut</code> command. First, many shells have a 
-feature called tab completion; when you hit tab they don’t actually insert a 
+character past your shell to the <code>cut</code> command. First, many shells have a 
+feature called tab completion; when you hit tab they don&#39;t actually insert a 
 tab, instead they attempt to figure out which file, directory or command you 
 want and type that instead. In many shells you can overcome this special 
-functionality by typing a <code class="highlighter-rouge">control-v</code> first. Whatever character you type after 
-the <code class="highlighter-rouge">control-v</code> is literally inserted. Like a space character, you need to 
+functionality by typing a <code>control-v</code> first. Whatever character you type after 
+the <code>control-v</code> is literally inserted. Like a space character, you need to 
 protect the tab character with quotes or the shell will discard it like any 
 other white space separating pieces of the command line.</p>
 
 <p>So to get the ratio of male first names to female first names I might run the 
-following commands. Between the double quotes I typed <code class="highlighter-rouge">control-v</code> and then hit 
+following commands. Between the double quotes I typed <code>control-v</code> and then hit 
 tab.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>wc -l gender.txt
@@ -193,11 +193,10 @@ tab.</p>
 <span class="gp">$ </span>cut -d<span class="s2">" "</span> -f2 gender.txt | grep F | wc -l 
 3966</code></pre></figure>
 
-<p>Apparently there’s much more variation in female names than male names.</p>
+<p>Apparently there&#39;s much more variation in female names than male names.</p>
 
-<p>If your system’s <code class="highlighter-rouge">cut</code> command delimits on tab, the above command becomes 
-simply <code class="highlighter-rouge">cut -f2 gender.txt</code>.</p>
-
+<p>If your system&#39;s <code>cut</code> command delimits on tab, the above command becomes 
+simply <code>cut -f2 gender.txt</code>.</p>
 
   </div>
 

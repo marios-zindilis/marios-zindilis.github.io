@@ -57,9 +57,9 @@
   </header>
 
   <div class="post-content">
-    <h2 id="example---creating-a-scatter-plot">Example - creating a scatter plot</h2>
+    <h2>Example - creating a scatter plot</h2>
 
-<p>Does the early bird get the worm? Let’s look at the relationship between the 
+<p>Does the early bird get the worm? Let&#39;s look at the relationship between the 
 time a person leaves for work and their income. Income is recorded in columns 
 297-303, and the time a person leaves for work is recorded in columns 196-198, 
 encoded in ten minute intervals. This pipeline extracts, cleans and formats the 
@@ -68,8 +68,8 @@ data:</p>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c196-198,297-303 | grep -v <span class="s2">"^000"</span> | 
 grep -v <span class="s2">" $"</span> | perl -pe <span class="s1">'substr($_,3,0)=" ";'</span> &gt; time_vs_income</code></pre></figure>
 
-<p>The <code class="highlighter-rouge">grep</code>s knock out records for which either field is null, and the perl 
-script inserts a space between the two columns so <code class="highlighter-rouge">gnuplot</code> can parse the 
+<p>The <code>grep</code>s knock out records for which either field is null, and the perl 
+script inserts a space between the two columns so <code>gnuplot</code> can parse the 
 columns apart. Plotting in gnuplot is simple:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>gnuplot
@@ -83,7 +83,7 @@ Terminal <span class="nb">type set </span>to <span class="s1">'x11'</span>
 
 <p>And the resulting plot:</p>
 
-<p><img src="time-vs-income.gif" alt="GnuPlot Graph" title="GnuPlot Graph of Time Over Income" /></p>
+<p><img src="time-vs-income.gif" alt="GnuPlot Graph" title="GnuPlot Graph of Time Over Income"></p>
 
 <p>Recall that 0 on the x-axis is midnight, and 20 is 200 minutes after midnight 
 or about 3:20am. Increased density in the beginning of the traditional 1st and 
@@ -96,14 +96,14 @@ is it in all its gruesome glory:</p>
 grep -v <span class="s2">" $"</span> | perl -ne <span class="s1">'/(\d{3})(\d{7})/; $sum{$1}+=$2; $count{$1}++; END { foreach $k
 (keys(%count)) {print $k," ",$sum{$k}/$count{$k},"\n"}}'</span> | sort -n &gt; time_vs_avgincome</code></pre></figure>
 
-<p>You can plot the result for yourself if you’re curious.</p>
+<p>You can plot the result for yourself if you&#39;re curious.</p>
 
-<h2 id="example---creating-a-bar-chart-with-gnuplot">Example - Creating a bar chart with gnuplot</h2>
+<h2>Example - Creating a bar chart with gnuplot</h2>
 
-<p>Let’s look at historic immigration rates among Washingtonians. Year of 
+<p>Let&#39;s look at historic immigration rates among Washingtonians. Year of 
 immigration is recorded in columns 78-81, and 0000 means the person is a native 
-born citizen. We can apply the usual tricks with <code class="highlighter-rouge">cut</code>, <code class="highlighter-rouge">grep</code>, <code class="highlighter-rouge">sort</code>, and 
-<code class="highlighter-rouge">uniq</code>, but it’s a bit hard to see the patterns when scrolling back and forth 
+born citizen. We can apply the usual tricks with <code>cut</code>, <code>grep</code>, <code>sort</code>, and 
+<code>uniq</code>, but it&#39;s a bit hard to see the patterns when scrolling back and forth 
 in text output, it would nicer if we could see a plot.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c78-81 | grep -v 0000 | sort | uniq -c | head -10
@@ -119,8 +119,8 @@ in text output, it would nicer if we could see a plot.</p>
 
 <p>Gnuplot is a fine graphing tool for this purpose, but it wants the category 
 label to come first, and the count to come second, so we need to write a perl 
-script to reverse <code class="highlighter-rouge">uniq</code>’s output and stick the result in a file. See 
-<code class="highlighter-rouge">perlrun(1)</code> for details on the <code class="highlighter-rouge">-a</code> and <code class="highlighter-rouge">-F</code> options to perl.</p>
+script to reverse <code>uniq</code>&#39;s output and stick the result in a file. See 
+<code>perlrun(1)</code> for details on the <code>-a</code> and <code>-F</code> options to perl.</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c78-81 | grep -v 0000 | sort | uniq -c |
 perl -lape <span class="s1">'chomp $F[-1]; $_ = join " ", reverse @F'</span> &gt; year_of_immigration</code></pre></figure>
@@ -129,9 +129,9 @@ perl -lape <span class="s1">'chomp $F[-1]; $_ = join " ", reverse @F'</span> &gt
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">gnuplot&gt; </span>plot <span class="s1">'year_of_immigration'</span> with impulses</code></pre></figure>
 
-<p>Here’s the graph gnuplot creates:</p>
+<p>Here&#39;s the graph gnuplot creates:</p>
 
-<p><img src="year-of-immigration.gif" alt="GnuPlot Graph" title="GnuPlot Graph of Year of Immigration" /></p>
+<p><img src="year-of-immigration.gif" alt="GnuPlot Graph" title="GnuPlot Graph of Year of Immigration"></p>
 
 <p>Be a bit careful interpreting this plot, only people who are still alive can be 
 counted, so it naturally goes up and to the right (people who immigrated more 
@@ -140,12 +140,11 @@ have been an increase in immigration after the end of World War II, and also a
 spike after the end if the Vietnam war. I remain at a loss to explain the spike 
 around 1980, consult your local historian.</p>
 
-<h2 id="external-links">External Links</h2>
+<h2>External Links</h2>
 
 <ul>
-  <li><a href="http://gnuplot.sourceforge.net/demo/">Several demos of GnuPlot</a></li>
+<li>  <a href="http://gnuplot.sourceforge.net/demo/">Several demos of GnuPlot</a></li>
 </ul>
-
 
   </div>
 

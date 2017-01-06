@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - LPIC-2 Revision</title>
-  <meta name="description" content="My list of topics to revise, before taking the LPIC-2 exam. Note that this list was compiled before the exam objectives’ revision in October 2013.">
+  <meta name="description" content="My list of topics to revise, before taking the LPIC-2 exam. Note that this list was compiled before the exam objectives&#39; revision in October 2013.">
 
   <link
     rel="stylesheet"
@@ -67,193 +67,219 @@
 
   <section itemprop="articleBody">
     <p>My list of topics to revise, before taking the LPIC-2 exam. Note that this 
-list was compiled before the exam objectives’ revision in October 2013.</p>
+list was compiled before the exam objectives&#39; revision in October 2013.</p>
 
-<h2 id="dhcp">DHCP</h2>
+<h2>DHCP</h2>
+
 <ul>
-  <li>Example Servers: bigpie1, sds1, nicds1, officesrv</li>
-  <li>CentOS Install DHCP</li>
-  <li>dhcpd.conf</li>
+<li>Example Servers: bigpie1, sds1, nicds1, officesrv</li>
+<li>CentOS Install DHCP</li>
+<li>dhcpd.conf</li>
 </ul>
 
-<h2 id="ldap">LDAP</h2>
+<h2>LDAP</h2>
+
 <ul>
-  <li>Example Servers: ldap-master, ldap-slave</li>
-  <li>Locate and examine LDIF files</li>
-  <li>ldapadd, slappasswd, ldappasswd, ldapdelete, getent, ldapsearch</li>
+<li>Example Servers: ldap-master, ldap-slave</li>
+<li>Locate and examine LDIF files</li>
+<li>ldapadd, slappasswd, ldappasswd, ldapdelete, getent, ldapsearch</li>
 </ul>
 
-<h2 id="routing">Routing</h2>
+<h2>Routing</h2>
+
 <ul>
-  <li>/proc/sys/net/ipv4/ip_forward and sysctl.conf equivalent</li>
-  <li>RIP with routed</li>
+<li>/proc/sys/net/ipv4/ip_forward and sysctl.conf equivalent</li>
+<li>RIP with routed</li>
 </ul>
 
-<h2 id="iptables">iptables</h2>
+<h2>iptables</h2>
+
 <ul>
-  <li>iptables chains, default policies</li>
-  <li>flush tables, add rules</li>
-  <li>configure NAT</li>
+<li>iptables chains, default policies</li>
+<li>flush tables, add rules</li>
+<li>configure NAT</li>
 </ul>
 
-<h2 id="ssh">SSH</h2>
+<h2>SSH</h2>
+
 <ul>
-  <li>/etc/ssh/sshd_config</li>
-  <li>Generate SSH keys with ssh-keygen</li>
-  <li>Copy files scp</li>
-  <li>Connect with ssh-agent</li>
-  <li>Port Tunnelling with SSH</li>
-  <li>Securing SSH with TCP Wrappers</li>
+<li>/etc/ssh/sshd_config</li>
+<li>Generate SSH keys with ssh-keygen</li>
+<li>Copy files scp</li>
+<li>Connect with ssh-agent</li>
+<li>Port Tunnelling with SSH</li>
+<li>Securing SSH with TCP Wrappers</li>
 </ul>
 
-<h2 id="samba">Samba</h2>
+<h2>Samba</h2>
+
 <ul>
-  <li>/etc/samba/smb.conf</li>
-  <li>/etc/samba/username.map</li>
-  <li>Samba Password Options</li>
-  <li>nmblookup -MS-</li>
-  <li>Configure Shares with Samba</li>
-  <li>Configure Printer Shares with Samba</li>
-  <li>testparm, nmblookup, smbstatus, smbclient, mount -t cifs</li>
+<li>/etc/samba/smb.conf</li>
+<li>/etc/samba/username.map</li>
+<li>Samba Password Options</li>
+<li>nmblookup -MS-</li>
+<li>Configure Shares with Samba</li>
+<li>Configure Printer Shares with Samba</li>
+<li>testparm, nmblookup, smbstatus, smbclient, mount -t cifs</li>
 </ul>
 
-<h2 id="nfs">NFS</h2>
+<h2>NFS</h2>
+
 <ul>
-  <li>Support programs: rpc.idmapd, rpc.mount.d, rpc.nfsd, rpc.statd, portmap</li>
-  <li>Setting up exports with NFS in /etc/exports, and on the fly with exportfs</li>
-  <li>showmount, nfsstat, rpcinfo</li>
-  <li>Mount over NFS</li>
+<li>Support programs: rpc.idmapd, rpc.mount.d, rpc.nfsd, rpc.statd, portmap</li>
+<li>Setting up exports with NFS in /etc/exports, and on the fly with exportfs</li>
+<li>showmount, nfsstat, rpcinfo</li>
+<li>Mount over NFS</li>
 </ul>
 
-<h2 id="ftp">FTP</h2>
+<h2>FTP</h2>
+
 <ul>
-  <li>Passive Vs Active FTP Modes</li>
-  <li>CentOS install Pure-FTPd</li>
-  <li>/etc/pure-ftpd/pure-ftpd.conf</li>
-  <li>CentOS install vsftpd</li>
-  <li>/etc/vsftpd/vsftpd.conf</li>
+<li>Passive Vs Active FTP Modes</li>
+<li>CentOS install Pure-FTPd</li>
+<li>/etc/pure-ftpd/pure-ftpd.conf</li>
+<li>CentOS install vsftpd</li>
+<li>/etc/vsftpd/vsftpd.conf</li>
 </ul>
 
-<h2 id="apache">Apache</h2>
+<h2>Apache</h2>
+
 <ul>
-  <li>/etc/httpd/conf/httpd.conf</li>
-  <li>access.conf, ports.conf, mime.types, magic, mods-available, mods-enabled</li>
-  <li>Enabling user homes</li>
-  <li>Service Virtual Domains</li>
-  <li>Enabling CGI, PHP, Perl</li>
-  <li>Enabling SSL</li>
-  <li>User access with htpasswd, mod_auth</li>
-  <li>apache2ctl</li>
-  <li>Apache Logs</li>
+<li>/etc/httpd/conf/httpd.conf</li>
+<li>access.conf, ports.conf, mime.types, magic, mods-available, mods-enabled</li>
+<li>Enabling user homes</li>
+<li>Service Virtual Domains</li>
+<li>Enabling CGI, PHP, Perl</li>
+<li>Enabling SSL</li>
+<li>User access with htpasswd, mod_auth</li>
+<li>apache2ctl</li>
+<li>Apache Logs</li>
 </ul>
 
-<h2 id="squid">Squid</h2>
+<h2>Squid</h2>
+
 <ul>
-  <li>Example Servers: proxy1.linux.dom (kong), proxy2.linux.dom</li>
-  <li>Squid configuration</li>
-  <li>Client configuration for proxy</li>
+<li>Example Servers: proxy1.linux.dom (kong), proxy2.linux.dom</li>
+<li>Squid configuration</li>
+<li>Client configuration for proxy</li>
 </ul>
 
-<h2 id="sendmail">Sendmail</h2>
+<h2>Sendmail</h2>
+
 <ul>
-  <li>Sendmail configuration files: /etc/mail/sendmail.mc -&gt; /etc/mail/sendmail.cf, access.db, aliases.db</li>
-  <li>Configure hostname, relay, incoming emails</li>
-  <li>Sendmail log files</li>
+<li>Sendmail configuration files: /etc/mail/sendmail.mc -&gt; /etc/mail/sendmail.cf, access.db, aliases.db</li>
+<li>Configure hostname, relay, incoming emails</li>
+<li>Sendmail log files</li>
 </ul>
 
-<h2 id="postfix">Postfix</h2>
+<h2>Postfix</h2>
+
 <ul>
-  <li>Postfix configuration files: /etc/postfix.main.cf</li>
-  <li>Configure incoming emails, relay</li>
-  <li>Postfix log files</li>
+<li>Postfix configuration files: /etc/postfix.main.cf</li>
+<li>Configure incoming emails, relay</li>
+<li>Postfix log files</li>
 </ul>
 
-<h2 id="procmail">Procmail</h2>
+<h2>Procmail</h2>
+
 <ul>
-  <li>Creating Procmail filters</li>
+<li>Creating Procmail filters</li>
 </ul>
 
-<h2 id="courier">Courier</h2>
+<h2>Courier</h2>
+
 <ul>
-  <li>Courier configuration</li>
+<li>Courier configuration</li>
 </ul>
 
-<h2 id="dovecot">Dovecot</h2>
+<h2>Dovecot</h2>
+
 <ul>
-  <li>Dovecot configuration</li>
+<li>Dovecot configuration</li>
 </ul>
 
-<h2 id="pam">PAM</h2>
+<h2>PAM</h2>
+
 <ul>
-  <li>PAM Basics, PAM Stacks, Examples of PAM Modules</li>
-  <li>PAM Configuration, NSS Configuration</li>
+<li>PAM Basics, PAM Stacks, Examples of PAM Modules</li>
+<li>PAM Configuration, NSS Configuration</li>
 </ul>
 
-<h2 id="tcp-wrappers">TCP Wrappers</h2>
+<h2>TCP Wrappers</h2>
+
 <ul>
-  <li>/etc/hosts.allow, /etc/hosts.deny</li>
-  <li>Calling TCP Wrappers from /etc/inetd</li>
-  <li>/etc/xinetd</li>
+<li>/etc/hosts.allow, /etc/hosts.deny</li>
+<li>Calling TCP Wrappers from /etc/inetd</li>
+<li>/etc/xinetd</li>
 </ul>
 
-<h2 id="snort">Snort</h2>
+<h2>Snort</h2>
+
 <ul>
-  <li>Network Design for SNORT</li>
+<li>Network Design for SNORT</li>
 </ul>
 
-<h2 id="fail2ban">Fail2Ban</h2>
+<h2>Fail2Ban</h2>
+
 <ul>
-  <li>Fail2Ban configuration</li>
+<li>Fail2Ban configuration</li>
 </ul>
 
-<h2 id="bootloaders">Bootloaders</h2>
+<h2>Bootloaders</h2>
+
 <ul>
-  <li>Identifying active bootloader on a system (based on files on disk or with bootinfoscript)</li>
-  <li>LILO Error Messages</li>
-  <li>GRUB Legacy Error Messages</li>
-  <li>GRUB2 Error Messages and Rescue Console</li>
+<li>Identifying active bootloader on a system (based on files on disk or with bootinfoscript)</li>
+<li>LILO Error Messages</li>
+<li>GRUB Legacy Error Messages</li>
+<li>GRUB2 Error Messages and Rescue Console</li>
 </ul>
 
-<h2 id="boot-time-troubleshooting">Boot Time Troubleshooting</h2>
+<h2>Boot Time Troubleshooting</h2>
+
 <ul>
-  <li>initrd</li>
-  <li>dmesg</li>
-  <li>/etc/inittab, runlevel, SysV and Upstart</li>
+<li>initrd</li>
+<li>dmesg</li>
+<li>/etc/inittab, runlevel, SysV and Upstart</li>
 </ul>
 
-<h2 id="hardware-troubleshooting">Hardware Troubleshooting</h2>
+<h2>Hardware Troubleshooting</h2>
+
 <ul>
-  <li>Hardware detection (/proc/cpuinfo, lspci, lsusb, lsdev, lsmod)</li>
+<li>Hardware detection (/proc/cpuinfo, lspci, lsusb, lsdev, lsmod)</li>
 </ul>
 
-<h2 id="log-files-troubleshooting">Log files Troubleshooting</h2>
+<h2>Log files Troubleshooting</h2>
+
 <ul>
-  <li>Helpful files: syslog, messages, dmesg or boot.log, secure, cron, lastlog</li>
-  <li>Scanning Log Files with head, tail, less, grep, logcheck</li>
-  <li>syslogd configuration</li>
-  <li>Logrotate configuration</li>
+<li>Helpful files: syslog, messages, dmesg or boot.log, secure, cron, lastlog</li>
+<li>Scanning Log Files with head, tail, less, grep, logcheck</li>
+<li>syslogd configuration</li>
+<li>Logrotate configuration</li>
 </ul>
 
-<h2 id="software-troubleshooting">Software Troubleshooting</h2>
+<h2>Software Troubleshooting</h2>
+
 <ul>
-  <li>strace and ltrace, ldd, lsof, strings</li>
-  <li>Library Dependencies</li>
-  <li>Kernel options in /proc/, sysctl, /etc/sysctl.conf</li>
-  <li>init and the process tree</li>
-  <li>top</li>
+<li>strace and ltrace, ldd, lsof, strings</li>
+<li>Library Dependencies</li>
+<li>Kernel options in /proc/, sysctl, /etc/sysctl.conf</li>
+<li>init and the process tree</li>
+<li>top</li>
 </ul>
 
-<h2 id="troubleshooting-login-and-accounts">Troubleshooting Login and Accounts</h2>
+<h2>Troubleshooting Login and Accounts</h2>
+
 <ul>
-  <li>Logins with login, XDM, KDM, GDM, getty</li>
-  <li>Network Logins with Telnet, SSH, X, XDMCP, VNC</li>
-  <li>Users management with usermod</li>
-  <li>Login variables in /etc/login.defs, /etc/profile, /etc/bashrc, ~/.profile, ~/.bashrc</li>
+<li>Logins with login, XDM, KDM, GDM, getty</li>
+<li>Network Logins with Telnet, SSH, X, XDMCP, VNC</li>
+<li>Users management with usermod</li>
+<li>Login variables in /etc/login.defs, /etc/profile, /etc/bashrc, ~/.profile, ~/.bashrc</li>
 </ul>
 
-<h2 id="cron">Cron</h2>
+<h2>Cron</h2>
+
 <ul>
-  <li>Schedule Jobs with Cron</li>
+<li>Schedule Jobs with Cron</li>
 </ul>
 
   </section>

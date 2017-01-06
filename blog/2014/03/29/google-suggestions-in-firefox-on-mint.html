@@ -80,23 +80,17 @@ Engines</strong> feature, but when you do, you will notice that there are no
 search suggestions when you start typing a search term.</p>
 
 <p>To add Google search suggestions, you need to edit the file 
-<code class="highlighter-rouge">google.xml</code>, located in the <code class="highlighter-rouge">searchplugins</code> directory, inside your 
+<code>google.xml</code>, located in the <code>searchplugins</code> directory, inside your 
 Firefox user profile. In my case, the full path for this file is:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>/home/marios/.mozilla/firefox/mwad0hks.default/searchplugins/google.xml
-</code></pre>
-</div>
-
-<p>Yours should be similar, and the command <code class="highlighter-rouge">locate google.xml</code> can help 
-you find the path.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">/home/marios/.mozilla/firefox/mwad0hks.default/searchplugins/google.xml
+</code></pre></div>
+<p>Yours should be similar, and the command <code>locate google.xml</code> can help 
+you find the path. </p>
 
 <p>Edit that file, and add the following line:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;Url type="application/x-suggestions+json" method="GET" template="https://www.google.com/complete/search?client=firefox&amp;amp;q={searchTerms}"/&gt;
-</code></pre>
-</div>
-
-<p>…somewhere before the closing <code class="highlighter-rouge">&lt;/SearchPlugin&gt;</code> tag. Restart your 
+<div class="highlight"><pre><code class="language-" data-lang="">&lt;Url type="application/x-suggestions+json" method="GET" template="https://www.google.com/complete/search?client=firefox&amp;amp;q={searchTerms}"/&gt;
+</code></pre></div>
+<p>...somewhere before the closing <code>&lt;/SearchPlugin&gt;</code> tag. Restart your 
 Firefox, and suggestions should now work.</p>
 
   </section>

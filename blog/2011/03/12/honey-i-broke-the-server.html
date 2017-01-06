@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - Honey, I broke the server</title>
-  <meta name="description" content="Here’s how I caused 25 minutes of downtime to my web server today.">
+  <meta name="description" content="Here&#39;s how I caused 25 minutes of downtime to my web server today.">
 
   <link
     rel="stylesheet"
@@ -71,39 +71,33 @@
   </header>
 
   <section itemprop="articleBody">
-    <p>Here’s how I caused 25 minutes of downtime to my web server today.</p>
+    <p>Here&#39;s how I caused 25 minutes of downtime to my web server today.</p>
 
 <p>Upon restart of the http deamon, Apache runs an action called 
-<code class="highlighter-rouge">configtest</code>, which parses all files in <code class="highlighter-rouge">conf.d/</code> the name of which 
-ends in <code class="highlighter-rouge">.conf</code>, and decides if they are valid configuration files. 
-This is defined in your server’s configuration file, in a line that 
+<code>configtest</code>, which parses all files in <code>conf.d/</code> the name of which 
+ends in <code>.conf</code>, and decides if they are valid configuration files. 
+This is defined in your server&#39;s configuration file, in a line that 
 should be something similar to:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Include conf.d/*.conf
-</code></pre>
-</div>
-
-<p>What I didn’t know was that the server will refuse to start altogether, 
-if it doesn’t like an instruction in those files, so, not only had I 
+<div class="highlight"><pre><code class="language-" data-lang="">Include conf.d/*.conf
+</code></pre></div>
+<p>What I didn&#39;t know was that the server will refuse to start altogether, 
+if it doesn&#39;t like an instruction in those files, so, not only had I 
 placed textfiles in that folder that were not valid apache config files, 
 but at some point I recommended this to others also. In my case, the 
 files were combinations of credentials used for authentication by 
-<code class="highlighter-rouge">.htaccess</code> rules, files produced with <code class="highlighter-rouge">htpasswd</code>.</p>
+<code>.htaccess</code> rules, files produced with <code>htpasswd</code>.</p>
 
-<p>The problem only came up when I restarted <code class="highlighter-rouge">httpd</code> to enable new 
+<p>The problem only came up when I restarted <code>httpd</code> to enable new 
 configuration elsewhere. Of course Apache offered a useful explanation 
 (where USERNAME and aSdFG123456ASdFG are the username and the hashed 
 password used for access by .htaccess):</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Invalid command 'USERNAME:aSdFG123456ASdFG', perhaps misspelled or 
+<div class="highlight"><pre><code class="language-" data-lang="">Invalid command 'USERNAME:aSdFG123456ASdFG', perhaps misspelled or 
 defined by a module not included in the server configuration
 Action 'configtest' failed.
 The Apache error log may have more information.
     ...fail!
-</code></pre>
-</div>
-
-<p>It seemed like a logical and convenient place to put the credentials’ 
+</code></pre></div>
+<p>It seemed like a logical and convenient place to put the credentials&#39; 
 files upon creation, but it made apache refuse to launch, because I had 
 the inspiration to name those files <code>something.conf</code>. I 
 checked some older web servers, with prehistoric versions of apache 
