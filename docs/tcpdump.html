@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Marios Zindilis - tcpdump</title>
-  <meta name="description" content="  A tcpdump Primer  BPF - the forgotten bytecode">
+  <meta name="description" content="Notes and links on tcpdump.">
 
   <link
     rel="stylesheet"
@@ -64,7 +64,24 @@
   </header>
 
   <section itemprop="articleBody">
-    <ul>
+    <p>Notes and links on <code>tcpdump</code>.</p>
+
+<h2>Capture and output at the same time</h2>
+
+<p>This command will make <code>tcpdump</code> save captured packets in a <code>.pcap</code> file,
+<em>and</em> output their printable format on <code>stdout</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo tcpdump -n -s0 -U -vvv tcp port 80 -w - | tee capture.pcap | tcpdump -vvv -n -r -
+</code></pre></div>
+<p>Options:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">-n  : numeric output, don't resolve IPs to names, don't resolve ports to service names
+-s0 : don't truncate packets unless they are bigger than 65535 bytes
+-U  : don't buffer output, dump to `.pcap` immediately
+-w  : write `.pcap`
+-r  : read from `.pcap`
+</code></pre></div>
+<h2>See Also</h2>
+
+<ul>
 <li>  <a href="http://www.danielmiessler.com/study/tcpdump/">A tcpdump Primer</a></li>
 <li>  <a href="http://blog.cloudflare.com/bpf-the-forgotten-bytecode">BPF - the forgotten bytecode</a></li>
 </ul>

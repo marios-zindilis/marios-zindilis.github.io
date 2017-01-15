@@ -26,7 +26,7 @@
   <meta property="og:article:published_time" content="2017-01-06">
 
 
-  <meta property="og:article:modified_time" content="2017-01-06">
+  <meta property="og:article:modified_time" content="2017-01-10">
 
 
   <meta property="og:article:tag" content="django">
@@ -194,7 +194,18 @@ rm __init__.py
 
 <span class="gd">-WSGI_APPLICATION = 'something_awesome.wsgi.application'
 </span><span class="gi">+WSGI_APPLICATION = 'wsgi.application'
-</span></code></pre></div></li>
+</span></code></pre></div>
+<p>If you are using SQLite as the database, then by default the location of
+the <code>sqlite</code> file will be in the parent directory of <code>settings.py</code>. Now
+that <code>settings.py</code> is in the root directory of the project, you don&#39;t want
+that anymore, you want the database file to be in the same directory as
+<code>settings.py</code>. Change the definition of the <code>BASE_DIR</code> constant in your
+<code>settings.py</code> from the default:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+</code></pre></div>
+<p>...to:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+</code></pre></div></li>
 <li><p>Fix <code>wsgi.py</code>. Here&#39;s the diff:</p>
 <div class="highlight"><pre><code class="language-diff" data-lang="diff"><span class="gd">--- wsgi.py-orig    2017-01-06 01:09:38.145285387 +0000
 </span><span class="gi">+++ wsgi.py 2017-01-06 01:09:56.393573270 +0000
@@ -242,7 +253,7 @@ are interested in this matter, check out the DjangoCon
 
   <footer id="post-footer">
   
-    Last modified: <span itemprop="dateModified">2017-01-06</span>
+    Last modified: <span itemprop="dateModified">2017-01-10</span>
   
   
     &ndash; License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" itemprop="license" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA-4.0</a>

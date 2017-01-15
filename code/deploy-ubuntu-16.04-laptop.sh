@@ -26,6 +26,7 @@ sudo apt-get install --yes python-pip
 sudo apt-get install --yes python3-pip
 sudo apt-get install --yes guake guake-indicator
 sudo apt-get install --yes nemo
+sudo apt-get install --yes jekyll
 
 gconftool-2 --install-schema-file=/usr/share/gconf/schemas/guake.schemas
 gsettings set com.canonical.Unity.Lenses remote-content-search "'none'"

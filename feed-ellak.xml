@@ -6,8 +6,8 @@
 </description>
     <link>https://zindilis.com/</link>
     <atom:link href="https://zindilis.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 06 Jan 2017 01:33:06 +0000</pubDate>
-    <lastBuildDate>Fri, 06 Jan 2017 01:33:06 +0000</lastBuildDate>
+    <pubDate>Sun, 15 Jan 2017 12:12:31 +0000</pubDate>
+    <lastBuildDate>Sun, 15 Jan 2017 12:12:31 +0000</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       
@@ -134,7 +134,18 @@ rm __init__.py
 
 &lt;span class=&quot;gd&quot;&gt;-WSGI_APPLICATION = &#39;something_awesome.wsgi.application&#39;
 &lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+WSGI_APPLICATION = &#39;wsgi.application&#39;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you are using SQLite as the database, then by default the location of
+the &lt;code&gt;sqlite&lt;/code&gt; file will be in the parent directory of &lt;code&gt;settings.py&lt;/code&gt;. Now
+that &lt;code&gt;settings.py&lt;/code&gt; is in the root directory of the project, you don&amp;#39;t want
+that anymore, you want the database file to be in the same directory as
+&lt;code&gt;settings.py&lt;/code&gt;. Change the definition of the &lt;code&gt;BASE_DIR&lt;/code&gt; constant in your
+&lt;code&gt;settings.py&lt;/code&gt; from the default:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;...to:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Fix &lt;code&gt;wsgi.py&lt;/code&gt;. Here&amp;#39;s the diff:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;span class=&quot;gd&quot;&gt;--- wsgi.py-orig    2017-01-06 01:09:38.145285387 +0000
 &lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+++ wsgi.py 2017-01-06 01:09:56.393573270 +0000
