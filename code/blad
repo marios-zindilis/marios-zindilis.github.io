@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+ETC_HOSTS = '/etc/hosts'
+BLOCKLIST = [h.strip() for h in tuple(open('hosts', 'r'))]
+DEFAULTS = []
+BREAK = '#BLOCKLIST#'
+
+with open(ETC_HOSTS, 'r') as etc_hosts:
+    for line in [l.strip() for l in etc_hosts]:
+        DEFAULTS.append(line)
+        if line == BREAK:
+            break
+
+with open(ETC_HOSTS, 'w') as etc_hosts:
+    for line in DEFAULTS:
+        etc_hosts.write('{}\n'.format(line))
+    for line in BLOCKLIST:
+        etc_hosts.write('0.0.0.0 {}\n'.format(line))
