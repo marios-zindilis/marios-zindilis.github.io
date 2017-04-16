@@ -1,12 +1,24 @@
 MusicBrainz Django Models
 =========================
 
+This project is an attempt to express the MusicBrainz database schema as
+Django Models.
+
+    See the `GitHub Repository`_.
+
+.. _GitHub Repository: https://github.com/marios-zindilis/musicbrainz-django-models
+
+Models
+------
+
 .. toctree::
    :maxdepth: 1
-   :caption: Models:
 
    area
    area_type
+   gender
+   instrument
+   instrument_type
 
 Indices and tables
 ==================
