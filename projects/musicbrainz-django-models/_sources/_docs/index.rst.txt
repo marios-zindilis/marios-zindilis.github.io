@@ -1,0 +1,16 @@
+MusicBrainz Django Models
+=========================
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Models:
+
+   area
+   area_type
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
