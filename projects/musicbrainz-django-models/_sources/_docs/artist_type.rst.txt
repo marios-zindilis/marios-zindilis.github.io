@@ -1,0 +1,17 @@
+artist_type
+============
+
+.. automodule:: musicbrainz_django_models.models.artist_type
+   :noindex:
+
+Model Documentation
+-------------------
+
+.. autoclass:: musicbrainz_django_models.models.artist_type
+
+Model Source
+------------
+
+.. literalinclude:: ../musicbrainz_django_models/models/artist_type.py
+   :pyobject: artist_type
+   :caption: The `artist_type` Model

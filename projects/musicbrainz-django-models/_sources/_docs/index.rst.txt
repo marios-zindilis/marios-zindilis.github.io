@@ -16,6 +16,8 @@ Models
 
    area
    area_type
+   artist
+   artist_type
    gender
    instrument
    instrument_type
