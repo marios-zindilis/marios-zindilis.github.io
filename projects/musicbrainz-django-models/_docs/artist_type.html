@@ -54,9 +54,26 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="artist-type">
-<h1>artist_type<a class="headerlink" href="#artist-type" title="Permalink to this headline">¶</a></h1>
-<p>The <strong>Artist Type</strong> Model.</p>
+  <div class="section" id="module-artist_type">
+<span id="artist-type"></span><h1>artist_type<a class="headerlink" href="#module-artist_type" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>Artist Type</strong> Model. This can be one of:</p>
+<ol class="arabic">
+<li><p class="first">Person</p>
+</li>
+<li><p class="first">Group</p>
+</li>
+<li><p class="first">Orchestra</p>
+</li>
+<li><p class="first">Choir</p>
+</li>
+<li><p class="first">Character</p>
+</li>
+<li><p class="first">Other</p>
+<blockquote>
+<div><p>See the <a class="reference external" href="https://musicbrainz.org/doc/Artist">Artist Documentation on MusicBrainz</a>.</p>
+</div></blockquote>
+</li>
+</ol>
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">artist_type</span></code> table is defined in the MusicBrainz Server as:</p>
@@ -82,9 +99,18 @@ in their Django implementation.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>gid</strong> &#8211; This cannot be NULL but a default is not defined in SQL. The
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) &#8211; The name can have one of the following values: &#8220;Person&#8221;,
+&#8220;Group&#8221;, &#8220;Orchestra&#8221;, &#8220;Choir&#8221;, &#8220;Character&#8221; or &#8220;Other&#8221;. This range of
+values is not restricted in the SQL definition, but it is documented
+in <a class="reference external" href="https://musicbrainz.org/doc/Artist">the Artist documentation</a>.
+In Django, this is implemented as a <cite>choices</cite> parameter to the <cite>name</cite>
+field, and as a <cite>pre_save</cite> signal that performs the validation.</li>
+<li><strong>gid</strong> &#8211; This cannot be NULL but a default is not defined in SQL. The
 <cite>default=uuid.uuid4</cite> in Django will generate a UUID during the creation
-of an instance.</td>
+of an instance.</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -94,20 +120,53 @@ of an instance.</td>
 <div class="section" id="model-source">
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">The <cite>artist_type</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">This is called by a <cite>pre_save</cite> signal.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_artist_type_name_choice</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Artist Type &quot;</span><span class="si">{}</span><span class="s1">&quot; is not one of: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">The <cite>artist_type</cite> Model</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">artist_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
 
+<span class="sd">    :param str name: The name can have one of the following values: &quot;Person&quot;,</span>
+<span class="sd">        &quot;Group&quot;, &quot;Orchestra&quot;, &quot;Choir&quot;, &quot;Character&quot; or &quot;Other&quot;. This range of</span>
+<span class="sd">        values is not restricted in the SQL definition, but it is documented</span>
+<span class="sd">        in `the Artist documentation &lt;https://musicbrainz.org/doc/Artist&gt;`_.</span>
+<span class="sd">        In Django, this is implemented as a `choices` parameter to the `name`</span>
+<span class="sd">        field, and as a `pre_save` signal that performs the validation.</span>
 <span class="sd">    :param gid: This cannot be NULL but a default is not defined in SQL. The</span>
 <span class="sd">        `default=uuid.uuid4` in Django will generate a UUID during the creation</span>
 <span class="sd">        of an instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="n">PERSON</span> <span class="o">=</span> <span class="s1">&#39;Person&#39;</span>
+    <span class="n">GROUP</span> <span class="o">=</span> <span class="s1">&#39;Group&#39;</span>
+    <span class="n">ORCHESTRA</span> <span class="o">=</span> <span class="s1">&#39;Orchestra&#39;</span>
+    <span class="n">CHOIR</span> <span class="o">=</span> <span class="s1">&#39;Choir&#39;</span>
+    <span class="n">CHARACTER</span> <span class="o">=</span> <span class="s1">&#39;Character&#39;</span>
+    <span class="n">OTHER</span> <span class="o">=</span> <span class="s1">&#39;Other&#39;</span>
+    <span class="n">NAME_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">PERSON</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">GROUP</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">ORCHESTRA</span><span class="p">,</span> <span class="n">ORCHESTRA</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">CHOIR</span><span class="p">,</span> <span class="n">CHOIR</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">CHARACTER</span><span class="p">,</span> <span class="n">CHARACTER</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">OTHER</span><span class="p">,</span><span class="n">OTHER</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">choice</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
+
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">)</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">child_order</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>

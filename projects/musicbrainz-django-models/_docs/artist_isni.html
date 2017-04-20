@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>artist_isni &#8212; MusicBrainz Django Models 0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="artist" href="artist.html" />
+    <link rel="prev" title="artist_ipi" href="artist_ipi.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="artist.html" title="artist"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="artist_ipi.html" title="artist_ipi"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-artist_isni">
+<span id="artist-isni"></span><h1>artist_isni<a class="headerlink" href="#module-artist_isni" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>Artist ISNI</strong> Model. Holds the International Standard Name Identifier
+for an Artist. The ISNI is a 16-digit string. The first 15 characters are
+numeric. The last character is a check character, and is either numeric or
+the letter &#8220;X&#8221;.</p>
+<blockquote>
+<div>See the <a class="reference external" href="https://musicbrainz.org/doc/ISNI">ISNI Documentation on MusicBrainz</a>.
+See the <a class="reference external" href="https://en.wikipedia.org/wiki/International_Standard_Name_Identifier">ISNI Wikipedia page</a>.</div></blockquote>
+<p>Each Artist can have multiple ISNIs. The ISNI page for an artist looks like
+this:</p>
+<blockquote>
+<div><cite>http://www.isni.org/isni/0000000081138415</cite></div></blockquote>
+<div class="section" id="postgresql-definition">
+<h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal"><span class="pre">artist_isni</span></code> table is defined in the MusicBrainz Server as:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">artist_isni</span> <span class="p">(</span> <span class="c1">-- replicate (verbose)</span>
+    <span class="n">artist</span>              <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="c1">-- PK, references artist.id</span>
+    <span class="n">isni</span>                <span class="nb">CHAR</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">isni</span> <span class="o">~</span> <span class="n">E</span><span class="s1">&#39;^\d{15}[\dX]$&#39;</span><span class="p">),</span> <span class="c1">-- PK</span>
+    <span class="n">edits_pending</span>       <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="mi">0</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">edits_pending</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">created</span>             <span class="k">TIMESTAMP</span> <span class="k">WITH</span> <span class="n">TIME</span> <span class="k">ZONE</span> <span class="k">DEFAULT</span> <span class="n">NOW</span><span class="p">()</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-documentation">
+<h2>Model Documentation<a class="headerlink" href="#model-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="musicbrainz_django_models.models.artist_isni">
+<em class="property">class </em><code class="descclassname">musicbrainz_django_models.models.</code><code class="descname">artist_isni</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicbrainz_django_models/models/artist_isni.html#artist_isni"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#musicbrainz_django_models.models.artist_isni" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not all parameters are listed here, only those that present some interest
+in their Django implementation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>artist</strong> &#8211; This field is interesting because it is both a Foreign Key
+to the Artist model, as well the Primary Key for the Artist ISNI
+model. In Django, this can be implemented as a <cite>OneToOneField</cite>.</li>
+<li><strong>isni</strong> (<em>str</em>) &#8211; Both the <cite>artist</cite> and the <cite>isni</cite> fields are primary keys
+in the SQL. In Django, there can only be 1 primary key per model.
+Therefore, the uniqueness required for a primary key is defined in
+this Django model field with a <cite>unique</cite> flag. Furthermore, there is a
+regex-based check in SQL. In Django, this can be implemented with a
+<cite>RegexValidator</cite>, but that is only applied in the frontend. For
+backend validation, a <cite>pre_save</cite> signal is used.</li>
+<li><strong>edits_pending</strong> (<em>int</em>) &#8211; the MusicBrainz Server uses a PostgreSQL <cite>check</cite>
+to validate that the value is a positive integer. In Django, this is
+done with <cite>models.PositiveIntegerField()</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="model-source">
+<h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">This is called by a <cite>pre_save</cite> signal.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_artist_isni</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">ISNI_REGEX</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">isni</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">RegexValidator</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">The <cite>artist_isni</cite> Model</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">artist_isni</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Not all parameters are listed here, only those that present some interest</span>
+<span class="sd">    in their Django implementation.</span>
+
+<span class="sd">    :param artist: This field is interesting because it is both a Foreign Key</span>
+<span class="sd">        to the Artist model, as well the Primary Key for the Artist ISNI</span>
+<span class="sd">        model. In Django, this can be implemented as a `OneToOneField`.</span>
+<span class="sd">    :param str isni: Both the `artist` and the `isni` fields are primary keys</span>
+<span class="sd">        in the SQL. In Django, there can only be 1 primary key per model.</span>
+<span class="sd">        Therefore, the uniqueness required for a primary key is defined in</span>
+<span class="sd">        this Django model field with a `unique` flag. Furthermore, there is a</span>
+<span class="sd">        regex-based check in SQL. In Django, this can be implemented with a</span>
+<span class="sd">        `RegexValidator`, but that is only applied in the frontend. For</span>
+<span class="sd">        backend validation, a `pre_save` signal is used.</span>
+<span class="sd">    :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`</span>
+<span class="sd">        to validate that the value is a positive integer. In Django, this is</span>
+<span class="sd">        done with `models.PositiveIntegerField()`.    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ISNI_REGEX</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^\d</span><span class="si">{15}</span><span class="s1">[\dX]$&#39;</span>
+
+    <span class="n">artist</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="s1">&#39;artist&#39;</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">isni</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+        <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">validators</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">MinLengthValidator</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span>
+            <span class="n">RegexValidator</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">ISNI_REGEX</span><span class="p">)</span>            
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">edits_pending</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">isni</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">isni</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;artist_isni&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">artist_isni</a><ul>
+<li><a class="reference internal" href="#postgresql-definition">PostgreSQL Definition</a></li>
+<li><a class="reference internal" href="#model-documentation">Model Documentation</a></li>
+<li><a class="reference internal" href="#model-source">Model Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="artist_ipi.html"
+                        title="previous chapter">artist_ipi</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="artist.html"
+                        title="next chapter">artist</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_docs/artist_isni.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="artist.html" title="artist"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="artist_ipi.html" title="artist_ipi"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Marios Zindilis.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+    </div>
+  </body>
+</html>

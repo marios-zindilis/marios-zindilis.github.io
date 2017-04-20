@@ -16,6 +16,8 @@ Models
 
    area
    area_type
+   artist_ipi
+   artist_isni
    artist
    artist_type
    gender

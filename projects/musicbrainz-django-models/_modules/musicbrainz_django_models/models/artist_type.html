@@ -49,8 +49,20 @@
             
   <h1>Source code for musicbrainz_django_models.models.artist_type</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: artist_type</span>
 
-<span class="sd">The **Artist Type** Model.</span>
+<span class="sd">The **Artist Type** Model. This can be one of:</span>
+
+<span class="sd">1. Person</span>
+<span class="sd">2. Group</span>
+<span class="sd">3. Orchestra</span>
+<span class="sd">4. Choir</span>
+<span class="sd">5. Character</span>
+<span class="sd">6. Other</span>
+
+<span class="sd">    See the `Artist Documentation on MusicBrainz`_.</span>
+
+<span class="sd">.. _Artist Documentation on MusicBrainz: https://musicbrainz.org/doc/Artist</span>
 
 <span class="sd">PostgreSQL Definition</span>
 <span class="sd">---------------------</span>
@@ -74,19 +86,49 @@
 <span class="kn">import</span> <span class="nn">uuid</span>
 
 
+<span class="k">def</span> <span class="nf">validate_artist_type_name_choice</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Artist Type &quot;</span><span class="si">{}</span><span class="s1">&quot; is not one of: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">)))</span>
+
+
 <div class="viewcode-block" id="artist_type"><a class="viewcode-back" href="../../../_docs/artist_type.html#musicbrainz_django_models.models.artist_type">[docs]</a><span class="k">class</span> <span class="nc">artist_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
 
+<span class="sd">    :param str name: The name can have one of the following values: &quot;Person&quot;,</span>
+<span class="sd">        &quot;Group&quot;, &quot;Orchestra&quot;, &quot;Choir&quot;, &quot;Character&quot; or &quot;Other&quot;. This range of</span>
+<span class="sd">        values is not restricted in the SQL definition, but it is documented</span>
+<span class="sd">        in `the Artist documentation &lt;https://musicbrainz.org/doc/Artist&gt;`_.</span>
+<span class="sd">        In Django, this is implemented as a `choices` parameter to the `name`</span>
+<span class="sd">        field, and as a `pre_save` signal that performs the validation.</span>
 <span class="sd">    :param gid: This cannot be NULL but a default is not defined in SQL. The</span>
 <span class="sd">        `default=uuid.uuid4` in Django will generate a UUID during the creation</span>
 <span class="sd">        of an instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="n">PERSON</span> <span class="o">=</span> <span class="s1">&#39;Person&#39;</span>
+    <span class="n">GROUP</span> <span class="o">=</span> <span class="s1">&#39;Group&#39;</span>
+    <span class="n">ORCHESTRA</span> <span class="o">=</span> <span class="s1">&#39;Orchestra&#39;</span>
+    <span class="n">CHOIR</span> <span class="o">=</span> <span class="s1">&#39;Choir&#39;</span>
+    <span class="n">CHARACTER</span> <span class="o">=</span> <span class="s1">&#39;Character&#39;</span>
+    <span class="n">OTHER</span> <span class="o">=</span> <span class="s1">&#39;Other&#39;</span>
+    <span class="n">NAME_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">PERSON</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">GROUP</span><span class="p">,</span> <span class="n">GROUP</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">ORCHESTRA</span><span class="p">,</span> <span class="n">ORCHESTRA</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">CHOIR</span><span class="p">,</span> <span class="n">CHOIR</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">CHARACTER</span><span class="p">,</span> <span class="n">CHARACTER</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">OTHER</span><span class="p">,</span><span class="n">OTHER</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">choice</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
+
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">)</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">child_order</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>
@@ -99,6 +141,10 @@
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;artist_type&#39;</span></div>
+
+
+<span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">pre_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">validate_artist_type_name_choice</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">artist_type</span><span class="p">)</span>
 </pre></div>
 
           </div>
