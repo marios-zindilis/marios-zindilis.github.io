@@ -16,6 +16,8 @@ Models
 
    area
    area_type
+   artist_alias
+   artist_alias_type
    artist_ipi
    artist_isni
    artist

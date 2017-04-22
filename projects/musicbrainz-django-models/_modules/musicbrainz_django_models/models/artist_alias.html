@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>musicbrainz_django_models.models.artist_alias &#8212; MusicBrainz Django Models 0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../_docs/index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for musicbrainz_django_models.models.artist_alias</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: artist_alias</span>
+
+<span class="sd">PostgreSQL Definition</span>
+<span class="sd">---------------------</span>
+
+<span class="sd">The :code:`artist_alias` table is defined in the MusicBrainz Server as:</span>
+
+<span class="sd">.. code-block:: sql</span>
+
+<span class="sd">    CREATE TABLE artist_alias ( -- replicate (verbose)</span>
+<span class="sd">        id                  SERIAL,</span>
+<span class="sd">        artist              INTEGER NOT NULL, -- references artist.id</span>
+<span class="sd">        name                VARCHAR NOT NULL,</span>
+<span class="sd">        locale              TEXT,</span>
+<span class="sd">        edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending &gt;= 0),</span>
+<span class="sd">        last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),</span>
+<span class="sd">        type                INTEGER, -- references artist_alias_type.id</span>
+<span class="sd">        sort_name           VARCHAR NOT NULL,</span>
+<span class="sd">        begin_date_year     SMALLINT,</span>
+<span class="sd">        begin_date_month    SMALLINT,</span>
+<span class="sd">        begin_date_day      SMALLINT,</span>
+<span class="sd">        end_date_year       SMALLINT,</span>
+<span class="sd">        end_date_month      SMALLINT,</span>
+<span class="sd">        end_date_day        SMALLINT,</span>
+<span class="sd">        primary_for_locale  BOOLEAN NOT NULL DEFAULT false,</span>
+<span class="sd">        ended               BOOLEAN NOT NULL DEFAULT FALSE</span>
+<span class="sd">          CHECK (</span>
+<span class="sd">            (</span>
+<span class="sd">              -- If any end date fields are not null, then ended must be true</span>
+<span class="sd">              (end_date_year IS NOT NULL OR</span>
+<span class="sd">               end_date_month IS NOT NULL OR</span>
+<span class="sd">               end_date_day IS NOT NULL) AND</span>
+<span class="sd">              ended = TRUE </span>
+<span class="sd">            ) OR ( </span>
+<span class="sd">              -- Otherwise, all end date fields must be null</span>
+<span class="sd">              (end_date_year IS NULL AND</span>
+<span class="sd">               end_date_month IS NULL AND</span>
+<span class="sd">               end_date_day IS NULL)</span>
+<span class="sd">            )</span>
+<span class="sd">          ),   </span>
+<span class="sd">        CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),</span>
+<span class="sd">        CONSTRAINT search_hints_are_empty</span>
+<span class="sd">          CHECK (</span>
+<span class="sd">            (type &lt;&gt; 3) OR ( </span>
+<span class="sd">              type = 3 AND sort_name = name AND</span>
+<span class="sd">              begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND</span>
+<span class="sd">              end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND</span>
+<span class="sd">              primary_for_locale IS FALSE AND locale IS NULL </span>
+<span class="sd">            )</span>
+<span class="sd">          )    </span>
+<span class="sd">    );</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+
+
+<span class="k">def</span> <span class="nf">pre_save_artist_alias</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">ended</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">check_ended</span><span class="p">()</span>
+
+    <span class="c1"># primary_for_locale cannot be True if locale is empty:</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">locale</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">primary_for_locale</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="kn">from</span> <span class="nn">.artist_alias_type</span> <span class="k">import</span> <span class="n">artist_alias_type</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">artist_alias_type</span><span class="o">.</span><span class="n">SEARCH_HINT</span><span class="p">:</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">sort_name</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_year</span> <span class="o">=</span> <span class="kc">None</span> 
+        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_month</span> <span class="o">=</span> <span class="kc">None</span> 
+        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_day</span> <span class="o">=</span> <span class="kc">None</span> 
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_year</span> <span class="o">=</span> <span class="kc">None</span> 
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_month</span> <span class="o">=</span> <span class="kc">None</span> 
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_day</span> <span class="o">=</span> <span class="kc">None</span> 
+        <span class="n">instance</span><span class="o">.</span><span class="n">primary_for_locale</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">locale</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="artist_alias"><a class="viewcode-back" href="../../../_docs/artist_alias.html#musicbrainz_django_models.models.artist_alias">[docs]</a><span class="k">class</span> <span class="nc">artist_alias</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Not all parameters are listed here, only those that present some interest</span>
+<span class="sd">    in their Django implementation.</span>
+
+<span class="sd">    :param str name: `max_length` is mandatory in Django models but not in</span>
+<span class="sd">        PostgreSQL.</span>
+<span class="sd">    :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`</span>
+<span class="sd">        to validate that the value is a positive integer. In Django, this is</span>
+<span class="sd">        done with `models.PositiveIntegerField()`.</span>
+<span class="sd">    :param type: In the PostgreSQL definition of the `artist_alias` table,</span>
+<span class="sd">        there is a `check` on the `type`, that uses a hardcoded value of `3`.</span>
+<span class="sd">        The `type` with `id=3` in the `artist_alias_type` table is the</span>
+<span class="sd">        `Search hint`. If the `type` of the `artist_alias` is `Search hint`,</span>
+<span class="sd">        then a number of fields are restricted. `sort_name` must be equal to</span>
+<span class="sd">        `name`. `begin_date_year`, `begin_date_month`, `begin_date_day`,</span>
+<span class="sd">        `end_date_year`, `end_date_month`, `end_date_day` and `locale` must all</span>
+<span class="sd">        be empty. `primary_for_locale` must be False. In Django, this is</span>
+<span class="sd">        implemented in a `pre_save` signal.</span>
+<span class="sd">    :param str sort_name: `max_length` is mandatory in Django models but not in</span>
+<span class="sd">        PostgreSQL.</span>
+<span class="sd">    :param smallint begin_date_month: You&#39;d think this would be validated as a</span>
+<span class="sd">        range of 1-12 or similar...</span>
+<span class="sd">    :param smallint end_date_month: ditto</span>
+<span class="sd">    :param smallint begin_date_day: You&#39;d think this would be validated as a</span>
+<span class="sd">        range of 1-31 or similar...</span>
+<span class="sd">    :param smallint end_date_day: ditto</span>
+<span class="sd">    :param boolean primary_for_locale: The MusicBrainz Server uses a </span>
+<span class="sd">        PostgreSQL `check` to validate that this field is False, if the</span>
+<span class="sd">        `locale` field is empty. In Django, this is implemented with a</span>
+<span class="sd">        `pre_save` signal.</span>
+<span class="sd">    :param boolean ended: the MusicBrainz Server uses a PostgreSQL `check` to</span>
+<span class="sd">        set this to `True` if any of the `end_*` fields has any value. This is</span>
+<span class="sd">        implemented in Django with a `pre_save` signal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">artist</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;artist&#39;</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">locale</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">edits_pending</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">last_updated</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;artist_alias_type&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">sort_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">begin_date_year</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">begin_date_month</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">begin_date_day</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">end_date_year</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">end_date_month</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">end_date_day</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">primary_for_locale</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ended</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">check_ended</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set `ended` to `True` if any of the `end_date_*` fields is populated.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_date_year</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_date_month</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_date_day</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;artist_alias&#39;</span></div>
+
+
+<span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">pre_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pre_save_artist_alias</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">artist_alias</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../_docs/index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Marios Zindilis.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+    </div>
+  </body>
+</html>

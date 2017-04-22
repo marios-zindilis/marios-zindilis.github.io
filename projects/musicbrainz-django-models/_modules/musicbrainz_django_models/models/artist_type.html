@@ -60,6 +60,25 @@
 <span class="sd">5. Character</span>
 <span class="sd">6. Other</span>
 
+<span class="sd">Here&#39;s a complete table of values from the MusicBrainz database dump of</span>
+<span class="sd">2017-04-19:</span>
+
+<span class="sd">+----+-----------+--------+-------------+-------------+--------------------------------------+</span>
+<span class="sd">| id | name      | parent | child_order | description | gid                                  |</span>
+<span class="sd">+====+===========+========+=============+=============+======================================+</span>
+<span class="sd">|  1 | Person    |        |           1 |             | b6e035f4-3ce9-331c-97df-83397230b0df |</span>
+<span class="sd">+----+-----------+--------+-------------+-------------+--------------------------------------+</span>
+<span class="sd">|  2 | Group     |        |           2 |             | e431f5f6-b5d2-343d-8b36-72607fffb74b |</span>
+<span class="sd">+----+-----------+--------+-------------+-------------+--------------------------------------+</span>
+<span class="sd">|  3 | Other     |        |          99 |             | ac897045-5043-3294-969b-187360e45d86 |</span>
+<span class="sd">+----+-----------+--------+-------------+-------------+--------------------------------------+</span>
+<span class="sd">|  4 | Character |        |           3 |             | 5c1375b0-f18d-3db7-a164-a49d7a63773f |</span>
+<span class="sd">+----+-----------+--------+-------------+-------------+--------------------------------------+</span>
+<span class="sd">|  5 | Orchestra |      2 |           0 |             | a0b36c92-3eb1-3839-a4f9-4799823f54a5 |</span>
+<span class="sd">+----+-----------+--------+-------------+-------------+--------------------------------------+</span>
+<span class="sd">|  6 | Choir     |      2 |           0 |             | 6124967d-7e3a-3eba-b642-c9a2ffb44d94 |</span>
+<span class="sd">+----+-----------+--------+-------------+-------------+--------------------------------------+</span>
+
 <span class="sd">    See the `Artist Documentation on MusicBrainz`_.</span>
 
 <span class="sd">.. _Artist Documentation on MusicBrainz: https://musicbrainz.org/doc/Artist</span>
@@ -124,10 +143,10 @@
         <span class="p">(</span><span class="n">CHARACTER</span><span class="p">,</span> <span class="n">CHARACTER</span><span class="p">),</span>
         <span class="p">(</span><span class="n">OTHER</span><span class="p">,</span><span class="n">OTHER</span><span class="p">),</span>
     <span class="p">)</span>
-    <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">choice</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
+    <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">NAME_CHOICES</span><span class="p">)</span>
     <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">child_order</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

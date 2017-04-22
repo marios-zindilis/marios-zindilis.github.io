@@ -116,7 +116,7 @@
         <span class="p">(</span><span class="n">CITY</span><span class="p">,</span> <span class="n">CITY</span><span class="p">),</span>
         <span class="p">(</span><span class="n">DISTRICT</span><span class="p">,</span> <span class="n">DISTRICT</span><span class="p">),</span>
         <span class="p">(</span><span class="n">ISLAND</span><span class="p">,</span> <span class="n">ISLAND</span><span class="p">),)</span>
-    <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">choice</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
+    <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">NAME_CHOICES</span><span class="p">)</span>

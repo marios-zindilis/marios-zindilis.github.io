@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>gender &#8212; MusicBrainz Django Models 0 documentation</title>
+    <title>artist_alias_type &#8212; MusicBrainz Django Models 0 documentation</title>
     
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="instrument" href="instrument.html" />
-    <link rel="prev" title="artist_type" href="artist_type.html" /> 
+    <link rel="next" title="artist_ipi" href="artist_ipi.html" />
+    <link rel="prev" title="artist_alias" href="artist_alias.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -40,10 +40,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="instrument.html" title="instrument"
+          <a href="artist_ipi.html" title="artist_ipi"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="artist_type.html" title="artist_type"
+          <a href="artist_alias.html" title="artist_alias"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
@@ -54,19 +54,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-gender">
-<span id="gender"></span><h1>gender<a class="headerlink" href="#module-gender" title="Permalink to this headline">¶</a></h1>
-<p>The <strong>Gender</strong> Model is referenced by the <code class="code docutils literal"><span class="pre">artist</span></code> and the
-<code class="code docutils literal"><span class="pre">editor</span></code> models. Here&#8217;s a complete table of values, from the MusicBrainz
-database dump of 2017-04-19:</p>
+  <div class="section" id="module-artist_alias_type">
+<span id="artist-alias-type"></span><h1>artist_alias_type<a class="headerlink" href="#module-artist_alias_type" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>Artist Alias Type</strong> Model. Here&#8217;s a complete table of values, from the
+MusicBrainz database dump of 2017-04-19:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="5%" />
-<col width="10%" />
-<col width="10%" />
+<col width="4%" />
+<col width="15%" />
+<col width="9%" />
 <col width="15%" />
 <col width="15%" />
-<col width="45%" />
+<col width="43%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">id</th>
@@ -79,35 +78,37 @@ database dump of 2017-04-19:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>1</td>
-<td>Male</td>
+<td>Artist name</td>
 <td>&nbsp;</td>
-<td>1</td>
+<td>0</td>
 <td>&nbsp;</td>
-<td>36d3d30a-839d-3eda-8cb3-29be4384e4a9</td>
+<td>894afba6-2816-3c24-8072-eadb66bd04bc</td>
 </tr>
 <tr class="row-odd"><td>2</td>
-<td>Female</td>
+<td>Legal name</td>
 <td>&nbsp;</td>
-<td>2</td>
+<td>0</td>
 <td>&nbsp;</td>
-<td>93452b5a-a947-30c8-934f-6a4056b151c2</td>
+<td>d4dcd0c0-b341-3612-a332-c0ce797b25cf</td>
 </tr>
 <tr class="row-even"><td>3</td>
-<td>Other</td>
+<td>Search hint</td>
 <td>&nbsp;</td>
-<td>3</td>
+<td>0</td>
 <td>&nbsp;</td>
-<td>081c0bf5-da60-37b0-95f8-2207a3f7f9d6</td>
+<td>1937e404-b981-3cb7-8151-4c86ebfc8d8e</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<div>See the <a class="reference external" href="https://musicbrainz.org/doc/Aliases">Aliases Documentation on MusicBrainz</a>.</div></blockquote>
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="code docutils literal"><span class="pre">gender</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">gender</span> <span class="p">(</span> <span class="c1">-- replicate</span>
+<p>The <code class="code docutils literal"><span class="pre">artist_alias_type</span></code> table is defined in the MusicBrainz Server as:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">artist_alias_type</span> <span class="p">(</span> <span class="c1">-- replicate</span>
     <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span>
-    <span class="n">name</span>                <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">parent</span>              <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references gender.id</span>
+    <span class="n">name</span>                <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">parent</span>              <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references artist_alias_type.id</span>
     <span class="n">child_order</span>         <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">description</span>         <span class="nb">TEXT</span><span class="p">,</span>
     <span class="n">gid</span>                 <span class="n">uuid</span> <span class="k">NOT</span> <span class="k">NULL</span> 
@@ -118,8 +119,8 @@ database dump of 2017-04-19:</p>
 <div class="section" id="model-documentation">
 <h2>Model Documentation<a class="headerlink" href="#model-documentation" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="musicbrainz_django_models.models.gender">
-<em class="property">class </em><code class="descclassname">musicbrainz_django_models.models.</code><code class="descname">gender</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicbrainz_django_models/models/gender.html#gender"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#musicbrainz_django_models.models.gender" title="Permalink to this definition">¶</a></dt>
+<dt id="musicbrainz_django_models.models.artist_alias_type">
+<em class="property">class </em><code class="descclassname">musicbrainz_django_models.models.</code><code class="descname">artist_alias_type</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicbrainz_django_models/models/artist_alias_type.html#artist_alias_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#musicbrainz_django_models.models.artist_alias_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Not all parameters are listed here, only those that present some interest
 in their Django implementation.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -129,12 +130,12 @@ in their Django implementation.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>name</strong> (<em>str</em>) &#8211; This field is not restricted to a range of values in the
 SQL definition. From the database dumps it is apparent that there are
-3 possible values: &#8220;Male&#8221;, &#8220;Female&#8221; and &#8220;Other&#8221;. This is implemented
-in Django with a <cite>choices</cite> parameter to the <cite>name</cite> field, as well as
-with a <cite>pre_save</cite> signal for validation.</li>
-<li><strong>gid</strong> &#8211; this is interesting because it cannot be NULL but a default is
-not defined in SQL. The default <cite>uuid.uuid4</cite> in Django will generate a
-UUID during the creation of an instance.</li>
+3 possible values: &#8220;Artist name&#8221;, &#8220;Legal name&#8221; and &#8220;Search hint&#8221;. This
+is implemented in Django with a <cite>choices</cite> parameter to the <cite>name</cite>
+field, as well as with a <cite>pre_save</cite> signal for validation.</li>
+<li><strong>gid</strong> &#8211; This cannot be NULL but a default is not defined in SQL. The
+<cite>default=uuid.uuid4</cite> in Django will generate a UUID during the creation
+of an instance.</li>
 </ul>
 </td>
 </tr>
@@ -146,58 +147,47 @@ UUID during the creation of an instance.</li>
 <div class="section" id="model-source">
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">The is called by a <cite>pre_save</cite> signal.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pre_save_gender</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
-        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Gender &quot;</span><span class="si">{}</span><span class="s1">&quot; is not one of: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">instance</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-            <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">The <cite>gender</cite> Model</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">gender</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="code-block-caption"><span class="caption-text">The <cite>artist_alias_type</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">artist_alias_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
 
 <span class="sd">    :param str name: This field is not restricted to a range of values in the</span>
 <span class="sd">        SQL definition. From the database dumps it is apparent that there are</span>
-<span class="sd">        3 possible values: &quot;Male&quot;, &quot;Female&quot; and &quot;Other&quot;. This is implemented</span>
-<span class="sd">        in Django with a `choices` parameter to the `name` field, as well as</span>
-<span class="sd">        with a `pre_save` signal for validation.</span>
-<span class="sd">    :param gid: this is interesting because it cannot be NULL but a default is</span>
-<span class="sd">        not defined in SQL. The default `uuid.uuid4` in Django will generate a</span>
-<span class="sd">        UUID during the creation of an instance.</span>
+<span class="sd">        3 possible values: &quot;Artist name&quot;, &quot;Legal name&quot; and &quot;Search hint&quot;. This</span>
+<span class="sd">        is implemented in Django with a `choices` parameter to the `name`</span>
+<span class="sd">        field, as well as with a `pre_save` signal for validation.</span>
+<span class="sd">    :param gid: This cannot be NULL but a default is not defined in SQL. The</span>
+<span class="sd">        `default=uuid.uuid4` in Django will generate a UUID during the creation</span>
+<span class="sd">        of an instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">MALE</span> <span class="o">=</span> <span class="s1">&#39;Male&#39;</span>
-    <span class="n">FEMALE</span> <span class="o">=</span> <span class="s1">&#39;Female&#39;</span>
-    <span class="n">OTHER</span> <span class="o">=</span> <span class="s1">&#39;Other&#39;</span>
+    <span class="n">ARTIST_NAME</span> <span class="o">=</span> <span class="s1">&#39;Artist name&#39;</span>
+    <span class="n">LEGAL_NAME</span> <span class="o">=</span> <span class="s1">&#39;Legal name&#39;</span>
+    <span class="n">SEARCH_HINT</span> <span class="o">=</span> <span class="s1">&#39;Search hint&#39;</span>
     <span class="n">NAME_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="p">(</span><span class="n">MALE</span><span class="p">,</span> <span class="n">MALE</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">FEMALE</span><span class="p">,</span> <span class="n">FEMALE</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">OTHER</span><span class="p">,</span> <span class="n">OTHER</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">ARTIST_NAME</span><span class="p">,</span> <span class="n">ARTIST_NAME</span><span class="p">),</span> 
+        <span class="p">(</span><span class="n">LEGAL_NAME</span><span class="p">,</span> <span class="n">LEGAL_NAME</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">SEARCH_HINT</span><span class="p">,</span> <span class="n">SEARCH_HINT</span><span class="p">),</span>
     <span class="p">)</span>
     <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">NAME_CHOICES</span><span class="p">)</span>
-    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">NAME_CHOICES</span><span class="p">)</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">child_order</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-
     <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;gender&#39;</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;artist_alias_type&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -212,7 +202,7 @@ UUID during the creation of an instance.</li>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">gender</a><ul>
+<li><a class="reference internal" href="#">artist_alias_type</a><ul>
 <li><a class="reference internal" href="#postgresql-definition">PostgreSQL Definition</a></li>
 <li><a class="reference internal" href="#model-documentation">Model Documentation</a></li>
 <li><a class="reference internal" href="#model-source">Model Source</a></li>
@@ -221,15 +211,15 @@ UUID during the creation of an instance.</li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="artist_type.html"
-                        title="previous chapter">artist_type</a></p>
+  <p class="topless"><a href="artist_alias.html"
+                        title="previous chapter">artist_alias</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="instrument.html"
-                        title="next chapter">instrument</a></p>
+  <p class="topless"><a href="artist_ipi.html"
+                        title="next chapter">artist_ipi</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/_docs/gender.rst.txt"
+      <li><a href="../_sources/_docs/artist_alias_type.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -257,10 +247,10 @@ UUID during the creation of an instance.</li>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="instrument.html" title="instrument"
+          <a href="artist_ipi.html" title="artist_ipi"
              >next</a> |</li>
         <li class="right" >
-          <a href="artist_type.html" title="artist_type"
+          <a href="artist_alias.html" title="artist_alias"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>

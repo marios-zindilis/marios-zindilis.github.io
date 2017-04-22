@@ -13,5 +13,9 @@ Model Source
 ------------
 
 .. literalinclude:: ../musicbrainz_django_models/models/gender.py
+   :pyobject: pre_save_gender
+   :caption: The is called by a `pre_save` signal.
+
+.. literalinclude:: ../musicbrainz_django_models/models/gender.py
    :pyobject: gender
    :caption: The `gender` Model

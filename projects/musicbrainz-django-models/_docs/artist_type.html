@@ -57,23 +57,81 @@
   <div class="section" id="module-artist_type">
 <span id="artist-type"></span><h1>artist_type<a class="headerlink" href="#module-artist_type" title="Permalink to this headline">¶</a></h1>
 <p>The <strong>Artist Type</strong> Model. This can be one of:</p>
-<ol class="arabic">
-<li><p class="first">Person</p>
-</li>
-<li><p class="first">Group</p>
-</li>
-<li><p class="first">Orchestra</p>
-</li>
-<li><p class="first">Choir</p>
-</li>
-<li><p class="first">Character</p>
-</li>
-<li><p class="first">Other</p>
-<blockquote>
-<div><p>See the <a class="reference external" href="https://musicbrainz.org/doc/Artist">Artist Documentation on MusicBrainz</a>.</p>
-</div></blockquote>
-</li>
+<ol class="arabic simple">
+<li>Person</li>
+<li>Group</li>
+<li>Orchestra</li>
+<li>Choir</li>
+<li>Character</li>
+<li>Other</li>
 </ol>
+<p>Here&#8217;s a complete table of values from the MusicBrainz database dump of
+2017-04-19:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="13%" />
+<col width="9%" />
+<col width="15%" />
+<col width="15%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">id</th>
+<th class="head">name</th>
+<th class="head">parent</th>
+<th class="head">child_order</th>
+<th class="head">description</th>
+<th class="head">gid</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>Person</td>
+<td>&nbsp;</td>
+<td>1</td>
+<td>&nbsp;</td>
+<td>b6e035f4-3ce9-331c-97df-83397230b0df</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Group</td>
+<td>&nbsp;</td>
+<td>2</td>
+<td>&nbsp;</td>
+<td>e431f5f6-b5d2-343d-8b36-72607fffb74b</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>Other</td>
+<td>&nbsp;</td>
+<td>99</td>
+<td>&nbsp;</td>
+<td>ac897045-5043-3294-969b-187360e45d86</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>Character</td>
+<td>&nbsp;</td>
+<td>3</td>
+<td>&nbsp;</td>
+<td>5c1375b0-f18d-3db7-a164-a49d7a63773f</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>Orchestra</td>
+<td>2</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>a0b36c92-3eb1-3839-a4f9-4799823f54a5</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>Choir</td>
+<td>2</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>6124967d-7e3a-3eba-b642-c9a2ffb44d94</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div>See the <a class="reference external" href="https://musicbrainz.org/doc/Artist">Artist Documentation on MusicBrainz</a>.</div></blockquote>
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">artist_type</span></code> table is defined in the MusicBrainz Server as:</p>
@@ -162,10 +220,10 @@ of an instance.</li>
         <span class="p">(</span><span class="n">CHARACTER</span><span class="p">,</span> <span class="n">CHARACTER</span><span class="p">),</span>
         <span class="p">(</span><span class="n">OTHER</span><span class="p">,</span><span class="n">OTHER</span><span class="p">),</span>
     <span class="p">)</span>
-    <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">choice</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
+    <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">NAME_CHOICES</span><span class="p">)</span>
     <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">child_order</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
