@@ -25,6 +25,8 @@ Models
    gender
    instrument
    instrument_type
+   language
+   work_type
 
 Indices and tables
 ==================

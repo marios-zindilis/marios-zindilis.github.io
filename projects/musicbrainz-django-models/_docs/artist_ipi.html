@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="artist_isni" href="artist_isni.html" />
-    <link rel="prev" title="area_type" href="area_type.html" /> 
+    <link rel="prev" title="artist_alias_type" href="artist_alias_type.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -43,7 +43,7 @@
           <a href="artist_isni.html" title="artist_isni"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="area_type.html" title="area_type"
+          <a href="artist_alias_type.html" title="artist_alias_type"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
@@ -112,7 +112,7 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
 <div class="code-block-caption"><span class="caption-text">This is called by a <cite>pre_save</cite> signal.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_artist_ipi</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">re</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">IPI_REGEX</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">ipi</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">IPI_REGEX</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">ipi</span><span class="p">)):</span>
         <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
         <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">RegexValidator</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
 </pre></div>
@@ -121,7 +121,7 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">The <cite>artist_ipi</cite> Model</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">artist_ipi</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; </span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
 
@@ -137,7 +137,7 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
 <span class="sd">        backend validation, a `pre_save` signal is used.</span>
 <span class="sd">    :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`</span>
 <span class="sd">        to validate that the value is a positive integer. In Django, this is</span>
-<span class="sd">        done with `models.PositiveIntegerField()`.    </span>
+<span class="sd">        done with `models.PositiveIntegerField()`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">IPI_REGEX</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^\d</span><span class="si">{11}</span><span class="s1">$&#39;</span>
@@ -148,17 +148,17 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
         <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">validators</span><span class="o">=</span><span class="p">[</span>
             <span class="n">MinLengthValidator</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span>
-            <span class="n">RegexValidator</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">IPI_REGEX</span><span class="p">)</span>            
+            <span class="n">RegexValidator</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">IPI_REGEX</span><span class="p">)</span>
         <span class="p">]</span>
     <span class="p">)</span>
     <span class="n">edits_pending</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ipi</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ipi</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ipi</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ipi</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;artist_ipi&#39;</span>
@@ -185,8 +185,8 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="area_type.html"
-                        title="previous chapter">area_type</a></p>
+  <p class="topless"><a href="artist_alias_type.html"
+                        title="previous chapter">artist_alias_type</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="artist_isni.html"
                         title="next chapter">artist_isni</a></p>
@@ -224,7 +224,7 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
           <a href="artist_isni.html" title="artist_isni"
              >next</a> |</li>
         <li class="right" >
-          <a href="area_type.html" title="area_type"
+          <a href="artist_alias_type.html" title="artist_alias_type"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>

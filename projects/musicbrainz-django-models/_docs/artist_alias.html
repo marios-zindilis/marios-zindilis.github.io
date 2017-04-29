@@ -82,24 +82,25 @@
           <span class="p">(</span><span class="n">end_date_year</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">OR</span>
            <span class="n">end_date_month</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">OR</span>
            <span class="n">end_date_day</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)</span> <span class="k">AND</span>
-          <span class="n">ended</span> <span class="o">=</span> <span class="k">TRUE</span> 
-        <span class="p">)</span> <span class="k">OR</span> <span class="p">(</span> 
+          <span class="n">ended</span> <span class="o">=</span> <span class="k">TRUE</span>
+        <span class="p">)</span> <span class="k">OR</span> <span class="p">(</span>
           <span class="c1">-- Otherwise, all end date fields must be null</span>
           <span class="p">(</span><span class="n">end_date_year</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span>
            <span class="n">end_date_month</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span>
            <span class="n">end_date_day</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span>
         <span class="p">)</span>
-      <span class="p">),</span>   
-    <span class="k">CONSTRAINT</span> <span class="n">primary_check</span> <span class="k">CHECK</span> <span class="p">((</span><span class="n">locale</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span> <span class="n">primary_for_locale</span> <span class="k">IS</span> <span class="k">FALSE</span><span class="p">)</span> <span class="k">OR</span> <span class="p">(</span><span class="n">locale</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)),</span>
+      <span class="p">),</span>
+    <span class="k">CONSTRAINT</span> <span class="n">primary_check</span> <span class="k">CHECK</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">locale</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span> <span class="n">primary_for_locale</span> <span class="k">IS</span> <span class="k">FALSE</span><span class="p">)</span> <span class="k">OR</span> <span class="p">(</span><span class="n">locale</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)),</span>
     <span class="k">CONSTRAINT</span> <span class="n">search_hints_are_empty</span>
       <span class="k">CHECK</span> <span class="p">(</span>
-        <span class="p">(</span><span class="k">type</span> <span class="o">&lt;&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="k">OR</span> <span class="p">(</span> 
+        <span class="p">(</span><span class="k">type</span> <span class="o">&lt;&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="k">OR</span> <span class="p">(</span>
           <span class="k">type</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">AND</span> <span class="n">sort_name</span> <span class="o">=</span> <span class="n">name</span> <span class="k">AND</span>
           <span class="n">begin_date_year</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span> <span class="n">begin_date_month</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span> <span class="n">begin_date_day</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span>
           <span class="n">end_date_year</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span> <span class="n">end_date_month</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span> <span class="n">end_date_day</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span>
-          <span class="n">primary_for_locale</span> <span class="k">IS</span> <span class="k">FALSE</span> <span class="k">AND</span> <span class="n">locale</span> <span class="k">IS</span> <span class="k">NULL</span> 
+          <span class="n">primary_for_locale</span> <span class="k">IS</span> <span class="k">FALSE</span> <span class="k">AND</span> <span class="n">locale</span> <span class="k">IS</span> <span class="k">NULL</span>
         <span class="p">)</span>
-      <span class="p">)</span>    
+      <span class="p">)</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -138,7 +139,7 @@ range of 1-12 or similar...</li>
 <li><strong>begin_date_day</strong> (<em>smallint</em>) &#8211; You&#8217;d think this would be validated as a
 range of 1-31 or similar...</li>
 <li><strong>end_date_day</strong> (<em>smallint</em>) &#8211; ditto</li>
-<li><strong>primary_for_locale</strong> (<em>boolean</em>) &#8211; The MusicBrainz Server uses a 
+<li><strong>primary_for_locale</strong> (<em>boolean</em>) &#8211; The MusicBrainz Server uses a
 PostgreSQL <cite>check</cite> to validate that this field is False, if the
 <cite>locale</cite> field is empty. In Django, this is implemented with a
 <cite>pre_save</cite> signal.</li>
@@ -158,7 +159,7 @@ implemented in Django with a <cite>pre_save</cite> signal.</li>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">The <cite>artist_alias</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">artist_alias</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; </span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
 
@@ -184,7 +185,7 @@ implemented in Django with a <cite>pre_save</cite> signal.</li>
 <span class="sd">    :param smallint begin_date_day: You&#39;d think this would be validated as a</span>
 <span class="sd">        range of 1-31 or similar...</span>
 <span class="sd">    :param smallint end_date_day: ditto</span>
-<span class="sd">    :param boolean primary_for_locale: The MusicBrainz Server uses a </span>
+<span class="sd">    :param boolean primary_for_locale: The MusicBrainz Server uses a</span>
 <span class="sd">        PostgreSQL `check` to validate that this field is False, if the</span>
 <span class="sd">        `locale` field is empty. In Django, this is implemented with a</span>
 <span class="sd">        `pre_save` signal.</span>

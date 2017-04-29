@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>musicbrainz_django_models.models.instrument_type &#8212; MusicBrainz Django Models 0 documentation</title>
+    <title>musicbrainz_django_models.models.work_type &#8212; MusicBrainz Django Models 0 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -47,23 +47,23 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>Source code for musicbrainz_django_models.models.instrument_type</h1><div class="highlight"><pre>
+  <h1>Source code for musicbrainz_django_models.models.work_type</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">.. module:: instrument_type</span>
+<span class="sd">.. module:: work_type</span>
 
-<span class="sd">The **Instrument Type** Model is referenced by the :code:`instrument` model.</span>
+<span class="sd">The **Work Type** model.</span>
 
-<span class="sd">PostgreSQL Definition</span>
-<span class="sd">---------------------</span>
+<span class="sd">PostreSQL Definition</span>
+<span class="sd">--------------------</span>
 
-<span class="sd">The :code:`instrument_type` table is defined in the MusicBrainz Server as:</span>
+<span class="sd">The :code:`work_type` table is defined in the MusicBrainz Server as:</span>
 
 <span class="sd">.. code-block:: sql</span>
 
-<span class="sd">    CREATE TABLE instrument_type ( -- replicate</span>
-<span class="sd">        id                  SERIAL, -- PK</span>
+<span class="sd">    CREATE TABLE work_type ( -- replicate</span>
+<span class="sd">        id                  SERIAL,</span>
 <span class="sd">        name                VARCHAR(255) NOT NULL,</span>
-<span class="sd">        parent              INTEGER, -- references instrument_type.id</span>
+<span class="sd">        parent              INTEGER, -- references work_type.id</span>
 <span class="sd">        child_order         INTEGER NOT NULL DEFAULT 0,</span>
 <span class="sd">        description         TEXT,</span>
 <span class="sd">        gid                 uuid NOT NULL</span>
@@ -75,31 +75,31 @@
 <span class="kn">import</span> <span class="nn">uuid</span>
 
 
-<div class="viewcode-block" id="instrument_type"><a class="viewcode-back" href="../../../_docs/instrument_type.html#musicbrainz_django_models.models.instrument_type">[docs]</a><span class="k">class</span> <span class="nc">instrument_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="work_type"><a class="viewcode-back" href="../../../_docs/work_type.html#musicbrainz_django_models.models.work_type">[docs]</a><span class="k">class</span> <span class="nc">work_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
 
-<span class="sd">    :param gid: this is interesting because it cannot be NULL but a default is</span>
-<span class="sd">        not defined in SQL. The default `uuid.uuid4` in Django will generate a</span>
-<span class="sd">        UUID during the creation of an instance.</span>
+<span class="sd">    :param gid: This cannot be NULL but a default is not defined in SQL. The</span>
+<span class="sd">        `default=uuid.uuid4` in Django will generate a UUID during the creation</span>
+<span class="sd">        of an instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">)</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">child_order</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-
     <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;instrument_type&#39;</span></div>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;work_type&#39;</span></div>
 </pre></div>
 
           </div>

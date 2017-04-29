@@ -61,14 +61,14 @@
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">instrument</span></code> table is defined in the MusicBrainz Server as:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">instrument</span> <span class="p">(</span> <span class="c1">-- replicate (verbose)</span>
-    <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span> <span class="c1">-- PK</span>
-    <span class="n">gid</span>                 <span class="n">uuid</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">name</span>                <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="k">type</span>                <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references instrument_type.id</span>
-    <span class="n">edits_pending</span>       <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="mi">0</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">edits_pending</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">),</span>
-    <span class="n">last_updated</span>        <span class="k">TIMESTAMP</span> <span class="k">WITH</span> <span class="n">TIME</span> <span class="k">ZONE</span> <span class="k">DEFAULT</span> <span class="n">NOW</span><span class="p">(),</span>
-    <span class="k">comment</span>             <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-    <span class="n">description</span>         <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">id</span>              <span class="nb">SERIAL</span><span class="p">,</span> <span class="c1">-- PK</span>
+    <span class="n">gid</span>             <span class="n">uuid</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">name</span>            <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">type</span>            <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references instrument_type.id</span>
+    <span class="n">edits_pending</span>   <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="mi">0</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">edits_pending</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">last_updated</span>    <span class="k">TIMESTAMP</span> <span class="k">WITH</span> <span class="n">TIME</span> <span class="k">ZONE</span> <span class="k">DEFAULT</span> <span class="n">NOW</span><span class="p">(),</span>
+    <span class="k">comment</span>         <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">description</span>     <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span>
 <span class="p">);</span>
 </pre></div>
 </div>

@@ -1,0 +1,17 @@
+language
+============
+
+.. automodule:: musicbrainz_django_models.models.language
+   :noindex:
+
+Model Documentation
+-------------------
+
+.. autoclass:: musicbrainz_django_models.models.language
+
+Model Source
+------------
+
+.. literalinclude:: ../musicbrainz_django_models/models/language.py
+   :pyobject: language
+   :caption: The `language` Model

@@ -83,13 +83,13 @@
 
 <span class="k">def</span> <span class="nf">validate_artist_ipi</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">re</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">IPI_REGEX</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">ipi</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">IPI_REGEX</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">ipi</span><span class="p">)):</span>
         <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
         <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">RegexValidator</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
-    
+
 
 <div class="viewcode-block" id="artist_ipi"><a class="viewcode-back" href="../../../_docs/artist_ipi.html#musicbrainz_django_models.models.artist_ipi">[docs]</a><span class="k">class</span> <span class="nc">artist_ipi</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; </span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
 
@@ -105,7 +105,7 @@
 <span class="sd">        backend validation, a `pre_save` signal is used.</span>
 <span class="sd">    :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`</span>
 <span class="sd">        to validate that the value is a positive integer. In Django, this is</span>
-<span class="sd">        done with `models.PositiveIntegerField()`.    </span>
+<span class="sd">        done with `models.PositiveIntegerField()`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">IPI_REGEX</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^\d</span><span class="si">{11}</span><span class="s1">$&#39;</span>
@@ -116,17 +116,17 @@
         <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">validators</span><span class="o">=</span><span class="p">[</span>
             <span class="n">MinLengthValidator</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span>
-            <span class="n">RegexValidator</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">IPI_REGEX</span><span class="p">)</span>            
+            <span class="n">RegexValidator</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">IPI_REGEX</span><span class="p">)</span>
         <span class="p">]</span>
     <span class="p">)</span>
     <span class="n">edits_pending</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ipi</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ipi</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ipi</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ipi</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;artist_ipi&#39;</span></div>

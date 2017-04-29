@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>instrument_type &#8212; MusicBrainz Django Models 0 documentation</title>
+    <title>work_type &#8212; MusicBrainz Django Models 0 documentation</title>
     
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -26,8 +26,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="language" href="language.html" />
-    <link rel="prev" title="instrument" href="instrument.html" /> 
+    <link rel="prev" title="language" href="language.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -41,9 +40,6 @@
              >modules</a> |</li>
         <li class="right" >
           <a href="language.html" title="language"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="instrument.html" title="instrument"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
@@ -54,16 +50,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-instrument_type">
-<span id="instrument-type"></span><h1>instrument_type<a class="headerlink" href="#module-instrument_type" title="Permalink to this headline">¶</a></h1>
-<p>The <strong>Instrument Type</strong> Model is referenced by the <code class="code docutils literal"><span class="pre">instrument</span></code> model.</p>
-<div class="section" id="postgresql-definition">
-<h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="code docutils literal"><span class="pre">instrument_type</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">instrument_type</span> <span class="p">(</span> <span class="c1">-- replicate</span>
-    <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span> <span class="c1">-- PK</span>
+  <div class="section" id="module-work_type">
+<span id="work-type"></span><h1>work_type<a class="headerlink" href="#module-work_type" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>Work Type</strong> model.</p>
+<div class="section" id="postresql-definition">
+<h2>PostreSQL Definition<a class="headerlink" href="#postresql-definition" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal"><span class="pre">work_type</span></code> table is defined in the MusicBrainz Server as:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">work_type</span> <span class="p">(</span> <span class="c1">-- replicate</span>
+    <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span>
     <span class="n">name</span>                <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">parent</span>              <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references instrument_type.id</span>
+    <span class="n">parent</span>              <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references work_type.id</span>
     <span class="n">child_order</span>         <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">description</span>         <span class="nb">TEXT</span><span class="p">,</span>
     <span class="n">gid</span>                 <span class="n">uuid</span> <span class="k">NOT</span> <span class="k">NULL</span>
@@ -74,17 +70,17 @@
 <div class="section" id="model-documentation">
 <h2>Model Documentation<a class="headerlink" href="#model-documentation" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="musicbrainz_django_models.models.instrument_type">
-<em class="property">class </em><code class="descclassname">musicbrainz_django_models.models.</code><code class="descname">instrument_type</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicbrainz_django_models/models/instrument_type.html#instrument_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#musicbrainz_django_models.models.instrument_type" title="Permalink to this definition">¶</a></dt>
+<dt id="musicbrainz_django_models.models.work_type">
+<em class="property">class </em><code class="descclassname">musicbrainz_django_models.models.</code><code class="descname">work_type</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicbrainz_django_models/models/work_type.html#work_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#musicbrainz_django_models.models.work_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Not all parameters are listed here, only those that present some interest
 in their Django implementation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>gid</strong> &#8211; this is interesting because it cannot be NULL but a default is
-not defined in SQL. The default <cite>uuid.uuid4</cite> in Django will generate a
-UUID during the creation of an instance.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>gid</strong> &#8211; This cannot be NULL but a default is not defined in SQL. The
+<cite>default=uuid.uuid4</cite> in Django will generate a UUID during the creation
+of an instance.</td>
 </tr>
 </tbody>
 </table>
@@ -94,32 +90,32 @@ UUID during the creation of an instance.</td>
 <div class="section" id="model-source">
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">The <cite>instrument_type</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">instrument_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="code-block-caption"><span class="caption-text">The <cite>work_type</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">work_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
 
-<span class="sd">    :param gid: this is interesting because it cannot be NULL but a default is</span>
-<span class="sd">        not defined in SQL. The default `uuid.uuid4` in Django will generate a</span>
-<span class="sd">        UUID during the creation of an instance.</span>
+<span class="sd">    :param gid: This cannot be NULL but a default is not defined in SQL. The</span>
+<span class="sd">        `default=uuid.uuid4` in Django will generate a UUID during the creation</span>
+<span class="sd">        of an instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">)</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">child_order</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-
     <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;instrument_type&#39;</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;work_type&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -134,8 +130,8 @@ UUID during the creation of an instance.</td>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">instrument_type</a><ul>
-<li><a class="reference internal" href="#postgresql-definition">PostgreSQL Definition</a></li>
+<li><a class="reference internal" href="#">work_type</a><ul>
+<li><a class="reference internal" href="#postresql-definition">PostreSQL Definition</a></li>
 <li><a class="reference internal" href="#model-documentation">Model Documentation</a></li>
 <li><a class="reference internal" href="#model-source">Model Source</a></li>
 </ul>
@@ -143,15 +139,12 @@ UUID during the creation of an instance.</td>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="instrument.html"
-                        title="previous chapter">instrument</a></p>
-  <h4>Next topic</h4>
   <p class="topless"><a href="language.html"
-                        title="next chapter">language</a></p>
+                        title="previous chapter">language</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/_docs/instrument_type.rst.txt"
+      <li><a href="../_sources/_docs/work_type.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -180,9 +173,6 @@ UUID during the creation of an instance.</td>
              >modules</a> |</li>
         <li class="right" >
           <a href="language.html" title="language"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="instrument.html" title="instrument"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>

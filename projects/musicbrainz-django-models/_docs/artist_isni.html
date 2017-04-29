@@ -127,7 +127,7 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">The <cite>artist_isni</cite> Model</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">artist_isni</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; </span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
 
@@ -143,7 +143,7 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
 <span class="sd">        backend validation, a `pre_save` signal is used.</span>
 <span class="sd">    :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`</span>
 <span class="sd">        to validate that the value is a positive integer. In Django, this is</span>
-<span class="sd">        done with `models.PositiveIntegerField()`.    </span>
+<span class="sd">        done with `models.PositiveIntegerField()`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">ISNI_REGEX</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^\d</span><span class="si">{15}</span><span class="s1">[\dX]$&#39;</span>
@@ -154,7 +154,7 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
         <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">validators</span><span class="o">=</span><span class="p">[</span>
             <span class="n">MinLengthValidator</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span>
-            <span class="n">RegexValidator</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">ISNI_REGEX</span><span class="p">)</span>            
+            <span class="n">RegexValidator</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="n">ISNI_REGEX</span><span class="p">)</span>
         <span class="p">]</span>
     <span class="p">)</span>
     <span class="n">edits_pending</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>

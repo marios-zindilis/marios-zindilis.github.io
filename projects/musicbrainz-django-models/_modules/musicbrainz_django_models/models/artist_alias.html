@@ -81,24 +81,25 @@
 <span class="sd">              (end_date_year IS NOT NULL OR</span>
 <span class="sd">               end_date_month IS NOT NULL OR</span>
 <span class="sd">               end_date_day IS NOT NULL) AND</span>
-<span class="sd">              ended = TRUE </span>
-<span class="sd">            ) OR ( </span>
+<span class="sd">              ended = TRUE</span>
+<span class="sd">            ) OR (</span>
 <span class="sd">              -- Otherwise, all end date fields must be null</span>
 <span class="sd">              (end_date_year IS NULL AND</span>
 <span class="sd">               end_date_month IS NULL AND</span>
 <span class="sd">               end_date_day IS NULL)</span>
 <span class="sd">            )</span>
-<span class="sd">          ),   </span>
-<span class="sd">        CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),</span>
+<span class="sd">          ),</span>
+<span class="sd">        CONSTRAINT primary_check CHECK (</span>
+<span class="sd">            (locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),</span>
 <span class="sd">        CONSTRAINT search_hints_are_empty</span>
 <span class="sd">          CHECK (</span>
-<span class="sd">            (type &lt;&gt; 3) OR ( </span>
+<span class="sd">            (type &lt;&gt; 3) OR (</span>
 <span class="sd">              type = 3 AND sort_name = name AND</span>
 <span class="sd">              begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND</span>
 <span class="sd">              end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND</span>
-<span class="sd">              primary_for_locale IS FALSE AND locale IS NULL </span>
+<span class="sd">              primary_for_locale IS FALSE AND locale IS NULL</span>
 <span class="sd">            )</span>
-<span class="sd">          )    </span>
+<span class="sd">          )</span>
 <span class="sd">    );</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -116,18 +117,18 @@
     <span class="kn">from</span> <span class="nn">.artist_alias_type</span> <span class="k">import</span> <span class="n">artist_alias_type</span>
     <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">artist_alias_type</span><span class="o">.</span><span class="n">SEARCH_HINT</span><span class="p">:</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">sort_name</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span>
-        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_year</span> <span class="o">=</span> <span class="kc">None</span> 
-        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_month</span> <span class="o">=</span> <span class="kc">None</span> 
-        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_day</span> <span class="o">=</span> <span class="kc">None</span> 
-        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_year</span> <span class="o">=</span> <span class="kc">None</span> 
-        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_month</span> <span class="o">=</span> <span class="kc">None</span> 
-        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_day</span> <span class="o">=</span> <span class="kc">None</span> 
+        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_year</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_month</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_day</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_year</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_month</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_day</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">primary_for_locale</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">instance</span><span class="o">.</span><span class="n">locale</span> <span class="o">=</span> <span class="kc">None</span>
 
 
 <div class="viewcode-block" id="artist_alias"><a class="viewcode-back" href="../../../_docs/artist_alias.html#musicbrainz_django_models.models.artist_alias">[docs]</a><span class="k">class</span> <span class="nc">artist_alias</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; </span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
 
@@ -153,7 +154,7 @@
 <span class="sd">    :param smallint begin_date_day: You&#39;d think this would be validated as a</span>
 <span class="sd">        range of 1-31 or similar...</span>
 <span class="sd">    :param smallint end_date_day: ditto</span>
-<span class="sd">    :param boolean primary_for_locale: The MusicBrainz Server uses a </span>
+<span class="sd">    :param boolean primary_for_locale: The MusicBrainz Server uses a</span>
 <span class="sd">        PostgreSQL `check` to validate that this field is False, if the</span>
 <span class="sd">        `locale` field is empty. In Django, this is implemented with a</span>
 <span class="sd">        `pre_save` signal.</span>
