@@ -13,7 +13,7 @@ Model Source
 ------------
 
 .. literalinclude:: ../musicbrainz_django_models/models/area.py
-   :pyobject: update_area_ended
+   :pyobject: pre_save_area
    :caption: This is called by a `pre_save` signal.
 
 .. literalinclude:: ../musicbrainz_django_models/models/area.py

@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>musicbrainz_django_models.models.release_packaging &#8212; MusicBrainz Django Models 0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../_docs/index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for musicbrainz_django_models.models.release_packaging</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: release_packaging</span>
+
+<span class="sd">The **Release Packaging** is one of:</span>
+
+<span class="sd">1. Jewel Case</span>
+<span class="sd">2. Slim Jewel Case</span>
+<span class="sd">3. Digipak</span>
+<span class="sd">4. Cardboard/Paper Sleeve</span>
+<span class="sd">5. Other</span>
+<span class="sd">6. Keep Case</span>
+<span class="sd">7. None</span>
+<span class="sd">8. Cassette Case</span>
+<span class="sd">9. Book</span>
+<span class="sd">10. Fatbox</span>
+<span class="sd">11. Snap Case</span>
+<span class="sd">12. Gatefold Cover</span>
+<span class="sd">13. Discbox Slider</span>
+<span class="sd">14. Super Jewel Box</span>
+<span class="sd">15. Digibook</span>
+
+<span class="sd">The Release Packaging is referenced by the Release model. Read more at the</span>
+<span class="sd">`Release Packaging documentation on MusicBrainz`_.</span>
+
+<span class="sd">.. _Release Packaging documentation on MusicBrainz: https://musicbrainz.org/doc/Release/Packaging</span>
+
+<span class="sd">PostreSQL Definition</span>
+<span class="sd">--------------------</span>
+
+<span class="sd">The :code:`release_status` table is defined in the MusicBrainz Server as:</span>
+
+<span class="sd">.. code-block:: sql</span>
+
+<span class="sd">    CREATE TABLE release_packaging ( -- replicate</span>
+<span class="sd">        id                  SERIAL,</span>
+<span class="sd">        name                VARCHAR(255) NOT NULL,</span>
+<span class="sd">        parent              INTEGER, -- references release_packaging.id</span>
+<span class="sd">        child_order         INTEGER NOT NULL DEFAULT 0,</span>
+<span class="sd">        description         TEXT,</span>
+<span class="sd">        gid                 uuid NOT NULL</span>
+<span class="sd">    );</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+
+
+<span class="k">def</span> <span class="nf">pre_save_release_packaging</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span>
+            <span class="s1">&#39;Release Packaging Name &quot;</span><span class="si">{}</span><span class="s1">&quot; is not one of: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">)))</span>
+
+
+<div class="viewcode-block" id="release_packaging"><a class="viewcode-back" href="../../../_docs/release_packaging.html#musicbrainz_django_models.models.release_packaging">[docs]</a><span class="k">class</span> <span class="nc">release_packaging</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Not all parameters are listed here, only those that present some interest</span>
+<span class="sd">    in their Django implementation.</span>
+
+<span class="sd">    :param str name: the name can be one of a range of values. This is not</span>
+<span class="sd">        restricted in the SQL, but it is documented in</span>
+<span class="sd">        `the Release documentation &lt;https://musicbrainz.org/doc/Release&gt;`_.</span>
+<span class="sd">        In Django, this is implemented as a `choices` parameter to the `name`</span>
+<span class="sd">        field, and a `pre_save` signal that performs the validation.</span>
+<span class="sd">    :param gid: This cannot be NULL but a default is not defined in SQL. The</span>
+<span class="sd">        `default=uuid.uuid4` in Django will generate a UUID during the creation</span>
+<span class="sd">        of an instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">JEWEL_CASE</span> <span class="o">=</span> <span class="s1">&#39;Jewel Case&#39;</span>
+    <span class="n">SLIM_JEWEL_CASE</span> <span class="o">=</span> <span class="s1">&#39;Slim Jewel Case&#39;</span>
+    <span class="n">DIGIPAK</span> <span class="o">=</span> <span class="s1">&#39;Digipak&#39;</span>
+    <span class="n">CARDBOARD_PAPER_SLEEVE</span> <span class="o">=</span> <span class="s1">&#39;Cardboard/Paper Sleeve&#39;</span>
+    <span class="n">OTHER</span> <span class="o">=</span> <span class="s1">&#39;Other&#39;</span>
+    <span class="n">KEEP_CASE</span> <span class="o">=</span> <span class="s1">&#39;Keep Case&#39;</span>
+    <span class="n">NONE</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+    <span class="n">CASSETTE_CASE</span> <span class="o">=</span> <span class="s1">&#39;Cassette Case&#39;</span>
+    <span class="n">BOOK</span> <span class="o">=</span> <span class="s1">&#39;Book&#39;</span>
+    <span class="n">FATBOX</span> <span class="o">=</span> <span class="s1">&#39;Fatbox&#39;</span>
+    <span class="n">SNAP_CASE</span> <span class="o">=</span> <span class="s1">&#39;Snap Case&#39;</span>
+    <span class="n">GATEFOLD_COVER</span> <span class="o">=</span> <span class="s1">&#39;Gatefold Cover&#39;</span>
+    <span class="n">DISCBOX_SLIDER</span> <span class="o">=</span> <span class="s1">&#39;Discbox Slider&#39;</span>
+    <span class="n">SUPER_JEWEL_BOX</span> <span class="o">=</span> <span class="s1">&#39;Super Jewel Box&#39;</span>
+    <span class="n">DIGIBOOK</span> <span class="o">=</span> <span class="s1">&#39;Digibook&#39;</span>
+    <span class="n">NAME_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">JEWEL_CASE</span><span class="p">,</span> <span class="n">JEWEL_CASE</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">SLIM_JEWEL_CASE</span><span class="p">,</span> <span class="n">SLIM_JEWEL_CASE</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">DIGIPAK</span><span class="p">,</span> <span class="n">DIGIPAK</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">CARDBOARD_PAPER_SLEEVE</span><span class="p">,</span> <span class="n">CARDBOARD_PAPER_SLEEVE</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">OTHER</span><span class="p">,</span> <span class="n">OTHER</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">KEEP_CASE</span><span class="p">,</span> <span class="n">KEEP_CASE</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">NONE</span><span class="p">,</span> <span class="n">NONE</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">CASSETTE_CASE</span><span class="p">,</span> <span class="n">CASSETTE_CASE</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">BOOK</span><span class="p">,</span> <span class="n">BOOK</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">FATBOX</span><span class="p">,</span> <span class="n">FATBOX</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">SNAP_CASE</span><span class="p">,</span> <span class="n">SNAP_CASE</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">GATEFOLD_COVER</span><span class="p">,</span> <span class="n">GATEFOLD_COVER</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">DISCBOX_SLIDER</span><span class="p">,</span> <span class="n">DISCBOX_SLIDER</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">SUPER_JEWEL_BOX</span><span class="p">,</span> <span class="n">SUPER_JEWEL_BOX</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">DIGIBOOK</span><span class="p">,</span> <span class="n">DIGIBOOK</span><span class="p">),)</span>
+    <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">NAME_CHOICES</span><span class="p">)</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">child_order</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;release_packaging&#39;</span></div>
+
+
+<span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">pre_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">pre_save_release_packaging</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">release_packaging</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../_docs/index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Marios Zindilis.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+    </div>
+  </body>
+</html>

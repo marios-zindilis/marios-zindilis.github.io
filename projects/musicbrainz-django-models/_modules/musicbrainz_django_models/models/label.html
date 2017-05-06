@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>musicbrainz_django_models.models.area &#8212; MusicBrainz Django Models 0 documentation</title>
+    <title>musicbrainz_django_models.models.label &#8212; MusicBrainz Django Models 0 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -47,43 +47,41 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>Source code for musicbrainz_django_models.models.area</h1><div class="highlight"><pre>
+  <h1>Source code for musicbrainz_django_models.models.label</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">.. module:: area</span>
+<span class="sd">.. module:: label</span>
 
-<span class="sd">An **Area** is a country, region, city settlement, or the like. Areas were</span>
-<span class="sd">imported in the MusicBrainz database from Wikidata once, and are not kept</span>
-<span class="sd">automatically in sync.</span>
+<span class="sd">The **Label** model.</span>
 
-<span class="sd">Areas that can be used for filling in the Release country field of releases</span>
-<span class="sd">are listed, by ID, in the :code:`country_area` table.</span>
+<span class="sd">    See the `Label Documentation on MusicBrainz`_.</span>
 
-<span class="sd">    See the `Area Documentation on MusicBrainz`_.</span>
-
-<span class="sd">.. _Area Documentation on MusicBrainz: https://musicbrainz.org/doc/Area</span>
+<span class="sd">.. _Label Documentation on MusicBrainz: https://musicbrainz.org/doc/Label</span>
 
 <span class="sd">PostgreSQL Definition</span>
 <span class="sd">---------------------</span>
 
-<span class="sd">The :code:`area` table is defined in the MusicBrainz Server as:</span>
+<span class="sd">The :code:`label` table is defined in the MusicBrainz Server as:</span>
 
 <span class="sd">.. code-block:: sql</span>
 
-<span class="sd">    CREATE TABLE area ( -- replicate (verbose)</span>
-<span class="sd">        id                  SERIAL, -- PK</span>
-<span class="sd">        gid                 uuid NOT NULL,</span>
+<span class="sd">    CREATE TABLE label ( -- replicate (verbose)</span>
+<span class="sd">        id                  SERIAL,</span>
+<span class="sd">        gid                 UUID NOT NULL,</span>
 <span class="sd">        name                VARCHAR NOT NULL,</span>
-<span class="sd">        type                INTEGER, -- references area_type.id</span>
-<span class="sd">        edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending &gt;=0),</span>
-<span class="sd">        last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),</span>
 <span class="sd">        begin_date_year     SMALLINT,</span>
 <span class="sd">        begin_date_month    SMALLINT,</span>
 <span class="sd">        begin_date_day      SMALLINT,</span>
 <span class="sd">        end_date_year       SMALLINT,</span>
 <span class="sd">        end_date_month      SMALLINT,</span>
 <span class="sd">        end_date_day        SMALLINT,</span>
+<span class="sd">        label_code          INTEGER CHECK (label_code &gt; 0 AND label_code &lt; 100000),</span>
+<span class="sd">        type                INTEGER, -- references label_type.id</span>
+<span class="sd">        area                INTEGER, -- references area.id</span>
+<span class="sd">        comment             VARCHAR(255) NOT NULL DEFAULT &#39;&#39;,</span>
+<span class="sd">        edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending &gt;= 0),</span>
+<span class="sd">        last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),</span>
 <span class="sd">        ended               BOOLEAN NOT NULL DEFAULT FALSE</span>
-<span class="sd">          CHECK (</span>
+<span class="sd">          CONSTRAINT label_ended_check CHECK (</span>
 <span class="sd">            (</span>
 <span class="sd">              -- If any end date fields are not null, then ended must be true</span>
 <span class="sd">              (end_date_year IS NOT NULL OR</span>
@@ -96,21 +94,31 @@
 <span class="sd">               end_date_month IS NULL AND</span>
 <span class="sd">               end_date_day IS NULL)</span>
 <span class="sd">            )</span>
-<span class="sd">          ),</span>
-<span class="sd">        comment             VARCHAR(255) NOT NULL DEFAULT &#39;&#39;</span>
+<span class="sd">          )</span>
 <span class="sd">    );</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.core.validators</span> <span class="k">import</span> <span class="n">MinValueValidator</span>
+<span class="kn">from</span> <span class="nn">django.core.validators</span> <span class="k">import</span> <span class="n">MaxValueValidator</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
 <span class="kn">import</span> <span class="nn">uuid</span>
 
 
-<span class="k">def</span> <span class="nf">pre_save_area</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">pre_save_label</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">instance</span><span class="o">.</span><span class="n">ended</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">check_ended</span><span class="p">()</span>
 
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">label_code</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">MIN</span> <span class="o">=</span> <span class="n">sender</span><span class="o">.</span><span class="n">LABEL_CODE_MIN</span>
+        <span class="n">MAX</span> <span class="o">=</span> <span class="n">sender</span><span class="o">.</span><span class="n">LABEL_CODE_MAX</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">MIN</span> <span class="o">&lt;=</span> <span class="n">instance</span><span class="o">.</span><span class="n">label_code</span> <span class="o">&lt;=</span> <span class="n">MAX</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span>
+                <span class="s1">&#39;The label_code value is outside the range </span><span class="si">{}</span><span class="s1"> to </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">MIN</span><span class="p">,</span> <span class="n">MAX</span><span class="p">))</span>
 
-<div class="viewcode-block" id="area"><a class="viewcode-back" href="../../../_docs/area.html#musicbrainz_django_models.models.area">[docs]</a><span class="k">class</span> <span class="nc">area</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="label"><a class="viewcode-back" href="../../../_docs/label.html#musicbrainz_django_models.models.label">[docs]</a><span class="k">class</span> <span class="nc">label</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -123,32 +131,46 @@
 <span class="sd">    :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`</span>
 <span class="sd">        to validate that the value is a positive integer. In Django, this is</span>
 <span class="sd">        done with `models.PositiveIntegerField()`.</span>
-<span class="sd">    :param type: references :class:`.area_type`</span>
 <span class="sd">    :param smallint begin_date_month: You&#39;d think this would be validated as a</span>
 <span class="sd">        range of 1-12 or similar...</span>
 <span class="sd">    :param smallint end_date_month: ditto</span>
 <span class="sd">    :param smallint begin_date_day: You&#39;d think this would be validated as a</span>
 <span class="sd">        range of 1-31 or similar...</span>
 <span class="sd">    :param smallint end_date_day: ditto</span>
+<span class="sd">    :param int label_code: The MusicBrainz Server uses a PostgreSQL `check` to</span>
+<span class="sd">        restrict the values of this fields to 0 &lt; label_code &lt; 100000. In</span>
+<span class="sd">        Django, this is implemented with validators and with a `pre_save`</span>
+<span class="sd">        signal.</span>
+<span class="sd">    :param type: references :class:`.label_type`</span>
+<span class="sd">    :param area: references :class:`.area`</span>
 <span class="sd">    :param boolean ended: the MusicBrainz Server uses a PostgreSQL `check` to</span>
 <span class="sd">        set this to `True` if any of the `end_*` fields has any value. This is</span>
 <span class="sd">        implemented in Django with a `pre_save` signal.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="n">LABEL_CODE_MIN</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">LABEL_CODE_MAX</span> <span class="o">=</span> <span class="mi">99999</span>
+
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-    <span class="nb">type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;area_type&#39;</span><span class="p">)</span>
-    <span class="n">edits_pending</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">last_updated</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">begin_date_year</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">begin_date_month</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">begin_date_day</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">end_date_year</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">end_date_month</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">end_date_day</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">ended</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">label_code</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span>
+        <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">validators</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">MinValueValidator</span><span class="p">(</span><span class="n">LABEL_CODE_MIN</span><span class="p">),</span>
+            <span class="n">MaxValueValidator</span><span class="p">(</span><span class="n">LABEL_CODE_MAX</span><span class="p">)])</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;label_type&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">comment</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">edits_pending</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">last_updated</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ended</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">check_ended</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -166,10 +188,10 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;area&#39;</span></div>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;label&#39;</span></div>
 
 
-<span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">pre_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pre_save_area</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">area</span><span class="p">)</span>
+<span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">pre_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pre_save_label</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
 </pre></div>
 
           </div>

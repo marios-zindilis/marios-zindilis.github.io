@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>label_type &#8212; MusicBrainz Django Models 0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="language" href="language.html" />
+    <link rel="prev" title="label" href="label.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="language.html" title="language"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="label.html" title="label"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-label_type">
+<span id="label-type"></span><h1>label_type<a class="headerlink" href="#module-label_type" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>Label Type</strong> model. The value can be one of:</p>
+<ol class="arabic simple">
+<li>Distributor</li>
+<li>Holding</li>
+<li>Production</li>
+<li>Original Production</li>
+<li>Bootleg Production</li>
+<li>Reissue Production</li>
+<li>Publisher</li>
+<li>Rights</li>
+<li>Imprint</li>
+</ol>
+<p>Here&#8217;s a complete table, from the MusicBrainz Server database dump of 2017-04-19:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="22%" />
+<col width="8%" />
+<col width="13%" />
+<col width="13%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">id</th>
+<th class="head">name</th>
+<th class="head">parent</th>
+<th class="head">child_order</th>
+<th class="head">description</th>
+<th class="head">uuid</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>Distributor</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>53ab8dcc-9946-3b62-966e-7634d78e5034</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Holding</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>43f31a62-97e4-36f6-9752-453c131b71ed</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>Production</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>a2426aab-2dd4-339c-b47d-b4923a241678</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>Original Production</td>
+<td>3</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>7aaa37fe-2def-3476-b359-80245850062d</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>Bootleg Production</td>
+<td>3</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>fdac9b96-359b-3488-9322-ad99c2473636</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>Reissue Production</td>
+<td>3</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>88ee6ae7-f413-3490-a1d2-54f6a9f0838c</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>Publisher</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>e9ad53b0-e3d0-3885-a10b-8193d501338c</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>Rights Society</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>78ab2758-7809-372c-9b99-74b7ab87f390</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>Imprint</td>
+<td>&nbsp;</td>
+<td>0</td>
+<td>&nbsp;</td>
+<td>b6285b2a-3514-3d43-80df-fcf528824ded</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="postresql-definition">
+<h2>PostreSQL Definition<a class="headerlink" href="#postresql-definition" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal"><span class="pre">label_type</span></code> table is defined in the MusicBrainz Server as:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">label_type</span> <span class="p">(</span> <span class="c1">-- replicate</span>
+    <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span> <span class="c1">-- PK</span>
+    <span class="n">name</span>                <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">parent</span>              <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references label_type.id</span>
+    <span class="n">child_order</span>         <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">description</span>         <span class="nb">TEXT</span><span class="p">,</span>
+    <span class="n">gid</span>                 <span class="n">uuid</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-documentation">
+<h2>Model Documentation<a class="headerlink" href="#model-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="musicbrainz_django_models.models.label_type">
+<em class="property">class </em><code class="descclassname">musicbrainz_django_models.models.</code><code class="descname">label_type</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicbrainz_django_models/models/label_type.html#label_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#musicbrainz_django_models.models.label_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not all parameters are listed here, only those that present some interest
+in their Django implementation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) &#8211; the name can be one of a range of values. This is not
+restricted in the SQL, but it is documented in
+<a class="reference external" href="https://musicbrainz.org/doc/Label/Type">the Label Type documentation</a>.
+In Django, this is implemented as a <cite>choices</cite> parameter to the <cite>name</cite>
+field, and a <cite>pre_save</cite> signal that performs the validation.</li>
+<li><strong>gid</strong> &#8211; This cannot be NULL but a default is not defined in SQL. The
+<cite>default=uuid.uuid4</cite> in Django will generate a UUID during the creation
+of an instance.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="model-source">
+<h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">The <cite>label_type</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">label_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Not all parameters are listed here, only those that present some interest</span>
+<span class="sd">    in their Django implementation.</span>
+
+<span class="sd">    :param str name: the name can be one of a range of values. This is not</span>
+<span class="sd">        restricted in the SQL, but it is documented in</span>
+<span class="sd">        `the Label Type documentation &lt;https://musicbrainz.org/doc/Label/Type&gt;`_.</span>
+<span class="sd">        In Django, this is implemented as a `choices` parameter to the `name`</span>
+<span class="sd">        field, and a `pre_save` signal that performs the validation.</span>
+<span class="sd">    :param gid: This cannot be NULL but a default is not defined in SQL. The</span>
+<span class="sd">        `default=uuid.uuid4` in Django will generate a UUID during the creation</span>
+<span class="sd">        of an instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DISTRIBUTOR</span> <span class="o">=</span> <span class="s1">&#39;Distributor&#39;</span>
+    <span class="n">HOLDING</span> <span class="o">=</span> <span class="s1">&#39;Holding&#39;</span>
+    <span class="n">PRODUCTION</span> <span class="o">=</span> <span class="s1">&#39;Production&#39;</span>
+    <span class="n">ORIGINAL_PRODUCTION</span> <span class="o">=</span> <span class="s1">&#39;Original Production&#39;</span>
+    <span class="n">BOOTLEG_PRODUCTION</span> <span class="o">=</span> <span class="s1">&#39;Bootleg Production&#39;</span>
+    <span class="n">REISSUE_PRODUCTION</span> <span class="o">=</span> <span class="s1">&#39;Reissue Production&#39;</span>
+    <span class="n">PUBLISHER</span> <span class="o">=</span> <span class="s1">&#39;Publisher&#39;</span>
+    <span class="n">RIGHTS_SOCIETY</span> <span class="o">=</span> <span class="s1">&#39;Rights Society&#39;</span>
+    <span class="n">IMPRINT</span> <span class="o">=</span> <span class="s1">&#39;Imprint&#39;</span>
+    <span class="n">NAME_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">DISTRIBUTOR</span><span class="p">,</span> <span class="n">DISTRIBUTOR</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">HOLDING</span><span class="p">,</span> <span class="n">HOLDING</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">PRODUCTION</span><span class="p">,</span> <span class="n">PRODUCTION</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">ORIGINAL_PRODUCTION</span><span class="p">,</span> <span class="n">ORIGINAL_PRODUCTION</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">BOOTLEG_PRODUCTION</span><span class="p">,</span> <span class="n">BOOTLEG_PRODUCTION</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">REISSUE_PRODUCTION</span><span class="p">,</span> <span class="n">REISSUE_PRODUCTION</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">PUBLISHER</span><span class="p">,</span> <span class="n">PUBLISHER</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">RIGHTS_SOCIETY</span><span class="p">,</span> <span class="n">RIGHTS_SOCIETY</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">IMPRINT</span><span class="p">,</span> <span class="n">IMPRINT</span><span class="p">),)</span>
+    <span class="n">NAME_CHOICE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">NAME_CHOICES</span><span class="p">]</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">NAME_CHOICES</span><span class="p">)</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">child_order</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;label_type&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">label_type</a><ul>
+<li><a class="reference internal" href="#postresql-definition">PostreSQL Definition</a></li>
+<li><a class="reference internal" href="#model-documentation">Model Documentation</a></li>
+<li><a class="reference internal" href="#model-source">Model Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="label.html"
+                        title="previous chapter">label</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="language.html"
+                        title="next chapter">language</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_docs/label_type.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="language.html" title="language"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="label.html" title="label"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Marios Zindilis.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+    </div>
+  </body>
+</html>

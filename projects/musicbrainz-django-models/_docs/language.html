@@ -26,8 +26,8 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="work_type" href="work_type.html" />
-    <link rel="prev" title="instrument_type" href="instrument_type.html" /> 
+    <link rel="next" title="recording" href="recording.html" />
+    <link rel="prev" title="label_type" href="label_type.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -40,10 +40,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="work_type.html" title="work_type"
+          <a href="recording.html" title="recording"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="instrument_type.html" title="instrument_type"
+          <a href="label_type.html" title="label_type"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
@@ -99,7 +99,17 @@ Django, this is validated with a <cite>pre_save</cite> signal.</td>
 <div class="section" id="model-source">
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">The <cite>language</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">This is called by a <cite>pre_save</cite> signal.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pre_save_language</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwagrs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">instance</span><span class="o">.</span><span class="n">iso_code_2t</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">instance</span><span class="o">.</span><span class="n">iso_code_3</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span>
+            <span class="s1">&#39;Either iso_code_2t or iso_code_3 must be defined&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">The <cite>language</cite> Model</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">language</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
@@ -152,11 +162,11 @@ Django, this is validated with a <cite>pre_save</cite> signal.</td>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="instrument_type.html"
-                        title="previous chapter">instrument_type</a></p>
+  <p class="topless"><a href="label_type.html"
+                        title="previous chapter">label_type</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="work_type.html"
-                        title="next chapter">work_type</a></p>
+  <p class="topless"><a href="recording.html"
+                        title="next chapter">recording</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -188,10 +198,10 @@ Django, this is validated with a <cite>pre_save</cite> signal.</td>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="work_type.html" title="work_type"
+          <a href="recording.html" title="recording"
              >next</a> |</li>
         <li class="right" >
-          <a href="instrument_type.html" title="instrument_type"
+          <a href="label_type.html" title="label_type"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>

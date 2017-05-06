@@ -18,6 +18,7 @@ Models
    area_type
    artist_alias
    artist_alias_type
+   artist_credit
    artist_ipi
    artist_isni
    artist
@@ -25,7 +26,18 @@ Models
    gender
    instrument
    instrument_type
+   label
+   label_type
    language
+   recording
+   release_group_primary_type
+   release_group
+   release_group_secondary_type
+   release_packaging
+   release
+   release_status
+   script
+   work
    work_type
 
 Indices and tables
