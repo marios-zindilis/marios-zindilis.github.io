@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="artist_isni" href="artist_isni.html" />
-    <link rel="prev" title="artist_alias_type" href="artist_alias_type.html" /> 
+    <link rel="prev" title="artist_credit" href="artist_credit.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -43,7 +43,7 @@
           <a href="artist_isni.html" title="artist_isni"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="artist_alias_type.html" title="artist_alias_type"
+          <a href="artist_credit.html" title="artist_credit"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
@@ -154,14 +154,12 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
     <span class="n">edits_pending</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ipi</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ipi</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;artist_ipi&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;Artist IPIs&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -185,8 +183,8 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="artist_alias_type.html"
-                        title="previous chapter">artist_alias_type</a></p>
+  <p class="topless"><a href="artist_credit.html"
+                        title="previous chapter">artist_credit</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="artist_isni.html"
                         title="next chapter">artist_isni</a></p>
@@ -224,7 +222,7 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
           <a href="artist_isni.html" title="artist_isni"
              >next</a> |</li>
         <li class="right" >
-          <a href="artist_alias_type.html" title="artist_alias_type"
+          <a href="artist_credit.html" title="artist_credit"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>

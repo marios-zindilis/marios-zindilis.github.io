@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="artist_ipi" href="artist_ipi.html" />
+    <link rel="next" title="artist_credit" href="artist_credit.html" />
     <link rel="prev" title="artist_alias" href="artist_alias.html" /> 
   </head>
   <body role="document">
@@ -40,7 +40,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="artist_ipi.html" title="artist_ipi"
+          <a href="artist_credit.html" title="artist_credit"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="artist_alias.html" title="artist_alias"
@@ -192,14 +192,12 @@ of an instance.</li>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;artist_alias_type&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;Artist Alias Types&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -226,8 +224,8 @@ of an instance.</li>
   <p class="topless"><a href="artist_alias.html"
                         title="previous chapter">artist_alias</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="artist_ipi.html"
-                        title="next chapter">artist_ipi</a></p>
+  <p class="topless"><a href="artist_credit.html"
+                        title="next chapter">artist_credit</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -259,7 +257,7 @@ of an instance.</li>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="artist_ipi.html" title="artist_ipi"
+          <a href="artist_credit.html" title="artist_credit"
              >next</a> |</li>
         <li class="right" >
           <a href="artist_alias.html" title="artist_alias"

@@ -13,7 +13,7 @@ Model Source
 ------------
 
 .. literalinclude:: ../musicbrainz_django_models/models/area_type.py
-   :pyobject: validate_area_type_name_choice
+   :pyobject: pre_save_area_type
    :caption: This is called by a `pre_save` signal.
 
 .. literalinclude:: ../musicbrainz_django_models/models/area_type.py

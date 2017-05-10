@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>alternative_medium_track &#8212; MusicBrainz Django Models 0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="alternative_release" href="alternative_release.html" />
+    <link rel="prev" title="alternative_medium" href="alternative_medium.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="alternative_release.html" title="alternative_release"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="alternative_medium.html" title="alternative_medium"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-alternative_medium_track">
+<span id="alternative-medium-track"></span><h1>alternative_medium_track<a class="headerlink" href="#module-alternative_medium_track" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>Alternative Medium Track</strong> model.</p>
+<div class="section" id="postgresql-definition">
+<h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal"><span class="pre">alternative_medium_track</span></code> table is defined in the MusicBrainz
+server as:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">alternative_medium_track</span> <span class="p">(</span> <span class="c1">-- replicate</span>
+    <span class="n">alternative_medium</span>      <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="c1">-- PK, references alternative_medium.id</span>
+    <span class="n">track</span>                   <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="c1">-- PK, references track.id</span>
+    <span class="n">alternative_track</span>       <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="c1">-- references alternative_track.id</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-documentation">
+<h2>Model Documentation<a class="headerlink" href="#model-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="musicbrainz_django_models.models.alternative_medium_track">
+<em class="property">class </em><code class="descclassname">musicbrainz_django_models.models.</code><code class="descname">alternative_medium_track</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicbrainz_django_models/models/alternative_medium_track.html#alternative_medium_track"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#musicbrainz_django_models.models.alternative_medium_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>In the PostgreSQL definition, the <code class="code docutils literal"><span class="pre">alternative_medium_track</span></code> table
+only comprises references to other models, and 2 of them are primary keys.
+Practically, what that means is that both fields need to be unique.</p>
+<p>In Django, there can only be 1 primary key per model. Furthermore, when a
+foreign key is also a primary key, it is recommended to implement it as a
+<cite>OneToOneField</cite>. Here&#8217;s the SQLite code generated by this implementation:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="ss">&quot;alternative_medium_track&quot;</span> <span class="p">(</span>
+    <span class="ss">&quot;alternative_medium_id&quot;</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="k">REFERENCES</span> <span class="ss">&quot;alternative_medium&quot;</span> <span class="p">(</span><span class="ss">&quot;id&quot;</span><span class="p">),</span>
+    <span class="ss">&quot;alternative_track_id&quot;</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">REFERENCES</span> <span class="ss">&quot;alternative_track&quot;</span> <span class="p">(</span><span class="ss">&quot;id&quot;</span><span class="p">),</span>
+    <span class="ss">&quot;track_id&quot;</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">UNIQUE</span> <span class="k">REFERENCES</span> <span class="ss">&quot;track&quot;</span> <span class="p">(</span><span class="ss">&quot;id&quot;</span><span class="p">));</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="ss">&quot;alternative_medium_track_f1f38786&quot;</span> <span class="k">ON</span> <span class="ss">&quot;alternative_medium_track&quot;</span> <span class="p">(</span><span class="ss">&quot;alternative_track_id&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Not all parameters are listed here, only those that present some interest
+in their Django implementation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>alternative_medium</strong> &#8211; references <a class="reference internal" href="alternative_medium.html#musicbrainz_django_models.models.alternative_medium" title="musicbrainz_django_models.models.alternative_medium"><code class="xref py py-class docutils literal"><span class="pre">alternative_medium</span></code></a></li>
+<li><strong>track</strong> &#8211; references <a class="reference internal" href="track.html#musicbrainz_django_models.models.track" title="musicbrainz_django_models.models.track"><code class="xref py py-class docutils literal"><span class="pre">track</span></code></a></li>
+<li><strong>alternative_track</strong> &#8211; references <a class="reference internal" href="alternative_track.html#musicbrainz_django_models.models.alternative_track" title="musicbrainz_django_models.models.alternative_track"><code class="xref py py-class docutils literal"><span class="pre">alternative_track</span></code></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="model-source">
+<h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">The <cite>alternative_medium_track</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">alternative_medium_track</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    In the PostgreSQL definition, the :code:`alternative_medium_track` table</span>
+<span class="sd">    only comprises references to other models, and 2 of them are primary keys.</span>
+<span class="sd">    Practically, what that means is that both fields need to be unique.</span>
+
+<span class="sd">    In Django, there can only be 1 primary key per model. Furthermore, when a</span>
+<span class="sd">    foreign key is also a primary key, it is recommended to implement it as a</span>
+<span class="sd">    `OneToOneField`. Here&#39;s the SQLite code generated by this implementation:</span>
+
+<span class="sd">    .. code-block:: sql</span>
+
+<span class="sd">        CREATE TABLE &quot;alternative_medium_track&quot; (</span>
+<span class="sd">            &quot;alternative_medium_id&quot; integer NOT NULL PRIMARY KEY REFERENCES &quot;alternative_medium&quot; (&quot;id&quot;),</span>
+<span class="sd">            &quot;alternative_track_id&quot; integer NOT NULL REFERENCES &quot;alternative_track&quot; (&quot;id&quot;),</span>
+<span class="sd">            &quot;track_id&quot; integer NOT NULL UNIQUE REFERENCES &quot;track&quot; (&quot;id&quot;));</span>
+<span class="sd">        CREATE INDEX &quot;alternative_medium_track_f1f38786&quot; ON &quot;alternative_medium_track&quot; (&quot;alternative_track_id&quot;);</span>
+
+<span class="sd">    Not all parameters are listed here, only those that present some interest</span>
+<span class="sd">    in their Django implementation.</span>
+
+<span class="sd">    :param alternative_medium: references :class:`.alternative_medium`</span>
+<span class="sd">    :param track: references :class:`.track`</span>
+<span class="sd">    :param alternative_track: references :class:`.alternative_track`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">alternative_medium</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="s1">&#39;alternative_medium&#39;</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">track</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="s1">&#39;track&#39;</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">alternative_track</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;alternative_track&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alternative_medium</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">track</span><span class="p">))</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;alternative_medium_track&#39;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;Alterative Medium Tracks&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">alternative_medium_track</a><ul>
+<li><a class="reference internal" href="#postgresql-definition">PostgreSQL Definition</a></li>
+<li><a class="reference internal" href="#model-documentation">Model Documentation</a></li>
+<li><a class="reference internal" href="#model-source">Model Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="alternative_medium.html"
+                        title="previous chapter">alternative_medium</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="alternative_release.html"
+                        title="next chapter">alternative_release</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_docs/alternative_medium_track.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="alternative_release.html" title="alternative_release"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="alternative_medium.html" title="alternative_medium"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Marios Zindilis.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+    </div>
+  </body>
+</html>
