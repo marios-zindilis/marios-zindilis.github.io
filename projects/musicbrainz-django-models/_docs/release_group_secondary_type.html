@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -29,7 +29,7 @@
     <link rel="next" title="release_packaging" href="release_packaging.html" />
     <link rel="prev" title="release_group" href="release_group.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -58,7 +58,7 @@
 <span id="release-group-secondary-type"></span><h1>release_group_secondary_type<a class="headerlink" href="#module-release_group_secondary_type" title="Permalink to this headline">¶</a></h1>
 <p>The <strong>Release Group Secondary Type</strong> model. Release Groups have Primary and
 Secondary types. Read more at the <a class="reference external" href="https://musicbrainz.org/doc/Release_Group/Type">Release Group Type on MusicBrainz</a>.</p>
-<p>Here&#8217;s a complete table of values, based on the MusicBrainz Server database
+<p>Here’s a complete table of values, based on the MusicBrainz Server database
 dump from 2017-04-19:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -81,72 +81,72 @@ dump from 2017-04-19:</p>
 <tbody valign="top">
 <tr class="row-even"><td>1</td>
 <td>Compilation</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>dd2a21e1-0c00-3729-a7a0-de60b84eb5d1</td>
 </tr>
 <tr class="row-odd"><td>2</td>
 <td>Soundtrack</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>22a628ad-c082-3c4f-b1b6-d41665107b88</td>
 </tr>
 <tr class="row-even"><td>3</td>
 <td>Spokenword</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>66b8a13e-43ff-3ac0-ac6c-73659d3817c6</td>
 </tr>
 <tr class="row-odd"><td>4</td>
 <td>Interview</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>12af3f5e-ce2a-3941-8b93-d482884031e5</td>
 </tr>
 <tr class="row-even"><td>5</td>
 <td>Audiobook</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>499a387e-6195-333e-91c0-9592bfec535e</td>
 </tr>
 <tr class="row-odd"><td>6</td>
 <td>Live</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>6fd474e2-6b58-3102-9d17-d6f7eb7da0a0</td>
 </tr>
 <tr class="row-even"><td>7</td>
 <td>Remix</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0c60f497-ff81-3818-befd-abfc84a4858b</td>
 </tr>
 <tr class="row-odd"><td>8</td>
 <td>DJ-mix</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0d47f47a-3fe5-3d69-ac9d-d566c23968bf</td>
 </tr>
 <tr class="row-even"><td>9</td>
 <td>Mixtape/Street</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>15c1b1f5-d893-3375-a1db-e180c5ae15ed</td>
 </tr>
 <tr class="row-odd"><td>10</td>
 <td>Demo</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>81598169-0d6c-3bce-b4be-866fa658eda3</td>
 </tr>
 </tbody>
@@ -155,7 +155,7 @@ dump from 2017-04-19:</p>
 <h2>PostreSQL Definition<a class="headerlink" href="#postresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">release_group_secondary_type</span></code> table is defined in the MusicBrainz
 Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">release_group_secondary_type</span> <span class="p">(</span> <span class="c1">-- replicate</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">release_group_secondary_type</span> <span class="p">(</span> <span class="c1">-- replicate</span>
     <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span> <span class="c1">-- PK</span>
     <span class="n">name</span>                <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">parent</span>              <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references release_group_secondary_type.id</span>
@@ -178,12 +178,12 @@ in their Django implementation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) &#8211; the name can be one of a range of values. This is not
+<li><strong>name</strong> (<em>str</em>) – the name can be one of a range of values. This is not
 restricted in the SQL, but it is documented in
 <a class="reference external" href="https://musicbrainz.org/doc/Release_Group/Type">the Release Group Type documentation</a>.
 In Django, this is implemented as a <cite>choices</cite> parameter to the <cite>name</cite>
 field, and a <cite>pre_save</cite> signal that performs the validation.</li>
-<li><strong>gid</strong> &#8211; This cannot be NULL but a default is not defined in SQL. The
+<li><strong>gid</strong> – This cannot be NULL but a default is not defined in SQL. The
 <cite>default=uuid.uuid4</cite> in Django will generate a UUID during the creation
 of an instance.</li>
 </ul>
@@ -198,11 +198,11 @@ of an instance.</li>
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">This is called by a <cite>pre_save</cite> signal.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pre_save_release_group_secondary_type</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="k">def</span> <span class="nf">pre_save_release_group_secondary_type</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
         <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span>
-            <span class="s1">&#39;Release Group Secondary Type &quot;</span><span class="si">{}</span><span class="s1">&quot; is not one of: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s1">&#39;Release Group Secondary Type &quot;{}&quot; is not one of: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">instance</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                 <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">)))</span>
 </pre></div>
@@ -210,7 +210,8 @@ of an instance.</li>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">The <cite>release_group_secondary_type</cite> Model</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">release_group_secondary_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">release_group_secondary_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -330,7 +331,7 @@ of an instance.</li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

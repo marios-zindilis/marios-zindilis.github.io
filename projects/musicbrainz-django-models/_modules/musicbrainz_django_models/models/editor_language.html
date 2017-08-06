@@ -1,0 +1,160 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>musicbrainz_django_models.models.editor_language &#8212; MusicBrainz Django Models 0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../_docs/index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for musicbrainz_django_models.models.editor_language</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: editor_language</span>
+
+<span class="sd">The **Editor Language** Model.</span>
+
+<span class="sd">PostgreSQL Definition</span>
+<span class="sd">---------------------</span>
+
+<span class="sd">The :code:`editor_language` table is defined in the MusicBrainz Server as:</span>
+
+<span class="sd">.. code-block:: sql</span>
+
+<span class="sd">    CREATE TYPE FLUENCY AS ENUM (&#39;basic&#39;, &#39;intermediate&#39;, &#39;advanced&#39;, &#39;native&#39;);</span>
+
+<span class="sd">    CREATE TABLE editor_language (</span>
+<span class="sd">        editor   INTEGER NOT NULL,  -- PK, references editor.id</span>
+<span class="sd">        language INTEGER NOT NULL,  -- PK, references language.id</span>
+<span class="sd">        fluency  FLUENCY NOT NULL</span>
+<span class="sd">    );</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.utils.encoding</span> <span class="k">import</span> <span class="n">python_2_unicode_compatible</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
+
+
+<span class="k">def</span> <span class="nf">pre_save_editor_language</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">fluency</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sender</span><span class="o">.</span><span class="n">FLUENCY_CHOICES_LIST</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Fluency &quot;{}&quot; is not one of {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">fluency</span><span class="p">,</span>
+            <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">FLUENCY_CHOICES_LIST</span><span class="p">)))</span>
+
+
+<div class="viewcode-block" id="editor_language"><a class="viewcode-back" href="../../../_docs/editor_language.html#musicbrainz_django_models.models.editor_language">[docs]</a><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">editor_language</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Not all parameters are listed here, only those that present some interest</span>
+<span class="sd">    in their Django implementation.</span>
+
+<span class="sd">    :param editor: references :class:`.editor`</span>
+<span class="sd">    :param language: references :class:`.language`</span>
+<span class="sd">    :param fluency: An `ENUM` type is used in the Postgres definition for this</span>
+<span class="sd">        field. In Django, this can be implemented as a `CharField` with a list</span>
+<span class="sd">        of choices.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">BASIC</span> <span class="o">=</span> <span class="s1">&#39;basic&#39;</span>
+    <span class="n">INTERMEDIATE</span> <span class="o">=</span> <span class="s1">&#39;intermediate&#39;</span>
+    <span class="n">ADVANCED</span> <span class="o">=</span> <span class="s1">&#39;advanced&#39;</span>
+    <span class="n">NATIVE</span> <span class="o">=</span> <span class="s1">&#39;native&#39;</span>
+    <span class="n">FLUENCY_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">BASIC</span><span class="p">,</span> <span class="n">BASIC</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">INTERMEDIATE</span><span class="p">,</span> <span class="n">INTERMEDIATE</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">ADVANCED</span><span class="p">,</span> <span class="n">ADVANCED</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">NATIVE</span><span class="p">,</span> <span class="n">NATIVE</span><span class="p">),)</span>
+    <span class="n">FLUENCY_CHOICES_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">FLUENCY_CHOICES</span><span class="p">]</span>
+
+    <span class="n">editor</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="s1">&#39;editor&#39;</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">language</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">)</span>
+    <span class="n">fluency</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">FLUENCY_CHOICES</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;Editor Language&#39;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;editor_language&#39;</span></div>
+
+
+<span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">pre_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pre_save_editor_language</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">editor_language</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../_docs/index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Marios Zindilis.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
+    </div>
+  </body>
+</html>

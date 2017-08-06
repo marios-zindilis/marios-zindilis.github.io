@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Marios Zindilis - Create S3 Bucket with Boto3</title>
+  <meta name="description" content="How to use Boto3 to create an S3 bucket.">
+
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css"
+    integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/css/zindilis.com.css">
+  <link rel="canonical" href="https://zindilis.com/docs/aws/s3/create-s3-bucket-with-boto3.html">
+  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+  
+  <meta property="og:title" content="Create S3 Bucket with Boto3">
+
+
+  <meta property="og:type" content="article">
+
+  <meta property="og:article:published_time" content="2017-08-06">
+
+
+  
+    <meta property="og:article:modified_time" content="2017-08-06">
+  
+
+
+
+
+  <meta property="og:description" content="How to use Boto3 to create an S3 bucket.">
+
+
+</head>
+
+
+<body>
+  <header class="site-header">
+  <nav class="navbar navbar-fixed-top" style="border-bottom: 1px solid; background-color: white;">
+    <div class="container">
+      <a class="navbar-brand fload-md-left float-xs-none" href="/">Marios Zindilis</a>
+      <ul class="nav navbar-nav float-md-right">
+        <li class="nav-item">
+          <a class="nav-link" href="/docs/">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+  <div class="container">
+        <article itemscope itemtype="http://schema.org/Article">
+
+  <header>
+    <h1 itemprop="name headline">Create S3 Bucket with Boto3</h1>
+  </header>
+
+  <section itemprop="articleBody">
+    <p>How to use Boto3 to create S3 buckets.</p>
+
+<h3>Using the High-Level S3 Resource</h3>
+
+<p>The simplest way to create a bucket using Boto3 is:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s">'s3'</span><span class="p">)</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">create_bucket</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s">'bucket-name'</span><span class="p">)</span>
+</code></pre></div>
+<p>The <code>create_bucket</code> method takes a few parameters, but only <code>Bucket</code> is
+mandatory. You can optionally specify the region:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s">'s3'</span><span class="p">)</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">create_bucket</span><span class="p">(</span>
+    <span class="n">Bucket</span><span class="o">=</span><span class="s">'a-bucket-made-in-ireland'</span><span class="p">,</span>
+    <span class="n">CreateBucketConfiguration</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'LocationConstraint'</span><span class="p">:</span> <span class="s">'eu-west-1'</span><span class="p">})</span>
+</code></pre></div>
+<p>If you don&#39;t specify the region, the default is <code>us-east-1</code> (N. Virginia).</p>
+
+<h3>Using the Low-Level S3 Client</h3>
+
+<p>In this scenario, the behaviour of the low-level client is the same as that of
+the high-level resource, except that the client returns a dictionary that
+contains the response from the S3 API:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s">'s3'</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">create_bucket</span><span class="p">(</span><span class="s">'bucket-name'</span><span class="p">)</span>
+</code></pre></div>
+<p>The response of the above call will be something like:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">{</span><span class="s">u'Location'</span><span class="p">:</span> <span class="s">'/bucket-name'</span><span class="p">,</span> <span class="s">'ResponseMetadata'</span><span class="p">:</span> <span class="p">{</span><span class="s">'HTTPStatusCode'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s">'RetryAttempts'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'HostId'</span><span class="p">:</span> <span class="s">'abcdefghijklmnopqrstu1233563467LUFVWzDlEdy4zQGfM4QAmFoOp/p1oiU0hNmac='</span><span class="p">,</span> <span class="s">'RequestId'</span><span class="p">:</span> <span class="s">'6AECB9651A3D5D72'</span><span class="p">,</span> <span class="s">'HTTPHeaders'</span><span class="p">:</span> <span class="p">{</span><span class="s">'content-length'</span><span class="p">:</span> <span class="s">'0'</span><span class="p">,</span> <span class="s">'x-amz-id-2'</span><span class="p">:</span> <span class="s">'eswnQrmQbue4njDNVlgkkN4lI9UrN1+Cmnm2waLUFVWzDlEdy4zQGfM4QAmFoOp/p1oiU0hNmac='</span><span class="p">,</span> <span class="s">'server'</span><span class="p">:</span> <span class="s">'AmazonS3'</span><span class="p">,</span> <span class="s">'x-amz-request-id'</span><span class="p">:</span> <span class="s">'6AECB9651A3D5D72'</span><span class="p">,</span> <span class="s">'location'</span><span class="p">:</span> <span class="s">'/bucket-name'</span><span class="p">,</span> <span class="s">'date'</span><span class="p">:</span> <span class="s">'Sun, 06 Aug 2017 14:56:37 GMT'</span><span class="p">}}}</span>
+</code></pre></div>
+<h3>Using a Pre-Signed URL</h3>
+
+<p>You can generate a pre-signed URL for creating a bucket, and call it:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s">'s3'</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">generate_presigned_url</span><span class="p">(</span><span class="s">'create_bucket'</span><span class="p">,</span> <span class="n">Params</span><span class="o">=</span><span class="p">{</span><span class="s">'Bucket'</span><span class="p">:</span> <span class="s">'bucket-name'</span><span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</code></pre></div>
+<h3>IAM</h3>
+
+<p>To be able to create buckets, you need an IAM role that has at least the
+following policy:</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AllowCreateS3Bucket"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"s3:CreateBucket"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"arn:aws:s3:::*"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+  </section>
+
+  <footer id="post-footer">
+  
+    First Published: <time datetime="2017-08-06T00:00:00+01:00" itemprop="datePublished">2017-08-06</time>
+  
+  
+    
+      &middot; Last Modified: <time datetime="2017-08-06T00:00:00+01:00" itemprop="dateModified">2017-08-06</time>
+    
+  
+
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    &middot; Author: <span itemprop="name">Marios Zindilis</span>
+  
+  </span>
+  </footer>
+</article>
+
+  </div>
+
+  <footer id="site-footer" class="footer-distributed">
+  <div class="container">
+    <div class="footer-right">
+      <a href="/feed.xml" title="Marios Zindilis RSS Feed">
+        <i class="fa fa-rss" aria-hidden="true"></i><span class="sr-only">Marios Zindilis RSS Feed</span></a>
+      <a href="https://www.facebook.com/zindilis" title="Marios Zindilis Facebook">
+        <i class="fa fa-facebook" aria-hidden="true"></i><span class="sr-only">Marios Zindilis Facebook</span></a>
+      <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">
+        <i class="fa fa-linkedin" aria-hidden="true"></i><span class="sr-only">Marios Zindilis LinkedIn Profile</span></a>
+      <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">
+        <i class="fa fa-github" aria-hidden="true"></i><span class="sr-only">Marios Zindilis GitHub Page</span></a>
+    </div>
+
+    <div class="footer-left">
+      <p class="footer-links">
+        <a href="/">Home</a> · 
+        <a href="/docs/">Docs</a> ·
+        <a href="/projects/">Projects</a> ·
+        <a href="/about/">About</a>
+      </p>
+      <p>Marios Zindilis</p>
+    </div>
+  </div>
+</footer>
+
+      <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+      integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"
+      integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"
+      integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK"
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      // set padding-bottom of body to height of footer.site-footer:
+      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
+      // http://stackoverflow.com/a/14570614
+      var observeDOM = (function(){
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+          eventListenerSupported = window.addEventListener;
+
+        return function(obj, callback){
+          if( MutationObserver ){
+          // define a new observer
+            var obs = new MutationObserver(function(mutations, observer){
+              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
+              callback();
+            });
+            // have the observer observe foo for changes in children
+            obs.observe( obj, { childList:true, subtree:true });
+          }
+          else if( eventListenerSupported ){
+            obj.addEventListener('DOMNodeInserted', callback, false);
+            obj.addEventListener('DOMNodeRemoved', callback, false);
+          }
+        }
+      })();
+      observeDOM(document.getElementById('site-footer') ,function(){
+        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
+      });
+    </script>
+
+
+  </body>
+</html>

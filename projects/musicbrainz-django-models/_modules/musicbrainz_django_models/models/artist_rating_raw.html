@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -48,7 +48,7 @@
           <div class="body" role="main">
             
   <h1>Source code for musicbrainz_django_models.models.artist_rating_raw</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">.. module:: artist_rating_raw</span>
 
 <span class="sd">The **Artist Rating Raw** Model.</span>
@@ -77,13 +77,13 @@
 
 <span class="k">def</span> <span class="nf">pre_save_artist_rating_raw</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">sender</span><span class="o">.</span><span class="n">RATING_MIN</span> <span class="o">&lt;=</span> <span class="n">instance</span><span class="o">.</span><span class="n">rating</span> <span class="o">&lt;=</span> <span class="n">sender</span><span class="o">.</span><span class="n">RATING_MAX</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Rating not in range </span><span class="si">{}</span><span class="s1"> - </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Rating not in range {} - {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">sender</span><span class="o">.</span><span class="n">RATING_MIN</span><span class="p">,</span>
             <span class="n">sender</span><span class="o">.</span><span class="n">RATING_MAX</span><span class="p">))</span>
 
 
-<span class="nd">@python_2_unicode_compatible</span>
-<div class="viewcode-block" id="artist_rating_raw"><a class="viewcode-back" href="../../../_docs/artist_rating_raw.html#musicbrainz_django_models.models.artist_rating_raw">[docs]</a><span class="k">class</span> <span class="nc">artist_rating_raw</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="artist_rating_raw"><a class="viewcode-back" href="../../../_docs/artist_rating_raw.html#musicbrainz_django_models.models.artist_rating_raw">[docs]</a><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">artist_rating_raw</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -141,7 +141,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -48,7 +48,7 @@
           <div class="body" role="main">
             
   <h1>Source code for musicbrainz_django_models.models.alternative_medium_track</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">.. module:: alternative_medium_track</span>
 
 <span class="sd">The **Alternative Medium Track** model.</span>
@@ -73,8 +73,8 @@
 <span class="kn">from</span> <span class="nn">django.utils.encoding</span> <span class="k">import</span> <span class="n">python_2_unicode_compatible</span>
 
 
-<span class="nd">@python_2_unicode_compatible</span>
-<div class="viewcode-block" id="alternative_medium_track"><a class="viewcode-back" href="../../../_docs/alternative_medium_track.html#musicbrainz_django_models.models.alternative_medium_track">[docs]</a><span class="k">class</span> <span class="nc">alternative_medium_track</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="alternative_medium_track"><a class="viewcode-back" href="../../../_docs/alternative_medium_track.html#musicbrainz_django_models.models.alternative_medium_track">[docs]</a><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">alternative_medium_track</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    In the PostgreSQL definition, the :code:`alternative_medium_track` table</span>
 <span class="sd">    only comprises references to other models, and 2 of them are primary keys.</span>
@@ -105,7 +105,7 @@
     <span class="n">alternative_track</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;alternative_track&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alternative_medium</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">track</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alternative_medium</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">track</span><span class="p">))</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;alternative_medium_track&#39;</span>
@@ -146,7 +146,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

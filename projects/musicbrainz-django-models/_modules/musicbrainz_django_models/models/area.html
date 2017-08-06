@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -48,7 +48,7 @@
           <div class="body" role="main">
             
   <h1>Source code for musicbrainz_django_models.models.area</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">.. module:: area</span>
 
 <span class="sd">An **Area** is a country, region, city settlement, or the like. Areas were</span>
@@ -108,11 +108,15 @@
 
 
 <span class="k">def</span> <span class="nf">pre_save_area</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">instance</span><span class="o">.</span><span class="n">ended</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">check_ended</span><span class="p">()</span>
+    <span class="c1"># `ended` must be True if any of the end dates is not empty:</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">ended</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">end_date_year</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">end_date_month</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">end_date_day</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
 
 
-<span class="nd">@python_2_unicode_compatible</span>
-<div class="viewcode-block" id="area"><a class="viewcode-back" href="../../../_docs/area.html#musicbrainz_django_models.models.area">[docs]</a><span class="k">class</span> <span class="nc">area</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="area"><a class="viewcode-back" href="../../../_docs/area.html#musicbrainz_django_models.models.area">[docs]</a><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">area</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -133,8 +137,11 @@
 <span class="sd">        range of 1-31 or similar...</span>
 <span class="sd">    :param smallint end_date_day: ditto</span>
 <span class="sd">    :param boolean ended: the MusicBrainz Server uses a PostgreSQL `check` to</span>
-<span class="sd">        set this to `True` if any of the `end_*` fields has any value. This is</span>
-<span class="sd">        implemented in Django with a `pre_save` signal.</span>
+<span class="sd">        validate that this is `True` if any of the `end_*` fields has any</span>
+<span class="sd">        value, and that it is `False` if all the `end_*` fields are empty.</span>
+<span class="sd">        This could be implemented in a Django model with a `@property` method,</span>
+<span class="sd">        however that cannot be queried, so it is implemented here with a</span>
+<span class="sd">        `pre_save` signal.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -151,15 +158,6 @@
     <span class="n">end_date_day</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">ended</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">comment</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">check_ended</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Set `ended` to `True` if any of the `end_date_*` fields is populated.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">end_date_year</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">end_date_month</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">end_date_day</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
@@ -205,7 +203,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

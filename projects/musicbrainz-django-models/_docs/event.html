@@ -1,0 +1,266 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>event &#8212; MusicBrainz Django Models 0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="event_rating_raw" href="event_rating_raw.html" />
+    <link rel="prev" title="event_meta" href="event_meta.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="event_rating_raw.html" title="event_rating_raw"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="event_meta.html" title="event_meta"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-event">
+<span id="event"></span><h1>event<a class="headerlink" href="#module-event" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>Event</strong> Model.</p>
+<div class="section" id="postgresql-definition">
+<h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal"><span class="pre">event</span></code> table is defined in the MusicBrainz Server as:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">event</span> <span class="p">(</span> <span class="c1">-- replicate (verbose)</span>
+    <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span>
+    <span class="n">gid</span>                 <span class="n">UUID</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">name</span>                <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">begin_date_year</span>     <span class="nb">SMALLINT</span><span class="p">,</span>
+    <span class="n">begin_date_month</span>    <span class="nb">SMALLINT</span><span class="p">,</span>
+    <span class="n">begin_date_day</span>      <span class="nb">SMALLINT</span><span class="p">,</span>
+    <span class="n">end_date_year</span>       <span class="nb">SMALLINT</span><span class="p">,</span>
+    <span class="n">end_date_month</span>      <span class="nb">SMALLINT</span><span class="p">,</span>
+    <span class="n">end_date_day</span>        <span class="nb">SMALLINT</span><span class="p">,</span>
+    <span class="n">time</span>                <span class="n">TIME</span> <span class="k">WITHOUT</span> <span class="n">TIME</span> <span class="k">ZONE</span><span class="p">,</span>
+    <span class="k">type</span>                <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references event_type.id</span>
+    <span class="n">cancelled</span>           <span class="nb">BOOLEAN</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span><span class="p">,</span>
+    <span class="n">setlist</span>             <span class="nb">TEXT</span><span class="p">,</span>
+    <span class="k">comment</span>             <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">edits_pending</span>       <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="mi">0</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">edits_pending</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">last_updated</span>        <span class="k">TIMESTAMP</span> <span class="k">WITH</span> <span class="n">TIME</span> <span class="k">ZONE</span> <span class="k">DEFAULT</span> <span class="n">NOW</span><span class="p">(),</span>
+    <span class="n">ended</span>               <span class="nb">BOOLEAN</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">FALSE</span>
+      <span class="k">CONSTRAINT</span> <span class="n">event_ended_check</span> <span class="k">CHECK</span> <span class="p">(</span>
+        <span class="p">(</span>
+          <span class="c1">-- If any end date fields are not null, then ended must be true</span>
+          <span class="p">(</span><span class="n">end_date_year</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">OR</span>
+           <span class="n">end_date_month</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">OR</span>
+           <span class="n">end_date_day</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">)</span> <span class="k">AND</span>
+          <span class="n">ended</span> <span class="o">=</span> <span class="k">TRUE</span>
+        <span class="p">)</span> <span class="k">OR</span> <span class="p">(</span>
+          <span class="c1">-- Otherwise, all end date fields must be null</span>
+          <span class="p">(</span><span class="n">end_date_year</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span>
+           <span class="n">end_date_month</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">AND</span>
+           <span class="n">end_date_day</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span>
+        <span class="p">)</span>
+      <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-documentation">
+<h2>Model Documentation<a class="headerlink" href="#model-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="musicbrainz_django_models.models.event">
+<em class="property">class </em><code class="descclassname">musicbrainz_django_models.models.</code><code class="descname">event</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicbrainz_django_models/models/event.html#event"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#musicbrainz_django_models.models.event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not all parameters are listed here, only those that present some interest
+in their Django implementation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>gid</strong> – this is interesting because it cannot be NULL but a default is
+not defined in SQL. The default <cite>uuid.uuid4</cite> in Django will generate a
+UUID during the creation of an instance.</li>
+<li><strong>name</strong> (<em>str</em>) – <cite>max_length</cite> is mandatory in Django models but not in
+PostgreSQL.</li>
+<li><strong>begin_date_month</strong> (<em>smallint</em>) – You’d think this would be validated as a
+range of 1-12 or similar…</li>
+<li><strong>end_date_month</strong> (<em>smallint</em>) – ditto</li>
+<li><strong>begin_date_day</strong> (<em>smallint</em>) – You’d think this would be validated as a
+range of 1-31 or similar…</li>
+<li><strong>end_date_day</strong> (<em>smallint</em>) – ditto</li>
+<li><strong>edits_pending</strong> (<em>int</em>) – the MusicBrainz Server uses a PostgreSQL <cite>check</cite>
+to validate that the value is a positive integer. In Django, this is
+done with <cite>models.PositiveIntegerField()</cite>.</li>
+<li><strong>ended</strong> (<em>boolean</em>) – the MusicBrainz Server uses a PostgreSQL <cite>check</cite> to
+validate that this is <cite>True</cite> if any of the <cite>end_*</cite> fields has any
+value, and that it is <cite>False</cite> if all the <cite>end_*</cite> fields are empty.
+This could be implemented in a Django model with a <cite>&#64;property</cite> method,
+however that cannot be queried, so it is implemented here with a
+<cite>pre_save</cite> signal.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="model-source">
+<h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">The <cite>event</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">event</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Not all parameters are listed here, only those that present some interest</span>
+<span class="sd">    in their Django implementation.</span>
+
+<span class="sd">    :param gid: this is interesting because it cannot be NULL but a default is</span>
+<span class="sd">        not defined in SQL. The default `uuid.uuid4` in Django will generate a</span>
+<span class="sd">        UUID during the creation of an instance.</span>
+<span class="sd">    :param str name: `max_length` is mandatory in Django models but not in</span>
+<span class="sd">        PostgreSQL.</span>
+<span class="sd">    :param smallint begin_date_month: You&#39;d think this would be validated as a</span>
+<span class="sd">        range of 1-12 or similar...</span>
+<span class="sd">    :param smallint end_date_month: ditto</span>
+<span class="sd">    :param smallint begin_date_day: You&#39;d think this would be validated as a</span>
+<span class="sd">        range of 1-31 or similar...</span>
+<span class="sd">    :param smallint end_date_day: ditto</span>
+<span class="sd">    :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`</span>
+<span class="sd">        to validate that the value is a positive integer. In Django, this is</span>
+<span class="sd">        done with `models.PositiveIntegerField()`.</span>
+<span class="sd">    :param boolean ended: the MusicBrainz Server uses a PostgreSQL `check` to</span>
+<span class="sd">        validate that this is `True` if any of the `end_*` fields has any</span>
+<span class="sd">        value, and that it is `False` if all the `end_*` fields are empty.</span>
+<span class="sd">        This could be implemented in a Django model with a `@property` method,</span>
+<span class="sd">        however that cannot be queried, so it is implemented here with a</span>
+<span class="sd">        `pre_save` signal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">begin_date_year</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">begin_date_month</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">begin_date_day</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">end_date_year</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">end_date_month</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">end_date_day</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TimeField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;event_type&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cancelled</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">setlist</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">comment</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">edits_pending</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">last_updated</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ended</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;event&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">event</a><ul>
+<li><a class="reference internal" href="#postgresql-definition">PostgreSQL Definition</a></li>
+<li><a class="reference internal" href="#model-documentation">Model Documentation</a></li>
+<li><a class="reference internal" href="#model-source">Model Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="event_meta.html"
+                        title="previous chapter">event_meta</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="event_rating_raw.html"
+                        title="next chapter">event_rating_raw</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_docs/event.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="event_rating_raw.html" title="event_rating_raw"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="event_meta.html" title="event_meta"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Marios Zindilis.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
+    </div>
+  </body>
+</html>

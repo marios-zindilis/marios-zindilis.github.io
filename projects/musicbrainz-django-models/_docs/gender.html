@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -27,9 +27,9 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="instrument" href="instrument.html" />
-    <link rel="prev" title="edit" href="edit.html" /> 
+    <link rel="prev" title="event_type" href="event_type.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -43,7 +43,7 @@
           <a href="instrument.html" title="instrument"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="edit.html" title="edit"
+          <a href="event_type.html" title="event_type"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
@@ -57,7 +57,7 @@
   <div class="section" id="module-gender">
 <span id="gender"></span><h1>gender<a class="headerlink" href="#module-gender" title="Permalink to this headline">¶</a></h1>
 <p>The <strong>Gender</strong> Model is referenced by the <code class="code docutils literal"><span class="pre">artist</span></code> and the
-<code class="code docutils literal"><span class="pre">editor</span></code> models. Here&#8217;s a complete table of values, from the MusicBrainz
+<code class="code docutils literal"><span class="pre">editor</span></code> models. Here’s a complete table of values, from the MusicBrainz
 database dump of 2017-04-19:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -80,23 +80,23 @@ database dump of 2017-04-19:</p>
 <tbody valign="top">
 <tr class="row-even"><td>1</td>
 <td>Male</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>1</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>36d3d30a-839d-3eda-8cb3-29be4384e4a9</td>
 </tr>
 <tr class="row-odd"><td>2</td>
 <td>Female</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>2</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>93452b5a-a947-30c8-934f-6a4056b151c2</td>
 </tr>
 <tr class="row-even"><td>3</td>
 <td>Other</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>3</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>081c0bf5-da60-37b0-95f8-2207a3f7f9d6</td>
 </tr>
 </tbody>
@@ -104,7 +104,7 @@ database dump of 2017-04-19:</p>
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">gender</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">gender</span> <span class="p">(</span> <span class="c1">-- replicate</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">gender</span> <span class="p">(</span> <span class="c1">-- replicate</span>
     <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span>
     <span class="n">name</span>                <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">parent</span>              <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references gender.id</span>
@@ -127,12 +127,12 @@ in their Django implementation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) &#8211; This field is not restricted to a range of values in the
+<li><strong>name</strong> (<em>str</em>) – This field is not restricted to a range of values in the
 SQL definition. From the database dumps it is apparent that there are
-3 possible values: &#8220;Male&#8221;, &#8220;Female&#8221; and &#8220;Other&#8221;. This is implemented
+3 possible values: “Male”, “Female” and “Other”. This is implemented
 in Django with a <cite>choices</cite> parameter to the <cite>name</cite> field, as well as
 with a <cite>pre_save</cite> signal for validation.</li>
-<li><strong>gid</strong> &#8211; this is interesting because it cannot be NULL but a default is
+<li><strong>gid</strong> – this is interesting because it cannot be NULL but a default is
 not defined in SQL. The default <cite>uuid.uuid4</cite> in Django will generate a
 UUID during the creation of an instance.</li>
 </ul>
@@ -147,10 +147,10 @@ UUID during the creation of an instance.</li>
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">The is called by a <cite>pre_save</cite> signal.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pre_save_gender</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="k">def</span> <span class="nf">pre_save_gender</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
-        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Gender &quot;</span><span class="si">{}</span><span class="s1">&quot; is not one of: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Gender &quot;{}&quot; is not one of: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">instance</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
             <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">)))</span>
 </pre></div>
@@ -158,7 +158,8 @@ UUID during the creation of an instance.</li>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">The <cite>gender</cite> Model</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">gender</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">gender</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -218,8 +219,8 @@ UUID during the creation of an instance.</li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="edit.html"
-                        title="previous chapter">edit</a></p>
+  <p class="topless"><a href="event_type.html"
+                        title="previous chapter">event_type</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="instrument.html"
                         title="next chapter">instrument</a></p>
@@ -257,14 +258,14 @@ UUID during the creation of an instance.</li>
           <a href="instrument.html" title="instrument"
              >next</a> |</li>
         <li class="right" >
-          <a href="edit.html" title="edit"
+          <a href="event_type.html" title="event_type"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

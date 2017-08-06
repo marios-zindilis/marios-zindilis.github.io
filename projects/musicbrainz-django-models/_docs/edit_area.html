@@ -1,0 +1,187 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>edit_area &#8212; MusicBrainz Django Models 0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="edit_artist" href="edit_artist.html" />
+    <link rel="prev" title="deleted_entity" href="deleted_entity.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="edit_artist.html" title="edit_artist"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="deleted_entity.html" title="deleted_entity"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-edit_area">
+<span id="edit-area"></span><h1>edit_area<a class="headerlink" href="#module-edit_area" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>Edit Area</strong> Model.</p>
+<div class="section" id="postgresql-definition">
+<h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal"><span class="pre">edit_area</span></code> table is defined in the MusicBrainz Server as:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">edit_area</span>
+<span class="p">(</span>
+    <span class="n">edit</span>                <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="c1">-- PK, references edit.id</span>
+    <span class="n">area</span>                <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span>  <span class="c1">-- PK, references area.id CASCADE</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-documentation">
+<h2>Model Documentation<a class="headerlink" href="#model-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="musicbrainz_django_models.models.edit_area">
+<em class="property">class </em><code class="descclassname">musicbrainz_django_models.models.</code><code class="descname">edit_area</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicbrainz_django_models/models/edit_area.html#edit_area"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#musicbrainz_django_models.models.edit_area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not all parameters are listed here, only those that present some interest
+in their Django implementation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>edit</strong> – references <a class="reference internal" href="edit.html#musicbrainz_django_models.models.edit" title="musicbrainz_django_models.models.edit"><code class="xref py py-class docutils literal"><span class="pre">edit</span></code></a></li>
+<li><strong>area</strong> – references <a class="reference internal" href="area.html#musicbrainz_django_models.models.area" title="musicbrainz_django_models.models.area"><code class="xref py py-class docutils literal"><span class="pre">area</span></code></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="model-source">
+<h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">The <cite>edit_area</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">edit_area</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Not all parameters are listed here, only those that present some interest</span>
+<span class="sd">    in their Django implementation.</span>
+
+<span class="sd">    :param edit: references :class:`.edit`</span>
+<span class="sd">    :param area: references :class:`.area`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">edit</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;edit&#39;</span><span class="p">)</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;area&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;Edit Area&#39;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;edit_area&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">edit_area</a><ul>
+<li><a class="reference internal" href="#postgresql-definition">PostgreSQL Definition</a></li>
+<li><a class="reference internal" href="#model-documentation">Model Documentation</a></li>
+<li><a class="reference internal" href="#model-source">Model Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="deleted_entity.html"
+                        title="previous chapter">deleted_entity</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="edit_artist.html"
+                        title="next chapter">edit_artist</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_docs/edit_area.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="edit_artist.html" title="edit_artist"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="deleted_entity.html" title="deleted_entity"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Marios Zindilis.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
+    </div>
+  </body>
+</html>

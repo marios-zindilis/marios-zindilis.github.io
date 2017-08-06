@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -29,7 +29,7 @@
     <link rel="next" title="area_tag" href="area_tag.html" />
     <link rel="prev" title="area_gid_redirect" href="area_gid_redirect.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -66,7 +66,7 @@ are listed, by ID, in the <code class="code docutils literal"><span class="pre">
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">area</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">area</span> <span class="p">(</span> <span class="c1">-- replicate (verbose)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">area</span> <span class="p">(</span> <span class="c1">-- replicate (verbose)</span>
     <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span> <span class="c1">-- PK</span>
     <span class="n">gid</span>                 <span class="n">uuid</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">name</span>                <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -111,24 +111,27 @@ in their Django implementation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>gid</strong> &#8211; this is interesting because it cannot be NULL but a default is
+<li><strong>gid</strong> – this is interesting because it cannot be NULL but a default is
 not defined in SQL. The default <cite>uuid.uuid4</cite> in Django will generate a
 UUID during the creation of an instance.</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; <cite>max_length</cite> is mandatory in Django models but not in
+<li><strong>name</strong> (<em>str</em>) – <cite>max_length</cite> is mandatory in Django models but not in
 PostgreSQL.</li>
-<li><strong>edits_pending</strong> (<em>int</em>) &#8211; the MusicBrainz Server uses a PostgreSQL <cite>check</cite>
+<li><strong>edits_pending</strong> (<em>int</em>) – the MusicBrainz Server uses a PostgreSQL <cite>check</cite>
 to validate that the value is a positive integer. In Django, this is
 done with <cite>models.PositiveIntegerField()</cite>.</li>
-<li><strong>type</strong> &#8211; references <a class="reference internal" href="area_type.html#musicbrainz_django_models.models.area_type" title="musicbrainz_django_models.models.area_type"><code class="xref py py-class docutils literal"><span class="pre">area_type</span></code></a></li>
-<li><strong>begin_date_month</strong> (<em>smallint</em>) &#8211; You&#8217;d think this would be validated as a
-range of 1-12 or similar...</li>
-<li><strong>end_date_month</strong> (<em>smallint</em>) &#8211; ditto</li>
-<li><strong>begin_date_day</strong> (<em>smallint</em>) &#8211; You&#8217;d think this would be validated as a
-range of 1-31 or similar...</li>
-<li><strong>end_date_day</strong> (<em>smallint</em>) &#8211; ditto</li>
-<li><strong>ended</strong> (<em>boolean</em>) &#8211; the MusicBrainz Server uses a PostgreSQL <cite>check</cite> to
-set this to <cite>True</cite> if any of the <cite>end_*</cite> fields has any value. This is
-implemented in Django with a <cite>pre_save</cite> signal.</li>
+<li><strong>type</strong> – references <a class="reference internal" href="area_type.html#musicbrainz_django_models.models.area_type" title="musicbrainz_django_models.models.area_type"><code class="xref py py-class docutils literal"><span class="pre">area_type</span></code></a></li>
+<li><strong>begin_date_month</strong> (<em>smallint</em>) – You’d think this would be validated as a
+range of 1-12 or similar…</li>
+<li><strong>end_date_month</strong> (<em>smallint</em>) – ditto</li>
+<li><strong>begin_date_day</strong> (<em>smallint</em>) – You’d think this would be validated as a
+range of 1-31 or similar…</li>
+<li><strong>end_date_day</strong> (<em>smallint</em>) – ditto</li>
+<li><strong>ended</strong> (<em>boolean</em>) – the MusicBrainz Server uses a PostgreSQL <cite>check</cite> to
+validate that this is <cite>True</cite> if any of the <cite>end_*</cite> fields has any
+value, and that it is <cite>False</cite> if all the <cite>end_*</cite> fields are empty.
+This could be implemented in a Django model with a <cite>&#64;property</cite> method,
+however that cannot be queried, so it is implemented here with a
+<cite>pre_save</cite> signal.</li>
 </ul>
 </td>
 </tr>
@@ -140,15 +143,9 @@ implemented in Django with a <cite>pre_save</cite> signal.</li>
 <div class="section" id="model-source">
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">This is called by a <cite>pre_save</cite> signal.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pre_save_area</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">instance</span><span class="o">.</span><span class="n">ended</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">check_ended</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">The <cite>area</cite> Model.</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">area</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="code-block-caption"><span class="caption-text">The <cite>area</cite> Model.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">area</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -169,8 +166,11 @@ implemented in Django with a <cite>pre_save</cite> signal.</li>
 <span class="sd">        range of 1-31 or similar...</span>
 <span class="sd">    :param smallint end_date_day: ditto</span>
 <span class="sd">    :param boolean ended: the MusicBrainz Server uses a PostgreSQL `check` to</span>
-<span class="sd">        set this to `True` if any of the `end_*` fields has any value. This is</span>
-<span class="sd">        implemented in Django with a `pre_save` signal.</span>
+<span class="sd">        validate that this is `True` if any of the `end_*` fields has any</span>
+<span class="sd">        value, and that it is `False` if all the `end_*` fields are empty.</span>
+<span class="sd">        This could be implemented in a Django model with a `@property` method,</span>
+<span class="sd">        however that cannot be queried, so it is implemented here with a</span>
+<span class="sd">        `pre_save` signal.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -187,15 +187,6 @@ implemented in Django with a <cite>pre_save</cite> signal.</li>
     <span class="n">end_date_day</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">ended</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">comment</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">check_ended</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Set `ended` to `True` if any of the `end_date_*` fields is populated.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">end_date_year</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">end_date_month</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">end_date_day</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
@@ -271,7 +262,7 @@ implemented in Django with a <cite>pre_save</cite> signal.</li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

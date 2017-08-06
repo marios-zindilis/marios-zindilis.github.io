@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 ETC_HOSTS = '/etc/hosts'
-BLOCKLIST = [h.strip() for h in tuple(open('hosts', 'r'))]
+HOSTS = 'hosts'
+BLOCKLIST = [h.strip() for h in tuple(open(HOSTS, 'r'))]
+BLOCKLIST = set(BLOCKLIST)  # deduplicate
+BLOCKLIST = sorted(BLOCKLIST)  # sort alphabetically
 DEFAULTS = []
 BREAK = '#BLOCKLIST#'
 

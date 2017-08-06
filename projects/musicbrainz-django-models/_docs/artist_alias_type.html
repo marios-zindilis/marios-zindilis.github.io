@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -29,7 +29,7 @@
     <link rel="next" title="artist_annotation" href="artist_annotation.html" />
     <link rel="prev" title="artist_alias" href="artist_alias.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -56,7 +56,7 @@
             
   <div class="section" id="module-artist_alias_type">
 <span id="artist-alias-type"></span><h1>artist_alias_type<a class="headerlink" href="#module-artist_alias_type" title="Permalink to this headline">¶</a></h1>
-<p>The <strong>Artist Alias Type</strong> Model. Here&#8217;s a complete table of values, from the
+<p>The <strong>Artist Alias Type</strong> Model. Here’s a complete table of values, from the
 MusicBrainz database dump of 2017-04-19:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -79,23 +79,23 @@ MusicBrainz database dump of 2017-04-19:</p>
 <tbody valign="top">
 <tr class="row-even"><td>1</td>
 <td>Artist name</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>894afba6-2816-3c24-8072-eadb66bd04bc</td>
 </tr>
 <tr class="row-odd"><td>2</td>
 <td>Legal name</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>d4dcd0c0-b341-3612-a332-c0ce797b25cf</td>
 </tr>
 <tr class="row-even"><td>3</td>
 <td>Search hint</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>1937e404-b981-3cb7-8151-4c86ebfc8d8e</td>
 </tr>
 </tbody>
@@ -105,7 +105,7 @@ MusicBrainz database dump of 2017-04-19:</p>
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">artist_alias_type</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">artist_alias_type</span> <span class="p">(</span> <span class="c1">-- replicate</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">artist_alias_type</span> <span class="p">(</span> <span class="c1">-- replicate</span>
     <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span>
     <span class="n">name</span>                <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">parent</span>              <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references artist_alias_type.id</span>
@@ -128,12 +128,12 @@ in their Django implementation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) &#8211; This field is not restricted to a range of values in the
+<li><strong>name</strong> (<em>str</em>) – This field is not restricted to a range of values in the
 SQL definition. From the database dumps it is apparent that there are
-3 possible values: &#8220;Artist name&#8221;, &#8220;Legal name&#8221; and &#8220;Search hint&#8221;. This
+3 possible values: “Artist name”, “Legal name” and “Search hint”. This
 is implemented in Django with a <cite>choices</cite> parameter to the <cite>name</cite>
 field, as well as with a <cite>pre_save</cite> signal for validation.</li>
-<li><strong>gid</strong> &#8211; This cannot be NULL but a default is not defined in SQL. The
+<li><strong>gid</strong> – This cannot be NULL but a default is not defined in SQL. The
 <cite>default=uuid.uuid4</cite> in Django will generate a UUID during the creation
 of an instance.</li>
 </ul>
@@ -148,11 +148,11 @@ of an instance.</li>
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">This is called by a <cite>pre_save</cite> signal.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pre_save_artist_alias_type</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="k">def</span> <span class="nf">pre_save_artist_alias_type</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
         <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span>
-            <span class="s1">&#39;Artist Alias Type &quot;</span><span class="si">{}</span><span class="s1">&quot; is not one of: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s1">&#39;Artist Alias Type &quot;{}&quot; is not one of: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">instance</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                 <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">)))</span>
 </pre></div>
@@ -160,7 +160,8 @@ of an instance.</li>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">The <cite>artist_alias_type</cite> Model</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">artist_alias_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">artist_alias_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -267,7 +268,7 @@ of an instance.</li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

@@ -16,6 +16,16 @@ apt-get update;
 apt-get --yes upgrade;
 apt-get --yes dist-upgrade;
 apt-get --yes install vim git nmap whois screen python3-pip encfs;
+apt-get --yes install apache2 letsencrypt python-letsencrypt-apache
+
+git config --global user.email "marios@zindilis.com"
+git config --global user.name "Marios Zindilis"
+git config --global push.default simple
+
+pip3 install django
+pip3 install flake8
+pip3 install coverage
+pip3 install sphinx
 timedatectl set-timezone Europe/Dublin
 
 if [ $(grep marios /etc/passwd | wc -l) -eq 0 ]
@@ -82,6 +92,10 @@ service ssh restart
 apt-get autoremove
 apt-get autoclean
 apt-get clean
+
+echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.conf
 
 echo "Done. Press Enter to reboot..."; read;
 reboot

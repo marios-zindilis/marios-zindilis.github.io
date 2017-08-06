@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -27,9 +27,9 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="release_group_primary_type" href="release_group_primary_type.html" />
-    <link rel="prev" title="medium" href="medium.html" /> 
+    <link rel="prev" title="place_type" href="place_type.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -43,7 +43,7 @@
           <a href="release_group_primary_type.html" title="release_group_primary_type"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="medium.html" title="medium"
+          <a href="place_type.html" title="place_type"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
@@ -61,7 +61,7 @@
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">recording</span></code> table is defined in the MusicBrainz server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">recording</span> <span class="p">(</span> <span class="c1">-- replicate (verbose)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">recording</span> <span class="p">(</span> <span class="c1">-- replicate (verbose)</span>
     <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span>
     <span class="n">gid</span>                 <span class="n">UUID</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">name</span>                <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -87,16 +87,16 @@ in their Django implementation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>gid</strong> &#8211; this is interesting because it cannot be NULL but a default is
+<li><strong>gid</strong> – this is interesting because it cannot be NULL but a default is
 not defined in SQL. The default <cite>uuid.uuid4</cite> in Django will generate a
 UUID during the creation of an instance.</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; <cite>max_length</cite> is mandatory in Django models but not in
+<li><strong>name</strong> (<em>str</em>) – <cite>max_length</cite> is mandatory in Django models but not in
 PostgreSQL.</li>
-<li><strong>length</strong> (<em>int</em>) &#8211; The MusicBrainz Server uses a PostgreSQL <cite>check</cite> to
+<li><strong>length</strong> (<em>int</em>) – The MusicBrainz Server uses a PostgreSQL <cite>check</cite> to
 validate that this field is either empty or contains a value larger
 than 0. In Django, this is implemented with a MinValueValidator and
 with a <cite>pre_save</cite> signal.</li>
-<li><strong>edits_pending</strong> (<em>int</em>) &#8211; the MusicBrainz Server uses a PostgreSQL <cite>check</cite>
+<li><strong>edits_pending</strong> (<em>int</em>) – the MusicBrainz Server uses a PostgreSQL <cite>check</cite>
 to validate that the value is a positive integer. In Django, this is
 done with <cite>models.PositiveIntegerField()</cite>.</li>
 </ul>
@@ -111,7 +111,8 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">The <cite>recording</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">recording</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">recording</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -169,8 +170,8 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="medium.html"
-                        title="previous chapter">medium</a></p>
+  <p class="topless"><a href="place_type.html"
+                        title="previous chapter">place_type</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="release_group_primary_type.html"
                         title="next chapter">release_group_primary_type</a></p>
@@ -208,14 +209,14 @@ done with <cite>models.PositiveIntegerField()</cite>.</li>
           <a href="release_group_primary_type.html" title="release_group_primary_type"
              >next</a> |</li>
         <li class="right" >
-          <a href="medium.html" title="medium"
+          <a href="place_type.html" title="place_type"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

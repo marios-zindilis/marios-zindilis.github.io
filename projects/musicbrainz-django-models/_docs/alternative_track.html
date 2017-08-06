@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -29,7 +29,7 @@
     <link rel="next" title="annotation" href="annotation.html" />
     <link rel="prev" title="alternative_release_type" href="alternative_release_type.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -60,7 +60,7 @@
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">alternative_track</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">alternative_track</span> <span class="p">(</span> <span class="c1">-- replicate</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">alternative_track</span> <span class="p">(</span> <span class="c1">-- replicate</span>
     <span class="n">id</span>                      <span class="nb">SERIAL</span><span class="p">,</span> <span class="c1">-- PK</span>
     <span class="n">name</span>                    <span class="nb">VARCHAR</span><span class="p">,</span>
     <span class="n">artist_credit</span>           <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references artist_credit.id</span>
@@ -82,11 +82,11 @@ in their Django implementation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) &#8211; <cite>max_length</cite> is mandatory in Django models but not in
+<li><strong>name</strong> (<em>str</em>) – <cite>max_length</cite> is mandatory in Django models but not in
 PostgreSQL. Also, while both the <cite>name</cite> and the <cite>artist_credit</cite> can be
 empty, both cannot be empty at the same time. This is implemented in
 Django with a <cite>pre_save</cite> signal.</li>
-<li><strong>artist_credit</strong> &#8211; references <a class="reference internal" href="artist_credit.html#musicbrainz_django_models.models.artist_credit" title="musicbrainz_django_models.models.artist_credit"><code class="xref py py-class docutils literal"><span class="pre">artist_credit</span></code></a>. Also see note
+<li><strong>artist_credit</strong> – references <a class="reference internal" href="artist_credit.html#musicbrainz_django_models.models.artist_credit" title="musicbrainz_django_models.models.artist_credit"><code class="xref py py-class docutils literal"><span class="pre">artist_credit</span></code></a>. Also see note
 on the <cite>name</cite> parameter.</li>
 </ul>
 </td>
@@ -100,7 +100,8 @@ on the <cite>name</cite> parameter.</li>
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">The <cite>alternative_track</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">alternative_track</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">alternative_track</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -195,7 +196,7 @@ on the <cite>name</cite> parameter.</li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

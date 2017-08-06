@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -29,7 +29,7 @@
     <link rel="next" title="artist_gid_redirect" href="artist_gid_redirect.html" />
     <link rel="prev" title="artist_credit_name" href="artist_credit_name.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -61,7 +61,7 @@
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">artist_credit</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">artist_credit</span> <span class="p">(</span> <span class="c1">-- replicate</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">artist_credit</span> <span class="p">(</span> <span class="c1">-- replicate</span>
     <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span>
     <span class="n">name</span>                <span class="nb">VARCHAR</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">artist_count</span>        <span class="nb">SMALLINT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -83,9 +83,9 @@ in their Django implementation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) &#8211; <cite>max_length</cite> is mandatory in Django models but not in
+<li><strong>name</strong> (<em>str</em>) – <cite>max_length</cite> is mandatory in Django models but not in
 PostgreSQL.</li>
-<li><strong>artist_count</strong> (<em>int</em>) &#8211; This is defined as <cite>NOT NULL</cite> in the SQL, but
+<li><strong>artist_count</strong> (<em>int</em>) – This is defined as <cite>NOT NULL</cite> in the SQL, but
 there is no default value given. Looking at the database dump, all
 values are &gt;= 1, so that default is used here.</li>
 </ul>
@@ -100,7 +100,8 @@ values are &gt;= 1, so that default is used here.</li>
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">The <cite>artist_credit</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">artist_credit</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">artist_credit</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -116,7 +117,7 @@ values are &gt;= 1, so that default is used here.</li>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
     <span class="n">artist_count</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">ref_count</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
@@ -193,7 +194,7 @@ values are &gt;= 1, so that default is used here.</li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

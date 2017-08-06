@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -26,10 +26,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="edit" href="edit.html" />
-    <link rel="prev" title="edit_note_recipient" href="edit_note_recipient.html" /> 
+    <link rel="next" title="editor_subscribe_artist_deleted" href="editor_subscribe_artist_deleted.html" />
+    <link rel="prev" title="editor_preference" href="editor_preference.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -40,10 +40,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="edit.html" title="edit"
+          <a href="editor_subscribe_artist_deleted.html" title="editor_subscribe_artist_deleted"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="edit_note_recipient.html" title="edit_note_recipient"
+          <a href="editor_preference.html" title="editor_preference"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
@@ -60,7 +60,7 @@
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">editor</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">editor</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">editor</span>
 <span class="p">(</span>
     <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span>
     <span class="n">name</span>                <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -94,7 +94,8 @@
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">The <cite>editor</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">editor</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">editor</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
     <span class="n">privs</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -140,11 +141,11 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="edit_note_recipient.html"
-                        title="previous chapter">edit_note_recipient</a></p>
+  <p class="topless"><a href="editor_preference.html"
+                        title="previous chapter">editor_preference</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="edit.html"
-                        title="next chapter">edit</a></p>
+  <p class="topless"><a href="editor_subscribe_artist_deleted.html"
+                        title="next chapter">editor_subscribe_artist_deleted</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -176,17 +177,17 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="edit.html" title="edit"
+          <a href="editor_subscribe_artist_deleted.html" title="editor_subscribe_artist_deleted"
              >next</a> |</li>
         <li class="right" >
-          <a href="edit_note_recipient.html" title="edit_note_recipient"
+          <a href="editor_preference.html" title="editor_preference"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

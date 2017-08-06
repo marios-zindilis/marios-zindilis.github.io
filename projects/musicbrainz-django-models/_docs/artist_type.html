@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -29,7 +29,7 @@
     <link rel="next" title="autoeditor_election" href="autoeditor_election.html" />
     <link rel="prev" title="artist_tag_raw" href="artist_tag_raw.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -65,7 +65,7 @@
 <li>Character</li>
 <li>Other</li>
 </ol>
-<p>Here&#8217;s a complete table of values from the MusicBrainz database dump of
+<p>Here’s a complete table of values from the MusicBrainz database dump of
 2017-04-19:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -88,44 +88,44 @@
 <tbody valign="top">
 <tr class="row-even"><td>1</td>
 <td>Person</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>1</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>b6e035f4-3ce9-331c-97df-83397230b0df</td>
 </tr>
 <tr class="row-odd"><td>2</td>
 <td>Group</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>2</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>e431f5f6-b5d2-343d-8b36-72607fffb74b</td>
 </tr>
 <tr class="row-even"><td>3</td>
 <td>Other</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>99</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>ac897045-5043-3294-969b-187360e45d86</td>
 </tr>
 <tr class="row-odd"><td>4</td>
 <td>Character</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>3</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>5c1375b0-f18d-3db7-a164-a49d7a63773f</td>
 </tr>
 <tr class="row-even"><td>5</td>
 <td>Orchestra</td>
 <td>2</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>a0b36c92-3eb1-3839-a4f9-4799823f54a5</td>
 </tr>
 <tr class="row-odd"><td>6</td>
 <td>Choir</td>
 <td>2</td>
 <td>0</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>6124967d-7e3a-3eba-b642-c9a2ffb44d94</td>
 </tr>
 </tbody>
@@ -135,7 +135,7 @@
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">artist_type</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">artist_type</span> <span class="p">(</span> <span class="c1">-- replicate</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">artist_type</span> <span class="p">(</span> <span class="c1">-- replicate</span>
     <span class="n">id</span>                  <span class="nb">SERIAL</span><span class="p">,</span>
     <span class="n">name</span>                <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="n">parent</span>              <span class="nb">INTEGER</span><span class="p">,</span> <span class="c1">-- references artist_type.id</span>
@@ -158,13 +158,13 @@ in their Django implementation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>str</em>) &#8211; The name can have one of the following values: &#8220;Person&#8221;,
-&#8220;Group&#8221;, &#8220;Orchestra&#8221;, &#8220;Choir&#8221;, &#8220;Character&#8221; or &#8220;Other&#8221;. This range of
+<li><strong>name</strong> (<em>str</em>) – The name can have one of the following values: “Person”,
+“Group”, “Orchestra”, “Choir”, “Character” or “Other”. This range of
 values is not restricted in the SQL definition, but it is documented
 in <a class="reference external" href="https://musicbrainz.org/doc/Artist">the Artist documentation</a>.
 In Django, this is implemented as a <cite>choices</cite> parameter to the <cite>name</cite>
 field, and as a <cite>pre_save</cite> signal that performs the validation.</li>
-<li><strong>gid</strong> &#8211; This cannot be NULL but a default is not defined in SQL. The
+<li><strong>gid</strong> – This cannot be NULL but a default is not defined in SQL. The
 <cite>default=uuid.uuid4</cite> in Django will generate a UUID during the creation
 of an instance.</li>
 </ul>
@@ -179,10 +179,10 @@ of an instance.</li>
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">This is called by a <cite>pre_save</cite> signal.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_artist_type_name_choice</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="k">def</span> <span class="nf">validate_artist_type_name_choice</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
-        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Artist Type &quot;</span><span class="si">{}</span><span class="s1">&quot; is not one of: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Artist Type &quot;{}&quot; is not one of: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">instance</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
             <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">NAME_CHOICE_LIST</span><span class="p">)))</span>
 </pre></div>
@@ -190,7 +190,8 @@ of an instance.</li>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">The <cite>artist_type</cite> Model</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">artist_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">artist_type</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -304,7 +305,7 @@ of an instance.</li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

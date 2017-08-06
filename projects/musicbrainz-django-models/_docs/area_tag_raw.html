@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -29,7 +29,7 @@
     <link rel="next" title="area_type" href="area_type.html" />
     <link rel="prev" title="area_tag" href="area_tag.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -60,7 +60,7 @@
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">area_tag_raw</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">area_tag_raw</span> <span class="p">(</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">area_tag_raw</span> <span class="p">(</span>
     <span class="n">area</span>                <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="c1">-- PK, references area.id</span>
     <span class="n">editor</span>              <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="c1">-- PK, references editor.id</span>
     <span class="n">tag</span>                 <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="c1">-- PK, references tag.id</span>
@@ -87,9 +87,9 @@ uniqueness required for a primary key is implemented as
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>area</strong> &#8211; references <a class="reference internal" href="area.html#musicbrainz_django_models.models.area" title="musicbrainz_django_models.models.area"><code class="xref py py-class docutils literal"><span class="pre">area</span></code></a></li>
-<li><strong>editor</strong> &#8211; references <a class="reference internal" href="editor.html#musicbrainz_django_models.models.editor" title="musicbrainz_django_models.models.editor"><code class="xref py py-class docutils literal"><span class="pre">editor</span></code></a></li>
-<li><strong>tag</strong> &#8211; references <a class="reference internal" href="tag.html#musicbrainz_django_models.models.tag" title="musicbrainz_django_models.models.tag"><code class="xref py py-class docutils literal"><span class="pre">tag</span></code></a></li>
+<li><strong>area</strong> – references <a class="reference internal" href="area.html#musicbrainz_django_models.models.area" title="musicbrainz_django_models.models.area"><code class="xref py py-class docutils literal"><span class="pre">area</span></code></a></li>
+<li><strong>editor</strong> – references <a class="reference internal" href="editor.html#musicbrainz_django_models.models.editor" title="musicbrainz_django_models.models.editor"><code class="xref py py-class docutils literal"><span class="pre">editor</span></code></a></li>
+<li><strong>tag</strong> – references <a class="reference internal" href="tag.html#musicbrainz_django_models.models.tag" title="musicbrainz_django_models.models.tag"><code class="xref py py-class docutils literal"><span class="pre">tag</span></code></a></li>
 </ul>
 </td>
 </tr>
@@ -102,7 +102,8 @@ uniqueness required for a primary key is implemented as
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">The <cite>area_tag_raw</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">area_tag_raw</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">area_tag_raw</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -196,7 +197,7 @@ uniqueness required for a primary key is implemented as
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

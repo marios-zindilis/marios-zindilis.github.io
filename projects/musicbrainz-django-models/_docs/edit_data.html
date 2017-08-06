@@ -1,6 +1,6 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -26,10 +26,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="edit_note" href="edit_note.html" />
-    <link rel="prev" title="deleted_entity" href="deleted_entity.html" /> 
+    <link rel="next" title="edit_event" href="edit_event.html" />
+    <link rel="prev" title="edit_artist" href="edit_artist.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -40,10 +40,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="edit_note.html" title="edit_note"
+          <a href="edit_event.html" title="edit_event"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="deleted_entity.html" title="deleted_entity"
+          <a href="edit_artist.html" title="edit_artist"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
@@ -60,7 +60,7 @@
 <div class="section" id="postgresql-definition">
 <h2>PostgreSQL Definition<a class="headerlink" href="#postgresql-definition" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="code docutils literal"><span class="pre">edit_data</span></code> table is defined in the MusicBrainz Server as:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">edit_data</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">edit_data</span>
 <span class="p">(</span>
     <span class="n">edit</span>                <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="c1">-- PK, references edit.id</span>
     <span class="k">data</span>                <span class="n">JSONB</span> <span class="k">NOT</span> <span class="k">NULL</span>
@@ -79,7 +79,7 @@ in their Django implementation.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; <p>This field uses the Postgres-specific data type <cite>jsonb</cite>, see:</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> – <p>This field uses the Postgres-specific data type <cite>jsonb</cite>, see:</p>
 <p><a class="reference external" href="https://www.postgresql.org/docs/9.6/static/datatype-json.html">https://www.postgresql.org/docs/9.6/static/datatype-json.html</a></p>
 <p>This has a lot of value-added functionality in Postgres, like indexing
 and queries of the key-value pairs in the stored JSON. In Django,
@@ -98,7 +98,8 @@ methods.</p>
 <h2>Model Source<a class="headerlink" href="#model-source" title="Permalink to this headline">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">The <cite>edit_data</cite> Model</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">edit_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">edit_data</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Not all parameters are listed here, only those that present some interest</span>
 <span class="sd">    in their Django implementation.</span>
@@ -146,11 +147,11 @@ methods.</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="deleted_entity.html"
-                        title="previous chapter">deleted_entity</a></p>
+  <p class="topless"><a href="edit_artist.html"
+                        title="previous chapter">edit_artist</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="edit_note.html"
-                        title="next chapter">edit_note</a></p>
+  <p class="topless"><a href="edit_event.html"
+                        title="next chapter">edit_event</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -182,17 +183,17 @@ methods.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="edit_note.html" title="edit_note"
+          <a href="edit_event.html" title="edit_event"
              >next</a> |</li>
         <li class="right" >
-          <a href="deleted_entity.html" title="deleted_entity"
+          <a href="edit_artist.html" title="edit_artist"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Marios Zindilis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
 </html>

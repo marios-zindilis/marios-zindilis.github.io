@@ -1,0 +1,210 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>musicbrainz_django_models.models.event_alias &#8212; MusicBrainz Django Models 0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../_docs/index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for musicbrainz_django_models.models.event_alias</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: event_alias</span>
+
+<span class="sd">The **Event Alias** Model.</span>
+
+<span class="sd">PostgreSQL Definition</span>
+<span class="sd">---------------------</span>
+
+<span class="sd">The :code:`event_alias` table is defined in the MusicBrainz Server as:</span>
+
+<span class="sd">.. code-block:: sql</span>
+
+<span class="sd">    CREATE TABLE event_alias ( -- replicate (verbose)</span>
+<span class="sd">        id                  SERIAL,</span>
+<span class="sd">        event               INTEGER NOT NULL, -- references event.id</span>
+<span class="sd">        name                VARCHAR NOT NULL,</span>
+<span class="sd">        locale              TEXT,</span>
+<span class="sd">        edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending &gt;= 0),</span>
+<span class="sd">        last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),</span>
+<span class="sd">        type                INTEGER, -- references event_alias_type.id</span>
+<span class="sd">        sort_name           VARCHAR NOT NULL,</span>
+<span class="sd">        begin_date_year     SMALLINT,</span>
+<span class="sd">        begin_date_month    SMALLINT,</span>
+<span class="sd">        begin_date_day      SMALLINT,</span>
+<span class="sd">        end_date_year       SMALLINT,</span>
+<span class="sd">        end_date_month      SMALLINT,</span>
+<span class="sd">        end_date_day        SMALLINT,</span>
+<span class="sd">        primary_for_locale  BOOLEAN NOT NULL DEFAULT false,</span>
+<span class="sd">        ended               BOOLEAN NOT NULL DEFAULT FALSE</span>
+<span class="sd">          CHECK (</span>
+<span class="sd">            (</span>
+<span class="sd">              -- If any end date fields are not null, then ended must be true</span>
+<span class="sd">              (end_date_year IS NOT NULL OR</span>
+<span class="sd">               end_date_month IS NOT NULL OR</span>
+<span class="sd">               end_date_day IS NOT NULL) AND</span>
+<span class="sd">              ended = TRUE</span>
+<span class="sd">            ) OR (</span>
+<span class="sd">              -- Otherwise, all end date fields must be null</span>
+<span class="sd">              (end_date_year IS NULL AND</span>
+<span class="sd">               end_date_month IS NULL AND</span>
+<span class="sd">               end_date_day IS NULL)</span>
+<span class="sd">            )</span>
+<span class="sd">          ),</span>
+<span class="sd">        CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),</span>
+<span class="sd">        CONSTRAINT search_hints_are_empty</span>
+<span class="sd">          CHECK (</span>
+<span class="sd">            (type &lt;&gt; 2) OR (</span>
+<span class="sd">              type = 2 AND sort_name = name AND</span>
+<span class="sd">              begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND</span>
+<span class="sd">              end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND</span>
+<span class="sd">              primary_for_locale IS FALSE AND locale IS NULL</span>
+<span class="sd">            )</span>
+<span class="sd">          )</span>
+<span class="sd">    );</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.utils.encoding</span> <span class="k">import</span> <span class="n">python_2_unicode_compatible</span>
+<span class="kn">from</span> <span class="nn">.event_alias_type</span> <span class="k">import</span> <span class="n">event_alias_type</span>
+
+
+<span class="k">def</span> <span class="nf">pre_save_event_alias</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># `ended` must be True if any of the `end_date_*` fields has a value:</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">ended</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_year</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_month</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_day</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># `primary_for_locale` cannot be True if `locale` has no value:</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">locale</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">primary_for_locale</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># if `event_alias` is a search hint, some fields should have specific values:</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">event_alias_type</span><span class="o">.</span><span class="n">SEARCH_HINT</span><span class="p">:</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">sort_name</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_year</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_month</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">begin_date_day</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_year</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_month</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">end_date_day</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">primary_for_locale</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">locale</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="event_alias"><a class="viewcode-back" href="../../../_docs/event_alias.html#musicbrainz_django_models.models.event_alias">[docs]</a><span class="nd">@python_2_unicode_compatible</span>
+<span class="k">class</span> <span class="nc">event_alias</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Not all parameters are listed here, only those that present some interest</span>
+<span class="sd">    in their Django implementation.</span>
+
+<span class="sd">    :param event: references :class:`.event`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">event</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">locale</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">edits_pending</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">last_updated</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;event_alias_type&#39;</span><span class="p">)</span>
+    <span class="n">sort_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">begin_date_year</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">begin_date_month</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">begin_date_day</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">end_date_year</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">end_date_month</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">end_date_day</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">primary_for_locale</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ended</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;event_alias&#39;</span></div>
+
+
+<span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">pre_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pre_save_event_alias</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">event_alias</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../_docs/index.html">MusicBrainz Django Models 0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Marios Zindilis.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
+    </div>
+  </body>
+</html>
