@@ -475,6 +475,14 @@
   </url>
 
   <url>
+    <loc>https://zindilis.com/docs/aws/s3/upload-file-with-aws-cli.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/docs/aws/s3/upload-file-with-boto3.html</loc>
+  </url>
+
+  <url>
     <loc>https://zindilis.com/docs/backuppc.html</loc>
   </url>
 
