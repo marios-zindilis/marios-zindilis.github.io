@@ -6,8 +6,8 @@
 </description>
     <link>https://zindilis.com/</link>
     <atom:link href="https://zindilis.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 07 Aug 2017 16:47:48 +0100</pubDate>
-    <lastBuildDate>Mon, 07 Aug 2017 16:47:48 +0100</lastBuildDate>
+    <pubDate>Mon, 07 Aug 2017 19:02:33 +0100</pubDate>
+    <lastBuildDate>Mon, 07 Aug 2017 19:02:33 +0100</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -154,7 +154,12 @@ input in the back-end, and avoid any surprises. Go forth and validate!&lt;/p&gt;
     
       <item>
         <title>Single-App Django Project Anatomy</title>
-        <description>&lt;p&gt;I watched a talk from DjangoCon 2014 called &lt;a href=&quot;https://www.youtube.com/watch?v=ajEDo1semzs&quot; title=&quot;DjangoCon 2014 - Anatomy of a Django Project&quot;&gt;Anatomy of a Django Project&lt;/a&gt;,
+        <description>&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+&lt;b&gt;Edit 2017-08-07:&lt;/b&gt; &lt;a href=&quot;https://kalafut.net/&quot;&gt;Jim Kalafut&lt;/a&gt;
+automated these steps in &lt;a href=&quot;https://gist.github.com/kalafut/42bd31b2fdbf7a225da94e320d3e29ba&quot;&gt;
+a Bash script&lt;/a&gt;.&lt;/div&gt;
+
+&lt;p&gt;I watched a talk from DjangoCon 2014 called &lt;a href=&quot;https://www.youtube.com/watch?v=ajEDo1semzs&quot; title=&quot;DjangoCon 2014 - Anatomy of a Django Project&quot;&gt;Anatomy of a Django Project&lt;/a&gt;,
 in which &lt;a href=&quot;http://mlavin.org/&quot; title=&quot;Mark Lavin&quot;&gt;Mark Lavin&lt;/a&gt; examines the location of some of the files that are
 automatically created by &lt;code&gt;django-admin startproject myproject&lt;/code&gt; and by
 &lt;code&gt;django-admin startapp myapp&lt;/code&gt; (or &lt;code&gt;manage.py startapp myapp&lt;/code&gt;, they are the
