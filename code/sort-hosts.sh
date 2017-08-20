@@ -5,3 +5,5 @@ set -x
 mv hosts hosts-BAK
 grep . hosts-BAK | sort | uniq > hosts
 rm hosts-BAK
+
+sudo ./blad

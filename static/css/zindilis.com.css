@@ -3,7 +3,7 @@ html {
   min-height: 100%;
 }
 body {
-  margin-top: 5rem; /* Top margin for the fixed navbar */
+  /* margin-top: 5rem; /* Top margin for the fixed navbar */
   margin-bottom: 60px; /* Margin bottom by footer height */
 }
 #site-footer {
