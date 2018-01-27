@@ -23,7 +23,7 @@
   <meta property="og:article:published_time" content="2013-11-12">
 
 
-  <meta property="og:article:modified_time" content="2013-11-12">
+  <meta property="og:article:modified_time" content="2018-01-27">
 
 
 
@@ -98,6 +98,25 @@ will be allowed to login.</p></li>
 with an <code>AllowFrom</code> directive, and restrict the ranges of IP addresses 
 from which the directory or location will be accessible.</p>
 
+<h2>Basic Authentication Against Active Directory</h2>
+
+<p>To authenticate and authorize users against Active Directory, you will need to
+create an Active Directory user that will be used to bind to AD. In the
+following example, the user is <code>apache_authentication_user</code> and its password is
+<code>apache_authentication_password</code>.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">AuthType Basic
+AuthName "Authorized Users Only"
+AuthBasicProvider ldap
+AuthzLDAPAuthoritative on
+AuthLDAPBindDN "CN=apache_authentication_user,OU=system_accounts,DC=example,DC=com"
+AuthLDAPBindPassword apache_authentication_password
+AuthLDAPGroupAttributeIsDN on
+AuthLDAPURL "ldap://domain-controller.example.com:389/OU=USERS,DC=example,DC=com?sAMAccountName?sub?(objectClass=*)"
+&lt;Limit GET POST&gt;
+    require ldap-group CN=sysadmins,OU=GROUPS,DC=example,DC=com
+    require ldap-group CN=finance,OU=GROUPS,DC=example,DC=com
+&lt;/Limit&gt;
+</code></pre></div>
 <h2>See Also</h2>
 
 <ul>
@@ -112,7 +131,7 @@ a tutorial with many Apache authentication examples, including Basic.</li>
     First Published: <time datetime="2013-11-12T00:00:00+00:00" itemprop="datePublished">2013-11-12</time>
   
   
-    &middot; Last Modified: <time datetime="2013-11-12T00:00:00+00:00" itemprop="dateModified">2013-11-12</time>
+    &middot; Last Modified: <time datetime="2018-01-27T00:00:00+00:00" itemprop="dateModified">2018-01-27</time>
   
 
   <span itemprop="author" itemscope itemtype="http://schema.org/Person">

@@ -14,10 +14,13 @@ sudo apt-get install --yes vim
 sudo apt-get install --yes git
 sudo apt-get install --yes chromium-browser
 sudo apt-get install --yes python3-pip
+sudo apt-get install --yes python-pip
 sudo apt-get install --yes apache2
 sudo apt-get install --yes jekyll
+sudo apt-get install --yes squid
+sudo apt-get install --yes guake guake-indicator
 
-pip3 install django
+sudo pip3 install django
 sudo apt-get install --yes flake8
 sudo apt-get install --yes python3-coverage
 sudo apt-get install --yes python3-sphinx

@@ -8,13 +8,15 @@ DEFAULTS = []
 BREAK = '#BLOCKLIST#'
 
 with open(ETC_HOSTS, 'r') as etc_hosts:
+    # Store all lines before the BREAK like in the DEFAULTS list:
     for line in [l.strip() for l in etc_hosts]:
         DEFAULTS.append(line)
         if line == BREAK:
             break
 
 with open(ETC_HOSTS, 'w') as etc_hosts:
+    # Write DEFAULTS and BLOCKLIST to ETC_HOSTS:
     for line in DEFAULTS:
         etc_hosts.write('{}\n'.format(line))
     for line in BLOCKLIST:
-        etc_hosts.write('0.0.0.0 {}\n'.format(line))
+        etc_hosts.write('127.55.55.55 {}\n'.format(line))
