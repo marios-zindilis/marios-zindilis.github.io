@@ -6,9 +6,33 @@
 </description>
     <link>https://zindilis.com/</link>
     <atom:link href="https://zindilis.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 17 Mar 2018 17:21:21 +0000</pubDate>
-    <lastBuildDate>Sat, 17 Mar 2018 17:21:21 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Apr 2018 19:57:53 +0100</pubDate>
+    <lastBuildDate>Fri, 06 Apr 2018 19:57:53 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>A small web application with Angular5 and Django</title>
+        <description>&lt;p&gt;Django works well as the back-end of an application that uses Angular5 in the
+front-end. In my attempt to learn Angular5 well enough to build a small
+proof-of-concept application, I couldn&amp;#39;t find a simple working example of a
+combination of the two frameworks, so I created one. I called this the Pizza
+Maker. It&amp;#39;s &lt;a href=&quot;https://github.com/marios-zindilis/pizza-maker&quot; title=&quot;Pizza Maker&quot;&gt;available on GitHub&lt;/a&gt;, and its documentation is in the 
+&lt;code&gt;README&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you have any feedback for this, please open an issue on GitHub.&lt;/p&gt;
+
+&lt;!-- Links --&gt;
+</description>
+        <pubDate>Fri, 06 Apr 2018 00:00:00 +0100</pubDate>
+        <link>https://zindilis.com/blog/2018/04/06/a-small-web-app-with-angular-and-django.html</link>
+        <guid isPermaLink="true">https://zindilis.com/blog/2018/04/06/a-small-web-app-with-angular-and-django.html</guid>
+        
+        <category>django</category>
+        
+        <category>angular</category>
+        
+        
+      </item>
     
       <item>
         <title>Back-end Validation for Django Model Field Choices</title>
@@ -775,69 +799,6 @@ it can be useful as a security awareness training material.&lt;/p&gt;
         <pubDate>Fri, 23 Oct 2015 00:00:00 +0100</pubDate>
         <link>https://zindilis.com/blog/2015/10/23/webinar-recording-from-imperva.html</link>
         <guid isPermaLink="true">https://zindilis.com/blog/2015/10/23/webinar-recording-from-imperva.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>How to run Firefox 3.6 on Ubuntu 15.04</title>
-        <description>&lt;p class=&#39;head&#39;&gt;These instructions will allow you to run the ancient 3.6 
-version of Firefox on a recent Ubuntu installation, namely 15.04, but it could 
-apply to versions of Debian, Ubuntu and Linux Mint released close to 15.04.&lt;/p&gt;
-
-&lt;p&gt;The reasons why &lt;em&gt;you&lt;/em&gt; might want to run such an old version of Firefox are 
-irrelevant to this post. For me, this solves a problem of very limited scope: 
-having to run some browser tests, written in Javascript as bookmarklets, that 
-only last executed correctly in Firefox 3.6. Those tests access user 
-information that is not available to the Javascript engine in versions of 
-Firefox newer that 3.6, since Mozilla tightened its security and it is not 
-exposing the user&amp;#39;s visited history any more.&lt;/p&gt;
-
-&lt;p&gt;Now, I suppose I could migrate my tests out of the browser, read the browsing 
-history from some SQLite file in the user&amp;#39;s Firefox profile, and simulate the 
-browser with something like Selenium, but I just cannot be bothered.&lt;/p&gt;
-
-&lt;h2&gt;The guide&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Download &lt;code&gt;firefox-3.6.tar.bz2&lt;/code&gt; from &lt;a href=&quot;https://ftp.mozilla.org/pub/firefox/releases/3.6/linux-i686/en-US/&quot;&gt;ftp.mozilla.org&lt;/a&gt;. 
-Decompressing this archive will give you a directory named &lt;code&gt;firefox&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Move the &lt;code&gt;firefox&lt;/code&gt; directory in &lt;code&gt;/opt/&lt;/code&gt;. The target of these instructions 
-is to get &lt;code&gt;/opt/firefox/firefox&lt;/code&gt; to execute without errors.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Trying to run &lt;code&gt;/opt/firefox/firefox&lt;/code&gt; now, results in &amp;#39;library missing&amp;#39; 
-errors for &lt;code&gt;libgtk-2.0-0&lt;/code&gt; and &lt;code&gt;libdbus-glib-1-2&lt;/code&gt;. Both these libraries 
-exist in an Ubuntu 15.04 installation, but they are 64bit libraries 
-whereas Firefox 3.6 was only ever released as a 32bit application.&lt;/p&gt;
-
-&lt;p&gt;Both problems are solved by installing the 32bit versions of those 
-libraries:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;sudo apt-get install libgtk-2.0-0:i386
-sudo apt-get install libdbus-glib-1-2:i386
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Run &lt;code&gt;/opt/firefox/firefox&lt;/code&gt; now and you should be able to enjoy the retro 
-experience of times gone by, with no Flash or any other plugin for that 
-matter. A note of caution: running such an old version of a browser is 
-very unsafe. Don&amp;#39;t do anything other than testing with it, use a clean 
-profile (run with &lt;code&gt;-P&lt;/code&gt; option and create a test profile), and if possible, 
-sandbox the application so that it can&amp;#39;t touch anything on your main 
-system.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;A note about library paths: Firefox 3.6 looks for libraries into its 
-installation directory (in this case &lt;code&gt;/opt/firefox/firefox&lt;/code&gt;), in addition to 
-directories in the library path. Therefore, if you hit an issue where the 
-browser can&amp;#39;t locate libraries that exist on the system, it is easier and 
-probably safer to create symbolic links to those libraries in 
-&lt;code&gt;/opt/firefox/firefox&lt;/code&gt; rather than altering your library path just to 
-accommodate the needs of this old application. &lt;/p&gt;
-
-&lt;p&gt;Enjoy!&lt;/p&gt;
-
-&lt;!-- Links --&gt;
-</description>
-        <pubDate>Sat, 05 Sep 2015 00:00:00 +0100</pubDate>
-        <link>https://zindilis.com/blog/2015/09/05/run-firefox-3-on-ubuntu-15-04.html</link>
-        <guid isPermaLink="true">https://zindilis.com/blog/2015/09/05/run-firefox-3-on-ubuntu-15-04.html</guid>
         
         
       </item>

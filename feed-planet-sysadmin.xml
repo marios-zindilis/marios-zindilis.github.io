@@ -6,9 +6,35 @@
 </description>
     <link>https://zindilis.com/</link>
     <atom:link href="https://zindilis.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 17 Mar 2018 17:21:21 +0000</pubDate>
-    <lastBuildDate>Sat, 17 Mar 2018 17:21:21 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Apr 2018 19:57:53 +0100</pubDate>
+    <lastBuildDate>Fri, 06 Apr 2018 19:57:53 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      
+        <item>
+          <title>A small web application with Angular5 and Django</title>
+          <description>&lt;p&gt;Django works well as the back-end of an application that uses Angular5 in the
+front-end. In my attempt to learn Angular5 well enough to build a small
+proof-of-concept application, I couldn&amp;#39;t find a simple working example of a
+combination of the two frameworks, so I created one. I called this the Pizza
+Maker. It&amp;#39;s &lt;a href=&quot;https://github.com/marios-zindilis/pizza-maker&quot; title=&quot;Pizza Maker&quot;&gt;available on GitHub&lt;/a&gt;, and its documentation is in the 
+&lt;code&gt;README&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you have any feedback for this, please open an issue on GitHub.&lt;/p&gt;
+
+&lt;!-- Links --&gt;
+</description>
+          <pubDate>Fri, 06 Apr 2018 00:00:00 +0100</pubDate>
+          <link>https://zindilis.com/blog/2018/04/06/a-small-web-app-with-angular-and-django.html</link>
+          <guid isPermaLink="true">https://zindilis.com/blog/2018/04/06/a-small-web-app-with-angular-and-django.html</guid>
+          
+          <category>django</category>
+          
+          <category>angular</category>
+          
+          
+        </item>
+      
     
       
         <item>
@@ -452,8 +478,6 @@ is not available in any version of Python earlier than 3.5.&lt;/p&gt;
           
           
         </item>
-      
-    
       
     
       

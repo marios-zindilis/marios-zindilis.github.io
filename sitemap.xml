@@ -14,6 +14,12 @@
   </url>
 
   <url>
+    <loc>https://zindilis.com/blog/2018/04/06/a-small-web-app-with-angular-and-django.html</loc>
+    <lastmod>2018-04-06</lastmod>
+    
+  </url>
+
+  <url>
     <loc>https://zindilis.com/blog/2017/05/04/django-backend-validation-of-choices.html</loc>
     <lastmod>2017-05-04</lastmod>
     
@@ -500,6 +506,10 @@
 
   <url>
     <loc>https://zindilis.com/docs/bluefish.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zindilis.com/docs/bootstrap.html</loc>
   </url>
 
   <url>
