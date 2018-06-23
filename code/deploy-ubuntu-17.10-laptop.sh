@@ -49,6 +49,8 @@ gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 # Don't remember recent files:
 gsettings set org.gnome.desktop.privacy remember-recent-files false
+# Click to Minimize in Dock:
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 
 rmdir Templates
 mkdir Tests
