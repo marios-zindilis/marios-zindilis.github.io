@@ -85,6 +85,10 @@ echo 'auth required pam_google_authenticator.so' >> /etc/pam.d/sshd;
 su - marios -c 'google-authenticator'
 service ssh restart
 
+rm /etc/apache2/sites-enabled/*
+a2enmod rewrite
+wget -O /etc/apache2/sites-available/z.zindilis.com.conf https://zindilis.com/code/etc/apache2/sites-available/z.zindilis.com.conf
+a2ensite z.zindilis.com.conf
 cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
 service apache2 restart
 

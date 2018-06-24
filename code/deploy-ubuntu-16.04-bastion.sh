@@ -88,14 +88,15 @@ service netfilter-persistent save
 
 apt-get --yes install fail2ban
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-echo '[sshd]' > /etc/fail2ban/jail.d/sshd.conf
-echo 'enabled = true' >> /etc/fail2ban/jail.d/sshd.conf
-echo 'maxretry = 3' >> /etc/fail2ban/jail.d/sshd.conf
+echo '[sshd]'          >  /etc/fail2ban/jail.d/sshd.conf
+echo 'enabled = true'  >> /etc/fail2ban/jail.d/sshd.conf
+echo 'maxretry = 3'    >> /etc/fail2ban/jail.d/sshd.conf
 echo 'findtime = 3600' >> /etc/fail2ban/jail.d/sshd.conf
-echo 'bantime = 600' >> /etc/fail2ban/jail.d/sshd.conf
+echo 'bantime = 600'   >> /etc/fail2ban/jail.d/sshd.conf
 service fail2ban restart
 
 apt-get --yes install libpam-google-authenticator
+
 sed -i 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/' /etc/ssh/sshd_config
 echo 'auth required pam_google_authenticator.so' >> /etc/pam.d/sshd;
 su - marios -c 'google-authenticator'
@@ -105,9 +106,9 @@ apt-get autoremove
 apt-get autoclean
 apt-get clean
 
-echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.all.disable_ipv6 = 1'     >> /etc/sysctl.conf
 echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.conf
-echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.lo.disable_ipv6 = 1'      >> /etc/sysctl.conf
 
 echo "Done. Press Enter to reboot..."; read;
 reboot
