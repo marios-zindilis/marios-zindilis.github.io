@@ -1,10 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# This script prepares a freshly installed Ubuntu 16.04 system for usage as a
-# bastion for the rest of my network. Run as root, with:
-# 
-#    wget https://zindilis.com/code/deploy-ubuntu-16.04-bastion.sh
-#    bash deploy-ubuntu-16.04-bastion.sh
+# This script prepares an Ubuntu 18.04 system for use as my VPS. Run as root:
+#
+#    wget https://zindilis.com/code/deploy-ubuntu-18.04-server.sh
+#    bash deploy-ubuntu-18.04-server.sh
 
 if [ $(id -u) -ne 0 ]
 then
@@ -12,11 +11,24 @@ then
     exit 1
 fi
 
-apt-get update;
-apt-get --yes upgrade;
-apt-get --yes dist-upgrade;
-apt-get --yes install vim git nmap whois screen python3-pip encfs;
-apt-get --yes install apache2 letsencrypt python-letsencrypt-apache
+apt update
+apt --yes upgrade
+apt --yes dist-upgrade
+apt --yes autoclean
+apt --yes autoremove
+
+apt --yes install vim
+apt --yes install git 
+apt --yes install nmap 
+apt --yes install whois 
+apt --yes install screen 
+apt --yes install python3-pip 
+apt --yes install encfs
+apt --yes install apache2 
+apt --yes install certbot
+apt --yes install iptables-persistent
+apt --yes install fail2ban
+apt --yes install libpam-google-authenticator
 
 git config --global user.email "marios@zindilis.com"
 git config --global user.name "Marios Zindilis"
@@ -26,25 +38,19 @@ pip3 install django
 pip3 install flake8
 pip3 install coverage
 pip3 install sphinx
+
 timedatectl set-timezone Europe/Dublin
 
-if [ $(grep marios /etc/passwd | wc -l) -eq 0 ]
+if not grep marios /etc/passwd
 then
-    adduser marios;
-    echo 'marios ALL=(ALL:ALL) ALL' >> /etc/sudoers
+    adduser m
+    echo 'm ALL=(ALL:ALL) ALL' >> /etc/sudoers
 fi
-sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config;
 
-wget -O /home/marios/.vimrc https://zindilis.com/code/vimrc
-chown marios:marios /home/marios/.vimrc
+sed -i 's/^PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
 
-echo -n "Set hostname: "
-read host_name
-echo "$host_name" > /etc/hostname
-echo "127.0.0.1 $host_name" >> /etc/hosts
-
-apt-get --yes install iptables-persistent;
-service netfilter-persistent flush;
+wget -O /home/m/.vimrc https://zindilis.com/code/vimrc
+chown m:m /home/m/.vimrc
 
 # For these commands to be idempotent, set policies to ACCEPT and flush:
 iptables --policy        INPUT   ACCEPT
@@ -76,6 +82,19 @@ iptables --append        INPUT               \
          --protocol      tcp                 \
          --dport         22                  \
          --jump          ACCEPT
+iptables --append        INPUT               \
+         --match         state               \
+         --state         NEW                 \
+         --protocol      tcp                 \
+         --dport         80                  \
+         --jump          ACCEPT
+iptables --append        INPUT               \
+         --match         state               \
+         --state         NEW                 \
+         --protocol      tcp                 \
+         --dport         443                 \
+         --jump          ACCEPT
+
 # Change the default policies of INPUT and FORWARD from ACCEPT to DROP:
 iptables  --policy       INPUT   DROP
 iptables  --policy       FORWARD DROP
@@ -86,28 +105,20 @@ ip6tables --policy       OUTPUT  DROP
 
 service netfilter-persistent save
 
-apt-get --yes install fail2ban
-cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-echo '[sshd]' > /etc/fail2ban/jail.d/sshd.conf
-echo 'enabled = true' >> /etc/fail2ban/jail.d/sshd.conf
-echo 'maxretry = 3' >> /etc/fail2ban/jail.d/sshd.conf
+echo '[sshd]'          >  /etc/fail2ban/jail.d/sshd.conf
+echo 'enabled = true'  >> /etc/fail2ban/jail.d/sshd.conf
+echo 'maxretry = 3'    >> /etc/fail2ban/jail.d/sshd.conf
 echo 'findtime = 3600' >> /etc/fail2ban/jail.d/sshd.conf
-echo 'bantime = 600' >> /etc/fail2ban/jail.d/sshd.conf
+echo 'bantime = 600'   >> /etc/fail2ban/jail.d/sshd.conf
 service fail2ban restart
 
-apt-get --yes install libpam-google-authenticator
-sed -i 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/' /etc/ssh/sshd_config
+sed -i 's/^ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/' /etc/ssh/sshd_config
 echo 'auth required pam_google_authenticator.so' >> /etc/pam.d/sshd;
 su - marios -c 'google-authenticator'
 service ssh restart
 
-apt-get autoremove
-apt-get autoclean
-apt-get clean
-
-echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.all.disable_ipv6 = 1'     >> /etc/sysctl.conf
 echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.conf
-echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.lo.disable_ipv6 = 1'      >> /etc/sysctl.conf
 
-echo "Done. Press Enter to reboot..."; read;
-reboot
+echo 'Done. Reboot me to apply changes.'
