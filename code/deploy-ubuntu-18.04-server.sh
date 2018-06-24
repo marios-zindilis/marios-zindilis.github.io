@@ -29,6 +29,8 @@ apt --yes install certbot
 apt --yes install iptables-persistent
 apt --yes install fail2ban
 apt --yes install libpam-google-authenticator
+apt --yes install ipcalc
+apt --yes install apache2-mod-security2
 
 git config --global user.email "marios@zindilis.com"
 git config --global user.name "Marios Zindilis"
@@ -41,7 +43,7 @@ pip3 install sphinx
 
 timedatectl set-timezone Europe/Dublin
 
-if not grep marios /etc/passwd
+if ! grep marios /etc/passwd
 then
     adduser m
     echo 'm ALL=(ALL:ALL) ALL' >> /etc/sudoers
@@ -52,58 +54,24 @@ sed -i 's/^PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
 wget -O /home/m/.vimrc https://zindilis.com/code/vimrc
 chown m:m /home/m/.vimrc
 
-# For these commands to be idempotent, set policies to ACCEPT and flush:
-iptables --policy        INPUT   ACCEPT
-iptables --policy        FORWARD ACCEPT
-iptables --policy        OUTPUT  ACCEPT
-iptables --flush
-# Create a new chain for IP addresses that keep doing stupid shit:
-iptables --new-chain     repeat-offenders
-# At the beginning of INPUT, jump to repeat-offenders:
-iptables --insert        INPUT 1             \
-         --jump          repeat-offenders
-# At the end of repeat-offenders, return to INPUT:
-iptables --append        repeat-offenders    \
-         --jump          RETURN
-# Default rules for INPUT:
-iptables --append        INPUT               \
-         --match         state               \
-         --state         ESTABLISHED,RELATED \
-         --jump          ACCEPT
-iptables --append        INPUT               \
-         --in-interface  lo                  \
-         --jump          ACCEPT
-iptables --append        INPUT               \
-         --protocol      icmp                \
-         --jump          ACCEPT
-iptables --append        INPUT               \
-         --match         state               \
-         --state         NEW                 \
-         --protocol      tcp                 \
-         --dport         22                  \
-         --jump          ACCEPT
-iptables --append        INPUT               \
-         --match         state               \
-         --state         NEW                 \
-         --protocol      tcp                 \
-         --dport         80                  \
-         --jump          ACCEPT
-iptables --append        INPUT               \
-         --match         state               \
-         --state         NEW                 \
-         --protocol      tcp                 \
-         --dport         443                 \
-         --jump          ACCEPT
+mkdir /home/m/bin
+wget -O /home/m/bin/dropbox https://www.dropbox.com/download?dl=packages/dropbox.py
+chown --recursive m:m /home/m/bin
+chmod +x  /home/m/bin/dropbox
 
-# Change the default policies of INPUT and FORWARD from ACCEPT to DROP:
-iptables  --policy       INPUT   DROP
-iptables  --policy       FORWARD DROP
+if ! grep rss2email /etc/crontab
+then
+    echo '00 */8 * * * root su - m -c "/home/m/Public/Dropbox/Scripts/Python/rss2email271/r2e run"' > /etc/crontab
+fi
+
 # Drop all IPv6:
 ip6tables --policy       INPUT   DROP
 ip6tables --policy       FORWARD DROP
 ip6tables --policy       OUTPUT  DROP
-
 service netfilter-persistent save
+
+wget -O /etc/iptables/rules.v4 https://zindilis.com/code/rules.v4
+service netfilter-persistent force-reload
 
 echo '[sshd]'          >  /etc/fail2ban/jail.d/sshd.conf
 echo 'enabled = true'  >> /etc/fail2ban/jail.d/sshd.conf
@@ -116,6 +84,9 @@ sed -i 's/^ChallengeResponseAuthentication no/ChallengeResponseAuthentication ye
 echo 'auth required pam_google_authenticator.so' >> /etc/pam.d/sshd;
 su - marios -c 'google-authenticator'
 service ssh restart
+
+cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+service apache2 restart
 
 echo 'net.ipv6.conf.all.disable_ipv6 = 1'     >> /etc/sysctl.conf
 echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.conf
