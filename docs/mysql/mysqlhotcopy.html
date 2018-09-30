@@ -80,13 +80,13 @@ mysql&gt; GRANT SELECT, RELOAD, LOCK TABLES ON *.* TO `mysqlhotcopy`@`localhost`
 itself and does not exist as files on the filesystem. An example script is:</p>
 <div class="highlight"><pre><code class="language-" data-lang=""><span class="c">#!/bin/bash</span>
 
-<span class="k">for </span>database <span class="k">in</span> <span class="k">$(</span>mysql --user mysqlhotcopy           <span class="se">\</span>
-                        --batch                       <span class="se">\</span>
-                        --skip-column-names           <span class="se">\</span>
-                        --execute <span class="s1">'SHOW DATABASES;'</span> | <span class="se">\</span>
-                  grep -v <span class="s1">'^information_schema$'</span><span class="k">)</span>
+<span class="k">for </span>database <span class="k">in</span> <span class="k">$(</span>mysql <span class="nt">--user</span> mysqlhotcopy           <span class="se">\</span>
+                        <span class="nt">--batch</span>                       <span class="se">\</span>
+                        <span class="nt">--skip-column-names</span>           <span class="se">\</span>
+                        <span class="nt">--execute</span> <span class="s1">'SHOW DATABASES;'</span> | <span class="se">\</span>
+                  <span class="nb">grep</span> <span class="nt">-v</span> <span class="s1">'^information_schema$'</span><span class="k">)</span>
 <span class="k">do
-    </span>mysqlhotcopy <span class="nv">$database</span> /root/mysql-dumps/ --allowold --keepold --user<span class="o">=</span>mysqlhotcopy
+    </span>mysqlhotcopy <span class="nv">$database</span> /root/mysql-dumps/ <span class="nt">--allowold</span> <span class="nt">--keepold</span> <span class="nt">--user</span><span class="o">=</span>mysqlhotcopy
 <span class="k">done</span>
 </code></pre></div>
 <p>This script maintains one previous copy of the databases, by renaming the 

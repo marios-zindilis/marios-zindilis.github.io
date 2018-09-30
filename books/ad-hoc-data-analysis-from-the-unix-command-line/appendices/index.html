@@ -59,11 +59,11 @@
 <p>A perl read-eval-print loop. This makes a very handy calculator on the command 
 line. Example usage:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>pcalc 1+2
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>pcalc 1+2
 3
-<span class="gp">$ </span>pcalc <span class="s2">"2*2"</span>
+<span class="nv">$ </span>pcalc <span class="s2">"2*2"</span>
 4
-<span class="gp">$ </span>pcalc 2<span class="k">*</span>3
+<span class="nv">$ </span>pcalc 2<span class="k">*</span>3
 6</code></pre></figure>
 
 <p>Source:</p>
@@ -104,11 +104,11 @@ line. Example usage:</p>
 
 <h4>Example - killing processes by name</h4>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">kill</span> <span class="sb">`</span>ps auxww | grep httpd | grep -v grep | awk <span class="s1">'{print $2}'</span><span class="sb">`</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">kill</span> <span class="sb">`</span>ps auxww | <span class="nb">grep </span>httpd | <span class="nb">grep</span> <span class="nt">-v</span> <span class="nb">grep</span> | awk <span class="s1">'{print $2}'</span><span class="sb">`</span></code></pre></figure>
 
 <h4>Example - tailing the most recent log file in one easy step</h4>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">tail -f <span class="sb">`</span>ls -rt <span class="k">*</span>log | tail -1<span class="sb">`</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">tail <span class="nt">-f</span> <span class="sb">`</span><span class="nb">ls</span> <span class="nt">-rt</span> <span class="k">*</span>log | tail <span class="nt">-1</span><span class="sb">`</span></code></pre></figure>
 
 <h3>James&#39; xargs trick</h3>
 

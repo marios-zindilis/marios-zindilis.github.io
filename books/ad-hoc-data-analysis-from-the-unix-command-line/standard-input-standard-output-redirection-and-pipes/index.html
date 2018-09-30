@@ -71,7 +71,7 @@ case characters:</p>
 
 <p>You type:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>tr <span class="s2">"[:lower:]"</span> <span class="s2">"[:upper:]"</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>tr <span class="s2">"[:lower:]"</span> <span class="s2">"[:upper:]"</span>
 hello</code></pre></figure>
 
 <p>You get:</p>
@@ -94,10 +94,10 @@ talk about <strong>redirecting</strong> the output of <code>tr</code> to a file.
 
 <p>You type:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>tr a-z A-Z &gt; tr_output
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>tr a-z A-Z <span class="o">&gt;</span> tr_output
 this is a <span class="nb">test</span>
 <span class="o">[</span>ctrl-d]
-<span class="gp">$ </span>cat tr_output</code></pre></figure>
+<span class="nv">$ </span><span class="nb">cat </span>tr_output</code></pre></figure>
 
 <p>You get:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">THIS IS A TEST
@@ -107,14 +107,14 @@ input if not given a file. For example, the <code>grep</code> command searches a
 a string and prints the lines that match. If I wanted to find my entry in the 
 password file I might say:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep jrauser /etc/passwd
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep </span>jrauser /etc/passwd
 jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
 
 <p>But I could also redirect a file to <code>grep</code>&#39;s standard input using the <code>&lt;</code> 
 operator. You can see that the <code>&lt;</code> and <code>&gt;</code> operators are like little arrows 
 that indicate the flow of data.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep jrauser &lt; /etc/passwd
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep </span>jrauser &lt; /etc/passwd
 jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
 
 <p>You can use the pipe <code>|</code> operator to connect the standard output of one command 
@@ -122,14 +122,14 @@ to the standard input of the next. The <code>cat</code> command reads a file and
 to its standard output, so yet another way to find my entry in the password 
 file is:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat /etc/passwd | grep jrauser
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat</span> /etc/passwd | <span class="nb">grep </span>jrauser
 jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
 
 <p>For a slightly more interesting example, the <code>mail</code> command will send a message 
 it reads from standard input. Let&#39;s send my entry in the password file to me in 
 an email.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat /etc/passwd | grep jrauser | mail -s <span class="s2">"passwd entry"</span> jrauser@example.com</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat</span> /etc/passwd | <span class="nb">grep </span>jrauser | mail <span class="nt">-s</span> <span class="s2">"passwd entry"</span> jrauser@example.com</code></pre></figure>
 
 <h2>Using output with headers</h2>
 
@@ -137,21 +137,21 @@ an email.</p>
 header describing the data, and subsequent lines that are the data. An example 
 is <code>ps</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ps | head -5
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ps | head <span class="nt">-5</span>
   PID TTY           TIME CMD
-22313 ttys000    0:00.86 -bash
-31537 ttys001    0:00.06 -bash
-22341 ttys002    0:00.28 -bash
-70093 ttys002    0:00.00 head -5</code></pre></figure>
+22313 ttys000    0:00.86 <span class="nt">-bash</span>
+31537 ttys001    0:00.06 <span class="nt">-bash</span>
+22341 ttys002    0:00.28 <span class="nt">-bash</span>
+70093 ttys002    0:00.00 head <span class="nt">-5</span></code></pre></figure>
 
 <p>If you wish to manipulate the data but not the header use <code>tail</code> with the <code>-n</code> 
 switch to start at line 2. For example:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ps | tail -n +2 | grep bash | head -5
-22313 ttys000    0:00.86 -bash
-31537 ttys001    0:00.06 -bash
-22341 ttys002    0:00.28 -bash
-70120 ttys002    0:00.00 -bash</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ps | tail <span class="nt">-n</span> +2 | <span class="nb">grep </span>bash | head <span class="nt">-5</span>
+22313 ttys000    0:00.86 <span class="nt">-bash</span>
+31537 ttys001    0:00.06 <span class="nt">-bash</span>
+22341 ttys002    0:00.28 <span class="nt">-bash</span>
+70120 ttys002    0:00.00 <span class="nt">-bash</span></code></pre></figure>
 
 <p>This output shows only <code>bash</code> processes because of <code>grep</code>.</p>
 

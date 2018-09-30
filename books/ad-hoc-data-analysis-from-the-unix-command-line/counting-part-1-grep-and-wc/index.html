@@ -67,13 +67,13 @@ is, perhaps, the other 90%.</p>
 <em>word count</em>. By default, <code>wc</code> prints the number of lines, words, and 
 characters in a file.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>wc pums_53.dat
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>wc pums_53.dat
 85025 1219861 25659175 pums_53.dat</code></pre></figure>
 
 <p>Nearly always we just want to count the number of lines (records), which can be 
 done by giving the <code>-l</code> option to <code>wc</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>wc -l pums_53.dat
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>wc <span class="nt">-l</span> pums_53.dat
 85025 pums_53.dat</code></pre></figure>
 
 <h2>Example - Using grep to select a subset</h2>
@@ -84,7 +84,7 @@ records, one for households and one for persons. The first character of a
 record, an H or P, indicates which kind of record it is. We can <code>grep</code> for and 
 count just person records like this:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep -c <span class="s2">"^P"</span> pums_53.dat
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep</span> <span class="nt">-c</span> <span class="s2">"^P"</span> pums_53.dat
 59150</code></pre></figure>
 
 <p>The caret <code>^</code> means that the <code>P</code> must occur at the beginning of the line. So 

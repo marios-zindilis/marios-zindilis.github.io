@@ -73,9 +73,9 @@ Control Lists). Στα συστήματα αυτά, η εντολή <code>getfac
 απλά δικαιώματα πρόσβασης, το αποτέλεσμα της <code>getfacl</code> είναι αντίστοιχο 
 με την έξοδο της <code>ls -l</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ls -l route.pdf 
--rw-rw-r-- 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
-<span class="gp">$ </span>getfacl route.pdf
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-l</span> route.pdf 
+<span class="nt">-rw-rw-r--</span> 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
+<span class="nv">$ </span>getfacl route.pdf
 <span class="c"># file: route.pdf</span>
 <span class="c"># owner: mariosz</span>
 <span class="c"># group: mariosz</span>
@@ -86,12 +86,12 @@ other::r--</code></pre></figure>
 <p>Αν σε αυτό το αρχείο οριστούν δικαιώματα ACL, τότε πλέον αλλάζουν τα 
 αποτελέσματα και των δύο εντολών, και το αρχείο συμπεριφέρεται διαφορετικά:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>setfacl -m user:another:r-- route.pdf 
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>setfacl <span class="nt">-m</span> user:another:r-- route.pdf 
  
-<span class="gp">$ </span>ls -l route.pdf
--rw-rw-r--+ 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
+<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-l</span> route.pdf
+<span class="nt">-rw-rw-r--</span>+ 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
  
-<span class="gp">$ </span>getfacl route.pdf 
+<span class="nv">$ </span>getfacl route.pdf 
 <span class="c"># file: route.pdf</span>
 <span class="c"># owner: mariosz</span>
 <span class="c"># group: mariosz</span>

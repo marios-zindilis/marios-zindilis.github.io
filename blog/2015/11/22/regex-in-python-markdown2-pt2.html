@@ -113,7 +113,7 @@ Without this flag, the second part would be handled as a raw string.</p>
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">DEFAULT_TAB_LENGTH</span> <span class="o">=</span> <span class="mi">4</span>
 
-<span class="n">_detab_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">r'(.*?)</span><span class="err">\</span><span class="s">t'</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+<span class="n">_detab_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">r'(.*?)\t'</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_detab_sub</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
     <span class="n">g1</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">g1</span> <span class="o">+</span> <span class="p">(</span><span class="s">' '</span> <span class="o">*</span> <span class="p">(</span><span class="n">DEFAULT_TAB_LENGTH</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span> <span class="o">%</span> <span class="n">DEFAULT_TAB_LENGTH</span><span class="p">))</span>
@@ -186,13 +186,13 @@ in Kansas
 which uses three spaces for indentation, and made some substitutions in it:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Change some spaces in the beginning of lines with tabs:</span>
-sed -i <span class="s1">'s/^   /\t/'</span> bzip2.c 
-sed -i <span class="s1">'s/^\t   /\t\t/'</span> bzip2.c
+sed <span class="nt">-i</span> <span class="s1">'s/^   /\t/'</span> bzip2.c 
+sed <span class="nt">-i</span> <span class="s1">'s/^\t   /\t\t/'</span> bzip2.c
 <span class="c"># Lines with tabs:</span>
-grep -c <span class="s1">'\t'</span> bzip2.c 
+<span class="nb">grep</span> <span class="nt">-c</span> <span class="s1">'\t'</span> bzip2.c 
 3032
 <span class="c"># Total lines:</span>
-wc -l bzip2.c 
+wc <span class="nt">-l</span> bzip2.c 
 6998 bzip2.c</code></pre></figure>
 
 <p>Timing test with this file:</p>

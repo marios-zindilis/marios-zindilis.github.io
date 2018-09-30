@@ -62,22 +62,22 @@
     <p>These instructions are a note to myself, on how to get web.py deployed on a new 
 VM with Ubuntu 14.04, for development:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get dist-upgrade
-sudo apt-get install --yes openssh-server 
-sudo reboot</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get upgrade
+<span class="nb">sudo </span>apt-get dist-upgrade
+<span class="nb">sudo </span>apt-get install <span class="nt">--yes</span> openssh-server 
+<span class="nb">sudo </span>reboot</code></pre></figure>
 
 <p>After the reboot:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install --yes apache2 libapache2-mod-wsgi
-sudo apt-get install --yes git
-sudo mkdir /opt/web.py
-sudo chown <span class="sb">`</span>whoami<span class="sb">`</span>:<span class="sb">`</span>whoami<span class="sb">`</span> /opt/web.py
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>apt-get install <span class="nt">--yes</span> apache2 libapache2-mod-wsgi
+<span class="nb">sudo </span>apt-get install <span class="nt">--yes</span> git
+<span class="nb">sudo </span>mkdir /opt/web.py
+<span class="nb">sudo </span>chown <span class="sb">`</span>whoami<span class="sb">`</span>:<span class="sb">`</span>whoami<span class="sb">`</span> /opt/web.py
 <span class="nb">cd</span> /opt/web.py
 git clone git://github.com/webpy/webpy.git
-ln -s <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/webpy/web .
-cat <span class="sh">&lt;&lt;EOF &gt; index.py
+ln <span class="nt">-s</span> <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/webpy/web <span class="nb">.</span>
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; index.py
 import web
 
 urls = (
@@ -93,7 +93,7 @@ class hello:
 
 if __name__ == "__main__":
     app.run()
-EOF
+</span><span class="no">EOF
 </span>python index.py</code></pre></figure>
 
   </section>

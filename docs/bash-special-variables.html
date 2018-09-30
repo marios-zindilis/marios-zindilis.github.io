@@ -70,7 +70,7 @@
 <p>The special variable <code>$0</code> contains the name of the script. It is useful when 
 returning usage instructions to the user that run the script. For example:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> --option-1 --option-2"</span>;</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> --option-1 --option-2"</span><span class="p">;</span></code></pre></figure>
 
 <h2><code>$#</code>: Number of arguments</h2>
 
@@ -81,9 +81,9 @@ be run with a minimum number of arguments. </p>
 
 <p>Here is an example of <code>$#</code> used together with <code>$0</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-eq 0 <span class="o">]</span>; <span class="k">then
-    </span><span class="nb">echo</span> <span class="s2">"Insufficient number of arguments!"</span>;
-    <span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> /path/to/file"</span>;
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span><span class="nt">-eq</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"Insufficient number of arguments!"</span><span class="p">;</span>
+    <span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> /path/to/file"</span><span class="p">;</span>
 <span class="k">fi</span></code></pre></figure>
 
 <h2><code>$?</code>: Most recent exit code</h2>
@@ -99,11 +99,11 @@ command&#39;s documentation to verify this.</p>
 <p>In the following example, the existense of the word &quot;test&quot; in a file 
 is checked:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">grep <span class="nb">test</span> /path/to/file &gt; /dev/null;
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq 0 <span class="o">]</span>; <span class="k">then
-    </span><span class="nb">echo</span> <span class="s2">"/path/to/file contains the word 'test'"</span>;
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">grep test</span> /path/to/file <span class="o">&gt;</span> /dev/null<span class="p">;</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-eq</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"/path/to/file contains the word 'test'"</span><span class="p">;</span>
 <span class="k">else
-    </span><span class="nb">echo</span> <span class="s2">"/path/to/file does not contain the word 'test'"</span>;
+    </span><span class="nb">echo</span> <span class="s2">"/path/to/file does not contain the word 'test'"</span><span class="p">;</span>
 <span class="k">fi</span></code></pre></figure>
 
   </section>

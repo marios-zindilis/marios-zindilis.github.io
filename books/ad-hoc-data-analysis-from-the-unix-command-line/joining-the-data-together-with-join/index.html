@@ -62,7 +62,7 @@ on which the join is going to take place.</p>
 <p>In delimited data, elements of a record are separated by a special &#39;delimiter&#39; 
 character. In the CSV files, fields are delimited by commas or tabs:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat j1
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>j1
 1,a
 1,b
 2,c
@@ -74,7 +74,7 @@ character. In the CSV files, fields are delimited by commas or tabs:</p>
 4,i
 5,j</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat j2
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>j2
 1,A
 1,B
 1,C
@@ -86,7 +86,7 @@ character. In the CSV files, fields are delimited by commas or tabs:</p>
 6,I
 6,J</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 j1 j2
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>join <span class="nt">-t</span> , <span class="nt">-a</span> 1 <span class="nt">-a</span> 2 <span class="nt">-o</span> 0,1.2,2.2 j1 j2
 1,a,A
 1,a,B
 1,a,C
@@ -127,17 +127,17 @@ file 2 (&quot;j2&quot;).</p>
 
 <p>To join several files you can loop through them.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 j1 j2 &gt; J</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>join <span class="nt">-t</span> , <span class="nt">-a</span> 1 <span class="nt">-a</span> 2 <span class="nt">-o</span> 0,1.2,2.2 j1 j2 <span class="o">&gt;</span> J</code></pre></figure>
 
 <p>File &quot;J&quot; is now the full outer join of &quot;j1&quot;, &quot;j2&quot;.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 J j3 &gt; J</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>join <span class="nt">-t</span> , <span class="nt">-a</span> 1 <span class="nt">-a</span> 2 <span class="nt">-o</span> 0,1.2,2.2 J j3 <span class="o">&gt;</span> J</code></pre></figure>
 
 <p>and so on through j4, j5&hellip;</p>
 
 <p>For many files this is best done with a loop:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="k">for </span>i <span class="k">in</span> <span class="k">*</span> ; <span class="k">do </span>join -t , -a 1 -a 2 -o 0,1.2,2.2 J <span class="nv">$i</span> &gt; J ; <span class="k">done</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="k">for </span>i <span class="k">in</span> <span class="k">*</span> <span class="p">;</span> <span class="k">do </span>join <span class="nt">-t</span> , <span class="nt">-a</span> 1 <span class="nt">-a</span> 2 <span class="nt">-o</span> 0,1.2,2.2 J <span class="nv">$i</span> <span class="o">&gt;</span> J <span class="p">;</span> <span class="k">done</span></code></pre></figure>
 
 <h2>Sorted Data Note</h2>
 

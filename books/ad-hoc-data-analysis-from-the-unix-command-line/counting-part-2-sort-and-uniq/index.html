@@ -66,7 +66,7 @@ count many groups at once.</p>
 from its standard input to its standard output, but if a line is identical to 
 the immediately preceding line, the duplicate line is not written. For example:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat foo
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>foo
 a 
 a
 a
@@ -76,7 +76,7 @@ a
 a
 a
 c
-<span class="gp">$ </span>uniq foo
+<span class="nv">$ </span>uniq foo
 a
 b
 a
@@ -86,7 +86,7 @@ c</code></pre></figure>
 preceding line. If the data is sorted first, we get each distinct record just 
 once:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sort foo | uniq
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sort foo | uniq
 a
 b
 c</code></pre></figure>
@@ -94,14 +94,14 @@ c</code></pre></figure>
 <p>Finally, giving the <code>-c</code> option causes <code>uniq</code> to write counts associated with 
 each distinct entry:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sort foo | uniq -c
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sort foo | uniq <span class="nt">-c</span>
 6 a
 2 b
 1 c</code></pre></figure>
 
 <p>Sorting a CSV file by an arbitrary column is easy as well:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat file.csv
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>file.csv
 a, 10, 0.5
 b, 20, 0.1
 c, 14, 0.01
@@ -112,7 +112,7 @@ g, 75, 1.0
 h, 3,  2.0
 i, 12, 1.5</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sort -n -t<span class="s2">","</span> -k 2 file.csv
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sort <span class="nt">-n</span> <span class="nt">-t</span><span class="s2">","</span> <span class="nt">-k</span> 2 file.csv
 f, 1,  0.34
 h, 3,  2.0
 a, 10, 0.5
@@ -123,7 +123,7 @@ d, 55, 0.23
 g, 75, 1.0
 e, 94, 0.78</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sort -n -t<span class="s2">","</span> -k 3 file.csv
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sort <span class="nt">-n</span> <span class="nt">-t</span><span class="s2">","</span> <span class="nt">-k</span> 3 file.csv
 c, 14, 0.01
 b, 20, 0.1
 d, 55, 0.23
@@ -141,7 +141,7 @@ create histograms from virtually any record oriented text data. Returning to
 the name-to-gender mapping of the previous chapter, we could have gotten the 
 count of male and female names in one command like this:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cut -d<span class="s2">" "</span> -f2 gender.txt | sort | uniq -c
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>cut <span class="nt">-d</span><span class="s2">" "</span> <span class="nt">-f2</span> gender.txt | sort | uniq <span class="nt">-c</span>
 3966 F
 1051 M</code></pre></figure>
 
@@ -150,7 +150,7 @@ count of male and female names in one command like this:</p>
 <p>And returning to the census data, we can now easily compute the complete 
 distribution of occupants per household:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep <span class="s2">"^H"</span> pums_53.dat  | cut -c106-107 | sort | uniq -c
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep</span> <span class="s2">"^H"</span> pums_53.dat  | cut <span class="nt">-c106-107</span> | sort | uniq <span class="nt">-c</span>
 1796 00
 7192 01
 7890 02
@@ -174,7 +174,7 @@ a dataset. In the above example, why are there 1,796 households with 0
 occupants? As another example of quickly verifying the integrity of data, let&#39;s 
 make sure that household id is truly a unique identifier:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep <span class="s2">"^H"</span> pums_53.dat | cut -c2-8 | sort | uniq -c | grep -v <span class="s2">"^ *1 "</span> | wc -l
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep</span> <span class="s2">"^H"</span> pums_53.dat | cut <span class="nt">-c2-8</span> | sort | uniq <span class="nt">-c</span> | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">"^ *1 "</span> | wc <span class="nt">-l</span>
 0</code></pre></figure>
 
 <p>This <code>grep</code> invocation will print only lines that do not (because of the <code>-v</code> 
@@ -198,7 +198,7 @@ and I like to give the <code>-r</code> option to reverse the sort so that the ou
 sorted in descending order, but this just a stylistic issue. For example, here 
 is the distribution of household heating fuel from most common to least common:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep <span class="s2">"^H"</span> pums_53.dat | cut -c132 | sort | uniq -c | sort -rn
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep</span> <span class="s2">"^H"</span> pums_53.dat | cut <span class="nt">-c132</span> | sort | uniq <span class="nt">-c</span> | sort <span class="nt">-rn</span>
 12074 3
  7007 1
  3161 
@@ -220,7 +220,7 @@ convert the output if further operations on the output are wanted. Here we use
 a bit of <strong>inline perl</strong> to rewrite the lines and reverse the order of the 
 fields:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cut -d<span class="s2">" "</span> -f2 gender.txt | sort | uniq -c | perl -pe <span class="s1">'s/^\s*([0-9]+) (\S+).*/$2, $1/'</span> 
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>cut <span class="nt">-d</span><span class="s2">" "</span> <span class="nt">-f2</span> gender.txt | sort | uniq <span class="nt">-c</span> | perl <span class="nt">-pe</span> <span class="s1">'s/^\s*([0-9]+) (\S+).*/$2, $1/'</span> 
 F, 3966
 M, 1051</code></pre></figure>
 

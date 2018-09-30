@@ -78,7 +78,7 @@ that uses Digest.</p>
 <p>First, verify the authentication type and get the Realm with 
 <code>curl</code>. The option <code>-I</code> only fetches the headers:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">[marios@zindilis.net]$ </span>curl -I http://example.com
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>marios@zindilis.net]<span class="nv">$ </span>curl <span class="nt">-I</span> http://example.com
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Digest <span class="nv">realm</span><span class="o">=</span><span class="s2">"Example Realm"</span>,  <span class="nv">nonce</span><span class="o">=</span><span class="s2">"1a7278f234efe7894dfd823"</span>, <span class="nv">algorithm</span><span class="o">=</span>MD5, <span class="nv">qop</span><span class="o">=</span><span class="s2">"auth"</span></code></pre></figure>
 

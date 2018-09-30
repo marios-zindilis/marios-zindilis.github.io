@@ -79,10 +79,10 @@
 δηλώσετε ως <code>global</code> την μεταβλητή <code>$wgUser</code> μέσα 
 στη συνάρτηση <code>execute()</code>. Για παράδειγμα:</p>
 
-<figure class="highlight"><pre><code class="language-php" data-lang="php">function execute() {
-    global $wgUser, $wgSitename;
-    // ακολουθεί η υπόλοιπη συνάρτηση execute
-}</code></pre></figure>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="k">function</span> <span class="nf">execute</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$wgUser</span><span class="p">,</span> <span class="nv">$wgSitename</span><span class="p">;</span>
+    <span class="c1">// ακολουθεί η υπόλοιπη συνάρτηση execute
+</span><span class="p">}</span></code></pre></figure>
 
 <p>Στη συνέχεια, στο σημείο όπου θέλετε να εμφανίσετε το ελεγχόμενο 
 περιεχόμενο, θα χρησιμοποιήσετε τις συναρτήσεις <code>isAnon()</code> 

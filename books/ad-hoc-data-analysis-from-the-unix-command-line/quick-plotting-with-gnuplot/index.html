@@ -62,21 +62,21 @@ time a person leaves for work and their income. Income is recorded in columns
 encoded in ten minute intervals. This pipeline extracts, cleans and formats the 
 data:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c196-198,297-303 | grep -v <span class="s2">"^000"</span> | 
-grep -v <span class="s2">" $"</span> | perl -pe <span class="s1">'substr($_,3,0)=" ";'</span> &gt; time_vs_income</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c196-198</span>,297-303 | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">"^000"</span> | 
+<span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">" $"</span> | perl <span class="nt">-pe</span> <span class="s1">'substr($_,3,0)=" ";'</span> <span class="o">&gt;</span> time_vs_income</code></pre></figure>
 
 <p>The <code>grep</code>s knock out records for which either field is null, and the perl 
 script inserts a space between the two columns so <code>gnuplot</code> can parse the 
 columns apart. Plotting in gnuplot is simple:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>gnuplot
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gnuplot
 
         G N U P L O T
         Linux version 3.7 patchlevel 1
         last modified Fri Oct 22 18:00:00 BST 1999
 
 Terminal <span class="nb">type set </span>to <span class="s1">'x11'</span>
-<span class="gp">gnuplot&gt; </span>plot <span class="s1">'time_vs_income'</span> with points</code></pre></figure>
+gnuplot&gt; plot <span class="s1">'time_vs_income'</span> with points</code></pre></figure>
 
 <p>And the resulting plot:</p>
 
@@ -89,9 +89,9 @@ have higher incomes. It would be interesting to compute the average income in
 each time bucket, but that makes a pretty hairy command line perl script. Here 
 is it in all its gruesome glory:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c196-198,297-303 | grep -v <span class="s2">"^000"</span> | 
-grep -v <span class="s2">" $"</span> | perl -ne <span class="s1">'/(\d{3})(\d{7})/; $sum{$1}+=$2; $count{$1}++; END { foreach $k
-(keys(%count)) {print $k," ",$sum{$k}/$count{$k},"\n"}}'</span> | sort -n &gt; time_vs_avgincome</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c196-198</span>,297-303 | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">"^000"</span> | 
+<span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">" $"</span> | perl <span class="nt">-ne</span> <span class="s1">'/(\d{3})(\d{7})/; $sum{$1}+=$2; $count{$1}++; END { foreach $k
+(keys(%count)) {print $k," ",$sum{$k}/$count{$k},"\n"}}'</span> | sort <span class="nt">-n</span> <span class="o">&gt;</span> time_vs_avgincome</code></pre></figure>
 
 <p>You can plot the result for yourself if you&#39;re curious.</p>
 
@@ -103,7 +103,7 @@ born citizen. We can apply the usual tricks with <code>cut</code>, <code>grep</c
 <code>uniq</code>, but it&#39;s a bit hard to see the patterns when scrolling back and forth 
 in text output, it would nicer if we could see a plot.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c78-81 | grep -v 0000 | sort | uniq -c | head -10
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c78-81</span> | <span class="nb">grep</span> <span class="nt">-v</span> 0000 | sort | uniq <span class="nt">-c</span> | head <span class="nt">-10</span>
  2 1910
  7 1914
 12 1919
@@ -119,12 +119,12 @@ label to come first, and the count to come second, so we need to write a perl
 script to reverse <code>uniq</code>&#39;s output and stick the result in a file. See 
 <code>perlrun(1)</code> for details on the <code>-a</code> and <code>-F</code> options to perl.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cat pums_53.dat | grep <span class="s2">"^P"</span> | cut -c78-81 | grep -v 0000 | sort | uniq -c |
-perl -lape <span class="s1">'chomp $F[-1]; $_ = join " ", reverse @F'</span> &gt; year_of_immigration</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c78-81</span> | <span class="nb">grep</span> <span class="nt">-v</span> 0000 | sort | uniq <span class="nt">-c</span> |
+perl <span class="nt">-lape</span> <span class="s1">'chomp $F[-1]; $_ = join " ", reverse @F'</span> <span class="o">&gt;</span> year_of_immigration</code></pre></figure>
 
 <p>Now we can make a bar chart from the contents of the file with gnuplot.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">gnuplot&gt; </span>plot <span class="s1">'year_of_immigration'</span> with impulses</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gnuplot&gt; plot <span class="s1">'year_of_immigration'</span> with impulses</code></pre></figure>
 
 <p>Here&#39;s the graph gnuplot creates:</p>
 

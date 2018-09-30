@@ -63,7 +63,7 @@ bit of data from each record. The argument <code>-c106-107</code> instructs <cod
 the 106th through 107th characters of each line. The <code>head</code> command prints just 
 the first few lines of a file (or its standard input).</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>census_data&gt;grep <span class="s2">"^H"</span> pums_53.dat  | cut -c106-107 | head -5
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>census_data&gt;grep <span class="s2">"^H"</span> pums_53.dat  | cut <span class="nt">-c106-107</span> | head <span class="nt">-5</span>
 03 
 02 
 03 
@@ -73,7 +73,7 @@ the first few lines of a file (or its standard input).</p>
 <p>You can give <code>cut</code> a comma separated list to pull out multiple ranges. To see 
 the household id along with the number of occupants of the household:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>census_data&gt;grep <span class="s2">"^H"</span> pums_53.dat  | cut -c2-8,106-107 | head -5
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>census_data&gt;grep <span class="s2">"^H"</span> pums_53.dat  | cut <span class="nt">-c2-8</span>,106-107 | head <span class="nt">-5</span>
 000011703 
 000024602 
 000231203 
@@ -85,16 +85,16 @@ where the columns of a record are found at certain offset in bytes from the
 beginning of a record. Fixed width data abounds on a Unix system. <code>ls -l</code> 
 writes its output in a fixed width format:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ls -l /etc | head -5
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-l</span> /etc | head <span class="nt">-5</span>
 total 6548 
--rw-r--r--    1 root     root          46 Dec  4 12:23 adjtime 
+<span class="nt">-rw-r--r--</span>    1 root     root          46 Dec  4 12:23 adjtime 
 drwxr-xr-x    4 root     root        4096 Oct  8  2003 alchemist 
--rw-r--r--    1 root     root        1048 Aug 31  2001 aliases 
--rw-r--r--    1 root     root       12288 Oct  8  2003 aliases.db</code></pre></figure>
+<span class="nt">-rw-r--r--</span>    1 root     root        1048 Aug 31  2001 aliases 
+<span class="nt">-rw-r--r--</span>    1 root     root       12288 Oct  8  2003 aliases.db</code></pre></figure>
 
 <p>As does <code>ps</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ps -u<span class="s1">'
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ps <span class="nt">-u</span><span class="s1">'
 USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND 
 jrauser  26870  0.0  0.1  2576 1388 pts/0    S    09:45   0:00 /bin/bash 
 jrauser   8943  0.0  0.0  2820  880 pts/0    R    12:58   0:00 ps -u</span></code></pre></figure>
@@ -102,7 +102,7 @@ jrauser   8943  0.0  0.0  2820  880 pts/0    R    12:58   0:00 ps -u</span></cod
 <p>Returning to the question of how many 1 person households are there in 
 Washington:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>grep <span class="s2">"^H"</span> pums_53.dat  | cut -c106-107 | grep -c 01
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep</span> <span class="s2">"^H"</span> pums_53.dat  | cut <span class="nt">-c106-107</span> | <span class="nb">grep</span> <span class="nt">-c</span> 01
 7192</code></pre></figure>
 
 <p>7,192, or about 28% of households have only one occupant.</p>
@@ -112,7 +112,7 @@ Washington:</p>
 <p>In delimited data, elements of a record are separated by a special 
 <strong>delimiter</strong> character. In the password file, fields are delimited by colons:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>head -5 /etc/passwd
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>head <span class="nt">-5</span> /etc/passwd
 root:x:0:0:root:/:/bin/bash 
 bin:x:1:1:bin:/bin:/sbin/nologin 
 daemon:x:2:2:daemon:/sbin:/sbin/nologin 
@@ -122,13 +122,13 @@ lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</code></pre></figure>
 <p>The 7th column of the password file is the user&#39;s login shell. How many people 
 use bash as their shell?</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cut -d: -f7 /etc/passwd | grep -c /bin/bash 
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>cut <span class="nt">-d</span>: <span class="nt">-f7</span> /etc/passwd | <span class="nb">grep</span> <span class="nt">-c</span> /bin/bash 
 170</code></pre></figure>
 
 <p>You can give either <code>-c</code> or <code>-f</code> a comma separated list, so to see a few users 
 that use <code>tcsh</code> as their shell:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>cut -d: -f1,7 /etc/passwd | grep /bin/tcsh | head -5
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>cut <span class="nt">-d</span>: <span class="nt">-f1</span>,7 /etc/passwd | <span class="nb">grep</span> /bin/tcsh | head <span class="nt">-5</span>
 iglass:/bin/tcsh
 svowell:/bin/tcsh
 dsedaris:/bin/tcsh
@@ -147,7 +147,7 @@ command can give you insight into the precise formatting of a file. For
 instance I have a file which maps first names to genders (with 95% 
 probability). When casually inspected, it looks like fixed width data:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>head -5 gender.txt
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>head <span class="nt">-5</span> gender.txt
 AARON           M 
 ABBEY           F 
 ABBIE           F 
@@ -156,7 +156,7 @@ ABDUL           M</code></pre></figure>
 
 <p>But on closer inspection there are tab characters delimiting the columns:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>od -bc gender.txt | head
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>od <span class="nt">-bc</span> gender.txt | head
 0000000 101 101 122 117 116 040 040 040 040 040 040 011 115 012 101 102 
           A   A   R   O   N                          <span class="se">\t</span>   M   <span class="se">\n</span>  A   B 
 0000020 102 105 131 040 040 040 040 040 040 011 106 012 101 102 102 111 
@@ -183,11 +183,11 @@ other white space separating pieces of the command line.</p>
 following commands. Between the double quotes I typed <code>control-v</code> and then hit 
 tab.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>wc -l gender.txt
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>wc <span class="nt">-l</span> gender.txt
 5017 gender.txt 
-<span class="gp">$ </span>cut -d<span class="s2">" "</span> -f2 gender.txt | grep M | wc -l 
+<span class="nv">$ </span>cut <span class="nt">-d</span><span class="s2">" "</span> <span class="nt">-f2</span> gender.txt | <span class="nb">grep </span>M | wc <span class="nt">-l</span> 
 1051 
-<span class="gp">$ </span>cut -d<span class="s2">" "</span> -f2 gender.txt | grep F | wc -l 
+<span class="nv">$ </span>cut <span class="nt">-d</span><span class="s2">" "</span> <span class="nt">-f2</span> gender.txt | <span class="nb">grep </span>F | wc <span class="nt">-l</span> 
 3966</code></pre></figure>
 
 <p>Apparently there&#39;s much more variation in female names than male names.</p>

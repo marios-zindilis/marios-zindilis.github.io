@@ -34,6 +34,10 @@ apt --yes install apache2-mod-security2
 apt --yes install libapache2-mod-wsgi-py3
 apt --yes install sendmail
 
+add-apt-repository ppa:deadsnakes/ppa
+apt update
+apt --yes install python3.7
+
 git config --global user.email "marios@zindilis.com"
 git config --global user.name "Marios Zindilis"
 git config --global push.default simple

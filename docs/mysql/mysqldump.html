@@ -64,7 +64,7 @@
 <h2>Backup</h2>
 
 <p>To back up a database named <code>stuff</code>:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">time </span>mysqldump -u root -p stuff | gzip &gt; stuff.sql.gz
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">time </span>mysqldump <span class="nt">-u</span> root <span class="nt">-p</span> stuff | gzip <span class="o">&gt;</span> stuff.sql.gz
 </code></pre></div>
 <p>This pipes the clear text output from <code>mysqldump</code> directly into <code>gzip</code>, 
 and prints the duration of the operation in the end.</p>
@@ -72,7 +72,7 @@ and prints the duration of the operation in the end.</p>
 <h2>Restore</h2>
 
 <p>To restore the <code>stuff</code> database:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">time </span>gunzip -c stuff.sql.gz | pv | mysql -u root -p stuff
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">time </span>gunzip <span class="nt">-c</span> stuff.sql.gz | pv | mysql <span class="nt">-u</span> root <span class="nt">-p</span> stuff
 </code></pre></div>
 <p>This decompresses the dump back in clear text, and feeds it to <code>mysql</code> 
 through <code>pv</code>, which adds the perk of an indication of progress.</p>

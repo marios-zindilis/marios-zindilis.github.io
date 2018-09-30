@@ -69,8 +69,8 @@ convenience, I added the following lines in <code>/etc/rc.local</code>, which
 get the IP Address that was leased to the machine by the DHCP server, 
 and change <code>/etc/issue</code> to display it:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">IPADDR</span><span class="o">=</span><span class="k">$(</span>ifconfig eth1 | grep <span class="s1">'inet '</span> | cut -d <span class="s1">':'</span> -f 2 | cut -d <span class="s1">' '</span> -f 1<span class="k">)</span>
-sed -i <span class="s2">"s/IP Address:.*/IP Address: </span><span class="nv">$IPADDR</span><span class="s2">/"</span> /etc/issue</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">IPADDR</span><span class="o">=</span><span class="k">$(</span>ifconfig eth1 | <span class="nb">grep</span> <span class="s1">'inet '</span> | cut <span class="nt">-d</span> <span class="s1">':'</span> <span class="nt">-f</span> 2 | cut <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 1<span class="k">)</span>
+sed <span class="nt">-i</span> <span class="s2">"s/IP Address:.*/IP Address: </span><span class="nv">$IPADDR</span><span class="s2">/"</span> /etc/issue</code></pre></figure>
 
 <p>This way, once the VM boots up and gets an IP from DHCP, that IP will 
 be displayed in the hypervisor&#39;s console.</p>

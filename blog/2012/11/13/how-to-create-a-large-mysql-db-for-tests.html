@@ -72,10 +72,10 @@
 tests. I created a &#39;<code>test</code>&#39; database, and a &#39;<code>table2</code>&#39; table, with a 
 &#39;<code>content</code>&#39; field with datatype <code>TEXT</code>. Here&#39;s what I run from Bash:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">marios@mysql-server:~$ </span><span class="nb">time </span><span class="k">for </span>i <span class="k">in</span> <span class="sb">`</span>seq 1 500000<span class="sb">`</span>; <span class="se">\</span>
-<span class="k">do </span><span class="nb">echo</span> <span class="nv">$i</span> of 500000; <span class="se">\</span>
-mysql -u root -D <span class="nb">test</span> -e <span class="se">\</span>
-<span class="s2">"INSERT INTO table2 (content) VALUES ('</span><span class="sb">`</span>cat /var/log/messages | tr -d <span class="se">\'</span><span class="sb">`</span><span class="s2">')"</span>; <span class="se">\</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">marios@mysql-server:~<span class="nv">$ </span><span class="nb">time </span><span class="k">for </span>i <span class="k">in</span> <span class="sb">`</span>seq 1 500000<span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
+<span class="k">do </span><span class="nb">echo</span> <span class="nv">$i</span> of 500000<span class="p">;</span> <span class="se">\</span>
+mysql <span class="nt">-u</span> root <span class="nt">-D</span> <span class="nb">test</span> <span class="nt">-e</span> <span class="se">\</span>
+<span class="s2">"INSERT INTO table2 (content) VALUES ('</span><span class="sb">`</span><span class="nb">cat</span> /var/log/messages | tr <span class="nt">-d</span> <span class="se">\'</span><span class="sb">`</span><span class="s2">')"</span><span class="p">;</span> <span class="se">\</span>
 <span class="k">done</span></code></pre></figure>
 
 <p>This took a few hours to finish, while creating data at a rate of 100MBytes per minute on my test server. The size of the database was 30GB.</p>
