@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Upload file to S3 Bucket using Boto3</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Upload file to S3 Bucket using Boto3</h1>
+            </header>
+            <p>How to upload files to S3 using Boto3, either with the high-level s3 resource or the low-level s3 client.</p>
+
+<!-- read more -->
+
+<h3>Using the High-Level S3 Resource</h3>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="s1">&#39;bucket-name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Key</span><span class="o">=</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="n">Body</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The last statement returns an <code>s3.Object</code> instance for the file.</p>
+
+<h3>Using the Low-Level S3 Client</h3>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">&#39;bucket-name&#39;</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="n">Body</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The response of the above call will be something like:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="sa">u</span><span class="s1">&#39;ETag&#39;</span><span class="p">:</span> <span class="s1">&#39;&quot;123412349d1bbd07abcd65819a54321&quot;&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;ResponseMetadata&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;HTTPStatusCode&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> 
+        <span class="s1">&#39;RetryAttempts&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+        <span class="s1">&#39;HostId&#39;</span><span class="p">:</span> <span class="s1">&#39;yYQugBzOogwz23XET6V5/7KbS+R+cuEY/MQzUcyHoyXzJqaQLc5eK3/RkNiBsXTXyJSyLmasubI=&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;RequestId&#39;</span><span class="p">:</span> <span class="s1">&#39;04511C835A020E21&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;HTTPHeaders&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;content-length&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;x-amz-id-2&#39;</span><span class="p">:</span> <span class="s1">&#39;yYQugBzOogwz23XET6V5/7KbS+R+cuEY/MQzUcyHoyXzJqaQLc5eK3/RkNiBsXTXyJSyLmasubI=&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;server&#39;</span><span class="p">:</span> <span class="s1">&#39;AmazonS3&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;x-amz-request-id&#39;</span><span class="p">:</span> <span class="s1">&#39;04511C835A020E21&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;etag&#39;</span><span class="p">:</span> <span class="s1">&#39;&quot;126a8a51b9d1bbd07fddc65819a542c3&quot;&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;Mon, 07 Aug 2017 15:00:36 GMT&#39;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>Upload String as File</h3>
+
+<p>Sometimes you will have a string that you want to save as an S3 Object. Since
+the SDK methods require a file-like object, you can convert the string to that
+form with either <code>StringIO</code> (in Python2) or <code>io</code> (in Python3). For example, in
+Python2:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">import</span> <span class="nn">StringIO</span>
+
+<span class="n">my_string</span> <span class="o">=</span> <span class="s1">&#39;Something I want to save on S3.&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="s1">&#39;bucket-name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Key</span><span class="o">=</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="n">Body</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>IAM</h3>
+
+<p>To be able to upload files, you need an IAM role that has at least the
+following policy:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;Sid&quot;</span><span class="p">:</span> <span class="s2">&quot;AllowUploadFileToS3Bucket&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Effect&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;s3:PutObject&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;Resource&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;arn:aws:s3:::bucket-name/*&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+            <footer>
+                <p>Posted on 2017-08-07</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

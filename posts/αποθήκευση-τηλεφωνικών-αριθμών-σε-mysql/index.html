@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Αποθήκευση τηλεφωνικών αριθμών σε MySQL</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Αποθήκευση τηλεφωνικών αριθμών σε MySQL</h1>
+            </header>
+            <p>Γράφω πρώτα το συμπέρασμα, για όποιον βαριέται να διαβάσει το υπόλοιπο κείμενο:</p>
+
+<p>Αποθηκεύστε τους τηλεφωνικούς αριθμούς ως 
+<code>VARCHAR(20)</code>, εκτός και αν υπάρχει σημαντικός λόγος γιατί να κάνετε 
+κάτι διαφορετικό. Επιπλέον, χρησιμοποιήστε κώδικα σε επίπεδο εφαρμογής για 2 
+ενέργειες: Α. για να αφαιρέσετε από την είσοδο του χρήστη οποιουσδήποτε μη 
+αριθμητικούς χαρακτήρες, πριν από την εισαγωγή στη βάση (π.χ. παύλες, κενά, 
+παρενθέσεις), και Β. για να μορφοποιήσετε τον αριθμό με μη αριθμητικούς 
+χαρακτήρες, πριν από την έξοδο στο χρήστη, ώστε να βελτιώσετε την 
+αναγνωσιμότητα (π.χ. με παύλες, κενά, παρενθέσεις).</p>
+
+<!-- read more -->
+
+<p>Κατ' αρχήν, το <strong>μήκος=20</strong> προέρχεται από τη <a href="http://en.wikipedia.org/wiki/E.164" title="E.164 Recommendation"> σύσταση Ε.164 του ITU-T</a>, η οποία καθορίζει το μέγιστο μήκος των τηλεφωνικών αριθμών σε 15 αριθμητικούς χαρακτήρες, μη συμπεριλαμβανομένου του <a href="http://en.wikipedia.org/wiki/International_call_prefix" title="Λίστα με τα προθέματα διεθνών κλήσεων">προθέματος διεθνούς κλήσης</a>, το μέγιστο από τα οποία είναι 5 χαρακτήρες.</p>
+
+<p>Ο λόγος που προτείνω το <strong>VARCHAR</strong> αντί κάποιου αριθμητικού τύπου της MySQL είναι γιατί:</p>
+
+<ol>
+<li>Οι τηλεφωνικοί αριθμοί, δεν λογίζονται ως ακέραιοι, με την έννοια ότι:
+<ul>
+<li>δεν πρόκειται ποτέ να εκτελέσετε πάνω τους αριθμητικές πράξεις, και</li>
+<li>δεν έχει νόημα η ταξινόμησή τους κατά μέγεθος, δηλαδή δεν νοείται «μεγαλύτερος» και «μικρότερος» αριθμός τηλεφώνου.</li>
+</ul>
+<li>Σε μερικές χώρες, ένας τοπικός αριθμός τηλεφώνου μπορεί να ξεκινάει από μηδέν. Μερικές (ή όλες;) μηχανές αποθήκευσης στη MySQL θα αποκόψουν τα μηδενικά που προηγούνται ενός αριθμού, όταν αυτός αποθηκεύεται ως ακέραιος.</li>
+<li>Τέλος, η διαφορά στο μέγεθος της τελικής αποθηκευμένης πληροφορίας, είναι ασήμαντη, για τόσο μικρά κομμάτια πληροφορίας.</li>
+</ol>
+
+<p>Χρησιμοποιώντας VARCHAR(20) για αποθήκευση τηλεφωνικών αριθμών, <strong>υποχρεωτικά</strong> θα χρησιμοποιήσετε επιπλεόν κώδικα σε επίπεδο εφαρμογής για να καθαρίσετε την είσοδο του χρήστη από μη αριθμητικούς χαρακτήρες (αλλιώς μπορεί να ξεφύγει στο μήκος), και <strong>προεραιτικά</strong> για να ομορφύνετε τον τηλεφωνικό αριθμό στην έξοδο.</p>
+
+<p>Σημειώστε ότι, παρόμοιο σκεπτικό ισχύει και την αποθήκευση Ταχυδρομικού Κώδικα, πόσω μάλλον που μερικές χώρες (π.χ. Ηνωμένο Βασίλειο, Καναδάς) χρησιμοποιούν και γράμματα του αλφαβήτου στους Τ.Κ.</p>
+
+            <footer>
+                <p>Posted on 2011-03-16</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

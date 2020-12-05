@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Reading #6</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Reading #6</h1>
+            </header>
+            <p>Today's reading recommendations.</p>
+
+<!-- read more -->
+
+<h3>Free and Open Source related stuff</h3>
+
+<ul>
+<li><a href="http://www.itworld.com/internet/141635/yahoo-plans-open-source-code-non-core-technologies">Yahoo plans to open source code for non-core technologies</a></li>
+</ul>
+
+<h3>Networking related</h3>
+
+<ul>
+<li><a href="http://www.pcpro.co.uk/features/366349/can-you-really-be-traced-from-your-ip-address">Can you really be traced by your IP?</a></li>
+</ul>
+
+<h3>Misc geek reading</h3>
+
+<ul>
+<li><a href="http://www.itworld.com/security/139794/with-hacking-music-can-take-control-your-car">Hacking 
+into a car from an infected .mp3</a>.</li>
+<li>From InfoWorld.com I enjoy reading articles by 
+<a href="http://www.infoworld.com/blogs/paul-venezia">Paul Venezia</a>, and by 
+<a href="http://infoworld.com/blogs/anonymous/">Anonymous</a>. Today I read 
+<a href="http://www.infoworld.com/print/148993">Cloud computing makes users of 
+us all</a>, <a href="http://www.infoworld.com/print/140239">What the days 
+of gonzo IT taught us</a>, <a href="http://www.infoworld.com/print/131012">Whatever 
+happened to Perl?</a> (quote: "Perl makes easy things hard, and hard things possible"), 
+<a href="http://www.infoworld.com/print/155616">Dealing with system 
+consoles from hell</a>, and <a href="http://www.infoworld.com/print/156031">Danger, 
+danger! Newbies at work!</a>.</li>
+<li><a href="http://techie-buzz.com/tech-news/mysql-com-database-compromised-sql-injection.html">mysql.com, SQL injected</a></li>
+<li>Not as fun a read as the writer might have thought, but here's <a href="http://www.pcpro.co.uk/blogs/2011/03/08/a-letter-on-behalf-of-the-worlds-pc-fixers/">A letter on behalf of the world's PC fixers</a>. I conclude that the guy just never got any.</li><li>How <a href="http://www.stormdriver.com/blog/start-ups-in-the-maze-of-software-patents/">software patents choke startups</a>, how an <a href="http://www.techdirt.com/articles/20081107/0118162765.shtml">oilfield services corporation is patenting patent-trolling</a> and how to <a href="http://patentabsurdity.com/download.html">download a free video that explains some of this crazy shit</a>.</li>
+<li><a href="http://codex.wordpress.org/Changing_File_Permissions">Changing file permissions in WordPress</a>.</li></ul>
+
+<p>Regarding that last point, I did some testing and found that the minimum permissions for a php file to execute via the browser are 004, or -------r-- since php is running as "other", or in my case as www-data. The "usual" permissions for php files are 644 or -rw-r--r--.</p>
+
+<p>Now, the minimum permissions of the containing folder, are 001, or d--------x, but some scripts will not work if they are trying to read something in their own folder, or in another folder that has 001 permissions. The "usual" permissions for folders containing php files are 755 or drwxr-xr-x.</p>
+
+<p>In a production environment, one may reduce permissions to some files, e.g. a config.php, to disallow unnecessary access.</p>
+
+            <footer>
+                <p>Posted on 2011-03-30</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

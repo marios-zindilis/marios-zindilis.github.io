@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 4</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/zimbra/">
+            <h2 class="card-title">Zimbra</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Step by step guides on how to install Zimbra on either 
+<a href="http://www.unixmen.com/install-zimbra-collaboration-suite-8-6-0-centos-7/">CentOS 7</a> 
+or <a href="http://www.unixmen.com/install-zimbra-collaboration-suite-in-ubuntu/">Ubuntu</a>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-04-11
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/inkscape/">
+            <h2 class="card-title">Inkscape</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="https://opensource.com/life/14/11/inkscape-tutorial-drawing-graphic">Tutorial to create a vector graphic with Inkscape</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-04-09
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/osquery/">
+            <h2 class="card-title">OSQuery</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>http://sysadvent.blogspot.com/2014/12/day-3-so-server-tell-me-about-yourself.html</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-04-09
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/netapp-replace-disk-on-fas/">
+            <h2 class="card-title">Replace Failed Disk on NetApp FAS</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>After physically replacing the disk, the new disk might not be assigned to the 
+controller on which the old disk was assigned, depending on the value of the 
+<code>disk.auto_assign</code> option, which you can check with:</p>
+
+<pre><code>options disk.auto_assign
+</code></pre>
+
+<p>Even if the value of that option is <code>on</code>, the disk might still remain 
+unassigned, in which case you will see a message for unassigned disks in the 
+end of the output of the command:</p>
+
+<pre><code>disk show
+</code></pre>
+
+<p>You can see which disks are unassinged with</p>
+
+<pre><code>disk show -n
+</code></pre>
+
+<p>To assign a disk to a controller, SSH to that controller and do:</p>
+
+<pre><code>disk assign XX.YY.ZZ
+</code></pre>
+
+<p>... where <code>XX.YY.ZZ</code> is the name of the disk, as obtained by <code>disk show -n</code>.
+Example output:</p>
+
+<pre><code>FAS&gt; disk assign 01.23.45
+Fri May 13 00:00:02 [FAS:diskown.changingOwner:info]: changing ownership for disk 12.34.45 (S/N ABCDEF) from unowned (ID 1234567890) to FAS (ID 0987654321)
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-03-30
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/elk/">
+            <h2 class="card-title">ElasticSearch, Logstash and Kibana</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="https://www.youtube.com/watch?v=GrdzX9BNfkg">Introduction and Demo to the Elasticsearch, Logstash and Kibana</a></li>
+<li><a href="http://www.elasticsearch.com/webinars/shield-securing-your-data-in-elasticsearch/?thank-you">Shield: Securing Your Data in Elasticsearch</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-03-22
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/faraday/">
+            <h2 class="card-title">Faraday Integrated Penetration-Test Environment</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://holisticinfosec.blogspot.com/2015/03/toolsmith-faraday-ipe-when-tinfoil-wont.html">toolsmith: Faraday IPE - When Tinfoil Won’t Work for Pentesting</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-03-22
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ghost/">
+            <h2 class="card-title">Ghost</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="https://community.qualys.com/blogs/laws-of-vulnerabilities/2015/01/27/the-ghost-vulnerability">The GHOST Vulnerability</a>, 
+from the <em>The Laws of Vulnerabilities</em> blog at <em>Qualys</em>.</li>
+<li><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0235">CVE-2015-0235</a> at Mitre, 
+at <a href="https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-0235">Red Hat Bugzilla (Bug 1183461)</a>, 
+at <a href="http://support.novell.com/security/cve/CVE-2015-0235.html">Novell</a>, 
+at <a href="https://security-tracker.debian.org/tracker/CVE-2015-0235">Debian</a>,
+at <a href="https://access.redhat.com/articles/1332213">Red Hat Knowledge Base</a>, 
+at <a href="https://www.youtube.com/watch?v=218JiCBpUTM">SANS ISC Youtube Channel</a>.</li>
+<li>Discussions at <a href="https://news.ycombinator.com/item?id=8953545">Hacker News</a>, 
+<a href="http://www.reddit.com/r/netsec/comments/2tulbd/cve_2015023_nasty_bug_in_glibc_gethostby/">Reddit</a>, 
+<a href="http://news.slashdot.org/story/15/01/27/1925208/serious-network-function-vulnerability-found-in-glibc">Slashdot</a>, 
+<a href="http://security.stackexchange.com/questions/80210/ghost-bug-is-there-a-simple-way-to-test-if-my-system-is-secure">Stack Exchange</a>.</li>
+<li><a href="https://www.qualys.com/research/security-advisories/GHOST-CVE-2015-0235.txt">Qualys Security Advisory CVE-2015-0235</a>, 
+and <a href="http://www.openwall.com/lists/oss-security/2015/01/27/9">cross-posted at the Open Source Software Security Mailing List</a>.</li>
+<li>Articles at 
+<a href="http://www.zdnet.com/article/critical-linux-security-hole-found/">ZDNet</a>, 
+<a href="http://arstechnica.com/security/2015/01/highly-critical-ghost-allowing-code-execution-affects-most-linux-systems/">Ars Technica</a>, 
+<a href="http://www.securityweek.com/critical-ghost-vulnerability-impacts-linux-systems">Security Week (#1)</a>, 
+<a href="http://www.securityweek.com/busting-ghost-security-vulnerability-haunting-linux-systems">Security Week (#2)</a>, 
+<a href="http://news.yahoo.com/linux-makers-release-patch-thwart-ghost-cyber-threat-220404678--finance.html">Yahoo News</a>,
+<a href="http://www.techrepublic.com/article/the-ghost-security-hole-perfectly-illustrates-the-efficiency-of-open-source/">TechRepublic</a>.</li>
+<li><a href="http://contextis.co.uk/documents/120/Glibc_Adventures-The_Forgotten_Chunks_1.pdf">Glibc Adventures: The Forgotten Chunks</a></li>
+<li><a href="http://www.darkreading.com/application-security/ghost-not-so-scary-after-all/d/d-id/1318844?_mc=RSS_DR_EDT">'Ghost' Not So Scary After All</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-02-28
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/gitpython-clone-remote-repository/">
+            <h2 class="card-title">Clone a remote repository with GitPython</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Example code:</p>
+
+<p>{% highlight python %}
+import git</p>
+
+<p>remote = 'https://github.com/gitpython-developers/GitPython.git'
+local = '/home/marios/Tests/gitpython'</p>
+
+<p>git.Repo.clone_from(remote, local)
+{% endhighlight %}</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-02-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/mysql-mysqlhotcopy/">
+            <h2 class="card-title">mysqlhotcopy</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><strong>mysqlhotcopy</strong> is a Perl script for backing up MySQL tables stored in either 
+the MyISAM or ARCHIVE engines. It works very fast because it doesn't dump the 
+contents of the tables. Instead it takes advantage of the fact that MyISAM 
+tables are contained in separate files, and simply locks the tables and copies 
+the flat files.</p>
+
+<h2>Example Setup</h2>
+
+<ol>
+<li><p>Create a user in MySQL for running <code>mysqlhotcopy</code>. The user will need to be 
+granted the <code>SELECT</code>, <code>RELOAD</code> and <code>LOCK TABLES</code> privileges on the
+databases that will be backed up. In this example, I want all databases to 
+be backed up:</p>
+
+<pre><code>mysql&gt; CREATE USER `mysqlhotcopy`;
+mysql&gt; GRANT SELECT, RELOAD, LOCK TABLES ON *.* TO `mysqlhotcopy`@`localhost`;
+</code></pre></li>
+<li><p>Create a daily cron job to backup every database, except for 
+<code>information_schema</code>, which is a dynamic schema created my the MySQL server 
+itself and does not exist as files on the filesystem. An example script is:</p>
+
+<pre><code>#!/bin/bash
+
+for database in $(mysql --user mysqlhotcopy           \
+                        --batch                       \
+                        --skip-column-names           \
+                        --execute 'SHOW DATABASES;' | \
+                  grep -v '^information_schema$')
+do
+    mysqlhotcopy $database /root/mysql-dumps/ --allowold --keepold --user=mysqlhotcopy
+done
+</code></pre>
+
+<p>This script maintains one previous copy of the databases, by renaming the 
+directory, appending the suffix <code>_old</code> to the name. </p></li>
+</ol>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://dev.mysql.com/doc/refman/5.6/en/mysqlhotcopy.html">mysqlhotcopy - A Database Backup Program</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-01-29
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/mysql/">mysql</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/project-management-tools/">
+            <h2 class="card-title">Project Management Tools</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://opensource.com/business/14/1/top-project-management-tools-2014" title="Top Project Management Tools 2014">Top Project Management Tools 2014</a></li>
+<li><a href="http://opensource.com/business/15/1/top-project-management-tools-2015" title="Top Project Management Tools 2015">Top Project Management Tools 2015</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-01-15
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/3/">3</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">4</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/5/">5</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/6/">6</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/13/">13</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/14/">14</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/15/">15</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/16/">16</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/18/">18</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/22/">22</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/27/">27</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

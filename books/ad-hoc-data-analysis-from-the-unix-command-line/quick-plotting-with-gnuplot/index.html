@@ -1,86 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Marios Zindilis - Quick Plotting With gnuplot</title>
-  <meta name="description" content="Example - creating a scatter plot">
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/static/css/zindilis.com.css">
-  <link rel="canonical" href="https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/quick-plotting-with-gnuplot/">
-  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
   
-  <meta property="og:title" content="Quick Plotting With gnuplot">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Quick Plotting With gnuplot</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
 
-
-  <meta property="og:type" content="website">
-
-
-
-</head>
-
-
-<body>
-  <header class="mb-4">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/">Marios Zindilis</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-link-items" aria-controls="navbar-link-items" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbar-link-items">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" style="color:white" href="/docs/">Docs</a>
-          <a class="nav-item nav-link" style="color:white" href="/projects/">Projects</a>
-          <a class="nav-item nav-link" style="color:white" href="/about/">About</a>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
 
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Quick Plotting With gnuplot</h1>
+            </header>
+            <h2>Example - creating a scatter plot</h2>
 
-  <div class="container">
-        <article class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">Quick Plotting With gnuplot</h1>
-  </header>
-
-  <div class="post-content">
-    <h2>Example - creating a scatter plot</h2>
-
-<p>Does the early bird get the worm? Let&#39;s look at the relationship between the 
+<p>Does the early bird get the worm? Let's look at the relationship between the 
 time a person leaves for work and their income. Income is recorded in columns 
 297-303, and the time a person leaves for work is recorded in columns 196-198, 
 encoded in ten minute intervals. This pipeline extracts, cleans and formats the 
 data:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c196-198</span>,297-303 | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">"^000"</span> | 
-<span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">" $"</span> | perl <span class="nt">-pe</span> <span class="s1">'substr($_,3,0)=" ";'</span> <span class="o">&gt;</span> time_vs_income</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c196-198,297-303 <span class="p">|</span> grep -v <span class="s2">&quot;^000&quot;</span> <span class="p">|</span> 
+grep -v <span class="s2">&quot; </span>$<span class="s2">&quot;</span> <span class="p">|</span> perl -pe <span class="s1">&#39;substr($_,3,0)=&quot; &quot;;&#39;</span> &gt; time_vs_income
+</code></pre></div>
 
 <p>The <code>grep</code>s knock out records for which either field is null, and the perl 
 script inserts a space between the two columns so <code>gnuplot</code> can parse the 
 columns apart. Plotting in gnuplot is simple:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gnuplot
+<div class="codehilite"><pre><span></span><code>$ gnuplot
 
         G N U P L O T
-        Linux version 3.7 patchlevel 1
-        last modified Fri Oct 22 18:00:00 BST 1999
+        Linux version <span class="m">3</span>.7 patchlevel <span class="m">1</span>
+        last modified Fri Oct <span class="m">22</span> <span class="m">18</span>:00:00 BST <span class="m">1999</span>
 
-Terminal <span class="nb">type set </span>to <span class="s1">'x11'</span>
-gnuplot&gt; plot <span class="s1">'time_vs_income'</span> with points</code></pre></figure>
+Terminal <span class="nb">type</span> <span class="nb">set</span> to <span class="s1">&#39;x11&#39;</span>
+gnuplot&gt; plot <span class="s1">&#39;time_vs_income&#39;</span> with points
+</code></pre></div>
 
 <p>And the resulting plot:</p>
 
-<p><img src="time-vs-income.gif" alt="GnuPlot Graph" title="GnuPlot Graph of Time Over Income"></p>
+<p><img src="time-vs-income.gif" alt="GnuPlot Graph" title="GnuPlot Graph of Time Over Income" /></p>
 
 <p>Recall that 0 on the x-axis is midnight, and 20 is 200 minutes after midnight 
 or about 3:20am. Increased density in the beginning of the traditional 1st and 
@@ -89,46 +74,50 @@ have higher incomes. It would be interesting to compute the average income in
 each time bucket, but that makes a pretty hairy command line perl script. Here 
 is it in all its gruesome glory:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c196-198</span>,297-303 | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">"^000"</span> | 
-<span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">" $"</span> | perl <span class="nt">-ne</span> <span class="s1">'/(\d{3})(\d{7})/; $sum{$1}+=$2; $count{$1}++; END { foreach $k
-(keys(%count)) {print $k," ",$sum{$k}/$count{$k},"\n"}}'</span> | sort <span class="nt">-n</span> <span class="o">&gt;</span> time_vs_avgincome</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c196-198,297-303 <span class="p">|</span> grep -v <span class="s2">&quot;^000&quot;</span> <span class="p">|</span> 
+grep -v <span class="s2">&quot; </span>$<span class="s2">&quot;</span> <span class="p">|</span> perl -ne <span class="s1">&#39;/(\d{3})(\d{7})/; $sum{$1}+=$2; $count{$1}++; END { foreach $k</span>
+<span class="s1">(keys(%count)) {print $k,&quot; &quot;,$sum{$k}/$count{$k},&quot;\n&quot;}}&#39;</span> <span class="p">|</span> sort -n &gt; time_vs_avgincome
+</code></pre></div>
 
-<p>You can plot the result for yourself if you&#39;re curious.</p>
+<p>You can plot the result for yourself if you're curious.</p>
 
 <h2>Example - Creating a bar chart with gnuplot</h2>
 
-<p>Let&#39;s look at historic immigration rates among Washingtonians. Year of 
+<p>Let's look at historic immigration rates among Washingtonians. Year of 
 immigration is recorded in columns 78-81, and 0000 means the person is a native 
 born citizen. We can apply the usual tricks with <code>cut</code>, <code>grep</code>, <code>sort</code>, and 
-<code>uniq</code>, but it&#39;s a bit hard to see the patterns when scrolling back and forth 
+<code>uniq</code>, but it's a bit hard to see the patterns when scrolling back and forth 
 in text output, it would nicer if we could see a plot.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c78-81</span> | <span class="nb">grep</span> <span class="nt">-v</span> 0000 | sort | uniq <span class="nt">-c</span> | head <span class="nt">-10</span>
- 2 1910
- 7 1914
-12 1919
- 7 1920
- 6 1921
- 5 1922
- 7 1923
- 5 1924
- 8 1925</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c78-81 <span class="p">|</span> grep -v <span class="m">0000</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> head -10
+ <span class="m">2</span> <span class="m">1910</span>
+ <span class="m">7</span> <span class="m">1914</span>
+<span class="m">12</span> <span class="m">1919</span>
+ <span class="m">7</span> <span class="m">1920</span>
+ <span class="m">6</span> <span class="m">1921</span>
+ <span class="m">5</span> <span class="m">1922</span>
+ <span class="m">7</span> <span class="m">1923</span>
+ <span class="m">5</span> <span class="m">1924</span>
+ <span class="m">8</span> <span class="m">1925</span>
+</code></pre></div>
 
 <p>Gnuplot is a fine graphing tool for this purpose, but it wants the category 
 label to come first, and the count to come second, so we need to write a perl 
-script to reverse <code>uniq</code>&#39;s output and stick the result in a file. See 
+script to reverse <code>uniq</code>'s output and stick the result in a file. See 
 <code>perlrun(1)</code> for details on the <code>-a</code> and <code>-F</code> options to perl.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c78-81</span> | <span class="nb">grep</span> <span class="nt">-v</span> 0000 | sort | uniq <span class="nt">-c</span> |
-perl <span class="nt">-lape</span> <span class="s1">'chomp $F[-1]; $_ = join " ", reverse @F'</span> <span class="o">&gt;</span> year_of_immigration</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c78-81 <span class="p">|</span> grep -v <span class="m">0000</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span>
+perl -lape <span class="s1">&#39;chomp $F[-1]; $_ = join &quot; &quot;, reverse @F&#39;</span> &gt; year_of_immigration
+</code></pre></div>
 
 <p>Now we can make a bar chart from the contents of the file with gnuplot.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gnuplot&gt; plot <span class="s1">'year_of_immigration'</span> with impulses</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>gnuplot&gt; plot <span class="s1">&#39;year_of_immigration&#39;</span> with impulses
+</code></pre></div>
 
-<p>Here&#39;s the graph gnuplot creates:</p>
+<p>Here's the graph gnuplot creates:</p>
 
-<p><img src="year-of-immigration.gif" alt="GnuPlot Graph" title="GnuPlot Graph of Year of Immigration"></p>
+<p><img src="year-of-immigration.gif" alt="GnuPlot Graph" title="GnuPlot Graph of Year of Immigration" /></p>
 
 <p>Be a bit careful interpreting this plot, only people who are still alive can be 
 counted, so it naturally goes up and to the right (people who immigrated more 
@@ -140,70 +129,31 @@ around 1980, consult your local historian.</p>
 <h2>External Links</h2>
 
 <ul>
-<li>  <a href="http://gnuplot.sourceforge.net/demo/">Several demos of GnuPlot</a></li>
+<li><a href="http://gnuplot.sourceforge.net/demo/">Several demos of GnuPlot</a></li>
 </ul>
 
-  </div>
+            <footer>
+                <p>Posted on 2016-11-13</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
 
-</article>
+    </main>
 
-  </div>
-
-  <footer id="site-footer" class="footer-distributed">
-  <div class="container">
-    <div class="footer-right">
-      <a href="/feed.xml" title="Marios Zindilis RSS Feed">
-        <i class="fa fa-rss" aria-hidden="true"></i><span class="sr-only">Marios Zindilis RSS Feed</span></a>
-      <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">
-        <i class="fa fa-linkedin" aria-hidden="true"></i><span class="sr-only">Marios Zindilis LinkedIn Profile</span></a>
-      <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">
-        <i class="fa fa-github" aria-hidden="true"></i><span class="sr-only">Marios Zindilis GitHub Page</span></a>
-    </div>
-
-    <div class="footer-left">
-      <p class="footer-links">
-        <a href="/">Home</a> · 
-        <a href="/docs/">Docs</a> ·
-        <a href="/projects/">Projects</a> ·
-        <a href="/about/">About</a>
-      </p>
-      <p>Marios Zindilis</p>
-    </div>
-  </div>
-</footer>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      // set padding-bottom of body to height of footer.site-footer:
-      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      // http://stackoverflow.com/a/14570614
-      var observeDOM = (function(){
-        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
-          eventListenerSupported = window.addEventListener;
-
-        return function(obj, callback){
-          if( MutationObserver ){
-          // define a new observer
-            var obs = new MutationObserver(function(mutations, observer){
-              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
-              callback();
-            });
-            // have the observer observe foo for changes in children
-            obs.observe( obj, { childList:true, subtree:true });
-          }
-          else if( eventListenerSupported ){
-            obj.addEventListener('DOMNodeInserted', callback, false);
-            obj.addEventListener('DOMNodeRemoved', callback, false);
-          }
-        }
-      })();
-      observeDOM(document.getElementById('site-footer') ,function(){
-        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      });
-    </script>
-
-
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   </body>
 </html>

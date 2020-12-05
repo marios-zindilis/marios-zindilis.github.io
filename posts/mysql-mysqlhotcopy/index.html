@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>mysqlhotcopy</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">mysqlhotcopy</h1>
+            </header>
+            <p><strong>mysqlhotcopy</strong> is a Perl script for backing up MySQL tables stored in either 
+the MyISAM or ARCHIVE engines. It works very fast because it doesn't dump the 
+contents of the tables. Instead it takes advantage of the fact that MyISAM 
+tables are contained in separate files, and simply locks the tables and copies 
+the flat files.</p>
+
+<h2>Example Setup</h2>
+
+<ol>
+<li><p>Create a user in MySQL for running <code>mysqlhotcopy</code>. The user will need to be 
+granted the <code>SELECT</code>, <code>RELOAD</code> and <code>LOCK TABLES</code> privileges on the
+databases that will be backed up. In this example, I want all databases to 
+be backed up:</p>
+
+<pre><code>mysql&gt; CREATE USER `mysqlhotcopy`;
+mysql&gt; GRANT SELECT, RELOAD, LOCK TABLES ON *.* TO `mysqlhotcopy`@`localhost`;
+</code></pre></li>
+<li><p>Create a daily cron job to backup every database, except for 
+<code>information_schema</code>, which is a dynamic schema created my the MySQL server 
+itself and does not exist as files on the filesystem. An example script is:</p>
+
+<pre><code>#!/bin/bash
+
+for database in $(mysql --user mysqlhotcopy           \
+                        --batch                       \
+                        --skip-column-names           \
+                        --execute 'SHOW DATABASES;' | \
+                  grep -v '^information_schema$')
+do
+    mysqlhotcopy $database /root/mysql-dumps/ --allowold --keepold --user=mysqlhotcopy
+done
+</code></pre>
+
+<p>This script maintains one previous copy of the databases, by renaming the 
+directory, appending the suffix <code>_old</code> to the name. </p></li>
+</ol>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://dev.mysql.com/doc/refman/5.6/en/mysqlhotcopy.html">mysqlhotcopy - A Database Backup Program</a></li>
+</ul>
+
+            <footer>
+                <p>Posted on 2015-01-29</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 18</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/bash-special-variables/">
+            <h2 class="card-title">Bash Special Variables</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p class="lead">
+  A couple of notes on special variables available in the Bash shell.
+</p>
+
+<h2><code>$0</code>: Name of the script</h2>
+
+<p>The special variable <code>$0</code> contains the name of the script. It is useful when 
+returning usage instructions to the user that run the script. For example:</p>
+
+<p>{% highlight bash %}
+echo "Usage: $0 --option-1 --option-2";
+{% endhighlight %}</p>
+
+<h2><code>$#</code>: Number of arguments</h2>
+
+<p>The special variable <code>$#</code> contains the number of arguments passed to the 
+script. If no arguments are passed, it is equal to 0. It is useful to examine 
+the value of this variable before taking further actions, if a script <em>must</em> 
+be run with a minimum number of arguments. </p>
+
+<p>Here is an example of <code>$#</code> used together with <code>$0</code>:</p>
+
+<p>{% highlight bash %}
+if [ $# -eq 0 ]; then
+    echo "Insufficient number of arguments!";
+    echo "Usage: $0 /path/to/file";
+fi
+{% endhighlight %}</p>
+
+<h2><code>$?</code>: Most recent exit code</h2>
+
+<p>The special variable <code>$?</code> contains the exit code of the most recently 
+executed command. It is useful to examine this to determine whether or 
+not the previous command completed succesfully or returned an error. </p>
+
+<p>Typically, commands that complete succesfully return an exit code equal 
+to 0, with other values indicating different errors, but check each 
+command's documentation to verify this.</p>
+
+<p>In the following example, the existense of the word "test" in a file 
+is checked:</p>
+
+<p>{% highlight bash %}
+grep test /path/to/file &gt; /dev/null;
+if [ $? -eq 0 ]; then
+    echo "/path/to/file contains the word 'test'";
+else
+    echo "/path/to/file does not contain the word 'test'";
+fi
+{% endhighlight %}</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/perdition/">
+            <h2 class="card-title">Perdition</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://horms.net/projects/perdition/">Perdition, IMAP and POP3 Proxy</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-24
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/vim/">
+            <h2 class="card-title">Vim</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Random notes on Vim:</p>
+
+<ul>
+<li><a href="http://www.openlogic.com/wazi/bid/326642/Vim-tips-and-tricks-for-developers">Vim tips and tricks for developers</a></li>
+<li><a href="http://neovim.org/">NeoVim, vim's rebirth for the 21st century</a></li>
+<li><a href="http://www.itworld.com/article/2968352/linux/tricks-to-play-with-vim.html">Tricks to play with vim</a></li>
+<li><a href="http://amix.dk/blog/post/19548" title="Persistent Undo with Vim">Persistent Undo with Vim</a></li>
+</ul>
+
+<!-- Links -->
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-24
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/screen/">
+            <h2 class="card-title">screen</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Links</h2>
+
+<ul>
+<li>The article <a href="http://www.linuxjournal.com/content/time-saving-tricks-command-line" title="Time-Saving Tricks at the Command Line">Time-Saving Tricks at the Command Line</a> has a section for 
+working with <code>screen</code> with many helfpul tips.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-24
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/hp-msa2040/">
+            <h2 class="card-title">HP MSA2040</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Specs</h2>
+
+<ul>
+<li><a href="http://h18006.www1.hp.com/storage/pdfs/4AA4-6608ENW.pdf">Datasheet</a></li>
+</ul>
+
+<h2>Reviews</h2>
+
+<ul>
+<li><a href="http://www.itpro.co.uk/storage/hp/20765/hp-msa-2040-storage-review">HP MSA2040 Review by IT Pro</a></li>
+<li><a href="http://www.theregister.co.uk/2013/10/09/hp_selling_new_small_san_storage/">HP MSA2040 Review by The Register</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-19
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/centos-6-enable-epel-repository/">
+            <h2 class="card-title">Enable EPEL Repository on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The most updated information for enabling EPEL should always be at the 
+<a href="http://fedoraproject.org/wiki/EPEL">Fedora Project's Wiki</a>.</p>
+
+<p>In that page's section "How can I use these extra packages?", there are links 
+to the latest versions for CentOS 6 (and CentOS 5).</p>
+
+<p>In that page, download the <code>.noarch</code> file, for example:</p>
+
+<pre><code>wget http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+</code></pre>
+
+<p>Then, install with <code>yum</code>:</p>
+
+<pre><code>yum install epel-release-*.noarch
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-19
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/centos-install-hp-sim/">
+            <h2 class="card-title">Install HP System Insight Manager on CentOS</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://www.howtoforge.com/hp_systems_insight_manager_centos">Installing HP Systems Insight Manager On CentOS</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-19
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ntpdate/">
+            <h2 class="card-title">ntpdate</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Troubleshooting <code>no server suitable for synchronization</code></h2>
+
+<p>If you have a cron jon periodically running <code>ntpdate</code> to update the 
+time on a system, you might at some point hit the <code>no server suitable 
+for synchronization</code> error. You can gain some insight into the problem 
+with running <code>ntpdate</code> with the <code>-d</code> option, which will show debugging 
+output from the actions of <code>ntpdate</code>, without actually changing the 
+time on the system.</p>
+
+<p>One example cause of this issue is that the value of <strong>strata</strong> exceeds 
+a maximum value, in which case the NTP server is rejected by the system 
+as being <em>too far</em> from its own source. You should then focus on either 
+fixing the NTP server itself, or changing your <code>ntpdate</code> target to 
+another system.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/mysql-enable-logging/">
+            <h2 class="card-title">Enable logging in MySQL</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>These are some haphazardly written notes on logging in MySQL. For consistency, 
+create a new subdirectory in <code>/var/log/</code> and assign ownership to the user under 
+which your MySQL server is running - by default that would be the <code>mysql</code> user:</p>
+
+<pre><code>mkdir /var/log/mysqld/
+chown mysql:mysql /var/log/mysqld
+</code></pre>
+
+<p>I like to name the directory <code>mysqld</code> instead of <code>mysql</code>, to clarify 
+that the logs in that directory are those of the <strong>MySQL Server</strong> and 
+not those of the MySQL Client.</p>
+
+<h2>Slow Query Log</h2>
+
+<p>The slow query log contains queries the execution of which took more 
+than the value of the <code>long_query_time</code> variable, which by default is 
+10 seconds. </p>
+
+<p>To enable the slow query log on the next start of <code>mysqld</code>, add the 
+following line in your MySQL server's configuration file (<code>/etc/my.cnf</code> 
+by default), in the <code>[mysqld]</code> section:</p>
+
+<pre><code>slow-query-log
+slow_query_log_file=/var/log/mysqld/slow-queries.log
+</code></pre>
+
+<p>Create the file and assign ownership to the <code>mysql</code> user:</p>
+
+<pre><code>touch /var/log/mysqld/slow-queries.log
+chown mysql:mysql /var/log/mysqld/slow-queries.log
+</code></pre>
+
+<p>Finally, either restart the server to enable the logging, or enable it 
+on the already running server with:</p>
+
+<pre><code>mysql&gt; SET GLOBAL slow_query_log_file='/var/log/mysqld/slow-queries.log';
+mysql&gt; SET GLOBAL slow_query_log=1;
+</code></pre>
+
+<p>In any of those cases, the values of the global variables 
+<code>slow_query_log</code> and <code>slow_query_log_file</code>, should change from the 
+default:</p>
+
+<pre><code>mysql&gt; show variables like 'slow_query_log%';
++---------------------+----------------------------------+
+| Variable_name       | Value                            |
++---------------------+----------------------------------+
+| slow_query_log      | OFF                              |
+| slow_query_log_file | /var/run/mysqld/mysqld-slow.log  |
++---------------------+----------------------------------+
+</code></pre>
+
+<p>To:</p>
+
+<pre><code>mysql&gt; show variables like 'slow_query_log%';
++---------------------+----------------------------------+
+| Variable_name       | Value                            |
++---------------------+----------------------------------+
+| slow_query_log      | ON                               |
+| slow_query_log_file | /var/log/mysqld/slow-queries.log |
++---------------------+----------------------------------+
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-07
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/opendcim/">
+            <h2 class="card-title">openDCIM</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>openDCIM is an open source application for <strong>D</strong>ata<strong>C</strong>enter 
+<strong>I</strong>nfrastructure <strong>M</strong>anagement.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://www.opendcim.org">openDCIM Website</a></li>
+<li><a href="https://github.com/samilliken/openDCIM">openDCIM on GitHub</a></li>
+<li><a href="http://www.youtube.com/user/openDCIM/videos">openDCIM Video Tutorials on YouTube</a></li>
+<li><a href="/docs/centos-6-install-opendcim-2.1.html">openDCIM 2.1 Installation on Centos 6</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/3/">3</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/4/">4</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/5/">5</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/6/">6</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/13/">13</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/14/">14</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/15/">15</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/16/">16</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">18</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/22/">22</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/27/">27</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

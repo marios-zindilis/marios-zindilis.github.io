@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 3</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/amazon-web-services-security/">
+            <h2 class="card-title">Amazon Web Services Security</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li>Secure Server Deployments in Hostile Territory <a href="http://www.linuxjournal.com/content/secure-server-deployments-hostile-territory">Part 1</a> and <a href="http://www.linuxjournal.com/content/secure-server-deployments-hostile-territory-part-ii">Part 2</a>.</li>
+<li><a href="http://blog.evident.io/blog/2015/7/29/why-security-remains-the-achilles-heel-of-cloud-deployments">Why Security Remains the Achilles Heel of Cloud Deployments</a></li>
+<li><a href="http://media.amazonwebservices.com/AWS_Security_Best_Practices.pdf">AWS Security Best Practices</a></li>
+<li><a href="https://d0.awsstatic.com/whitepapers/compliance/Intro_to_Security_by_Design.pdf">Intro to Security by Design</a></li>
+</ul>
+
+<!-- Links -->
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-07-30
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/mysql-show-privileges-for-all-users/">
+            <h2 class="card-title">Show privileges for all users in MySQL</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Example script:</p>
+
+<pre><code>mysql   --silent \
+        --skip-column-names \
+        --user mysqldumper \
+        --execute 'SELECT User, Host from mysql.user' | \
+        while read User Host; do 
+            mysql --user mysqldumper --execute "SHOW GRANTS FOR '$User'@'$Host'"; 
+            echo "==========================="; 
+        done
+</code></pre>
+
+<p>The <code>mysqldumper</code> user only requires read permissions on the databases.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-07-25
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/mysql/">mysql</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/mysql-sakila-example-queries/">
+            <h2 class="card-title">Example queries on the Sakila MySQL database</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><a href='http://dev.mysql.com/doc/sakila/en/index.html'><b>Sakila</b></a> is a 
+sample database provided by MySQL, meant to be used in tests and documentation 
+examples. This page lists some example queries against that database.</p>
+
+<p>Get a non-normalized selection of actors and films in which they played:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span>  <span class="n">actor</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span> 
+        <span class="n">actor</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> 
+        <span class="n">film</span><span class="p">.</span><span class="n">title</span> 
+<span class="k">FROM</span> <span class="n">actor</span><span class="p">,</span> <span class="n">film</span><span class="p">,</span> <span class="n">film_actor</span> 
+<span class="k">WHERE</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">actor_id</span> <span class="o">=</span> <span class="n">actor</span><span class="p">.</span><span class="n">actor_id</span> 
+<span class="k">AND</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">film_id</span> <span class="o">=</span> <span class="n">film</span><span class="p">.</span><span class="n">film_id</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Get the same result with double <code>INNER JOIN</code>:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span> <span class="n">actor</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">actor</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span> <span class="n">film</span><span class="p">.</span><span class="n">title</span> 
+<span class="k">FROM</span> <span class="n">film_actor</span> 
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">actor</span> <span class="k">ON</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">actor_id</span> <span class="o">=</span> <span class="n">actor</span><span class="p">.</span><span class="n">actor_id</span> 
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">film</span> <span class="k">ON</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">film_id</span> <span class="o">=</span> <span class="n">film</span><span class="p">.</span><span class="n">film_id</span><span class="p">;</span>
+</code></pre></div>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-07-25
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/mysql/">mysql</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/openssl/">
+            <h2 class="card-title">OpenSSL</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><p>A useful script that discovers the expiry date for a given certificate: 
+<a href="https://github.com/skx/sysadmin-util/blob/master/ssl-expiry-date" title="ssl-expiry-date">ssl-expiry-date</a>. At some point I slightly modified this script to 
+read a Bind DNS zone file and check each <code>A</code> record for SSL Expiry, for 
+the purpose of discovering which subdomains were using a wildcard SSL 
+certificate. I should publish that somewhere some day...</p></li>
+<li><p>A very clear explanation of SSL encryption, not specific to OpenSSL, but 
+it uses OpenSSL for all its examples: 
+<a href="http://www.linuxvoice.com/masterclass-secure-your-website-with-ssl-encryption/" title="Masterclass: Secure your website with SSL encryption">Secure your website with SSL encryption</a>.</p></li>
+</ul>
+
+<!-- Links -->
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-07-01
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/stale-nfs-causes-backuppc-filelistreceive-failure/">
+            <h2 class="card-title">Stale NFS Causes BackupPC fileListReceive Failure</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Recently, one of my BackupPC clients running CentOS failed to backup, with the 
+contents of the host log being:</p>
+
+<pre><code>    2015-06-10 01:40:10 incr backup started back to 2015-05-16 08:56:42 (backup #600) for directory /
+    2015-06-10 21:40:18 Aborting backup up after signal ALRM
+    2015-06-10 21:40:18 Got fatal error during xfer (fileListReceive failed)
+</code></pre>
+
+<p>...and the last bad XferLOG containing:</p>
+
+<pre><code>    fileListReceive() failed
+</code></pre>
+
+<p>This happened a couple of times in a row, and the interval between the start 
+time of the backup and the failure was consistently 20 hours. While checking, 
+I noticed that an <code>rsync</code> process started on the client by BackupPC was running 
+for about a week. I did an <code>strace -p &lt;PID&gt;</code> on the process ID of <code>rsync</code> and 
+noticed that it was trying to <code>stat</code> an old NFS export, mounted from a server 
+that no longer exists. </p>
+
+<p>Although <a href="http://joelinoff.com/blog/?p=356" title="How to fix stale NFS mounts on linux without rebooting">there are other ways to fix this</a>, it was OK for this host to be 
+rebooted at the time, problem solved.</p>
+
+<!-- Links -->
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-06-18
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/backuppc/">backuppc</a>, 
+          
+            <a href="/tags/nfs/">nfs</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/keepalived/">
+            <h2 class="card-title">keepalived</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Notes:</p>
+
+<ul>
+<li><strong><code>lb_algo</code></strong> determines <em>which</em> real server gets to serve a request, and 
+possible algorithms include round-robin (weighted or not), least-connections 
+(weighted or not), etc (see RHEL docs).</li>
+<li><strong><code>lb_kind</code></strong> determines <em>how</em> the real server receives the request, and 
+the supported methods on RHEL 7 are NAT and DR.</li>
+</ul>
+
+<h2><code>lb_kind DR</code></h2>
+
+<p>Notes:</p>
+
+<ul>
+<li>The load balancers and the real servers need to be on the same network 
+segment</li>
+<li>The Virtual IP is configured on all real servers, and real servers need to 
+be configured to ignore ARP requests for the virtual IP. This can be 
+achieved with either <code>arptables</code>, or <code>iptables</code> or <code>sysctl</code> configuration.</li>
+</ul>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Load_Balancer_Administration/">keepalived documentation for RHEL 7</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-05-21
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/unetbootin/">
+            <h2 class="card-title">Unetbootin</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This article has helped me create bootable Windows installation USBs when 
+installating from an optical drive was not an option:</p>
+
+<ul>
+<li><a href="http://www.webupd8.org/2010/10/create-bootable-windows-7-usb-drive.html" title="Create A Bootable Windows 7 USB Drive From Linux (Tested On Ubuntu)">Create A Bootable Windows 7 USB Drive From Linux (Tested On Ubuntu)</a></li>
+</ul>
+
+<!-- Links -->
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-05-09
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/vmware-build-vmware-4-tools-on-centos-6/">
+            <h2 class="card-title">Building VMware ESXi 4 Tools on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>CentOS 6 is not directly supported by version 4 of the VMware ESXi hypervisor, 
+which means that there are no precompiled binaries for the kernel modules 
+required for the VM to talk to the host. This short guide shows you how to 
+manually compile the tools. Note that every time that you upgrade to a newer 
+kernel version, you will have to do this from scratch -- you will have to 
+compile the tools against the new kernel's headers.</p>
+
+<p>Here's the procedure:</p>
+
+<ol>
+<li><p>From the vSphere client, right click on the machine, open the "Guest" menu 
+and select "Install/Upgrade VMware Tools". This will insert a virtual 
+optical drive in the VM.</p></li>
+<li><p>Mount the virtual optical drive, <em>not</em> directly on the <code>/mnt</code> directory, 
+since that will be used later by the installer. For example:</p>
+
+<pre><code>mkdir /mnt/vmware-tools
+mount -o loop /dev/cdrom /mnt/vmware-tools
+</code></pre></li>
+<li><p>Copy the tools in a writeable location (the mount point of the virtual 
+optical drive will be read-only) and decompress it. For example:</p>
+
+<pre><code>cp /mnt/vmware-tools/VMwareTools-4*.tar.gz /root/
+cd /root/
+tar zxvf VMwareTools-4*.tar.gz
+</code></pre></li>
+<li><p>Before starting the installation, install a C compiler and the kernel's 
+source code, since the VMware tools installer will need the kernel headers 
+to include while compiling the modules. For example:</p>
+
+<pre><code>yum install gcc
+yum install kernel-headers
+</code></pre></li>
+<li><p>Next, start the installation. It will ask a lot of questions, on which you 
+can (most probably) accept the default answers.</p>
+
+<pre><code>cd /root/vmware-tools-distrib
+./vmware-install.pl
+</code></pre></li>
+<li><p>Finally, even though you don't normally need to reboot, do it anyway if you 
+can. That way you will verify that the kernel modules are properly loaded 
+after a reboot. You can check that with:</p>
+
+<pre><code>[root@centos-6 ~]# lsmod | grep '^vm'
+vmmemctl                8642  0 
+vmware_balloon          7199  0
+</code></pre></li>
+<li><p>If everything went fine, you might want to clean up the files you copied 
+and extracted, although keeping them will speed up the reinstallation of 
+the tools in case you upgrade the kernel to a newer version.</p></li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-04-27
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/vmware-evaluation-expired/">
+            <h2 class="card-title">Features disabled when VMware Evaluation Expires</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>As a note to myself and a future reference, here is a list of features of VMware ESXi 6 that get disabled when the 
+60-day evaluation period expires.</p>
+
+          </div>
+          <a href="/posts/vmware-evaluation-expired/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-04-27
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/vmware/">vmware</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/haproxy/">
+            <h2 class="card-title">HAProxy</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://engineeringblog.yelp.com/2015/04/true-zero-downtime-haproxy-reloads.html">True Zero Downtime HAProxy Reloads</a></li>
+<li><a href="http://inside.unbounce.com/product-dev/haproxy-reloads/">True Zero Downtime HAProxy Reloads: An Alternative Approach</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-04-20
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">3</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/4/">4</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/5/">5</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/6/">6</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/13/">13</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/14/">14</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/15/">15</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/16/">16</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/18/">18</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/22/">22</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/27/">27</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

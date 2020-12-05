@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Display network routes on Linux</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Display network routes on Linux</h1>
+            </header>
+            <h2>With <code>netstat</code></h2>
+
+<p>Run <code>netstat -r</code> or <code>netstat --route</code>. Add <code>-n</code> or <code>--numeric</code> for 
+numeric output. Example from a laptop, on which all traffic is routed 
+out the wireless interface:</p>
+
+<pre><code>marios@rocko ~ $ netstat -rvn
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         192.168.88.1    0.0.0.0         UG        0 0          0 wlan0
+169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 wlan0
+192.168.88.0    0.0.0.0         255.255.255.0   U         0 0          0 wlan0
+</code></pre>
+
+<h2>With <code>route</code></h2>
+
+<p>Run <code>route</code> with optional <code>-n</code> for numeric output. The result is almost 
+identical to that of <code>netstat</code>. Example from the same machine as above:</p>
+
+<pre><code>marios@rocko ~ $ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.88.1    0.0.0.0         UG    0      0        0 wlan0
+169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 wlan0
+192.168.88.0    0.0.0.0         255.255.255.0   U     9      0        0 wlan0
+</code></pre>
+
+<h2>With <code>ip</code></h2>
+
+<p>Run <code>ip route</code>. Example from the same machine as above:</p>
+
+<pre><code>marios@rocko ~ $ ip route
+default via 192.168.88.1 dev wlan0  proto static 
+169.254.0.0/16 dev wlan0  scope link  metric 1000 
+192.168.88.0/24 dev wlan0  proto kernel  scope link  src 192.168.88.253  metric 9
+</code></pre>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="/docs/man/netstat.8.html">Man Page for <code>netstat</code></a></li>
+<li><a href="/docs/man/route.8.html">Man Page for <code>route</code></a></li>
+<li><a href="/docs/man/ip.7.html">Man Page for <code>ip</code></a></li>
+</ul>
+
+            <footer>
+                <p>Posted on 2013-11-17</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

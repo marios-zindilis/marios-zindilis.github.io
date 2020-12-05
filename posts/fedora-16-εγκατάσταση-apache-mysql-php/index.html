@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Εγκατάσταση Apache, MySQL και PHP σε Fedora 16</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Εγκατάσταση Apache, MySQL και PHP σε Fedora 16</h1>
+            </header>
+            <p>Βήματα για εγκατάσταση της στοίβας λογισμικού σε Fedora 16:</p>
+
+<h2>Εγκατάσταση Apache 2</h2>
+
+<p>Σε αντίθεση με προηγούμενες εκδόσεις, στο Fedora 16 δεν είναι προεγκατεστημένος ο Apache. Mπορείτε να τον εγκαταστήσετε με:</p>
+
+<p>{% highlight bash %}
+yum install httpd
+{% endhighlight %}</p>
+
+<p>Κατά την εγκατάσταση, δημιουργείται στο σύστημα ένας χρήστης με το όνομα 
+<code>apache</code>, και ένα group με το ίδιο όνομα. Το home directory του χρήστη 
+<code>apache</code> είναι το <code>/var/www</code>. Αυτές τις προεπιλογές μπορείτε να τις αλλάξετε στη συνέχεια.</p>
+
+<p>Για να ρυθμίσετε την αυτόματη εκκίνηση του Apache κατά την εκκίνηση του συστήματος:</p>
+
+<p>{% highlight bash %}
+systemctl enable http.service
+{% endhighlight %}</p>
+
+<p>Αυτό ορίζει ότι ο Apache θα ξεκινήσει αυτόματα την επόμενη φορά που θα ξεκινήσει το σύστημα. Προαιρετικά, για να δοκιμάσετε τη λειτουργία του εξυπηρετητή αυτή τη στιγμή, μπορείτε να τον εκκινήσετε χειροκίνητα με:</p>
+
+<p>{% highlight bash %}
+systemctl start httpd.service
+{% endhighlight %}</p>
+
+<h2>Εγκατάσταση PHP 5</h2>
+
+<p>Για την εγκατάσταση της PHP 5 απλά εκτελέστε:</p>
+
+<p>{% highlight bash %}
+yum install php
+{% endhighlight %}</p>
+
+<p>Αν θέλετε, μπορείτε σε αυτό το σημείο να επιβεβαιώσετε ότι λειτουργεί η 
+PHP, επανεκκινώντας τον Apache, και βάζωντας ένα αρχείο <code>.php</code> μέσα στο 
+<code>/var/www/html</code>, το οποίο θα περιέχει μόνο την γραμμή: </p>
+
+<p>{% highlight php %}
+<?php phpinfo(); ?>
+{% endhighlight %}</p>
+
+<p>Αυτό το αρχείο μπορείτε να το δείτε μόνο σε έναν περιηγητή ιστού στον 
+ίδιο υπολογιστή στον οποίο κάνετε την εγκατάσταση, επειδή δεν έχετε 
+ανοίξει ακόμα την πρόσβαση από άλλους υπολογιστές.</p>
+
+<h2>Εγκατάσταση MySQL 5</h2>
+
+<p>Για την εγκατάσταση του εξυπηρετητή MySQL 5 εκτελέστε:</p>
+
+<p>{% highlight bash %}
+yum install mysql-server
+{% endhighlight %}</p>
+
+<p>Αμέσως μετά την εγκατάσταση, συνίσταται να εκκινήσετε την υπηρεσία 
+<code>mysqld</code> χειροκίνητα, και να εκτελέσετε το <code>mysql_secure_installation</code>, 
+το οποίο θα ορίσει ένα συνθηματικό για τον χρήστη root της MySQL, και 
+θα σας δώσει τη δυνατότητα να διαγράψετε μερικούς πίνακες και δεδομένα 
+που δημιουργούνται κατά την εγκατάσταση της βάσης, για δοκιμαστικό σκοπό:</p>
+
+<p>{% highlight bash %}
+systemctl start mysqld.service
+mysql<em>secure</em>installation
+{% endhighlight %}</p>
+
+<p>Στη συνέχεια, ρυθμίστε και την MySQL να ξεκινάει κατά την εκκίνηση του υπολογιστή:</p>
+
+<p>{% highlight bash %}
+systemctl enable mysqld.service
+{% endhighlight %}</p>
+
+<p>Τέλος, συνδέστε την PHP με την MySQL:</p>
+
+<p>{% highlight bash %}
+yum install php-mysql
+{% endhighlight %}</p>
+
+<p>Για να δουλέψουν όλα μαζί την <strong>πρώτη</strong> φορά, θα πρέπει να εκκινήσετε 
+χειροκίνητα τον <code>httpd</code> και την <code>mysqld</code> (αν δεν το έχετε ήδη κάνει σε 
+ένα από τα προηγούμενα βήματα), ή απλά να επανεκκινήσετε το σύστημα 
+(οπότε θα ξεκινήσουν από μόνα τους, αφού τα έχετε ορίσει με το <code>systemctl enable</code>).</p>
+
+<h2>Άνοιγμα θύρας για τον εξυπηρετητή Web</h2>
+
+<p>Από προεπιλογή, το Fedora είναι ρυθμισμένο να μην δέχεται συνδέσεις στη 
+θύρα 80 από άλλους υπολογιστές. Με άλλα λόγια, θα μπορείτε να δείτε την 
+αρχική σελίδα του εξυπηρετητή αν περιηγηθείτε στη διεύθυνση <code>http://localhost/</code> 
+στον ίδιο τον υπολογιστή που τρέχει τον Apache, αλλά όχι σε οποιονδήποτε 
+άλλο υπολογιστή, ακόμα και στο τοπικό δίκτυο. Για να το πετύχετε αυτό, 
+θα πρέπει να ορίσετε έναν επιπλέον κανόνα στο <code>iptables</code>. Σημειώστε ότι 
+στη συνέχεια «ανοίγουμε» την πόρτα 80 στην οποία «ακούει» από προεπιλογή 
+ο εξυπηρετητής. Μπορείτε να το αλλάξετε αυτό στο αρχείο 
+<code>/etc/httpd/conf/httpd.conf</code> στη γραμμή <code>Listen 80</code>.</p>
+
+<p>Για να αλλάξετε τους κανόνες ανοίξτε το αρχείο <a href="/docs/etc-sysconfig-iptables.el.html">/etc/sysconfig/iptables</a> 
+και προσθέστε την ακόλουθη γραμμή πριν από την εντολή <code>COMMIT</code>:</p>
+
+<p>{% highlight bash %}
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+{% endhighlight %}</p>
+
+<p>Στη συνέχεια επανεκκινήστε το iptables με:</p>
+
+<p>{% highlight bash %}
+systemctl restart iptables.service
+{% endhighlight %}</p>
+
+<p>Αν και πάλι δεν μπορείτε να δείτε σελίδες στον εξυπηρετητή σας, ίσως 
+κάνατε κάποιο λάθος στο αρχείο ρυθμίσεων του <code>iptables</code>. Δοκιμάστε 
+προσωρινά να απενεργοποιήσετε το <code>iptables</code> με την εντολή <code>systemctl stop iptables.service</code> 
+και δοκιμάστε ξανά από άλλον υπολογιστή να δείτε κάποια σελίδα στον 
+εξυπηρετητή. Αν ανοίγει, τότε σημαίνει ότι το πρόβλημα είναι στις 
+ρυθμίσεις του <code>iptables</code> και θα πρέπει να το ψάξετε περισσότερο. Το 
+ακόλουθο παράδειγμα είναι από ένα αρχείο <code>iptables</code> το οποίο λειτουργεί 
+όπως πρέπει:</p>
+
+<p>{% highlight bash %}
+[root@docs sysconfig]# cat iptables</p>
+
+<h1>Firewall configuration written by system-config-firewall</h1>
+
+<h1>Manual customization of this file is not recommended.</h1>
+
+<p>*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+{% endhighlight %}</p>
+
+            <footer>
+                <p>Posted on 2012-01-31</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

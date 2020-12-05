@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>find (el)</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">find (el)</h1>
+            </header>
+            <p>Το πρόγραμμα <code>find</code> αναζητά αρχεία, μέσα σε κάποια συγκεκριμένη ιεραρχία 
+φακέλων.</p>
+
+<h2>Χρήση του <code>find</code></h2>
+
+<p>Στην πιο απλή του μορφή το <code>find</code> μπορεί να εκτελεστεί χωρίς 
+επιλογές/παραμέτρους, οπότε εμφανίζει όλα τα αρχεία που βρίσκονται στον 
+τρέχοντα φάκελο και στους υποφακέλους του, δεδομένου ότι ο χρήστης που 
+εκτελεί την εντολή έχει δικαιώματα ανάγνωσης των περιεχομένων εκείνων 
+των φακέλων.</p>
+
+<p>Σε μια πιο παραμετροποιήσιμη μορφή χρήσης, μπορεί να δεκτεί δύο 
+παραμέτρους: τον φάκελο στον οποίο θα ψάξει (συμπεριλαμβάνοντας και τους 
+υποφακέλους) και ένα μοτίβο (κανονική έκφραση) το οποίο θα προσπαθήσει 
+να ταιρίαξει με τα ονόματα των περιεχόμενων αρχείων και φακέλων.</p>
+
+<p>Για παράδειγμα, η πιο κάτω ιεραρχία φακέλων δείχνει έναν φάκελο με το 
+όνομα «Μουσική», με υποφακέλους με ονόματα καλλιτεχνών, με υποφακέλους 
+με ονόματα δίσκων. Μέσα στα ονόματα των δίσκων συμπεριλαμβάνεται σε 
+παρένθεση η χρονολογία κυκλοφορίας κάθε δίσκου. Σχηματικά:</p>
+
+<pre><code>Μουσική
+ |_ Φιλαρμονική Άνω Κάτω Χωριού
+     |_ Κάλαντα (1990)
+     |_ Χαρούμενα τραγούδια (1992)
+     |_ Λυπημένα τραγούδια (1995)
+</code></pre>
+
+<p>Αν θέλετε να βρείτε μέσα σε μια τέτοια δομή φακέλων όλους τους δίσκους 
+που κυκλοφόρησαν, για παράδειγμα, το 1995, θα δίνατε την εντολή:</p>
+
+<p>{% highlight bash %}
+find Μουσική -name '*(1995)'
+{% endhighlight %}</p>
+
+<p>Στην πιο πάνω εντολή, το αστεράκι παίζει το ρόλο του μπαλαντέρ, δηλαδή 
+οποιοδήποτε όνομα αρχείου ή φακέλου μέσα στο «Μουσική» το οποίο ξεκινάει 
+με <em>οτιδήποτε</em> και τελειώνει με «(1995)» θα ταιριάξει.</p>
+
+<p>Αν δίνατε την εντολή <code>find Μουσική</code> (παραλείποντας δηλαδή το 
+όνομα για το οποίο ψάχνετε), θα σας επέστρεφε μια λίστα με <strong>όλα</strong> τα 
+περιεχόμενα, αρχεία και υποφακέλους που περιέχονται στο «Μουσική». Αν 
+δίνατε <code>find -name '*(1970)'</code> (παραλείποντας δηλαδή τον φάκελο 
+στον οποίο θέλετε να ψάξετε), τότε το <code>find</code> ψάχνει απλά στο φάκελο μέσα 
+στον οποίο εκτελέστηκε η εντολή.</p>
+
+<p>Είναι ακόμα δυνατή η αναζήτηση αρχείων βάσει του χρήστη στον οποίο 
+ανήκουν, είτε με την επιλογή <code>-user</code> και παράμετρο το όνομα 
+χρήστη, είτε με την επιλογή <code>-uid</code> και παράμετρο τον αριθμό ID 
+του χρήστη. Αντίστοιχα, για αναζήτηση βάσει του group στο οποίο ανήκουν 
+τα αρχεία/φάκελοι, χρησιμοποιείται η επιλογή <code>-group</code> ή 
+<code>-gid</code>.</p>
+
+<p>Τα πιο πάνω παραδείγμα δείχνουν την πιο στοιχειώδη λειτουργία του 
+<code>find</code>. Πέρα από αυτά, υπάρχουν πάρα πολλές ακόμα παράμετροι, 
+οι οποίες τεκμηριώνονται στο εγχειρίδιο του <code>find</code> (εκτελέστε 
+<code>man find</code>), και οι οποίες επιτρέπουν αρκετά πιο συγκεκριμένο 
+προσδιορισμό των αρχείων που θα επιστραφούν. Συγκεκριμένα, μερικά από τα 
+κριτήρια που μπορείτε να ορίσετε είναι:</p>
+
+<ul>
+<li>αν θα ακολουθούνται οι συμβολικοί σύνδεσμοι,</li>
+<li>το ελάχιστο και το μέγιστο βάθος στην ιεραρχία των υποφακέλων,</li>
+<li>αν θα συνεχίζεται η αναζήτηση και σε άλλα συστήματα αρχείων τα οποία είναι προσαρτημένα στην ιεραρχία φακέλων,</li>
+<li>μέγεθος, ιδιοκτήτης, δικαιώματα πρόσβασης, ημερομηνία δημιουργίας ή τροποποίησης αρχείων, και</li>
+<li>πάρα, πάρα πολλά ακόμα.</li>
+</ul>
+
+<h2>Δείτε επίσης</h2>
+
+<ul>
+<li><a href="/docs/man/find.1.html">Σελίδα man για το find</a></li>
+</ul>
+
+            <footer>
+                <p>Posted on 2011-09-24</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

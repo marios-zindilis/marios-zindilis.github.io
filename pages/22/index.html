@@ -1,0 +1,1380 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 22</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/centos-6-convert-mbr-to-gpt/">
+            <h2 class="card-title">Convert MBR Partition Table to GPT on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>To have partitions larger than 2 TeraBytes, you need to create a GPT 
+disk, as opposed to an MBR one. This, however, is not possible during 
+the installation of CentOS, so you might need to handle it either 
+before the installation (e.g: with booting a Live CD that supports GPT 
+and creating the partition table before the installation) or after the 
+installation, with the use of <code>gdisk</code>.</p>
+
+<p>Using <code>gdisk</code> is actually very easy, although you should keep in mind 
+that there is no guarrantee that your data will be safe.</p>
+
+<p>For this example, installation of CentOS 6.2 was done on a system with 
+one 3 TB disk. During the installation, the following partitions were 
+created:</p>
+
+<pre><code>/dev/sda1  0.5 GB /boot
+/dev/sda2 13.0 GB LVM PV (4GB swap, 9GB /root)
+</code></pre>
+
+<p>This left almost all of the 3 TB on the disk available.</p>
+
+<p>After the installation is done, download <code>gdisk</code> for CentOS 6 from 
+<a href="http://download.opensuse.org/repositories/home:/srs5694/CentOS_CentOS-6/x86_64/">OpenSUSE Build Service</a>. 
+You can also find more versions of <code>gdisk</code> at <a href="http://www.rodsbooks.com/gdisk/download.html">rodsbooks.com</a>.
+Example download:</p>
+
+<pre><code>wget http://download.opensuse.org/repositories/home:/srs5694/CentOS_CentOS-6/x86_64/gdisk-0.8.8-133.1.x86_64.rpm
+</code></pre>
+
+<p>After the download completes, install with:</p>
+
+<pre><code>yum install gdisk-0.8.8-133.1.x86_64.rpm
+</code></pre>
+
+<p>You can now very simply convert the MBR partition table to GPT with:</p>
+
+<pre><code>gdisk /dev/sda
+</code></pre>
+
+<p>The new GPT will be available on the next reboot. You can then create 
+a partition bigger than 2 TB in the unallocated space, either with 
+<code>gdisk</code> or with <code>parted</code>, then create a filesystem inside it with <code>mkfs</code>, 
+and finally mount it and start using it! </p>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="http://www.rodsbooks.com/gdisk/">gdisk WebSite</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-06
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/juniper-junos-online-help/">
+            <h2 class="card-title">Juniper JUNOS Online Help</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Juniper devices have extensive help options in the CLI.</p>
+
+<h2>Tip of the day</h2>
+
+<p>To view a very short tip, execute:</p>
+
+<pre><code>marios@juniper&gt; help tip cli
+</code></pre>
+
+<p>This is not exactly a tip <em>of the day</em> - since you actually get a new 
+tip each time you execute that command. Still pretty cool though. </p>
+
+<h2>Help with syslog messages</h2>
+
+<p>You can view an explanation of what a syslog message means with <code>help 
+syslog</code>. For example, for the <code>LOGIN_INFORMATION</code> message, execute:</p>
+
+<pre><code>marios@juniper&gt; help syslog LOGIN_INFORMATION
+</code></pre>
+
+<h2>Search in help topics</h2>
+
+<p>You can search in help topics with <code>help apropos</code>. This will return a 
+list of help pages that contain the word you searched for. For example, 
+you can search for all pages that refer to <code>syslog</code> with:</p>
+
+<pre><code>marios@juniper&gt; help apropos syslog
+</code></pre>
+
+<h2>Topical help</h2>
+
+<p>To get help on a specific topic, start with <code>help topic</code>. For example, 
+for help on <code>syslog</code>, execute:</p>
+
+<pre><code>marios@juniper&gt; help topic system syslog
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/juniper-acronyms/">
+            <h2 class="card-title">Juniper Acronyms</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is a list of acronyms that I come across while reading Juniper 
+documentation. Most should be Juniper-specific, but some may not.</p>
+
+<dl class='dl-horizontal'>
+<!-- APIC: Application-Specific Integrated Circuit -->
+<dt><abbr title='Application-Specific Integrated Circuit'>ASIC</abbr></dt>
+<dd><b>A</b>pplication-<b>S</b>pecific <b>I</b>ntegrated <b>C</b>ircuit</dd>
+<!-- BERT: Bit Error Rate Test -->
+<dt><abbr title='Bit Error Rate Test'>BERT</abbr></dt>
+<dd><b>B</b>it <b>E</b>rror <b>R</b>ate <b>T</b>est</dd>
+<!-- dcd: Device Control Daemon -->
+<dt><abbr title='Device Control Daemon'>dcd</abbr></dt>
+<dd><b>D</b>evice <b>C</b>ontrol <b>D</b>aemon: One of the JUNOS daemons 
+running on the Routing Engine. Handles configuration and maintenance of 
+the interfaces.</dd>
+
+<!-- FEB: Forwarding Engine Board -->
+<dt><abbr title='Forwarding Engine Board'>FEB</abbr></dt>
+<dd><b>F</b>orwarding <b>E</b>ngine <b>B</b>oard: a type of Switching 
+Control Board, found on some devices like M5, M10.</dd>
+
+<!-- FPC: Flexible PIC Concentrator -->
+<dt><abbr title='Flexible PIC Concentrator'>FPC</abbr></dt>
+<dd><b>F</b>lexible <b>P</b>IC <b>C</b>oncentrator, the component that 
+joins multiple PICs on devices that require more than one. In the JUNOS 
+interface naming convention <code>Type-FPC/PIC/Port.Unit</code>, the FPC 
+is the first all-numeric component. For example, interface 
+<code>fe-1/2/3</code> is on <b>FCP 1</b> on the device.</dd>
+
+<!-- LDP: Label Distribution Protocol -->
+<dt><abbr title='Label Distribution Protocol'>LDP</abbr></dt>
+<dd><b>L</b>abel <b>D</b>istribution <b>P</b>rotocol. One of the 
+sources of routes in the routing table, with a preference value of 9.</dd>
+
+<!-- mgd: Management Daemon -->
+<dt><abbr title='Management Daemon'>mgd</abbr></dt>
+<dd><b>M</b>ana<b>g</b>ement <b>D</b>aemon: One of the JUNOS daemons 
+running on the Routing Engine. Manages user access to the device.</dd>
+
+<!-- MMB: Memory Mezzanine Board -->
+<dt><abbr title='Memory Mezzanine Board'>MMB</abbr></dt>
+<dd><b>M</b>emory <b>M</b>ezzanine <b>B</b>oard: a type of Switching 
+Control Board found on some devices like the T320 and the T640. It is 
+integrated in the <abbr title='Flexible PIC Concentrator'>FPC</abbr>.</dd>
+
+<!-- MSDP: Multicast Source Discovery Protocol -->
+<dt><abbr title='Multicast Source Discovery Protocol'>MSDP</abbr></dt>
+<dd><b>M</b>ulticast <b>S</b>ource <b>D</b>iscovery <b>P</b>rotocol. 
+One of the sources of routes in the routing table, with a preference 
+value of 175.</dd>
+
+<!-- PFE: Packet Forwarding Engine -->
+<dt><abbr title='Packet Forwarding Engine'>PFE</abbr></dt>
+<dd><b>P</b>acket <b>F</b>orwarding <b>E</b>ngine: the second part of the 
+Control Plane / Forwarding Plane separation on Juniper devices. This part 
+of the device is mostly hardware.</dd>
+
+<!-- pfed: Packet Forwarding Engine Daemon -->
+<dt><abbr title='Packet Forwarding Engine Daemon'>pfed</abbr></dt>
+<dd><b>P</b>acket <b>F</b>orwarding <b>E</b>ngine <b>D</b>aemon: One of 
+the JUNOS daemons running on the Routing Engine. Manages the 
+communication between the Routing Engine and the Packet Forwarding 
+Engine.</dd>
+
+<!-- PIC: Physical Interface Card -->
+<dt><abbr title='Physical Interface Card'>PIC</abbr></dt>
+<dd><b>P</b>hysical <b>I</b>nterface <b>C</b>ard. Different types of 
+PICs exist, to offer difference connectivity capabilities, for example 
+there are <abbr title='Asynchronous Transfer Mode'>ATM</abbr> PICs, or 
+<abbr title='Synchronous Digital Hierarchy'>SDH</abbr> PICs, which 
+consequently contain different ASICs. In the JUNOS interface naming 
+convention <code>Type-FPC/PIC/Port.Unit</code>, the PIC is the second 
+all-numeric component. For example, interface <code>fe-1/2/3</code> is 
+on <b>PIC 2</b> on the device.</dd>
+
+<!-- PIM: Protocol Independent Multicast -->
+<dt><abbr title='Protocol Independent Multicast'>PIM</abbr></dt>
+<dd><b>P</b>rotocol <b>I</b>ndependent <b>M</b>ulticast. One of the 
+sources of routes in the routing table, with a preference value of 105.</dd>
+
+<!-- RE: Routing Engine -->
+<dt><abbr title='Routing Engine'>RE</abbr></dt>
+<dd><b>R</b>outing <b>E</b>ngine, the first part of the Control Plane / 
+Forwarding Plane separation on Juniper devices. This part of the 
+equation is mostly software. It contains the OS, and this is where the 
+configuration takes place. Physically, it looks like a small PC, with a 
+motherboard, processor, RAM and storage. Some devices have dual REs 
+for redundancy.</dd>
+
+<!-- RSVP: Resource Reservation Protocol -->
+<dt><abbr title='Resource Reservation Protocol'>RSVP</abbr></dt>
+<dd><b>R</b>esource Re<b>s</b>er<b>v</b>ation <b>P</b>rotocol. One of 
+the sources or routes in the routing table, with a preference value of 
+7.</dd>
+
+<!-- rpd: Routing Protocol Daemon -->
+<dt><abbr title='Routing Protocol Daemon'>rpd</abbr></dt>
+<dd><b>R</b>outing <b>P</b>rotocol <b>D</b>aemon: One of the JUNOS 
+daemons running on the Routing Engine. Handles exchange of routing 
+messages, maintenance of routing table, enforcement of routing policies.</dd>
+
+<!-- RPF: Reverse Path Forwarding -->
+<dt><abbr title='Reverse Path Forwarding'>RPF</abbr></dt>
+<dd><b>R</b>everse <b>P</b>ath <b>F</b>orwarding is the process used by 
+Junos to populate the <code>inet.2</code> routing table, used by the 
+router to prevent routing loops in multicast routing protocols.</dd>
+
+<!-- SCB: System Control Board -->
+<dt><abbr title='System Control Board'>SCB</abbr></dt>
+<dd><b>S</b>ystem <b>C</b>ontol <b>B</b>oard: a type of Switching 
+Control Board, found on some devices like the M40.</dd>
+
+<!-- SFM: Switching and Forwarding Module -->
+<dt><abbr title='Switching and Forwarding Module'>SFM</abbr></dt>
+<dd><b>S</b>witching and <b>F</b>orwarding <b>M</b>odule: a type of 
+Switching Control Board, designed so that devices will have two SFMs. 
+Some devices, like the M40e, use the SFMs in Active/Passive mode, 
+whereas others, like the M160, use both in Active/Active mode.</dd>
+
+<!-- SSB: System Switching Board -->
+<dt><abbr title='System Switching Board'>SSB</abbr></dt>
+<dd><b>S</b>ystem <b>S</b>witching <b>B</b>oard: a type of Switching 
+Control Board, found on some devices line the M20. It is designed so 
+that devices will contains two SSBs, in Active/Passive redundancy.</dd>
+
+<!-- SSRAM: Synchronized Static Random Access Memory -->
+<dt><abbr title='Synchronized Static Random Access Memory'>SSRAM</abbr></dt>
+<dd><b>S</b>ynchronized <b>S</b>tatic <b>R</b>andom <b>A</b>ccess 
+<b>M</b>emory. It is a component of the Switching Control Board, and it 
+contains the routing table, pushed to it by the Routing Engine.</dd>
+
+<!-- SCB: Switching Control Board -->
+<dt><abbr title='Switching Control Board'>SCB</abbr></dt>
+<dd><b>S</b>witching <b>C</b>ontrol <b>B</b>oard. This is the heart of 
+the Packet Forwarding Engine. Similarly to the Routing Engine, it 
+contains a processor and RAM, but the purpose of those are to coordinate 
+the operation of the rest of the components of the PFE, rather than 
+actually participating in routing/forwarding decisions.</dd>
+<dt><abbr title='Traffic Engineering Database'>TED</abbr></dt>
+<dd><b>T</b>raffic <b>E</b>ngineering <b>D</b>atabase</dd>
+</dl>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/free-books/">
+            <h2 class="card-title">Links to free books</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is an unsorted list of links to free books (some libre, some 
+gratis, some both) that I find here and there, put here for future 
+reference. Unfortunately, these links tend to break often.</p>
+
+<ol>
+<li><a href="http://dontfearthecommandline.blogspot.com/2010/09/free-ebook-introduction-to-command-line.html">Introduction to the Command Line</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS">You don't know JS</a>, a Kickstarter-born series of books on JavaScript.</li>
+<li><a href="https://www.juniper.net/us/en/training/certification/JNCIA_studyguide.pdf">JNCIA Study Guide</a> (pdf)</li>
+<li><a href="https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System">How to Make a Computer Operating System</a></li>
+<li><a href="/books/a-byte-of-python-2/">A Byte of Python 2</a></li>
+<li><a href="http://swaroopch.com/notes/python/">A Byte of Python 3</a></li>
+<li><a href="http://www.thegeekstuff.com/linux-101-hacks-ebook/">Linux 101 Hacks</a></li>
+<li><a href="http://debian-handbook.info/">The Debian Administrator's Handbook</a></li>
+<li><a href="http://www.scribd.com/doc/103732688/PicoLisp-Works">PicoLisp Works</a> (on Scribd) 
+or <a href="https://github.com/tj64/picolisp-works">PicoLisp Works</a> (on GitHub)</li>
+<li><a href="http://www.scribd.com/doc/103733857/PicoLisp-by-Example">PicoLisp by Example</a> (on Scribd)
+or <a href="https://github.com/tj64/picolisp-by-example">PicoLisp by Example</a> (on GitHub)</li>
+<li><a href="http://www.tuxradar.com/practicalphp">Practical PHP</a></li>
+<li><a href="http://www.diveintopython.net/">Dive into Python</a></li>
+<li><a href="http://oreilly.com/openbook/freedom/index.html">Free as in Freedom</a></li>
+<li><a href="http://gettingreal.37signals.com/">Getting Real - The smarter, faster, easier way to build a successful web application</a></li>
+<li><a href="http://www.linuxcommand.org/tlcl.php">The Linux Command Line</a></li>
+</ol>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="http://sabok.org/">The Systems Administration Body of Knowledge</a> 
+has a list of resources, some of which are links to free books.</li>
+<li><a href="https://github.com/vhf/free-programming-books">List of Free Programming Resources</a></li>
+<li><a href="http://www.coderholic.com/free-python-programming-books/">Ten Free Python Programming Books</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-03
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/juniper-jncia-study-material/">
+            <h2 class="card-title">Study Material for JNCIA</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><abbr title='Juniper Networks Certified Internet Associate'>JNCIA</abbr>-Junos 
+is the entry-level certification of Juniper Networks, and a prerequisite for 
+the next level of <a href="https://www.juniper.net/us/en/training/certification/certification-tracks/">JNCIS-* certifications</a>.</p>
+
+<p>Certification is achieved by passing one exam, either JN0-101 (being 
+retired on 2014-01-31 and available to take until 2014-02-28) or 
+JN0-102 (available to take from 2014-01-31).</p>
+
+<ol>
+<li><a href="http://www.juniper.net/us/en/training/certification/">Juniper's Certification Website</a></li>
+<li><a href="https://www.juniper.net/us/en/training/certification/JNCIA_studyguide.pdf">JNCIA Study Guide</a>, free from Juniper's website.</li>
+<li>JNCIA-Junos Study Guide Part 1 and Part 2, free to download from 
+<a href="https://learningportal.juniper.net/juniper/user_fasttrack_home.aspx">Juniper's FastTrack Website</a> 
+(requires free registration, after the registration find the "Study 
+Resources" section).</li>
+</ol>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="https://www.juniper.net/us/en/training/certification/resources_jnciajunos.html">The JNCIA-Junos Objectives</a></li>
+<li><a href="http://www.gns3.net/labs/juniper/jncia-junos/introduction-to-the-certification/">Juniper JNCIA-Junos - Introduction</a></li>
+<li><a href="http://forums.juniper.net/">J-Net Community Forums</a></li>
+<li>The <a href="https://learningportal.juniper.net/juniper/user_activity_info.aspx?id=5735">Junosphere</a>, and 
+<a href="https://markom.info/2012/02/the-junosphere-experience-part-one-getting-access/">The Junosphere Experience</a>.</li>
+<li><a href="http://www.itcertificationmaster.com/jncia-junos/">Introduction to JNCIA</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-02
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/juniper/">juniper</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/zenoss-3/">
+            <h2 class="card-title">Zenoss 3 Installation</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://www.tampabaycomputing.com/blog/setting-up-zenoss-3-2-on-centos-5-6-x64" title="Setting up Zenoss 3.2 on CentOS 5.6 x64">Setting up Zenoss 3.2 on CentOS 5.6 x64</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-02
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/centos-add-hard-disk/">
+            <h2 class="card-title">Add a hard disk on a CentOS 6 system</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p class="lead">
+  This document shows how to add a 50GB hard disk on a CentOS 6 system, 
+  prepare it for usage with 
+  <abbr title='Logical Volume Management'>LVM</abbr>, and mount it as the MySQL 
+  data directory. This was tested on a VMware Player virtual machine, with 
+  CentOS 6.4, and should be safe to run on any 6.x CentOS version.
+</p>
+
+<h2>Addition of new hard disk</h2>
+
+<p>The new disk was added on the CentOS 6.4 machine in VMware Player. The 
+operating system doesn't see it yet, this is the previous status:</p>
+
+<pre><code>[root@c6 ~]# df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/mapper/vg_c6-lv_root
+                       18G  1.3G   16G   8% /
+tmpfs                 947M     0  947M   0% /dev/shm
+/dev/sda1             194M   89M   96M  49% /boot
+
+[root@c6 ~]# pvs
+  PV         VG    Fmt  Attr PSize  PFree
+  /dev/sda2  vg_c6 lvm2 a--  19.80g    0 
+
+[root@c6 ~]# vgs
+  VG    #PV #LV #SN Attr   VSize  VFree
+  vg_c6   1   2   0 wz--n- 19.80g    0 
+
+[root@c6 ~]# lvs
+  LV      VG    Attr      LSize  Pool Origin Data%  Move Log Cpy%Sync Convert
+  lv_root vg_c6 -wi-ao--- 17.80g
+  lv_swap vg_c6 -wi-ao---  2.00g
+</code></pre>
+
+<p><code>fdisk</code> sees the new <code>/dev/sdb</code> disk:</p>
+
+<pre><code>[root@c6 ~]# fdisk -l
+
+Disk /dev/sda: 21.5 GB, 21474836480 bytes
+255 heads, 63 sectors/track, 2610 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00072251
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *           1          26      204800   83  Linux
+Partition 1 does not end on cylinder boundary.
+/dev/sda2              26        2611    20765696   8e  Linux LVM
+
+Disk /dev/sdb: 53.7 GB, 53687091200 bytes
+255 heads, 63 sectors/track, 6527 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/mapper/vg_c6-lv_root: 19.1 GB, 19113443328 bytes
+255 heads, 63 sectors/track, 2323 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/mapper/vg_c6-lv_swap: 2147 MB, 2147483648 bytes
+255 heads, 63 sectors/track, 261 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+</code></pre>
+
+<h2>Create a partition table</h2>
+
+<p>The first step to make this disk usable by the system, is to create a 
+partition table on it, with <code>fdisk</code>:</p>
+
+<pre><code>[root@c6 ~]# fdisk /dev/sdb
+</code></pre>
+
+<p>Print the current partition table with <code>p</code>. At the moment, there are no 
+partitions, so the output is empty:</p>
+
+<pre><code>Command (m for help): p
+
+Disk /dev/sdb: 53.7 GB, 53687091200 bytes
+255 heads, 63 sectors/track, 6527 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x1fdf1a3e
+
+   Device Boot      Start         End      Blocks   Id  System
+</code></pre>
+
+<p>Create a new primary partition, with <code>n</code>, and allow it to occupy the 
+entire drive space:</p>
+
+<pre><code>Command (m for help): n
+Command action
+   e   extended
+   p   primary partition (1-4)
+p
+Partition number (1-4): 1
+First cylinder (1-6527, default 1): 
+Using default value 1
+Last cylinder, +cylinders or +size{K,M,G} (1-6527, default 6527): 
+Using default value 6527
+</code></pre>
+
+<p>Print the partition table again to verify:</p>
+
+<pre><code>Command (m for help): p
+
+Disk /dev/sdb: 53.7 GB, 53687091200 bytes
+255 heads, 63 sectors/track, 6527 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x1fdf1a3e
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1               1        6527    52428096   83  Linux
+</code></pre>
+
+<p>In the above output, the type of the partition is <code>Linux</code>, which is not 
+what we need. With <code>t</code>, set the type of the partition to <code>8e</code>, i.e. 
+Linux LVM:</p>
+
+<pre><code>Command (m for help): t
+Selected partition 1
+Hex code (type L to list codes): 8e
+Changed system type of partition 1 to 8e (Linux LVM)
+</code></pre>
+
+<p>Print the partition table once more, to verify:</p>
+
+<pre><code>Command (m for help): p 
+
+Disk /dev/sdb: 53.7 GB, 53687091200 bytes
+255 heads, 63 sectors/track, 6527 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x1fdf1a3e
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1               1        6527    52428096   8e  Linux LVM
+</code></pre>
+
+<p>That's more like it! Now save the new partition table with <code>w</code>:</p>
+
+<pre><code>Command (m for help): w
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+Syncing disks.
+</code></pre>
+
+<p>Partial output of <code>fdisk -l</code> now shows that the partition is available 
+to the operating system for further handling:</p>
+
+<pre><code>[root@c6 ~]# fdisk -l
+Disk /dev/sdb: 53.7 GB, 53687091200 bytes
+255 heads, 63 sectors/track, 6527 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x1fdf1a3e
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1               1        6527    52428096   8e  Linux LVM
+</code></pre>
+
+<h2>Create LVM Physical Volume, Volume Group and Logical Volume</h2>
+
+<p>Next step is to create a new LVM Physical Volume:</p>
+
+<pre><code>[root@c6 ~]# pvcreate /dev/sdb1
+  Physical volume "/dev/sdb1" successfully created
+</code></pre>
+
+<p>The new PV now appears in <code>pvs</code> output:</p>
+
+<pre><code>[root@c6 ~]# pvs
+  PV         VG    Fmt  Attr PSize  PFree 
+  /dev/sda2  vg_c6 lvm2 a--  19.80g     0 
+  /dev/sdb1        lvm2 a--  50.00g 50.00g
+</code></pre>
+
+<p><code>pvdisplay</code> will now list the new physical volume, but it will be noted 
+as non-allocatable, in other words non usable yet, because it contains 
+no Volume Group:</p>
+
+<pre><code>[root@c6 ~]# pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/sda2
+  VG Name               vg_c6
+  PV Size               19.80 GiB / not usable 3.00 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              5069
+  Free PE               0
+  Allocated PE          5069
+  PV UUID               LqOFBg-4lUi-Uen7-2vtO-EFkf-Cp8p-XvLiHX
+
+  "/dev/sdb1" is a new physical volume of "50.00 GiB"
+  --- NEW Physical volume ---
+  PV Name               /dev/sdb1
+  VG Name               
+  PV Size               50.00 GiB
+  Allocatable           NO
+  PE Size               0   
+  Total PE              0
+  Free PE               0
+  Allocated PE          0
+  PV UUID               6Nv0Xf-72ao-Nfph-TfvN-26FS-ssE8-QrEsXx
+</code></pre>
+
+<p>Create a new LVM Volume Group with <code>vgcreate</code>. In this example, the 
+Volume Group name is <code>vg_mysql</code>, because it's intended for use as the 
+data directory of a MySQL server, but it can be anything.</p>
+
+<pre><code>[root@c6 ~]# vgcreate vg_mysql /dev/sdb1
+  Volume group "vg_mysql" successfully created
+</code></pre>
+
+<p>The new VG will now show up in the output of <code>vgs</code>:</p>
+
+<pre><code>[root@c6 ~]# vgs
+  VG       #PV #LV #SN Attr   VSize  VFree 
+  vg_c6      1   2   0 wz--n- 19.80g     0 
+  vg_mysql   1   0   0 wz--n- 50.00g 50.00g
+</code></pre>
+
+<p>Now the output of <code>pvdisplay</code> will change, to show that the Physical 
+Volume is actually usable:</p>
+
+<pre><code>[root@c6 ~]# pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/sdb1
+  VG Name               vg_mysql
+  PV Size               50.00 GiB / not usable 3.31 MiB
+  Allocatable           yes 
+  PE Size               4.00 MiB
+  Total PE              12799
+  Free PE               12799
+  Allocated PE          0
+  PV UUID               6Nv0Xf-72ao-Nfph-TfvN-26FS-ssE8-QrEsXx
+
+  --- Physical volume ---
+  PV Name               /dev/sda2
+  VG Name               vg_c6
+  PV Size               19.80 GiB / not usable 3.00 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              5069
+  Free PE               0
+  Allocated PE          5069
+  PV UUID               LqOFBg-4lUi-Uen7-2vtO-EFkf-Cp8p-XvLiHX
+</code></pre>
+
+<p>Now that a Volume Group was created inside the Physical Volume, none of 
+the space on the Physical Volume is free any more, as shown in the 
+output of <code>pvdisplay</code> above, but all of the space in the Volume Group is 
+free, as shown by <code>vgdisplay</code>:</p>
+
+<pre><code>[root@c6 ~]# vgdisplay
+  --- Volume group ---
+  VG Name               vg_mysql
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  1
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                0
+  Open LV               0
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               50.00 GiB
+  PE Size               4.00 MiB
+  Total PE              12799
+  Alloc PE / Size       0 / 0   
+  Free  PE / Size       12799 / 50.00 GiB
+  VG UUID               cwEyOs-rIqq-hc5J-cl45-kSZ0-i4dV-HiGE2l
+
+  --- Volume group ---
+  VG Name               vg_c6
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  3
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               2
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               19.80 GiB
+  PE Size               4.00 MiB
+  Total PE              5069
+  Alloc PE / Size       5069 / 19.80 GiB
+  Free  PE / Size       0 / 0   
+  VG UUID               pp0134-mUkA-x3jp-FeVr-0ixo-Lxa4-eX1PCx
+</code></pre>
+
+<p>Next, create an LVM Logical Volume with <code>lvcreate</code>:</p>
+
+<pre><code>[root@c6 ~]# lvcreate -L 51196M -n lv_mysql vg_mysql
+  Logical volume "lv_mysql" created
+</code></pre>
+
+<p>In the above command, the size 51196M is the number of Physical Extends 
+(12799) multiplied by the size of the Physical Extend (4.0 MBytes). This 
+will cause the Logical Volume to occupy all of the Volume Group. Verify 
+with <code>lvs</code>:</p>
+
+<pre><code>[root@c6 ~]# lvs
+  LV       VG       Attr      LSize  Pool Origin Data%  Move Log Cpy%Sync Convert
+  lv_root  vg_c6    -wi-ao--- 17.80g                                             
+  lv_swap  vg_c6    -wi-ao---  2.00g                                             
+  lv_mysql vg_mysql -wi-a---- 50.00g
+</code></pre>
+
+<h2>Creating the filesystem</h2>
+
+<p>The next step is to create a filesystem inside the LVM Logical Volume. 
+The choice of filesystem depends on a multitude of factors, but for 
+this example let's stick with <code>ext4</code>:</p>
+
+<pre><code>[root@c6 ~]# mkfs.ext4 /dev/vg_mysql/lv_mysql 
+mke2fs 1.41.12 (17-May-2010)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+3276800 inodes, 13106176 blocks
+655308 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=0
+400 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks: 
+    32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+    4096000, 7962624, 11239424
+
+Writing inode tables: done                            
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+This filesystem will be automatically checked every 39 mounts or
+180 days, whichever comes first.  Use tune2fs -c or -i to override.
+</code></pre>
+
+<h2>Mounting the filesystem</h2>
+
+<p>The last step in this procedure, is to actually mount the brand new 
+filesystem at a mountpoint inside our filesystem hierarchy. </p>
+
+<pre><code>[root@c6 ~]# mkdir /mnt/test
+[root@c6 ~]# mount /dev/vg_mysql/lv_mysql /mnt/test
+[root@c6 ~]# mount | grep mysql
+/dev/mapper/vg_mysql-lv_mysql on /mnt/test type ext4 (rw)
+</code></pre>
+
+<p>This verifies that our filesystem has been created, and can be mounted.</p>
+
+<h2>Setting up MySQL in the new Logical Volume</h2>
+
+<p>Very briefly, what you need to do to set up MySQL's data directory to 
+be the new Logical Volume is:</p>
+
+<ol>
+<li><p>Install, start, enable and automatically configure the MySQL Server:</p>
+
+<pre><code>[root@c6 ~]# yum -y install mysql-server
+[root@c6 ~]# service mysqld start
+[root@c6 ~]# chkconfig mysqld on
+[root@c6 ~]# mysql_secure_installation
+</code></pre></li>
+<li><p>Stop MySQL, back the original data directory up, mount the new one, 
+and copy all the data over:</p>
+
+<pre><code>[root@c6 lib]# service mysqld stop
+[root@c6 lib]# cd /var/lib
+[root@c6 lib]# mv mysql mysql-original
+[root@c6 lib]# mkdir mysql
+[root@c6 lib]# mount /dev/vg_mysql/lv_mysql /var/lib/mysql
+[root@c6 lib]# chown mysql:mysql mysql
+[root@c6 lib]# cp -Rpv mysql-original/* mysql/
+[root@c6 lib]# rm -rf mysql/lost+found/
+</code></pre></li>
+<li><p>Finally, start the MySQL server again:</p>
+
+<pre><code>[root@c6 lib]# service mysqld start
+</code></pre></li>
+</ol>
+
+<p>That's it. You can now see that the new LVM Logical Volume is mounted, 
+and is being used for MySQL:</p>
+
+<pre><code>[root@c6 lib]# df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/mapper/vg_c6-lv_root
+                       18G   17G   22M 100% /
+tmpfs                 947M     0  947M   0% /dev/shm
+/dev/sda1             194M   89M   96M  48% /boot
+/dev/mapper/vg_mysql-lv_mysql
+                       50G  201M   47G   1% /var/lib/mysql
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/smbpasswd/">
+            <h2 class="card-title">smbpasswd</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>smbpasswd</code> is the Samba equivalent of the system's <code>passwd</code>, it allows 
+for the management of Samba user accounts.</p>
+
+<h2>Add a user</h2>
+
+<p>To add a user, use <code>smbpasswd</code> with the <code>-a</code> option, and the username as 
+the only required parameter, e.g:</p>
+
+<pre><code>smbpasswd -a obiwan
+</code></pre>
+
+<p>The very first time that you will run <code>smbpasswd</code> it will warn that a 
+user database does not yet exist. This is normal, and <code>smbpasswd</code> will 
+generate that database.</p>
+
+<h2>Change a password</h2>
+
+<p>Users can change their own passwords, and root can change any other 
+user's password. If the Samba server authenticates users against a 
+remote server, the server can be defined with the <code>-r</code> option.</p>
+
+<p>For example, when used with a local user database (i.e. in conjunction 
+with a <code>security = User</code> setting in <code>[Global]</code>), a user can change 
+their password with just:</p>
+
+<pre><code>obiwan@server ~ $ smbpasswd
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/pgtune-configuration-changes/">
+            <h2 class="card-title">PostgreSQL Configuration Changes with pgtune</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is an example run of the <code>pgtune</code> script, which examines a system's 
+hardware and proposes changes to PostgreSQL configuration, to better 
+utilize the capabilities of the hardware for the benefit of the database.</p>
+
+<p>The following configuration differences are from an example of a VM 
+running with 2x Intel Quad @2.33GHz CPUs and 2GB of RAM. The commands 
+run to create the new configuration file with pgtune were:</p>
+
+<pre><code>pgtune -i /var/lib/pgsql/9.2/data/postgresql.conf -o /var/lib/pgsql/9.2/data/postgresql2.conf
+mv postgresql.conf postgresql-factory-default.conf
+mv postgresql2.conf postgresql.conf
+chown postgres:postgres postgresql.conf
+service postgresql restart
+</code></pre>
+
+<h2>Differences</h2>
+
+<pre><code>&lt; max_connections = 100
+&gt; max_connections = 80
+&lt; #default_statistics_target = 100  
+&gt; default_statistics_target = 50 
+&lt; #constraint_exclusion = partition
+&gt; constraint_exclusion = on 
+&lt; #effective_cache_size = 128MB
+&gt; effective_cache_size = 1408MB 
+&lt; #wal_buffers = -1
+&gt; wal_buffers = 8MB
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/easy_install/">
+            <h2 class="card-title">easy_install</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>easy_install</code> is a tool for installing Python modules from PyPI.</p>
+
+<h2>Installation on CentOS</h2>
+
+<p>On CentOS, <code>easy_install</code> is provided by the package <code>python-setuptools</code>:</p>
+
+<pre><code>yum whatprovides */easy_install
+... 
+python-setuptools-0.6.10-3.el6.noarch : Easily build and distribute Python packages
+</code></pre>
+
+<p>To install it:</p>
+
+<pre><code>yum -y install python-setuptools
+</code></pre>
+
+<p>You can then use it to install a module, by just providing the module 
+name as the only parameter, e.g:</p>
+
+<pre><code>easy_install markdown2
+</code></pre>
+
+<h2>Usage</h2>
+
+<p>To install a Python module from PyPI:</p>
+
+<pre><code>sudo easy_install module_name
+</code></pre>
+
+<p>To upgrade:</p>
+
+<pre><code>sudo easy_install --upgrade module_name
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/3/">3</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/4/">4</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/5/">5</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/6/">6</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/13/">13</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/14/">14</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/15/">15</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/16/">16</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/18/">18</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">22</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/27/">27</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

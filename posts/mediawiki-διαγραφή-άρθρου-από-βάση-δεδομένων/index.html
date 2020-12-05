@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>MediaWiki: Διαγραφή άρθρου από τη βάση δεδομένων</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">MediaWiki: Διαγραφή άρθρου από τη βάση δεδομένων</h1>
+            </header>
+            <p>Υπάρχουν περιπτώσεις στο MediaWiki που ένα άρθρο δεν μπορεί να διαγραφεί μέσω της συνηθισμένης διεπαφής, οπότε χρειάζεται σκάλισμα της βάσης δεδομένων. Αυτός ο οδηγός περιγράφει τον τρόπο.</p>
+
+<!-- read more -->
+
+<p>Προτού προχωρήσετε σε οποιαδήποτε παρέμβαση στη βάση δεδομένων σας, οπωσδήποτε πρέπει να κρατήσετε ένα <strong>αντίγραφο ασφαλείας</strong> ολόκληρης της βάσης. Επίσης, αν το Wiki σας έχει έντονη δραστηριότητα, μπορείτε προσωρινά να αποτρέψετε οποιεσδήποτε αλλαγές στις σελίδες, προσθέτωντας μια γραμμή στο αρχείο LocalSettings.php: <code>$wgReadOnly = 'Το Wiki είναι προσωρινά μη διαθέσιμο για επεξεργασία.';</code>. </p>
+
+<h3>Δομή της βάσης δεδομένων</h3>
+
+<p>Η δομή της βάσης δεδομένων του MediaWiki υπάρχει στην τεκμηρίωση, στο άρθρο <a href="http://www.mediawiki.org/wiki/Manual:Database_layout">Database Layout</a>. Για το κάθε άρθρο που εμφανίζεται στο Wiki εμπλέκονται τουλάχιστον τρεις από τους πίνακες της βάσης:</p>
+
+<ol><li>Στον πίνακα <strong>page</strong> αποθηκεύεται μια λίστα με τους τίτλους όλων των άρθρων. Όταν χρειάζεται να εμφανιστεί ένα άρθρο, γίνεται αναζήτηση σε αυτόν τον πίνακα με βάση τον τίτλο, και ανακτάται η τιμή του πεδίου <code>page_latest</code>.</li>
+<li>Με την τιμή <code>page_latest</code> γίνεται αναζήτηση στον πίνακα <strong>revision</strong>. Σ' αυτόν τον πίνακα αποθηκεύονται μερικά <em>μεταδεδομένα</em> (δηλαδή όχι καθαυτό το περιεχόμενο) για κάθε αλλαγή που γίνεται στο Wiki. Για να εμφανιστεί ένα άρθρο, από αυτόν τον πίνακα ανακτούνται οι τιμές <code>rev_id</code> και <code>rev_text_id</code>.</li>
+<li>Τέλος, με την τιμή <code>rev_text_id</code> που βρέθηκε στο προηγούμενο βήμα, γίνεται αναζήτηση στον πίνακα <strong>text</strong>, και ανακτάται η τιμή του πεδίου <code>old_text</code>, η οποία αποτελεί και το περιεχόμενο του άρθρου. Ο πίνακας <strong>text</strong> αποθηκεύει ολόκληρο το περιεχόμενο από κάθε αναθεώρηση κάθε άρθρου του Wiki.</li>
+</ol>
+
+<h3>Διαγραφή των καταχωρήσεων</h3>
+
+<p>Το πρώτο βήμα είναι να αναζητήσετε τον τίτλο του άρθρου στον πίνακα <strong>page</strong>, στη στήλη <code>page_title</code>. Οι τίτλοι αποθηκεύονται με τα διαστήματα αλλαγμένα σε κάτω παύλες (underscore) και με τους χαρακτήρες ειδικά διαμορφωμένους σε δεκαεξαδικούς χαρακτήρες UTF-8, αν περιέχεται στον τίτλο χαρακτήρας άλλος από τα Αγγλικά. Δυστυχώς, δεν έχω βρει εύκολο τρόπο να κάνετε τη μετατροπή. Μπορείτε να αναζητήσετε στο διαδίκτυο για βοηθήματα, όπως για παράδειγμα αυτός ο <a href="http://rocky.uta.edu/doran/charsets/charsets.cgi?map=marc2unicode&amp;table=8">πίνακας μετατροπής χαρακτήρων</a>. Εναλλακτικά, αν χρησιμοποιείτε κάποιο πρόγραμμα όπως το PhpMyAdmin, μπορείτε να εξάγετε ολόκληρο τον πίνακα σε CSV, να τον ανοίξετε με ένα πρόγραμμα όπως το OpenOffice Calc και να δείτε τα περιεχόμενά του κανονικά.</p>
+
+<p>Όταν βρείτε τον τίτλο που θέλετε, σημειώστε την τιμή του πεδίου <code>page<em>id</code> που αντιστοιχεί στον τίτλο, και διαγράψτε αυτή τη γραμμή από τον πίνακα, εκτελώντας κάτι σαν <code>DELETE FROM my</em>database.mw<em>page WHERE mw</em>page.page_id = 1234</code>. Από αυτή τη στιγμή και μετά, η σελίδα δεν είναι διαθέσιμη στο Wiki, το περιεχόμενό της όμως παραμένει στη βάση δεδομένων.</p>
+
+<p>Για να εξαφανιστεί εντελώς η σελίδα από τη βάση δεδομένων και να μην μείνουν «σπασμένες» αναφορές σ' αυτήν, θα πρέπει να διαγράψετε και όλες τις αναθεωρήσεις της από τον πίνακα <strong>revision</strong>, καθώς και όλα τα αλλαγμένα κείμενα από τον πίνακα <strong>text</strong>.</p>
+
+<p>Μπορείτε να δείτε όλες τις αναθεωρήσεις που θα διαγραφούν, εκτελώντας κάτι σαν <code>SELECT * FROM mw<em>revision WHERE mw</em>revision.rev<em>page = 1234</code>, αλλά προτού τις διαγράψετε, θα χρειαστείτε τα αντίστοιχα <code>rev</em>text<em>id</code>, τα οποία θα τα χρησιμοποιήσετε αργότερα. Για να τα δείτε, εκτελέστε <code>SELECT rev</em>text<em>id FROM my</em>database.mw<em>revision WHERE mw</em>revision.rev<em>page = 1234</code>. Κρατήστε κάπου ξεχωριστά αυτό το αποτέλεσμα, θα σας χρειαστεί μετά. Τώρα μπορείτε να διαγράψετε τις αναθεωρήσεις, εκτελώντας κάτι σαν <code>DELETE FROM my</em>database.mw<em>revision WHERE mw</em>revision.rev_page = 1234</code>.</p>
+
+<p>Τέλος, από τον πίνακα <strong>text</strong> θα πρέπει να διαγράψετε τα κείμενα των παλιών αναθεωρήσεων της σελίδας. Το πεδίο <code>old<em>id</code> αυτού του πίνακα, είναι ίδιο με το <code>rev</em>text<em>id</code> που κρατήσατε προηγουμένως. Μπορείτε λοιπόν να διαγράψετε ένα ένα τα κείμενα, εκτελώντας επανηλειμμένα κάτι σαν <code>DELETE FROM my</em>database.mw<em>text WHERE mw</em>text.old_id = 100</code>, αλλάζωντας το «100» σε ό,τι αντιστοιχεί στα δικά σας δεδομένα.</p>
+
+            <footer>
+                <p>Posted on 2011-08-15</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

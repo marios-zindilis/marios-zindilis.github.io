@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Bash tips</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Bash tips</h1>
+            </header>
+            <p>Δύο μικρά tips.</p>
+
+<!-- read more -->
+
+<ol>
+<li><p>Για να δημιουργήσετε μια αντίστροφη σειρά αριθμών με το <code>seq</code>, από έναν 
+μεγαλύτερο σε έναν μικρότερο ακέραιο, χρησιμοποιήστε το ως 
+<code>seq ΜΕΓΑΛΟΣ ΒΗΜΑ ΜΙΚΡΟΣ</code>, για παράδειγμα:</p>
+
+<pre><code>$ seq 10 -1 1
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+</code></pre></li>
+<li><p>Για να μορφοποιήσετε ακέραιους με με διαφορετικό πλήθος ψηφίων με μηδενικά 
+ώστε να εμφανίζονται με το ίδιο πλάτος, εκτυπώστε τους με την <code>printf</code>, 
+συντάσσοντάς την ως <code>printf "%0ΠΛΑΤΟΣd" ΑΚΕΡΑΙΟΣ</code>. Για παράδειγμα:</p>
+
+<pre><code>printf "%04d" 1
+0001
+</code></pre></li>
+</ol>
+
+<p>Συνδυασμός των δύο:</p>
+
+<pre><code>    $ for i in `seq 10 -1 1`; do echo `printf "%04d" $i`; done
+    0010
+    0009
+    0008
+    0007
+    0006
+    0005
+    0004
+    0003
+    0002
+    0001
+</code></pre>
+
+<p>Το <code>echo</code> χρησιμοποιείται για να τυπώνει τον επόμενο αριθμό σε καινούρια 
+γραμμή, αλλιώς εμφανίζονται συνεχόμενα.</p>
+
+<h2>Δείτε επίσης</h2>
+
+<ul>
+<li><a href="/docs/man/seq.1.html">Σελίδα Man για το seq</a></li>
+<li><a href="/docs/man/printf.1.html">Σελίδα Man για το printf</a></li>
+</ul>
+
+            <footer>
+                <p>Posted on 2012-04-04</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

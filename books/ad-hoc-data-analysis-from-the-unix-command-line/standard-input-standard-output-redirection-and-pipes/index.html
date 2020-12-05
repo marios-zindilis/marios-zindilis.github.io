@@ -1,67 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Marios Zindilis - Standard Input, Standard Output, Redirection and Pipes</title>
-  <meta name="description" content="&quot;This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, b...">
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/static/css/zindilis.com.css">
-  <link rel="canonical" href="https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/standard-input-standard-output-redirection-and-pipes/">
-  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
   
-  <meta property="og:title" content="Standard Input, Standard Output, Redirection and Pipes">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Standard Input, Standard Output, Redirection and Pipes</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
 
-
-  <meta property="og:type" content="website">
-
-
-
-</head>
-
-
-<body>
-  <header class="mb-4">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/">Marios Zindilis</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-link-items" aria-controls="navbar-link-items" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbar-link-items">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" style="color:white" href="/docs/">Docs</a>
-          <a class="nav-item nav-link" style="color:white" href="/projects/">Projects</a>
-          <a class="nav-item nav-link" style="color:white" href="/about/">About</a>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
 
-
-  <div class="container">
-        <article class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">Standard Input, Standard Output, Redirection and Pipes</h1>
-  </header>
-
-  <div class="post-content">
-    <blockquote>
-<p>&quot;This is the Unix philosophy: Write programs that do one thing and do it 
-well. Write programs to work together. Write programs to handle text streams, 
-because that is a universal interface.&quot; 
--- Doug McIlroy, the inventor of Unix pipes</p>
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Standard Input, Standard Output, Redirection and Pipes</h1>
+            </header>
+            <blockquote>
+  <p>"This is the Unix philosophy: Write programs that do one thing and do it 
+  well. Write programs to work together. Write programs to handle text streams, 
+  because that is a universal interface." 
+  -- Doug McIlroy, the inventor of Unix pipes</p>
 </blockquote>
 
-<p>The commands I&#39;m going to talk about here are called filters. Data passes 
+<p>The commands I'm going to talk about here are called filters. Data passes 
 through them and they modify it a bit on the way. These commands read data from 
 their <strong>standard input</strong> and write data to their <strong>standard output</strong>. By 
 default, standard input is your keyboard and standard output is your screen. 
@@ -71,20 +54,26 @@ case characters:</p>
 
 <p>You type:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>tr <span class="s2">"[:lower:]"</span> <span class="s2">"[:upper:]"</span>
-hello</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ tr <span class="s2">&quot;[:lower:]&quot;</span> <span class="s2">&quot;[:upper:]&quot;</span>
+hello
+</code></pre></div>
 
 <p>You get:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">HELLO
-</code></pre></div>
+
+<pre><code>HELLO
+</code></pre>
+
 <p>Then type:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">i feel like shouting</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>i feel like shouting
+</code></pre></div>
 
 <p>You get:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">I FEEL LIKE SHOUTING
-</code></pre></div>
-<p>You can exit from this with <code>[ctrl-d]</code>. This tells the command line that you&#39;re 
+
+<pre><code>I FEEL LIKE SHOUTING
+</code></pre>
+
+<p>You can exit from this with <code>[ctrl-d]</code>. This tells the command line that you're 
 done entering input.</p>
 
 <p>You can tell your shell to connect standard output to a file instead of your 
@@ -94,42 +83,49 @@ talk about <strong>redirecting</strong> the output of <code>tr</code> to a file.
 
 <p>You type:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>tr a-z A-Z <span class="o">&gt;</span> tr_output
+<div class="codehilite"><pre><span></span><code>$ tr a-z A-Z &gt; tr_output
 this is a <span class="nb">test</span>
-<span class="o">[</span>ctrl-d]
-<span class="nv">$ </span><span class="nb">cat </span>tr_output</code></pre></figure>
+<span class="o">[</span>ctrl-d<span class="o">]</span>
+$ cat tr_output
+</code></pre></div>
 
 <p>You get:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">THIS IS A TEST
-</code></pre></div>
+
+<pre><code>THIS IS A TEST
+</code></pre>
+
 <p>Many Unix commands that take a file as an argument will read from standard 
 input if not given a file. For example, the <code>grep</code> command searches a file for 
 a string and prints the lines that match. If I wanted to find my entry in the 
 password file I might say:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep </span>jrauser /etc/passwd
-jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ grep jrauser /etc/passwd
+jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash
+</code></pre></div>
 
-<p>But I could also redirect a file to <code>grep</code>&#39;s standard input using the <code>&lt;</code> 
+<p>But I could also redirect a file to <code>grep</code>'s standard input using the <code>&lt;</code> 
 operator. You can see that the <code>&lt;</code> and <code>&gt;</code> operators are like little arrows 
 that indicate the flow of data.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep </span>jrauser &lt; /etc/passwd
-jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ grep jrauser &lt; /etc/passwd
+jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash
+</code></pre></div>
 
 <p>You can use the pipe <code>|</code> operator to connect the standard output of one command 
 to the standard input of the next. The <code>cat</code> command reads a file and writes it 
 to its standard output, so yet another way to find my entry in the password 
 file is:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat</span> /etc/passwd | <span class="nb">grep </span>jrauser
-jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat /etc/passwd <span class="p">|</span> grep jrauser
+jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash
+</code></pre></div>
 
 <p>For a slightly more interesting example, the <code>mail</code> command will send a message 
-it reads from standard input. Let&#39;s send my entry in the password file to me in 
+it reads from standard input. Let's send my entry in the password file to me in 
 an email.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat</span> /etc/passwd | <span class="nb">grep </span>jrauser | mail <span class="nt">-s</span> <span class="s2">"passwd entry"</span> jrauser@example.com</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat /etc/passwd <span class="p">|</span> grep jrauser <span class="p">|</span> mail -s <span class="s2">&quot;passwd entry&quot;</span> jrauser@example.com
+</code></pre></div>
 
 <h2>Using output with headers</h2>
 
@@ -137,85 +133,48 @@ an email.</p>
 header describing the data, and subsequent lines that are the data. An example 
 is <code>ps</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ps | head <span class="nt">-5</span>
+<div class="codehilite"><pre><span></span><code>$ ps <span class="p">|</span> head -5
   PID TTY           TIME CMD
-22313 ttys000    0:00.86 <span class="nt">-bash</span>
-31537 ttys001    0:00.06 <span class="nt">-bash</span>
-22341 ttys002    0:00.28 <span class="nt">-bash</span>
-70093 ttys002    0:00.00 head <span class="nt">-5</span></code></pre></figure>
+<span class="m">22313</span> ttys000    <span class="m">0</span>:00.86 -bash
+<span class="m">31537</span> ttys001    <span class="m">0</span>:00.06 -bash
+<span class="m">22341</span> ttys002    <span class="m">0</span>:00.28 -bash
+<span class="m">70093</span> ttys002    <span class="m">0</span>:00.00 head -5
+</code></pre></div>
 
 <p>If you wish to manipulate the data but not the header use <code>tail</code> with the <code>-n</code> 
 switch to start at line 2. For example:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ps | tail <span class="nt">-n</span> +2 | <span class="nb">grep </span>bash | head <span class="nt">-5</span>
-22313 ttys000    0:00.86 <span class="nt">-bash</span>
-31537 ttys001    0:00.06 <span class="nt">-bash</span>
-22341 ttys002    0:00.28 <span class="nt">-bash</span>
-70120 ttys002    0:00.00 <span class="nt">-bash</span></code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ ps <span class="p">|</span> tail -n +2 <span class="p">|</span> grep bash <span class="p">|</span> head -5
+<span class="m">22313</span> ttys000    <span class="m">0</span>:00.86 -bash
+<span class="m">31537</span> ttys001    <span class="m">0</span>:00.06 -bash
+<span class="m">22341</span> ttys002    <span class="m">0</span>:00.28 -bash
+<span class="m">70120</span> ttys002    <span class="m">0</span>:00.00 -bash
+</code></pre></div>
 
 <p>This output shows only <code>bash</code> processes because of <code>grep</code>.</p>
 
-  </div>
+            <footer>
+                <p>Posted on 2016-11-13</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
 
-</article>
+    </main>
 
-  </div>
-
-  <footer id="site-footer" class="footer-distributed">
-  <div class="container">
-    <div class="footer-right">
-      <a href="/feed.xml" title="Marios Zindilis RSS Feed">
-        <i class="fa fa-rss" aria-hidden="true"></i><span class="sr-only">Marios Zindilis RSS Feed</span></a>
-      <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">
-        <i class="fa fa-linkedin" aria-hidden="true"></i><span class="sr-only">Marios Zindilis LinkedIn Profile</span></a>
-      <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">
-        <i class="fa fa-github" aria-hidden="true"></i><span class="sr-only">Marios Zindilis GitHub Page</span></a>
-    </div>
-
-    <div class="footer-left">
-      <p class="footer-links">
-        <a href="/">Home</a> · 
-        <a href="/docs/">Docs</a> ·
-        <a href="/projects/">Projects</a> ·
-        <a href="/about/">About</a>
-      </p>
-      <p>Marios Zindilis</p>
-    </div>
-  </div>
-</footer>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      // set padding-bottom of body to height of footer.site-footer:
-      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      // http://stackoverflow.com/a/14570614
-      var observeDOM = (function(){
-        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
-          eventListenerSupported = window.addEventListener;
-
-        return function(obj, callback){
-          if( MutationObserver ){
-          // define a new observer
-            var obs = new MutationObserver(function(mutations, observer){
-              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
-              callback();
-            });
-            // have the observer observe foo for changes in children
-            obs.observe( obj, { childList:true, subtree:true });
-          }
-          else if( eventListenerSupported ){
-            obj.addEventListener('DOMNodeInserted', callback, false);
-            obj.addEventListener('DOMNodeRemoved', callback, false);
-          }
-        }
-      })();
-      observeDOM(document.getElementById('site-footer') ,function(){
-        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      });
-    </script>
-
-
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   </body>
 </html>

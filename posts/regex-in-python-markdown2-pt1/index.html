@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Regular expressions in python-markdown2 (part 1)</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Regular expressions in python-markdown2 (part 1)</h1>
+            </header>
+            <p>This article is a look into the performance of one of the regular expressions used in the
+<a href="https://github.com/trentm/python-markdown2">python-markdown2</a> Python module for converting Markdown syntax to HTML. It
+was initially written for pure fun, and in celebration of its own pointlessness, but eventually the changes proposed
+here made it upstream in <a href="https://github.com/trentm/python-markdown2/pull/204">pull request 204</a>.</p>
+
+<!-- read more -->
+
+<h2>Standardize line endings</h2>
+
+<p>This regular expression appears very early in the conversion process:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">|</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Its use is fairly obvious: it changes all single carriage returns (<code>\r</code>) and 
+all carriage returns followed by a newline (<code>\r\n</code>) to single newlines (<code>\n</code>).
+The same effect can be achieved in Python with two <code>str.replace()</code> statements 
+and in fact that would be much faster. The following example uses <code>timeit</code>, 
+which comes with the IPython shell:</p>
+
+<pre><code>%timeit 'Apples\r\nOranges\r\nKiwis\rGrapes\r'.replace('\r\n', '\n')
+1000000 loops, best of 3: 270 ns per loop
+
+%timeit 'Apples\r\nOranges\r\nKiwis\rGrapes\r'.replace('\r', '\n')
+1000000 loops, best of 3: 195 ns per loop
+
+%timeit re.sub(r'\r\n|\r', '\n', 'Apples\r\nOranges\r\nKiwis\rGrapes\r')
+100000 loops, best of 3: 2.31 us per loop
+</code></pre>
+
+<p>So the two runs of <code>str.replace()</code> add up to 465 nanoseconds, whereas one run 
+of <code>re.sub()</code> takes 2.31 microseconds, that is 2310 nanoseconds, or about 
+<strong>five times slower</strong>. </p>
+
+<p>The question is: <em>Does it matter?</em> Well, my copy of 
+<em>The Hitch Hiker's Guide to the Galaxy</em> that includes all five books in the 
+series, is 776 pages long, and each full page has 42 lines (yes, I counted 
+twice, and now I am wondering if it was done on purpose). Following up on the 
+previous calculations, if you had to convert that book from Markdown to HTML, 
+(about 32592 lines), it would take you a whole 0.02 seconds to do that with 
+<code>re.sub()</code>, or about 0.004 seconds to do that with <code>str.replace()</code>. 
+Therefore, the answer to my previous question: <em>Does it matter?</em> is 42.</p>
+
+<p>Now the question becomes: <em>Does it <strong>really</strong> matter?</em> Well, if you had to 
+convert all 30 million paperback books that Amazon has for sale (number found 
+through a search on amazon.com), and assuming each book is as healthy in size 
+as <abbr title="The Hitch Hicker's Guide To The Galaxy">THHGTTG</abbr>, then it 
+would take you a week to do that with <code>re.sub()</code>, but only a day and a 
+half to do it with <code>str.replace()</code>. Thus, for the Python developer out there 
+who is pondering on converting 30 million books from Markdown to HTML, the 
+answer is: Go with <code>str.replace()</code>. For the rest of us it's still 42.</p>
+
+            <footer>
+                <p>Posted on 2015-11-07</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

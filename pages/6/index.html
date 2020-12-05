@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 6</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/presentation-tools/">
+            <h2 class="card-title">Presentation Tools</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is a list of software tools that can be used to create presentations.</p>
+
+<h2>Installable</h2>
+
+<ul>
+<li><a href="http://www.libreoffice.org/discover/impress/">LibreOffice Impress</a></li>
+<li><a href="https://www.openoffice.org/product/impress.html">OpenOffice Impress</a></li>
+</ul>
+
+<h2>Web-based</h2>
+
+<ul>
+<li><a href="http://lab.hakim.se/reveal-js/#/">Reveal.js</a></li>
+<li><a href="http://markdalgleish.com/projects/bespoke.js/">Bespoke.js</a></li>
+<li><a href="https://bartaz.github.io/impress.js/">Impress.js</a></li>
+</ul>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://opensource.com/life/14/7/3-open-source-tools-make-your-presentations-pop">3 open source tools to make your presentations pop</a></li>
+<li><a href="http://opensource.com/life/14/9/3-tools-easy-presentation">3 tools to make creating presentations easy</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-09-23
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/rhel-setup-ftp-repository/">
+            <h2 class="card-title">Set up an FTP Repository from RHEL DVD</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><abbr title='RedHat Enterprise Linux'>RHEL</abbr> can be installed from 
+various different sources. One of them is over the network, from an FTP 
+accessible repository. Here's how to create such a repository:</p>
+
+<ol>
+<li><p>You will first need to install <code>vsftpd</code> from the RHEL DVD. See 
+<a href="/docs/rhel-yum-install-from-dvd.html">Install packages from RHEL DVD with yum</a> 
+on how to do that.</p></li>
+<li><p>After you have installed <code>vsftpd</code>, enable it and start it:</p>
+
+<pre><code>chkconfig vsftpd on
+service vsftpd start
+</code></pre>
+
+<p>At this point, you should be able to open <code>ftp://localhost/</code> from the same 
+system on which you are working, which will show you the contents of the 
+<code>/var/ftp/pub</code> directory, the default FTP directory on RHEL. </p></li>
+<li><p>Create a directory for the repository:</p>
+
+<pre><code>mkdir /var/ftp/pub/rhel
+</code></pre></li>
+<li><p>Copy all the files from the DVD to the repository. Assuming that 
+either the DVD or the <code>.iso</code> image is mounted at <code>/media/rhel</code>:</p>
+
+<pre><code>cp --recursive --archive /media/rhel/. /var/ftp/pub/rhel/
+</code></pre></li>
+<li><p>Change the SELinux context of the files in the repository:</p>
+
+<pre><code>chcon --recursive --reference=/var/ftp/pub/ /var/ftp/pub/rhel/
+</code></pre></li>
+<li><p>At this point the repository is only accessible from the system on 
+which it runs, since <code>iptables</code> by default does not allow FTP 
+traffic from other hosts. To open this access, edit your 
+<code>/etc/sysconfig/iptables</code> and add these lines before the <code>COMMIT</code> 
+command:</p>
+
+<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 21 -j ACCEPT
+</code></pre>
+
+<p>...and reload the firewall:</p>
+
+<pre><code>service iptables reload
+</code></pre>
+
+<p>Alternatively, you can do from the command line:</p>
+
+<pre><code>iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 21 -j ACCEPT
+service iptables save
+</code></pre></li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-09-22
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <img class="card-img-top" src="/posts/change-pptpd-port-on-centos/index.jpg" alt="Card image cap">
+      
+        <div class="card-body">
+          <a href="/posts/change-pptpd-port-on-centos/">
+            <h2 class="card-title">Change pptpd port on CentOS</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>I was testing Point-to-Point Tunneling today, between a CentOS 6 server running <code>pptpd</code>, and some Mikrotik routers as
+the clients, and I wanted to change the listening port on the <code>pptpd</code> side. After searching and reading a bit of 
+documentation for a while, I was surprised to find that <code>pptpd</code> respects the record for <code>pptp</code> as defined in 
+<code>/etc/services</code>.</p>
+
+          </div>
+          <a href="/posts/change-pptpd-port-on-centos/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-09-17
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/lpic2-revision/">
+            <h2 class="card-title">LPIC-2 Revision</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>My list of topics to revise, before taking the LPIC-2 exam. Note that this 
+list was compiled before the exam objectives' revision in October 2013.</p>
+
+<h2>DHCP</h2>
+
+<ul>
+<li>Example Servers: bigpie1, sds1, nicds1, officesrv</li>
+<li>CentOS Install DHCP</li>
+<li>dhcpd.conf</li>
+</ul>
+
+<h2>LDAP</h2>
+
+<ul>
+<li>Example Servers: ldap-master, ldap-slave</li>
+<li>Locate and examine LDIF files</li>
+<li>ldapadd, slappasswd, ldappasswd, ldapdelete, getent, ldapsearch</li>
+</ul>
+
+<h2>Routing</h2>
+
+<ul>
+<li>/proc/sys/net/ipv4/ip_forward and sysctl.conf equivalent</li>
+<li>RIP with routed</li>
+</ul>
+
+<h2>iptables</h2>
+
+<ul>
+<li>iptables chains, default policies</li>
+<li>flush tables, add rules</li>
+<li>configure NAT</li>
+</ul>
+
+<p>SSH
+* Support programs: rpc.idmapd, rpc.mount.d, rpc.nfsd, rpc.statd, portmap
+* Setting up exports with NFS in /etc/exports, and on the fly with exportfs
+* showmount, nfsstat, rpcinfo
+* Mount over NFS</p>
+
+<p>FTP
+* PAM Basics, PAM Stacks, Examples of PAM Modules
+* PAM Configuration, NSS Configuration</p>
+
+<h2>TCP Wrappers</h2>
+
+<ul>
+<li>/etc/hosts.allow, /etc/hosts.deny</li>
+<li>Calling TCP Wrappers from /etc/inetd</li>
+<li>/etc/xinetd</li>
+</ul>
+
+<h2>Snort</h2>
+
+<ul>
+<li>Network Design for SNORT</li>
+</ul>
+
+<h2>Fail2Ban</h2>
+
+<ul>
+<li>Fail2Ban configuration</li>
+</ul>
+
+<h2>Bootloaders</h2>
+
+<ul>
+<li>Identifying active bootloader on a system (based on files on disk or with bootinfoscript)</li>
+<li>LILO Error Messages</li>
+<li>GRUB Legacy Error Messages</li>
+<li>GRUB2 Error Messages and Rescue Console</li>
+</ul>
+
+<h2>Boot Time Troubleshooting</h2>
+
+<ul>
+<li>initrd</li>
+<li>dmesg</li>
+<li>/etc/inittab, runlevel, SysV and Upstart</li>
+</ul>
+
+<h2>Hardware Troubleshooting</h2>
+
+<ul>
+<li>Hardware detection (/proc/cpuinfo, lspci, lsusb, lsdev, lsmod)</li>
+</ul>
+
+<h2>Log files Troubleshooting</h2>
+
+<ul>
+<li>Helpful files: syslog, messages, dmesg or boot.log, secure, cron, lastlog</li>
+<li>Scanning Log Files with head, tail, less, grep, logcheck</li>
+<li>syslogd configuration</li>
+<li>Logrotate configuration</li>
+</ul>
+
+<h2>Software Troubleshooting</h2>
+
+<ul>
+<li>strace and ltrace, ldd, lsof, strings</li>
+<li>Library Dependencies</li>
+<li>Kernel options in /proc/, sysctl, /etc/sysctl.conf</li>
+<li>init and the process tree</li>
+<li>top</li>
+</ul>
+
+<h2>Troubleshooting Login and Accounts</h2>
+
+<ul>
+<li>Logins with login, XDM, KDM, GDM, getty</li>
+<li>Network Logins with Telnet, SSH, X, XDMCP, VNC</li>
+<li>Users management with usermod</li>
+<li>Login variables in /etc/login.defs, /etc/profile, /etc/bashrc, ~/.profile, ~/.bashrc</li>
+</ul>
+
+<h2>Cron</h2>
+
+<ul>
+<li>Schedule Jobs with Cron</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-08-10
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/filesystems/">
+            <h2 class="card-title">Filesystems</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is a random list of filesystems.</p>
+
+<ul>
+<li>zfs</li>
+<li>btrfs</li>
+<li>xfs</li>
+<li>ext2</li>
+<li>ext3</li>
+<li>ext4</li>
+<li><a href="/docs/glusterfs.html">GlusterFS</a></li>
+<li>MooseFS</li>
+<li>Ceph</li>
+<li>Lustre</li>
+<li>Fraunhofer Parallel Cluster File System (FhGFS)</li>
+<li><a href="/docs/drbd.html">DRBD</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-08-10
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/lpic2-notes/">
+            <h2 class="card-title">Linux Professional Institute Certification 2 (LPIC-2)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>LPI changed the objectives of LPIC-2, with the new ones available from 
+November 1st, 2013 (http://www.lpi.org/news/lpi-revises-objectives-lpic-2-and-lpic-3-linux-certification-programs).
+Initial announcement of the change: http://www.lpi.org/news/lpi-revises-lpic-2-and-lpic-3-certification-programs</p>
+
+<h2>Links</h2>
+
+<ul>
+<li><a href="http://www.lpi.org/linux-certifications/programs/lpic-2/exam-202/" title="LPIC-2 202 Objectives">LPIC-2 202 Objectives</a></li>
+<li><a href="http://wiki.lpi.org/wiki/LPIC2SummaryVersion3To4">Changes from v3 to v4 of the exam</a></li>
+<li><a href="http://wiki.lpi.org/wiki/LPIC-2_Objectives_V4">New objectives of the v4 exam</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-08-10
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/centos-install-request-tracker-4/">
+            <h2 class="card-title">Installation of Request Tracker 4 on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://binarynature.blogspot.com/2013/05/install-request-tracker-4.html">Install Request Tracker 4</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-08-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ocs-inventory-ng/">
+            <h2 class="card-title">OCS Inventory NG</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://linux.101hacks.com/unix/ocs-inventory-ng/">How to manage your IT inventory with OCS Inventory NG on Linux</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-08-07
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/awk/">
+            <h2 class="card-title">awk</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://xmodulo.com/2014/07/use-awk-command-linux.html">How to use awk command in Linux</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-07-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/libreoffice/">
+            <h2 class="card-title">Libre Office</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="https://joinup.ec.europa.eu/elibrary/case/toulouse-saves-1-million-euro-libreoffice">Toulouse saves 1 million euro with LibreOffice</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-07-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/3/">3</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/4/">4</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/5/">5</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">6</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/13/">13</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/14/">14</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/15/">15</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/16/">16</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/18/">18</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/22/">22</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/27/">27</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

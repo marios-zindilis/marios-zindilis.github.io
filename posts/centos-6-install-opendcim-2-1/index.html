@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>openDCIM 2.1 Installation on Centos 6</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">openDCIM 2.1 Installation on Centos 6</h1>
+            </header>
+            <p class="lead">This is a bottom-up guide for installing 
+[openDCIM](/docs/opendcim.html) on a system running CentOS 6.x.</p>
+
+<p>This guide is released in the <strong>Public Domain</strong>, except from the section 
+"<em>Enable HTTPS</em>" which is a snippet from <a href="http://wiki.centos.org/HowTos/Https">CentOS Wiki</a> 
+and is licenced under <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 Unported License</a>.</p>
+
+<h2>Software Used</h2>
+
+<p>This guide has been tested with:</p>
+
+<ul>
+<li>openDCIM version 2.1, the current version as of the writing of the 
+guide, but it should apply to previous versions, and possibly to 
+future ones as well. </li>
+<li>CentOS 6.4 Minimal 64bit, with the latest updates as of 2013-05-25, 
+but it should apply to previous versions, and possibly to future 
+ones as well.</li>
+<li>The <code>vim</code> editor is used in the commands below, because it adds nice 
+colored syntax highlighting when editing configuration files. If you 
+don't have <code>vim</code>, you can use <code>vi</code>, which comes preinstalled with 
+CentOS, or any text editor of your choice.</li>
+</ul>
+
+<h2>Install Apache, PHP, MySQL</h2>
+
+<p>Install, start and enable Apache:</p>
+
+<pre><code>yum -y install httpd
+service httpd start
+chkconfig httpd on
+</code></pre>
+
+<p>Install PHP, and the MBSTRING module required for internationalization:</p>
+
+<pre><code>yum -y install php
+yum -y install php-mysql
+yum -y install php-mbstring
+</code></pre>
+
+<p>Install, start and enable MySQL Server:</p>
+
+<pre><code>yum -y install mysql-server
+service mysqld start
+chkconfig mysqld on
+</code></pre>
+
+<p>Secure MySQL Server:</p>
+
+<pre><code>mysql_secure_installation
+</code></pre>
+
+<p>During this step, you will:</p>
+
+<ol>
+<li>Set a root password</li>
+<li>Remove anonymous users</li>
+<li>Disallow root login remotely</li>
+<li>Remove test database and access to it</li>
+<li>Reload privilege tables</li>
+</ol>
+
+<p>Create a database for openDCIM (change the database name <code>dcim</code> and the 
+password <code>dcimpassword</code> to something that suits you):</p>
+
+<pre><code>mysql -u root -p
+mysql&gt; create database dcim;
+mysql&gt; grant all privileges on dcim.* to 'dcim'@'localhost' identified by 'dcimpassword';
+</code></pre>
+
+<h2>Enable HTTPS</h2>
+
+<p>Install Apache SSL Module:</p>
+
+<pre><code>yum -y install mod_ssl
+</code></pre>
+
+<p>Generate the necessary keys and copy them to the proper directories:</p>
+
+<pre><code>cd /root
+openssl genrsa -out ca.key 1024 
+openssl req -new -key ca.key -out ca.csr
+openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt
+cp ca.crt /etc/pki/tls/certs
+cp ca.key /etc/pki/tls/private/ca.key
+cp ca.csr /etc/pki/tls/private/ca.csr
+</code></pre>
+
+<p>To let Apache know of the proper locations of the keys, edit 
+<code>/etc/httpd/conf/httpd.conf</code>...</p>
+
+<pre><code>vim +/SSLCertificateFile /etc/httpd/conf.d/ssl.conf
+</code></pre>
+
+<p>... comment out the line...</p>
+
+<pre><code>SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+</code></pre>
+
+<p>... and substitute with:</p>
+
+<pre><code>SSLCertificateFile /etc/pki/tls/certs/ca.crt
+</code></pre>
+
+<p>Also comment out the line...</p>
+
+<pre><code>SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+</code></pre>
+
+<p>... and substitute with:</p>
+
+<pre><code>SSLCertificateKeyFile /etc/pki/tls/private/ca.key
+</code></pre>
+
+<p>To set the server name:</p>
+
+<pre><code>vim +/ServerName /etc/httpd/conf/httpd.conf
+</code></pre>
+
+<p>Find the line...</p>
+
+<pre><code>#ServerName www.example.com:80
+</code></pre>
+
+<p>...and add below it:</p>
+
+<pre><code>ServerName opendcim.example.com:443
+</code></pre>
+
+<p>Finally restart Apache...</p>
+
+<pre><code>service httpd restart
+</code></pre>
+
+<h2>Create a VirtualHost</h2>
+
+<pre><code>vim +/NameVirtualHost /etc/httpd/conf/httpd.conf
+</code></pre>
+
+<p>Find the line:</p>
+
+<pre><code>#NameVirtualHost *:80
+</code></pre>
+
+<p>... and add below it:</p>
+
+<pre><code>NameVirtualHost *:443
+</code></pre>
+
+<p>Now create a new configuration file for the openDCIM VirtualHost...</p>
+
+<p>vim /etc/httpd/conf.d/opendcim.example.com.conf</p>
+
+<p>... add the lines...</p>
+
+<pre><code>&lt;VirtualHost *:443&gt;
+  ServerAdmin marios@zindilis.com
+  DocumentRoot /var/www/opendcim
+  ServerName opendcim.zindilis.net
+  &lt;Directory /var/www/opendcim&gt;
+    AuthType Basic
+    AuthName "openDCIM"   
+    AuthUserFile /var/www/.htpasswd
+    Require valid-user
+  &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<h2>Enable User Authentication</h2>
+
+<p>You have protected the openDCIM web directory with a requirement for 
+Basic authentication, with the lines already added in your Apache 
+configuration file above.</p>
+
+<p>Now, to create at least on user, do:</p>
+
+<pre><code>touch /var/www/.htpasswd
+htpasswd /var/www/.htpasswd Administrator
+</code></pre>
+
+<p>You will be asked for a password for user "Administrator" twice.</p>
+
+<h2>Open Web Access on Firewall</h2>
+
+<p>The <code>iptables</code> firewall is enabled on CentOS by default, and blocks 
+access to HTTPS port 443. To allow it...</p>
+
+<pre><code>vim /etc/sysconfing/iptables
+</code></pre>
+
+<p>... find the line...</p>
+
+<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+</code></pre>
+
+<p>...and add below it:</p>
+
+<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+</code></pre>
+
+<p>Restart iptables:</p>
+
+<pre><code>service iptables restart
+</code></pre>
+
+<h2>Download and Install openDCIM</h2>
+
+<p>Download the latest version of openDCIM from <a href="http://www.opendcim.org/downloads.html">opendcim.com</a> 
+(version 2.1 at the time of writing this guide):</p>
+
+<pre><code>cd /var/www
+curl -O http://www.opendcim.org/packages/openDCIM-2.1.tar.gz
+</code></pre>
+
+<p>Extract the archive and create a symbolic link:</p>
+
+<pre><code>tar zxvf openDCIM-2.1.tar.gz
+ln -s openDCIM-2.1 opendcim
+</code></pre>
+
+<p>The symbolic link is not required. If you don't want to create it, just 
+rename the directory <code>openDCIM-2.1</code> to <code>opendcim</code>. However, having a 
+symbolic link in place allows you to find out the version of openDCIM at 
+a glance, and makes upgrades easier.</p>
+
+<p>Now, prepare the configuration file for access to the database:</p>
+
+<pre><code>cd /var/www/opendcim
+cp db.inc.php-dist db.inc.php
+vim db.inc.php
+</code></pre>
+
+<p>Edit the following lines, to reflect your settings of database host (in 
+this example <code>localhost</code>), database name (<code>dcim</code>), and credentials that 
+you assigned when creating the database:</p>
+
+<pre><code>$dbhost = 'localhost';
+$dbname = 'dcim';
+$dbuser = 'dcim';
+$dbpass = 'dcimpassword';
+</code></pre>
+
+<p>Finally, restart Apache one last time:</p>
+
+<pre><code>service httpd restart
+</code></pre>
+
+<p>Now, you can open openDCIM in your browser to proceed with the 
+installation. If you have set up a DNS entry for a domain name to point 
+to your web server's IP, you will go to something similar to <code>https://opendcim.example.com/</code>. 
+Otherwise, you can visit <code>https://IP_of_web_server/</code>. </p>
+
+<p>In any case, you will be asked to accept the web server's HTTPS 
+certificate. This will only happen once per browser. You will then be 
+asked for the Authentication credentials that you configured earlier 
+with <code>htpasswd</code>.</p>
+
+<p>To finish with the installation, follow <a href="http://www.youtube.com/watch?v=XzEI6Z8yhRg">Scott Milliken's (lead 
+developer) video tutorial on YouTube</a>, 
+starting from minute 09:00. He will walk you through the first settings 
+to get you started in the web interface.</p>
+
+<h2>Additional Resources</h2>
+
+<ul>
+<li><a href="http://wiki.centos.org/HowTos/Https">How to setup HTTPS on CentOS</a></li>
+<li><a href="http://www.youtube.com/watch?v=XzEI6Z8yhRg">openDCIM Installation Video Tutorial</a></li>
+<li><a href="https://github.com/samilliken/openDCIM/blob/master/INSTALL">openDCIM INSTALL File on GitHub</a></li>
+</ul>
+
+            <footer>
+                <p>Posted on 2013-05-25</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,64 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Marios Zindilis - Counting Part 1 - grep and wc</title>
-  <meta name="description" content="&quot;90% of data analysis is counting&quot; - John Rauser">
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/static/css/zindilis.com.css">
-  <link rel="canonical" href="https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/counting-part-1-grep-and-wc/">
-  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
   
-  <meta property="og:title" content="Counting Part 1 - grep and wc">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Counting Part 1 - grep and wc</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
 
-
-  <meta property="og:type" content="website">
-
-
-
-</head>
-
-
-<body>
-  <header class="mb-4">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/">Marios Zindilis</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-link-items" aria-controls="navbar-link-items" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbar-link-items">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" style="color:white" href="/docs/">Docs</a>
-          <a class="nav-item nav-link" style="color:white" href="/projects/">Projects</a>
-          <a class="nav-item nav-link" style="color:white" href="/about/">About</a>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
 
-
-  <div class="container">
-        <article class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">Counting Part 1 - grep and wc</h1>
-  </header>
-
-  <div class="post-content">
-    <blockquote>
-<p>&quot;90% of data analysis is counting&quot; - John Rauser</p>
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Counting Part 1 - grep and wc</h1>
+            </header>
+            <blockquote>
+  <p>"90% of data analysis is counting" - John Rauser</p>
 </blockquote>
 
-<p>&hellip;well, at least once you&#39;ve figured out the right question to ask, which 
+<p>&hellip;well, at least once you've figured out the right question to ask, which 
 is, perhaps, the other 90%.</p>
 
 <h2>Example - Counting the size of a population</h2>
@@ -67,14 +50,16 @@ is, perhaps, the other 90%.</p>
 <em>word count</em>. By default, <code>wc</code> prints the number of lines, words, and 
 characters in a file.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>wc pums_53.dat
-85025 1219861 25659175 pums_53.dat</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ wc pums_53.dat
+<span class="m">85025</span> <span class="m">1219861</span> <span class="m">25659175</span> pums_53.dat
+</code></pre></div>
 
 <p>Nearly always we just want to count the number of lines (records), which can be 
 done by giving the <code>-l</code> option to <code>wc</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>wc <span class="nt">-l</span> pums_53.dat
-85025 pums_53.dat</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ wc -l pums_53.dat
+<span class="m">85025</span> pums_53.dat
+</code></pre></div>
 
 <h2>Example - Using grep to select a subset</h2>
 
@@ -84,74 +69,36 @@ records, one for households and one for persons. The first character of a
 record, an H or P, indicates which kind of record it is. We can <code>grep</code> for and 
 count just person records like this:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep</span> <span class="nt">-c</span> <span class="s2">"^P"</span> pums_53.dat
-59150</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ grep -c <span class="s2">&quot;^P&quot;</span> pums_53.dat
+<span class="m">59150</span>
+</code></pre></div>
 
 <p>The caret <code>^</code> means that the <code>P</code> must occur at the beginning of the line. So 
 there were about 5.9 million people in Washington State in 2000. Also 
 interesting, the average household had <code>59,150/(85,025-59,150) = 2.3</code> people.</p>
 
-  </div>
+            <footer>
+                <p>Posted on 2016-11-13</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
 
-</article>
+    </main>
 
-  </div>
-
-  <footer id="site-footer" class="footer-distributed">
-  <div class="container">
-    <div class="footer-right">
-      <a href="/feed.xml" title="Marios Zindilis RSS Feed">
-        <i class="fa fa-rss" aria-hidden="true"></i><span class="sr-only">Marios Zindilis RSS Feed</span></a>
-      <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">
-        <i class="fa fa-linkedin" aria-hidden="true"></i><span class="sr-only">Marios Zindilis LinkedIn Profile</span></a>
-      <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">
-        <i class="fa fa-github" aria-hidden="true"></i><span class="sr-only">Marios Zindilis GitHub Page</span></a>
-    </div>
-
-    <div class="footer-left">
-      <p class="footer-links">
-        <a href="/">Home</a> · 
-        <a href="/docs/">Docs</a> ·
-        <a href="/projects/">Projects</a> ·
-        <a href="/about/">About</a>
-      </p>
-      <p>Marios Zindilis</p>
-    </div>
-  </div>
-</footer>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      // set padding-bottom of body to height of footer.site-footer:
-      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      // http://stackoverflow.com/a/14570614
-      var observeDOM = (function(){
-        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
-          eventListenerSupported = window.addEventListener;
-
-        return function(obj, callback){
-          if( MutationObserver ){
-          // define a new observer
-            var obs = new MutationObserver(function(mutations, observer){
-              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
-              callback();
-            });
-            // have the observer observe foo for changes in children
-            obs.observe( obj, { childList:true, subtree:true });
-          }
-          else if( eventListenerSupported ){
-            obj.addEventListener('DOMNodeInserted', callback, false);
-            obj.addEventListener('DOMNodeRemoved', callback, false);
-          }
-        }
-      })();
-      observeDOM(document.getElementById('site-footer') ,function(){
-        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      });
-    </script>
-
-
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   </body>
 </html>

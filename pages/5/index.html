@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 5</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/postgresql/">
+            <h2 class="card-title">PostgreSQL</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Replication</h2>
+
+<p>This is the nicest guide for streaming replication that I've found: 
+<a href="http://www.rassoc.com/gregr/weblog/2013/02/16/zero-to-postgresql-streaming-replication-in-10-mins/">Zero to PostgreSQL streaming replication in 10 mins</a>. It is 
+written for Ubuntu, but it only needs a couple of steps done differently on 
+CentOS, which I have noted in the comments of that article. This guide is not 
+as clear (for my preference), but it includes some commands to verify that the 
+replication is running: <a href="http://www.unixmen.com/setup-postgresql-replication-centos/">How To Setup PostgreSQL Replication On CentOS</a>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-01-13
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/backuppc/">
+            <h2 class="card-title">BackupPC</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Random tips for BackupPC:</p>
+
+<ol>
+<li><p>On your client systems (those that will be backed up by BackupPC), rotate 
+your logs (whether compressed or not) with dates in the filenames, instead 
+of appending prefixes such as <code>.1</code>, <code>.2</code>, <code>.3</code>, etc. The benefit from this 
+is that BackupPC will ignore old logs on new runs, since they will have the 
+same name and the same checksum. If you rotate logs with numbered names, 
+BackupPC will transfer them again, since the name will have changed. This 
+configuration is achieved with the <code>dateext</code> parameter set in <code>logrotate</code> 
+configuration file, which on CentOS 6 is at <code>/etc/logrotate.conf</code>, by 
+default.</p></li>
+<li><p>If <code>mlocate</code> is installed on the BackupPC system, you should exclude the 
+backup directory from being indexed by the nightly run of <code>updatedb</code>, 
+otherwise <code>/var/lib/mlocate/mlocate.db</code> will become enormous. To exclude 
+the backup directory, edit <code>/etc/updatedb.conf</code> and append the directory 
+path to the end of the line for the <code>PRUNEPATHS</code> variable.</p></li>
+</ol>
+
+<h2>See Also</h2>
+
+<ul>
+<li><strong>BackupPC Archive</strong> is a Perl script that maintains archive copies of 
+backups taken with BackupPC. <a href="https://github.com/marios-zindilis/backuppc-archive/" title="BackupPC Archive">Fork on GitHub</a>.</li>
+<li><a href="http://www.michaelstowe.com/backuppc/" title="BackupPC Windows Client"><strong>BackupPC Windows Client</strong></a></li>
+<li><a href="/blog/2015/06/18/stale-nfs-causes-backuppc-filelistreceive-failure.html" title="Stale NFS Mount Causes BackupPC fileListReceive() Failure">Stale NFS Mount Causes BackupPC <code>fileListReceive()</code> Failure</a></li>
+</ul>
+
+<!-- Links -->
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-12-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/taiga/">
+            <h2 class="card-title">Taiga</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Links</h2>
+
+<ul>
+<li><a href="https://taiga.io/">Project Website</a></li>
+<li><a href="https://github.com/taigaio">Source Code on GitHub</a></li>
+<li><a href="http://opensource.com/business/14/10/taiga-open-source-project-management-tool">Taiga, a new open source project management tool with focus on usability</a></li>
+<li><a href="http://www.techfaster.com/taiga-free-open-source-project-management-tool/">Taiga: Free, Open Source Project Management Tool</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-12-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <img class="card-img-top" src="/posts/raspberry-pi-security-bootstrap/index.jpg" alt="Card image cap">
+      
+        <div class="card-body">
+          <a href="/posts/raspberry-pi-security-bootstrap/">
+            <h2 class="card-title">Raspberry Pi Security Bootstrap</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p class='lead'>These are my notes on the first steps of improving security on 
+a new Raspberry Pi. The default configuration that an RPi comes with might be 
+suitable for a development environment in a private or isolated network, but 
+if you intend on exposing your RPi to the world then you need to tweak that 
+configuration to be more robust. The commands mentioned here have been tested 
+on a Raspberry Pi B+, running a fresh installation of 
+<a href='http://www.raspbian.org/'>Raspbian</a>.</p>
+
+<div class='z-callout z-callout-danger'><h4>Disclaimer</h4>
+<p>Security is fluid and open-ended. The following are mere suggestions. 
+Taking these steps will hopefully reduce your exposure, but does not guarantee 
+complete safety. Nothing does.</p></div>
+
+<h2>User configuration</h2>
+
+<ol>
+<li><p>This goes without saying: <strong>Change the default user's password</strong>. By 
+default,     the RPi user is <code>pi</code> and her password is <code>raspberry</code>. Change 
+that as soon as you get your operating system runnning, either by running 
+<code>passwd</code> as the <code>pi</code> user, or by running <code>sudo raspi-config</code> and selecting 
+the option for password change.</p></li>
+<li><p><strong>Change the default user's <code>sudo</code> configuration</strong>. By default, the <code>pi</code> 
+user can execute anything with <code>sudo</code>, without providing a password. As 
+the <code>pi</code> user, do:</p>
+
+<pre><code>sudo visudo
+</code></pre>
+
+<p>...and the change the line:</p>
+
+<pre><code>pi ALL=(ALL) NOPASSWD: ALL
+</code></pre>
+
+<p>...to:</p>
+
+<pre><code>pi ALL=(ALL) ALL
+</code></pre></li>
+<li><p>Additionally, you might want to <strong>disable the default <code>pi</code> user</strong> 
+altogether, and create another user that you will use on your RPi. As the 
+user <code>pi</code>, do:</p>
+
+<pre><code>sudo adduser myuser
+</code></pre>
+
+<p>...and answer the questions. Only the password question is important, the 
+rest can be left blank. Then, to make the new user a sudoer, do:</p>
+
+<pre><code>sudo visudo
+</code></pre>
+
+<p>...and add this line in the end of the file:</p>
+
+<pre><code>myuser ALL=(ALL) ALL
+</code></pre>
+
+<p>Additionally, since login will be disabled for <code>pi</code>, you might as well 
+comment out the line in <code>/etc/sudoers</code> that refers to that user. Finally, 
+to disable login for the default <code>pi</code> user, logout from <code>pi</code> and login as 
+the new user that you created, and do:</p>
+
+<pre><code>sudo usermod --lock pi
+sudo usermod --shell /sbin/nologin pi
+</code></pre></li>
+</ol>
+
+<h2>SSH Configuration</h2>
+
+<ol>
+<li><p><strong>Forbid SSH login for user <code>root</code></strong>. If your RPi is exposed to the world, 
+it will get attacked with SSH attempts for common usernames and passwords, 
+which is yet another reason to disable the default <code>pi</code> username. Another 
+username that your RPi will be hammered with is <code>root</code>. Now, you can't 
+disable the root account, but you can disallow logins for it. To do that, 
+edit the file <code>/etc/ssh/sshd_config</code>, and change the line:</p>
+
+<pre><code>PermitRootLogin yes
+</code></pre>
+
+<p>...with:</p>
+
+<pre><code>PermitRootLogin no
+</code></pre>
+
+<p>...and then restart the SSH daemon:</p>
+
+<pre><code>sudo service ssh restart
+</code></pre></li>
+<li><p><strong>Restrict Incoming IPs for SSH</strong>, using entries in <code>/etc/hosts.allow</code> and 
+<code>/etc/hosts.deny</code>. For example, I allow SSH on my RPi from my internal LAN 
+subnets (192.168.x.x), and from one public IP only (1.2.3.4 in this 
+example). To achieve that, put in <code>/etc/hosts.allow</code>:</p>
+
+<pre><code>sshd: 192.168. 1.2.3.4
+</code></pre>
+
+<p>...and in <code>/etc/hosts.deny</code>:</p>
+
+<pre><code>sshd: ALL
+</code></pre>
+
+<p>Attempting to login to the RPi from a restricted host will return an 
+ error to the client:</p>
+
+<pre><code>marios@wst ~ $ ssh myuser@192.168.23.123
+ssh_exchange_identification: Connection closed by remote host
+</code></pre>
+
+<p>...and will also create a log in <code>/var/log/auth.log</code>:</p>
+
+<pre><code>Dec 13 11:40:48 rpi sshd[3456]: refused connect from 172.16.1.2 (172.16.1.2)
+</code></pre></li>
+</ol>
+
+<h2>Firewall Configuration with <code>iptables</code></h2>
+
+<p>On my RPi running a freshly installed Raspbian OS, <code>iptables</code> was already 
+installed, and it was running  with an empty rule set, i.e. all traffic was 
+allowed in all directions. Furthermore, Raspbian does not include a SysV 
+script for the <code>iptables</code> service, but this functionality is offered by the 
+<code>iptables-persistent</code> package.</p>
+
+<ol>
+<li><p>Install <code>iptables-persistent</code>, to help make the <code>iptables</code> rules survive a 
+reboot:</p>
+
+<pre><code>sudo apt-get install iptables-persistent
+</code></pre>
+
+<p>If you accept the defaults during the installation, the currently running 
+empty rule set of <code>iptables</code> will be saved in <code>/etc/iptables/rules.v4</code>.
+After the installation, you can manage your firewall with:</p>
+
+<pre><code>service iptables-persistent {start|restart|reload|force-reload|save|flush}
+</code></pre>
+
+<p>Here are the contents of that file, with the default configuration of the 
+firewall:</p>
+
+<pre><code># Generated by iptables-save v1.4.14 on Sat Dec 13 14:23:03 2014
+*filter
+:INPUT ACCEPT [1291:113154]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [828:105910]
+COMMIT
+# Completed on Sat Dec 13 14:23:03 2014
+</code></pre></li>
+<li><p>Next, you will need to add some rules to the <code>iptables</code> configuration, to 
+start blocking some traffic. There are two methods that you can apply:</p>
+
+<p>A.  Replace the line <code>:INPUT ACCEPT</code> that defines a default policy to 
+    accept all incoming traffic), with <code>:INPUT DROP</code>, and then define 
+    rules that will only allow selected traffic through the firewall.</p>
+
+<p>B.  Keep the default <code>:INPUT ACCEPT</code> policy for incoming traffic, but have 
+    one last rule that rejects all incoming traffic. </p>
+
+<p>I'm going with the second option, simply because of the convenience of 
+copying rules from one of my CentOS machines :) Here it is then, my rules 
+file, implementing only the restriction to SSH port to the same IPs that 
+I mentioned earlier:</p>
+
+<pre><code>*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --source 192.168.0.0/16 --dport 22 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --source 1.2.3.4/32     --dport 22 -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+</code></pre></li>
+</ol>
+
+<h2>Summary</h2>
+
+<p>With these measures taken to improve the security of my Raspberry Pi, I am now 
+more confident that I can assign it a public IP and expose it the the world, 
+without it being a very easy target.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-12-13
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/facter/">
+            <h2 class="card-title">facter</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://sysadvent.blogspot.com/2014/12/day-3-so-server-tell-me-about-yourself.html">So Server, tell me about yourself. An introduction to facter, osquery and sysdig</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-12-03
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/windows-file-system/">
+            <h2 class="card-title">Windows Filesystem</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is a list of noteworthy directories and files on Windows-based operating 
+systems. Note that locations might differ between versions of Windows.</p>
+
+<ul>
+<li><code>C:\Windows\NTDS</code>: On Windows 2008 R2, this is the default location for 
+the Active Directory domain controller database and log files. The 
+location can be on a FAT32 or NTFS partition.</li>
+<li><code>C:\Windows\SYSVOL</code>: On Windows 2008 R2, this is the default location for 
+the Active Directory domain controller SYSVOL. Requires NTFS.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-11-01
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ffmpeg/">
+            <h2 class="card-title">ffmpeg</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://ffmpeg.gusari.org/static/">Static FFmpeg builds</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-10-20
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/smartmontools/">
+            <h2 class="card-title">smartmontools</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://xmodulo.com/check-hard-disk-health-linux-smartmontools.html">How to check hard disk health on Linux using smartmontools</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-10-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/oracle-database/">
+            <h2 class="card-title">Oracle Database</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://www.tecmint.com/setting-up-prerequisites-for-oracle-12c-installation/">Setting Up Prerequisites for Oracle 12c Installation in RHEL/CentOS/Oracle Linux 6.5 – Part I</a></li>
+<li><a href="http://www.tecmint.com/oracle-12c-installation-in-centos-6/">Installing and Configuring Oracle 12c in RHEL/CentOS/Oracle Linux 6.5 – Part II</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-10-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <img class="card-img-top" src="/posts/install-oracle-virtualbox-on-linux-mint-17/index.jpg" alt="Card image cap">
+      
+        <div class="card-body">
+          <a href="/posts/install-oracle-virtualbox-on-linux-mint-17/">
+            <h2 class="card-title">Install Oracle Virtualbox on Linux Mint 17</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is a quick tip on how to install the closed-source version of Virtualbox, currently at version 4.3.16, on a
+machine with Linux Mint 17.</p>
+
+          </div>
+          <a href="/posts/install-oracle-virtualbox-on-linux-mint-17/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-10-01
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/virtualbox/">virtualbox</a>, 
+          
+            <a href="/tags/linux-mint/">linux-mint</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/3/">3</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/4/">4</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">5</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/6/">6</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/13/">13</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/14/">14</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/15/">15</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/16/">16</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/18/">18</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/22/">22</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/27/">27</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

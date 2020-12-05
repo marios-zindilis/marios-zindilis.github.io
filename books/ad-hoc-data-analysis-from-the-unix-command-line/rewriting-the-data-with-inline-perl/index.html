@@ -1,132 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Marios Zindilis - Rewriting The Data With Inline perl</title>
-  <meta name="description" content="&quot;I&#39;m reminded of the day my daughter came in, looked over my shoulder at some Perl 4 code, and said, &#39;What is that, swearing?&#39;&quot;-- Larry...">
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/static/css/zindilis.com.css">
-  <link rel="canonical" href="https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/rewriting-the-data-with-inline-perl/">
-  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
   
-  <meta property="og:title" content="Rewriting The Data With Inline perl">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Rewriting The Data With Inline perl</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
 
-
-  <meta property="og:type" content="website">
-
-
-
-</head>
-
-
-<body>
-  <header class="mb-4">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/">Marios Zindilis</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-link-items" aria-controls="navbar-link-items" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbar-link-items">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" style="color:white" href="/docs/">Docs</a>
-          <a class="nav-item nav-link" style="color:white" href="/projects/">Projects</a>
-          <a class="nav-item nav-link" style="color:white" href="/about/">About</a>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
 
-
-  <div class="container">
-        <article class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">Rewriting The Data With Inline perl</h1>
-  </header>
-
-  <div class="post-content">
-    <blockquote>
-<p>&quot;I&#39;m reminded of the day my daughter came in, looked over my shoulder at some 
-Perl 4 code, and said, &#39;What is that, swearing?&#39;&quot;
--- Larry Wall</p>
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Rewriting The Data With Inline perl</h1>
+            </header>
+            <blockquote>
+  <p>"I'm reminded of the day my daughter came in, looked over my shoulder at some 
+  Perl 4 code, and said, 'What is that, swearing?'"
+  -- Larry Wall</p>
 </blockquote>
 
 <h2>Command Line perl</h2>
 
-<p>A tutorial on perl is beyond the scope of this document; if you don&#39;t know 
+<p>A tutorial on perl is beyond the scope of this document; if you don't know 
 perl, you should learn at least a little bit. If you invoke perl like 
-<code>perl -n -e &#39;#a perl statement&#39;</code> the <code>-n</code> option causes perl to wrap your <code>-e</code> 
+<code>perl -n -e '#a perl statement'</code> the <code>-n</code> option causes perl to wrap your <code>-e</code> 
 argument in a implicit <code>while</code> loop like this:</p>
 
-<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
    <span class="c1"># a perl statement</span>
-<span class="p">}</span></code></pre></figure>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>This loop reads standard input a line at a time into the variable <code>$_</code>, and 
 then executes the statement(s) give by the <code>-e</code> argument. Given <code>-p</code> instead of 
 <code>-n</code>, perl to adds a <code>print</code> statement to the loop as well:</p>
 
-<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
    <span class="c1"># a perl statement</span>
    <span class="k">print</span> <span class="nv">$_</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
+<span class="p">}</span>
+</code></pre></div>
 
 <h2>Example - Using perl to create an indicator variable</h2>
 
 <p>Education level is recorded in columns 53-54 as ordered set of categories, 
-where 11 and above indicates a college degree. Let&#39;s condense this to a single 
+where 11 and above indicates a college degree. Let's condense this to a single 
 indicator variable for completed college or not. The raw data:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c53-54</span> | head <span class="nt">-5</span>
-12
-11
-06
-03
-08</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54 <span class="p">|</span> head -5
+<span class="m">12</span>
+<span class="m">11</span>
+<span class="m">06</span>
+<span class="m">03</span>
+<span class="m">08</span>
+</code></pre></div>
 
 <p>And once passed through the perl script:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c53-54</span> | 
-perl <span class="nt">-ne</span> <span class="s1">'print $_&gt;=11?1:0,"\n"'</span> | head <span class="nt">-5</span>
-1
-1
-0
-0
-0</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54 <span class="p">|</span> 
+perl -ne <span class="s1">&#39;print $_&gt;=11?1:0,&quot;\n&quot;&#39;</span> <span class="p">|</span> head -5
+<span class="m">1</span>
+<span class="m">1</span>
+<span class="m">0</span>
+<span class="m">0</span>
+<span class="m">0</span>
+</code></pre></div>
 
 <p>And the final result:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">~/census_data&gt;cat pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c53-54</span> |
-perl <span class="nt">-ne</span> <span class="s1">'print $_&gt;=11?1:0,"\n"'</span> | sort | uniq <span class="nt">-c</span>
-37507 0
-21643 1</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>~/census_data&gt;cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54 <span class="p">|</span>
+perl -ne <span class="s1">&#39;print $_&gt;=11?1:0,&quot;\n&quot;&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c
+<span class="m">37507</span> <span class="m">0</span>
+<span class="m">21643</span> <span class="m">1</span>
+</code></pre></div>
 
 <p>About 36% of Washingtonians have a college degree.</p>
 
 <h2>Example - computing conditional probability of membership in two sets</h2>
 
-<p>Let&#39;s look at the relationship between education level and whether or not 
-people ride their bikes to work. People&#39;s mode of transportation to work is 
+<p>Let's look at the relationship between education level and whether or not 
+people ride their bikes to work. People's mode of transportation to work is 
 encoded as a series of categories in columns 191-192, where category 9 
-indicates a bicycle. We&#39;ll use an inline perl script to rewrite both education 
+indicates a bicycle. We'll use an inline perl script to rewrite both education 
 level and mode of transportation:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c53-54</span>,191-192 | 
-perl <span class="nt">-ne</span> <span class="s1">'print substr($_,0,2)&gt;=11?1:0,substr($_,2,2)==9?1:0,"\n";'</span> | 
-sort | uniq <span class="nt">-c</span> 
-37452 00
-   55 01
-21532 10
-  111 11</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54,191-192 <span class="p">|</span> 
+perl -ne <span class="s1">&#39;print substr($_,0,2)&gt;=11?1:0,substr($_,2,2)==9?1:0,&quot;\n&quot;;&#39;</span> <span class="p">|</span> 
+sort <span class="p">|</span> uniq -c 
+<span class="m">37452</span> <span class="m">00</span>
+   <span class="m">55</span> <span class="m">01</span>
+<span class="m">21532</span> <span class="m">10</span>
+  <span class="m">111</span> <span class="m">11</span>
+</code></pre></div>
 
 <p><code>55/(55+36447) = 0.15%</code> of non college educated people ride their bike to work. 
 <code>111/(111+20219) = 0.56%</code> of college educated people ride their bike to work.</p>
@@ -142,58 +131,63 @@ long and it would be hard to quickly see the pattern. We can use perl to round
 the income data down to the nearest $10,000 on the fly. Before the inline perl 
 script:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c297-303</span> | head <span class="nt">-4</span>
-0018000
-0004100
-0004300
-0005300</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> head -4
+<span class="m">0018000</span>
+<span class="m">0004100</span>
+<span class="m">0004300</span>
+<span class="m">0005300</span>
+</code></pre></div>
 
 <p>And after:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c297-303</span> | 
-perl <span class="nt">-pe</span> <span class="s1">'$_=10000*int($_/10000)."\n"'</span> | head <span class="nt">-4</span>
-10000
-0
-0
-0</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> 
+perl -pe <span class="s1">&#39;$_=10000*int($_/10000).&quot;\n&quot;&#39;</span> <span class="p">|</span> head -4
+<span class="m">10000</span>
+<span class="m">0</span>
+<span class="m">0</span>
+<span class="m">0</span>
+</code></pre></div>
 
 <p>And finally, the distribution (up to $100,000). The extra <code>grep [0-9]</code> ensures 
 that blank records are not considered in the distribution.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c297-303</span> | <span class="nb">grep</span> <span class="o">[</span>0-9] |
-perl <span class="nt">-pe</span> <span class="s1">'$_=10000*int($_/10000)."\n"'</span> | sort <span class="nt">-n</span> | uniq <span class="nt">-c</span> | head <span class="nt">-12</span>
-   20 <span class="nt">-10000</span>
-15193      0
- 8038  10000
- 6776  20000
- 5436  30000
- 3685  40000
- 2370  50000
- 1536  60000
-  899  70000
-  521  80000
-  326  90000
-  283 100000</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span>
+perl -pe <span class="s1">&#39;$_=10000*int($_/10000).&quot;\n&quot;&#39;</span> <span class="p">|</span> sort -n <span class="p">|</span> uniq -c <span class="p">|</span> head -12
+   <span class="m">20</span> -10000
+<span class="m">15193</span>      <span class="m">0</span>
+ <span class="m">8038</span>  <span class="m">10000</span>
+ <span class="m">6776</span>  <span class="m">20000</span>
+ <span class="m">5436</span>  <span class="m">30000</span>
+ <span class="m">3685</span>  <span class="m">40000</span>
+ <span class="m">2370</span>  <span class="m">50000</span>
+ <span class="m">1536</span>  <span class="m">60000</span>
+  <span class="m">899</span>  <span class="m">70000</span>
+  <span class="m">521</span>  <span class="m">80000</span>
+  <span class="m">326</span>  <span class="m">90000</span>
+  <span class="m">283</span> <span class="m">100000</span>
+</code></pre></div>
 
 <h2>Example - Finding the median (or any percentile) of a distribution</h2>
 
 <p>If we sort all the incomes in order and had a way to pluck out the middle 
-number, we could easily get the median. I&#39;ll give two ways to do this. The 
+number, we could easily get the median. I'll give two ways to do this. The 
 first uses <code>cat -n</code>. If given the <code>-n</code> option, <code>cat</code> prepends line numbers to 
 each line. We see that there are 46,359 non blank records, so the 23179th one 
 in sorted order is the median.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c297-303</span> | <span class="nb">grep</span> <span class="o">[</span>0-9] | wc <span class="nt">-l</span>
-46359 
-<span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c297-303</span> | <span class="nb">grep</span> <span class="o">[</span>0-9] | sort | 
-<span class="nb">cat</span> <span class="nt">-n</span> | <span class="nb">grep</span> <span class="s2">"^ *23179"</span>
-23179 0019900</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> wc -l
+<span class="m">46359</span> 
+$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> sort <span class="p">|</span> 
+cat -n <span class="p">|</span> grep <span class="s2">&quot;^ *23179&quot;</span>
+<span class="m">23179</span> <span class="m">0019900</span>
+</code></pre></div>
 
 <p>An even simpler method, using head and tail:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c297-303</span> | <span class="nb">grep</span> <span class="o">[</span>0-9] | sort |
-head <span class="nt">-23179</span>| tail <span class="nt">-1</span>
-0019900</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> sort <span class="p">|</span>
+head -23179<span class="p">|</span> tail -1
+<span class="m">0019900</span>
+</code></pre></div>
 
 <p>The median income in Washington state in 2000 was $19,900.</p>
 
@@ -202,80 +196,43 @@ head <span class="nt">-23179</span>| tail <span class="nt">-1</span>
 <p>What about the average? One way to compute the average is to accumulate a 
 running sum with perl, and do the division by hand at the end:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c297-303</span> | <span class="nb">grep</span> <span class="o">[</span>0-9] | 
-perl <span class="nt">-ne</span> <span class="s1">'print  $sum+=$_,"\n";'</span> | <span class="nb">cat</span> <span class="nt">-n</span> | tail <span class="nt">-1</span>
-46359 1314603988</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> 
+perl -ne <span class="s1">&#39;print  $sum+=$_,&quot;\n&quot;;&#39;</span> <span class="p">|</span> cat -n <span class="p">|</span> tail -1
+<span class="m">46359</span> <span class="m">1314603988</span>
+</code></pre></div>
 
 <p>$1314603988/ 46359 = $28357.0393666818</p>
 
 <p>You could also get perl to do this division with an <code>END</code> block which perl will 
 execute only after it has exhausted standard input:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>pums_53.dat | <span class="nb">grep</span> <span class="s2">"^P"</span> | cut <span class="nt">-c297-303</span> | <span class="nb">grep</span> <span class="o">[</span>0-9] | 
-perl <span class="nt">-ne</span> <span class="s1">'$sum += $_; $count++; END {print $sum/$count,"\n";}'</span> 
-28357.0393666818</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> 
+perl -ne <span class="s1">&#39;$sum += $_; $count++; END {print $sum/$count,&quot;\n&quot;;}&#39;</span> 
+<span class="m">28357</span>.0393666818
+</code></pre></div>
 
-  </div>
+            <footer>
+                <p>Posted on 2016-11-13</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
 
-</article>
+    </main>
 
-  </div>
-
-  <footer id="site-footer" class="footer-distributed">
-  <div class="container">
-    <div class="footer-right">
-      <a href="/feed.xml" title="Marios Zindilis RSS Feed">
-        <i class="fa fa-rss" aria-hidden="true"></i><span class="sr-only">Marios Zindilis RSS Feed</span></a>
-      <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">
-        <i class="fa fa-linkedin" aria-hidden="true"></i><span class="sr-only">Marios Zindilis LinkedIn Profile</span></a>
-      <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">
-        <i class="fa fa-github" aria-hidden="true"></i><span class="sr-only">Marios Zindilis GitHub Page</span></a>
-    </div>
-
-    <div class="footer-left">
-      <p class="footer-links">
-        <a href="/">Home</a> · 
-        <a href="/docs/">Docs</a> ·
-        <a href="/projects/">Projects</a> ·
-        <a href="/about/">About</a>
-      </p>
-      <p>Marios Zindilis</p>
-    </div>
-  </div>
-</footer>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      // set padding-bottom of body to height of footer.site-footer:
-      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      // http://stackoverflow.com/a/14570614
-      var observeDOM = (function(){
-        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
-          eventListenerSupported = window.addEventListener;
-
-        return function(obj, callback){
-          if( MutationObserver ){
-          // define a new observer
-            var obs = new MutationObserver(function(mutations, observer){
-              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
-              callback();
-            });
-            // have the observer observe foo for changes in children
-            obs.observe( obj, { childList:true, subtree:true });
-          }
-          else if( eventListenerSupported ){
-            obj.addEventListener('DOMNodeInserted', callback, false);
-            obj.addEventListener('DOMNodeRemoved', callback, false);
-          }
-        }
-      })();
-      observeDOM(document.getElementById('site-footer') ,function(){
-        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      });
-    </script>
-
-
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   </body>
 </html>

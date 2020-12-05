@@ -1,0 +1,48 @@
+@media only screen and (max-width: 980px) {
+    .dl-share {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    body {
+        padding-bottom: 10px;
+    }
+    .container {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .container {
+        padding: 20px;
+    }
+    h1 {
+        margin-top: 20px;
+    }
+    .list-unstyled li {
+        border-bottom: 1px solid #efefef;
+        padding: 15px 0;
+    }
+    .container > header {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+    .secicon.fa {
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (width: 480px) {
+    footer{
+        padding: 0 100px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    footer{
+        padding: 0 15px;
+    }
+}

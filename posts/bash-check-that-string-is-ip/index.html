@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Bash: Check that string is IP</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Bash: Check that string is IP</h1>
+            </header>
+            <p>Assuming that we have a Bash script that accepts a parameter  that is expected to be an IP Address, this article lists
+a couple of (practically useless) ways of verifying that input <em>without using regular expressions</em>, which is the sane
+thing to do. It is therefore an exercise in futility, but it helps with my chronic allergy to regular expressions.</p>
+
+<!-- read more -->
+
+<h2>Breakdown of the conditions</h2>
+
+<p>First, check that <strong>exactly three dots exist</strong> in the string:</p>
+
+<pre>
+if [ `echo $IsIP | grep -o '\.' | wc -l` -ne 3 ]; then
+    echo "Parameter '$1' does not look like an IP Address.";
+    exit 1;
+fi
+</pre>
+
+<p>Then, check that <strong>exactly four parts exist</strong> if the string is broken down by dots:</p>
+
+<pre>
+if [ `echo $IsIP | tr '.' ' ' | wc -w` -ne 4 ]; then
+    echo "Parameter '$1' does not look like an IP Address.";
+    exit 1;
+fi
+</pre>
+
+<p>Then, check that <strong>all four parts are numeric</strong>:</p>
+
+<pre>
+for OCTET in `echo $IsIP | tr '.' ' '; do
+    if ! [[ $OCTET =~ ^[0-9]+$ ]]; then
+        echo "Parameter '$1' does not look like an IP Address.";
+        exit 1;
+    fi
+done
+</pre>
+
+<p>Finally check that <strong>all four parts are in the range 0 to 255</strong>:</p>
+
+<pre>
+for OCTET in `echo $IsIP | tr '.' ' '; do
+    if [[ $OCTET -lt 0 || $OCTET -gt 255 ]]; then
+        echo "Parameter '$IsIP' does not look like in IP Address (octet '$OCTET' in not in range 0-255).";
+    fi
+done
+</pre>
+
+<p>So the parameter passed to the script must fulfill the following four criteria:</p>
+
+<ol>
+<li>Contain exactly three dots.</li>
+<li>Contain exactly four parts, if broken down by dots.</li>
+<li>All four parts are numeric.</li>
+<li>All four parts are between 0 and 255.</li></ol>
+
+<h2>A Bash function</h2>
+
+<p>Here's the entire thing in the form of a Bash function, with an additional comment on what went wrong:</p>
+
+<pre>
+# Verify that the parameter passed is an IP Address:
+function is_IP() {
+if [ `echo $1 | grep -o '\.' | wc -l` -ne 3 ]; then
+        echo "Parameter '$1' does not look like an IP Address (does not contain 3 dots).";
+        exit 1;
+elif [ `echo $1 | tr '.' ' ' | wc -w` -ne 4 ]; then
+        echo "Parameter '$1' does not look like an IP Address (does not contain 4 octets).";
+        exit 1;
+else
+        for OCTET in `echo $1 | tr '.' ' '`; do
+                if ! [[ $OCTET =~ ^[0-9]+$ ]]; then
+                        echo "Parameter '$1' does not look like in IP Address (octet '$OCTET' is not numeric).";
+                        exit 1;
+                elif [[ $OCTET -lt 0 || $OCTET -gt 255 ]]; then
+                        echo "Parameter '$1' does not look like in IP Address (octet '$OCTET' in not in range 0-255).";
+                        exit 1;
+                fi
+        done
+fi
+
+return 0;
+}
+</pre>
+
+<p>Example output of the function when saved as a standalone script:</p>
+
+<pre>
+marios@yovan ~ $ ./is_IP 1234
+Parameter '1234' does not look like an IP Address (does not contain 3 dots).
+marios@yovan ~ $ ./is_IP 1234...
+Parameter '1234...' does not look like an IP Address (does not contain 4 octets).
+marios@yovan ~ $ ./is_IP 1.2.3.A
+Parameter '1.2.3.A' does not look like in IP Address (octet 'A' is not numeric).
+marios@yovan ~ $ ./is_IP 1.2.3.300
+Parameter '1.2.3.300' does not look like in IP Address (octet '300' in not in range 0-255).
+marios@yovan ~ $ ./is_IP 1.2.3.4
+marios@yovan ~ $
+</pre>
+
+<p>If someone has any better ways to check this, or improvements on the above, please step forward :)</p>
+
+<p><a href="https://github.com/marios-zindilis/Scripts/tree/master/Bash" title="Fork this script on GitHub.">Fork these scripts on GitHub.</a></p>
+
+<h2>Using Regular Expressions</h2>
+
+<p>In an older blog platform that I used, <a href="http://efxa.org/">Efstathios Chatzikyriakidis</a> 
+commented and suggested the use of regular expressions, which in 
+retrospect made all the above pretty useless. The expression that I 
+found working best is the one at <a href="http://www.geekzilla.co.uk/View0CBFD9A7-621D-4B0C-9554-91FD48AADC77.htm">IP Address regular expression</a>.</p>
+
+            <footer>
+                <p>Posted on 2013-05-10</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

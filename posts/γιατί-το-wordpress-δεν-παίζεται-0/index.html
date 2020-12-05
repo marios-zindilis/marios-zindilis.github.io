@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Γιατί το WordPress δεν παίζεται (#0)</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Γιατί το WordPress δεν παίζεται (#0)</h1>
+            </header>
+            <p>Το WordPress δεν παίζεται! Για πολλούς λόγους, αλλά να ένας συγκεκριμένος.</p>
+
+<!-- read more -->
+
+<p>Αφού έκανα μερικές αλλαγές στο 
+<a href="http://www.rodrigogalindez.com/themes/modernist/">εξαίσιο 
+οπτικό θέμα Modernist</a> από τον 
+<a href="http://www.rodrigogalindez.com/">Rodrigo Galindez</a>, μπόρεσα 
+να φτιάξω έναν υποκατάλογο στον εξυπηρετητή που φιλοξενεί αυτό εδώ το 
+ιστολόγιο, με το εξής περιεχόμενο της <code>index.php</code>:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="cm">/* Εκκίνηση της μηχανής του Wordpress: */</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;WP_USE_THEMES&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+<span class="k">require</span><span class="p">(</span><span class="s1">&#39;../wp-blog-header.php&#39;</span><span class="p">);</span>
+
+<span class="cm">/* Εμφάνιση της κεφαλίδας: */</span>
+<span class="nx">get_header</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">/* Κυρίως περιεχόμενο της σελίδας: */</span>
+<span class="x"> &lt;section id=&quot;content&quot;&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="k">if</span> <span class="p">(</span> <span class="nx">is_user_logged_in</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;&lt;h1&gt;Welcome, registered user!&lt;/h1&gt;&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;&lt;h1&gt;Welcome, visitor!&lt;/h1&gt;&#39;</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/section&gt;</span>
+
+<span class="x">/* Εμφάνιση του υποσέλιδου: */</span>
+<span class="cp">&lt;?php</span> <span class="nx">get_footer</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="x">;</span>
+</code></pre></div>
+
+<p>Στη συνέχεια, δημιούργησα επιπλέον χρήστες στο WordPress, δίνοντάς τους 
+τον ρόλο <strong>Subscriber</strong>. Οι χρήστες με αυτόν τον ρόλο 
+μπορούν μόνο να διαβάσουν δημοσιεύσεις στο ιστολόγιο, δεν έχουν άλλα 
+δικαιώματα, όμως από τη μηχανή που κινεί το WordPress θεωρούνται 
+<em>συνδεδεμένοι</em>. </p>
+
+<p>Το αποτέλεσμα: μπορώ να φτιάχνω λογαριασμούς για χρήστες στον 
+εξυπηρετητή μου, και να τους εμφανίζω ό,τι περιεχόμενο θέλω εγώ (εκτός 
+του ιστολογίου πάντα), το οποίο είναι κρυφό για οποιονδήποτε μη 
+συνδεδεμένο επισκέπτη. Αυτό για να γίνει με πρωτότυπο κώδικα php, θέλει 
+ώρες προγραμματισμού, χώρια οι γνώσεις που χρειάζονται. Γι' αυτό, το 
+WordPress δεν παίζεται!</p>
+
+<p>Προτεινόμενο διάβασμα σχετικά με το θέμα:</p>
+
+<ul>
+  <li><a href="http://codex.wordpress.org/Integrating_WordPress_with_Your_Website">Integrating WordPress with Your Website</a></li>
+  <li><a href="http://codex.wordpress.org/Roles_and_Capabilities">WordPress user roles and capabilities</a></li>
+  <li><a href="http://www.wphardcore.com/2010/ultimate-guide-to-roles-and-capabilities/">Ultimate guide to roles and capabilities</a></li>
+</ul>
+
+<p>Και ένα ακόμα μεζεδάκι: αν έχετε ορίσει προσαρμοσμένους <strong>μόνιμους συνδέσμους</strong> στο ιστολόγιό σας (permalinks) τότε το WordPress θα έχει δημιουργήσει στον ριζικό φάκελο της εγκατάστασης ένα κρυφό αρχείο <strong>.htaccess</strong>. Το αποτέλεσμα είναι ότι αν φτιάξετε δικούς σας υποφακέλους μέσα στο φάκελο που είναι εγκατεστημένο το WordPress, και προσπαθήσετε να τους δείτε γράφοντας τη διαδρομή τους στη μπάρα διεύθυνσης του περιηγητή ιστού, πιθανότατα θα πάρετε ένα ωραιότατο σφάλμα 404. </p>
+
+<p>Για να το αποφύγετε αυτό, πρέπει να ορίσετε ρητά ότι ο φάκελος που φτιάξατε εξαιρείται από τους μόνιμους συνδέσμους, προσθέτοντας στο αρχείο .htaccess τη γραμμή: <code>RewriteRule ^folder-name$ - [L]</code>, αντικαθιστώντας το «folder-name» με το όνομα του φακέλου που φτιάξατε.</p>
+
+<h2>Δείτε επίσης</h2>
+
+<p>Δύο ακόμα άρθρα σε αυτή τη σειρά:</p>
+
+<ol>
+<li><a href="/posts/γιατί-το-wordpress-δεν-παίζεται-1/">Γιατί το WordPress δεν παίζεται #1</a></li>
+<li><a href="/posts/γιατί-το-wordpress-δεν-παίζεται-2/">Γιατί το WordPress δεν παίζεται #2</a></li>
+</ol>
+
+            <footer>
+                <p>Posted on 2011-03-12</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 16</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/juniper-set-system-host-name/">
+            <h2 class="card-title">set system host-name (Juniper Command)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>set system host-name</code> command defines the name of the device, as 
+displayed (among other places) in the command prompt. For example:</p>
+
+<pre><code>marios@juniper&gt; configure
+marios@juniper# set system host-name router-4
+marios@juniper# commit
+commit complete
+marios@router-4#
+</code></pre>
+
+<h2>Cisco Equivalent</h2>
+
+<p>The Cisco equivalent of the <code>set system host-name</code> command is: </p>
+
+<pre><code>cisco# hostname router-5
+</code></pre>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="/docs/cisco/hostname.html"><code>hostname</code></a>, the Cisco equivalent</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/tailf/">
+            <h2 class="card-title">tailf</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>tailf</code> does the same thing as <code>tail -f</code>: it displays the last lines of 
+a file, and then <em>follows</em> the file as it grows, and displays new lines 
+as they are appended to it. Compared to <code>tail -f</code>, it uses less 
+resources on the system, by not reading from the disk while the text 
+file is not updated.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="/docs/tail.html"><code>tail</code></a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-enable-secret/">
+            <h2 class="card-title">enable secret</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>enable secret</code> command makes the device ask for a password to allow 
+the user to enter the global configuration mode. Compared to <code>enable 
+password</code>, it has the advantage that it stores the password in the 
+configuration as an MD5 hash, as opposed to clear text.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href='/docs/cisco/enable-password.html'><code>enable password</code></a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-enable-password/">
+            <h2 class="card-title">enable password</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>enable password</code> command will make the device ask for a password 
+to allow the user to move up to the global configuration mode. It has 
+the disadvantage of displaying the password in clear text in the 
+configuration. For this reason, is has been deprecated, in favour of 
+<code>enable secret</code>, but still exists in Cisco IOS for compatibility with 
+older hardware that cannot encrypt the enable password.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href='/docs/cisco/enable-secret.html'><code>enable secret</code></a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/rhel/">
+            <h2 class="card-title">RHEL</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Releases</h2>
+
+<table class="table table-striped table-bordered table-sm">
+    <thead>
+        <tr><th>Version</th><th>Release Notes</th><th>Download</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>7.0 Beta</td>
+            <td><a href="https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/7-Beta/html-single/7.0_Release_Notes/index.html">Release Notes</a></td>
+            <td><a href="ftp://ftp.redhat.com/redhat/rhel/beta/7/">Download</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="/docs/rhcsa.html">Notes and Links for RHCSA</a></li>
+<li><a href="/docs/rhel-yum-install-from-dvd.html">Install packages from RHEL DVD with yum</a></li>
+<li><a href="/docs/rhel-setup-http-repository.html">Set up an HTTP Repository from RHEL DVD</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ryzom/">
+            <h2 class="card-title">Ryzom</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><strong>Ryzom</strong> is a science fiction/fantasy MMORPG, released under AGPL. It 
+is available for Linux, Windows and MAC, and is free to play up to a 
+certain game level.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://ryzom.com/">Ryzom Website</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/procmail/">
+            <h2 class="card-title">procmail</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Procmail Recipes Syntax</h2>
+
+<p>Very briefly:</p>
+
+<ul>
+<li>A line starting with <code>:0</code> denotes the beginning of a new recipe.</li>
+<li>A line starting with <code>*</code> denotes the definition of a <em>condition</em> 
+inside a recipe.</li>
+<li><p>The last line of a recipe is the <em>action</em>. Action lines can begin 
+with:</p>
+
+<ul>
+<li><code>/</code> in which case the email is appended to a text file, 
+mbox-style.</li>
+<li><code>|</code> in which case the email is piped to a script for 
+further handling.</li>
+<li><code>! user@example.com</code> in which case the email is forwarded 
+to the email address defined after the <code>!</code>.</li>
+<li><code>{</code> which denotes the beginning of a nested recipe.</li>
+</ul></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/syslog/">
+            <h2 class="card-title">syslog</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2><code>syslog</code> facilities</h2>
+
+<ul>
+<li><code>auth</code>, a.k.a. <code>security</code></li>
+<li><code>authpriv</code></li>
+<li><code>cron</code></li>
+<li><code>daemon</code></li>
+<li><code>kern</code></li>
+<li><code>lrp</code></li>
+<li><code>mail</code></li>
+<li><code>mark</code></li>
+<li><code>news</code></li>
+<li><code>security</code></li>
+<li><code>syslog</code></li>
+<li><code>user</code></li>
+<li><code>uucp</code></li>
+<li><code>local0</code> to <code>local7</code></li>
+</ul>
+
+<h2><code>syslog</code> priorities</h2>
+
+<p>A list of <code>syslog</code> priorities, sorted by importance, ascending:</p>
+
+<ol>
+<li><code>debug</code></li>
+<li><code>info</code></li>
+<li><code>notice</code></li>
+<li><code>warning</code> (previously <code>warn</code>, now deprecated)</li>
+<li><code>err</code> (previously <code>error</code>, now deprecated)</li>
+<li><code>crit</code></li>
+<li><code>alert</code></li>
+<li><code>emerg</code> (previously <code>panic</code>, now deprecated)</li>
+</ol>
+
+<h2>Send test message to remote syslog server</h2>
+
+<pre><code>echo '&lt;12&gt;sourcehost message text' | nc -v -u -w 0 12.34.56.78 514
+</code></pre>
+
+<p><a href="http://nelsonslog.wordpress.com/2013/04/19/faking-out-remote-syslog-via-netcat/">Source</a></p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/dhcrelay/">
+            <h2 class="card-title">dhcrelay</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>dhcrelay</code> acts as a proxy between DHCP clients and a DHCP server, when 
+those are separated by a router, which by default blocks broadcasted 
+DHCP requests. It makes sense to install this on a router between two 
+subnets, only one of which has a DHCP server, or on a relay system, 
+again between two subnets.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/crontab/">
+            <h2 class="card-title">crontab</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>crontab</code> can refer to two things:</p>
+
+<ol>
+<li>File <code>/etc/crontab</code>.</li>
+<li>Command <code>crontab</code>.</li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/3/">3</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/4/">4</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/5/">5</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/6/">6</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/13/">13</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/14/">14</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/15/">15</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">16</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/18/">18</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/22/">22</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/27/">27</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

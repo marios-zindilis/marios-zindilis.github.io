@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 13</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/rhcsa/">
+            <h2 class="card-title">RHCSA Notes and Links</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is an unsorted list of links for the RHCSA certification.</p>
+
+<ul>
+<li><a href="http://www.redhat.com/training/certifications/rhcsa/">RHCSA Certification Overview</a></li>
+<li><a href="http://www.redhat.com/training/courses/ex200/examobjective">RHCSA Exam Objectives</a></li>
+<li><a href="http://www.redhat.com/resourcelibrary/articles/training-skills-assessment">RHCSA Skills Assessment</a></li>
+<li><a href="http://www.redhat.com/training/certifications/exam-kiosk/">RHCSA Individual Exam Sessions</a></li>
+</ul>
+
+<h2>Books</h2>
+
+<ul>
+<li><em>RHCSA/RHCE Red Hat Linux Certification Study Guide (Exams EX200 &amp; EX300)</em>, Michael Jang, Certification Press</li>
+<li><em>Hands-on Guide to the Red Hat Exams: RHCSA and RHCE Cert Guide and Lab Manual</em>, Damian Tommasino, Pearson</li>
+<li><em>RHCSA/RHCE Red Hat Linux Certification Practice Exams with Virtual Machines</em>, Michael Jang, McGraw-Hill Osborne Media</li>
+<li><em>Red Hat Certified System Administrator &amp; Engineer: Training Guide and a Quick Deskside Reference</em>, Asghar Ghori, Endeavor Technologies</li>
+<li><em>Red Hat Enterprise Linux 6 Administration: Real World Skills for Red Hat Administrators</em>, Sander van Vugt, SYBEX</li>
+</ul>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="/docs/rhel.html">Notes and Links for RHEL</a></li>
+<li><a href="http://www.pantz.org/software/linux/rhcsa_study_guide.html">RHCSA study guide </a></li>
+<li><a href="http://www.certdepot.net/rhcsa-rhce-free-available-resources/">RHCSA &amp; RHCE Free available resources</a></li>
+<li><a href="/docs/rhel-yum-install-from-dvd.html">Install packages from RHEL DVD with yum</a></li>
+<li><a href="/docs/rhel-setup-http-repository.html">Set up an HTTP Repository from RHEL DVD</a></li>
+<li><a href="/docs/rhel-setup-ftp-repository.html">Set up an FTP Repository from RHEL DVD</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-28
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/bandwidth-still-relevant/">
+            <h2 class="card-title">Is bandwidth still relevant for web hosting?</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <a href="http://numixproject.org/">Numix Project</a> received some web love 
+lately, mentioned in last Sunday's <a href="http://www.jupiterbroadcasting.com/52182/numix-your-linux-las-s31e01/">Linux Action Show</a> 
+web episode, and later on <a href="http://itsfoss.com/numix-linux-distribution/">It's F.O.S.S</a> 
+and probably elsewhere, for their announcement to release their own 
+Linux distribution. As a result, their website is now down, with the 
+server returning 500:</p>
+
+<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ curl -I numixproject.org
+HTTP/1.0 <span class="m">500</span> Internal Server Error
+</code></pre></div>
+
+<p>...and displaying the message "Bandwidth Limit Exceeded". I would have 
+guessed that with everything-as-a-service and the whole Cloud <abbr title='shebang'>#!</abbr>, 
+bandwidth consumtion would have already become irrelevant. </p>
+
+<p>I mean, there's enough BW to feed our amplification attacks (
+<a href="http://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack">400Gbps on CloudFlare</a>, 
+<a href="https://twitter.com/olesovhcom/statuses/433631778620702721">350Gbps on OVH</a>), 
+but not enough to host our websites? Does that not call for a revision 
+of the model?</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-28
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/system-v-init/">
+            <h2 class="card-title">System V init</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is an unsorted list of links about System V init.</p>
+
+<ul>
+<li><a href="http://utcc.utoronto.ca/~cks/space/blog/unix/InitHistoricalRoles">Init's (historical) roles</a></li>
+<li><a href="http://utcc.utoronto.ca/~cks/space/blog/unix/SystemVInitGoodBad">The good and bad of the System V init system</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-27
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/systemd/">
+            <h2 class="card-title">systemd</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is an unsorted list of links with content about <strong>systemd</strong>.</p>
+
+<ul>
+<li><a href="http://utcc.utoronto.ca/~cks/space/blog/linux/SystemdAndBrokenByDesign">'Broken by design: systemd' is itself kind of broken</a></li>
+<li><a href="http://utcc.utoronto.ca/~cks/space/blog/linux/SystemdWhyItWon">Why systemd is winning the init wars and other things aren't</a></li>
+<li><a href="https://scottlinux.com/2014/03/07/managing-services-with-systemd-start-stop-and-list-services/">Managing Services with systemd | Start Stop and List Services</a></li>
+<li><a href="http://www.databook.bz/?page_id=2578">Starting and Managing Linux Services Using systemd</a></li>
+<li><a href="http://www.openlogic.com/wazi/bid/351296/an-introduction-to-systemd-for-centos-7">An introduction to systemd for CentOS 7</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-27
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-access-class/">
+            <h2 class="card-title">access-class (Cisco Command)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>access-class</code> command applies an existing access list on a 
+<strong>line</strong>, such as VTY and CON lines. The equivalent command for 
+interfaces is <code>ip access-group</code>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-24
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/cisco/">cisco</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-default-interface/">
+            <h2 class="card-title">default interface (Cisco Command)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>default-interface</code> command removes configuration from an interface, 
+and returns it to its defaults. Note that by default, interfaces are <strong>not</strong> 
+shutdown.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-24
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/cisco/">cisco</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-show-vtp-status/">
+            <h2 class="card-title">show vtp status (Cisco)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Notes on the <code>show vtp status</code> command on Cisco devices.</p>
+
+<p>The value of <code>configuration last changed by</code> shows the source of the 
+most recent updates to the Vlan list.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-24
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/cisco/">cisco</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-show-vlan/">
+            <h2 class="card-title">show vlan (Cisco)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>show vlan</code> lists the Vlans and the ports on which each is configured. 
+Trunk ports don't show up in this list. </p>
+
+<h2>Vlans 1002, 1003, 1004 and 1005</h2>
+
+<p>In the output of the <code>show vlan</code> command, Vlans 1002, 1003, 1004 and 
+1005 are listed. Those exist by default to ensure interoperation and 
+backwards compatibility of new devices with old and largely deprecated 
+networks. For example, Vlans 1002 and 1004 were used on an old fiber 
+optics type of network, whereas Vlan 1003 was used in token-ring 
+networks. In the <code>status</code> column, those networks show up as either 
+<code>act/unsup</code> or <code>active/unsupported</code>, since most new switches don't even 
+have ports to use on those old types of networks any more.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-22
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/cisco/">cisco</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/zenoss-zendmd-add-device-to-group/">
+            <h2 class="card-title">Zenoss: Add a device to a Group with ZenDMD</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>As user <code>zenoss</code> (or whatever user your Zenoss application runs as), run 
+<code>zendmd</code>, and:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;My Awesome Server&#39;</span><span class="p">)</span>
+<span class="n">Device</span><span class="o">.</span><span class="n">addDeviceGroup</span><span class="p">(</span><span class="s1">&#39;My Wonderful Group&#39;</span><span class="p">)</span>
+<span class="n">commit</span><span class="p">()</span>
+</code></pre></div>
+
+<p>This will make the device named <code>My Awesome Server</code> a member of the group named 
+<code>My Wonderful Group</code>. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-19
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/linux-backup-tools/">
+            <h2 class="card-title">Linux Backup Tools</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="/docs/amanda.html">Amanda</a></li>
+<li><a href="/docs/backuppc.html">BackupPC</a></li>
+<li><a href="https://github.com/bup/">bup</a></li>
+<li><a href="http://obnam.org/">Obnam</a></li>
+<li><a href="/docs/systemback.html">SystemBack</a></li>
+<li><a href="/docs/timeshift.html">TimeShift</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/3/">3</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/4/">4</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/5/">5</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/6/">6</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">13</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/14/">14</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/15/">15</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/16/">16</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/18/">18</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/22/">22</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/27/">27</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

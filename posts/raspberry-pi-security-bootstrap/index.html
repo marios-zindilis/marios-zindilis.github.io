@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Raspberry Pi Security Bootstrap</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Raspberry Pi Security Bootstrap</h1>
+            </header>
+            <p class='lead'>These are my notes on the first steps of improving security on 
+a new Raspberry Pi. The default configuration that an RPi comes with might be 
+suitable for a development environment in a private or isolated network, but 
+if you intend on exposing your RPi to the world then you need to tweak that 
+configuration to be more robust. The commands mentioned here have been tested 
+on a Raspberry Pi B+, running a fresh installation of 
+<a href='http://www.raspbian.org/'>Raspbian</a>.</p>
+
+<div class='z-callout z-callout-danger'><h4>Disclaimer</h4>
+<p>Security is fluid and open-ended. The following are mere suggestions. 
+Taking these steps will hopefully reduce your exposure, but does not guarantee 
+complete safety. Nothing does.</p></div>
+
+<h2>User configuration</h2>
+
+<ol>
+<li><p>This goes without saying: <strong>Change the default user's password</strong>. By 
+default,     the RPi user is <code>pi</code> and her password is <code>raspberry</code>. Change 
+that as soon as you get your operating system runnning, either by running 
+<code>passwd</code> as the <code>pi</code> user, or by running <code>sudo raspi-config</code> and selecting 
+the option for password change.</p></li>
+<li><p><strong>Change the default user's <code>sudo</code> configuration</strong>. By default, the <code>pi</code> 
+user can execute anything with <code>sudo</code>, without providing a password. As 
+the <code>pi</code> user, do:</p>
+
+<pre><code>sudo visudo
+</code></pre>
+
+<p>...and the change the line:</p>
+
+<pre><code>pi ALL=(ALL) NOPASSWD: ALL
+</code></pre>
+
+<p>...to:</p>
+
+<pre><code>pi ALL=(ALL) ALL
+</code></pre></li>
+<li><p>Additionally, you might want to <strong>disable the default <code>pi</code> user</strong> 
+altogether, and create another user that you will use on your RPi. As the 
+user <code>pi</code>, do:</p>
+
+<pre><code>sudo adduser myuser
+</code></pre>
+
+<p>...and answer the questions. Only the password question is important, the 
+rest can be left blank. Then, to make the new user a sudoer, do:</p>
+
+<pre><code>sudo visudo
+</code></pre>
+
+<p>...and add this line in the end of the file:</p>
+
+<pre><code>myuser ALL=(ALL) ALL
+</code></pre>
+
+<p>Additionally, since login will be disabled for <code>pi</code>, you might as well 
+comment out the line in <code>/etc/sudoers</code> that refers to that user. Finally, 
+to disable login for the default <code>pi</code> user, logout from <code>pi</code> and login as 
+the new user that you created, and do:</p>
+
+<pre><code>sudo usermod --lock pi
+sudo usermod --shell /sbin/nologin pi
+</code></pre></li>
+</ol>
+
+<h2>SSH Configuration</h2>
+
+<ol>
+<li><p><strong>Forbid SSH login for user <code>root</code></strong>. If your RPi is exposed to the world, 
+it will get attacked with SSH attempts for common usernames and passwords, 
+which is yet another reason to disable the default <code>pi</code> username. Another 
+username that your RPi will be hammered with is <code>root</code>. Now, you can't 
+disable the root account, but you can disallow logins for it. To do that, 
+edit the file <code>/etc/ssh/sshd_config</code>, and change the line:</p>
+
+<pre><code>PermitRootLogin yes
+</code></pre>
+
+<p>...with:</p>
+
+<pre><code>PermitRootLogin no
+</code></pre>
+
+<p>...and then restart the SSH daemon:</p>
+
+<pre><code>sudo service ssh restart
+</code></pre></li>
+<li><p><strong>Restrict Incoming IPs for SSH</strong>, using entries in <code>/etc/hosts.allow</code> and 
+<code>/etc/hosts.deny</code>. For example, I allow SSH on my RPi from my internal LAN 
+subnets (192.168.x.x), and from one public IP only (1.2.3.4 in this 
+example). To achieve that, put in <code>/etc/hosts.allow</code>:</p>
+
+<pre><code>sshd: 192.168. 1.2.3.4
+</code></pre>
+
+<p>...and in <code>/etc/hosts.deny</code>:</p>
+
+<pre><code>sshd: ALL
+</code></pre>
+
+<p>Attempting to login to the RPi from a restricted host will return an 
+ error to the client:</p>
+
+<pre><code>marios@wst ~ $ ssh myuser@192.168.23.123
+ssh_exchange_identification: Connection closed by remote host
+</code></pre>
+
+<p>...and will also create a log in <code>/var/log/auth.log</code>:</p>
+
+<pre><code>Dec 13 11:40:48 rpi sshd[3456]: refused connect from 172.16.1.2 (172.16.1.2)
+</code></pre></li>
+</ol>
+
+<h2>Firewall Configuration with <code>iptables</code></h2>
+
+<p>On my RPi running a freshly installed Raspbian OS, <code>iptables</code> was already 
+installed, and it was running  with an empty rule set, i.e. all traffic was 
+allowed in all directions. Furthermore, Raspbian does not include a SysV 
+script for the <code>iptables</code> service, but this functionality is offered by the 
+<code>iptables-persistent</code> package.</p>
+
+<ol>
+<li><p>Install <code>iptables-persistent</code>, to help make the <code>iptables</code> rules survive a 
+reboot:</p>
+
+<pre><code>sudo apt-get install iptables-persistent
+</code></pre>
+
+<p>If you accept the defaults during the installation, the currently running 
+empty rule set of <code>iptables</code> will be saved in <code>/etc/iptables/rules.v4</code>.
+After the installation, you can manage your firewall with:</p>
+
+<pre><code>service iptables-persistent {start|restart|reload|force-reload|save|flush}
+</code></pre>
+
+<p>Here are the contents of that file, with the default configuration of the 
+firewall:</p>
+
+<pre><code># Generated by iptables-save v1.4.14 on Sat Dec 13 14:23:03 2014
+*filter
+:INPUT ACCEPT [1291:113154]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [828:105910]
+COMMIT
+# Completed on Sat Dec 13 14:23:03 2014
+</code></pre></li>
+<li><p>Next, you will need to add some rules to the <code>iptables</code> configuration, to 
+start blocking some traffic. There are two methods that you can apply:</p>
+
+<p>A.  Replace the line <code>:INPUT ACCEPT</code> that defines a default policy to 
+    accept all incoming traffic), with <code>:INPUT DROP</code>, and then define 
+    rules that will only allow selected traffic through the firewall.</p>
+
+<p>B.  Keep the default <code>:INPUT ACCEPT</code> policy for incoming traffic, but have 
+    one last rule that rejects all incoming traffic. </p>
+
+<p>I'm going with the second option, simply because of the convenience of 
+copying rules from one of my CentOS machines :) Here it is then, my rules 
+file, implementing only the restriction to SSH port to the same IPs that 
+I mentioned earlier:</p>
+
+<pre><code>*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --source 192.168.0.0/16 --dport 22 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --source 1.2.3.4/32     --dport 22 -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+</code></pre></li>
+</ol>
+
+<h2>Summary</h2>
+
+<p>With these measures taken to improve the security of my Raspberry Pi, I am now 
+more confident that I can assign it a public IP and expose it the the world, 
+without it being a very easy target.</p>
+
+            <footer>
+                <p>Posted on 2014-12-13</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

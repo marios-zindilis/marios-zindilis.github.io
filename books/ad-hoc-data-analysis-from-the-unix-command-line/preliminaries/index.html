@@ -1,60 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Marios Zindilis - Preliminaries</title>
-  <meta name="description" content="Here's some preliminaries worth noting.">
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/static/css/zindilis.com.css">
-  <link rel="canonical" href="https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/preliminaries/">
-  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
   
-  <meta property="og:title" content="Preliminaries">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Preliminaries</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
 
-
-  <meta property="og:type" content="website">
-
-
-
-</head>
-
-
-<body>
-  <header class="mb-4">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/">Marios Zindilis</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-link-items" aria-controls="navbar-link-items" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbar-link-items">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" style="color:white" href="/docs/">Docs</a>
-          <a class="nav-item nav-link" style="color:white" href="/projects/">Projects</a>
-          <a class="nav-item nav-link" style="color:white" href="/about/">About</a>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
 
-
-  <div class="container">
-        <article class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">Preliminaries</h1>
-  </header>
-
-  <div class="post-content">
-    <p class="lead">
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Preliminaries</h1>
+            </header>
+            <p class="lead">
 Here's some preliminaries worth noting.
 </p>
 
@@ -65,14 +48,17 @@ at the command line:</p>
 
 <p>You type:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">command </span>argument1 argument2 argument3</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ <span class="nb">command</span> argument1 argument2 argument3
+</code></pre></div>
 
 <p>You get:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">output line 1 
+
+<pre><code>output line 1 
 output line 2 
 output line 3 
 [...]
-</code></pre></div>
+</code></pre>
+
 <p>The <code>$</code> is the shell prompt. What you type is shown in the <strong>You type</strong> section
 and command output is shown in the <strong>You get</strong> section.</p>
 
@@ -91,34 +77,40 @@ Correspondingly, the <code>tail</code> command prints just the last few lines.</
 
 <p>You type:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>head <span class="nt">-5</span> /etc/passwd </code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ head -5 /etc/passwd 
+</code></pre></div>
 
 <p>You get:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">root:x:0:0:root:/:/bin/bash 
+
+<pre><code>root:x:0:0:root:/:/bin/bash 
 bin:x:1:1:bin:/bin:/sbin/nologin 
 daemon:x:2:2:daemon:/sbin:/sbin/nologin 
 adm:x:3:4:adm:/var/adm:/sbin/nologin 
 lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
-</code></pre></div>
+</code></pre>
+
 <h3>Census data</h3>
 
 <p>The US Census releases Public Use Microdata Samples (PUMS) on <a href="http://www.census.gov/" title="US Census">its website</a>. 
-We will use the 1% sample of Washington state&#39;s data, the <code>file pums_53.dat</code>, 
+We will use the 1% sample of Washington state's data, the <code>file pums_53.dat</code>, 
 which can be downloaded <a href="http://www2.census.gov/census_2000/datasets/PUMS/OnePercent/Washington/">here</a>.</p>
 
 <p>You type:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>head <span class="nt">-2</span> pums_53.dat </code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ head -2 pums_53.dat 
+</code></pre></div>
 
 <p>You get:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">H000011715349 53010 99979997 70 15872 639800 120020103814700280300000300409 
+
+<pre><code>H000011715349 53010 99979997 70 15872 639800 120020103814700280300000300409 
 02040201010103020 0 0 014000000100001000 0100650020 0 0 0 0 0000 0 0 0 0 0 
 05000000000004400000000010 76703521100000002640000000000
 P00001170100001401000010420010110000010147030400100012005003202200000 005301000
 000300530 53079 53 7602 76002020202020202200000400000000000000010005 30 53010
 70 9997 99970101006100200000001047904431M 701049-20116010 520460000000001800000
 00000000000000000000000000000000000000001800000018000208
-</code></pre></div>
+</code></pre>
+
 <p><strong>Important note</strong>: The format of this data file is described in an excel 
 spreadsheet that can be downloaded <a href="http://ftp2.census.gov/census_2000/datasets/PUMS/FivePercent/5%25_PUMS_record_layout.xls">here</a>.</p>
 
@@ -127,30 +119,32 @@ spreadsheet that can be downloaded <a href="http://ftp2.census.gov/census_2000/d
 <p>The techniques discussed here are usually extremely efficient in terms of 
 developer time, but generally less efficient in terms of compute resources 
 (CPU, I/O, memory). This kind of brute force and ignorance may be inelegant, 
-but when you don&#39;t yet understand the scope of your problem, it is usually best 
+but when you don't yet understand the scope of your problem, it is usually best 
 to spend 30 seconds writing a program that will run for 3 hours than vice 
 versa.</p>
 
 <h2>The online manual</h2>
 
 <p>The <code>man</code> command displays information about a given command (colloquially 
-referred to as the command&#39;s &quot;man page&quot;). The online man pages are an extremely 
+referred to as the command's "man page"). The online man pages are an extremely 
 valuable resource; if you do any serious work with the commands presented here, 
-you&#39;ll eventually read all their man pages top to bottom. In Unix literature 
+you'll eventually read all their man pages top to bottom. In Unix literature 
 the man page for a command (or function, or file) is typically referred to as 
 <code>command(n)</code>. The number <code>n</code> specifies a section of the manual to disambiguate 
 entries which exist in multiple sections. So, <code>passwd(1)</code> is the man page for 
 the <code>passwd</code> <em>command</em>, and <code>passwd(5)</code> is the man page for the <code>passwd</code> 
 <em>file</em>. On a Linux system you ask for a certain section of the manual by giving 
-the section number as the first argument as in <code>man 5 passwd</code>. Here&#39;s what the 
+the section number as the first argument as in <code>man 5 passwd</code>. Here's what the 
 <code>man</code> command has to say about itself:</p>
 
 <p>You type:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>man man </code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ man man 
+</code></pre></div>
 
 <p>You get:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">man(1)                                                        man(1) 
+
+<pre><code>man(1)                                                        man(1) 
 NAME
        man - format and display the on-line manual pages 
        manpath - determine user's search path for man pages 
@@ -166,70 +160,32 @@ DESCRIPTION
        manual. name is normally the name of the manual page, 
        which is typically the name of a command, function, or 
        file. [...]
-</code></pre></div>
+</code></pre>
+
 <p>Next: <a href="/books/ad-hoc-data-analysis-from-the-unix-command-line/standard-input-standard-output-redirection-and-pipes/">Standard Input, Standard Output, Redirection and Pipes</a></p>
 
-  </div>
+            <footer>
+                <p>Posted on 2016-11-13</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
 
-</article>
+    </main>
 
-  </div>
-
-  <footer id="site-footer" class="footer-distributed">
-  <div class="container">
-    <div class="footer-right">
-      <a href="/feed.xml" title="Marios Zindilis RSS Feed">
-        <i class="fa fa-rss" aria-hidden="true"></i><span class="sr-only">Marios Zindilis RSS Feed</span></a>
-      <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">
-        <i class="fa fa-linkedin" aria-hidden="true"></i><span class="sr-only">Marios Zindilis LinkedIn Profile</span></a>
-      <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">
-        <i class="fa fa-github" aria-hidden="true"></i><span class="sr-only">Marios Zindilis GitHub Page</span></a>
-    </div>
-
-    <div class="footer-left">
-      <p class="footer-links">
-        <a href="/">Home</a> · 
-        <a href="/docs/">Docs</a> ·
-        <a href="/projects/">Projects</a> ·
-        <a href="/about/">About</a>
-      </p>
-      <p>Marios Zindilis</p>
-    </div>
-  </div>
-</footer>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      // set padding-bottom of body to height of footer.site-footer:
-      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      // http://stackoverflow.com/a/14570614
-      var observeDOM = (function(){
-        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
-          eventListenerSupported = window.addEventListener;
-
-        return function(obj, callback){
-          if( MutationObserver ){
-          // define a new observer
-            var obs = new MutationObserver(function(mutations, observer){
-              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
-              callback();
-            });
-            // have the observer observe foo for changes in children
-            obs.observe( obj, { childList:true, subtree:true });
-          }
-          else if( eventListenerSupported ){
-            obj.addEventListener('DOMNodeInserted', callback, false);
-            obj.addEventListener('DOMNodeRemoved', callback, false);
-          }
-        }
-      })();
-      observeDOM(document.getElementById('site-footer') ,function(){
-        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      });
-    </script>
-
-
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   </body>
 </html>

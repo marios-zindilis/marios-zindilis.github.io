@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 14</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-συντομεύσεις-πληκτρολογίου/">
+            <h2 class="card-title">Συντομεύσεις πληκτρολογίου σε συσκευές Cisco</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <table class='table'>
+    <thead>
+        <tr><th>Συντόμευση</th><th>Περιγραφή</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>CTRL+P</code></td><td>[previous] εμφάνιση προηγούμενης εντολής</td></tr>
+        <tr><td><code>CTRL+N</code></td><td>[next] εμφάνιση επόμενης εντολής</td></tr>
+        <tr><td><code>CTRL+B</code></td><td>[back] μετακίνηση του δρομέα κατά ένα χαρακτήρα προς τα πίσω</td></tr>
+        <tr><td><code>CTRL+F</code></td><td>[forward] μετακίνηση του δρομέα κατά ένα χαρακτήρα προς τα μπροστά</td></tr>
+        <tr><td><code>ESC+B</code></td><td>[back] μετακίνηση του δρομέα κατά μία λέξη προς τα πίσω</td></tr>
+        <tr><td><code>ESC+F</code></td><td>[forward] μετακίνηση του δρομέα κατά μία λέξη μπροστά</td></tr>
+        <tr><td><code>CTRL+A</code></td><td>μετακίνηση του δρομέα στην αρχή της εντολής</td></tr>
+        <tr><td><code>CTRL+E</code></td><td>[end] μετακίνηση του δρομέα στο τέλος της εντολής</td></tr>
+        <tr><td><code>CTRL+D</code></td><td>[delete] διαγραφή του επιλεγμένου χαρακτήρα</td></tr>
+        <tr><td><code>BACKSPACE</td><td>διαγραφή του προηγούμενου από τον επιλεγμένο χαρακτήρα</td></tr>
+        <tr><td><code>CTRL+W</code></td><td>[word] διαγραφή μιας λέξης</td></tr>
+        <tr><td><code>CTRL+U</code></td><td>διαγραφή ολόκληρης της γραμμής</td></tr>
+    </tbody>
+</table>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-17
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/apache-logs-to-remote-syslog/">
+            <h2 class="card-title">Send Apache logs to remote syslog server</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This document briefly describes how to send the logs from Apache to 
+both a remote server, as well as log them locally. There are benefits 
+to both approaches -local and remote logging- and with this method you 
+will have them both.</p>
+
+<p>Two types of logs are described, the <code>CustomLog</code> and the <code>ErrorLog</code>. 
+Also, my preferred method of shipping logs is with <code>nc</code>, due to its 
+simplicity. </p>
+
+<h2><code>CustomLog</code></h2>
+
+<p>The <code>CustomLog</code> is provided by the <code>log_config</code> module, which is 
+included in the default installation of Apache (at least on CentOS 6.5 
+and on Ubuntu 12.10 on which I tested). This module is flexible enough 
+to allow multiple <code>CustomLog</code> directives, so to get Apache to log in 
+both local files and to a remot syslog server you can use two lines:</p>
+
+<pre><code>CustomLog logs/access_log combined
+CustomLog "| nc -u -j syslog.example.com 514" combined
+</code></pre>
+
+<p>You will need to adjust <code>syslog.example.com</code> to  your syslog server, 
+and possibly <code>514</code> to whatever port your server is listening to, if 
+it's not the default 514.</p>
+
+<h2><code>ErrorLog</code></h2>
+
+<p>The <code>ErrorLog</code> is provided by the <code>core</code> module, and unfortunately it's 
+not as flexible as <code>CustomLog</code>, so it doesn't allow multiple <code>ErrorLog</code> 
+directives. If you add more than one, only the one that occures last in 
+the configuration file will be used. Luckily, you can utilize the power 
+of <code>tee</code> to overcome this:</p>
+
+<pre><code>ErrorLog "| tee -a /var/log/httpd/error_log | nc -u -j syslog.example.com 514"
+</code></pre>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://www.fnal.gov/docs/products/apache/syslog_logs_notes.html">Sending web logs to Computer Security</a> 
+from Fermilab, source of the <code>tee</code> tip.</li>
+<li><a href="http://mykospark.net/2011/01/apache-httpd-customlog-to-syslog-via-udp/">Apache HTTPD CustomLog to Syslog via UDP</a>, 
+source of the <code>nc -u -j</code> tip.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-11
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/thunderbird/">
+            <h2 class="card-title">Mozilla Thunderbird</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><p><a href="http://www.techrepublic.com/blog/smb-technologist/connect-the-thunderbird-email-client-to-your-exchange-server/1130/">Connect the Thunderbird email client to your Exchange server</a>, 
+tested, slow, awkward... Folders other than Inbox don't get 
+highlighted automatically when new emails come inside them. </p></li>
+<li><p><a href="/blog/2012/09/09/running-multiple-instances-of-thunderbird.html" title="Running multiple instances of Thunderbird">Running multiple instances of Thunderbird</a></p></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-11
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/zenoss-4/">
+            <h2 class="card-title">Zenoss 4</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://www.thegeekstuff.com/2014/02/zenoss-core-daemons/">The 16 Zenoss Core Daemons</a></li>
+<li><a href="http://community.zenoss.org/docs/DOC-12120">About Distributed Collector</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-04
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ubuntu-encrypted-directory/">
+            <h2 class="card-title">Create an encrypted directory on Ubuntu</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>These are very brief instructions on how to create an encrypted directory on 
+an Ubuntu system. A usage scenario for this, is that you can keep your files 
+encrypted while stored on a cloud storage service, and decrypt them on-demand 
+only when necessary.</p>
+
+<p>Install encfs:</p>
+
+<pre><code>sudo apt-get install encfs
+</code></pre>
+
+<p>Link encrypted and decrypted direcories:</p>
+
+<pre><code>encfs ~/.encrypted ~/visible
+</code></pre>
+
+<p>If the directories don't exist, encfs will ask to create them.</p>
+
+<p>To umount:</p>
+
+<pre><code>fusermount -u ~/visible
+</code></pre>
+
+<p>To re-mount:</p>
+
+<pre><code>encfs ~/.encrypted ~/visible
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/contribute-on-github/">
+            <h2 class="card-title">Contribute to an open source project on GitHub</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This document will guide you through the steps required to contribute 
+some source code fix or enhancement to an open source project hosted 
+on <a href="https://github.com/">GitHub</a>. It is a bottom-up tutorial, starting 
+from signing up to GitHub.</p>
+
+<p>As a real life example for this guide, we will make a contribution to 
+a not-so-typical GitHub project, the <a href="https://github.com/vhf/free-programming-books">Free Programming Books</a> 
+list. This project in GitHub is the source of content of the webpage 
+<a href="http://resrc.io/list/10/list-of-free-programming-books/">List of Free Programming Books</a>. </p>
+
+<h2>Sign Up to GitHub</h2>
+
+<p>First, you need to have an account on GitHub. There are non-free 
+accounts for non-open-source projects, but for the purpose of this 
+guide, and for contributing to Open Source software, you only need a 
+free account. </p>
+
+<p>Head over to <a href="https://github.com/">github.com</a> and Sign Up!</p>
+
+<h2>Fork a Project</h2>
+
+<p>In order to get the code of a project, edit it and send it back to the 
+developers, you need to create a <strong>fork</strong> of the source code. For the 
+purpose of this example, let's assume that your username is 
+"ChuckNorris" (meh... as if Chuck Norris needs to fork and edit source 
+code... the source code fixes itself to avoid being roundhouse 
+kicked...).</p>
+
+<p>Head over to the page where the project you are interested in is 
+hosted. For our example, go to 
+<a href="https://github.com/vhf/free-programming-books/">github.com/vhf/free-programming-books</a>, 
+and click on the <strong>Fork</strong> button. GitHub will take a few seconds, and 
+will create a copy of the original repository under your account, in 
+our example it would be <code>github.com/ChuckNorris/free-programming-books</code>.</p>
+
+<h2>Install Git</h2>
+
+<p>You will need <code>git</code> installed on your PC/workstation to 
+download code from GitHub. On an Ubuntu (or other Debian-based) system, 
+do:</p>
+
+<pre><code>sudo apt-get install git
+</code></pre>
+
+<p>On a CentOS or other RedHat-based system:</p>
+
+<pre><code>yum install git
+</code></pre>
+
+<p>All of the rest of these instructions in this guide are the same on 
+Ubuntu (or similar) and CentOS (or similar) systems, although Ubuntu 
+typically comes with newer version of packages, and might have better 
+behaviour with Git operations. After you have installed Git, you should 
+set your username and email address. These will be submitted with the 
+changes that you will make, to the original repository:</p>
+
+<pre><code>git config --global user.name "Your Name"
+git config --global user.email you@example.com
+</code></pre>
+
+<h2>Download the source code</h2>
+
+<p>To download the source code locally on your PC/workstation, from 
+<strong>your</strong> GitHub repository:</p>
+
+<pre><code>git clone https://github.com/ChuckNorris/free-programming-books.git
+</code></pre>
+
+<p>This will create a directory named after the project (in our example 
+"free-programming-books"), and put the source code files inside. You can 
+now browse the source code files locally, on your workstation.</p>
+
+<h2>Connect the local directory with the original GitHub repository</h2>
+
+<p>Now that you downloaded the source code from your own repository, <code>git</code> 
+knows where to push the changes that you will make. In <code>git</code> parlance, 
+your repository is the <strong>origin</strong>.</p>
+
+<p>You will most probably need to also create a connection to the original 
+GitHub repository, so that Git knows where to pull updates from. In 
+other words, if the developers of the original project do some changes, 
+you should be able to update your directory on your workstation with 
+those updates, so that you always work on the most current version of 
+the code. In Git parlance, the original repository is the <strong>upstream</strong>.</p>
+
+<p>To add the upstream repository:</p>
+
+<pre><code>cd free-programming-books
+git remote add upstream https://github.com/vhf/free-programming-books.git
+</code></pre>
+
+<p>Now, every time you want to work on the project, you can get an updated 
+version of it by running:</p>
+
+<pre><code>git fetch upstream
+</code></pre>
+
+<p>This will <strong>not</strong> change any files that you already edited locally, 
+unless you also do:</p>
+
+<pre><code>git merge upstream/master
+</code></pre>
+
+<h2>Edit source files and push changes</h2>
+
+<p>At this point, you should have a copy of the source code that you want 
+to edit on your GitHub repository, the one that you <strong>forked</strong> from the 
+<strong>upstream</strong> repository, and is now your <strong>origin</strong>. You should also 
+have a <strong>local</strong> copy of the source code on a directory on your 
+workstation.</p>
+
+<p>You probably now want to edit one or more of the source code files, 
+using the text editor of your preference. For the sake of this example, 
+we will do a couple of changes in the file named <code>free-programming-books.md</code>, 
+and then push them to the <strong>origin</strong>. The changes that we will do are:</p>
+
+<ol>
+<li>Add two programming books for the Picolisp language, and</li>
+<li>Add the Picolisp language to the table of contents.</li>
+</ol>
+
+<p>For the record, here is the <code>diff</code> of the file before and after the changes:</p>
+
+<pre><code>[marios@j free-programming-books]$ diff -u free-programming-books.md-original free-programming-books.md
+--- free-programming-books.md-original  2014-01-29 13:10:05.502982051 +0200
++++ free-programming-books.md   2014-01-29 13:06:00.659982149 +0200
+@@ -108,6 +108,7 @@
+ * [PC-BSD](#pc-bsd)
+ * [Perl](#perl)
+ * [PHP](#php)
++* [PicoLisp](#picolisp)
+ * [PostgreSQL](#postgresql)
+ * [PowerShell](#powershell)
+ * [Processing](#processing)
+@@ -1250,6 +1251,11 @@
+ * [PHP 5 Power Programming](http://www.informit.com/content/images/013147149X/downloads/013147149X_book.pdf)
+
+
++###PicoLisp
++* [PicoLisp by Example](http://www.scribd.com/doc/103733857/PicoLisp-by-Example)
++* [PicoLisp Works](http://www.scribd.com/doc/103732688/PicoLisp-Works)
++
++
+ ###PostgreSQL
+ * [Practical PostgreSQL](http://www.commandprompt.com/ppbook/)
+</code></pre>
+
+<p>You can get a result similar to the above with <code>git diff</code>.</p>
+
+<p>After you edit the source code file that you want, and save it on your 
+workstation, it's time to push the changed file to your own GitHub 
+repository, the <strong>origin</strong>. First, you <strong>commit</strong> your change to Git. 
+This only affects files locally on your workstation. In this example, 
+the file name is <code>free-programming-books.md</code>:</p>
+
+<pre><code>git commit free-programming-books.md -m 'Added two books on PicoLisp'
+git push origin master
+</code></pre>
+
+<p>The <code>commit</code> command "gave" the changed file to Git to handle, with a 
+short comment given after the <code>-m</code> option, and then the 
+<code>push</code> command asked Git to push the committed file to GitHub, to the 
+<strong>master</strong> branch of the <strong>origin</strong> repository. You will be asked for 
+your username and password to GitHub during the <strong>push</strong>.</p>
+
+<p>You can visit your GitHub repository now, and you will be able to see 
+that the file you edited and pushed has changed.</p>
+
+<h2>Ask the original developers to pull your changes</h2>
+
+<p>After you have edited one or more files, committed them to Git and 
+pushed them to your own repository on GitHub, you will probably want to 
+ask the developers of the original source code, the one that resides in 
+the <strong>upstream</strong> to review your changes, and merge them into the 
+project, if applicable.</p>
+
+<p>This action is called a <strong>pull request</strong>, and is clearly documented at 
+<a href="https://help.github.com/articles/using-pull-requests">Using Pull Requests</a> 
+on github.com. For the record, and for the completion of the real-world 
+example used in this guide, the result was <a href="https://github.com/vhf/free-programming-books/pull/672">Pull Request 672</a> 
+on the <strong>Upstream</strong> repository.</p>
+
+<h2>Conclusion</h2>
+
+<p>The procedure outlined above might seem too much at first, but after a 
+couple of times, you will realize that it's actually pretty simple. If 
+you were to count the commands used here, you would only have a 
+handful. So, go ahead, become an open source developer!</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/logging-in-linux/">
+            <h2 class="card-title">Logging in Linux</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li>syslogd, previously the de facto standard Linux implementation, 
+used to be the default on Linux distributions.</li>
+<li>klogd</li>
+<li><a href="http://metalog.sourceforge.net/">metalog</a></li>
+</ul>
+
+<h2>Syslog Servers</h2>
+
+<ul>
+<li><a href="http://www.rsyslog.com/">rsyslog</a> is a free and open source syslog 
+server, the default on recent Ubuntu and CentOS distributions. 
+Paid-for options include a Windows agent that sends the Event log 
+to an rsyslog server.</li>
+<li><a href="http://www.balabit.com/network-security/syslog-ng/">syslog-ng</a> is 
+a free and open source syslog server, with great configuration 
+options. Commercial extra options include encryption and and a 
+web interface.</li>
+<li><a href="http://logstash.net/">LogStash</a> is free and open source, and 
+combines a syslog server with a web interface for searching and 
+graphing.</li>
+<li><a href="http://graylog2.org/">Graylog2</a> is also free and open source, and 
+like LogStash it combines the functionality of a syslog server with 
+that of an interface to search and graph the data.</li>
+<li><a href="http://fluentd.org/">Fluentd</a> is a syslog server, capable of 
+scaling up massively.</li>
+</ul>
+
+<h2>Web Interfaces</h2>
+
+<ul>
+<li><a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a> is a web 
+interface for logs collected with LogStash or with other data stored 
+in ElasticSearch.</li>
+<li>[Octopussy] is a web interface with searching and graphing features.
+Installation instructions exist for RedHat- and Debian-based 
+systems.</li>
+<li><a href="http://loganalyzer.adiscon.com/">LogAnalyzer</a> is a web frontend 
+for syslog, with some analysis and reporting capabilities.</li>
+</ul>
+
+<h2>Free and Open Source Log Analysis Software</h2>
+
+<ul>
+<li><a href="http://www.logreport.org/">LogReport</a> does log analysis and 
+reporting, but it seems that its development has stopped.</li>
+<li><a href="http://www.crypt.gen.nz/logsurfer/">LogSurfer</a> analyzes logs line 
+by line against predefined regular expressions, and can trigger 
+notifications.</li>
+<li><a href="https://fedorahosted.org/epylog/">Epylog</a> is a time-based log 
+analysis tool, which sends reports and alerts by emails. It is a 
+replacement of logwatch.</li>
+<li><a href="http://simple-evcorr.sourceforge.net/">SEC</a> does log analysis with 
+focus on event correlation.</li>
+<li><a href="http://code.google.com/p/enterprise-log-search-and-archive/">ELSA</a> 
+is an analysis and search tool for syslog-ng with MySQL for backend 
+and Sphinx for indexing.</li>
+<li><a href="https://github.com/tobi/clarity">Clarity</a> is a simple web front 
+end for the contents of a directory with log files, with grep-like 
+and tail-f-like features.</li>
+</ul>
+
+<h2>Non-Free or Closed Source or Commercial Log Analysis Software</h2>
+
+<ul>
+<li><a href="http://www.logzilla.net/">LogZilla</a> is free of charge for up to 10 
+devices and up to 1 million messages per day. Beyond those limits, 
+the price scales up according to the selected features. 
+Documentation includes instructions for RedHat- and Debian-based 
+systems.</li>
+<li><a href="http://www.splunk.com/">Splunk</a> is free for up to 500 MBytes of 
+data per day. Download options include packages for 2.6+ Kernel 
+Linux distributions.</li>
+<li><a href="http://www.cloudpelican.com/">CloudPelican</a> is still in development 
+as of this writing. Their website mentions that there is a free 
+version, but downloading the demo requires registration.</li>
+<li><a href="http://www.xpolog.com/">XPOLog</a> is a freeware log analysis software 
+with a standalone web server.</li>
+<li><a href="http://www8.hp.com/us/en/software-solutions/software.html?compURI=1314386">HP ArcSight Logger</a> 
+is a log analysis commercial solution by HP.</li>
+<li><a href="http://www.logscape.com/">LogScape</a> is a Linux based log analysis 
+and indexing tool, with a free basic version.</li>
+<li><a href="https://www.sumologic.com/">Sumo Logic</a> cloud based log management 
+and analytics. Free version works for up to 500 MBytes of data per 
+day, up to three users and up to 7 days retention.</li>
+<li><a href="http://www.sawmill.co.uk/">Sawmill</a> is a closed source analysis 
+tool, with free 30-day demo versions.</li>
+<li><a href="https://www.loggly.com/">Loggly</a> offers log management, analysis 
+and graphing. There is a free version for up to 200 MBytes of data 
+per day and 7-day retention.</li>
+<li><a href="http://www.bitsteer.com/otus_about.html">Otus SIEM</a></li>
+<li><a href="http://www.logrhythm.com/">LogRhythm</a> log management, analysis, 
+SIEM, focused on security and forensics.</li>
+</ul>
+
+<h2>Analytics and Analysis</h2>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/List_of_web_analytics_software">List of web analytics software</a></li>
+<li><a href="http://www.dmoz.org/Computers/Software/Internet/Site_Management/Log_Analysis/">Log Analysis</a> at DMOZ and 
+<a href="http://dir.yahoo.com/business_and_economy/business_to_business/communications_and_networking/internet_and_world_wide_web/network_management/traffic_management/log_analysis_tools/titles/">Log Analysis</a> at Yahoo.</li>
+</ul>
+
+<h2>For Windows</h2>
+
+<ul>
+<li><a href="http://www.intersectalliance.com/projects/SnareBackLog/index.html">Snare Backlog</a> 
+is a logging server for Windows, that can collect data from several 
+standard sources, as well as from a wide range of operating systems 
+that run its agent.</li>
+<li><a href="http://www.moonlit-software.com/logfaces/web/index.php">LogFaces</a> 
+is a syslog server for Windows.</li>
+<li><a href="http://www.aonaware.com/syslog.htm">Aonaware Syslog Server</a> is also 
+a syslog server, both free and open source.</li>
+<li><a href="http://www.microsoft.com/en-us/download/details.aspx?id=24659">Log Parser</a> 
+is a search tool for logs and other data sources.</li>
+</ul>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="http://www.thegeekstuff.com/2014/12/logstash-setup/">How to Setup Logstash on Linux with ElasticSearch, Redis, Nginx</a></li>
+<li><a href="http://engineering.laterooms.com/elks-in-laterooms/">ELKs in LateRooms</a></li>
+<li><a href="http://xmodulo.com/open-source-log-monitoring-tools-linux.html">What are good open-source log monitoring tools on Linux</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-28
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/google-server-migration-paper/">
+            <h2 class="card-title">Google Servers Migration Paper</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This has to be the coolest paper I 've read in a long time. It explains 
+how a few engineers working at Google, migrated thousands of servers 
+from the ancient RedHat Linux 7.1 to a modern version of Debian, with 
+minimum downtime, by replacing small bits of the operating system at a 
+time, in many many iterations.</p>
+
+<p>The paper is from a USENIX Conference, here you go, and you're very 
+welcome: <a href="http://marc.merlins.org/linux/talks/ProdNG-LCA2014/Paper/ProdNG.pdf">Live upgrading thousands of servers from an ancient Red Hat 
+distribution to 10 year newer Debian based one</a>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-26
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-write-erase/">
+            <h2 class="card-title">write erase</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>write erase</code> διαγράφει την παραμετροποίηση εκκίνησης 
+(startup-config). Αν ακολουθήσει επανεκκίνηση της συσκευής, όλες οι 
+ρυθμίσεις που έχουν γίνει χάνονται οριστικά.</p>
+
+<p>Συνώνυμα: <code>erase startup-config</code> και <code>erase nvram:</code>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-24
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/cisco/">cisco</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/fedora-ask-in-greek/">
+            <h2 class="card-title">Fedora Ask in Greek</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>With the noble efforts of the members of the 
+<a href="http://el.fedoracommunity.org/">Greek Fedora community</a>, the 
+<a href="https://ask.fedoraproject.org/el/questions/">Ask Fedora website now has a subsection for questions in Greek</a>. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-24
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/3/">3</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/4/">4</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/5/">5</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/6/">6</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/13/">13</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">14</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/15/">15</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/16/">16</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/18/">18</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/22/">22</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/27/">27</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

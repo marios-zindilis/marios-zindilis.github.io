@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Mutagen ID3 Python Library</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Mutagen ID3 Python Library</h1>
+            </header>
+            <p><strong>Mutagen</strong> is a Python module to handle audio metadata.</p>
+
+<h2>UFID: Unique File Identifier</h2>
+
+<p>The unique file identifier is a reference to an external database that may 
+contain more information about the work tagged with it. Like many ID3 tags, it 
+can have multiple values. For example, you can link the song "<em>Black Sabbath</em>" 
+by "Black Sabbath" as <code>mt0030286828</code> in <a href="http://www.allmusic.com/" title="AllMusic">AllMusic</a>, and as 
+<code>153a3596-af03-36ed-976a-83fec8745732</code> in <a href="https://musicbrainz.org/" title="MusicBrainz">MusicBrainz</a>. </p>
+
+<p>Note that according to the <a href="http://id3.org/id3v2.4.0-frames">definition of the UFID ID3 frame</a>, the URLs 
+should not be queries themselves. I guess that it might be a feature of the
+software that reads this tag to transform it to direct links. In the example
+used, those links would be: 
+<a href="http://www.allmusic.com/song/black-sabbath-mt0030286828">http://www.allmusic.com/song/black-sabbath-mt0030286828</a> and 
+<a href="https://musicbrainz.org/work/153a3596-af03-36ed-976a-83fec8745732">https://musicbrainz.org/work/153a3596-af03-36ed-976a-83fec8745732</a>.</p>
+
+<p>Let's see how to write UFID and read it back in Python, with Mutagen.</p>
+
+<p>{% highlight python %}</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>from mutagen import id3
+      song = id3.ID3('test.mp3')</p>
+      
+      <h1>Note that there is no <code>UFID</code> tag in the beginning:</h1>
+      
+      <p>song.keys()
+      dict_keys(['TPE1', 'TALB', 'APIC:', 'TDRC', 'TRCK', 'TPE2', 'TPOS', 'TIT2'])</p>
+      
+      <h1>Let's add two references:</h1>
+      
+      <p>am<em>url = 'http://www.allmusic.com/'
+      am</em>ref = 'mt0030286828'
+      mb<em>url = 'https://musicbrainz.org/'
+      mb</em>ref = '153a3596-af03-36ed-976a-83fec8745732'
+      song.add(id3.UFID(owner=am<em>url, data=am</em>ref.encode()))
+      song.add(id3.UFID(owner=mb<em>url, data=mb</em>ref.encode()))</p>
+      
+      <h1>There are now two UFIDs:</h1>
+      
+      <p>song.keys()
+      dict_keys(['UFID:https://musicbrainz.org/', 'TRCK', 'TPE1', 'UFID:http://www.allmusic.com/', 'TPE2', 'TALB', 'TIT2', 'APIC:', 'TPOS', 'TDRC'])</p>
+      
+      <h1>Read them back:</h1>
+      
+      <p>song['UFID:https://musicbrainz.org/']
+      UFID(owner='https://musicbrainz.org/', data=b'153a3596-af03-36ed-976a-83fec8745732')
+      song['UFID:https://musicbrainz.org/'].owner
+      'https://musicbrainz.org/'
+      song['UFID:https://musicbrainz.org/'].data
+      b'153a3596-af03-36ed-976a-83fec8745732'
+      song['UFID:https://musicbrainz.org/'].data.decode()
+      '153a3596-af03-36ed-976a-83fec8745732'
+      {% endhighlight %}</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Note the use of <code>encode()</code> and <code>decode()</code> methods of <code>unicode</code> used for the 
+<code>data</code> part of the frame, as it expects its contents to be bytes.</p>
+
+            <footer>
+                <p>Posted on 2015-12-12</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 27</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ubuntu-10-10-install-apache-php-mysql/">
+            <h2 class="card-title">Εγκατάσταση Apache, MySQL και PHP σε Ubuntu 10.10</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Βήματα για εγκατάσταση της στοίβας λογισμικού σε Ubuntu 10.10:</p>
+
+<h2>Εγκατάσταση Apache 2</h2>
+
+<pre><code>sudo apt-get install apache2
+</code></pre>
+
+<h2>Εγκατάσταση PHP 5</h2>
+
+<pre><code>sudo apt-get install php5
+</code></pre>
+
+<p>Σε προηγούμενες εκδόσεις του Ubuntu χρειαζόταν ξεχωριστά και εγκατάσταση του libapache2-mod-php5, το οποίο πλέον εγκαθίσταται αυτόματα μαζί με την PHP.</p>
+
+<h2>Εγκατάσταση MySQL</h2>
+
+<pre><code>sudo apt-get install mysql-server
+</code></pre>
+
+<p>Κατά τη διάρκεια της εγκατάστασης θα ζητηθεί το συνθηματικό του root, του προεπιλεγμένου χρήστη της MySQL.</p>
+
+<pre><code>sudo apt-get install libapache2-mod-auth-mysql
+sudo apt-get install php5-mysql
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-10-28
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/links-for-week-41-2011/">
+            <h2 class="card-title">Ενδιαφέροντες σύνδεσμοι (2011, εβδ#41)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Interesting links.</p>
+
+          </div>
+          <a href="/posts/links-for-week-41-2011/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-10-16
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-bandwidth/">
+            <h2 class="card-title">bandwidth (Εντολή Cisco)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Με την εντολή <code>bandwidth</code> μπορείτε να ορίσετε το εύρος ζώνης μιας 
+διεπαφής σε συσκευές Cisco. Η μονάδα μέτρησης είναι Kilobits / Second 
+(Kbps). Αν δεν οριστεί ρητά, το εύρος από προεπιλογή είναι (σε Kbps):</p>
+
+<ul>
+<li>Serial: 1.544</li>
+<li>Ethernet: 10.000</li>
+<li>FastEthernet: 100.000</li>
+<li>GigabitEthernet: 1.000.000 </li>
+</ul>
+
+<p>Η τιμή που ορίζεται με την εντολή <code>bandwidth</code> δεν καθορίζει το 
+πραγματικό λειτουργικό εύρος της διεπαφής, αλλά χρησιμοποιείται μόνο 
+για τον υπολογισμό διαφόρων παραμέτρων, όπως για παράδειγμα του EIGRP 
+Metric, και μερικών παραμέτρων του QoS και του SNMP.</p>
+
+<p>Συγκεκριμένα για το EIGRP Metric, συνίσταται η παραμετροποίηση κάποιας 
+άλλης από τις τιμές που συνυπολογίζονται στο Metric, για το λόγο ότι το 
+bandwidth επηρεάζει και άλλα πράγματα, άσχετα με την δρομολόγηση. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-10-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/links-for-week-40-2011/">
+            <h2 class="card-title">Ενδιαφέροντες σύνδεσμοι (2011, εβδ#40)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Interesting links.</p>
+
+          </div>
+          <a href="/posts/links-for-week-40-2011/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-10-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/links-for-week-39-2011/">
+            <h2 class="card-title">Ενδιαφέροντες σύνδεσμοι (2011, εβδ#39)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Interesting links.</p>
+
+          </div>
+          <a href="/posts/links-for-week-39-2011/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-10-01
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-switchport-port-security-mac-address-sticky/">
+            <h2 class="card-title">switchport port-security mac-address sticky</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>switchport port-security mac-address sticky</code> καθορίζει ότι οι 
+φυσικές διευθύνσεις MAC που δικαιούνται να επικοινωνούν μέσω της 
+συγκεκριμένης διεπαφής, είναι αυτές που είναι ήδη συνδεδεμένες, ή οι 
+πρώτες που θα συνδεθούν. Απαιτείται πρώτα να οριστεί η συγκεκριμένη 
+διεπαφή ως access: <a href="/docs/cisco/switchport-mode-access.el.html">switchport mode access</a> 
+και να ενεργοποιηθεί σ' αυτήν η ασφάλεια διεπαφής: <a href="/docs/cisco/switchport-port-security.el.html">switchport port-security</a>. </p>
+
+<h2>Δείτε επίσης</h2>
+
+<ul>
+<li>Εναλλακτικά, μπορείτε να καθορίσετε ρητά ότι η διεπαφή θα επιτρέπει 
+μόνο συγκεκριμένες φυσικές διευθύνσεις MAC που θα ορίσετε, με την 
+εντολή <a href="/docs/cisco/switchport-port-security-mac-address.el.html">switchport port-security mac-address $MAC-ADDRESS</a>.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-service-timestamps-log-datetime/">
+            <h2 class="card-title">service timestamps log datetime</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή αυτή καθορίζει την εμφάνιση των ημερομηνιών στα μηνύματα 
+αποσφαλμάτωσης στο τερματικό, σε εμφάνιση ημερομηνίας και ώρας, σε 
+αντίθεση με την εναλλακτική που είναι η εμφάνιση σε διάρκεια συνεχόμενης 
+λειτουργίας της συσκευής από την τελευταία εκκίνηση (uptime). Ένα παράδειγμα 
+εξόδου αποσφαλμάτωσης με αυτή την εμφάνιση των ημερομηνιών είναι:</p>
+
+<pre><code>Jan  5 19:34:18: tcp2: I ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 1368141491
+        DATA 2 ACK 946277077 PSH  WIN 56000
+Jan  5 19:34:18: tcp2: O ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 946277077
+        DATA 2 ACK 1368141493 PSH  WIN 3843
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">
+            <h2 class="card-title">switchport trunk encapsulation negotiate</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Καθορίζει το encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία 
+ήδη λειτουργεί ως trunk. Η τιμή negotiate αναγκάζει τη διεπαφή να 
+διαπραγματευτεί ανάμεσα σε <code>dot1q</code> και <code>isl</code> με τη συνδεδεμένη στο άλλο 
+άκρο του trunk συσκευή.</p>
+
+<h2>Δείτε επίσης</h2>
+
+<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές, 
+από τις οποίες η <code>negotiate</code> περιγράφεται σε αυτό το άρθρο. Για τις 
+άλλες δύο τιμές, δείτε:</p>
+
+<ul>
+<li><a href="/docs/cisco/switchport-trunk-encapsulation-dot1q.el.html">switchport trunk encapsulation dot1q</a> 
+για την τιμή <code>dot1q</code>, η οποία είναι και η μοναδική που 
+χρησιμοποιείται πλέον πρακτικά, και</li>
+<li><a href="/docs/cisco/switchport-trunk-encapsulation-isl.el.html">switchport trunk encapsulation isl</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-switchport-trunk-encapsulation-dot1q/">
+            <h2 class="card-title">switchport trunk encapsulation dot1q</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>switchport trunk encapsulation dot1q</code> καθορίζει το 
+encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία ήδη 
+λειτουργεί ως trunk. Η παράμετρος <code>dot1q</code> καθορίζει την τιμή στο 
+πρότυπο IEEE 802.1q.</p>
+
+<p>Υπάρχουν δύο πρότυπα λειτουργίας για διεπαφές trunk, το 802.1q και το ISL. Το πρότυπο ISL (Inter-Switch Link) αναπτύχθηκε από τη Cisco πολύ νωρίτερα από το 802.1q. Μια βασική του διαφορά από το 802.1q είναι ότι περικλείει το Ethernet Frame σε ένα επιπλέον ζεύγος header και trailer. Αντίθετα, το 802.1q προσθέτει μόνο ένα επιπλέον πεδίο στο υφιστάμενο header του Ethernet frame, και αναγκαστικά επανυπολογίζει το Frame Check Sequence (FCS) στο trailer.</p>
+
+<p>Πρακτικά, το ISL δεν χρησιμοποιείται πλέον σήμερα, και σε νεότερες συσκευές η ίδια η Cisco έχει σταματήσει να το υποστηρίζει. Αναφέρεται ακόμα στην τεκμηρίωση για σκοπούς συμβατότητας με παλαιότερες συσκευές. Οι συσκευές που δεν προσφέρουν άλλη δυνατότητα ρύθμισης, λειτουργούν από προεπιλογή σε dot1q. </p>
+
+<h2>Δείτε επίσης</h2>
+
+<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές. 
+Η βασική εναλλακτική του <code>dot1q</code> είναι η <a href="/docs/cisco/switchport-trunk-encapsulation-isl.el.html">switchport trunk encapsulation isl</a>, 
+και για αυτόματη διαπραγμάτευση του encapsulation μεταξύ των δύο συσκευών δείτε το 
+<a href="/docs/cisco/switchport-trunk-encapsulation-negotiate.el.html">switchport trunk encapsulation negotiate</a>. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-switchport-mode-access/">
+            <h2 class="card-title">switchport mode access</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>switchport mode access</code> ορίζει ότι μια διεπαφή θα συνδέεται μόνο με 
+μία συσκευή και μόνο σε ένα VLAN.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/3/">3</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/4/">4</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/5/">5</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/6/">6</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/13/">13</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/14/">14</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/15/">15</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/16/">16</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/18/">18</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/22/">22</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">27</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

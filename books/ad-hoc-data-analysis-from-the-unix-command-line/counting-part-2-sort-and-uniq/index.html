@@ -1,61 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Marios Zindilis - Counting Part 2 - sort and uniq</title>
-  <meta name="description" content="So far we&#39;ve seen how to use cut, grep and wc to select and count records with certain qualities. But each set of records we&#39;d like to count requires...">
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/static/css/zindilis.com.css">
-  <link rel="canonical" href="https://zindilis.com/books/ad-hoc-data-analysis-from-the-unix-command-line/counting-part-2-sort-and-uniq/">
-  <link rel="alternate" type="application/rss+xml" title="Marios Zindilis" href="https://zindilis.com/feed.xml">
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
   
-  <meta property="og:title" content="Counting Part 2 - sort and uniq">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Counting Part 2 - sort and uniq</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
 
-
-  <meta property="og:type" content="website">
-
-
-
-</head>
-
-
-<body>
-  <header class="mb-4">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/">Marios Zindilis</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-link-items" aria-controls="navbar-link-items" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbar-link-items">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" style="color:white" href="/docs/">Docs</a>
-          <a class="nav-item nav-link" style="color:white" href="/projects/">Projects</a>
-          <a class="nav-item nav-link" style="color:white" href="/about/">About</a>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
 
-
-  <div class="container">
-        <article class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">Counting Part 2 - sort and uniq</h1>
-  </header>
-
-  <div class="post-content">
-    <p>So far we&#39;ve seen how to use <code>cut</code>, <code>grep</code> and <code>wc</code> to select and count records 
-with certain qualities. But each set of records we&#39;d like to count requires a 
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Counting Part 2 - sort and uniq</h1>
+            </header>
+            <p>So far we've seen how to use <code>cut</code>, <code>grep</code> and <code>wc</code> to select and count records 
+with certain qualities. But each set of records we'd like to count requires a 
 separate command, as with counting the numbers of male and female names in the 
 most recent example. Combining the <code>uniq</code> and <code>sort</code> commands allows us to 
 count many groups at once.</p>
@@ -66,7 +49,7 @@ count many groups at once.</p>
 from its standard input to its standard output, but if a line is identical to 
 the immediately preceding line, the duplicate line is not written. For example:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>foo
+<div class="codehilite"><pre><span></span><code>$ cat foo
 a 
 a
 a
@@ -76,43 +59,48 @@ a
 a
 a
 c
-<span class="nv">$ </span>uniq foo
+$ uniq foo
 a
 b
 a
-c</code></pre></figure>
+c
+</code></pre></div>
 
 <p>Note that <code>a</code> is written twice because <code>uniq</code> compares only to the immediately 
 preceding line. If the data is sorted first, we get each distinct record just 
 once:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sort foo | uniq
+<div class="codehilite"><pre><span></span><code>$ sort foo <span class="p">|</span> uniq
 a
 b
-c</code></pre></figure>
+c
+</code></pre></div>
 
 <p>Finally, giving the <code>-c</code> option causes <code>uniq</code> to write counts associated with 
 each distinct entry:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sort foo | uniq <span class="nt">-c</span>
-6 a
-2 b
-1 c</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ sort foo <span class="p">|</span> uniq -c
+<span class="m">6</span> a
+<span class="m">2</span> b
+<span class="m">1</span> c
+</code></pre></div>
 
 <p>Sorting a CSV file by an arbitrary column is easy as well:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>file.csv
-a, 10, 0.5
-b, 20, 0.1
-c, 14, 0.01
-d, 55, 0.23
-e, 94, 0.78
-f, 1,  0.34
-g, 75, 1.0
-h, 3,  2.0
-i, 12, 1.5</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cat file.csv
+a, <span class="m">10</span>, <span class="m">0</span>.5
+b, <span class="m">20</span>, <span class="m">0</span>.1
+c, <span class="m">14</span>, <span class="m">0</span>.01
+d, <span class="m">55</span>, <span class="m">0</span>.23
+e, <span class="m">94</span>, <span class="m">0</span>.78
+f, <span class="m">1</span>,  <span class="m">0</span>.34
+g, <span class="m">75</span>, <span class="m">1</span>.0
+h, <span class="m">3</span>,  <span class="m">2</span>.0
+i, <span class="m">12</span>, <span class="m">1</span>.5
+</code></pre></div>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sort <span class="nt">-n</span> <span class="nt">-t</span><span class="s2">","</span> <span class="nt">-k</span> 2 file.csv
+<p>```bash
+$ sort -n -t"," -k 2 file.csv
 f, 1,  0.34
 h, 3,  2.0
 a, 10, 0.5
@@ -121,9 +109,10 @@ c, 14, 0.01
 b, 20, 0.1
 d, 55, 0.23
 g, 75, 1.0
-e, 94, 0.78</code></pre></figure>
+e, 94, 0.78</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sort <span class="nt">-n</span> <span class="nt">-t</span><span class="s2">","</span> <span class="nt">-k</span> 3 file.csv
+<pre><code>```bash
+$ sort -n -t"," -k 3 file.csv
 c, 14, 0.01
 b, 20, 0.1
 d, 55, 0.23
@@ -132,7 +121,8 @@ a, 10, 0.5
 e, 94, 0.78
 g, 75, 1.0
 i, 12, 1.5
-h, 3,  2.0</code></pre></figure>
+h, 3,  2.0
+</code></pre>
 
 <h2>Example - Creating a histogram</h2>
 
@@ -141,41 +131,44 @@ create histograms from virtually any record oriented text data. Returning to
 the name-to-gender mapping of the previous chapter, we could have gotten the 
 count of male and female names in one command like this:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>cut <span class="nt">-d</span><span class="s2">" "</span> <span class="nt">-f2</span> gender.txt | sort | uniq <span class="nt">-c</span>
-3966 F
-1051 M</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cut -d<span class="s2">&quot; &quot;</span> -f2 gender.txt <span class="p">|</span> sort <span class="p">|</span> uniq -c
+<span class="m">3966</span> F
+<span class="m">1051</span> M
+</code></pre></div>
 
 <h2>Example - Creating another histogram</h2>
 
 <p>And returning to the census data, we can now easily compute the complete 
 distribution of occupants per household:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep</span> <span class="s2">"^H"</span> pums_53.dat  | cut <span class="nt">-c106-107</span> | sort | uniq <span class="nt">-c</span>
-1796 00
-7192 01
-7890 02
-3551 03
-3195 04
-1391 05
- 518 06
- 190 07
-  79 08
-  39 09
-  14 10
-  14 11
-   3 12
-   3 13</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat  <span class="p">|</span> cut -c106-107 <span class="p">|</span> sort <span class="p">|</span> uniq -c
+<span class="m">1796</span> <span class="m">00</span>
+<span class="m">7192</span> <span class="m">01</span>
+<span class="m">7890</span> <span class="m">02</span>
+<span class="m">3551</span> <span class="m">03</span>
+<span class="m">3195</span> <span class="m">04</span>
+<span class="m">1391</span> <span class="m">05</span>
+ <span class="m">518</span> <span class="m">06</span>
+ <span class="m">190</span> <span class="m">07</span>
+  <span class="m">79</span> <span class="m">08</span>
+  <span class="m">39</span> <span class="m">09</span>
+  <span class="m">14</span> <span class="m">10</span>
+  <span class="m">14</span> <span class="m">11</span>
+   <span class="m">3</span> <span class="m">12</span>
+   <span class="m">3</span> <span class="m">13</span>
+</code></pre></div>
 
 <h2>Example - Verifying a primary key</h2>
 
 <p>This is a good opportunity to point out a big benefit of being able to play 
 with data in this fashion. It allows you to quickly spot potential problems in 
 a dataset. In the above example, why are there 1,796 households with 0 
-occupants? As another example of quickly verifying the integrity of data, let&#39;s 
+occupants? As another example of quickly verifying the integrity of data, let's 
 make sure that household id is truly a unique identifier:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep</span> <span class="s2">"^H"</span> pums_53.dat | cut <span class="nt">-c2-8</span> | sort | uniq <span class="nt">-c</span> | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">"^ *1 "</span> | wc <span class="nt">-l</span>
-0</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat <span class="p">|</span> cut -c2-8 <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> grep -v <span class="s2">&quot;^ *1 &quot;</span> <span class="p">|</span> wc -l
+<span class="m">0</span>
+</code></pre></div>
 
 <p>This <code>grep</code> invocation will print only lines that do not (because of the <code>-v</code> 
 flag) begin with a series of spaces followed by a <code>1</code> (the count from 
@@ -183,7 +176,7 @@ flag) begin with a series of spaces followed by a <code>1</code> (the count from
 number of lines written is zero, we know that each household id occurs once and 
 only once in the file.</p>
 
-<p>The technique of grepping <code>uniq</code>&#39;s output for lines with a certain count is 
+<p>The technique of grepping <code>uniq</code>'s output for lines with a certain count is 
 generally useful. One other common application is finding the set of 
 overlapping (duplicated) keys in a pair of files by grepping the output of 
 <code>uniq -c</code> for lines that begin with a <code>2</code>.</p>
@@ -192,23 +185,24 @@ overlapping (duplicated) keys in a pair of files by grepping the output of
 
 <p>Throwing an extra <code>sort</code> on the end of the pipeline will sort the histogram so 
 that the most common class is at the top (or bottom). This is useful when data 
-is categorical and does not have a natural order. You&#39;ll want to give <code>sort</code> 
+is categorical and does not have a natural order. You'll want to give <code>sort</code> 
 the <code>-n</code> option so that it sorts the counts numerically instead of lexically, 
 and I like to give the <code>-r</code> option to reverse the sort so that the output is 
 sorted in descending order, but this just a stylistic issue. For example, here 
 is the distribution of household heating fuel from most common to least common:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">grep</span> <span class="s2">"^H"</span> pums_53.dat | cut <span class="nt">-c132</span> | sort | uniq <span class="nt">-c</span> | sort <span class="nt">-rn</span>
-12074 3
- 7007 1
- 3161 
- 1372 6 
- 1281 4 
-  757 2
-  170 8
-   43 9
-    6 5
-    4 7</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat <span class="p">|</span> cut -c132 <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -rn
+<span class="m">12074</span> <span class="m">3</span>
+ <span class="m">7007</span> <span class="m">1</span>
+ <span class="m">3161</span> 
+ <span class="m">1372</span> <span class="m">6</span> 
+ <span class="m">1281</span> <span class="m">4</span> 
+  <span class="m">757</span> <span class="m">2</span>
+  <span class="m">170</span> <span class="m">8</span>
+   <span class="m">43</span> <span class="m">9</span>
+    <span class="m">6</span> <span class="m">5</span>
+    <span class="m">4</span> <span class="m">7</span>
+</code></pre></div>
 
 <p>Type 3, electricity, is most common, followed by type 1, gas. Type 7 is solar 
 power.</p>
@@ -220,71 +214,33 @@ convert the output if further operations on the output are wanted. Here we use
 a bit of <strong>inline perl</strong> to rewrite the lines and reverse the order of the 
 fields:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>cut <span class="nt">-d</span><span class="s2">" "</span> <span class="nt">-f2</span> gender.txt | sort | uniq <span class="nt">-c</span> | perl <span class="nt">-pe</span> <span class="s1">'s/^\s*([0-9]+) (\S+).*/$2, $1/'</span> 
-F, 3966
-M, 1051</code></pre></figure>
+<div class="codehilite"><pre><span></span><code>$ cut -d<span class="s2">&quot; &quot;</span> -f2 gender.txt <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> perl -pe <span class="s1">&#39;s/^\s*([0-9]+) (\S+).*/$2, $1/&#39;</span> 
+F, <span class="m">3966</span>
+M, <span class="m">1051</span>
+</code></pre></div>
 
-  </div>
+            <footer>
+                <p>Posted on 2016-11-13</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
 
-</article>
+    </main>
 
-  </div>
-
-  <footer id="site-footer" class="footer-distributed">
-  <div class="container">
-    <div class="footer-right">
-      <a href="/feed.xml" title="Marios Zindilis RSS Feed">
-        <i class="fa fa-rss" aria-hidden="true"></i><span class="sr-only">Marios Zindilis RSS Feed</span></a>
-      <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">
-        <i class="fa fa-linkedin" aria-hidden="true"></i><span class="sr-only">Marios Zindilis LinkedIn Profile</span></a>
-      <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">
-        <i class="fa fa-github" aria-hidden="true"></i><span class="sr-only">Marios Zindilis GitHub Page</span></a>
-    </div>
-
-    <div class="footer-left">
-      <p class="footer-links">
-        <a href="/">Home</a> · 
-        <a href="/docs/">Docs</a> ·
-        <a href="/projects/">Projects</a> ·
-        <a href="/about/">About</a>
-      </p>
-      <p>Marios Zindilis</p>
-    </div>
-  </div>
-</footer>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      // set padding-bottom of body to height of footer.site-footer:
-      document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      // http://stackoverflow.com/a/14570614
-      var observeDOM = (function(){
-        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
-          eventListenerSupported = window.addEventListener;
-
-        return function(obj, callback){
-          if( MutationObserver ){
-          // define a new observer
-            var obs = new MutationObserver(function(mutations, observer){
-              if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
-              callback();
-            });
-            // have the observer observe foo for changes in children
-            obs.observe( obj, { childList:true, subtree:true });
-          }
-          else if( eventListenerSupported ){
-            obj.addEventListener('DOMNodeInserted', callback, false);
-            obj.addEventListener('DOMNodeRemoved', callback, false);
-          }
-        }
-      })();
-      observeDOM(document.getElementById('site-footer') ,function(){
-        document.body.style.marginBottom = document.getElementById("site-footer").clientHeight + "px";
-      });
-    </script>
-
-
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   </body>
 </html>

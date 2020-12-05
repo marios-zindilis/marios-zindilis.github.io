@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Marios Zindilis - Page 15</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/netapp-controller-failover/">
+            <h2 class="card-title">NetApp Controller Failover</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Check the status with:</p>
+
+<pre><code>cf status
+</code></pre>
+
+<p>Force a takeover with:</p>
+
+<pre><code>cf takeover -n
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-21
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/juniper-routing-policy-examples/">
+            <h2 class="card-title">Juniper Routing Policy Examples</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Match Neighbor IP</h2>
+
+<pre><code>policy-options {
+    policy-statement bgp-incoming {
+        term from-customer-ACME {
+            from neighbor 1.2.3.4;
+            then reject;
+        }
+    }
+}
+</code></pre>
+
+<h2>Multiple Match Conditions</h2>
+
+<p>This policy will accept routes from a specific neighbor only if they 
+are tagged with a specific community:</p>
+
+<pre><code>policy-options {
+    policy-statement bgp-incoming {
+        term from-customer-ACME-accept {
+            from {
+                neighbor 1.2.3.4;
+                community A1com;
+            }
+            then {
+                accept;
+            }
+        term from-customer-ACME-reject {
+            from neighbor 1.2.3.4;
+            then reject;
+            }
+        }
+    }
+}
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-20
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/regular-expressions/">
+            <h2 class="card-title">Regular Expressions</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://www.regexr.com/">RegExr</a> an online tool to help you build 
+regular expressions.</li>
+<li><a href="http://regex.alf.nu/">Regex Golf</a> an online Regex Golf game to 
+help you sharpen your regex-building skills.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-16
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/zenoss-cannot-set-device-ip/">
+            <h2 class="card-title">Cannot set device IP in Zenoss</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>In Zenoss, there is a chance that you might get a failure to set or change the IP of a device in the web interface.
+This sometimes happens because that specific IP address is already assigned to one of the <em>subinterfaces</em> (typically a
+Vlan interface) of another device. In this case, you will just get an error that Zenoss <code>Failed to set IP Address</code>. </p>
+
+<p>If you try to set or change the IP address from ZenDMD, then the error is a little bit more informative:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;web-server.zindilis.net&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Device</span><span class="o">.</span><span class="n">setManageIp</span><span class="p">(</span><span class="s1">&#39;1.2.3.4&#39;</span><span class="p">)</span>
+<span class="mi">2014</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">11</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">30</span> <span class="n">WARNING</span> <span class="n">zen</span><span class="o">.</span><span class="n">Device</span> <span class="n">The</span> <span class="n">IP</span> <span class="n">address</span> <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">assigned</span>
+<span class="s1">&#39;The IP address 1.2.3.4 is already assigned&#39;</span>
+</code></pre></div>
+
+<p>The problem here is that you can't find an IP by searching for it in the web interface, if that IP is assigned to a
+subinterface. Enter ZenDMD! Here's how to search of a specific IP, in all the interfaces of all the devices:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">dmd</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevices_recursive</span><span class="p">():</span>
+<span class="o">...</span>      <span class="k">for</span> <span class="n">Interface</span> <span class="ow">in</span> <span class="n">Device</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">interfaces</span><span class="p">():</span> 
+<span class="o">...</span>           <span class="k">if</span> <span class="n">Interface</span><span class="o">.</span><span class="n">getIpAddress</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">Interface</span><span class="o">.</span><span class="n">getIpAddress</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;1.2.3.4&#39;</span><span class="p">):</span>
+<span class="o">...</span>                <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">Interface</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">Interface</span><span class="o">.</span><span class="n">getIpAddress</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Running the above, will return a result similar to:</p>
+
+<pre><code>router-1.zindilis.net Fa0/1.900 1.2.3.4
+</code></pre>
+
+<p>This tells you the device on which that IP address exists, and the specific subinterface on which it is assigned to.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-15
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/mysql-mysqldump/">
+            <h2 class="card-title">mysqldump</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>These are my favorite MySQL backup and restore one-liners.</p>
+
+<h2>Backup</h2>
+
+<p>To back up a database named <code>stuff</code>:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="nb">time</span> mysqldump -u root -p stuff <span class="p">|</span> gzip &gt; stuff.sql.gz
+</code></pre></div>
+
+<p>This pipes the clear text output from <code>mysqldump</code> directly into <code>gzip</code>, 
+and prints the duration of the operation in the end.</p>
+
+<h2>Restore</h2>
+
+<p>To restore the <code>stuff</code> database:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="nb">time</span> gunzip -c stuff.sql.gz <span class="p">|</span> pv <span class="p">|</span> mysql -u root -p stuff
+</code></pre></div>
+
+<p>This decompresses the dump back in clear text, and feeds it to <code>mysql</code> 
+through <code>pv</code>, which adds the perk of an indication of progress.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-14
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/mysql/">mysql</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/xmpp/">
+            <h2 class="card-title">XMPP</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Clients</h2>
+
+<ul>
+<li><a href="http://candy-chat.github.io/candy/">Candy</a>, a JavaScript-based multi-user chat client</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-12
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/apache-benchmarks/">
+            <h2 class="card-title">Benchmarking the Apache Server</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li>Using <code>ab</code> (see <a href="/docs/man/ab.1.html">man page for <code>ab</code></a>).</li>
+<li>Using <a href="https://github.com/tarekziade/boom"><code>boom!</code></a>, an Apache 
+benchmarking tool written in Python.</li>
+<li>Using <a href="https://github.com/rakyll/boom"><code>boom</code></a>, a rewrite of <code>boom!</code> in Go.</li>
+<li>Using <code>siege</code>.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-10
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/kvm/">
+            <h2 class="card-title">KVM (Kernel-based Virtual Machine)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Links</h2>
+
+<ul>
+<li><a href="http://www.linux-kvm.org/">linux-kvm.org</a></li>
+<li><a href="https://alteeve.ca/w/AN!Cluster_Tutorial_2">KVM Cluster Tutorial</a></li>
+</ul>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="/docs/virsh.html">virsh</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ftp/">
+            <h2 class="card-title">FTP and ftp</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>These are some notes on the <abbr title='File Transfer Protocol'>FTP</abbr> 
+protocol, and on the <code>ftp</code> command line client.</p>
+
+<h2>Active Vs Passive Mode</h2>
+
+<p>Two network connection are required for FTP transfers. In <strong>active 
+mode</strong>, the client initiates a connection to the server's port 21, and 
+the server initiates a connection back to the client's port 21. This 
+incoming connection (from the client's point of view) is often blocked 
+by firewalls, and/or not available in <abbr title="Local Area Network">
+LANs</abbr> that are <abbr title="Network Address Translation">NAT</abbr>ed. 
+To overcome this problem, in <strong>passive mode</strong>, the client initiates 
+both connections to the server.</p>
+
+<p>In the <code>ftp</code> CLI utility, the default mode is active. You can switch 
+between modes with the <code>passive</code> command:</p>
+
+<pre><code>marios@zindilis.net ~ $ ftp
+ftp&gt; open ftp.zindilis.net
+Name (ftp.zindilis.net:marios): 
+331 Please specify the password.
+Password: 
+ftp&gt; passive
+Passive mode on.
+ftp&gt; passive
+Passive mode off.
+ftp&gt;
+</code></pre>
+
+<p>There is no <code>active</code> command, modes are toggled with <code>passive</code>.</p>
+
+<h2>ASCII Vs Binary Transfers</h2>
+
+<p>There are two transfer modes, ASCII and Binary. In <strong>ASCII</strong>, files are 
+transferred as characters, some of which (like newlines) are converted 
+to match the operating system of the client. This works well for text 
+files, but is almost certain to corrupt any other type of file. In 
+<strong>binary</strong> mode, files are transferred unaltered. This helps maintain 
+the integrity of files, but increases the possibility of text files 
+appearing broken when transferred between different operating systems. </p>
+
+<p>In the <code>ftp</code> CLI utility, the commands <code>ascii</code> and <code>binary</code> switch 
+transfer modes:</p>
+
+<pre><code>marios@zindilis.net ~ $ ftp
+ftp&gt; open ftp.zindilis.net
+Name (ftp.zindilis.net:marios): 
+331 Please specify the password.
+Password:
+ftp&gt; ascii
+200 Switching to ASCII mode.
+ftp&gt; binary
+200 Switching to Binary mode.
+ftp&gt;
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-07
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-hostname/">
+            <h2 class="card-title">hostname (Cisco Command)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>hostname</code> command defines the name of the device. This is the name 
+displayed (among other places) in the command prompt, and in the CDP 
+neighbors list of other devices.</p>
+
+<p>Example:</p>
+
+<pre><code>cisco&gt; enable
+cisco# configure terminal
+cisco(config)# hostname router-5
+router-5(config)#
+</code></pre>
+
+<h2>Juniper Equivalent</h2>
+
+<p>The Juniper equivalent of the <code>hostname</code> command is:</p>
+
+<pre><code>marios@juniper# set system hostname &lt;HOSTNAME&gt;
+</code></pre>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="/docs/juniper/set-system-host-name.html"><code>set system host-name</code></a>, the Juniper equivalent</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+
+      <nav aria-label="page navigation">
+        <ul class="pagination justify-content-center mb-4">
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/">0</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/1/">1</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/2/">2</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/3/">3</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/4/">4</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/5/">5</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/6/">6</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/7/">7</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/8/">8</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/9/">9</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/10/">10</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/11/">11</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/12/">12</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/13/">13</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/14/">14</a></li>
+            
+          
+        
+          
+            <li class="page-item active"><span class="page-link">15</span></li>
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/16/">16</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/17/">17</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/18/">18</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/19/">19</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/20/">20</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/21/">21</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/22/">22</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/23/">23</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/24/">24</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/25/">25</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/26/">26</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/27/">27</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/28/">28</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/29/">29</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/30/">30</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+        </ul>
+      </nav>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4">
+  <div class="card my-4">
+    <h5 class="card-header">About</h5>
+    <div class="card-body">
+      <p>
+        Hello, I'm Marios Zindilis and this is my website. Opinions are my own. You also find me on
+        <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a>
+        and <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>.
+      </p>
+      <p class="mb-0">
+        Unless otherwise specified, content is licensed under
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+    </div>
+  </div>
+
+    <!-- TODO: SEARCH -->
+    <!-- <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-append">
+            <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+        </div>
+        </div>
+    </div> -->
+
+  <div class="card my-4">
+    <h5 class="card-header">Tags</h5>
+    <div class="card-body">
+      <p class="card-text">
+      
+        <a href="/tags/angular/">angular</a>, 
+      
+        <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-rds/">aws-rds</a>, 
+      
+        <a href="/tags/aws-s3/">aws-s3</a>, 
+      
+        <a href="/tags/backuppc/">backuppc</a>, 
+      
+        <a href="/tags/boto3/">boto3</a>, 
+      
+        <a href="/tags/cisco/">cisco</a>, 
+      
+        <a href="/tags/django/">django</a>, 
+      
+        <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/juniper/">juniper</a>, 
+      
+        <a href="/tags/linux-mint/">linux-mint</a>, 
+      
+        <a href="/tags/markdown2/">markdown2</a>, 
+      
+        <a href="/tags/mysql/">mysql</a>, 
+      
+        <a href="/tags/nfs/">nfs</a>, 
+      
+        <a href="/tags/performance-optimization/">performance-optimization</a>, 
+      
+        <a href="/tags/python/">python</a>, 
+      
+        <a href="/tags/regular-expressions/">regular-expressions</a>, 
+      
+        <a href="/tags/typescript/">typescript</a>, 
+      
+        <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/virtualbox/">virtualbox</a>, 
+      
+        <a href="/tags/vlc/">vlc</a>, 
+      
+        <a href="/tags/vmware/">vmware</a>, 
+      
+        <a href="/tags/zenoss/">zenoss</a>
+      
+      </p>
+    </div>
+  </div>
+</div>
+  </div><!-- .row -->
+</div><!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

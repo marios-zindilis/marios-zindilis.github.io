@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Disabling Apache Default Modules</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">Disabling Apache Default Modules</h1>
+            </header>
+            <p>With a default installation of Apache running, a set of modules are configured 
+to load automatically, to serve what the server's and the distribution's 
+developers evaluated to be the most common needs. These modules can be (and 
+probably should be) disabled on a production web server. This might save a very 
+tiny bit of memory for each module, and also can improve security, in case a 
+vulnerability exists in one of the loaded but unused modules.</p>
+
+<p>In fact, if you want to be paranoid about security, you can pretty much disable 
+all Apache modules, and only selectively enable those that are required for the 
+functionality that you want your server to have.</p>
+
+<p>In CentOS, you can see which modules are loaded on a running instance of 
+Apache, with:</p>
+
+<pre><code>httpd -M
+</code></pre>
+
+<h2><code>mod_proxy</code> and related proxy modules</h2>
+
+<p>The <code>mod_proxy</code> and its related modules add the capability to use Apache as a 
+proxy server in front of other Web servers, as well as in front of FTP servers, 
+application servers, FastCGI servers, and other types of servers specified by 
+loading additional modules.</p>
+
+<p>These are not necessary in a setup where Apache is used as a standalone Web 
+server. You can disable these features by commenting out the lines:</p>
+
+<pre><code>    LoadModule proxy_module modules/mod_proxy.so
+    LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
+    LoadModule proxy_ftp_module modules/mod_proxy_ftp.so
+    LoadModule proxy_http_module modules/mod_proxy_http.so
+    LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
+    LoadModule proxy_connect_module modules/mod_proxy_connect.so
+</code></pre>
+
+<p>The <code>mod_proxy_ajp</code> module provides the ability to proxy HTTP requests 
+coming to the web server to an application server. It is commonly used 
+together with Apache Tomcat. Read more about the <a href="http://httpd.apache.org/docs/current/mod/mod_proxy_ajp.html">Apache Module <code>mod_proxy_ajp</code></a>.</p>
+
+<h2><code>mod_substitute</code></h2>
+
+<p>The <code>substitute</code> module allows for sed-like regex-based string substitutions in 
+HTTP responses. To disable it, comment out the line:</p>
+
+<pre><code>LoadModule substitute_module modules/mod_substitute.so
+</code></pre>
+
+<p>Read more about the <a href="http://httpd.apache.org/docs/current/mod/mod_substitute.html">Apache Module <code>mod_substitute</code></a></p>
+
+<h2><code>mod_userdir</code></h2>
+
+<p>Module <code>userdir</code> is used to serve web content from inside users' home 
+directories, and it is loaded but deactivated (with the <code>UserDir disabled</code> 
+directive) by default on CentOS 6. To unload it permanently, edit 
+<code>/etc/httpd/conf/httpd.conf</code>, and comment out the line:</p>
+
+<pre><code>    LoadModule userdir_module modules/mod_userdir.so
+</code></pre>
+
+<p>You might also comment out the lines in the same file:</p>
+
+<pre><code>    &lt;IfModule mod_userdir.c&gt;
+        UserDir disabled
+    &lt;/IfModule&gt;
+</code></pre>
+
+<h2><code>mod_dav</code> and <code>mod_dav_fs</code></h2>
+
+<p>Both of these modules provide support for <a href="http://www.webdav.org/">WebDav</a> and 
+can be disabled if WebDav is not going to be used in production. To disable, 
+comment out the lines:</p>
+
+<pre><code>    LoadModule dav_module modules/mod_dav.so
+    LoadModule dav_fs_module modules/mod_dav_fs.so
+</code></pre>
+
+<p>You might also comment out the lines in the same file:</p>
+
+<pre><code>    &lt;IfModule mod_dav_fs.c&gt;
+        DAVLockDB /var/lib/dav/lockdb
+    &lt;/IfModule&gt;
+</code></pre>
+
+<h2><code>mod_speling</code></h2>
+
+<p>The <code>speling</code> module tries to guess if a visitor has misspelled the URL of a 
+page, and returns the page anyway if the requested misspelled page name and the 
+actual page name are close enought. To disable it, comment out the line:</p>
+
+<pre><code>    LoadModule speling_module modules/mod_speling.so
+</code></pre>
+
+<p>Read more about the <a href="https://httpd.apache.org/docs/current/mod/mod_speling.html">Apache <code>speling</code> module</a></p>
+
+<h2><code>mod_version</code></h2>
+
+<p>The <code>version</code> module allows you to specify different configuration depending on 
+the version of Apache that is running, by defining that configuration inside 
+<code>&lt;IfVersion&gt;</code> blocks of code. This makes it possible to have the same basic 
+configuration file for many servers, which can be useful to some organizations. 
+To disable this feature, commend out the line:</p>
+
+<pre><code>    LoadModule version_module modules/mod_version.so
+</code></pre>
+
+<h2>Authentication and authorization modules</h2>
+
+<p>Apache provides a few ways to handle user authentication (who can do something) 
+and authorization (what they can do). This functionality is provided by modules 
+that contain <code>authn</code> or <code>authz</code> in their names, repsectively. If you don't plan 
+on delegating these features to Apache at all, you can disable all related 
+modules:</p>
+
+<ul>
+<li><p><code>mod_ldap</code> and <code>mod_authnz_ldap</code>: These two modules can be used to delegate 
+ authentication to an LDAP directory. To disable, comment out these lines:</p>
+
+<pre><code>LoadModule ldap_module modules/mod_ldap.so
+LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
+</code></pre></li>
+<li><p><code>mod_auth_basic</code> and <code>mod_auth_digest</code> offer Basic or Digest authentication 
+respectively, and are used in combination with <code>mod_authn_file</code> (which 
+allows the definition of a file that contains user credentials, and makes 
+the use of the <code>htpasswd</code> command possible),<code>mod_authz_user</code> (which allows 
+for different access in different parts of a website, and makes the use of 
+the <code>Require</code> directive possible), and <code>mod_authz_groupfile</code> (which allows 
+for access to be restricted based on group membership, usually defined in a 
+<code>htgroup</code> file). Also, <code>mod_authn_default</code> and <code>mod_authz_default</code> are used 
+to reject credentials if authentication or authorization are enabled but 
+not configured. To disable, comment out these lines:</p>
+
+<pre><code>LoadModule auth_basic_module modules/mod_auth_basic.so
+LoadModule auth_digest_module modules/mod_auth_digest.so
+LoadModule authn_file_module modules/mod_authn_file.so
+LoadModule authz_user_module modules/mod_authz_user.so
+LoadModule authn_default_module modules/mod_authn_default.so
+LoadModule authz_groupfile_module modules/mod_authz_groupfile.so
+LoadModule authz_default_module modules/mod_authz_default.so
+</code></pre></li>
+<li><p><code>mod_authn_alias</code> allows you to create multiple Basic authentication 
+providers, and give them names (aliases) that are then used in the rest of 
+the configuration. To disable, comment out:</p>
+
+<pre><code>LoadModule authn_anon_module modules/mod_authn_anon.so
+</code></pre></li>
+<li><p><code>mod_authn_anon</code> allows anonymous users to access an otherwise restricted 
+website. In combination with some authorization modules, it can display 
+different content to authenticated and anonymous users. To disable, comment 
+out:</p>
+
+<pre><code>LoadModule authn_anon_module modules/mod_authn_anon.so
+</code></pre></li>
+<li><p><code>mod_authn_dbm</code> is an alternative to using an <code>htpasswd</code> file as the users' 
+database, and scales better when the number of users exceeds 200. To 
+disable, comment out:</p>
+
+<pre><code>LoadModule authn_dbm_module modules/mod_authn_dbm.so
+</code></pre></li>
+<li><p><code>mod_authz_host</code> allows restriction of access based on miscellaneous 
+properties of the client, as those are capture in Apache's environment 
+variables, the most common of which are the IP and/or hostname of the 
+client, and the web request sent by it. Access is controlled with the 
+<code>Allow</code> and <code>Deny</code> directives, and the order of application is controlled 
+with the <code>Order</code> directive. To disable, comment out:</p>
+
+<pre><code>LoadModule authz_host_module modules/mod_authz_host.so
+</code></pre>
+
+<p>If you disable this module, you will also have to comment out any uses of 
+the combination <code>Order</code>, <code>Allow</code> and <code>Deny</code> in your configuration, since 
+Apache will no longer understand their meaning. Running either <code>httpd -t</code> 
+or <code>service httpd configtest</code> after commenting out the module will tell you 
+the instances of those directives.</p>
+
+<p>Note that one of the uses of <code>mod_authz_host</code> is to disallow clients from 
+reading <code>.htaccess</code> files. If you disable this module, you will either need 
+to replace the instructions in <code>.htaccess</code> files with configuration inside 
+the main <code>httpd.conf</code>, or to find another way to make those files 
+unreadable.</p></li>
+<li><p><code>mod_authz_owner</code> will authorize access to a user by comparing the username 
+provided to either Basic or Digest authentication with the ownership of the 
+file requested on the underlying filesystem. To disable, comment out:</p>
+
+<pre><code>LoadModule authz_owner_module modules/mod_authz_owner.so
+</code></pre></li>
+</ul>
+
+            <footer>
+                <p>Posted on 2013-11-12</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>
