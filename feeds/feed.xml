@@ -4,7 +4,7 @@
         <link>https://zindilis.com/</link>
         <description>Personal website of Marios Zindilis</description>
         <atom:link href="https://zindilis.com/feeds/feed.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 15 Dec 2020 17:12:58 UT</lastBuildDate>
+        <lastBuildDate>Tue, 15 Dec 2020 17:27:22 UT</lastBuildDate>
         <item>
             <title>My .vimrc</title>
             <link>https://zindilis.com/posts/my-vimrc/</link>
