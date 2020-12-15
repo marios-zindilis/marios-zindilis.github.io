@@ -38,6 +38,35 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/crontab/">
+            <h2 class="card-title">crontab</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>crontab</code> can refer to two things:</p>
+
+<ol>
+<li>File <code>/etc/crontab</code>.</li>
+<li>Command <code>crontab</code>.</li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cisco-banner-motd/">
             <h2 class="card-title">Cisco: banner motd</h2>
           </a>
@@ -345,43 +374,6 @@ Services SDK.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/pysphere-get-virtual-machines/">
-            <h2 class="card-title">Get Virtual Machines from VMware with PySphere</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>This is a simple example of how to get a list of Virtual Machines from 
-a VMware host, using <a href="/docs/pysphere.html">PySphere</a>.</p>
-
-<p>{% highlight python %}
-import pysphere</p>
-
-<p>server = pysphere.VIServer()
-server.connect('vmware.zindilis.net', 'username', 'password')</p>
-
-<p>vms = server.get<em>registered</em>vms()
-for vm in vms:
-    virtual<em>machine = server.get</em>vm<em>by</em>path(vm)
-    print virtual<em>machine.get</em>property('name'), virtual<em>machine.get</em>property('ip_address')
-{% endhighlight %}</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-27
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -657,6 +649,8 @@ for vm in vms:
         <a href="/tags/typescript/">typescript</a>, 
       
         <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/vim/">vim</a>, 
       
         <a href="/tags/virtualbox/">virtualbox</a>, 
       

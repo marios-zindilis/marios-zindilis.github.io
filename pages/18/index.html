@@ -38,6 +38,43 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/pysphere-get-virtual-machines/">
+            <h2 class="card-title">Get Virtual Machines from VMware with PySphere</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is a simple example of how to get a list of Virtual Machines from 
+a VMware host, using <a href="/docs/pysphere.html">PySphere</a>.</p>
+
+<p>{% highlight python %}
+import pysphere</p>
+
+<p>server = pysphere.VIServer()
+server.connect('vmware.zindilis.net', 'username', 'password')</p>
+
+<p>vms = server.get<em>registered</em>vms()
+for vm in vms:
+    virtual<em>machine = server.get</em>vm<em>by</em>path(vm)
+    print virtual<em>machine.get</em>property('name'), virtual<em>machine.get</em>property('ip_address')
+{% endhighlight %}</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-27
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/bash-special-variables/">
             <h2 class="card-title">Bash Special Variables</h2>
           </a>
@@ -417,40 +454,6 @@ default:</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/opendcim/">
-            <h2 class="card-title">openDCIM</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>openDCIM is an open source application for <strong>D</strong>ata<strong>C</strong>enter 
-<strong>I</strong>nfrastructure <strong>M</strong>anagement.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="http://www.opendcim.org">openDCIM Website</a></li>
-<li><a href="https://github.com/samilliken/openDCIM">openDCIM on GitHub</a></li>
-<li><a href="http://www.youtube.com/user/openDCIM/videos">openDCIM Video Tutorials on YouTube</a></li>
-<li><a href="/docs/centos-6-install-opendcim-2.1.html">openDCIM 2.1 Installation on Centos 6</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-04
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -726,6 +729,8 @@ default:</p>
         <a href="/tags/typescript/">typescript</a>, 
       
         <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/vim/">vim</a>, 
       
         <a href="/tags/virtualbox/">virtualbox</a>, 
       

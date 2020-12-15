@@ -38,6 +38,73 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/linux-show-network-routes/">
+            <h2 class="card-title">Display network routes on Linux</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>With <code>netstat</code></h2>
+
+<p>Run <code>netstat -r</code> or <code>netstat --route</code>. Add <code>-n</code> or <code>--numeric</code> for 
+numeric output. Example from a laptop, on which all traffic is routed 
+out the wireless interface:</p>
+
+<pre><code>marios@rocko ~ $ netstat -rvn
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         192.168.88.1    0.0.0.0         UG        0 0          0 wlan0
+169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 wlan0
+192.168.88.0    0.0.0.0         255.255.255.0   U         0 0          0 wlan0
+</code></pre>
+
+<h2>With <code>route</code></h2>
+
+<p>Run <code>route</code> with optional <code>-n</code> for numeric output. The result is almost 
+identical to that of <code>netstat</code>. Example from the same machine as above:</p>
+
+<pre><code>marios@rocko ~ $ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.88.1    0.0.0.0         UG    0      0        0 wlan0
+169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 wlan0
+192.168.88.0    0.0.0.0         255.255.255.0   U     9      0        0 wlan0
+</code></pre>
+
+<h2>With <code>ip</code></h2>
+
+<p>Run <code>ip route</code>. Example from the same machine as above:</p>
+
+<pre><code>marios@rocko ~ $ ip route
+default via 192.168.88.1 dev wlan0  proto static 
+169.254.0.0/16 dev wlan0  scope link  metric 1000 
+192.168.88.0/24 dev wlan0  proto kernel  scope link  src 192.168.88.253  metric 9
+</code></pre>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="/docs/man/netstat.8.html">Man Page for <code>netstat</code></a></li>
+<li><a href="/docs/man/route.8.html">Man Page for <code>route</code></a></li>
+<li><a href="/docs/man/ip.7.html">Man Page for <code>ip</code></a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-17
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/netapp-serial-console-settings/">
             <h2 class="card-title">Serial Console Settings for NetApp</h2>
           </a>
@@ -647,39 +714,6 @@ be displayed in the hypervisor's console.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-back-pressure/">
-            <h2 class="card-title">Back-Pressure on Cisco Switches</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The <code>back-pressure</code> feature on Cisco switches is a workaround to the 
-inability to apply proper flow control on half-duplex links. It causes 
-the Cisco switch to send fake packets on the link, thus controlling the 
-transmission from the remote side, since only one side can send at a 
-time on a half-duplex link.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-08
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/cisco/">cisco</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -955,6 +989,8 @@ time on a half-duplex link.</p>
         <a href="/tags/typescript/">typescript</a>, 
       
         <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/vim/">vim</a>, 
       
         <a href="/tags/virtualbox/">virtualbox</a>, 
       

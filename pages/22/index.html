@@ -38,6 +38,39 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/cisco-back-pressure/">
+            <h2 class="card-title">Back-Pressure on Cisco Switches</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>back-pressure</code> feature on Cisco switches is a workaround to the 
+inability to apply proper flow control on half-duplex links. It causes 
+the Cisco switch to send fake packets on the link, thus controlling the 
+transmission from the remote side, since only one side can send at a 
+time on a half-duplex link.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-08
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/cisco/">cisco</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/centos-6-convert-mbr-to-gpt/">
             <h2 class="card-title">Convert MBR Partition Table to GPT on CentOS 6</h2>
           </a>
@@ -1013,62 +1046,6 @@ service postgresql restart
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/easy_install/">
-            <h2 class="card-title">easy_install</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><code>easy_install</code> is a tool for installing Python modules from PyPI.</p>
-
-<h2>Installation on CentOS</h2>
-
-<p>On CentOS, <code>easy_install</code> is provided by the package <code>python-setuptools</code>:</p>
-
-<pre><code>yum whatprovides */easy_install
-... 
-python-setuptools-0.6.10-3.el6.noarch : Easily build and distribute Python packages
-</code></pre>
-
-<p>To install it:</p>
-
-<pre><code>yum -y install python-setuptools
-</code></pre>
-
-<p>You can then use it to install a module, by just providing the module 
-name as the only parameter, e.g:</p>
-
-<pre><code>easy_install markdown2
-</code></pre>
-
-<h2>Usage</h2>
-
-<p>To install a Python module from PyPI:</p>
-
-<pre><code>sudo easy_install module_name
-</code></pre>
-
-<p>To upgrade:</p>
-
-<pre><code>sudo easy_install --upgrade module_name
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-10-25
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -1344,6 +1321,8 @@ name as the only parameter, e.g:</p>
         <a href="/tags/typescript/">typescript</a>, 
       
         <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/vim/">vim</a>, 
       
         <a href="/tags/virtualbox/">virtualbox</a>, 
       

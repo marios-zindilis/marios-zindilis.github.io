@@ -38,6 +38,47 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/cisco-mac-address-table-aging-time/">
+            <h2 class="card-title">mac-address-table aging-time</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Με την εντολή αυτή μπορείτε να καθορίσετε αν και κάθε πόσο χρόνο θα 
+διαγράφονται οι καταγραφές στον πίνακα διευθύνσεων MAC (MAC address 
+table) μιας συσκευής. Αν δοθεί η τιμή 0, τότε δεν διαγράφονται <strong>ποτέ</strong> 
+οι καταγραφές, αλλιώς αν δοθεί ένας ακέραιος, τότε καταγράφονται σε 
+τόσα <i>δευτερόλεπτα</i> όσα ο ακέραιος που δόθηκε. Για παράδειγμα:</p>
+
+<pre><code>cisco(config)#mac-address-table aging-time 600
+</code></pre>
+
+<p>Η πιο πάνω εντολή θα ορίσει τη διάρκεια παραμονής των διευθύνσεων MAC 
+σε δέκα λεπτά.</p>
+
+<dl>
+<dt> Προεπιλογή
+</dt><dd> Η προεπιλεγμένη τιμή της μεταβλητής <code>$TIME</code> στις συσκευές Cisco είναι 300, δηλαδή 5 λεπτά.
+</dd><dt> Εξαιρέσεις
+</dt><dd> Μερικές παλιότερες συσκευές δεν υποστηρίζουν την τιμή 0, δηλαδή δεν υποστηρίζουν την απενεργοποίηση της διαγραφής των διευθύνσεων από τον πίνακα. Σε αυτή την περίπτωση, η πλησιέστερη λύση είναι ο ορισμός της μεταβλητής $TIME στην μεγαλύτερη τιμή που επιτρέπει η συσκευή.
+</dd></dl>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-06-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/fedora-15-minimal-server/">
             <h2 class="card-title">Fedora 15: Εγκατάσταση ενός μινιμαλιστικού εξυπηρετητή</h2>
           </a>
@@ -289,31 +330,6 @@
           
             <span class="mr-2">
               <b>Posted</b>: 2011-03-28
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-5/">
-            <h2 class="card-title">Reading #5</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Today's reading material.</p>
-
-          </div>
-          <a href="/posts/reading-5/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-03-27
             </span>
           
           
@@ -595,6 +611,8 @@
         <a href="/tags/typescript/">typescript</a>, 
       
         <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/vim/">vim</a>, 
       
         <a href="/tags/virtualbox/">virtualbox</a>, 
       

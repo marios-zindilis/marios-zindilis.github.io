@@ -38,6 +38,47 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/git/">
+            <h2 class="card-title">Git</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>See also</h2>
+
+<ul>
+<li>A series of articles about Git at sitepoint.com:
+<ol>
+<li><a href="http://www.sitepoint.com/git-for-beginners/">Git for Beginners</a></li>
+<li><a href="http://www.sitepoint.com/getting-started-git-team-environment/">Getting Started with Git in a Team Environment</a></li>
+<li><a href="http://www.sitepoint.com/10-tips-git-next-level/">10 Tips to Push Your Git Skills to the Next Level</a></li>
+</ol></li>
+<li><a href="/docs/contribute-on-github.html" title="Contribute to an open source project on GitHub">Contribute to an open source project on GitHub</a></li>
+</ul>
+
+<h3>Self-hosted Git Services</h3>
+
+<ol>
+<li><a href="https://about.gitlab.com/">GitLab</a></li>
+<li><a href="http://gogs.io/">Gogs</a></li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-06-21
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/vmware-vmdk/">
             <h2 class="card-title">VMware VMDK File Format</h2>
           </a>
@@ -343,67 +384,6 @@ turn takes a log format specification. This post shows how to use ISO format for
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/web-py-subapplications/">
-            <h2 class="card-title">web.py Subapplications</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>To better organize your source code in a web.py application, you can break it 
-down in subapplications. Those subapplications will be imported as Python 
-modules in your main web.py script (which, in the below examples is 
-<code>index.py</code>).</p>
-
-<h2>Troubleshooting</h2>
-
-<h3><code>AttributeError: 'module' object has no attiribute ...</code></h3>
-
-<p>If you get the error:</p>
-
-<pre><code>AttributeError: 'module' object has no attribute 'app'
-</code></pre>
-
-<p>...then you might be running into Python naming collissions. Check if you have 
-given one of your subapplications the same name as an existing Python module. 
-For example, you shouldn't name a subapplication <code>user</code>, since that is an 
-existing Python module.</p>
-
-<h3><code>ImportError: No module named ...</code></h3>
-
-<p>If you get the error:</p>
-
-<pre><code>ImportError: No module named subapp
-</code></pre>
-
-<p>... (where <code>subapp</code> is the name of your subapplication), then Python cannot 
-<code>import</code> the subapplication as a module. As a first step, create an empty file 
-named <code>__init__.py</code> in the same directory as your subapplication, and try 
-again. If you still get that error, and assuming your subapplications are in 
-the same directory as your main application, you can try this ugly hack in the 
-very beginning of your main application script:</p>
-
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">inspect</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()))))</span>
-</code></pre></div>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-04-22
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -679,6 +659,8 @@ very beginning of your main application script:</p>
         <a href="/tags/typescript/">typescript</a>, 
       
         <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/vim/">vim</a>, 
       
         <a href="/tags/virtualbox/">virtualbox</a>, 
       

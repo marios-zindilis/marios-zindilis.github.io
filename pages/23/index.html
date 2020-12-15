@@ -38,6 +38,62 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/easy_install/">
+            <h2 class="card-title">easy_install</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>easy_install</code> is a tool for installing Python modules from PyPI.</p>
+
+<h2>Installation on CentOS</h2>
+
+<p>On CentOS, <code>easy_install</code> is provided by the package <code>python-setuptools</code>:</p>
+
+<pre><code>yum whatprovides */easy_install
+... 
+python-setuptools-0.6.10-3.el6.noarch : Easily build and distribute Python packages
+</code></pre>
+
+<p>To install it:</p>
+
+<pre><code>yum -y install python-setuptools
+</code></pre>
+
+<p>You can then use it to install a module, by just providing the module 
+name as the only parameter, e.g:</p>
+
+<pre><code>easy_install markdown2
+</code></pre>
+
+<h2>Usage</h2>
+
+<p>To install a Python module from PyPI:</p>
+
+<pre><code>sudo easy_install module_name
+</code></pre>
+
+<p>To upgrade:</p>
+
+<pre><code>sudo easy_install --upgrade module_name
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/samba-security-options/">
             <h2 class="card-title">Samba security Options</h2>
           </a>
@@ -904,37 +960,6 @@ the desirable size, like:</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/running-multiple-instances-of-thunderbird/">
-            <h2 class="card-title">Running multiple instances of Thunderbird</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>You can run multiple instances of Thunderbird with different user profiles for each instance, by launching it from command line as:</p>
-
-<pre>[marios@bate ~]$ thunderbird -no-remote -P work &
-[marios@bate ~]$ thunderbird -no-remote -P personal &</pre>
-
-<p>The <code>-P</code> option defines the profile name. If you want to create a new profile, use <code>-P</code> without a name.</p>
-
-<p>NOTE: This article is a short version of <a href="http://kb.mozillazine.org/Run_multiple_copies_of_Thunderbird_at_the_same_time">Run multiple copies of Thunderbird at the same time</a> from the <a href="http://kb.mozillazine.org/">Mozilla Knowledge Base</a>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-09-09
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -1210,6 +1235,8 @@ the desirable size, like:</p>
         <a href="/tags/typescript/">typescript</a>, 
       
         <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/vim/">vim</a>, 
       
         <a href="/tags/virtualbox/">virtualbox</a>, 
       

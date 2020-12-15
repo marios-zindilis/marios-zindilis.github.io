@@ -38,6 +38,81 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/rhel-yum-install-from-dvd/">
+            <h2 class="card-title">Install packages from RHEL DVD with yum</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>There are a lot of packages available on the RedHat Enterprise Linux 
+Installation DVD (I count 3764 <code>.rpm</code> files on version 6.5 Beta), and you can 
+mount the DVD on your system and then use it as a repository to install them 
+with <code>yum</code>. To do that:</p>
+
+<ol>
+<li><p>First you need access to the files on the DVD. If the disk is inserted in a 
+physical DVD drive on your system, or if you are working in a virtual 
+machine and you have the DVD attached to the VM's virtual optical drive, you 
+can mount it with:</p>
+
+<pre><code>mkdir /media/rhel
+mount /dev/cdrom /media/rhel
+</code></pre>
+
+<p>Otherwise, if you have the <code>.iso</code> image locally on the system, you can 
+mount that one instead:</p>
+
+<pre><code>mkdir /media/rhel
+mount -o loop /root/rhel.iso /media/rhel
+</code></pre></li>
+<li><p>Next, you need to create a Yum repository pointing to the mounted 
+disk. To do that, create a new <code>.repo</code> file in the 
+<code>/etc/yum.repos.d/</code> directory:</p>
+
+<pre><code>vi /etc/yum.repos.d/rhel-media.repo
+</code></pre>
+
+<p>...and populate it with the following lines:</p>
+
+<pre><code>[rhel-media]
+name=rhel-media
+baseurl=file:///media/rhel
+gpgcheck=1
+enabled=1
+gpgfile=file:///media/rhel/RPM-GPG-KEY-redhat-release
+</code></pre>
+
+<p>If you don't remember the configuration lines listed above,  you 
+can peak at other <code>.repo</code> files in <code>/etc/yum.repos.d/</code>.</p></li>
+</ol>
+
+<p>You can then install packages, for example <code>httpd</code> with simply doing:</p>
+
+<pre><code>yum install httpd
+</code></pre>
+
+<p>You can also verify that the DVD is the source for that package with:</p>
+
+<pre><code>yum info  httpd | grep Repo
+Repo        : rhel-media
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-03-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/linux-mint/">
             <h2 class="card-title">Linux Mint</h2>
           </a>
@@ -332,38 +407,6 @@ the LXDE desktop by default. </p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/centos-6-install-syslog-ng/">
-            <h2 class="card-title">Installation of syslog-ng on CentOS 6</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ol>
-<li>Enable EPEL</li>
-<li>yum install -y syslog-ng</li>
-<li>Configure /etc/syslog-ng/syslog-ng.conf</li>
-<li><code>chkconfig syslog-ng on</code></li>
-<li><code>chkconfig rsyslog off</code></li>
-<li><code>service rsyslog stop</code></li>
-<li><code>service syslog-ng start</code></li>
-</ol>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-03-11
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -639,6 +682,8 @@ the LXDE desktop by default. </p>
         <a href="/tags/typescript/">typescript</a>, 
       
         <a href="/tags/ubuntu/">ubuntu</a>, 
+      
+        <a href="/tags/vim/">vim</a>, 
       
         <a href="/tags/virtualbox/">virtualbox</a>, 
       
