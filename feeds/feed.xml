@@ -1,0 +1,110 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Marios Zindilis</title>
+        <link>https://zindilis.com/</link>
+        <description>Personal website of Marios Zindilis</description>
+        <atom:link href="https://zindilis.com/feeds/feed.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Tue, 15 Dec 2020 17:07:05 UT</lastBuildDate>
+        <item>
+            <title>My .vimrc</title>
+            <link>https://zindilis.com/posts/my-vimrc/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/my-vimrc/</guid>
+        </item>
+        <item>
+            <title>A small web application with Angular5 and Django</title>
+            <link>https://zindilis.com/posts/a-small-web-app-with-angular-and-django/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/a-small-web-app-with-angular-and-django/</guid>
+        </item>
+        <item>
+            <title>Bootstrap</title>
+            <link>https://zindilis.com/posts/bootstrap/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/bootstrap/</guid>
+        </item>
+        <item>
+            <title>Angular</title>
+            <link>https://zindilis.com/posts/angular/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/angular/</guid>
+        </item>
+        <item>
+            <title>Upload file to S3 Bucket with the AWS CLI</title>
+            <link>https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</guid>
+        </item>
+        <item>
+            <title>Upload file to S3 Bucket using Boto3</title>
+            <link>https://zindilis.com/posts/upload-file-to-s3-with-boto3/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-boto3/</guid>
+        </item>
+        <item>
+            <title>Create S3 Bucket with the AWS CLI</title>
+            <link>https://zindilis.com/posts/create-s3-bucket-with-aws-cli/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/create-s3-bucket-with-aws-cli/</guid>
+        </item>
+        <item>
+            <title>Create S3 Bucket with Boto3</title>
+            <link>https://zindilis.com/posts/create-s3-bucket-with-boto3/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/create-s3-bucket-with-boto3/</guid>
+        </item>
+        <item>
+            <title>Back-end Validation for Django Model Field Choices</title>
+            <link>https://zindilis.com/posts/django-backend-validation-of-choices/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/django-backend-validation-of-choices/</guid>
+        </item>
+        <item>
+            <title>Single-App Django Project Anatomy</title>
+            <link>https://zindilis.com/posts/django-anatomy-for-single-app/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/django-anatomy-for-single-app/</guid>
+        </item>
+        <item>
+            <title>AWS</title>
+            <link>https://zindilis.com/posts/aws/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/aws/</guid>
+        </item>
+        <item>
+            <title>Sphinx</title>
+            <link>https://zindilis.com/posts/sphinx/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/sphinx/</guid>
+        </item>
+        <item>
+            <title>Ad Hoc Data Analysis From The Unix Command Line</title>
+            <link>https://zindilis.com/posts/ad-hoc-data-analysis-from-the-unix-command-line/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/ad-hoc-data-analysis-from-the-unix-command-line/</guid>
+        </item>
+        <item>
+            <title>Control VLC with Python</title>
+            <link>https://zindilis.com/posts/control-vlc-with-python/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/control-vlc-with-python/</guid>
+        </item>
+        <item>
+            <title>Mutagen ID3 Python Library</title>
+            <link>https://zindilis.com/posts/mutagen/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/mutagen/</guid>
+        </item>
+        <item>
+            <title>Hexadecimal Primary Key in Django Model</title>
+            <link>https://zindilis.com/posts/hex-primary-key-in-django-model/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/hex-primary-key-in-django-model/</guid>
+        </item>
+        <item>
+            <title>Regular expressions in python-markdown2 (part 2)</title>
+            <link>https://zindilis.com/posts/regex-in-python-markdown2-pt2/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/regex-in-python-markdown2-pt2/</guid>
+        </item>
+        <item>
+            <title>Audacity</title>
+            <link>https://zindilis.com/posts/audacity/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/audacity/</guid>
+        </item>
+        <item>
+            <title>Regular expressions in python-markdown2 (part 1)</title>
+            <link>https://zindilis.com/posts/regex-in-python-markdown2-pt1/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/regex-in-python-markdown2-pt1/</guid>
+        </item>
+        <item>
+            <title>web.py Deployment on Ubuntu 14.04</title>
+            <link>https://zindilis.com/posts/web-py-deployment-ubuntu/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/web-py-deployment-ubuntu/</guid>
+        </item>
+        
+    </channel>
+</rss>
