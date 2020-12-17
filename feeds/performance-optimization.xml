@@ -1,0 +1,22 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Marios Zindilis - Posts tagged performance-optimization</title>
+        <link>https://zindilis.com/tags/performance-optimization/</link>
+        <description>Personal website of Marios Zindilis - Posts tagged performance-optimization</description>
+        <atom:link href="https://zindilis.com/feeds/performance-optimization.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Thu, 17 Dec 2020 16:17:21 UT</lastBuildDate>
+        <item>
+            <title>Regular expressions in python-markdown2 (part 2)</title>
+            <link>https://zindilis.com/posts/regex-in-python-markdown2-pt2/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/regex-in-python-markdown2-pt2/</guid>
+            <pubDate>Sun, 22 Nov 2015 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Regular expressions in python-markdown2 (part 1)</title>
+            <link>https://zindilis.com/posts/regex-in-python-markdown2-pt1/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/regex-in-python-markdown2-pt1/</guid>
+            <pubDate>Sat, 07 Nov 2015 00:00:00 UT</pubDate>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Marios Zindilis - Posts tagged vlc</title>
+        <link>https://zindilis.com/tags/vlc/</link>
+        <description>Personal website of Marios Zindilis - Posts tagged vlc</description>
+        <atom:link href="https://zindilis.com/feeds/vlc.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Thu, 17 Dec 2020 16:17:22 UT</lastBuildDate>
+        <item>
+            <title>Control VLC with Python</title>
+            <link>https://zindilis.com/posts/control-vlc-with-python/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/control-vlc-with-python/</guid>
+            <pubDate>Sun, 23 Oct 2016 00:00:00 UT</pubDate>
+        </item>
+        
+    </channel>
+</rss>

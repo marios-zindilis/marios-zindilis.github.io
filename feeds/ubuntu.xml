@@ -1,0 +1,16 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Marios Zindilis - Posts tagged ubuntu</title>
+        <link>https://zindilis.com/tags/ubuntu/</link>
+        <description>Personal website of Marios Zindilis - Posts tagged ubuntu</description>
+        <atom:link href="https://zindilis.com/feeds/ubuntu.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Thu, 17 Dec 2020 16:17:21 UT</lastBuildDate>
+        <item>
+            <title>How to run Firefox 3.6 on Ubuntu 15.04</title>
+            <link>https://zindilis.com/posts/run-firefox-3-on-ubuntu-15.04/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/run-firefox-3-on-ubuntu-15.04/</guid>
+            <pubDate>Sat, 05 Sep 2015 00:00:00 UT</pubDate>
+        </item>
+        
+    </channel>
+</rss>

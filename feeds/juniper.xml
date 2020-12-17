@@ -1,0 +1,16 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Marios Zindilis - Posts tagged juniper</title>
+        <link>https://zindilis.com/tags/juniper/</link>
+        <description>Personal website of Marios Zindilis - Posts tagged juniper</description>
+        <atom:link href="https://zindilis.com/feeds/juniper.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Thu, 17 Dec 2020 16:17:21 UT</lastBuildDate>
+        <item>
+            <title>Study Material for JNCIA</title>
+            <link>https://zindilis.com/posts/juniper-jncia-study-material/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/juniper-jncia-study-material/</guid>
+            <pubDate>Sat, 02 Nov 2013 00:00:00 UT</pubDate>
+        </item>
+        
+    </channel>
+</rss>

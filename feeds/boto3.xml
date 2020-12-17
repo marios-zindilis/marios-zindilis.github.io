@@ -1,0 +1,22 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Marios Zindilis - Posts tagged boto3</title>
+        <link>https://zindilis.com/tags/boto3/</link>
+        <description>Personal website of Marios Zindilis - Posts tagged boto3</description>
+        <atom:link href="https://zindilis.com/feeds/boto3.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Thu, 17 Dec 2020 16:17:22 UT</lastBuildDate>
+        <item>
+            <title>Upload file to S3 Bucket using Boto3</title>
+            <link>https://zindilis.com/posts/upload-file-to-s3-with-boto3/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-boto3/</guid>
+            <pubDate>Mon, 07 Aug 2017 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Create S3 Bucket with Boto3</title>
+            <link>https://zindilis.com/posts/create-s3-bucket-with-boto3/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/create-s3-bucket-with-boto3/</guid>
+            <pubDate>Sun, 06 Aug 2017 00:00:00 UT</pubDate>
+        </item>
+        
+    </channel>
+</rss>

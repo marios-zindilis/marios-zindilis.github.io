@@ -1,0 +1,16 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Marios Zindilis - Posts tagged vmware</title>
+        <link>https://zindilis.com/tags/vmware/</link>
+        <description>Personal website of Marios Zindilis - Posts tagged vmware</description>
+        <atom:link href="https://zindilis.com/feeds/vmware.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Thu, 17 Dec 2020 16:17:22 UT</lastBuildDate>
+        <item>
+            <title>Features disabled when VMware Evaluation Expires</title>
+            <link>https://zindilis.com/posts/vmware-evaluation-expired/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/vmware-evaluation-expired/</guid>
+            <pubDate>Mon, 27 Apr 2015 00:00:00 UT</pubDate>
+        </item>
+        
+    </channel>
+</rss>

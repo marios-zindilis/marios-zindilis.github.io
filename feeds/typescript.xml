@@ -1,0 +1,16 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Marios Zindilis - Posts tagged typescript</title>
+        <link>https://zindilis.com/tags/typescript/</link>
+        <description>Personal website of Marios Zindilis - Posts tagged typescript</description>
+        <atom:link href="https://zindilis.com/feeds/typescript.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Thu, 17 Dec 2020 16:17:22 UT</lastBuildDate>
+        <item>
+            <title>Angular</title>
+            <link>https://zindilis.com/posts/angular/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/angular/</guid>
+            <pubDate>Fri, 02 Feb 2018 00:00:00 UT</pubDate>
+        </item>
+        
+    </channel>
+</rss>

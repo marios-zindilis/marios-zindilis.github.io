@@ -1,0 +1,16 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Marios Zindilis - Posts tagged linux-mint</title>
+        <link>https://zindilis.com/tags/linux-mint/</link>
+        <description>Personal website of Marios Zindilis - Posts tagged linux-mint</description>
+        <atom:link href="https://zindilis.com/feeds/linux-mint.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Thu, 17 Dec 2020 16:17:22 UT</lastBuildDate>
+        <item>
+            <title>Install Oracle Virtualbox on Linux Mint 17</title>
+            <link>https://zindilis.com/posts/install-oracle-virtualbox-on-linux-mint-17/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/install-oracle-virtualbox-on-linux-mint-17/</guid>
+            <pubDate>Wed, 01 Oct 2014 00:00:00 UT</pubDate>
+        </item>
+        
+    </channel>
+</rss>
