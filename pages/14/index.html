@@ -38,6 +38,44 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/zenoss-zendmd-add-device-to-group/">
+            <h2 class="card-title">Zenoss: Add a device to a Group with ZenDMD</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>As user <code>zenoss</code> (or whatever user your Zenoss application runs as), run 
+<code>zendmd</code>, and:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;My Awesome Server&#39;</span><span class="p">)</span>
+<span class="n">Device</span><span class="o">.</span><span class="n">addDeviceGroup</span><span class="p">(</span><span class="s1">&#39;My Wonderful Group&#39;</span><span class="p">)</span>
+<span class="n">commit</span><span class="p">()</span>
+</code></pre></div>
+
+<p>This will make the device named <code>My Awesome Server</code> a member of the group named 
+<code>My Wonderful Group</code>. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-19
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/linux-backup-tools/">
             <h2 class="card-title">Linux Backup Tools</h2>
           </a>
@@ -671,39 +709,6 @@ distribution to 10 year newer Debian based one</a>.</p>
             <span class="mr-2">
               <b>Posted</b>: 2014-01-26
             </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-write-erase/">
-            <h2 class="card-title">write erase</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Η εντολή <code>write erase</code> διαγράφει την παραμετροποίηση εκκίνησης 
-(startup-config). Αν ακολουθήσει επανεκκίνηση της συσκευής, όλες οι 
-ρυθμίσεις που έχουν γίνει χάνονται οριστικά.</p>
-
-<p>Συνώνυμα: <code>erase startup-config</code> και <code>erase nvram:</code>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-01-24
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/cisco/">cisco</a>
           
           
         </div><!-- .card-footer -->

@@ -38,6 +38,49 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/mysql-replication-skip-one/">
+            <h2 class="card-title">Skip one record on MySQL replication slave</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>MySQL replication can break for a wide multitude of reasons. The 
+following is a quick and dirty way to resume replication, if the error 
+that appears in the output of <code>SHOW SLAVE STATUS\G</code> indicates that 
+replication stopped at a specific record. </p>
+
+<p>It is a <i>dirty</i> way, because immediately after using it the 
+database on the slave becomes different from that on the master by one 
+record. If you can live with that, the skip-one method can help you 
+quickly put the slave back in track.</p>
+
+<p>On the MySQL CLI:</p>
+
+<pre><code>mysql&gt; STOP SLAVE;
+mysql&gt; SET GLOBAL SQL_SLAVE_SKIP_COUNTER = 1;
+mysql&gt; START SLAVE;
+mysql&gt; SHOW SLAVE STATUS\G
+</code></pre>
+
+<p>Hopefully your replication will resume after this, and the value of 
+your <code>Seconds_Behind_Master</code> will quickly be depleted.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-26
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/python-colored-output/">
             <h2 class="card-title">Colored output with Python</h2>
           </a>
@@ -435,35 +478,6 @@ as clear text files.</li>
 <ul>
 <li><a href="http://www.danielmiessler.com/study/tcpdump/">A tcpdump Primer</a></li>
 <li><a href="http://blog.cloudflare.com/bpf-the-forgotten-bytecode">BPF - the forgotten bytecode</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-19
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/gedit/">
-            <h2 class="card-title">gedit</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <h2>See also</h2>
-
-<ul>
-<li><a href="http://mylinuxbook.com/3-useful-gedit-plugins-for-programmers/">3 Useful Gedit Plugins For Programmers</a></li>
-<li><a href="https://wiki.gnome.org/Apps/Gedit/Plugins/Snippets">Using Snippets</a></li>
 </ul>
 
           </div>

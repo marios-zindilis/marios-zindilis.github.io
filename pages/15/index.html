@@ -38,6 +38,39 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/cisco-write-erase/">
+            <h2 class="card-title">write erase</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>write erase</code> διαγράφει την παραμετροποίηση εκκίνησης 
+(startup-config). Αν ακολουθήσει επανεκκίνηση της συσκευής, όλες οι 
+ρυθμίσεις που έχουν γίνει χάνονται οριστικά.</p>
+
+<p>Συνώνυμα: <code>erase startup-config</code> και <code>erase nvram:</code>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-24
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/cisco/">cisco</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/fedora-ask-in-greek/">
             <h2 class="card-title">Fedora Ask in Greek</h2>
           </a>
@@ -371,84 +404,6 @@ benchmarking tool written in Python.</li>
           
             <span class="mr-2">
               <b>Posted</b>: 2014-01-08
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/ftp/">
-            <h2 class="card-title">FTP and ftp</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>These are some notes on the <abbr title='File Transfer Protocol'>FTP</abbr> 
-protocol, and on the <code>ftp</code> command line client.</p>
-
-<h2>Active Vs Passive Mode</h2>
-
-<p>Two network connection are required for FTP transfers. In <strong>active 
-mode</strong>, the client initiates a connection to the server's port 21, and 
-the server initiates a connection back to the client's port 21. This 
-incoming connection (from the client's point of view) is often blocked 
-by firewalls, and/or not available in <abbr title="Local Area Network">
-LANs</abbr> that are <abbr title="Network Address Translation">NAT</abbr>ed. 
-To overcome this problem, in <strong>passive mode</strong>, the client initiates 
-both connections to the server.</p>
-
-<p>In the <code>ftp</code> CLI utility, the default mode is active. You can switch 
-between modes with the <code>passive</code> command:</p>
-
-<pre><code>marios@zindilis.net ~ $ ftp
-ftp&gt; open ftp.zindilis.net
-Name (ftp.zindilis.net:marios): 
-331 Please specify the password.
-Password: 
-ftp&gt; passive
-Passive mode on.
-ftp&gt; passive
-Passive mode off.
-ftp&gt;
-</code></pre>
-
-<p>There is no <code>active</code> command, modes are toggled with <code>passive</code>.</p>
-
-<h2>ASCII Vs Binary Transfers</h2>
-
-<p>There are two transfer modes, ASCII and Binary. In <strong>ASCII</strong>, files are 
-transferred as characters, some of which (like newlines) are converted 
-to match the operating system of the client. This works well for text 
-files, but is almost certain to corrupt any other type of file. In 
-<strong>binary</strong> mode, files are transferred unaltered. This helps maintain 
-the integrity of files, but increases the possibility of text files 
-appearing broken when transferred between different operating systems. </p>
-
-<p>In the <code>ftp</code> CLI utility, the commands <code>ascii</code> and <code>binary</code> switch 
-transfer modes:</p>
-
-<pre><code>marios@zindilis.net ~ $ ftp
-ftp&gt; open ftp.zindilis.net
-Name (ftp.zindilis.net:marios): 
-331 Please specify the password.
-Password:
-ftp&gt; ascii
-200 Switching to ASCII mode.
-ftp&gt; binary
-200 Switching to Binary mode.
-ftp&gt;
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-01-07
             </span>
           
           

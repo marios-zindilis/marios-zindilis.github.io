@@ -38,6 +38,37 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/vmware-evaluation-expired/">
+            <h2 class="card-title">Features disabled when VMware Evaluation Expires</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>As a note to myself and a future reference, here is a list of features of VMware ESXi 6 that get disabled when the 
+60-day evaluation period expires.</p>
+
+          </div>
+          <a href="/posts/vmware-evaluation-expired/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-04-27
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/vmware/">vmware</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/haproxy/">
             <h2 class="card-title">HAProxy</h2>
           </a>
@@ -320,76 +351,6 @@ local = '/home/marios/Tests/gitpython'</p>
             <span class="mr-2">
               <b>Posted</b>: 2015-02-08
             </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/mysql-mysqlhotcopy/">
-            <h2 class="card-title">mysqlhotcopy</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><strong>mysqlhotcopy</strong> is a Perl script for backing up MySQL tables stored in either 
-the MyISAM or ARCHIVE engines. It works very fast because it doesn't dump the 
-contents of the tables. Instead it takes advantage of the fact that MyISAM 
-tables are contained in separate files, and simply locks the tables and copies 
-the flat files.</p>
-
-<h2>Example Setup</h2>
-
-<ol>
-<li><p>Create a user in MySQL for running <code>mysqlhotcopy</code>. The user will need to be 
-granted the <code>SELECT</code>, <code>RELOAD</code> and <code>LOCK TABLES</code> privileges on the
-databases that will be backed up. In this example, I want all databases to 
-be backed up:</p>
-
-<pre><code>mysql&gt; CREATE USER `mysqlhotcopy`;
-mysql&gt; GRANT SELECT, RELOAD, LOCK TABLES ON *.* TO `mysqlhotcopy`@`localhost`;
-</code></pre></li>
-<li><p>Create a daily cron job to backup every database, except for 
-<code>information_schema</code>, which is a dynamic schema created my the MySQL server 
-itself and does not exist as files on the filesystem. An example script is:</p>
-
-<pre><code>#!/bin/bash
-
-for database in $(mysql --user mysqlhotcopy           \
-                        --batch                       \
-                        --skip-column-names           \
-                        --execute 'SHOW DATABASES;' | \
-                  grep -v '^information_schema$')
-do
-    mysqlhotcopy $database /root/mysql-dumps/ --allowold --keepold --user=mysqlhotcopy
-done
-</code></pre>
-
-<p>This script maintains one previous copy of the databases, by renaming the 
-directory, appending the suffix <code>_old</code> to the name. </p></li>
-</ol>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="http://dev.mysql.com/doc/refman/5.6/en/mysqlhotcopy.html">mysqlhotcopy - A Database Backup Program</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2015-01-29
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/mysql/">mysql</a>
           
           
         </div><!-- .card-footer -->

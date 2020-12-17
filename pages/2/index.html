@@ -38,6 +38,67 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/web-py-deployment-ubuntu/">
+            <h2 class="card-title">web.py Deployment on Ubuntu 14.04</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>These instructions are a note to myself, on how to get web.py deployed on a new 
+VM with Ubuntu 14.04, for development:</p>
+
+<div class="codehilite"><pre><span></span><code>sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+sudo apt-get install --yes openssh-server 
+sudo reboot
+</code></pre></div>
+
+<p>After the reboot:</p>
+
+<div class="codehilite"><pre><span></span><code>sudo apt-get install --yes apache2 libapache2-mod-wsgi
+sudo apt-get install --yes git
+sudo mkdir /opt/web.py
+sudo chown <span class="sb">`</span>whoami<span class="sb">`</span>:<span class="sb">`</span>whoami<span class="sb">`</span> /opt/web.py
+<span class="nb">cd</span> /opt/web.py
+git clone git://github.com/webpy/webpy.git
+ln -s <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/webpy/web .
+cat <span class="s">&lt;&lt;EOF &gt; index.py</span>
+<span class="s">import web</span>
+
+<span class="s">urls = (</span>
+<span class="s">    &#39;/(.*)&#39;, &#39;hello&#39;</span>
+<span class="s">)</span>
+<span class="s">app = web.application(urls, globals())</span>
+
+<span class="s">class hello:</span>
+<span class="s">    def GET(self, name):</span>
+<span class="s">        if not name: </span>
+<span class="s">            name = &#39;World&#39;</span>
+<span class="s">        return &#39;Hello, &#39; + name + &#39;!&#39;</span>
+
+<span class="s">if __name__ == &quot;__main__&quot;:</span>
+<span class="s">    app.run()</span>
+<span class="s">EOF</span>
+python index.py
+</code></pre></div>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-11-01
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/notes-and-links-from-pycon-2015/">
             <h2 class="card-title">Notes and links from PyCon 2015</h2>
           </a>
@@ -359,31 +420,6 @@ solutions in mainstream programming languages.</li>
 </ul>
 
 <!-- Links -->
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2015-09-20
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/residual-risk/">
-            <h2 class="card-title">Residual Risk</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>In the context of <strong>risk management</strong>, a <strong>residual risk</strong> is one that has 
-been identified, but for any reason it cannot be dealt with.</p>
 
           </div>
           

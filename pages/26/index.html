@@ -38,6 +38,30 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/facepalm-of-the-day/">
+            <h2 class="card-title">Facepalm of the day</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Cisco switches will allow you to add a Vlan to one or more interfaces, even if the Vlan does not exist on the device. MAC addresses will then appear in the MAC database as expected, but traffic will not flow.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-03-27
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/μεταβλητές-περιβάλλοντος/">
             <h2 class="card-title">Μεταβλητές περιβάλλοντος</h2>
           </a>
@@ -640,78 +664,6 @@ database ή <code>*.*</code> για όλους τους πίνακες σε όλ
           
             <span class="mr-2">
               <b>Posted</b>: 2011-11-19
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/getfacl/">
-            <h2 class="card-title">getfacl</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Μερικά συστήματα αρχείων όπως τα ext2, ext3, ext4, ReiserFS, JFS, XFS, 
-υποστηρίζουν τον ορισμό επιπλέον ιδιοτήτων-δικαιωμάτων πρόσβασης στα 
-αρχεία, τα οποία λειτουργούν ως λίστες ελέγχου πρόσβασης (Access 
-Control Lists). Στα συστήματα αυτά, η εντολή <code>getfacl</code> δείχνει αυτά τα 
-δικαιώματα ανά χρήστη.</p>
-
-<p>Σε ένα αρχείο στο οποίο δεν έχουν οριστεί κανόνες ACL επιπλέον από τα 
-απλά δικαιώματα πρόσβασης, το αποτέλεσμα της <code>getfacl</code> είναι αντίστοιχο 
-με την έξοδο της <code>ls -l</code>:</p>
-
-<p>{% highlight bash %}
-$ ls -l route.pdf 
--rw-rw-r-- 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
-$ getfacl route.pdf</p>
-
-<h1>file: route.pdf</h1>
-
-<h1>owner: mariosz</h1>
-
-<h1>group: mariosz</h1>
-
-<p>user::rw-
-group::rw-
-other::r--
-{% endhighlight %}</p>
-
-<p>Αν σε αυτό το αρχείο οριστούν δικαιώματα ACL, τότε πλέον αλλάζουν τα 
-αποτελέσματα και των δύο εντολών, και το αρχείο συμπεριφέρεται διαφορετικά:</p>
-
-<p>{% highlight bash %}
-$ setfacl -m user:another:r-- route.pdf </p>
-
-<p>$ ls -l route.pdf
--rw-rw-r--+ 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf</p>
-
-<p>$ getfacl route.pdf </p>
-
-<h1>file: route.pdf</h1>
-
-<h1>owner: mariosz</h1>
-
-<h1>group: mariosz</h1>
-
-<p>user::rw-
-user:another:r--
-group::rw-
-mask::rw-
-other::r--
-{% endhighlight %}</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-11-05
             </span>
           
           

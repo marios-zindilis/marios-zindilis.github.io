@@ -38,6 +38,51 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/how-to-create-a-large-mysql-db-for-tests/">
+            <h2 class="card-title">How to create a large MySQL database for tests</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>I wanted to create a fairly big MySQL database (~30GB on disk) for 
+tests. I created a '<code>test</code>' database, and a '<code>table2</code>' table, with a 
+'<code>content</code>' field with datatype <code>TEXT</code>. Here's what I run from Bash:</p>
+
+<div class="codehilite"><pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
+<span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span> of <span class="m">500000</span><span class="p">;</span> <span class="se">\</span>
+mysql -u root -D <span class="nb">test</span> -e <span class="se">\</span>
+<span class="s2">&quot;INSERT INTO table2 (content) VALUES (&#39;`cat /var/log/messages | tr -d \&#39;`&#39;)&quot;</span><span class="p">;</span> <span class="se">\</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<p>This took a few hours to finish, while creating data at a rate of 100MBytes per minute on my test server. The size of the database was 30GB.</p>
+
+<p>This did the job but it was too slow. The <strong>better way to do it</strong>, 
+would be to run the above command for far less repetitions, say 
+100000, to create a smaller table, then copy that table in the same 
+database as many times as required for the entire database to reach 
+the desirable size, like:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">create</span> <span class="n">table2</span> <span class="k">like</span> <span class="k">table</span><span class="p">;</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">table2</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span><span class="p">;</span>
+</code></pre></div>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-11-13
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/running-multiple-instances-of-thunderbird/">
             <h2 class="card-title">Running multiple instances of Thunderbird</h2>
           </a>
@@ -436,32 +481,6 @@ NM_CONTROLLED=no
 <h2>Σύνοψη</h2>
 
 <p>Με τις ρυθμίσεις που περιγράφηκαν στο πιο πάνω άρθρο μπορείτε να χρησιμοποιήσετε έναν υπολογιστή με δύο κάρτες δικτύου ως δρομολογητή (router). Με μερικές ακόμη προσθήκες (καλή ρύθμιση firewall, προσθήκη εξυπηρετητή DHCP, κ.α), ένα σύστημα ταπεινών επιδόσεων μπορεί να εξυπηρετεί λαμπρά ως σπιτικό gateway προς το διαδίκτυο. </p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-04-21
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/ρύθμιση-centos-6-ως-ρούτερ/">
-            <h2 class="card-title">Ρύθμιση CentOS 6 ως Router</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Ένας παλιός υπολογιστής, με παρωχημένο υλικό και ταπεινές δυνατότητες, μπορεί κάλλιστα να εξυπηρετήσει διάφορους χρήσιμους σκοπούς, αν έχει εγκατεστημένη μια σωστά ρυθμισμένη διανομή Linux. Αυτός ο οδηγός περιγράφει πώς μπορείτε να ρυθμίσετε ένα σύστημα με CentOS 6 ώστε να λειτουργεί ως δρομολογητής δικτύου (router).</p>
-
-<p><a href="/docs/ρύθμιση-centos-6-ως-router.el.html">Διαβάστε το άρθρο...</a></p>
 
           </div>
           

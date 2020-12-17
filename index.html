@@ -37,6 +37,51 @@
     
       <div class="card my-4">
       
+        <img class="card-img-top" src="/posts/mount-ntfs-disk-in-ubuntu/index.jpg" alt="Card image cap">
+      
+        <div class="card-body">
+          <a href="/posts/mount-ntfs-disk-in-ubuntu/">
+            <h2 class="card-title">Mount an NTFS disk in Ubuntu</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>On a system that dual boots Windows and Ubuntu, I use this line in <code>/etc/fstab</code> to have the NTFS Windows disk mounted
+permanently in Ubuntu:</p>
+
+<pre><code>/dev/disk/by-uuid/1EBB57A121AFC448 /mnt/1TB auto nosuid,nodev,nofail,x-gvfs-show,uid=marios,gid=marios,permissions,dmask=022,fmask=133 0 0
+</code></pre>
+
+<p>Here's a list of options used in that line:</p>
+
+<ul>
+<li><code>nosuid</code>: this is a security enhancement, preventing execution of files under the files' owner's permissios, from
+users other than the owner</li>
+<li><code>nodev</code>: this prevents the mounted filesystem from containing device files</li>
+<li><code>nofail</code>: prevents error reports when the device is missing, but can mask failures</li>
+<li><code>x-gvfs-show</code>: makes the device visible in the user interface, in the file explorer</li>
+<li><code>uid=marios</code> and <code>gid=marios</code>: assign user and group ownership of new files to a specific user</li>
+<li><code>dmask=022</code> and <code>fmask=133</code>: default permissions for newly created files and directories</li>
+</ul>
+
+<p>Image credit: <em>Library At Trinity College</em>. In the Public Domain.
+<a href="https://www.publicdomainpictures.net/en/view-image.php?image=255082&amp;picture=library-at-trinity-college">Source</a>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2020-12-17
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
         <img class="card-img-top" src="/posts/my-vimrc/index.jpg" alt="Card image cap">
       
         <div class="card-body">
@@ -463,38 +508,6 @@ validate the values passed which creating a new instance or saving an existing o
           
             <span class="mr-2">
               <b>Posted</b>: 2017-05-04
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/django/">django</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/django-anatomy-for-single-app/">
-            <h2 class="card-title">Single-App Django Project Anatomy</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>With all the magic that comes packaged within Django, it's easy to forget that the code of a Django project is as
-malleable as any other Python project's code. This post shows how to simplify the structure of a Django project, when
-you will only ever have a single app.</p>
-
-          </div>
-          <a href="/posts/django-anatomy-for-single-app/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2017-01-06
             </span>
           
           

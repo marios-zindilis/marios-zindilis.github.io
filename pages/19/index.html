@@ -38,6 +38,91 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/mysql-enable-logging/">
+            <h2 class="card-title">Enable logging in MySQL</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>These are some haphazardly written notes on logging in MySQL. For consistency, 
+create a new subdirectory in <code>/var/log/</code> and assign ownership to the user under 
+which your MySQL server is running - by default that would be the <code>mysql</code> user:</p>
+
+<pre><code>mkdir /var/log/mysqld/
+chown mysql:mysql /var/log/mysqld
+</code></pre>
+
+<p>I like to name the directory <code>mysqld</code> instead of <code>mysql</code>, to clarify 
+that the logs in that directory are those of the <strong>MySQL Server</strong> and 
+not those of the MySQL Client.</p>
+
+<h2>Slow Query Log</h2>
+
+<p>The slow query log contains queries the execution of which took more 
+than the value of the <code>long_query_time</code> variable, which by default is 
+10 seconds. </p>
+
+<p>To enable the slow query log on the next start of <code>mysqld</code>, add the 
+following line in your MySQL server's configuration file (<code>/etc/my.cnf</code> 
+by default), in the <code>[mysqld]</code> section:</p>
+
+<pre><code>slow-query-log
+slow_query_log_file=/var/log/mysqld/slow-queries.log
+</code></pre>
+
+<p>Create the file and assign ownership to the <code>mysql</code> user:</p>
+
+<pre><code>touch /var/log/mysqld/slow-queries.log
+chown mysql:mysql /var/log/mysqld/slow-queries.log
+</code></pre>
+
+<p>Finally, either restart the server to enable the logging, or enable it 
+on the already running server with:</p>
+
+<pre><code>mysql&gt; SET GLOBAL slow_query_log_file='/var/log/mysqld/slow-queries.log';
+mysql&gt; SET GLOBAL slow_query_log=1;
+</code></pre>
+
+<p>In any of those cases, the values of the global variables 
+<code>slow_query_log</code> and <code>slow_query_log_file</code>, should change from the 
+default:</p>
+
+<pre><code>mysql&gt; show variables like 'slow_query_log%';
++---------------------+----------------------------------+
+| Variable_name       | Value                            |
++---------------------+----------------------------------+
+| slow_query_log      | OFF                              |
+| slow_query_log_file | /var/run/mysqld/mysqld-slow.log  |
++---------------------+----------------------------------+
+</code></pre>
+
+<p>To:</p>
+
+<pre><code>mysql&gt; show variables like 'slow_query_log%';
++---------------------+----------------------------------+
+| Variable_name       | Value                            |
++---------------------+----------------------------------+
+| slow_query_log      | ON                               |
+| slow_query_log_file | /var/log/mysqld/slow-queries.log |
++---------------------+----------------------------------+
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-07
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/opendcim/">
             <h2 class="card-title">openDCIM</h2>
           </a>
@@ -381,49 +466,6 @@ that input to video or to consecutive screenshots.</p>
           
             <span class="mr-2">
               <b>Posted</b>: 2013-11-27
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/mysql-replication-skip-one/">
-            <h2 class="card-title">Skip one record on MySQL replication slave</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>MySQL replication can break for a wide multitude of reasons. The 
-following is a quick and dirty way to resume replication, if the error 
-that appears in the output of <code>SHOW SLAVE STATUS\G</code> indicates that 
-replication stopped at a specific record. </p>
-
-<p>It is a <i>dirty</i> way, because immediately after using it the 
-database on the slave becomes different from that on the master by one 
-record. If you can live with that, the skip-one method can help you 
-quickly put the slave back in track.</p>
-
-<p>On the MySQL CLI:</p>
-
-<pre><code>mysql&gt; STOP SLAVE;
-mysql&gt; SET GLOBAL SQL_SLAVE_SKIP_COUNTER = 1;
-mysql&gt; START SLAVE;
-mysql&gt; SHOW SLAVE STATUS\G
-</code></pre>
-
-<p>Hopefully your replication will resume after this, and the value of 
-your <code>Seconds_Behind_Master</code> will quickly be depleted.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-26
             </span>
           
           

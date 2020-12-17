@@ -38,6 +38,42 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/centos-show-ip-address-in-etc-issue/">
+            <h2 class="card-title">Display IP Address in /etc/issue on CentOS</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>I have several CentOS virtual machines that I only fire up when I need 
+to test something, so I don't give them static IPs. For my own 
+convenience, I added the following lines in <code>/etc/rc.local</code>, which 
+get the IP Address that was leased to the machine by the DHCP server, 
+and change <code>/etc/issue</code> to display it:</p>
+
+<p>{% highlight bash %}
+export IPADDR=$(ifconfig eth1 | grep 'inet ' | cut -d ':' -f 2 | cut -d ' ' -f 1)
+sed -i "s/IP Address:.*/IP Address: $IPADDR/" /etc/issue
+{% endhighlight %}</p>
+
+<p>This way, once the VM boots up and gets an IP from DHCP, that IP will 
+be displayed in the hypervisor's console.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-09
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cisco-back-pressure/">
             <h2 class="card-title">Back-Pressure on Cisco Switches</h2>
           </a>
@@ -980,57 +1016,6 @@ with a <code>security = User</code> setting in <code>[Global]</code>), a user ca
 their password with just:</p>
 
 <pre><code>obiwan@server ~ $ smbpasswd
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-10-25
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/pgtune-configuration-changes/">
-            <h2 class="card-title">PostgreSQL Configuration Changes with pgtune</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>This is an example run of the <code>pgtune</code> script, which examines a system's 
-hardware and proposes changes to PostgreSQL configuration, to better 
-utilize the capabilities of the hardware for the benefit of the database.</p>
-
-<p>The following configuration differences are from an example of a VM 
-running with 2x Intel Quad @2.33GHz CPUs and 2GB of RAM. The commands 
-run to create the new configuration file with pgtune were:</p>
-
-<pre><code>pgtune -i /var/lib/pgsql/9.2/data/postgresql.conf -o /var/lib/pgsql/9.2/data/postgresql2.conf
-mv postgresql.conf postgresql-factory-default.conf
-mv postgresql2.conf postgresql.conf
-chown postgres:postgres postgresql.conf
-service postgresql restart
-</code></pre>
-
-<h2>Differences</h2>
-
-<pre><code>&lt; max_connections = 100
-&gt; max_connections = 80
-&lt; #default_statistics_target = 100  
-&gt; default_statistics_target = 50 
-&lt; #constraint_exclusion = partition
-&gt; constraint_exclusion = on 
-&lt; #effective_cache_size = 128MB
-&gt; effective_cache_size = 1408MB 
-&lt; #wal_buffers = -1
-&gt; wal_buffers = 8MB
 </code></pre>
 
           </div>

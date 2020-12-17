@@ -4,7 +4,13 @@
         <link>https://zindilis.com/</link>
         <description>Personal website of Marios Zindilis</description>
         <atom:link href="https://zindilis.com/feeds/feed.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 15 Dec 2020 17:27:22 UT</lastBuildDate>
+        <lastBuildDate>Thu, 17 Dec 2020 14:54:00 UT</lastBuildDate>
+        <item>
+            <title>Mount an NTFS disk in Ubuntu</title>
+            <link>https://zindilis.com/posts/mount-ntfs-disk-in-ubuntu/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/mount-ntfs-disk-in-ubuntu/</guid>
+            <pubDate>Thu, 17 Dec 2020 00:00:00 UT</pubDate>
+        </item>
         <item>
             <title>My .vimrc</title>
             <link>https://zindilis.com/posts/my-vimrc/</link>
@@ -118,12 +124,6 @@
             <link>https://zindilis.com/posts/regex-in-python-markdown2-pt1/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/regex-in-python-markdown2-pt1/</guid>
             <pubDate>Sat, 07 Nov 2015 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>web.py Deployment on Ubuntu 14.04</title>
-            <link>https://zindilis.com/posts/web-py-deployment-ubuntu/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/web-py-deployment-ubuntu/</guid>
-            <pubDate>Sun, 01 Nov 2015 00:00:00 UT</pubDate>
         </item>
         
     </channel>

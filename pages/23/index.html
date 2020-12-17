@@ -38,6 +38,57 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/pgtune-configuration-changes/">
+            <h2 class="card-title">PostgreSQL Configuration Changes with pgtune</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is an example run of the <code>pgtune</code> script, which examines a system's 
+hardware and proposes changes to PostgreSQL configuration, to better 
+utilize the capabilities of the hardware for the benefit of the database.</p>
+
+<p>The following configuration differences are from an example of a VM 
+running with 2x Intel Quad @2.33GHz CPUs and 2GB of RAM. The commands 
+run to create the new configuration file with pgtune were:</p>
+
+<pre><code>pgtune -i /var/lib/pgsql/9.2/data/postgresql.conf -o /var/lib/pgsql/9.2/data/postgresql2.conf
+mv postgresql.conf postgresql-factory-default.conf
+mv postgresql2.conf postgresql.conf
+chown postgres:postgres postgresql.conf
+service postgresql restart
+</code></pre>
+
+<h2>Differences</h2>
+
+<pre><code>&lt; max_connections = 100
+&gt; max_connections = 80
+&lt; #default_statistics_target = 100  
+&gt; default_statistics_target = 50 
+&lt; #constraint_exclusion = partition
+&gt; constraint_exclusion = on 
+&lt; #effective_cache_size = 128MB
+&gt; effective_cache_size = 1408MB 
+&lt; #wal_buffers = -1
+&gt; wal_buffers = 8MB
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/easy_install/">
             <h2 class="card-title">easy_install</h2>
           </a>
@@ -909,51 +960,6 @@ thing to do. It is therefore an exercise in futility, but it helps with my chron
           
             <span class="mr-2">
               <b>Posted</b>: 2013-01-03
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/how-to-create-a-large-mysql-db-for-tests/">
-            <h2 class="card-title">How to create a large MySQL database for tests</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>I wanted to create a fairly big MySQL database (~30GB on disk) for 
-tests. I created a '<code>test</code>' database, and a '<code>table2</code>' table, with a 
-'<code>content</code>' field with datatype <code>TEXT</code>. Here's what I run from Bash:</p>
-
-<div class="codehilite"><pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
-<span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span> of <span class="m">500000</span><span class="p">;</span> <span class="se">\</span>
-mysql -u root -D <span class="nb">test</span> -e <span class="se">\</span>
-<span class="s2">&quot;INSERT INTO table2 (content) VALUES (&#39;`cat /var/log/messages | tr -d \&#39;`&#39;)&quot;</span><span class="p">;</span> <span class="se">\</span>
-<span class="k">done</span>
-</code></pre></div>
-
-<p>This took a few hours to finish, while creating data at a rate of 100MBytes per minute on my test server. The size of the database was 30GB.</p>
-
-<p>This did the job but it was too slow. The <strong>better way to do it</strong>, 
-would be to run the above command for far less repetitions, say 
-100000, to create a smaller table, then copy that table in the same 
-database as many times as required for the entire database to reach 
-the desirable size, like:</p>
-
-<div class="codehilite"><pre><span></span><code><span class="k">create</span> <span class="n">table2</span> <span class="k">like</span> <span class="k">table</span><span class="p">;</span>
-<span class="k">insert</span> <span class="k">into</span> <span class="n">table2</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span><span class="p">;</span>
-</code></pre></div>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-11-13
             </span>
           
           
