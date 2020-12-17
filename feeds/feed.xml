@@ -4,7 +4,7 @@
         <link>https://zindilis.com/</link>
         <description>Personal website of Marios Zindilis</description>
         <atom:link href="https://zindilis.com/feeds/feed.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Thu, 17 Dec 2020 16:17:21 UT</lastBuildDate>
+        <lastBuildDate>Thu, 17 Dec 2020 17:05:30 UT</lastBuildDate>
         <item>
             <title>Mount an NTFS disk in Ubuntu</title>
             <link>https://zindilis.com/posts/mount-ntfs-disk-in-ubuntu/</link>
