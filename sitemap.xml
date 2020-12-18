@@ -1,0 +1,1296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-switchport-port-security-mac-address-sticky/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/smartmontools/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-replication-skip-one/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/syslog-ng/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-late-collission/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-7/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/sudo/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/smbpasswd/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ntfsfix/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-install-request-tracker-4/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-show-ip-eigrp-interfaces-detail/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/procmail/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/arp-scan/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/run-firefox-3-on-ubuntu-15.04/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/εγκατάσταση-οδηγών-broadcom-σε-fedora-15/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-access-class/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-myisamchk/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/bootstrap/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-write-erase/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/bluefish/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-bandwidth/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/dirname/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/stale-nfs-causes-backuppc-filelistreceive-failure/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/keepalived/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/pgtune-configuration-changes/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/linux-backup-tools/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mail-tools/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/έργα-στο-public-domain-από-1-ιανουαρίου-2013/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-hostname/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mediawiki-διαγραφή-άρθρου-από-βάση-δεδομένων/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/linux-mint/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/juniper-jncia-study-material/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/perdition/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/tailf/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/presentation-tools/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/network-interface-bonding/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-enable-logging/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/openssl/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/pacemaker/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-6-convert-mbr-to-gpt/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/vmware-build-vmware-4-tools-on-centos-6/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/hex-primary-key-in-django-model/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/reading-6/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/vmware-vmdk/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/puppet/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/motion/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/salt/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-default-interface/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/apache-benchmarks/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cheese/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-max-allowed-packet/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/lpic2-revision/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/easy_install/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ghost/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/filesystems/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ocs-inventory-ng/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ρύθμιση-centos-6-ως-router/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/tail/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/juniper-acronyms/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/reading-11/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/oracle-database/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/rhcsa/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-fabric/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/subversion/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/notes-and-links-from-pycon-2015/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/regex-in-python-markdown2-pt2/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/samba-security-options/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mount-ntfs-disk-in-ubuntu/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/sphinx/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-show-ip-address-in-etc-issue/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/dracut/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/puppy-arcade/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-6-install-motion/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-banner-motd/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/bandwidth-still-relevant/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-service-timestamps-log-datetime/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/single-loss-expectancy/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/dig/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/apache-logs-to-remote-syslog/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/zenoss-4/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/vmware-memory-ballooning/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/xfree86-3/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ρύθμιση-centos-6-ως-ρούτερ/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/juniper-set-system-host-name/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ansible/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mutagen/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/logging-in-linux/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/migrate-on-premises-mysql-to-rds/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/drbd/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/more-reading-2/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cron/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ταξινόμηση-φακέλων-κατά-μέγεθος/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/citrix-xenserver-6-2/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/juniper-routing-policy-examples/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/tcpdump/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/kmotion/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/more-ubuntu/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-show-vtp-status/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-6-install-syslog-ng/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/install-oracle-virtualbox-on-linux-mint-17/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mediawiki-upgrade-to-1-19-0-regression/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/bash-special-variables/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/gnutls/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/sysdig/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-login-local/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/inkscape/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/reading-3/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-show-post-security/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/links-for-week-39-2011/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/lpic2-notes/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/systemback/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/netstat/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/my-vimrc/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-switchport-trunk-encapsulation-negotiate/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/juniper-junos-online-help/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/reading-10/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/honey-i-broke-the-server/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/fedora-15-minimal-server/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-workbench/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/less/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/αποθήκευση-τηλεφωνικών-αριθμών-σε-mysql/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/hp-msa2040/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ffmpeg/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/gnome-paint/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ναυτίλος-μαζική-σμίκρυνση-εικόνων/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-show-privileges-for-all-users/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/login-to-website-with-digest-authentication-in-python/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-switchport-trunk-encapsulation-dot1q/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-enable-secret/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/regular-expressions/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mediawiki-εμφάνιση-περιεχομένου-μόνο-σε-συνδεμένους/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/osquery/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/python-colored-output/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/corosync/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/angular/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/γιατί-το-wordpress-δεν-παίζεται-0/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/fedora-ask-in-greek/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/change-pptpd-port-on-centos/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/zenoss-zendmd-get-events/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/regex-in-python-markdown2-pt1/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/bash-scripting/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/upload-file-to-s3-with-boto3/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/wowza/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/free-books/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-6-prepare-new-server/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/vim/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/samba-bind-to-ip/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/apache2-basic-authentication/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/wordpress-plugin-registration-whitelist/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/timeshift/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-6-nfs-server/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/rhel-setup-ftp-repository/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/hive-rise/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/django-backend-validation-of-choices/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-create-test-database/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/backuppc/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/rancid/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/xargs/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/delgroup/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/amazon-web-services-security/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ftp/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-switchport-mode-access/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/taiga/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-back-pressure/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/system-v-init/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/free/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/lnx-bbc/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/nfs-stack-restart/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/xmpp/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-6-install-opendcim/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/amanda/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/links-for-week-41-2011/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/kvm/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/waf/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/zenoss-zendmd-get-groups/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/fedora-16-εγκατάσταση-apache-mysql-php/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/rhel-setup-http-repository/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/reading-4/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/linux-mint-on-lenovo-g505s/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/champions-of-regnum/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/vmware-evaluation-expired/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/contribute-on-github/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-alias/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/exportfs/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/threat-intelligence/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/gedit/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/postfix/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/aws/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/git-symlinks-and-hardlinks/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/elk/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-6-install-opendcim-2-1/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/tcptrack/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/xfree86-4/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/pysphere/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-banner-login/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/peppermintos/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/linux-show-network-routes/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/control-vlc-with-python/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/zenoss-zendmd-get-devices/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/chef/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/parted/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-mac-address-table-aging-time/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ntpdate/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/zenoss-3/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/openstack/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/google-server-migration-paper/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/dm-cache/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/django-anatomy-for-single-app/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/zenoss-zendmd-add-device-to-group/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ubuntu-encrypted-directory/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/postgresql/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/vmware-acronyms/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/xf86config/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/windows-file-system/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cream/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/systemd/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/a-small-web-app-with-angular-and-django/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/route/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/getfacl/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/gitpython/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/reading-7/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/curl/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/xdotool/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ubuntu-10-10-install-apache-php-mysql/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-mysqldump/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/find/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-show-interface/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/netapp-serial-console-settings/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/create-s3-bucket-with-aws-cli/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/virtualbox/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/zenoss-cannot-set-device-ip/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/zentyal/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/syslog/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-enable-password/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/facepalm-of-the-day-2/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/audacity/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/git/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/haproxy/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/hpacucli/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/vmware-transparent-page-sharing/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/γιατί-το-wordpress-δεν-παίζεται-1/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/netapp-controller-failover/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/glusterfs/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/uget/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/annual-rate-of-occurence/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/καινούριο-κοσκινάκι-dell-inspiron-n5010/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/reading-12/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/rhel/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/tune2fs/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/facepalm-of-the-day/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-reload/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/annual-loss-expectancy/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/project-management-tools/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/διαχείριση-χρηστών-στην-mysql/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/google-suggestions-in-firefox-on-mint/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/web-py-subapplications/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/running-multiple-instances-of-thunderbird/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/faraday/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/x-org/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/opensuse-installation-in-a-virtual-machine/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-switchport-port-security/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-add-hard-disk/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/top/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/reading-5/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/yum-el/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/accelerated-x/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-6-enable-epel-repository/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/create-s3-bucket-with-boto3/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/zenoss-zendmd-get-device-serial-numbers/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/zimbra/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/thunderbird/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/awk/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/netapp-replace-disk-on-fas/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/hello-world/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/apache-logs-with-iso-date-format/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/nsnake/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-clock/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/system-config-display/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/rhel-yum-install-from-dvd/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/how-to-create-a-large-mysql-db-for-tests/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/libreoffice/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/security-links-cheatsheet/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/virtualbox-φρέσκια-εγκατάσταση-λειτουργικού/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/screen/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/unetbootin/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/linux-disk-performance-benchmarking/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/xorgcfg/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/bash-tips/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/apache-disable-default-modules/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ryzom/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/virsh/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-sakila-example-queries/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/links-for-week-43-2011/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/mysql-mysqlhotcopy/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/γιατί-το-wordpress-δεν-παίζεται-2/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/opendcim/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/gitpython-clone-remote-repository/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/flowchart-and-diagram-editors/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ifconfig/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-switchport-trunk-encapsulation-isl/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/centos-install-hp-sim/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/yum/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/sunflower/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/facter/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-συντομεύσεις-πληκτρολογίου/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/ad-hoc-data-analysis-from-the-unix-command-line/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/rpm/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/links-for-week-40-2011/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/raspberry-pi-security-bootstrap/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/cisco-show-vlan/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/dhcrelay/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/εγκατάσταση-guake-σε-centos6/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/killall/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/web-py-deployment-ubuntu/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/reading-9/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/reading-8/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/residual-risk/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/μεταβλητές-περιβάλλοντος/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/crontab/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/pysphere-get-virtual-machines/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/bash-check-that-string-is-ip/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/gimp/</loc>
+   </url>
+
+</urlset> 
