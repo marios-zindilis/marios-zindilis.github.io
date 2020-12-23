@@ -159,37 +159,32 @@ very beginning of your main application script:</p>
 
           
           <div class="card-text">
-            <p>Sometimes you need to create some database on a development MySQL server, to 
-run some tests on, and you want to populate it with many records, to make your 
-tests more meaningful. This document lists a couple of quick and dirty ways 
+            <p>Sometimes you need to create a test database on a development MySQL server, to run some tests on, and you want to
+populate it with many records, to make your tests more meaningful. This document lists a couple of quick and dirty ways
 that I use to achieve that.</p>
 
 <h2>Using <code>/usr/share/dict/words</code></h2>
 
-<p>On most Linux distributions, there is a file at <code>/usr/share/dict/words</code> which 
-simply contains a list of words, each on a separate line. On my Linux Mint 
-15 installation, I count more than 99000 lines. The following commands will put 
-those words in a table called <code>words</code>, in a database called <code>test</code>, one word 
-per table row.</p>
+<p>On most Linux distributions, there is a file at <code>/usr/share/dict/words</code> which contains a list of words, each on a
+separate line. On my Linux Mint 15 installation, I count more than 99000 lines. The following commands will put those
+words in a table called <code>words</code>, in a database called <code>test</code>, one word per table row.</p>
 
 <p>Create the table:</p>
 
 <pre><code>mysql&gt; CREATE TABLE words (id INT AUTO_INCREMENT, word VARCHAR(256));
 </code></pre>
 
-<p>Populate the table with the words. I 'm using double quotes to wrap the words, 
-since many of them already contain a single quote:</p>
+<p>Populate the table with the words. I 'm using double quotes to wrap the words, since many of them already contain a
+single quote:</p>
 
 <pre><code>while read word; do mysql test -e "INSERT INTO words (word) VALUES (\"$word\")"; done &lt; /usr/share/dict/words
 </code></pre>
 
 <h2>Using <code>/var/log/messages</code></h2>
 
-<p>I have also used the contents of <code>/var/log/messages</code> to populate a table, and 
-that is documented in the blog post <a href="/blog/2012/11/13/how-to-create-a-large-mysql-db-for-tests.html">How to create a large MySQL database for 
-tests</a>. That is 
-a painfully slow method, but can create tables that are many GigaBytes in size, 
-which might be necessary for some tests.</p>
+<p>I have also used the contents of <code>/var/log/messages</code> to populate a table, and that is documented in the blog post
+<a href="/posts/how-to-create-a-large-mysql-db-for-tests/">How to create a large MySQL database for tests</a>. That is a painfully
+slow method, but can create tables that are many GigaBytes in size, which might be necessary for some tests.</p>
 
           </div>
           
@@ -377,8 +372,7 @@ mariosz@super-mario:~$ dirname .bash_aliases
 <h2>See also</h2>
 
 <ul>
-<li><a href="/docs/tailf.html"><code>tailf</code></a>: a utility that does the same as <code>tail -f</code>, but 
-consumes less resources on the system.</li>
+<li><a href="/posts/tailf/"><code>tailf</code></a>: a utility that does the same as <code>tail -f</code>, but consumes less resources on the system.</li>
 </ul>
 
           </div>

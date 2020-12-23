@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/django/</link>
         <description>Personal website of Marios Zindilis - Posts tagged django</description>
         <atom:link href="https://zindilis.com/feeds/django.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 23 Dec 2020 06:51:25 UT</lastBuildDate>
+        <lastBuildDate>Wed, 23 Dec 2020 08:01:28 UT</lastBuildDate>
         <item>
             <title>Hexadecimal Primary Key in Django Model</title>
             <link>https://zindilis.com/posts/hex-primary-key-in-django-model/</link>
