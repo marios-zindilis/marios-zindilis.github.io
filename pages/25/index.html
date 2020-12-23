@@ -38,32 +38,6 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/ρύθμιση-centos-6-ως-ρούτερ/">
-            <h2 class="card-title">Ρύθμιση CentOS 6 ως Router</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Ένας παλιός υπολογιστής, με παρωχημένο υλικό και ταπεινές δυνατότητες, μπορεί κάλλιστα να εξυπηρετήσει διάφορους χρήσιμους σκοπούς, αν έχει εγκατεστημένη μια σωστά ρυθμισμένη διανομή Linux. Αυτός ο οδηγός περιγράφει πώς μπορείτε να ρυθμίσετε ένα σύστημα με CentOS 6 ώστε να λειτουργεί ως δρομολογητής δικτύου (router).</p>
-
-<p><a href="/docs/ρύθμιση-centos-6-ως-router.el.html">Διαβάστε το άρθρο...</a></p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-04-21
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
           <a href="/posts/lnx-bbc/">
             <h2 class="card-title">LNX-BBC</h2>
           </a>
@@ -99,30 +73,25 @@
 
           
           <div class="card-text">
-            <p>Ο εξυπηρετητής X <strong>XFree86 3</strong> είναι η παλιά και πλέον ξεπερασμένη 
-έκδοση της σειράς XFree 86. Η τελευταία έκδοση είναι η <a href="xfree86-4.el.html">4.8.0</a>, 
-η οποία όμως δεν είναι προς τα πίσω συμβατή με την έκδοση 3. Η έκδοση 3 
-είναι πιθανόν να βρεθεί σε παλιά συστήματα, με κάρτες γραφικών που δεν 
-υποστηρίζονται από τους νεότερους εξυπηρετητές <a href="xfree86-4.el.html">XFree86 4</a> 
-και <a href="x.org.el.html">X.Org</a>. Από το 2004 περίπου, και οι δύο εκδόσεις 
-του XFree 86 έχουν αντικατασταθεί από τον X.Org, σε όλες τις διανομές. </p>
+            <p>Ο εξυπηρετητής X <strong>XFree86 3</strong> είναι η παλιά και πλέον παρωχημένη έκδοση της σειράς XFree 86. Η τελευταία έκδοση είναι
+η <a href="/posts/xfree86-4/">4.8.0</a>, η οποία όμως δεν είναι προς τα πίσω συμβατή με την έκδοση 3. Η έκδοση 3 είναι πιθανόν να
+βρεθεί σε παλιά συστήματα, με κάρτες γραφικών που δεν υποστηρίζονται από τους νεότερους εξυπηρετητές XFree86 4 και
+<a href="/posts/x-org/">X.Org</a>. Από το 2004 περίπου, και οι δύο εκδόσεις του XFree 86 έχουν αντικατασταθεί από τον X.Org, σε
+όλες τις διανομές. </p>
 
 <h2>Ρύθμιση</h2>
 
-<p>Η ρύθμιση του XFree86 3 μπορεί να γίνει είτε με επεξεργασία του αρχείου 
-ρυθμίσεων, είτε με χρήση βοηθητικών εργαλείων, όπως τα <a href="/docs/xf86config.el.html">xf86config</a>, 
-<a href="/docs/xconfigurator.el.html">Xconfigurator</a> και <a href="xf86setup.el.html">XF86Setup</a>.</p>
+<p>Η ρύθμιση του XFree86 3 μπορεί να γίνει είτε με επεξεργασία του αρχείου ρυθμίσεων, είτε με χρήση βοηθητικών εργαλείων,
+όπως τα <a href="/posts/xf86config.">xf86config</a>, <a href="/posts/xconfigurator/">Xconfigurator</a> και
+<a href="/posts/xf86setup/">XF86Setup</a>.</p>
 
 <h2>Αρχείο ρυθμίσεων</h2>
 
-<p>Το αρχείο ρυθμίσεων του XFree 86 3 ονομάζεται <code>XF86Config</code>, και συνήθως 
-βρίσκεται στο <code>/etc</code> ή στο <code>/etc/X11</code>. Ωστόσο, η παρουσία αυτού του 
-αρχείου σε ένα σύστημα δεν συνεπάγεται την λειτουργία του XFree 86 3, 
-μια που και η έκδοση 4 μπορεί να χρησιμοποιεί το ίδιο όνομα για το 
-αρχείο ρυθμίσεών της.</p>
+<p>Το αρχείο ρυθμίσεων του XFree 86 3 ονομάζεται <code>XF86Config</code>, και συνήθως βρίσκεται στο <code>/etc</code> ή στο <code>/etc/X11</code>. Ωστόσο,
+η παρουσία αυτού του αρχείου σε ένα σύστημα δεν συνεπάγεται την λειτουργία του XFree 86 3, μια που και η έκδοση 4
+μπορεί να χρησιμοποιεί το ίδιο όνομα για το αρχείο ρυθμίσεών της.</p>
 
-<p>Τα αρχεία ρυθμίσεων των εκδόσεων 3 και 4 είναι παρόμοια. Οι βασικές 
-διαφορές είναι:</p>
+<p>Τα αρχεία ρυθμίσεων των εκδόσεων 3 και 4 είναι παρόμοια. Οι βασικές διαφορές είναι:</p>
 
 <ol>
 <li>Στην έκδοση 3 δεν υπάρχει η λέξη-κλειδί <code>Option</code>, αλλά τα ονόματα 
@@ -152,8 +121,8 @@
 
 <ul>
 <li>Ιστότοπος <a href="http://www.xfree86.org/">xfree86.org</a></li>
-<li>Άλλοι εξυπηρετητές γραφικών: <a href="/docs/xfree86-4.el.html">XFree86 4</a>, 
-<a href="/docs/x.org.el.html">X.Org</a>, <a href="/docs/accelerated-x.el.html">Accelerated-X</a>. </li>
+<li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-4/">XFree86 4</a>, <a href="/posts/x-org/">X.Org</a>,
+<a href="/posts/accelerated-x/">Accelerated-X</a>. </li>
 </ul>
 
           </div>
@@ -178,29 +147,24 @@
 
           
           <div class="card-text">
-            <p>Ο εξυπηρετητής X <strong>XFree86 4</strong>, στην έκδοση 4.8.0 είναι η τελευταία 
-κυκλοφορία της σειράς XFree 86. Γύρω στο 2004, για λόγους αδειοδότησης 
-του λογισμικού, οι περισσότερες διανομές υιοθέτησαν τον <a href="x.org.el.html">X.Org</a>. 
-Έκτοτε, ο XFree 86 συνέχισε να αναπτύσσεται για μερικά χρόνια ακόμα. 
-Η τελευταία έκδοση κυκλοφόρησε τον Δεκέμβριο του 2008. </p>
+            <p>Ο εξυπηρετητής X <strong>XFree86 4</strong>, στην έκδοση 4.8.0 είναι η τελευταία κυκλοφορία της σειράς XFree 86. Γύρω στο 2004, για
+λόγους αδειοδότησης του λογισμικού, οι περισσότερες διανομές υιοθέτησαν τον <a href="/posts/x-org/">X.Org</a>. Έκτοτε, ο XFree 86
+συνέχισε να αναπτύσσεται για μερικά χρόνια ακόμα. Η τελευταία έκδοση κυκλοφόρησε τον Δεκέμβριο του 2008. </p>
 
 <h2>Ρύθμιση</h2>
 
-<p>Η ρύθμιση του XFree86 4 μπορεί να γίνει είτε με επεξεργασία του 
-αρχείου ρυθμίσεων, είτε με βοηθητικά εργαλεία, όπως το <code>XFree86</code> που 
-εγκαθίσταται μαζί με τον εξυπηρετητή, το <a href="/docs/system-config-display.el.html">system-config-display</a> 
-(σε συστήματα Red Hat, Fedora ή CentOS) και το <a href="/docs/xf86cfg.el.html">xf86cfg</a>.</p>
+<p>Η ρύθμιση του XFree86 4 μπορεί να γίνει είτε με επεξεργασία του αρχείου ρυθμίσεων, είτε με βοηθητικά εργαλεία, όπως το
+<code>XFree86</code> που εγκαθίσταται μαζί με τον εξυπηρετητή, το <a href="/posts/system-config-display/">system-config-display</a> (σε
+συστήματα Red Hat, Fedora ή CentOS) και το <a href="/posts/xf86cfg/">xf86cfg</a>.</p>
 
 <h2>Αρχείο ρυθμίσεων</h2>
 
-<p>Το αρχείο ρυθμίσεων του εξυπηρετητή <strong>XFree86 4</strong> ονομάζεται συνήθως 
-<code>XF86Config-4</code> και βρίσκεται στο <code>/etc</code> ή στο <code>/etc/X11</code>. Για λόγους 
-συμβατότητας με την προηγούμενη έκδοση <a href="/docs/xfree86-3.el.html">XFree86 3</a>, 
-μπορεί να ονομάζεται και <code>XF86Config</code>.</p>
+<p>Το αρχείο ρυθμίσεων του εξυπηρετητή <strong>XFree86 4</strong> ονομάζεται συνήθως <code>XF86Config-4</code> και βρίσκεται στο <code>/etc</code> ή στο
+<code>/etc/X11</code>. Για λόγους συμβατότητας με την προηγούμενη έκδοση <a href="/posts/xfree86-3/">XFree86 3</a>, μπορεί να ονομάζεται και
+<code>XF86Config</code>.</p>
 
-<p>Η σύνταξη του αρχείου ρυθμίσεων είναι ίδια με του εξυπηρετητή <a href="/docs/x.org.el.html">X.Org</a>, 
-μια που ο X.Org αποτελεί συνέχεια του XFree86 4. Για περισσότερες 
-λεπτομέρειες δείτε το <a href="/docs/etc-x11-xorg.conf.el.html">/etc/X11/xorg.conf</a>.</p>
+<p>Η σύνταξη του αρχείου ρυθμίσεων είναι ίδια με του εξυπηρετητή <a href="/posts/x-org/">X.Org</a>, μια που ο X.Org αποτελεί συνέχεια
+του XFree86 4. Για περισσότερες λεπτομέρειες δείτε το <code>/etc/X11/xorg.conf</code>.</p>
 
 <h2>Εργαλείο XFree86</h2>
 
@@ -217,8 +181,8 @@
 
 <ul>
 <li>Ιστότοπος <a href="http://www.xfree86.org/">xfree86.org</a></li>
-<li>Άλλοι εξυπηρετητές γραφικών: <a href="/docs/xfree86-3.el.html">XFree86 3</a>, 
-<a href="/docs/x.org.el.html">X.Org</a>, <a href="/docs/accelerated-x.el.html">Accelerated-X</a>.</li>
+<li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-3/">XFree86 3</a>, <a href="/posts/x-org/">X.Org</a>,
+<a href="/posts/accelerated-x/">Accelerated-X</a>.</li>
 </ul>
 
           </div>
@@ -243,15 +207,13 @@
 
           
           <div class="card-text">
-            <p>Το <code>xf86config</code> είναι ένα βοηθητικό εργαλείο για την αρχική ρύθμιση του 
-εξυπηρετητή γραφικών <a href="/docs/xfree86-3.el.html">XFree86 3</a>. Έχει το ίδιο 
-όνομα με το αρχείο ρυθμίσεων του εξυπηρετητή (<code>XF86Config</code>), αλλά με 
+            <p>Το <code>xf86config</code> είναι ένα βοηθητικό εργαλείο για την αρχική ρύθμιση του εξυπηρετητή γραφικών
+<a href="/posts/xfree86-3/">XFree86 3</a>. Έχει το ίδιο όνομα με το αρχείο ρυθμίσεων του εξυπηρετητή (<code>XF86Config</code>), αλλά με
 διαφορετική χρήση πεζών και κεφαλαίων.</p>
 
-<p>Τόσο το εργαλείο αυτό όσο και η έκδοση 3 του εξυπηρετητή θεωρούνται 
-ξεπερασμένα (προς όφελος του <a href="x.org.el.html">X.Org</a>), και αν χρειαστείτε 
-να το χρησιμοποιήσετε σε κάποιο απαρχαιωμένα σύστημα είναι πολύ πιθανό 
-να μην μπορείτε καν να το βρείτε για να το εγκαταστήσετε.</p>
+<p>Τόσο το εργαλείο αυτό όσο και η έκδοση 3 του εξυπηρετητή θεωρούνται ξεπερασμένα (προς όφελος του
+<a href="/posts/x-org/">X.Org</a>), και αν χρειαστείτε να το χρησιμοποιήσετε σε κάποιο απαρχαιωμένα σύστημα είναι πολύ πιθανό να
+μην μπορείτε καν να το βρείτε για να το εγκαταστήσετε.</p>
 
           </div>
           
@@ -275,18 +237,15 @@
 
           
           <div class="card-text">
-            <p>Ο εξυπηρετητής X <strong>X.Org</strong> χειρίζεται την απεικόνιση του γραφικού 
-περιβάλλοντος. Είναι ο προεπιλεγμένος εξυπηρετητής γραφικών των 
-περισσότερων διανομών Linux από το 2004 και μετά, οπότε αντικατέστησε 
-τους <a href="/docs/xfree86-3.el.html">XFree86 3</a> και <a href="/docs/xfree86-4.el.html">XFree86 4</a>, 
-για λόγους άδειας χρήσης λογισμικού των τελευταίων.</p>
+            <p>Ο εξυπηρετητής X <strong>X.Org</strong> χειρίζεται την απεικόνιση του γραφικού περιβάλλοντος. Είναι ο προεπιλεγμένος εξυπηρετητής
+γραφικών των περισσότερων διανομών Linux από το 2004 και μετά, οπότε αντικατέστησε τους <a href="/posts/xfree86-3/">XFree86 3</a>
+και <a href="/posts/xfree86-4/">XFree86 4</a>, για λόγους άδειας χρήσης λογισμικού των τελευταίων.</p>
 
 <h2>Ρύθμιση</h2>
 
-<p>Η ρύθμιση του X.Org μπορεί να γίνει είτε με επεξεργασία του αρχείου 
-ρυθμίσεων, είτε με βοηθητικά εργαλεία, όπως το <code>Xorg</code> που εγκαθίσταται 
-μαζί με τον εξυπηρετητή, το <a href="/docs/system-config-display.el.html">system-config-display</a> 
-(σε συστήματα Red Hat, Fedora ή CentOS) και το <a href="xorgcfg.el.html">xorgcfg</a>.</p>
+<p>Η ρύθμιση του X.Org μπορεί να γίνει είτε με επεξεργασία του αρχείου ρυθμίσεων, είτε με βοηθητικά εργαλεία, όπως το
+<code>Xorg</code> που εγκαθίσταται μαζί με τον εξυπηρετητή, το <a href="/posts/system-config-display/">system-config-display</a> (σε
+συστήματα Red Hat, Fedora ή CentOS) και το <a href="/posts/xorgcfg/">xorgcfg</a>.</p>
 
 <h2>Εργαλείο Xorg</h2>
 
@@ -295,16 +254,15 @@
 <div class="codehilite"><pre><span></span><code>Xorg -configure
 </code></pre></div>
 
-<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code>xorg.conf.new</code> μέσα 
-στον φάκελο <code>/root</code>, το οποίο μπορείτε να χρησιμοποιήσετε για να 
-προσθέσετε τις δικές σας τροποποιήσεις.</p>
+<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code>xorg.conf.new</code> μέσα στον φάκελο <code>/root</code>, το οποίο μπορείτε να
+χρησιμοποιήσετε για να προσθέσετε τις δικές σας τροποποιήσεις.</p>
 
 <h2>Δείτε επίσης</h2>
 
 <ul>
 <li>Ιστότοπος <a href="http://www.x.org/">x.org</a></li>
-<li>Άλλοι εξυπηρετητές γραφικών: <a href="/docs/xfree86-3.el.html">XFree86 3</a>, 
-<a href="/docs/xfree86-4.el.html">XFree86 4</a>, <a href="/docs/accelerated-x.el.html">Accelerated-X</a>. </li>
+<li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-3/">XFree86 3</a>, <a href="/posts/xfree86-4/">XFree86 4</a>,
+<a href="/posts/accelerated-x/">Accelerated-X</a>. </li>
 </ul>
 
           </div>
@@ -340,8 +298,8 @@
 
 <ul>
 <li>Ιστότοπος <a href="http://www.xig.com/">xig.org</a></li>
-<li>Άλλοι εξυπηρετητές γραφικών: <a href="/docs/xfree86-3.el.html">XFree86 3</a>, 
-<a href="/docs/xfree86-4.el.html">XFree86 4</a>, <a href="x.org.el.html">X.Org</a>.</li>
+<li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-3/">XFree86 3</a>, 
+<a href="/posts/xfree86-4/">XFree86 4</a>, <a href="x.org.el.html">X.Org</a>.</li>
 </ul>
 
           </div>
@@ -367,7 +325,7 @@
           
           <div class="card-text">
             <p>Το <code>system-config-display</code> είναι ένα βοηθητικό εργαλείο γραφικού περιβάλλοντος, 
-για την παραμετροποίηση του εξυπηρετητή γραφικών <a href="/docs/x.org.el.html" title="X.Org">X.Org</a> ή <a href="/docs/xfree86-4.el.html" title="XFree86 4">XFree86 4</a>.</p>
+για την παραμετροποίηση του εξυπηρετητή γραφικών <a href="/posts/x-org/" title="X.Org">X.Org</a> ή <a href="/posts/xfree86-4/" title="XFree86 4">XFree86 4</a>.</p>
 
           </div>
           
@@ -391,10 +349,9 @@
 
           
           <div class="card-text">
-            <p>Το εργαλείο <code>xorgcfg</code> είναι ένα βοήθημα γραφικού περιβάλλοντος για την 
-παραμετροποίηση του <a href="/docs/x.org.el.html">εξυπηρετητή γραφικών X.Org</a>, 
-ενόσω αυτός τρέχει. Θεωρείται ξεπερασμένο, και δεν υπάρχει στις 
-πρόσφατες εκδόσεις των διανομών Linux. </p>
+            <p>Το εργαλείο <code>xorgcfg</code> είναι ένα βοήθημα γραφικού περιβάλλοντος για την παραμετροποίηση του
+<a href="/posts/x-org/">εξυπηρετητή γραφικών X.Org</a>, ενόσω αυτός τρέχει. Θεωρείται ξεπερασμένο, και δεν υπάρχει στις πρόσφατες
+εκδόσεις των διανομών Linux. </p>
 
           </div>
           
@@ -428,6 +385,30 @@
           
             <span class="mr-2">
               <b>Posted</b>: 2012-04-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/facepalm-of-the-day/">
+            <h2 class="card-title">Facepalm of the day</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Cisco switches will allow you to add a Vlan to one or more interfaces, even if the Vlan does not exist on the device. MAC addresses will then appear in the MAC database as expected, but traffic will not flow.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-03-27
             </span>
           
           

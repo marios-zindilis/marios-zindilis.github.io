@@ -130,10 +130,8 @@
   the root filesystem.</p>
 </blockquote>
 
-<p>dracut reads configuration files in <a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a> 
-and in <a href="/docs/lfs/etc/modprobe.d/">/etc/modprobe.d/</a> by default, unless run in 
-<em>generic</em> mode, in which case it ignores host-specific configuration in 
-<code>/etc/modprobe.d/</code>.</p>
+<p>dracut reads configuration files in <code>/usr/lib/modprobe.d/</code> and in <code>/etc/modprobe.d/</code> by default, unless run in
+<em>generic</em> mode, in which case it ignores host-specific configuration in <code>/etc/modprobe.d/</code>.</p>
 
 <p>Again, copying from the man page:</p>
 
@@ -142,8 +140,7 @@ and in <a href="/docs/lfs/etc/modprobe.d/">/etc/modprobe.d/</a> by default, unle
         host instead of a generic host.
 </code></pre>
 
-<p>The default configuration is host-only. This is defined in <code>/etc/dracut.conf</code>, 
-in the line:</p>
+<p>The default configuration is host-only. This is defined in <code>/etc/dracut.conf</code>, in the line:</p>
 
 <pre><code>    hostonly="yes"
 </code></pre>
@@ -316,7 +313,7 @@ service nfs restart
           
           <div class="card-text">
             <ul>
-<li><a href="/docs/procmail.html">procmail</a></li>
+<li><a href="/posts/procmail/">procmail</a></li>
 <li><a href="http://isync.sourceforge.net/">isync</a>, an IMAP and MailDir mailbox 
 synchronizer.</li>
 </ul>

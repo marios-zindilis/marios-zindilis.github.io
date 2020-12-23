@@ -110,14 +110,6 @@ default via 192.168.88.1 dev wlan0  proto static
 192.168.88.0/24 dev wlan0  proto kernel  scope link  src 192.168.88.253  metric 9
 </code></pre>
 
-<h2>See Also</h2>
-
-<ul>
-<li><a href="/docs/man/netstat.8.html">Man Page for <code>netstat</code></a></li>
-<li><a href="/docs/man/route.8.html">Man Page for <code>route</code></a></li>
-<li><a href="/docs/man/ip.7.html">Man Page for <code>ip</code></a></li>
-</ul>
-
           </div>
           
         </div><!-- .card-body -->
@@ -205,8 +197,7 @@ refreshes automatically.</p>
 
           
           <div class="card-text">
-            <p>This page is a dump of notes on <strong>disk benchmarking in Linux</strong>, and is 
-in great need of editing! Use at own peril.</p>
+            <p>This page is a dump of notes on <strong>disk benchmarking in Linux</strong>, and is in great need of editing! Use at own peril.</p>
 
 <ul>
 <li>http://www.westnet.com/~gsmith/content/postgresql/pg-disktesting.htm</li>
@@ -219,42 +210,38 @@ in great need of editing! Use at own peril.</p>
 
 <p>This method reads data sequentially from the disk, disregarding file boundaries.</p>
 
-<p>{% highlight bash %}
-mariosz@super-mario:~$ sudo hdparm -t /dev/sdb
+<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ sudo hdparm -t /dev/sdb
 /dev/sdb:
- Timing buffered disk reads: 228 MB in  3.02 seconds =  75.52 MB/sec
-{% endhighlight %}</p>
+ Timing buffered disk reads: <span class="m">228</span> MB in  <span class="m">3</span>.02 <span class="nv">seconds</span> <span class="o">=</span>  <span class="m">75</span>.52 MB/sec
+</code></pre></div>
 
 <h3>Cached reads</h3>
 
-<p>{% highlight bash %}
-mariosz@super-mario:~$ sudo hdparm -T /dev/sdb
+<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ sudo hdparm -T /dev/sdb
 /dev/sdb:
- Timing cached reads:   3158 MB in  2.00 seconds = 1579.16 MB/sec
-{% endhighlight %}</p>
+ Timing cached reads:   <span class="m">3158</span> MB in  <span class="m">2</span>.00 <span class="nv">seconds</span> <span class="o">=</span> <span class="m">1579</span>.16 MB/sec
+</code></pre></div>
 
 <h2><code>dd</code></h2>
 
 <h3>Writes</h3>
 
-<p>{% highlight bash %}
-mariosz@super-mario:~$ dd if=/dev/zero of=testfile bs=8k count=100k; rm -f testfile
-102400+0 records in
-102400+0 records out
-838860800 bytes (839 MB) copied, 12.7363 s, 65.9 MB/s
-{% endhighlight %}</p>
+<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>testfile <span class="nv">bs</span><span class="o">=</span>8k <span class="nv">count</span><span class="o">=</span>100k<span class="p">;</span> rm -f testfile
+<span class="m">102400</span>+0 records in
+<span class="m">102400</span>+0 records out
+<span class="m">838860800</span> bytes <span class="o">(</span><span class="m">839</span> MB<span class="o">)</span> copied, <span class="m">12</span>.7363 s, <span class="m">65</span>.9 MB/s
+</code></pre></div>
 
 <h3>Writes and Cache-out</h3>
 
-<p>{% highlight bash %}
-mariosz@super-mario:~$ time sh -c "dd if=/dev/zero of=testfile bs=8k count=100k; sync" ; rm -f testfile
-102400+0 records in
-102400+0 records out
-838860800 bytes (839 MB) copied, 12.6832 s, 66.1 MB/s
+<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ <span class="nb">time</span> sh -c <span class="s2">&quot;dd if=/dev/zero of=testfile bs=8k count=100k; sync&quot;</span> <span class="p">;</span> rm -f testfile
+<span class="m">102400</span>+0 records in
+<span class="m">102400</span>+0 records out
+<span class="m">838860800</span> bytes <span class="o">(</span><span class="m">839</span> MB<span class="o">)</span> copied, <span class="m">12</span>.6832 s, <span class="m">66</span>.1 MB/s
 real    0m19.304s
 user    0m0.020s
 sys 0m1.232s
-{% endhighlight %}</p>
+</code></pre></div>
 
 <h2>Install iozone</h2>
 
@@ -264,9 +251,10 @@ sys 0m1.232s
 <li>yum install iozone-3-420.i386.rpm</li>
 </ol>
 
-<p>If you also need to create graphs from the results of <code>iozone</code>, you can
-additionally install <code>gnuplot</code>:
-<code>yum install gnuplot</code></p>
+<p>If you also need to create graphs from the results of <code>iozone</code>, you can additionally install <code>gnuplot</code>:</p>
+
+<pre><code>yum install gnuplot
+</code></pre>
 
 <h2>Using iozone</h2>
 
@@ -276,17 +264,14 @@ additionally install <code>gnuplot</code>:
 
 <h2>Bonnie++</h2>
 
-<p>The <code>bonnie++</code> benchmark is available on <a href="/docs/centos-6-enable-epel-repository.html">EPEL</a> 
-repository for CentOS. Note that it will put load on the system on which 
-it runs, so it's better run during less productive times.</p>
+<p>The <code>bonnie++</code> benchmark is available on <a href="/posts/centos-6-enable-epel-repository/">EPEL</a> repository for CentOS. Note
+that it will put load on the system on which it runs, so it's better run during less productive times.</p>
 
-<p>{% highlight bash %}
-[root@centos-6-3-minimal ~]# bonnie++ -u root
-{% endhighlight %}</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>root@centos-6-3-minimal ~<span class="o">]</span><span class="c1"># bonnie++ -u root</span>
+</code></pre></div>
 
-<p>Bonnie++ will output its data twice, once in an ASCII formatted table, 
-and once more in a single line CSV. Echo the contents of the CSV line 
-through bon_csv2html to get a more readable HTML table.</p>
+<p>Bonnie++ will output its data twice, once in an ASCII formatted table, and once more in a single line CSV. Echo the
+contents of the CSV line through bon_csv2html to get a more readable HTML table.</p>
 
           </div>
           

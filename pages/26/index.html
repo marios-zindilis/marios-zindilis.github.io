@@ -38,30 +38,6 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/facepalm-of-the-day/">
-            <h2 class="card-title">Facepalm of the day</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Cisco switches will allow you to add a Vlan to one or more interfaces, even if the Vlan does not exist on the device. MAC addresses will then appear in the MAC database as expected, but traffic will not flow.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-03-27
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
           <a href="/posts/μεταβλητές-περιβάλλοντος/">
             <h2 class="card-title">Μεταβλητές περιβάλλοντος</h2>
           </a>
@@ -247,22 +223,37 @@ Mandriva, OpenSUSE) το πρόγραμμα rpm μπορεί να διαχειρ
 <h2>Επιλογές</h2>
 
 <dl>
-<dt><code>list</code></dt>
-<dd> Αν εκτελεστεί χωρίς καμμιά παράμετρο, εμφανίζει μια λίστα με όλα τα πακέτα που είναι διαθέσιμα για εγκατάσταση από όλα τα ενεργοποιημένα αποθετήρια. Το πλήθος αυτών των πακέτων ανέρχεται συνήθως σε μερικές δεκάδες χιλιάδες. Αν δοθεί ως παράμετρος ένα όνομα πακέτου, τότε εμφανίζει πληροφορίες για την εγκατεστημένη έκδοση του πακέτου (αν υπάρχει) και την νεότερη διαθέσιμη έκδοση στα αποθετήρια (αν υπάρχει).
-</dd>
-<dt><code>info</code></dt>
-<dd> Εμφανίζει πληροφορίες για ένα πακέτο. Η έξοδος είναι παρόμοια με 
-εκείνη της εντολής <a href='/docs/rpm.el.html'><code>rpm -qi</code></a>.
-</dd>
-<dt><code>update</code></dt>
-<dd> Αναβαθμίζει όλα τα εγκατεστημένα πακέτα στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί με τις εξαρτήσεις τους.
-</dd>
-<dt><code>update REGEX</code></dt><dd> Αναβαθμίζει όλα τα εγκατεστημένα πακέτα, το όνομα των οποίων ταιριάζει στην κανονική έκφραση <code>REGEX</code>, στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί με τις εξαρτήσεις τους.
-</dd>
-<dt><code>update --obsoletes</code></dt>
-<dd> Αναβαθμίζει όλα τα εγκατεστημένα πακέτα στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί με τις εξαρτήσεις τους. Στους ελέγχους για νέες εκδόσεις συμπεριλαμβάνονται και πακέτα που έχουν ξεπεραστεί. Η επιλογή αυτή είναι χρήσιμη για την αναβάθμιση σε νέες εκδόσεις ολόκληρων διανομών.
-</dd><dt><code>upgrade</code></dt><dd> Ίδιο με το <code>yum update --obsoletes</code>.
-</dd></dl>
+    <dt><code>list</code></dt>
+    <dd>
+        Αν εκτελεστεί χωρίς καμμιά παράμετρο, εμφανίζει μια λίστα με όλα τα πακέτα που είναι διαθέσιμα για εγκατάσταση
+        από όλα τα ενεργοποιημένα αποθετήρια. Το πλήθος αυτών των πακέτων ανέρχεται συνήθως σε μερικές δεκάδες χιλιάδες.
+        Αν δοθεί ως παράμετρος ένα όνομα πακέτου, τότε εμφανίζει πληροφορίες για την εγκατεστημένη έκδοση του πακέτου
+        (αν υπάρχει) και την νεότερη διαθέσιμη έκδοση στα αποθετήρια (αν υπάρχει).
+    </dd>
+    <dt><code>info</code></dt>
+    <dd>
+        Εμφανίζει πληροφορίες για ένα πακέτο. Η έξοδος είναι παρόμοια με εκείνη της εντολής
+        <a href='/posts/rpm/'><code>rpm -qi</code></a>.
+    </dd>
+    <dt><code>update</code></dt>
+    <dd>
+        Αναβαθμίζει όλα τα εγκατεστημένα πακέτα στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί
+        με τις εξαρτήσεις τους.
+    </dd>
+    <dt><code>update REGEX</code></dt>
+    <dd>
+        Αναβαθμίζει όλα τα εγκατεστημένα πακέτα, το όνομα των οποίων ταιριάζει στην κανονική έκφραση <code>REGEX</code>,
+        στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί με τις εξαρτήσεις τους.
+    </dd>
+    <dt><code>update --obsoletes</code></dt>
+    <dd>
+        Αναβαθμίζει όλα τα εγκατεστημένα πακέτα στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί
+        με τις εξαρτήσεις τους. Στους ελέγχους για νέες εκδόσεις συμπεριλαμβάνονται και πακέτα που έχουν ξεπεραστεί. Η
+        επιλογή αυτή είναι χρήσιμη για την αναβάθμιση σε νέες εκδόσεις ολόκληρων διανομών.
+    </dd>
+    <dt><code>upgrade</code></dt>
+    <dd> Ίδιο με το <code>yum update --obsoletes</code>.</dd>
+</dl>
 
           </div>
           
@@ -317,12 +308,6 @@ with <code>n</code>, and to the previous one with <code>N</code>.</p>
 
 <p>You can exit <code>less</code> with the <strong>q</strong> key, or with <strong>Ctrl+C</strong>.</p>
 
-<h2>See Also</h2>
-
-<ul>
-<li><a href="/docs/man/less.1.html">Man Page for <code>less</code></a></li>
-</ul>
-
           </div>
           
         </div><!-- .card-body -->
@@ -345,10 +330,9 @@ with <code>n</code>, and to the previous one with <code>N</code>.</p>
 
           
           <div class="card-text">
-            <p><strong>Cream</strong> is an advanced text editor, created on top of <a href="/docs/vim.html">Vim</a>, 
-and works on Windows, Linux and FreeBSD. As of the latest update of this 
-document (see bottom of page for date), the <a href="http://cream.cvs.sourceforge.net/viewvc/cream/cream/" title="Cream CVS">code commits</a> suggest 
-that the project has been abandoned.</p>
+            <p><strong>Cream</strong> is an advanced text editor, created on top of <a href="/posts/vim/">Vim</a>, and works on Windows, Linux and FreeBSD. As
+of the latest update of this document (see bottom of page for date), the <a href="http://cream.cvs.sourceforge.net/viewvc/cream/cream/" title="Cream CVS">code commits</a> suggest that the
+project has been abandoned.</p>
 
 <h2>See Also</h2>
 
@@ -420,143 +404,10 @@ that the project has been abandoned.</p>
 
           
           <div class="card-text">
-            <p>Βήματα για εγκατάσταση της στοίβας λογισμικού σε Fedora 16:</p>
-
-<h2>Εγκατάσταση Apache 2</h2>
-
-<p>Σε αντίθεση με προηγούμενες εκδόσεις, στο Fedora 16 δεν είναι προεγκατεστημένος ο Apache. Mπορείτε να τον εγκαταστήσετε με:</p>
-
-<p>{% highlight bash %}
-yum install httpd
-{% endhighlight %}</p>
-
-<p>Κατά την εγκατάσταση, δημιουργείται στο σύστημα ένας χρήστης με το όνομα 
-<code>apache</code>, και ένα group με το ίδιο όνομα. Το home directory του χρήστη 
-<code>apache</code> είναι το <code>/var/www</code>. Αυτές τις προεπιλογές μπορείτε να τις αλλάξετε στη συνέχεια.</p>
-
-<p>Για να ρυθμίσετε την αυτόματη εκκίνηση του Apache κατά την εκκίνηση του συστήματος:</p>
-
-<p>{% highlight bash %}
-systemctl enable http.service
-{% endhighlight %}</p>
-
-<p>Αυτό ορίζει ότι ο Apache θα ξεκινήσει αυτόματα την επόμενη φορά που θα ξεκινήσει το σύστημα. Προαιρετικά, για να δοκιμάσετε τη λειτουργία του εξυπηρετητή αυτή τη στιγμή, μπορείτε να τον εκκινήσετε χειροκίνητα με:</p>
-
-<p>{% highlight bash %}
-systemctl start httpd.service
-{% endhighlight %}</p>
-
-<h2>Εγκατάσταση PHP 5</h2>
-
-<p>Για την εγκατάσταση της PHP 5 απλά εκτελέστε:</p>
-
-<p>{% highlight bash %}
-yum install php
-{% endhighlight %}</p>
-
-<p>Αν θέλετε, μπορείτε σε αυτό το σημείο να επιβεβαιώσετε ότι λειτουργεί η 
-PHP, επανεκκινώντας τον Apache, και βάζωντας ένα αρχείο <code>.php</code> μέσα στο 
-<code>/var/www/html</code>, το οποίο θα περιέχει μόνο την γραμμή: </p>
-
-<p>{% highlight php %}
-<?php phpinfo(); ?>
-{% endhighlight %}</p>
-
-<p>Αυτό το αρχείο μπορείτε να το δείτε μόνο σε έναν περιηγητή ιστού στον 
-ίδιο υπολογιστή στον οποίο κάνετε την εγκατάσταση, επειδή δεν έχετε 
-ανοίξει ακόμα την πρόσβαση από άλλους υπολογιστές.</p>
-
-<h2>Εγκατάσταση MySQL 5</h2>
-
-<p>Για την εγκατάσταση του εξυπηρετητή MySQL 5 εκτελέστε:</p>
-
-<p>{% highlight bash %}
-yum install mysql-server
-{% endhighlight %}</p>
-
-<p>Αμέσως μετά την εγκατάσταση, συνίσταται να εκκινήσετε την υπηρεσία 
-<code>mysqld</code> χειροκίνητα, και να εκτελέσετε το <code>mysql_secure_installation</code>, 
-το οποίο θα ορίσει ένα συνθηματικό για τον χρήστη root της MySQL, και 
-θα σας δώσει τη δυνατότητα να διαγράψετε μερικούς πίνακες και δεδομένα 
-που δημιουργούνται κατά την εγκατάσταση της βάσης, για δοκιμαστικό σκοπό:</p>
-
-<p>{% highlight bash %}
-systemctl start mysqld.service
-mysql<em>secure</em>installation
-{% endhighlight %}</p>
-
-<p>Στη συνέχεια, ρυθμίστε και την MySQL να ξεκινάει κατά την εκκίνηση του υπολογιστή:</p>
-
-<p>{% highlight bash %}
-systemctl enable mysqld.service
-{% endhighlight %}</p>
-
-<p>Τέλος, συνδέστε την PHP με την MySQL:</p>
-
-<p>{% highlight bash %}
-yum install php-mysql
-{% endhighlight %}</p>
-
-<p>Για να δουλέψουν όλα μαζί την <strong>πρώτη</strong> φορά, θα πρέπει να εκκινήσετε 
-χειροκίνητα τον <code>httpd</code> και την <code>mysqld</code> (αν δεν το έχετε ήδη κάνει σε 
-ένα από τα προηγούμενα βήματα), ή απλά να επανεκκινήσετε το σύστημα 
-(οπότε θα ξεκινήσουν από μόνα τους, αφού τα έχετε ορίσει με το <code>systemctl enable</code>).</p>
-
-<h2>Άνοιγμα θύρας για τον εξυπηρετητή Web</h2>
-
-<p>Από προεπιλογή, το Fedora είναι ρυθμισμένο να μην δέχεται συνδέσεις στη 
-θύρα 80 από άλλους υπολογιστές. Με άλλα λόγια, θα μπορείτε να δείτε την 
-αρχική σελίδα του εξυπηρετητή αν περιηγηθείτε στη διεύθυνση <code>http://localhost/</code> 
-στον ίδιο τον υπολογιστή που τρέχει τον Apache, αλλά όχι σε οποιονδήποτε 
-άλλο υπολογιστή, ακόμα και στο τοπικό δίκτυο. Για να το πετύχετε αυτό, 
-θα πρέπει να ορίσετε έναν επιπλέον κανόνα στο <code>iptables</code>. Σημειώστε ότι 
-στη συνέχεια «ανοίγουμε» την πόρτα 80 στην οποία «ακούει» από προεπιλογή 
-ο εξυπηρετητής. Μπορείτε να το αλλάξετε αυτό στο αρχείο 
-<code>/etc/httpd/conf/httpd.conf</code> στη γραμμή <code>Listen 80</code>.</p>
-
-<p>Για να αλλάξετε τους κανόνες ανοίξτε το αρχείο <a href="/docs/etc-sysconfig-iptables.el.html">/etc/sysconfig/iptables</a> 
-και προσθέστε την ακόλουθη γραμμή πριν από την εντολή <code>COMMIT</code>:</p>
-
-<p>{% highlight bash %}
--A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-{% endhighlight %}</p>
-
-<p>Στη συνέχεια επανεκκινήστε το iptables με:</p>
-
-<p>{% highlight bash %}
-systemctl restart iptables.service
-{% endhighlight %}</p>
-
-<p>Αν και πάλι δεν μπορείτε να δείτε σελίδες στον εξυπηρετητή σας, ίσως 
-κάνατε κάποιο λάθος στο αρχείο ρυθμίσεων του <code>iptables</code>. Δοκιμάστε 
-προσωρινά να απενεργοποιήσετε το <code>iptables</code> με την εντολή <code>systemctl stop iptables.service</code> 
-και δοκιμάστε ξανά από άλλον υπολογιστή να δείτε κάποια σελίδα στον 
-εξυπηρετητή. Αν ανοίγει, τότε σημαίνει ότι το πρόβλημα είναι στις 
-ρυθμίσεις του <code>iptables</code> και θα πρέπει να το ψάξετε περισσότερο. Το 
-ακόλουθο παράδειγμα είναι από ένα αρχείο <code>iptables</code> το οποίο λειτουργεί 
-όπως πρέπει:</p>
-
-<p>{% highlight bash %}
-[root@docs sysconfig]# cat iptables</p>
-
-<h1>Firewall configuration written by system-config-firewall</h1>
-
-<h1>Manual customization of this file is not recommended.</h1>
-
-<p>*filter
-:INPUT ACCEPT [0:0]
-:FORWARD ACCEPT [0:0]
-:OUTPUT ACCEPT [0:0]
--A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
--A INPUT -p icmp -j ACCEPT
--A INPUT -i lo -j ACCEPT
--A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
--A INPUT -j REJECT --reject-with icmp-host-prohibited
--A FORWARD -j REJECT --reject-with icmp-host-prohibited
-COMMIT
-{% endhighlight %}</p>
+            <p>Βήματα για εγκατάσταση της στοίβας λογισμικού LAMP σε Fedora 16.</p>
 
           </div>
+          <a href="/posts/fedora-16-εγκατάσταση-apache-mysql-php/" class="btn btn-primary">Read More &rarr;</a>
           
         </div><!-- .card-body -->
         <div class="card-footer text-muted">
@@ -642,6 +493,11 @@ database ή <code>*.*</code> για όλους τους πίνακες σε όλ
             </span>
           
           
+          <b>Tags</b>:
+          
+            <a href="/tags/mysql/">mysql</a>
+          
+          
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
@@ -664,6 +520,78 @@ database ή <code>*.*</code> για όλους τους πίνακες σε όλ
           
             <span class="mr-2">
               <b>Posted</b>: 2011-11-19
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/getfacl/">
+            <h2 class="card-title">getfacl</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Μερικά συστήματα αρχείων όπως τα ext2, ext3, ext4, ReiserFS, JFS, XFS, 
+υποστηρίζουν τον ορισμό επιπλέον ιδιοτήτων-δικαιωμάτων πρόσβασης στα 
+αρχεία, τα οποία λειτουργούν ως λίστες ελέγχου πρόσβασης (Access 
+Control Lists). Στα συστήματα αυτά, η εντολή <code>getfacl</code> δείχνει αυτά τα 
+δικαιώματα ανά χρήστη.</p>
+
+<p>Σε ένα αρχείο στο οποίο δεν έχουν οριστεί κανόνες ACL επιπλέον από τα 
+απλά δικαιώματα πρόσβασης, το αποτέλεσμα της <code>getfacl</code> είναι αντίστοιχο 
+με την έξοδο της <code>ls -l</code>:</p>
+
+<p>{% highlight bash %}
+$ ls -l route.pdf 
+-rw-rw-r-- 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
+$ getfacl route.pdf</p>
+
+<h1>file: route.pdf</h1>
+
+<h1>owner: mariosz</h1>
+
+<h1>group: mariosz</h1>
+
+<p>user::rw-
+group::rw-
+other::r--
+{% endhighlight %}</p>
+
+<p>Αν σε αυτό το αρχείο οριστούν δικαιώματα ACL, τότε πλέον αλλάζουν τα 
+αποτελέσματα και των δύο εντολών, και το αρχείο συμπεριφέρεται διαφορετικά:</p>
+
+<p>{% highlight bash %}
+$ setfacl -m user:another:r-- route.pdf </p>
+
+<p>$ ls -l route.pdf
+-rw-rw-r--+ 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf</p>
+
+<p>$ getfacl route.pdf </p>
+
+<h1>file: route.pdf</h1>
+
+<h1>owner: mariosz</h1>
+
+<h1>group: mariosz</h1>
+
+<p>user::rw-
+user:another:r--
+group::rw-
+mask::rw-
+other::r--
+{% endhighlight %}</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-11-05
             </span>
           
           
