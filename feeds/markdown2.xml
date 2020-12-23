@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/markdown2/</link>
         <description>Personal website of Marios Zindilis - Posts tagged markdown2</description>
         <atom:link href="https://zindilis.com/feeds/markdown2.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Thu, 17 Dec 2020 17:05:31 UT</lastBuildDate>
+        <lastBuildDate>Wed, 23 Dec 2020 06:51:25 UT</lastBuildDate>
         <item>
             <title>Regular expressions in python-markdown2 (part 2)</title>
             <link>https://zindilis.com/posts/regex-in-python-markdown2-pt2/</link>
