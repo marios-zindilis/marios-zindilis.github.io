@@ -470,10 +470,6 @@
    </url>
 
    <url>
-      <loc>https://zindilis.com/posts/fedora-15-minimal-server/</loc>
-   </url>
-
-   <url>
       <loc>https://zindilis.com/posts/mysql-workbench/</loc>
    </url>
 
@@ -591,10 +587,6 @@
 
    <url>
       <loc>https://zindilis.com/posts/apache2-basic-authentication/</loc>
-   </url>
-
-   <url>
-      <loc>https://zindilis.com/posts/wordpress-plugin-registration-whitelist/</loc>
    </url>
 
    <url>

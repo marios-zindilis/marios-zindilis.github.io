@@ -117,7 +117,7 @@ mysql_secure_installation
 πόρτα 80 στην οποία «ακούει» από προεπιλογή ο εξυπηρετητής. Μπορείτε να το αλλάξετε αυτό στο αρχείο
 <code>/etc/httpd/conf/httpd.conf</code> στη γραμμή <code>Listen 80</code>.</p>
 
-<p>Για να αλλάξετε τους κανόνες ανοίξτε το αρχείο <a href="/docs/etc-sysconfig-iptables.el.html">/etc/sysconfig/iptables</a> και
+<p>Για να αλλάξετε τους κανόνες ανοίξτε το αρχείο <code>/etc/sysconfig/iptables</code> και
 προσθέστε την ακόλουθη γραμμή πριν από την εντολή <code>COMMIT</code>:</p>
 
 <pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT

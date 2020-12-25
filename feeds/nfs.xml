@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/nfs/</link>
         <description>Personal website of Marios Zindilis - Posts tagged nfs</description>
         <atom:link href="https://zindilis.com/feeds/nfs.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 23 Dec 2020 19:27:23 UT</lastBuildDate>
+        <lastBuildDate>Fri, 25 Dec 2020 13:03:58 UT</lastBuildDate>
         <item>
             <title>Stale NFS Causes BackupPC fileListReceive Failure</title>
             <link>https://zindilis.com/posts/stale-nfs-causes-backuppc-filelistreceive-failure/</link>
