@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/zindilis.com.css">
     <title>Marios Zindilis - Page 22</title>
+
+    
   </head>
   <body class="d-flex flex-column h-100">
     <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
@@ -34,6 +36,47 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/zenoss-zendmd-get-groups/">
+            <h2 class="card-title">Get Device Groups in Zenoss with ZenDMD</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">Globals</span>
+<span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
+<span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
+
+<span class="k">for</span> <span class="n">Group</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">getSubOrganizers</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">Group</span><span class="o">.</span><span class="n">getPrimaryId</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>Get all Devices in specific Group</h2>
+
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">Group</span><span class="o">.</span><span class="n">devices</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">getPrimaryId</span><span class="p">()</span>
+</code></pre></div>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-11
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
     
       <div class="card my-4">
       
@@ -188,30 +231,28 @@ and finally mount it and start using it! </p>
 <pre><code>marios@juniper&gt; help tip cli
 </code></pre>
 
-<p>This is not exactly a tip <em>of the day</em> - since you actually get a new 
-tip each time you execute that command. Still pretty cool though. </p>
+<p>This is not exactly a tip <em>of the day</em> - since you actually get a new tip each time you execute that command. Still
+pretty cool though. </p>
 
 <h2>Help with syslog messages</h2>
 
-<p>You can view an explanation of what a syslog message means with <code>help 
-syslog</code>. For example, for the <code>LOGIN_INFORMATION</code> message, execute:</p>
+<p>You can view an explanation of what a syslog message means with <code>help syslog</code>. For example, for the <code>LOGIN_INFORMATION</code>
+message, execute:</p>
 
 <pre><code>marios@juniper&gt; help syslog LOGIN_INFORMATION
 </code></pre>
 
 <h2>Search in help topics</h2>
 
-<p>You can search in help topics with <code>help apropos</code>. This will return a 
-list of help pages that contain the word you searched for. For example, 
-you can search for all pages that refer to <code>syslog</code> with:</p>
+<p>You can search in help topics with <code>help apropos</code>. This will return a list of help pages that contain the word you
+searched for. For example, you can search for all pages that refer to <code>syslog</code> with:</p>
 
 <pre><code>marios@juniper&gt; help apropos syslog
 </code></pre>
 
 <h2>Topical help</h2>
 
-<p>To get help on a specific topic, start with <code>help topic</code>. For example, 
-for help on <code>syslog</code>, execute:</p>
+<p>To get help on a specific topic, start with <code>help topic</code>. For example, for help on <code>syslog</code>, execute:</p>
 
 <pre><code>marios@juniper&gt; help topic system syslog
 </code></pre>
@@ -972,56 +1013,6 @@ tmpfs                 947M     0  947M   0% /dev/shm
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/smbpasswd/">
-            <h2 class="card-title">smbpasswd</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><code>smbpasswd</code> is the Samba equivalent of the system's <code>passwd</code>, it allows 
-for the management of Samba user accounts.</p>
-
-<h2>Add a user</h2>
-
-<p>To add a user, use <code>smbpasswd</code> with the <code>-a</code> option, and the username as 
-the only required parameter, e.g:</p>
-
-<pre><code>smbpasswd -a obiwan
-</code></pre>
-
-<p>The very first time that you will run <code>smbpasswd</code> it will warn that a 
-user database does not yet exist. This is normal, and <code>smbpasswd</code> will 
-generate that database.</p>
-
-<h2>Change a password</h2>
-
-<p>Users can change their own passwords, and root can change any other 
-user's password. If the Samba server authenticates users against a 
-remote server, the server can be defined with the <code>-r</code> option.</p>
-
-<p>For example, when used with a local user database (i.e. in conjunction 
-with a <code>security = User</code> setting in <code>[Global]</code>), a user can change 
-their password with just:</p>
-
-<pre><code>obiwan@server ~ $ smbpasswd
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-10-25
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -1213,6 +1204,12 @@ their password with just:</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
             
           
         

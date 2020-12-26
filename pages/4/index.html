@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/zindilis.com.css">
     <title>Marios Zindilis - Page 4</title>
+
+    
   </head>
   <body class="d-flex flex-column h-100">
     <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
@@ -34,6 +36,80 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/vmware-build-vmware-4-tools-on-centos-6/">
+            <h2 class="card-title">Building VMware ESXi 4 Tools on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>CentOS 6 is not directly supported by version 4 of the VMware ESXi hypervisor, 
+which means that there are no precompiled binaries for the kernel modules 
+required for the VM to talk to the host. This short guide shows you how to 
+manually compile the tools. Note that every time that you upgrade to a newer 
+kernel version, you will have to do this from scratch -- you will have to 
+compile the tools against the new kernel's headers.</p>
+
+<p>Here's the procedure:</p>
+
+<ol>
+<li><p>From the vSphere client, right click on the machine, open the "Guest" menu 
+and select "Install/Upgrade VMware Tools". This will insert a virtual 
+optical drive in the VM.</p></li>
+<li><p>Mount the virtual optical drive, <em>not</em> directly on the <code>/mnt</code> directory, 
+since that will be used later by the installer. For example:</p>
+
+<pre><code>mkdir /mnt/vmware-tools
+mount -o loop /dev/cdrom /mnt/vmware-tools
+</code></pre></li>
+<li><p>Copy the tools in a writeable location (the mount point of the virtual 
+optical drive will be read-only) and decompress it. For example:</p>
+
+<pre><code>cp /mnt/vmware-tools/VMwareTools-4*.tar.gz /root/
+cd /root/
+tar zxvf VMwareTools-4*.tar.gz
+</code></pre></li>
+<li><p>Before starting the installation, install a C compiler and the kernel's 
+source code, since the VMware tools installer will need the kernel headers 
+to include while compiling the modules. For example:</p>
+
+<pre><code>yum install gcc
+yum install kernel-headers
+</code></pre></li>
+<li><p>Next, start the installation. It will ask a lot of questions, on which you 
+can (most probably) accept the default answers.</p>
+
+<pre><code>cd /root/vmware-tools-distrib
+./vmware-install.pl
+</code></pre></li>
+<li><p>Finally, even though you don't normally need to reboot, do it anyway if you 
+can. That way you will verify that the kernel modules are properly loaded 
+after a reboot. You can check that with:</p>
+
+<pre><code>[root@centos-6 ~]# lsmod | grep '^vm'
+vmmemctl                8642  0 
+vmware_balloon          7199  0
+</code></pre></li>
+<li><p>If everything went fine, you might want to clean up the files you copied 
+and extracted, although keeping them will speed up the reinstallation of 
+the tools in case you upgrade the kernel to a newer version.</p></li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-04-27
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
     
       <div class="card my-4">
       
@@ -323,39 +399,6 @@ and <a href="http://www.openwall.com/lists/oss-security/2015/01/27/9">cross-post
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/gitpython-clone-remote-repository/">
-            <h2 class="card-title">Clone a remote repository with GitPython</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Example code:</p>
-
-<p>{% highlight python %}
-import git</p>
-
-<p>remote = 'https://github.com/gitpython-developers/GitPython.git'
-local = '/home/marios/Tests/gitpython'</p>
-
-<p>git.Repo.clone_from(remote, local)
-{% endhighlight %}</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2015-02-08
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -547,6 +590,12 @@ local = '/home/marios/Tests/gitpython'</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
             
           
         

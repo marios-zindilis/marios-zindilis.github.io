@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/zindilis.com.css">
     <title>Marios Zindilis - Page 28</title>
+
+    
   </head>
   <body class="d-flex flex-column h-100">
     <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
@@ -34,6 +36,44 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-switchport-trunk-encapsulation-dot1q/">
+            <h2 class="card-title">switchport trunk encapsulation dot1q</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>switchport trunk encapsulation dot1q</code> καθορίζει το 
+encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία ήδη 
+λειτουργεί ως trunk. Η παράμετρος <code>dot1q</code> καθορίζει την τιμή στο 
+πρότυπο IEEE 802.1q.</p>
+
+<p>Υπάρχουν δύο πρότυπα λειτουργίας για διεπαφές trunk, το 802.1q και το ISL. Το πρότυπο ISL (Inter-Switch Link) αναπτύχθηκε από τη Cisco πολύ νωρίτερα από το 802.1q. Μια βασική του διαφορά από το 802.1q είναι ότι περικλείει το Ethernet Frame σε ένα επιπλέον ζεύγος header και trailer. Αντίθετα, το 802.1q προσθέτει μόνο ένα επιπλέον πεδίο στο υφιστάμενο header του Ethernet frame, και αναγκαστικά επανυπολογίζει το Frame Check Sequence (FCS) στο trailer.</p>
+
+<p>Πρακτικά, το ISL δεν χρησιμοποιείται πλέον σήμερα, και σε νεότερες συσκευές η ίδια η Cisco έχει σταματήσει να το υποστηρίζει. Αναφέρεται ακόμα στην τεκμηρίωση για σκοπούς συμβατότητας με παλαιότερες συσκευές. Οι συσκευές που δεν προσφέρουν άλλη δυνατότητα ρύθμισης, λειτουργούν από προεπιλογή σε dot1q. </p>
+
+<h2>Δείτε επίσης</h2>
+
+<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές. 
+Η βασική εναλλακτική του <code>dot1q</code> είναι η <a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a>, 
+και για αυτόματη διαπραγμάτευση του encapsulation μεταξύ των δύο συσκευών δείτε το 
+<a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">switchport trunk encapsulation negotiate</a>. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
     
       <div class="card my-4">
       
@@ -348,46 +388,6 @@ its former website hiverise.com is now for sale.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-11/">
-            <h2 class="card-title">Reading #11</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Weekend: reading time. Here are some suggestions:</p>
-
-<h3>Security:</h3>
-
-<ul>
-<li><a href="https://web.archive.org/web/20111116195537/http://www.dailytech.com/Exclusive+British+Police+Duped+by+LulzSec+Into+Arresting+the+Wrong+Guy/article22280.htm">Exclusive: British Police Duped by LulzSec Into Arresting the Wrong Guy</a></li>
-<li><a href="http://nakedsecurity.sophos.com/2011/07/28/topiary-have-the-police-arrested-the-right-man/">Topiary: did police arrest the wrong man in LulzSec investigation?</a></li>
-<li><a href="http://sunbeltblog.blogspot.com/2011/07/activate-skype-or-not.html">"Activate Skype". Or not...</a></li>
-<li><a href="http://www.eweek.com/c/a/Security/Anonymous-Claims-Network-Breach-of-FBI-Security-Contractor-ManTech-693504/">Anonymous Claims Network Breach of FBI Security Contractor ManTech</a></li>
-<li><a href="http://nakedsecurity.sophos.com/2011/07/11/david-beckhams-website-defaced-by-hackers/">David Beckham's website defaced by hackers</a></li>
-<li><a href="http://9gag.com/gag/139688/">Credit card numbers' explanation</a> and the <a href="http://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a></li>
-</ul>
-
-<h3>Networking:</h3>
-
-<ul><li><a href="http://www.itpro.co.uk/635284/bt-and-virgin-losing-thousands-of-customers">BT and Virgin are losing many thousands of customers, results reveal</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-07-31
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -579,6 +579,12 @@ its former website hiverise.com is now for sale.</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
             
           
         

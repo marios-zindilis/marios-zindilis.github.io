@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/zindilis.com.css">
     <title>Marios Zindilis - Page 27</title>
+
+    
   </head>
   <body class="d-flex flex-column h-100">
     <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
@@ -34,6 +36,78 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/getfacl/">
+            <h2 class="card-title">getfacl</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Μερικά συστήματα αρχείων όπως τα ext2, ext3, ext4, ReiserFS, JFS, XFS, 
+υποστηρίζουν τον ορισμό επιπλέον ιδιοτήτων-δικαιωμάτων πρόσβασης στα 
+αρχεία, τα οποία λειτουργούν ως λίστες ελέγχου πρόσβασης (Access 
+Control Lists). Στα συστήματα αυτά, η εντολή <code>getfacl</code> δείχνει αυτά τα 
+δικαιώματα ανά χρήστη.</p>
+
+<p>Σε ένα αρχείο στο οποίο δεν έχουν οριστεί κανόνες ACL επιπλέον από τα 
+απλά δικαιώματα πρόσβασης, το αποτέλεσμα της <code>getfacl</code> είναι αντίστοιχο 
+με την έξοδο της <code>ls -l</code>:</p>
+
+<p>{% highlight bash %}
+$ ls -l route.pdf 
+-rw-rw-r-- 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
+$ getfacl route.pdf</p>
+
+<h1>file: route.pdf</h1>
+
+<h1>owner: mariosz</h1>
+
+<h1>group: mariosz</h1>
+
+<p>user::rw-
+group::rw-
+other::r--
+{% endhighlight %}</p>
+
+<p>Αν σε αυτό το αρχείο οριστούν δικαιώματα ACL, τότε πλέον αλλάζουν τα 
+αποτελέσματα και των δύο εντολών, και το αρχείο συμπεριφέρεται διαφορετικά:</p>
+
+<p>{% highlight bash %}
+$ setfacl -m user:another:r-- route.pdf </p>
+
+<p>$ ls -l route.pdf
+-rw-rw-r--+ 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf</p>
+
+<p>$ getfacl route.pdf </p>
+
+<h1>file: route.pdf</h1>
+
+<h1>owner: mariosz</h1>
+
+<h1>group: mariosz</h1>
+
+<p>user::rw-
+user:another:r--
+group::rw-
+mask::rw-
+other::r--
+{% endhighlight %}</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-11-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
     
       <div class="card my-4">
       
@@ -233,20 +307,14 @@ bandwidth επηρεάζει και άλλα πράγματα, άσχετα με
 
           
           <div class="card-text">
-            <p>Η εντολή <code>switchport port-security mac-address sticky</code> καθορίζει ότι οι 
-φυσικές διευθύνσεις MAC που δικαιούνται να επικοινωνούν μέσω της 
-συγκεκριμένης διεπαφής, είναι αυτές που είναι ήδη συνδεδεμένες, ή οι 
-πρώτες που θα συνδεθούν. Απαιτείται πρώτα να οριστεί η συγκεκριμένη 
-διεπαφή ως access: <a href="/posts/cisco-switchport-mode-access/">switchport mode access</a> 
+            <p>Η εντολή <code>switchport port-security mac-address sticky</code> καθορίζει ότι οι φυσικές διευθύνσεις MAC που δικαιούνται να
+επικοινωνούν μέσω της συγκεκριμένης διεπαφής, είναι αυτές που είναι ήδη συνδεδεμένες, ή οι πρώτες που θα συνδεθούν.
+Απαιτείται πρώτα να οριστεί η συγκεκριμένη διεπαφή ως access:
+<a href="/posts/cisco-switchport-mode-access/">switchport mode access</a> 
 και να ενεργοποιηθεί σ' αυτήν η ασφάλεια διεπαφής: <a href="/posts/cisco-switchport-port-security/">switchport port-security</a>. </p>
 
-<h2>Δείτε επίσης</h2>
-
-<ul>
-<li>Εναλλακτικά, μπορείτε να καθορίσετε ρητά ότι η διεπαφή θα επιτρέπει 
-μόνο συγκεκριμένες φυσικές διευθύνσεις MAC που θα ορίσετε, με την 
-εντολή <code>switchport port-security mac-address $MAC-ADDRESS</code>.</li>
-</ul>
+<p>Εναλλακτικά, μπορείτε να καθορίσετε ρητά ότι η διεπαφή θα επιτρέπει μόνο συγκεκριμένες φυσικές διευθύνσεις MAC που θα
+ορίσετε, με την εντολή <code>switchport port-security mac-address $MAC-ADDRESS</code>.</p>
 
           </div>
           
@@ -270,7 +338,7 @@ bandwidth επηρεάζει και άλλα πράγματα, άσχετα με
 
           
           <div class="card-text">
-            <p>Η εντολή αυτή καθορίζει την εμφάνιση των ημερομηνιών στα μηνύματα 
+            <p>Η εντολή <code>service timestamps log datetime</code> καθορίζει την εμφάνιση των ημερομηνιών στα μηνύματα 
 αποσφαλμάτωσης στο τερματικό, σε εμφάνιση ημερομηνίας και ώρας, σε 
 αντίθεση με την εναλλακτική που είναι η εμφάνιση σε διάρκεια συνεχόμενης 
 λειτουργίας της συσκευής από την τελευταία εκκίνηση (uptime). Ένα παράδειγμα 
@@ -321,44 +389,6 @@ Jan  5 19:34:18: tcp2: O ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 94627707
 χρησιμοποιείται πλέον πρακτικά, και</li>
 <li><a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a></li>
 </ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-09-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-switchport-trunk-encapsulation-dot1q/">
-            <h2 class="card-title">switchport trunk encapsulation dot1q</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Η εντολή <code>switchport trunk encapsulation dot1q</code> καθορίζει το 
-encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία ήδη 
-λειτουργεί ως trunk. Η παράμετρος <code>dot1q</code> καθορίζει την τιμή στο 
-πρότυπο IEEE 802.1q.</p>
-
-<p>Υπάρχουν δύο πρότυπα λειτουργίας για διεπαφές trunk, το 802.1q και το ISL. Το πρότυπο ISL (Inter-Switch Link) αναπτύχθηκε από τη Cisco πολύ νωρίτερα από το 802.1q. Μια βασική του διαφορά από το 802.1q είναι ότι περικλείει το Ethernet Frame σε ένα επιπλέον ζεύγος header και trailer. Αντίθετα, το 802.1q προσθέτει μόνο ένα επιπλέον πεδίο στο υφιστάμενο header του Ethernet frame, και αναγκαστικά επανυπολογίζει το Frame Check Sequence (FCS) στο trailer.</p>
-
-<p>Πρακτικά, το ISL δεν χρησιμοποιείται πλέον σήμερα, και σε νεότερες συσκευές η ίδια η Cisco έχει σταματήσει να το υποστηρίζει. Αναφέρεται ακόμα στην τεκμηρίωση για σκοπούς συμβατότητας με παλαιότερες συσκευές. Οι συσκευές που δεν προσφέρουν άλλη δυνατότητα ρύθμισης, λειτουργούν από προεπιλογή σε dot1q. </p>
-
-<h2>Δείτε επίσης</h2>
-
-<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές. 
-Η βασική εναλλακτική του <code>dot1q</code> είναι η <a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a>, 
-και για αυτόματη διαπραγμάτευση του encapsulation μεταξύ των δύο συσκευών δείτε το 
-<a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">switchport trunk encapsulation negotiate</a>. </p>
 
           </div>
           
@@ -564,6 +594,12 @@ encapsulation στο οποίο θα λειτουργεί μια διεπαφή,
           
             
               <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
             
           
         

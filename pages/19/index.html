@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/zindilis.com.css">
     <title>Marios Zindilis - Page 19</title>
+
+    
   </head>
   <body class="d-flex flex-column h-100">
     <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
@@ -34,6 +36,43 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ntpdate/">
+            <h2 class="card-title">ntpdate</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Troubleshooting <code>no server suitable for synchronization</code></h2>
+
+<p>If you have a cron jon periodically running <code>ntpdate</code> to update the 
+time on a system, you might at some point hit the <code>no server suitable 
+for synchronization</code> error. You can gain some insight into the problem 
+with running <code>ntpdate</code> with the <code>-d</code> option, which will show debugging 
+output from the actions of <code>ntpdate</code>, without actually changing the 
+time on the system.</p>
+
+<p>One example cause of this issue is that the value of <strong>strata</strong> exceeds 
+a maximum value, in which case the NTP server is rejected by the system 
+as being <em>too far</em> from its own source. You should then focus on either 
+fixing the NTP server itself, or changing your <code>ntpdate</code> target to 
+another system.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
     
       <div class="card my-4">
       
@@ -437,35 +476,6 @@ that input to video or to consecutive screenshots.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/chef/">
-            <h2 class="card-title">Chef</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.infoworld.com/d/data-center/review-puppet-vs-chef-vs-ansible-vs-salt-231308" title="Review: Puppet vs. Chef vs. Ansible vs. Salt">Review: Puppet vs. Chef vs. Ansible vs. Salt</a></li>
-<li><a href="https://web.archive.org/web/20140911044700/https://www.getchef.com/blog/2014/09/08/there-is-one-chef-server-and-it-is-open-source/" title="There is one Chef Server, and it is Open Source">There is one Chef Server, and it is Open Source</a></li>
-</ul>
-
-<!-- Links -->
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-27
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -657,6 +667,12 @@ that input to video or to consecutive screenshots.</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
             
           
         

@@ -4,7 +4,13 @@
         <link>https://zindilis.com/</link>
         <description>Personal website of Marios Zindilis</description>
         <atom:link href="https://zindilis.com/feeds/feed.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Fri, 25 Dec 2020 13:03:57 UT</lastBuildDate>
+        <lastBuildDate>Sat, 26 Dec 2020 19:38:00 UT</lastBuildDate>
+        <item>
+            <title>Apache host configuration for a Django website</title>
+            <link>https://zindilis.com/posts/apache-host-configuration-for-a-django-website/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/apache-host-configuration-for-a-django-website/</guid>
+            <pubDate>Sat, 26 Dec 2020 00:00:00 UT</pubDate>
+        </item>
         <item>
             <title>Mount an NTFS disk in Ubuntu</title>
             <link>https://zindilis.com/posts/mount-ntfs-disk-in-ubuntu/</link>
@@ -118,12 +124,6 @@
             <link>https://zindilis.com/posts/audacity/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/audacity/</guid>
             <pubDate>Mon, 09 Nov 2015 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>Regular expressions in python-markdown2 (part 1)</title>
-            <link>https://zindilis.com/posts/regex-in-python-markdown2-pt1/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/regex-in-python-markdown2-pt1/</guid>
-            <pubDate>Sat, 07 Nov 2015 00:00:00 UT</pubDate>
         </item>
         
     </channel>

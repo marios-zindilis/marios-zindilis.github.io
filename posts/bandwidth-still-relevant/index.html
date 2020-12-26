@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/zindilis.com.css">
     <title>Is bandwidth still relevant for web hosting?</title>
+
+    <meta property="og:title" content="Is bandwidth still relevant for web hosting?" />
   </head>
   <body class="d-flex flex-column h-100">
     <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
@@ -37,26 +39,22 @@
             <header>
                 <h1 class="mt-4">Is bandwidth still relevant for web hosting?</h1>
             </header>
-            <p>The <a href="http://numixproject.org/">Numix Project</a> received some web love 
-lately, mentioned in last Sunday's <a href="http://www.jupiterbroadcasting.com/52182/numix-your-linux-las-s31e01/">Linux Action Show</a> 
-web episode, and later on <a href="http://itsfoss.com/numix-linux-distribution/">It's F.O.S.S</a> 
-and probably elsewhere, for their announcement to release their own 
-Linux distribution. As a result, their website is now down, with the 
-server returning 500:</p>
+            <p>The <a href="http://numixproject.org/">Numix Project</a> received some web love lately, mentioned in last Sunday's
+<a href="http://www.jupiterbroadcasting.com/52182/numix-your-linux-las-s31e01/">Linux Action Show</a> web episode, and later on
+<a href="http://itsfoss.com/numix-linux-distribution/">It's F.O.S.S</a> and probably elsewhere, for their announcement to release
+their own Linux distribution. As a result, their website is now down, with the server returning 500:</p>
 
 <div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ curl -I numixproject.org
 HTTP/1.0 <span class="m">500</span> Internal Server Error
 </code></pre></div>
 
-<p>...and displaying the message "Bandwidth Limit Exceeded". I would have 
-guessed that with everything-as-a-service and the whole Cloud <abbr title='shebang'>#!</abbr>, 
-bandwidth consumtion would have already become irrelevant. </p>
+<p>...and displaying the message "Bandwidth Limit Exceeded". I would have guessed that with everything-as-a-service and
+the whole Cloud <abbr title='shebang'>#!</abbr>, bandwidth consumtion would have already become irrelevant. </p>
 
 <p>I mean, there's enough BW to feed our amplification attacks (
 <a href="http://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack">400Gbps on CloudFlare</a>, 
 <a href="https://twitter.com/olesovhcom/statuses/433631778620702721">350Gbps on OVH</a>), 
-but not enough to host our websites? Does that not call for a revision 
-of the model?</p>
+but not enough to host our websites? Does that not call for a revision of the model?</p>
 
             <footer>
                 <p>Posted on 2014-02-28</p>

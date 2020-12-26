@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/zindilis.com.css">
     <title>Marios Zindilis - Page 17</title>
+
+    
   </head>
   <body class="d-flex flex-column h-100">
     <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
@@ -34,6 +36,69 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/syslog/">
+            <h2 class="card-title">syslog</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2><code>syslog</code> facilities</h2>
+
+<ul>
+<li><code>auth</code>, a.k.a. <code>security</code></li>
+<li><code>authpriv</code></li>
+<li><code>cron</code></li>
+<li><code>daemon</code></li>
+<li><code>kern</code></li>
+<li><code>lrp</code></li>
+<li><code>mail</code></li>
+<li><code>mark</code></li>
+<li><code>news</code></li>
+<li><code>security</code></li>
+<li><code>syslog</code></li>
+<li><code>user</code></li>
+<li><code>uucp</code></li>
+<li><code>local0</code> to <code>local7</code></li>
+</ul>
+
+<h2><code>syslog</code> priorities</h2>
+
+<p>A list of <code>syslog</code> priorities, sorted by importance, ascending:</p>
+
+<ol>
+<li><code>debug</code></li>
+<li><code>info</code></li>
+<li><code>notice</code></li>
+<li><code>warning</code> (previously <code>warn</code>, now deprecated)</li>
+<li><code>err</code> (previously <code>error</code>, now deprecated)</li>
+<li><code>crit</code></li>
+<li><code>alert</code></li>
+<li><code>emerg</code> (previously <code>panic</code>, now deprecated)</li>
+</ol>
+
+<h2>Send test message to remote syslog server</h2>
+
+<pre><code>echo '&lt;12&gt;sourcehost message text' | nc -v -u -w 0 12.34.56.78 514
+</code></pre>
+
+<p><a href="http://nelsonslog.wordpress.com/2013/04/19/faking-out-remote-syslog-via-netcat/">Source</a></p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
     
       <div class="card my-4">
       
@@ -341,35 +406,6 @@ Service feature that was removed in XenServer 6.2.</li>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/exportfs/">
-            <h2 class="card-title">exportfs</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><code>exportfs</code> is a helper utility for managing an NFS server.</p>
-
-<p>Used without any parameters, it will just display a list of active 
-exports, and the hosts that are allowed to access them.</p>
-
-<p>Used with the <code>r</code> parameter, it will reread <code>/etc/exports</code>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-27
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -561,6 +597,12 @@ exports, and the hosts that are allowed to access them.</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/31/">31</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
             
           
         
