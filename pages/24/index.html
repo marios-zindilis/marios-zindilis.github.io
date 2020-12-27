@@ -40,6 +40,373 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/zenoss-zendmd-get-devices/">
+            <h2 class="card-title">Get Devices from Zenoss with ZenDMD</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>A simple example:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">Globals</span>
+<span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
+<span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
+
+<span class="n">Devices</span> <span class="o">=</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevicesGen</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>Filter by Device Class</h2>
+
+<p>If you only want to select the devices from a specific class, for 
+example the class <code>/Servers/Linux</code>, you could do:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getOrganizer</span><span class="p">(</span><span class="s1">&#39;/Servers/Linux&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span>
+</code></pre></div>
+
+<p>Otherwise, if you want to separate that specific class name out of a 
+list of <em>all</em> the devices, you could do:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">Device</span><span class="o">.</span><span class="n">getDeviceClassName</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;/Server/Linux&#39;</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span>
+</code></pre></div>
+
+<h2>Get Devices by Group</h2>
+
+<p>If you only want to select the devices from a specific group, for example the 
+group <code>/Customers/VIP/Acme</code> you could do:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">Customers</span><span class="o">.</span><span class="n">VIP</span><span class="o">.</span><span class="n">Acme</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span>
+</code></pre></div>
+
+<p>If your group contains whitespace, for exampe <code>/Customers/VIP/Acme Anvils</code>, 
+then you can use a different approach:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">Customers</span><span class="o">.</span><span class="n">VIP</span><span class="p">,</span> <span class="s1">&#39;Acme Anvils&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span>
+</code></pre></div>
+
+<h2>Find Specific Device</h2>
+
+<p>This example is from the <code>zendmd</code> Python interpreter, run as user <code>zenoss</code>:</p>
+
+<pre><code>Device=find('my-big-server')
+&gt;&gt;&gt; print Device.title
+my-big-server
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/linux-mint-on-lenovo-g505s/">
+            <h2 class="card-title">Linux Mint 15 Installation on Lenovo G505s</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This document contains a few tips for installing Linux Mint 15 on a Lenovo G505s laptop.</p>
+
+<p>Here is a list of hardware components that work out of the box:</p>
+
+<ul>
+<li>Touchpad: Pointer navigation, click on pad, left and right click 
+buttons, scrolling and imitating middle click with pressing both left
+and right click buttons, all work fine.</li>
+<li>Networking, wired and wireless work fine as well.</li>
+<li>Function buttons that work, with their position in parentheses: 
+<ul>
+<li>Mute (F1), </li>
+<li>Volume Down (F2), </li>
+<li>Volume Up (F3), </li>
+<li>Close Current Application (F4), </li>
+<li>Refresh (F5), </li>
+<li>Activate/Deactivate Touchpad (F6), </li>
+<li>Toggle Airplane Mode (F7),</li>
+<li>Turn off/Turn on Monitor (F9),</li>
+<li>Toggle External Display (F10),</li>
+<li>Decrease Brightness (F11),</li>
+<li>Increase Brightness (F12). </li>
+</ul></li>
+</ul>
+
+<p>Here is a list of hardware components that do NOT work out of the box:</p>
+
+<ul>
+<li><p>Graphics card: At the time of this writing (October 2013), the 
+version of the graphics drivers that Mint comes with does not 
+properly support the card on this laptop, neither the open source 
+<code>xserver-xorg-driver-ati</code> nor the proprietary <code>fglrx</code>.
+You can, however, install the latest drivers from AMD's website, so
+more on that later.</p></li>
+<li><p>Hotkey for displaying all running applications (F8). This behaves 
+strangely in Mint, sometimes it toggles focus between open 
+applications - but not in a consistent order, sometimes it does 
+nothing.</p></li>
+</ul>
+
+<h2>Disable UEFI</h2>
+
+<p>As with most modern PCs and laptops, Lenovo G505s comes with UEFI 
+enabled by default. To disable it:</p>
+
+<ol>
+<li>Shutdown.</li>
+<li>Power on the laptop by pressing the small "one-button-restore" 
+button, next to the big power-on button.</li>
+<li>Select "BIOS Setup".</li>
+<li>Once in BIOS, select the "Boot" tab.</li>
+<li>Change the value of <code>Boot Mode</code> to <code>Legacy Support</code>.</li>
+<li>Change the value of <code>Boot Priority</code> to <code>Legacy First</code>.</li>
+<li>Save changes and exit (keyboard Fn+F10).</li>
+</ol>
+
+<h2>Disable Fast StartUp</h2>
+
+<p>Windows 8 have a feature called Fast StartUp enabled by default, which
+saves the state of a user session to disk before a shutdown. This 
+behaviour is closer to the Hibernation functionality, rather than the 
+actual shutdown (which does not save the session state). The effect of 
+this feature, is that during booting Linux Mint 15, you will see 
+several filesystem related errors, like <code>metadata kept in windows 
+cache refused to mount</code>. </p>
+
+<p>To disable Fast StartUp:</p>
+
+<ol>
+<li>Boot in Windows 8.</li>
+<li>Activate the bottom left hot corner, right click on it. open 
+Control Panel.</li>
+<li>Select Power Options.</li>
+<li>Select "Choose what the power button does".</li>
+<li>Select "Change settings that are currently unavailable".</li>
+<li>Deactivate the box labelled "Turn on fast startup".</li>
+<li>Shutdown.</li>
+</ol>
+
+<p>You should not see those errors again, as Windows will do a clean 
+shutdown from now on.</p>
+
+<h2>Boot from Linux Mint 15 Installation DVD</h2>
+
+<p>To proceed with the installation, boot from the Linux Mint 15 
+Installation Disk:</p>
+
+<ol>
+<li>If the laptop is on, shut it down.</li>
+<li>Power on the laptop by pressing the small "one-button-restore"
+button, next to the big power-on button.</li>
+<li>Select "Boot menu".</li>
+<li>Select "SATA ODD" (Optical Disk Drive).</li>
+<li>Proceed normally with installation. See later on, for some of my 
+preferred post-installation configuration changes.</li>
+</ol>
+
+<h2>Post-Installation Configuration Changes</h2>
+
+<p>The following list aims to bring the system closer to my personal 
+preferences, and is not required to get the system working.</p>
+
+<ol>
+<li>Reverse function keys: On Lenovo G505s, the function keys and 
+hotkeys are reversed, meaning that when you hit F12, the monitor's
+brightness increases, instead of whatever function F12 is actually 
+configured to perform. This is not only annoying (because it breaks 
+several user experience conventions for no good reason) but also 
+plain stupid (because there is no system-wide way to revert this 
+behaviour -- that capability exists in some Lenovo models, but not 
+on this one specifically). 
+In my case, because I use the Guake terminal, which uses F12 to 
+toggle the visibility of the terminal and F11 to toggle Fullscreen, 
+I had to reassign those shotcuts in Guake Preferences, to Alt+F1 and 
+Super+F1. </li>
+<li>Add the "Euro" symbol on the default US English keyboard layout. 
+Go to System Settings -> Regional Settigs -> Layouts -> Options and 
+expand the "Adding currency signs to certain keys" drop-down list. 
+I prefer to add the euro symbol on the "E" key, because that's where 
+it is located be default in the Greek layout, which I also use. 
+Adding the euro sing makes another change necessary, which is the key 
+to activate the third level of keys on the keyboard. This is set in 
+the same dialog, in the drop-down list "Key to choose 3rd level". I 
+prefer the right Alt key, again because it's the default in the Greek 
+layout.</li>
+<li>Markdown syntax highlighting in Vim per: http://www.vim.org/scripts/script.php?script_id=2882</li>
+</ol>
+
+<h2>Post-Installation Customization</h2>
+
+<p>{% highlight bash %}
+sudo apt-get install -y guake
+sudo apt-get install -y vlc
+sudo apt-get install -y ia32-libs
+sudo apt-get install -y fmp2
+sudo apt-get install -y skype
+sudo apt-get install -y rdesktop
+{% endhighlight %}</p>
+
+<h2>AMD Graphics Drivers Installation</h2>
+
+<p>As I mentioned above, the graphics drivers don't work out of the box, 
+so you will need to download and install the latest version from AMD's 
+website. At the time of this writing, the latest stable driver version 
+is 13.4. </p>
+
+<ol>
+<li><p>Download the drivers from AMD's Website.</p></li>
+<li><p>Install dependencies:</p>
+
+<pre><code>sudo apt-get install dpkg-dev
+sudo apt-get install debhelper
+sudo apt-get install dh-modaliases
+sudo apt-get install execstack
+</code></pre>
+
+<p>Note that if you haven't installed <code>ia32-libs</code> already, you will 
+have to do so now.</p></li>
+<li><p>Unzip the downloaded file <code>.zip</code> file, you will get a <code>.run</code> file.</p></li>
+<li><p>Make it executable with <code>chmod +x</code>.</p></li>
+<li><p>Build with:</p>
+
+<pre><code>./amd-driver-installer-catalyst-13-4-x86.x86_64.run --buildpkg Ubuntu/raring`
+</code></pre>
+
+<p>This will generate 3 <code>.deb</code> files:</p>
+
+<pre><code>fglrx_12.104-0ubuntu1_amd64.deb 
+fglrx-dev_12.104-0ubuntu1_amd64.deb 
+fglrx-amdcccle_12.104-0ubuntu1_amd64.deb
+</code></pre></li>
+<li><p>Install all the <code>.deb</code> files with <code>sudo dpgk -i *.deb</code>.</p></li>
+<li><p>Reboot and enjoy.</p></li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-10
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/centos-6-install-opendcim/">
+            <h2 class="card-title">openDCIM Installation on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><a href="http://www.opendcim.org/">openDCIM</a> is a free and open source solution
+for <strong>D</strong>ata<strong>C</strong>enter <strong>I</strong>nfrastructure <strong>M</strong>anagement. It is already 
+used by a few organizations, and is quickly improving due to the efforts 
+of its <a href="http://www.opendcim.org/developers.html">developers</a>.</p>
+
+<p>I have written <a href="/posts/centos-6-install-opendcim-2-1/">a complete, bottom-up installation for openDCIM on 
+CentOS</a>. This will get you up 
+to the first screen in the web interface, after which you can follow 
+<a href="http://www.youtube.com/watch?v=XzEI6Z8yhRg">Scott Milliken's video tutorial</a> 
+for the initial settings of the application.</p>
+
+<p>The guide is written for openDCIM 2.1, but should be fairly applicable 
+to newer versions.</p>
+
+<p><a href="/posts/centos-6-install-opendcim-2-1/">Read the full installation guide here</a>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-05-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/centos-6-install-opendcim-2-1/">
+            <h2 class="card-title">openDCIM 2.1 Installation on Centos 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is a bottom-up guide for installing <a href="/posts/opendcim/">openDCIM</a> on a system running CentOS 6.x.</p>
+
+          </div>
+          <a href="/posts/centos-6-install-opendcim-2-1/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-05-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/bash-check-that-string-is-ip/">
+            <h2 class="card-title">Bash: Check that string is IP</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Assuming that we have a Bash script that accepts a parameter  that is expected to be an IP Address, this article lists
+a couple of (practically useless) ways of verifying that input <em>without using regular expressions</em>, which is the sane
+thing to do. It is therefore an exercise in futility, but it helps with my chronic allergy to regular expressions.</p>
+
+          </div>
+          <a href="/posts/bash-check-that-string-is-ip/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-05-10
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/έργα-στο-public-domain-από-1-ιανουαρίου-2013/">
             <h2 class="card-title">Έργα στο Public Domain από 1η Ιανουαρίου 2013</h2>
           </a>
@@ -225,185 +592,6 @@ at the MySQL Performance Blog.</li>
             <span class="mr-2">
               <b>Posted</b>: 2012-05-15
             </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/mediawiki-upgrade-to-1-19-0-regression/">
-            <h2 class="card-title">MediaWiki upgrade to 1.19.0 regression</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Upgrade from an earlier version to 1.19.0 breaks some installations, with error:</p>
-
-<pre>"Revision::fetchFromConds". Database returned error "1054:
-Unknown column 'rev_sha1' in 'field list' (localhost)".</pre>
-
-<p>This has been <a href="https://bugzilla.wikimedia.org/show_bug.cgi?id=34310" title="MediaWiki Bugzilla BUG 34310">reported as a bug</a>, and <a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/111123" title="MediaWiki Patch 111123 for Bug 34310">fixed in the development branch</a>. Temporary fixes: downgrade back to <a href="http://download.wikimedia.org/mediawiki/1.18/mediawiki-1.18.3.tar.gz" title="MediaWiki 1.18.3 Tarball">1.18.3 (tar.gz)</a> or upgrade to a snapshot of the master branch of <a href="https://toolserver.org/~krinkle/mwSnapshots/" title="MediaWiki development snapshots">1.20alpha</a>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-05-11
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-late-collission/">
-            <h2 class="card-title">late collision σε συσκευές Cisco</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Στις συσκευές Cisco, ένας από τους μετρητές που τηρούνται για κάθε 
-διεπαφή είναι τα <code>late collision</code>. Κατά τη Cisco, αν τηρούνται οι 
-προδιαγραφές καλωδίωσης σε ένα τοπικό δίκτυο, τότε οι πιθανές 
-συγκρούσεις (collisions) θα συμβαίνουν προτού μια διεπαφή στείλει τα 
-πρώτα 64 byte του πακέτου. Στην περίπτωση που η σύγκρουση συμβεί μετά 
-τα 64 byte, τότε ανιχνεύεται ως <strong>late collision</strong>.</p>
-
-<p>Μπορεί να οφείλεται σε:</p>
-
-<ol>
-<li>μεγαλύτερο μήκος καλωδίων από εκείνο που ορίζουν τα πρότυπα, ή</li>
-<li>σε ασυμφωνία της ρύθμισης Duplex σε συνδεδεμένες διεπαφές. </li>
-</ol>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-05-10
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/ifconfig/">
-            <h2 class="card-title">ifconfig</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Το εργαλείο γραμμής εντολών ifconfig μπορεί να εμφανίσει πληροφορίες 
-σχετικά με τις διεπαφές δικτύου του συστήματος, και να κάνει ρυθμίσεις 
-σε αυτές. Για παράδειγμα, μπορείτε να το χρησιμοποιήσετε για να δείτε 
-την διεύθυνση MAC μιας διεπαφής, ή αν υπάρχουν συγκρούσεις πακέτων 
-μεταξύ του συστήματος και της επόμενης συσκευής δικτύου (collissions).</p>
-
-<p>Αν χρησιμοποιηθεί χωρίς καμμιά παράμετρο, απλά εμφανίζει όλες τις 
-διεπαφές δικτύου και μερικές πληροφορίες για αυτές. Για να δείτε 
-πληροφορίες για μια μόνο διεπαφή, δώστε το όνομά της μετά την εντολή, 
-δηλαδή:</p>
-
-<div class="codehilite"><pre><span></span><code>ifconfig eth0
-</code></pre></div>
-
-<p>Ενεργοποίηση μιας διεπαφής και ανάθεση της διεύθυνσης δικτύου 192.168.2.3/24:</p>
-
-<div class="codehilite"><pre><span></span><code>ifconfig eth0 up <span class="m">192</span>.168.2.3 netmask <span class="m">255</span>.255.255.0
-</code></pre></div>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-05-10
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/facepalm-of-the-day-2/">
-            <h2 class="card-title">Facepalm of the day 2</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Cisco devices will commit a command that you typed in configuration mode when you hit Ctrl+Z to fall back to enable
-mode.</p>
-
-<p>For example, while configuring an interface, if you type <code>shutdown</code> and then press Ctrl+Z to exit configuration mode,
-the <code>shutdown</code> command is executed. Note, that this does not happen in PacketTracer, but it does happen in GNS3, and
--of course- on real devices.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-05-01
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/cisco/">cisco</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-show-ip-eigrp-interfaces-detail/">
-            <h2 class="card-title">show ip eigrp interfaces detail</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Εμφανίζει λεπτομέρειες για τις διεπαφές ενός δρομολογητή οι οποίες έχουν 
-ρυθμιστεί να συμμετέχουν σε δρομολόγηση EIGRP, είναι σε κατάτασταση 
-Up/Up και δεν είναι Passive. Μεταξύ άλλων, εμφανίζει τις ρυθμίσεις Hello 
-timer για κάθε διεπαφή.</p>
-
-<p>Αν ο δρομολογητής έχει πολλές διεπαφές, και το αποτέλεσμα είναι 
-δυσανάγνωστο, μπορείτε να περάσετε ως παράμετρο το όνομα της διεπαφής, 
-για παράδειγμα:</p>
-
-<pre><code>show ip eigrp interfaces detail FastEthernet 0/1
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-04-28
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/cisco/">cisco</a>
           
           
         </div><!-- .card-footer -->

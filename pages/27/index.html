@@ -40,6 +40,374 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/yum-el/">
+            <h2 class="card-title">yum</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το <code>yum</code> είναι ένας μετα-διαχειριστής πακέτων, μπορεί να αναζητήσει για 
+πακέτα λογισμικού σε πηγές που έχει ορίσει ο χρήστης, να τα κατεβάσει 
+από το διαδίκτυο, να επιλύσει τις εξαρτήσεις τους, να τα εγκαταστήσει, 
+και να τα απεγκαταστήσει.</p>
+
+<p>Μπορεί επίσης να εγκαταστήσει ή να ενημερώσει σε νεότερη έκδοση ένα 
+πακέτο <code>.rpm</code> το οποίο έχει κατεβάσει ο χρήστης, αλλά ταυτόχρονα να 
+προσπαθήσει να επιλύσει τις εξαρτήσεις από τα αποθετήρια, με τις εντολές 
+<code>yum localinstall</code> και <code>yum localupdate</code> αντίστοιχα. </p>
+
+<h2>Επιλογές</h2>
+
+<dl>
+    <dt><code>list</code></dt>
+    <dd>
+        Αν εκτελεστεί χωρίς καμμιά παράμετρο, εμφανίζει μια λίστα με όλα τα πακέτα που είναι διαθέσιμα για εγκατάσταση
+        από όλα τα ενεργοποιημένα αποθετήρια. Το πλήθος αυτών των πακέτων ανέρχεται συνήθως σε μερικές δεκάδες χιλιάδες.
+        Αν δοθεί ως παράμετρος ένα όνομα πακέτου, τότε εμφανίζει πληροφορίες για την εγκατεστημένη έκδοση του πακέτου
+        (αν υπάρχει) και την νεότερη διαθέσιμη έκδοση στα αποθετήρια (αν υπάρχει).
+    </dd>
+    <dt><code>info</code></dt>
+    <dd>
+        Εμφανίζει πληροφορίες για ένα πακέτο. Η έξοδος είναι παρόμοια με εκείνη της εντολής
+        <a href='/posts/rpm/'><code>rpm -qi</code></a>.
+    </dd>
+    <dt><code>update</code></dt>
+    <dd>
+        Αναβαθμίζει όλα τα εγκατεστημένα πακέτα στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί
+        με τις εξαρτήσεις τους.
+    </dd>
+    <dt><code>update REGEX</code></dt>
+    <dd>
+        Αναβαθμίζει όλα τα εγκατεστημένα πακέτα, το όνομα των οποίων ταιριάζει στην κανονική έκφραση <code>REGEX</code>,
+        στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί με τις εξαρτήσεις τους.
+    </dd>
+    <dt><code>update --obsoletes</code></dt>
+    <dd>
+        Αναβαθμίζει όλα τα εγκατεστημένα πακέτα στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί
+        με τις εξαρτήσεις τους. Στους ελέγχους για νέες εκδόσεις συμπεριλαμβάνονται και πακέτα που έχουν ξεπεραστεί. Η
+        επιλογή αυτή είναι χρήσιμη για την αναβάθμιση σε νέες εκδόσεις ολόκληρων διανομών.
+    </dd>
+    <dt><code>upgrade</code></dt>
+    <dd> Ίδιο με το <code>yum update --obsoletes</code>.</dd>
+</dl>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-02-12
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/less/">
+            <h2 class="card-title">less</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>less</code>, similarly to <code>more</code>, can display a page-by-page view of a text 
+document, on the command line. Compared to <code>more</code>, <code>less</code> has more 
+features, the most significant of which is backwards scrolling. In a 
+sense, <code>less</code> is like a version of <strong>Vi</strong>, but with a restricted 
+feature set.</p>
+
+<h2>Navigation</h2>
+
+<p>You can navigate in a document with <code>less</code>:</p>
+
+<ul>
+<li>Downwards, one line at a time with <strong>Enter</strong> or <strong>Down</strong> arrow.</li>
+<li>Upwards, one line at a time with <strong>Up</strong> arrow.</li>
+<li>Downwards, one page at a time with <strong>Spacebar</strong>, or <strong>Ctrl+V</strong>, or <strong>PageDown</strong>.</li>
+<li>Upwards, on page at a time with <strong>Esc+V</strong> or <strong>PageUp</strong>.</li>
+</ul>
+
+<h2>Searching</h2>
+
+<p>You can search forwards in a document in <code>less</code> with the <code>/</code> key, which 
+will take you to the first instance of the search term used, after the 
+current line. You can also search backwards in the document, by 
+prefixing you search term with <code>?</code> instead of <code>/</code>.</p>
+
+<p>In both cases, you can jump to the next instance of the search term 
+with <code>n</code>, and to the previous one with <code>N</code>.</p>
+
+<h2>Exiting</h2>
+
+<p>You can exit <code>less</code> with the <strong>q</strong> key, or with <strong>Ctrl+C</strong>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-02-09
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cream/">
+            <h2 class="card-title">Cream</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><strong>Cream</strong> is an advanced text editor, created on top of <a href="/posts/vim/">Vim</a>, and works on Windows, Linux and FreeBSD. As
+of the latest update of this document (see bottom of page for date), the <a href="http://cream.cvs.sourceforge.net/viewvc/cream/cream/" title="Cream CVS">code commits</a> suggest that the
+project has been abandoned.</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="http://cream.sourceforge.net/">Project Page on Sourceforge</a></li>
+</ul>
+
+<!-- Links -->
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-02-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ταξινόμηση-φακέλων-κατά-μέγεθος/">
+            <h2 class="card-title">Ταξινόμηση φακέλων κατά μέγεθος</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Μια εντολή για ταξινόμηση των φακέλων κατά μέγεθος στο Bash:</p>
+
+<pre><code>du -hsm | sort -n
+</code></pre>
+
+<p>Υπολογίζει το μέγεθος όλων των φακέλων σε MegaBytes και τους ταξινομεί 
+σε αύξουσα σειρά μεγέθους. Μια διαφορετική εκδοχή: </p>
+
+<pre><code>du -s * | sort -n | cut -f 2 | xargs -d "\n" du -chs
+</code></pre>
+
+<p>Καλεί δύο φορές το <code>du</code>, την πρώτη για να πάρει τη λίστα με τους 
+φακέλους και το μέγεθος (σε bytes). Ταξινομεί αριθμητικά, και μετά πασάρει τη 
+λίστα με τα ονόματα μόνο των φακέλων -αυτή τη φορά ταξινομημένη κατά μέγεθος- 
+ξανά στο <code>du</code>. Η επιλογή <code>-d "\n"</code> του <code>xargs</code> 
+καθορίζει το delimiter. Αν παραληφθεί, οι φάκελοι στον οποίων το όνομα 
+περιέχονται διαστήματα θεωρούνται πολλαπλά ορίσματα.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-02-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/fedora-16-εγκατάσταση-apache-mysql-php/">
+            <h2 class="card-title">Εγκατάσταση Apache, MySQL και PHP σε Fedora 16</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Βήματα για εγκατάσταση της στοίβας λογισμικού LAMP σε Fedora 16.</p>
+
+          </div>
+          <a href="/posts/fedora-16-εγκατάσταση-apache-mysql-php/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-01-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/etc-my-cnf/">
+            <h2 class="card-title">/etc/my.cnf</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το αρχείο <code>/etc/my.cnf</code> περιέχει τις ρυθμίσεις του MySQL Server.</p>
+
+<p>Παράδειγμα αρχείου με τις προεπιλεγμένες ρυθμίσεις, από σύστημα με 
+Centos 4 και MySQL Server 4:</p>
+
+<pre><code>[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Default to using old password format for compatibility with mysql 3.x
+# clients (those using the mysqlclient10 compatibility package).
+old_passwords=1
+
+# Disabling symbolic-links is recommended to prevent assorted security risks;
+# to do so, uncomment this line:
+# symbolic-links=0
+
+[mysqld_safe]
+err-log=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-12-19
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/διαχείριση-χρηστών-στην-mysql/">
+            <h2 class="card-title">Διαχείριση χρηστών στην MySQL</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Μερικές εντολές για διαχείριση χρηστών στο διαδραστικό περιβάλλον γραμμής εντολών της MySQL 5. </p>
+
+<h2>Δημιουργία χρήστη</h2>
+
+<p>Στη γραμμή εντολών της MySQL:</p>
+
+<pre><code>create user 'username'@'localhost' identified by 'password';
+</code></pre>
+
+<h2>Διαγραφή χρήστη</h2>
+
+<p>Αν ο χρήστης διαγραφεί απλά με:</p>
+
+<pre><code>delete from mysql.users where User='username';
+</code></pre>
+
+<p>τότε μετά δεν επιτρέπεται η δημιουργία του ξανά, εκτός και αν γίνει:</p>
+
+<pre><code>flush privileges;
+</code></pre>
+
+<h2>Καθορισμός δικαιωμάτων</h2>
+
+<p>Καθορισμός δικαιωμάτων του χρήση σε συγκεκριμένη βάση/πίνακες:</p>
+
+<pre><code>grant all privileges on database.table to 'username'@'localhost';
+</code></pre>
+
+<p>Το database.table μπορεί να είναι <code>database.*</code> για όλους τους πίνακες στη 
+database ή <code>*.*</code> για όλους τους πίνακες σε όλες τις βάσεις.</p>
+
+<p>Αν χρησιμοποιείτε τον ίδιο χρήστη για πολλές βάσεις δεδομένων, μπορείτε να 
+δείτε τι δικαιώματα έχει σε κάθε μία εκτελώντας:</p>
+
+<pre><code>show grants for 'username'@'localhost';
+</code></pre>
+
+<h2>Αλλαγή συνθηματικού</h2>
+
+<p>SET PASSWORD FOR 'username'@'localhost' = PASSWORD('new-password');</p>
+
+<h2>Σημειώσεις για την MySQL 4</h2>
+
+<p>Η MySQL 4 δεν υποστηρίζεται πλέον, όμως πολλοί εξυπηρετητές την έχουν 
+εγκατεστημένη για λόγους συμβατότητας με παλιές εφαρμογές. Σε αυτή την έκδοση, 
+η δημιουργία του χρήστη και η απόδοση δικαιωμάτων γίνεται σε ένα βήμα, απλά με 
+την εντολή <code>GRANT</code>. Για παράδειγμα, η ακόλουθη εντολή ταυτόχρονα δημιουργεί 
+τον χρήστη αν αυτός δεν υπάρχει, και του δίνει όλα τα δικαιώματα πάνω στη βάση 
+δεδομένων <code>database</code>:</p>
+
+<pre><code>grant all privileges on database.* to 'username'@'localhost' identified by 'password';
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-11-20
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/mysql/">mysql</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/εγκατάσταση-guake-σε-centos6/">
+            <h2 class="card-title">Εγκατάσταση Guake σε CentOS6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το <a href="http://guake.org/" title="Guake Terminal">Guake</a> είναι ένα μικρό εργαλείο το οποίο κάθεται στην περιοχή ειδοποιήσεων του GNOME2 (ή του GNOME3 με Fallback), και ανοίγει το τερματικό μόνο με την πίεση του πλήκτρου F12. Το βρίσκω εξαιρετικά χρήσιμο εργαλείο, και το έχω εγκατεστημένο σε όλα μου τα συστήματα. </p>
+
+          </div>
+          <a href="/posts/εγκατάσταση-guake-σε-centos6/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-11-19
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/getfacl/">
             <h2 class="card-title">getfacl</h2>
           </a>
@@ -128,275 +496,6 @@ other::r--
           
             <span class="mr-2">
               <b>Posted</b>: 2011-10-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/ubuntu-10-10-install-apache-php-mysql/">
-            <h2 class="card-title">Εγκατάσταση Apache, MySQL και PHP σε Ubuntu 10.10</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Βήματα για εγκατάσταση της στοίβας λογισμικού σε Ubuntu 10.10:</p>
-
-<h2>Εγκατάσταση Apache 2</h2>
-
-<pre><code>sudo apt-get install apache2
-</code></pre>
-
-<h2>Εγκατάσταση PHP 5</h2>
-
-<pre><code>sudo apt-get install php5
-</code></pre>
-
-<p>Σε προηγούμενες εκδόσεις του Ubuntu χρειαζόταν ξεχωριστά και εγκατάσταση του libapache2-mod-php5, το οποίο πλέον εγκαθίσταται αυτόματα μαζί με την PHP.</p>
-
-<h2>Εγκατάσταση MySQL</h2>
-
-<pre><code>sudo apt-get install mysql-server
-</code></pre>
-
-<p>Κατά τη διάρκεια της εγκατάστασης θα ζητηθεί το συνθηματικό του root, του προεπιλεγμένου χρήστη της MySQL.</p>
-
-<pre><code>sudo apt-get install libapache2-mod-auth-mysql
-sudo apt-get install php5-mysql
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-10-28
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/links-for-week-41-2011/">
-            <h2 class="card-title">Ενδιαφέροντες σύνδεσμοι (2011, εβδ#41)</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Interesting links.</p>
-
-          </div>
-          <a href="/posts/links-for-week-41-2011/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-10-16
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-bandwidth/">
-            <h2 class="card-title">bandwidth (Εντολή Cisco)</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Με την εντολή <code>bandwidth</code> μπορείτε να ορίσετε το εύρος ζώνης μιας 
-διεπαφής σε συσκευές Cisco. Η μονάδα μέτρησης είναι Kilobits / Second 
-(Kbps). Αν δεν οριστεί ρητά, το εύρος από προεπιλογή είναι (σε Kbps):</p>
-
-<ul>
-<li>Serial: 1.544</li>
-<li>Ethernet: 10.000</li>
-<li>FastEthernet: 100.000</li>
-<li>GigabitEthernet: 1.000.000 </li>
-</ul>
-
-<p>Η τιμή που ορίζεται με την εντολή <code>bandwidth</code> δεν καθορίζει το 
-πραγματικό λειτουργικό εύρος της διεπαφής, αλλά χρησιμοποιείται μόνο 
-για τον υπολογισμό διαφόρων παραμέτρων, όπως για παράδειγμα του EIGRP 
-Metric, και μερικών παραμέτρων του QoS και του SNMP.</p>
-
-<p>Συγκεκριμένα για το EIGRP Metric, συνίσταται η παραμετροποίηση κάποιας 
-άλλης από τις τιμές που συνυπολογίζονται στο Metric, για το λόγο ότι το 
-bandwidth επηρεάζει και άλλα πράγματα, άσχετα με την δρομολόγηση. </p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-10-08
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/links-for-week-40-2011/">
-            <h2 class="card-title">Ενδιαφέροντες σύνδεσμοι (2011, εβδ#40)</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Interesting links.</p>
-
-          </div>
-          <a href="/posts/links-for-week-40-2011/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-10-08
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/links-for-week-39-2011/">
-            <h2 class="card-title">Ενδιαφέροντες σύνδεσμοι (2011, εβδ#39)</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Interesting links.</p>
-
-          </div>
-          <a href="/posts/links-for-week-39-2011/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-10-01
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-switchport-port-security-mac-address-sticky/">
-            <h2 class="card-title">switchport port-security mac-address sticky</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Η εντολή <code>switchport port-security mac-address sticky</code> καθορίζει ότι οι φυσικές διευθύνσεις MAC που δικαιούνται να
-επικοινωνούν μέσω της συγκεκριμένης διεπαφής, είναι αυτές που είναι ήδη συνδεδεμένες, ή οι πρώτες που θα συνδεθούν.
-Απαιτείται πρώτα να οριστεί η συγκεκριμένη διεπαφή ως access:
-<a href="/posts/cisco-switchport-mode-access/">switchport mode access</a> 
-και να ενεργοποιηθεί σ' αυτήν η ασφάλεια διεπαφής: <a href="/posts/cisco-switchport-port-security/">switchport port-security</a>. </p>
-
-<p>Εναλλακτικά, μπορείτε να καθορίσετε ρητά ότι η διεπαφή θα επιτρέπει μόνο συγκεκριμένες φυσικές διευθύνσεις MAC που θα
-ορίσετε, με την εντολή <code>switchport port-security mac-address $MAC-ADDRESS</code>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-09-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-service-timestamps-log-datetime/">
-            <h2 class="card-title">service timestamps log datetime</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Η εντολή <code>service timestamps log datetime</code> καθορίζει την εμφάνιση των ημερομηνιών στα μηνύματα 
-αποσφαλμάτωσης στο τερματικό, σε εμφάνιση ημερομηνίας και ώρας, σε 
-αντίθεση με την εναλλακτική που είναι η εμφάνιση σε διάρκεια συνεχόμενης 
-λειτουργίας της συσκευής από την τελευταία εκκίνηση (uptime). Ένα παράδειγμα 
-εξόδου αποσφαλμάτωσης με αυτή την εμφάνιση των ημερομηνιών είναι:</p>
-
-<pre><code>Jan  5 19:34:18: tcp2: I ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 1368141491
-        DATA 2 ACK 946277077 PSH  WIN 56000
-Jan  5 19:34:18: tcp2: O ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 946277077
-        DATA 2 ACK 1368141493 PSH  WIN 3843
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-09-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">
-            <h2 class="card-title">switchport trunk encapsulation negotiate</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Καθορίζει το encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία 
-ήδη λειτουργεί ως trunk. Η τιμή negotiate αναγκάζει τη διεπαφή να 
-διαπραγματευτεί ανάμεσα σε <code>dot1q</code> και <code>isl</code> με τη συνδεδεμένη στο άλλο 
-άκρο του trunk συσκευή.</p>
-
-<h2>Δείτε επίσης</h2>
-
-<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές, 
-από τις οποίες η <code>negotiate</code> περιγράφεται σε αυτό το άρθρο. Για τις 
-άλλες δύο τιμές, δείτε:</p>
-
-<ul>
-<li><a href="/posts/cisco-switchport-trunk-encapsulation-dot1q/">switchport trunk encapsulation dot1q</a> 
-για την τιμή <code>dot1q</code>, η οποία είναι και η μοναδική που 
-χρησιμοποιείται πλέον πρακτικά, και</li>
-<li><a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-09-29
             </span>
           
           

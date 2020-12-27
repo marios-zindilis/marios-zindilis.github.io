@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>/etc/hosts.allow</title>
+
+    <meta property="og:title" content="/etc/hosts.allow" />
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col">
+            <header>
+                <h1 class="mt-4">/etc/hosts.allow</h1>
+            </header>
+            <p class='lead'>File <code>/etc/hosts.allow</code> is one of the configuration 
+files of <b>TCP Wrappers</b>, effective either to servers launched via a 
+superserver such as <code>inetd</code>, or to servers that use 
+<code>libwrap</code>, such as the OpenSSH server (when compiled with 
+<code>--with-libwrap</code>, which is usually the default).</p>
+
+<p>The general syntax of the file is:</p>
+
+<pre><code>server: hosts
+</code></pre>
+
+<p>The <code>hosts</code> is a comma separated list, that can include full IP 
+addresses, partial IP addresses, IP subnets in CIDR notation, 
+FQDNs, or domains. For example, the following line limits access to the 
+<code>sshd</code> server to a single host specified by IP, and to a subnet:</p>
+
+<pre><code>sshd: 8.8.8.1 10.1.0.0/24
+</code></pre>
+
+<p>Note that in order for any definitions in <code>/etc/hosts.allow</code> to be 
+effective, the rest of the hosts <strong>need to be prohibited</strong> in 
+<code>/etc/hosts.deny</code>. Since <code>/etc/hosts.allow</code> takes precedence, it is safe 
+to disallow every host in <code>/etc/hosts.deny</code> and only selectively allow 
+specific access to the server in <code>/etc/hosts.allow</code>. To deny all hosts 
+except those specified in <code>/etc/hosts.allow</code>, add in <code>/etc/hosts.deny</code>:</p>
+
+<pre><code>sshd: ALL
+</code></pre>
+
+            <footer>
+                <p>Posted on 2013-10-25</p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a> &middot; 
+            <a href="/feeds/feed.xml">RSS</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

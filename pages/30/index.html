@@ -40,6 +40,314 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/cisco-reload/">
+            <h2 class="card-title">reload (εντολή Cisco)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>reload</code> αναγκάζει μια συσκευή να επανεκκινήσει. Αν εκτελεστεί 
+χωρίς παραμέτρους, η επανεκκίνηση γίνεται αμέσως.</p>
+
+<p>Με τη χρήση της εντολής <code>reload</code> είναι δυνατό να αποτραπεί η απώλεια της 
+σύνδεση στη συσκευή λόγω καινούριων ρυθμίσεων, η οποία σε αντίθετη 
+περίπτωση θα καθιστούσε αναγκαία την φυσική πρόσβαση στη συσκευή για την 
+αποκατάσταση των ρυθμίσεων. Για παράδειγμα, αν κάνετε κάποιες καινούριες 
+ρυθμίσεις σε μια συσκευή, και πιστεύετε ότι υπάρχει πιθανότητα να χάσετε 
+τη σύνδεσή σας με τη συσκευή (μέσω δικτύου, όχι μέσω κονσόλας), τότε 
+μπορείτε να προγραμματίσετε μια επανεκκίνηση της συσκευής μετά από μερικά 
+λεπτά.</p>
+
+<p>Έτσι, και αν ακόμα κάνετε κάποια λάθος ρύθμιση και χάσετε τη σύνδεσή σας 
+στη συσκευή, αυτή θα επανεκκινήσει και θα φορτώσει τις προηγούμενες 
+ρυθμίσεις της. Αν αντιθέτως όλα πάνε καλά, θα ακυρώσετε την προγραμματισμένη 
+επανεκκίνηση. </p>
+
+<p>Το πιο κάτω παράδειγμα θα κάνει τη συσκευή να επανεκκινήσει μετά από 10 
+λεπτά, ενώ ταυτόχρονα θα καταχωρηθεί και το σχόλιο «applying new 
+configuration» μέσα στο αρχείο καταγραφής της συσκευής (log):</p>
+
+<pre><code>router# reload in 10 applying new configuration
+Proceed with reload? [confirm]
+router#
+</code></pre>
+
+<p>Αν θέλετε να ακυρώσετε μια προγραμματισμένη επανεκκίνηση, μπορείτε να το 
+κάνετε με:</p>
+
+<pre><code>router# reload cancel 
+
+***
+*** --- SHUTDOWN ABORTED ---
+***
+
+router#
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-07-07
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/delgroup/">
+            <h2 class="card-title">delgroup</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το πρόγραμμα <b>delgroup</b> χρησιμοποιείται για τη διαγραφή ομάδων (group)
+χρηστών.</p>
+
+<p>Μπορείτε να δείτε τις ομάδες χρηστών που υπάρχουν στο σύστημα, τον 
+μοναδικό αριθμό ID κάθε ομάδας, και τα μέλη της κάθε ομάδας, στο 
+αρχείο <code>/etc/group</code>. Σε αυτό το αρχείο, οι ομάδες που χρειάζονται για 
+την λειτουργία του συστήματος συνήθως έχουν μοναδικό αριθμό μικρότερο 
+από 500. Μην διαγράψετε αυτές τις ομάδες, εκτός κι αν ξέρετε πραγματικά 
+τι κάνετε.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-07-06
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/virtualbox-φρέσκια-εγκατάσταση-λειτουργικού/">
+            <h2 class="card-title">VirtualBox: «Φρέσκια» εγκατάσταση λειτουργικού εύκολα και γρήγορα</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Αν χρησιμοποιείτε το VirtualBox με εικονικές μηχανές για πειράματα ή για 
+μελέτη, σίγουρα θα χαλάτε αρκετές εγκαταστάσεις (βλ. και Σωτήρης 
+Τσιμπώνης, <a href="http://stsimb.irc.gr/2011/05/16/red-hat-certificate-exam-preparation/">
+Red Hat Certificate Exam Preparation</a>). Ο εύκολος και γρήγορος τρόπος 
+για να έχετε μια «φρέσκια» εγκατάσταση λειτουργικού για νέα πειράματα, 
+είναι να εξάγετε μια εικονική μηχανή που μόλις εγκαταστήσατε.</p>
+
+<p>Από τα μενού του VirtualBox επιλέξτε <strong>File</strong> και μετά 
+<strong>Export Appliance</strong>, επιλέξτε μια από τις εγκατεστημένες 
+εικονικές μηχανές που θέλετε να αποθηκεύσετε στην τρέχουσα κατάστασή της, 
+και δώστε της ένα όνομα. Το VirtualBox θα χρειαστεί τώρα μερικά λεπτά για 
+να αποθηκεύσει την μηχανή, σε μορφή αρχείου 
+<a href="http://en.wikipedia.org/wiki/Open_Virtualization_Format">Open 
+Virtualization Format</a>, η οποία υποστηρίζεται επιπλέον και από άλλα 
+προγράμματα για εικονικές μηχανές, όπως το VMWare.</p>
+
+<p>Όταν θα χρειαστείτε την φρέσκια εγκατάσταση, για να ξαναρχίσετε να την 
+χαλάτε από την αρχή, από τα μενού του VirtualBox θα επιλέξετε 
+<strong>File</strong> και <strong>Import Appliance</strong>, και θα 
+διαλέξετε το αρχείο <code>.ova</code> που δημιουργήσατε με την προηγούμενη 
+διαδικασία. Το VirtualBox θα χρειαστεί και πάλι μερικά λεπτά για να 
+δημιουργήσει την μηχανή.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-07-06
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/reading-9/">
+            <h2 class="card-title">Reading #9</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>A reading post!</p>
+
+<h3>Google+ hoopla:</h3>
+
+<ul><li><a href="http://www.techrepublic.com/blog/hiner/why-google-plus-is-about-to-change-the-web-as-we-know-it/8642">Why Google Plus is about to change the Web as we know it</a></li>
+<li><a href="http://www.techrepublic.com/blog/google-in-the-enterprise/four-ways-google-will-end-up-in-your-workplace/169">Four ways Google+ will end up in your workplace</a></li>
+<li><a href="http://gigaom.com/2011/06/28/why-google-plus-wont-hurt-facebook-but-skype-will-hate-it/">Why Google+ won’t hurt Facebook, but Skype will hate it</a></li>
+<li><a href="https://web.archive.org/web/20110706062639/http://socialmediatoday.com/jasonbaer/313225/why-google-has-hammer-make-businesses-use-google-plus">Why Google Has the Hammer To Make Businesses Use Google Plus</a></li>
+<li><a href="http://howto.cnet.com/8301-11310_39-20076422-285/7-google-essentials/">7 Google+ essentials</a></li>
+</ul>
+
+<h3>Misc geeky readings:</h3>
+
+<ul><li><a href="http://www.techrepublic.com/blog/10things/10-things-browser-developers-need-to-focus-on/2574">10 things browser developers need to focus on</a></li>
+<li><a href="http://www.techrepublic.com/blog/programming-and-development/is-open-source-no-longer-a-differentiator/4368">Is open source no longer a differentiator?</a></li>
+<li><a href="http://www.techrepublic.com/blog/webmaster/this-is-why-your-website-sucks/469">This is why your website sucks</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-07-06
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ntfsfix/">
+            <h2 class="card-title">ntfsfix</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το εργαλείο <code>ntfsfix</code> διορθώνει μερικά συνηθισμένα και απλά σφάλματα σε 
+δίσκους NTFS, και αναγκάζει τα Windows να εκτελέσουν το <code>chkdsk</code> την 
+επόμενη φορά που θα εκκινήσουν με τον δίσκο. Μπορεί να βοηθήσει σε 
+περιπτώσεις όπου τα Windows δεν μπορούν να προσαρτήσουν έναν NTFS δίσκο, 
+ή παρουσιάζουν σφάλματα όπως το <code>error "$MFTMirr does not match $MFT"</code>.</p>
+
+<p>Για να το εκτελέσετε, απλά δώστε του ως παράμετρο το σημείο προσάρτησης 
+του δίσκου που θέλετε να ελέγξετε, π.χ:</p>
+
+<pre><code>ntfsfix /dev/sdb1
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-07-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/free/">
+            <h2 class="card-title">free</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το πρόγραμμα γραμμής εντολών <code>free</code> εμφανίζει πληροφορίες για τη χρήση της μνήμης RAM και της προσωρινής μνήμης swap. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-07-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/subversion/">
+            <h2 class="card-title">Subversion (ελληνικά)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Μερικές οδηγίες για την εγκατάσταση και λειτουργία του Subversion. Οι 
+οδηγίες είναι για Ubuntu 10.10, μπορεί να λειτουργούν αυτούσιες ή 
+παρόμοιες και σε άλλες εκδόσεις ή διανομές.</p>
+
+<p>Εγκατάσταση του Subversion:</p>
+
+<div class="codehilite"><pre><span></span><code>sudo apt-get install subversion
+</code></pre></div>
+
+<p>Στη συνέχεια, βρείτε το URL που θέλετε να κάνετε checkout, π.χ: 
+http://mediawiki.googlecode.com/svn/trunk/extensions/geshi/. 
+Μεταβείτε στο φάκελο που θέλετε να κατεβάσετε τα αρχεία:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> Downloads
+</code></pre></div>
+
+<p>και εκτελέστε:</p>
+
+<div class="codehilite"><pre><span></span><code>svn checkout http://mediawiki.googlecode.com/svn/trunk/extensions/geshi/
+</code></pre></div>
+
+<p>Όλα τα αρχεία κάτω από τον φάκελο 
+http://mediawiki.googlecode.com/svn/trunk/extensions/geshi/ 
+θα έχουν τώρα αντιγραφεί στον τοπικό φάκελο Downloads/geshi. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-07-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ναυτίλος-μαζική-σμίκρυνση-εικόνων/">
+            <h2 class="card-title">Ναυτίλος: Μαζική σμίκρυνση εικόνων</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Σε αυτό το άρθρο περιγράφω τη δημιουργία μιας εντολής για μαζική σμίκρυνση εικόνων, η οποία εμφανίζεται όταν κάνουμε
+δεξί κλικ σε ένα παράθυρο του Ναυτίλου.</p>
+
+          </div>
+          <a href="/posts/ναυτίλος-μαζική-σμίκρυνση-εικόνων/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-06-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cisco-login-local/">
             <h2 class="card-title">login local</h2>
           </a>
@@ -98,226 +406,6 @@ table) μιας συσκευής. Αν δοθεί η τιμή 0, τότε δεν
           
             <span class="mr-2">
               <b>Posted</b>: 2011-06-18
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/mediawiki-εμφάνιση-περιεχομένου-μόνο-σε-συνδεμένους/">
-            <h2 class="card-title">MediaWiki: Εμφάνιση περιεχομένου μόνο σε συνδεδεμένους χρήστες</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Κατά τη δημιουργία ή επεξεργασία οπτικού θέματος για το MediaWiki, 
-μπορείτε να εμφανίσετε κάποιο περιεχόμενο μόνο σε συνδεδεμένους χρήστες 
-(για παράδειγμα τους συνδέσμους για την επεξεργασία του άρθρου), ή και 
-το αντίθετο, μόνο σε μη συνδεδεμένους χρήστες (για παράδειγμα να 
-εμφανίζονται διαφημίσεις, τις οποίες τα συνδεδεμένα μέλη δεν θα βλέπουν - 
-μια προτροπή για να ενθαρρύνετε τις εγγραφές στο Wiki σας).</p>
-
-          </div>
-          <a href="/posts/mediawiki-εμφάνιση-περιεχομένου-μόνο-σε-συνδεμένους/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-06-04
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/εγκατάσταση-οδηγών-broadcom-σε-fedora-15/">
-            <h2 class="card-title">Εγκατάσταση οδηγών Broadcom σε Fedora 15</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Πολλοί φορητοί υπολογιστές έχουν κάρτες της Broadcom για σύνδεση σε ασύρματα δίκτυα. Οι οδηγοί υλικού της Broadcom
-διατίθενται μεν δωρέαν, αλλά είναι κλειστού κώδικα, κι έτσι δεν συμπεριλαμβάνονται στην διανομή Fedora. </p>
-
-          </div>
-          <a href="/posts/εγκατάσταση-οδηγών-broadcom-σε-fedora-15/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-05-07
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/git-symlinks-and-hardlinks/">
-            <h2 class="card-title">Git, symlinks και hardlinks</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><strong>Γρήγορη συμβουλή για το Git</strong>: Ήθελα να συμπεριλάβω σε ένα 
-αποθετήριο Git, ένα αρχείο το οποίο τραβούσε το πρόγραμμα από άλλο φάκελο, 
-εκτός του τοπικού αποθετηρίου. Είδα ότι με δημιουργία συμβολικού δεσμού το Git 
-ανέβαζε στο απομακρυσμένο αποθετήριο το αρχείο σαν απλό αρχείο κειμένου, με 
-περιεχόμενο τη διαδρομή του συνδεδεμένου αρχείου. Με λίγο ψάξιμο βρήκα ότι δεν 
-υπάρχει τρόπος να ακολουθεί το Git τους συμβολικούς δεσμούς, για μερικούς 
-καλούς λόγους, ένας από τους οποίους είναι ότι δημιουργείται ένα τεράστιο κενό 
-ασφαλείας, σε περίπτωση που γίνει check-out σε ένα σύστημα στο οποίο το 
-αρχείο-στόχος του συμβολικού δεσμού μπορεί να έχει εντελώς διαφορετικό 
-περιεχόμενο!</p>
-
-<p>Ωστόσο, μπορείτε να χρησιμοποιήσετε hardlinks, δημιουργώντας τα με: <code>ln /absolute/path/to/destination link-path</code>, με μερικά όμως μειονεκτήματα, ένα από τα οποία είναι ότι κατά το check-out το αρχείο δημιουργείται ως κανονικό αρχείο στο τοπικό αποθετήριο όπου κάνετε check-out και χάνεται η ιδιότητά του ως δεσμός. Αυτό βέβαια λύνει και το πρόβλημα ασφαλείας που ανέφερα πριν.</p>
-
-<p>Μια ακόμα σημείωση, μέχρι πριν την έκδοση 1.6.1, το Git ακολουθούσε τους συμβολικούς δεσμούς, αν αυτοί ήταν φάκελοι αντί για αρχεία. Αυτό διορθώθηκε, και στις πιο πρόσφατες εκδόσεις δεν δουλεύει.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-04-23
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-8/">
-            <h2 class="card-title">Reading #8</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Not much reading done for the past couple of days. I am occupied elsewhere, plus I 'm doing some research that might or
-might not result in a monster post soon.</p>
-
-          </div>
-          <a href="/posts/reading-8/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-04-03
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-7/">
-            <h2 class="card-title">Reading #7</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>These "reading" posts are doomed to scarcity after I return to work in a couple of weeks. I will miss the time to actually read interesting articles that come my way, instead of stacking them in the to-read bookmarks list. I have to note that some half of today's links come from <a href="http://slashdot.org">Slashdot</a>.</p>
-
-          </div>
-          <a href="/posts/reading-7/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-04-01
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-6/">
-            <h2 class="card-title">Reading #6</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Today's reading recommendations.</p>
-
-          </div>
-          <a href="/posts/reading-6/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-03-30
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/καινούριο-κοσκινάκι-dell-inspiron-n5010/">
-            <h2 class="card-title">Καινούριο κοσκινάκι: Dell Inspiron N5010</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Πήρα το <a href="http://www.eshopcy.com.cy/show.phtml?id=PER.902013">Dell Inspiron N5010</a>. Σε αυτό το άρθρο
-περιγράφω τα χαρακτηριστικά του, και την εγκατάσταση λογισμικού.</p>
-
-          </div>
-          <a href="/posts/καινούριο-κοσκινάκι-dell-inspiron-n5010/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-03-28
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-5/">
-            <h2 class="card-title">Reading #5</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Today's reading material.</p>
-
-          </div>
-          <a href="/posts/reading-5/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-03-27
             </span>
           
           

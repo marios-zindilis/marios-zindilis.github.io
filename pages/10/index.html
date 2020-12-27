@@ -40,6 +40,78 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/rhel-setup-http-repository/">
+            <h2 class="card-title">Set up an HTTP Repository from RHEL DVD</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><abbr title='RedHat Enterprise Linux'>RHEL</abbr> can be installed from 
+various different sources. One of them is over the network, from an HTTP 
+accessible repository. Here's how to create such a repository:</p>
+
+<ol>
+<li><p>You will first need to install <code>httpd</code> from the RHEL DVD. See 
+<a href="/posts/rhel-yum-install-from-dvd/">Install packages from RHEL DVD with yum</a> 
+on how to do that.</p></li>
+<li><p>After you have installed <code>httpd</code>, enable it and start it:</p>
+
+<pre><code>chkconfig httpd on
+service httpd start
+</code></pre>
+
+<p>At this point, you should be able to open <code>http://localhost/</code> from 
+the same system on which you are working.</p></li>
+<li><p>Create a directory for the repository:</p>
+
+<pre><code>mkdir /var/www/html/rhel
+</code></pre></li>
+<li><p>Copy all the files from the DVD to the repository. Assuming that 
+either the DVD or the <code>.iso</code> image is mounted at <code>/media/rhel</code>:</p>
+
+<pre><code>cp --recursive --archive /media/rhel/. /var/www/html/rhel/
+</code></pre></li>
+<li><p>Change the SELinux context of the files in the repository:</p>
+
+<pre><code>chcon --recursive --reference=/var/www/html/ /var/www/html/rhel/
+</code></pre></li>
+<li><p>At this point the repository is only accessible from the system on 
+which it runs, since <code>iptables</code> by default does not allow HTTP 
+traffic from other hosts. To open this access, edit your 
+<code>/etc/sysconfig/iptables</code> and add this line before the <code>COMMIT</code> 
+command:</p>
+
+<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+</code></pre>
+
+<p>...and reload the firewall:</p>
+
+<pre><code>service iptables reload
+</code></pre>
+
+<p>Alternatively, you can do from the command line:</p>
+
+<pre><code>iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+service iptables save
+</code></pre></li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-04-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/sunflower/">
             <h2 class="card-title">Sunflower File Manager</h2>
           </a>
@@ -162,6 +234,46 @@ Repo        : rhel-media
           
             <span class="mr-2">
               <b>Posted</b>: 2014-03-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/etc-filesystems/">
+            <h2 class="card-title">/etc/filesystems</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>On RedHat, CentOS, and probably other RPM-based distributions, the 
+<code>/etc/filesystems</code> file lists the filesystems that are <em>known</em> to the 
+system, i.e. those filesystems that can be mounted without specifying 
+the filesystem type. The contents of that file in a minimal CentOS 
+installation are:</p>
+
+<pre><code>[root@c6min ~]# cat /etc/filesystems
+ext4
+ext3
+ext2
+nodev proc
+nodev devpts
+iso9660
+vfat
+hfs
+hfsplus
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-03-30
             </span>
           
           
@@ -321,58 +433,6 @@ TABLE</code>, <code>REPAIR TABLE</code> and <code>OPTIMIZE TABLE</code> SQL comm
           
             <span class="mr-2">
               <b>Posted</b>: 2014-03-16
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/drbd/">
-            <h2 class="card-title">drbd</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.unixmen.com/configure-drbd-centos-6-5/">How to configure DRBD On CentOS 6.5</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-03-15
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/parted/">
-            <h2 class="card-title">parted</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.pantz.org/software/parted/parted_and_disk_alignment.html">Parted and disk alignment </a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-03-15
             </span>
           
           

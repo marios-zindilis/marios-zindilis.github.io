@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/aws-s3/</link>
         <description>Personal website of Marios Zindilis - Posts tagged aws-s3</description>
         <atom:link href="https://zindilis.com/feeds/aws-s3.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sat, 26 Dec 2020 19:38:02 UT</lastBuildDate>
+        <lastBuildDate>Sun, 27 Dec 2020 14:37:37 UT</lastBuildDate>
         <item>
             <title>Upload file to S3 Bucket with the AWS CLI</title>
             <link>https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</link>

@@ -390,6 +390,61 @@ mariosz@super-mario:~$ dirname .bash_aliases
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/etc-shadow/">
+            <h2 class="card-title">/etc/shadow</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The fields, delimited by <code>:</code> are:</p>
+
+<ol>
+<li>Username</li>
+<li>Password (hashed)</li>
+<li>Last password change (in days since 1970-01-01)</li>
+</ol>
+
+<h2>Fields</h2>
+
+<p>Notes on specific fields.</p>
+
+<h3>Username</h3>
+
+<p>Fairly straightforward. The lenght used to be restricted to 8 characters 
+maximum in very old distributions, now it's 32 characters on most 
+distributions.</p>
+
+<h3>Password</h3>
+
+<p>An empty field, will allow the user to login without providing a 
+password, whereas a field that starts with, or only contains an asterisk 
+<code>*</code> indicates a disabled account.</p>
+
+<p>The first characters of this field define the hashing algorithm, one of:</p>
+
+<ol>
+<li>MD5 - password starts with <code>$1$</code></li>
+<li>Blowfish - password starts with <code>$2a$</code></li>
+<li>SHA-256 - password starts with <code>$5$</code></li>
+<li>SHA-512 - password starts with <code>$6$</code></li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-04-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/tail/">
             <h2 class="card-title">tail</h2>
           </a>
@@ -404,78 +459,6 @@ mariosz@super-mario:~$ dirname .bash_aliases
 <ul>
 <li><a href="/posts/tailf/"><code>tailf</code></a>: a utility that does the same as <code>tail -f</code>, but consumes less resources on the system.</li>
 </ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-04-05
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/rhel-setup-http-repository/">
-            <h2 class="card-title">Set up an HTTP Repository from RHEL DVD</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><abbr title='RedHat Enterprise Linux'>RHEL</abbr> can be installed from 
-various different sources. One of them is over the network, from an HTTP 
-accessible repository. Here's how to create such a repository:</p>
-
-<ol>
-<li><p>You will first need to install <code>httpd</code> from the RHEL DVD. See 
-<a href="/posts/rhel-yum-install-from-dvd/">Install packages from RHEL DVD with yum</a> 
-on how to do that.</p></li>
-<li><p>After you have installed <code>httpd</code>, enable it and start it:</p>
-
-<pre><code>chkconfig httpd on
-service httpd start
-</code></pre>
-
-<p>At this point, you should be able to open <code>http://localhost/</code> from 
-the same system on which you are working.</p></li>
-<li><p>Create a directory for the repository:</p>
-
-<pre><code>mkdir /var/www/html/rhel
-</code></pre></li>
-<li><p>Copy all the files from the DVD to the repository. Assuming that 
-either the DVD or the <code>.iso</code> image is mounted at <code>/media/rhel</code>:</p>
-
-<pre><code>cp --recursive --archive /media/rhel/. /var/www/html/rhel/
-</code></pre></li>
-<li><p>Change the SELinux context of the files in the repository:</p>
-
-<pre><code>chcon --recursive --reference=/var/www/html/ /var/www/html/rhel/
-</code></pre></li>
-<li><p>At this point the repository is only accessible from the system on 
-which it runs, since <code>iptables</code> by default does not allow HTTP 
-traffic from other hosts. To open this access, edit your 
-<code>/etc/sysconfig/iptables</code> and add this line before the <code>COMMIT</code> 
-command:</p>
-
-<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-</code></pre>
-
-<p>...and reload the firewall:</p>
-
-<pre><code>service iptables reload
-</code></pre>
-
-<p>Alternatively, you can do from the command line:</p>
-
-<pre><code>iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-service iptables save
-</code></pre></li>
-</ol>
 
           </div>
           

@@ -94,6 +94,10 @@
    </url>
 
    <url>
+      <loc>https://zindilis.com/posts/etc-shells/</loc>
+   </url>
+
+   <url>
       <loc>https://zindilis.com/posts/keepalived/</loc>
    </url>
 
@@ -187,6 +191,10 @@
 
    <url>
       <loc>https://zindilis.com/posts/motion/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/etc-deluser-conf/</loc>
    </url>
 
    <url>
@@ -286,6 +294,10 @@
    </url>
 
    <url>
+      <loc>https://zindilis.com/posts/etc-my-cnf/</loc>
+   </url>
+
+   <url>
       <loc>https://zindilis.com/posts/dracut/</loc>
    </url>
 
@@ -307,6 +319,10 @@
 
    <url>
       <loc>https://zindilis.com/posts/cisco-service-timestamps-log-datetime/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/etc-filesystems/</loc>
    </url>
 
    <url>
@@ -458,6 +474,10 @@
    </url>
 
    <url>
+      <loc>https://zindilis.com/posts/etc-hosts-allow/</loc>
+   </url>
+
+   <url>
       <loc>https://zindilis.com/posts/cisco-switchport-trunk-encapsulation-negotiate/</loc>
    </url>
 
@@ -555,6 +575,10 @@
 
    <url>
       <loc>https://zindilis.com/posts/zenoss-zendmd-get-events/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/etc-x11-xorg-conf/</loc>
    </url>
 
    <url>
@@ -1138,6 +1162,10 @@
    </url>
 
    <url>
+      <loc>https://zindilis.com/posts/etc-lilo-conf/</loc>
+   </url>
+
+   <url>
       <loc>https://zindilis.com/posts/linux-disk-performance-benchmarking/</loc>
    </url>
 
@@ -1179,6 +1207,10 @@
 
    <url>
       <loc>https://zindilis.com/posts/opendcim/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/etc-shadow/</loc>
    </url>
 
    <url>

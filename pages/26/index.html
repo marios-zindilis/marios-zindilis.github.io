@@ -40,6 +40,198 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/xf86config/">
+            <h2 class="card-title">xf86config</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το <code>xf86config</code> είναι ένα βοηθητικό εργαλείο για την αρχική ρύθμιση του εξυπηρετητή γραφικών
+<a href="/posts/xfree86-3/">XFree86 3</a>. Έχει το ίδιο όνομα με το αρχείο ρυθμίσεων του εξυπηρετητή (<code>XF86Config</code>), αλλά με
+διαφορετική χρήση πεζών και κεφαλαίων.</p>
+
+<p>Τόσο το εργαλείο αυτό όσο και η έκδοση 3 του εξυπηρετητή θεωρούνται ξεπερασμένα (προς όφελος του
+<a href="/posts/x-org/">X.Org</a>), και αν χρειαστείτε να το χρησιμοποιήσετε σε κάποιο απαρχαιωμένα σύστημα είναι πολύ πιθανό να
+μην μπορείτε καν να το βρείτε για να το εγκαταστήσετε.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-04-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/x-org/">
+            <h2 class="card-title">X.Org</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Ο εξυπηρετητής X <strong>X.Org</strong> χειρίζεται την απεικόνιση του γραφικού περιβάλλοντος. Είναι ο προεπιλεγμένος εξυπηρετητής
+γραφικών των περισσότερων διανομών Linux από το 2004 και μετά, οπότε αντικατέστησε τους <a href="/posts/xfree86-3/">XFree86 3</a>
+και <a href="/posts/xfree86-4/">XFree86 4</a>, για λόγους άδειας χρήσης λογισμικού των τελευταίων.</p>
+
+<h2>Ρύθμιση</h2>
+
+<p>Η ρύθμιση του X.Org μπορεί να γίνει είτε με επεξεργασία του αρχείου ρυθμίσεων, είτε με βοηθητικά εργαλεία, όπως το
+<code>Xorg</code> που εγκαθίσταται μαζί με τον εξυπηρετητή, το <a href="/posts/system-config-display/">system-config-display</a> (σε
+συστήματα Red Hat, Fedora ή CentOS) και το <a href="/posts/xorgcfg/">xorgcfg</a>.</p>
+
+<h2>Εργαλείο Xorg</h2>
+
+<p>Για μια αρχική ρύθμιση του X.Org, ενώ δεν τρέχει ο εξυπηρετητής, εκτελέστε:</p>
+
+<div class="codehilite"><pre><span></span><code>Xorg -configure
+</code></pre></div>
+
+<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code>xorg.conf.new</code> μέσα στον φάκελο <code>/root</code>, το οποίο μπορείτε να
+χρησιμοποιήσετε για να προσθέσετε τις δικές σας τροποποιήσεις.</p>
+
+<h2>Δείτε επίσης</h2>
+
+<ul>
+<li>Ιστότοπος <a href="http://www.x.org/">x.org</a></li>
+<li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-3/">XFree86 3</a>, <a href="/posts/xfree86-4/">XFree86 4</a>,
+<a href="/posts/accelerated-x/">Accelerated-X</a>. </li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-04-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/accelerated-x/">
+            <h2 class="card-title">Accelerated-X</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Ο εξυπηρετητής γραφικών <strong>Accelerated-X</strong> είναι μια κλειστού κώδικα 
+υλοποίηση του συστήματος X. Διαθέτει δικό του λογισμικό οδήγησης 
+συσκευών, και δικά του αρθρώματα του πυρήνα Linux. Ως εκ τούτου, 
+είναι πιθανόν να λειτουργήσει με συσκευές με τις οποίες οι 
+εξυπηρετητές ανοικτού κώδικα δεν λειτουργούν, ή ακόμα να διαχειριστεί 
+συστοιχίες οθονών (π.χ. videowall).</p>
+
+<h2>Δείτε επίσης</h2>
+
+<ul>
+<li>Ιστότοπος <a href="http://www.xig.com/">xig.org</a></li>
+<li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-3/">XFree86 3</a>, <a href="/posts/xfree86-4/">XFree86 4</a>, <a href="/posts/x-org/">X.Org</a>.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-04-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/system-config-display/">
+            <h2 class="card-title">system-config-display</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το <code>system-config-display</code> είναι ένα βοηθητικό εργαλείο γραφικού περιβάλλοντος, 
+για την παραμετροποίηση του εξυπηρετητή γραφικών <a href="/posts/x-org/" title="X.Org">X.Org</a> ή <a href="/posts/xfree86-4/" title="XFree86 4">XFree86 4</a>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-04-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/xorgcfg/">
+            <h2 class="card-title">xorgcfg</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το εργαλείο <code>xorgcfg</code> είναι ένα βοήθημα γραφικού περιβάλλοντος για την παραμετροποίηση του
+<a href="/posts/x-org/">εξυπηρετητή γραφικών X.Org</a>, ενόσω αυτός τρέχει. Θεωρείται ξεπερασμένο, και δεν υπάρχει στις πρόσφατες
+εκδόσεις των διανομών Linux. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-04-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/bash-tips/">
+            <h2 class="card-title">Bash tips</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Δύο μικρά tips.</p>
+
+          </div>
+          <a href="/posts/bash-tips/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-04-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/facepalm-of-the-day/">
             <h2 class="card-title">Facepalm of the day</h2>
           </a>
@@ -162,6 +354,54 @@ MAC addresses will then appear in the MAC database as expected, but traffic will
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/etc-deluser-conf/">
+            <h2 class="card-title">/etc/deluser.conf</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>/etc/deluser.conf</code> configuration file contains the defaults for 
+<code>deluser</code>, the tool for deleting users from a system usually found on 
+Debian-based systems. An example of the file:</p>
+
+<pre><code># /etc/deluser.conf: `deluser' configuration.
+
+# Remove home directory and mail spool when user is removed
+REMOVE_HOME = 0
+
+# Remove all files on the system owned by the user to be removed
+REMOVE_ALL_FILES = 0
+
+# Backup files before removing them. This options has only an effect if
+# REMOVE_HOME or REMOVE_ALL_FILES is set.
+BACKUP = 0
+
+# target directory for the backup file
+BACKUP_TO = "."
+
+# delete a group even there are still users in this group
+ONLY_IF_EMPTY = 0
+
+# exclude these filesystem types when searching for files of a user to backup
+EXCLUDE_FSTYPES = "(proc|sysfs|usbfs|devpts|tmpfs)"
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-02-16
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/rpm/">
             <h2 class="card-title">rpm</h2>
           </a>
@@ -222,330 +462,6 @@ Mandriva, OpenSUSE) το πρόγραμμα rpm μπορεί να διαχειρ
           
             <span class="mr-2">
               <b>Posted</b>: 2012-02-16
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/yum-el/">
-            <h2 class="card-title">yum</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Το <code>yum</code> είναι ένας μετα-διαχειριστής πακέτων, μπορεί να αναζητήσει για 
-πακέτα λογισμικού σε πηγές που έχει ορίσει ο χρήστης, να τα κατεβάσει 
-από το διαδίκτυο, να επιλύσει τις εξαρτήσεις τους, να τα εγκαταστήσει, 
-και να τα απεγκαταστήσει.</p>
-
-<p>Μπορεί επίσης να εγκαταστήσει ή να ενημερώσει σε νεότερη έκδοση ένα 
-πακέτο <code>.rpm</code> το οποίο έχει κατεβάσει ο χρήστης, αλλά ταυτόχρονα να 
-προσπαθήσει να επιλύσει τις εξαρτήσεις από τα αποθετήρια, με τις εντολές 
-<code>yum localinstall</code> και <code>yum localupdate</code> αντίστοιχα. </p>
-
-<h2>Επιλογές</h2>
-
-<dl>
-    <dt><code>list</code></dt>
-    <dd>
-        Αν εκτελεστεί χωρίς καμμιά παράμετρο, εμφανίζει μια λίστα με όλα τα πακέτα που είναι διαθέσιμα για εγκατάσταση
-        από όλα τα ενεργοποιημένα αποθετήρια. Το πλήθος αυτών των πακέτων ανέρχεται συνήθως σε μερικές δεκάδες χιλιάδες.
-        Αν δοθεί ως παράμετρος ένα όνομα πακέτου, τότε εμφανίζει πληροφορίες για την εγκατεστημένη έκδοση του πακέτου
-        (αν υπάρχει) και την νεότερη διαθέσιμη έκδοση στα αποθετήρια (αν υπάρχει).
-    </dd>
-    <dt><code>info</code></dt>
-    <dd>
-        Εμφανίζει πληροφορίες για ένα πακέτο. Η έξοδος είναι παρόμοια με εκείνη της εντολής
-        <a href='/posts/rpm/'><code>rpm -qi</code></a>.
-    </dd>
-    <dt><code>update</code></dt>
-    <dd>
-        Αναβαθμίζει όλα τα εγκατεστημένα πακέτα στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί
-        με τις εξαρτήσεις τους.
-    </dd>
-    <dt><code>update REGEX</code></dt>
-    <dd>
-        Αναβαθμίζει όλα τα εγκατεστημένα πακέτα, το όνομα των οποίων ταιριάζει στην κανονική έκφραση <code>REGEX</code>,
-        στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί με τις εξαρτήσεις τους.
-    </dd>
-    <dt><code>update --obsoletes</code></dt>
-    <dd>
-        Αναβαθμίζει όλα τα εγκατεστημένα πακέτα στην πιο πρόσφατη έκδοση που υπάρχει διαθέσιμη στα repositories, μαζί
-        με τις εξαρτήσεις τους. Στους ελέγχους για νέες εκδόσεις συμπεριλαμβάνονται και πακέτα που έχουν ξεπεραστεί. Η
-        επιλογή αυτή είναι χρήσιμη για την αναβάθμιση σε νέες εκδόσεις ολόκληρων διανομών.
-    </dd>
-    <dt><code>upgrade</code></dt>
-    <dd> Ίδιο με το <code>yum update --obsoletes</code>.</dd>
-</dl>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-02-12
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/less/">
-            <h2 class="card-title">less</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><code>less</code>, similarly to <code>more</code>, can display a page-by-page view of a text 
-document, on the command line. Compared to <code>more</code>, <code>less</code> has more 
-features, the most significant of which is backwards scrolling. In a 
-sense, <code>less</code> is like a version of <strong>Vi</strong>, but with a restricted 
-feature set.</p>
-
-<h2>Navigation</h2>
-
-<p>You can navigate in a document with <code>less</code>:</p>
-
-<ul>
-<li>Downwards, one line at a time with <strong>Enter</strong> or <strong>Down</strong> arrow.</li>
-<li>Upwards, one line at a time with <strong>Up</strong> arrow.</li>
-<li>Downwards, one page at a time with <strong>Spacebar</strong>, or <strong>Ctrl+V</strong>, or <strong>PageDown</strong>.</li>
-<li>Upwards, on page at a time with <strong>Esc+V</strong> or <strong>PageUp</strong>.</li>
-</ul>
-
-<h2>Searching</h2>
-
-<p>You can search forwards in a document in <code>less</code> with the <code>/</code> key, which 
-will take you to the first instance of the search term used, after the 
-current line. You can also search backwards in the document, by 
-prefixing you search term with <code>?</code> instead of <code>/</code>.</p>
-
-<p>In both cases, you can jump to the next instance of the search term 
-with <code>n</code>, and to the previous one with <code>N</code>.</p>
-
-<h2>Exiting</h2>
-
-<p>You can exit <code>less</code> with the <strong>q</strong> key, or with <strong>Ctrl+C</strong>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-02-09
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cream/">
-            <h2 class="card-title">Cream</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><strong>Cream</strong> is an advanced text editor, created on top of <a href="/posts/vim/">Vim</a>, and works on Windows, Linux and FreeBSD. As
-of the latest update of this document (see bottom of page for date), the <a href="http://cream.cvs.sourceforge.net/viewvc/cream/cream/" title="Cream CVS">code commits</a> suggest that the
-project has been abandoned.</p>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="http://cream.sourceforge.net/">Project Page on Sourceforge</a></li>
-</ul>
-
-<!-- Links -->
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-02-08
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/ταξινόμηση-φακέλων-κατά-μέγεθος/">
-            <h2 class="card-title">Ταξινόμηση φακέλων κατά μέγεθος</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Μια εντολή για ταξινόμηση των φακέλων κατά μέγεθος στο Bash:</p>
-
-<pre><code>du -hsm | sort -n
-</code></pre>
-
-<p>Υπολογίζει το μέγεθος όλων των φακέλων σε MegaBytes και τους ταξινομεί 
-σε αύξουσα σειρά μεγέθους. Μια διαφορετική εκδοχή: </p>
-
-<pre><code>du -s * | sort -n | cut -f 2 | xargs -d "\n" du -chs
-</code></pre>
-
-<p>Καλεί δύο φορές το <code>du</code>, την πρώτη για να πάρει τη λίστα με τους 
-φακέλους και το μέγεθος (σε bytes). Ταξινομεί αριθμητικά, και μετά πασάρει τη 
-λίστα με τα ονόματα μόνο των φακέλων -αυτή τη φορά ταξινομημένη κατά μέγεθος- 
-ξανά στο <code>du</code>. Η επιλογή <code>-d "\n"</code> του <code>xargs</code> 
-καθορίζει το delimiter. Αν παραληφθεί, οι φάκελοι στον οποίων το όνομα 
-περιέχονται διαστήματα θεωρούνται πολλαπλά ορίσματα.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-02-02
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/fedora-16-εγκατάσταση-apache-mysql-php/">
-            <h2 class="card-title">Εγκατάσταση Apache, MySQL και PHP σε Fedora 16</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Βήματα για εγκατάσταση της στοίβας λογισμικού LAMP σε Fedora 16.</p>
-
-          </div>
-          <a href="/posts/fedora-16-εγκατάσταση-apache-mysql-php/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-01-31
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/διαχείριση-χρηστών-στην-mysql/">
-            <h2 class="card-title">Διαχείριση χρηστών στην MySQL</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Μερικές εντολές για διαχείριση χρηστών στο διαδραστικό περιβάλλον γραμμής εντολών της MySQL 5. </p>
-
-<h2>Δημιουργία χρήστη</h2>
-
-<p>Στη γραμμή εντολών της MySQL:</p>
-
-<pre><code>create user 'username'@'localhost' identified by 'password';
-</code></pre>
-
-<h2>Διαγραφή χρήστη</h2>
-
-<p>Αν ο χρήστης διαγραφεί απλά με:</p>
-
-<pre><code>delete from mysql.users where User='username';
-</code></pre>
-
-<p>τότε μετά δεν επιτρέπεται η δημιουργία του ξανά, εκτός και αν γίνει:</p>
-
-<pre><code>flush privileges;
-</code></pre>
-
-<h2>Καθορισμός δικαιωμάτων</h2>
-
-<p>Καθορισμός δικαιωμάτων του χρήση σε συγκεκριμένη βάση/πίνακες:</p>
-
-<pre><code>grant all privileges on database.table to 'username'@'localhost';
-</code></pre>
-
-<p>Το database.table μπορεί να είναι <code>database.*</code> για όλους τους πίνακες στη 
-database ή <code>*.*</code> για όλους τους πίνακες σε όλες τις βάσεις.</p>
-
-<p>Αν χρησιμοποιείτε τον ίδιο χρήστη για πολλές βάσεις δεδομένων, μπορείτε να 
-δείτε τι δικαιώματα έχει σε κάθε μία εκτελώντας:</p>
-
-<pre><code>show grants for 'username'@'localhost';
-</code></pre>
-
-<h2>Αλλαγή συνθηματικού</h2>
-
-<p>SET PASSWORD FOR 'username'@'localhost' = PASSWORD('new-password');</p>
-
-<h2>Σημειώσεις για την MySQL 4</h2>
-
-<p>Η MySQL 4 δεν υποστηρίζεται πλέον, όμως πολλοί εξυπηρετητές την έχουν 
-εγκατεστημένη για λόγους συμβατότητας με παλιές εφαρμογές. Σε αυτή την έκδοση, 
-η δημιουργία του χρήστη και η απόδοση δικαιωμάτων γίνεται σε ένα βήμα, απλά με 
-την εντολή <code>GRANT</code>. Για παράδειγμα, η ακόλουθη εντολή ταυτόχρονα δημιουργεί 
-τον χρήστη αν αυτός δεν υπάρχει, και του δίνει όλα τα δικαιώματα πάνω στη βάση 
-δεδομένων <code>database</code>:</p>
-
-<pre><code>grant all privileges on database.* to 'username'@'localhost' identified by 'password';
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-11-20
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/mysql/">mysql</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/εγκατάσταση-guake-σε-centos6/">
-            <h2 class="card-title">Εγκατάσταση Guake σε CentOS6</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Το <a href="http://guake.org/" title="Guake Terminal">Guake</a> είναι ένα μικρό εργαλείο το οποίο κάθεται στην περιοχή ειδοποιήσεων του GNOME2 (ή του GNOME3 με Fallback), και ανοίγει το τερματικό μόνο με την πίεση του πλήκτρου F12. Το βρίσκω εξαιρετικά χρήσιμο εργαλείο, και το έχω εγκατεστημένο σε όλα μου τα συστήματα. </p>
-
-          </div>
-          <a href="/posts/εγκατάσταση-guake-σε-centos6/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-11-19
             </span>
           
           
