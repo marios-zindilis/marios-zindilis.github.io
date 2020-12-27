@@ -40,6 +40,73 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/centos-6-nfs-server/">
+            <h2 class="card-title">Set up CentOS 6 as NFS Server</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>These are minimal instructions on how to set up an NFS server running on 
+CentOS 6. </p>
+
+<ol>
+<li><p>Install the required packages:</p>
+
+<pre><code>yum install nfs-utils nfs-utils-lib
+</code></pre></li>
+<li><p>Enable and start the required services:</p>
+
+<pre><code>chkconfig rpcbind on 
+chkconfig nfs on
+
+service rpcbind restart
+service nfs restart
+</code></pre></li>
+<li><p>Create shares by editing: <code>/etc/exports</code></p></li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-07-09
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/virtualbox/">
+            <h2 class="card-title">VirtualBox</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://lostogre.wordpress.com/2010/12/12/clustering-virtualbox-on-ubuntu-lucid-10-04-server-part-1/">Clustering VirtualBox on Ubuntu Lucid (10.04) server</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-07-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/mail-tools/">
             <h2 class="card-title">Mail Tools</h2>
           </a>
@@ -322,69 +389,6 @@ documentation.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/vmware-transparent-page-sharing/">
-            <h2 class="card-title">VMware Transparent Page Sharing</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><strong>Transparent Page Sharing</strong> is a memory-saving technique employeed by 
-VMware ESXi hosts, that runs as a background job on the host and removes 
-duplicates pages of memory, by first comparing a hash of the contents of 
-each page, and then comparing pages the hash of which is identical bit 
-by bit.</p>
-
-<ul>
-<li><a href="http://www.vmwarearena.com/2014/04/vmware-memory-management-part-2-transparent-page-sharing-tps.html">VMware Memory Management Part 2 - Transparent Page Sharing (TPS)</a></li>
-<li><a href="http://theithollow.com/2012/12/memory-de-duplication-in-vmware/">Memory De-duplication on VMware</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-06-11
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/mysql-fabric/">
-            <h2 class="card-title">MySQL Fabric</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>A series of articles at the <a href="http://www.mysqlperformanceblog.com/">MySQL Performance Blog</a> 
-on <strong>MySQL Fabric</strong>:</p>
-
-<ol>
-<li><a href="http://www.mysqlperformanceblog.com/2014/04/25/managing-farms-of-mysql-servers-with-mysql-fabric/">Managing farms of MySQL servers with MySQL Fabric</a></li>
-<li><a href="http://www.mysqlperformanceblog.com/2014/05/15/high-availability-mysql-fabric-part/">High Availability with MySQL Fabric: Part I</a></li>
-</ol>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-05-18
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -582,6 +586,12 @@ on <strong>MySQL Fabric</strong>:</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

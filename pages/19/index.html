@@ -40,6 +40,138 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/bash-special-variables/">
+            <h2 class="card-title">Bash Special Variables</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p class="lead">
+  A couple of notes on special variables available in the Bash shell.
+</p>
+
+<h2><code>$0</code>: Name of the script</h2>
+
+<p>The special variable <code>$0</code> contains the name of the script. It is useful when 
+returning usage instructions to the user that run the script. For example:</p>
+
+<p>{% highlight bash %}
+echo "Usage: $0 --option-1 --option-2";
+{% endhighlight %}</p>
+
+<h2><code>$#</code>: Number of arguments</h2>
+
+<p>The special variable <code>$#</code> contains the number of arguments passed to the 
+script. If no arguments are passed, it is equal to 0. It is useful to examine 
+the value of this variable before taking further actions, if a script <em>must</em> 
+be run with a minimum number of arguments. </p>
+
+<p>Here is an example of <code>$#</code> used together with <code>$0</code>:</p>
+
+<p>{% highlight bash %}
+if [ $# -eq 0 ]; then
+    echo "Insufficient number of arguments!";
+    echo "Usage: $0 /path/to/file";
+fi
+{% endhighlight %}</p>
+
+<h2><code>$?</code>: Most recent exit code</h2>
+
+<p>The special variable <code>$?</code> contains the exit code of the most recently 
+executed command. It is useful to examine this to determine whether or 
+not the previous command completed succesfully or returned an error. </p>
+
+<p>Typically, commands that complete succesfully return an exit code equal 
+to 0, with other values indicating different errors, but check each 
+command's documentation to verify this.</p>
+
+<p>In the following example, the existense of the word "test" in a file 
+is checked:</p>
+
+<p>{% highlight bash %}
+grep test /path/to/file &gt; /dev/null;
+if [ $? -eq 0 ]; then
+    echo "/path/to/file contains the word 'test'";
+else
+    echo "/path/to/file does not contain the word 'test'";
+fi
+{% endhighlight %}</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/perdition/">
+            <h2 class="card-title">Perdition</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://horms.net/projects/perdition/">Perdition, IMAP and POP3 Proxy</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-24
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/vim/">
+            <h2 class="card-title">Vim</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Random notes on Vim:</p>
+
+<ul>
+<li><a href="https://web.archive.org/web/20140212083801/http://www.openlogic.com/wazi/bid/326642/Vim-tips-and-tricks-for-developers">Vim tips and tricks for developers</a></li>
+<li><a href="http://neovim.org/">NeoVim, vim's rebirth for the 21st century</a></li>
+<li><a href="http://www.itworld.com/article/2968352/linux/tricks-to-play-with-vim.html">Tricks to play with vim</a></li>
+<li><a href="https://web.archive.org/web/20150316052625/http://amix.dk/blog/post/19548" title="Persistent Undo with Vim">Persistent Undo with Vim</a></li>
+</ul>
+
+<!-- Links -->
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-24
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/screen/">
             <h2 class="card-title">screen</h2>
           </a>
@@ -321,172 +453,6 @@ default:</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/kmotion/">
-            <h2 class="card-title">Kmotion</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><strong>Kmotion</strong> is a web interface for <strong>Motion</strong>.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="/posts/motion/">Motion</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-03
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/hpacucli/">
-            <h2 class="card-title">hpacucli</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><code>hpacucli</code> allows control of the RAID array controllers on HP servers.</p>
-
-<h2>Installation on CentOS</h2>
-
-<ol>
-<li>Download RPM from HP's website (free account required).</li>
-<li><p>Install, e.g:</p>
-
-<pre><code>yum install hpacucli-9.40-12.0.x86_64.rpm
-</code></pre></li>
-</ol>
-
-<h2>Usage</h2>
-
-<h3>Status of All Controllers</h3>
-
-<p>To display the status of all RAID controllers:</p>
-
-<pre><code>hpacucli ctrl all show status
-</code></pre>
-
-<p>Example output:</p>
-
-<pre><code>Smart Array P410i in Slot 0 (Embedded)
-   Controller Status: OK
-   Cache Status: OK
-   Battery/Capacitor Status: OK
-</code></pre>
-
-<h3>Configuration of All Controllers</h3>
-
-<p>To display the configuration of all RAID controllers:</p>
-
-<pre><code>hpacucli ctrl all show config
-</code></pre>
-
-<p>Example output:</p>
-
-<pre><code>Smart Array P410i in Slot 0 (Embedded)    (sn: 5001438001AD7D90)
-
-   array A (SAS, Unused Space: 0  MB)
-
-
-      logicaldrive 1 (136.7 GB, RAID 1, OK)
-
-      physicaldrive 1I:1:1 (port 1I:box 1:bay 1, SAS, 146 GB, OK)
-      physicaldrive 1I:1:2 (port 1I:box 1:bay 2, SAS, 146 GB, OK)
-
-   SEP (Vendor ID PMCSIERA, Model  SRC 8x6G) 250 (WWID: 5123432101AB8D8F)
-</code></pre>
-
-<h3>Status of Logical Drives</h3>
-
-<p>To display the status of all logical drives on a specific controller:</p>
-
-<pre><code>hpacucli ctrl slot=0 ld all show status
-</code></pre>
-
-<p>Example output:</p>
-
-<pre><code>   logicaldrive 1 (136.7 GB, 1): OK
-</code></pre>
-
-<h3>Status of all physical drives</h3>
-
-<p>To display the status of all physical drives on a specific controller:</p>
-
-<pre><code>hpacucli ctrl slot=0 pd all show status
-</code></pre>
-
-<p>Example output:</p>
-
-<pre><code>   physicaldrive 1I:1:1 (port 1I:box 1:bay 1, 146 GB): OK
-   physicaldrive 1I:1:2 (port 1I:box 1:bay 2, 146 GB): OK
-</code></pre>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="http://www.thegeekstuff.com/2014/07/hpacucli-examples/">17 hpacucli Command Examples for Linux on HP Servers</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-02
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/champions-of-regnum/">
-            <h2 class="card-title">Champions of Regnum</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><strong>Champions of Regnum</strong> is a free-to-play MMORPG, available for Linux, 
-Windows and MAC OS X.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="http://www.championsofregnum.com">Champions of Regnum Website</a></li>
-<li><a href="http://www.championsofregnum.com/index.php?l=1&amp;sec=6">Champions of Regnum Download</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-01
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -684,6 +650,12 @@ Windows and MAC OS X.</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

@@ -40,6 +40,144 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/how-to-create-a-large-mysql-db-for-tests/">
+            <h2 class="card-title">How to create a large MySQL database for tests</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>I wanted to create a fairly big MySQL database (~30GB on disk) for 
+tests. I created a '<code>test</code>' database, and a '<code>table2</code>' table, with a 
+'<code>content</code>' field with datatype <code>TEXT</code>. Here's what I run from Bash:</p>
+
+<div class="codehilite"><pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
+<span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span> of <span class="m">500000</span><span class="p">;</span> <span class="se">\</span>
+mysql -u root -D <span class="nb">test</span> -e <span class="se">\</span>
+<span class="s2">&quot;INSERT INTO table2 (content) VALUES (&#39;`cat /var/log/messages | tr -d \&#39;`&#39;)&quot;</span><span class="p">;</span> <span class="se">\</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<p>This took a few hours to finish, while creating data at a rate of 100MBytes per minute on my test server. The size of the database was 30GB.</p>
+
+<p>This did the job but it was too slow. The <strong>better way to do it</strong>, 
+would be to run the above command for far less repetitions, say 
+100000, to create a smaller table, then copy that table in the same 
+database as many times as required for the entire database to reach 
+the desirable size, like:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">create</span> <span class="n">table2</span> <span class="k">like</span> <span class="k">table</span><span class="p">;</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">table2</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span><span class="p">;</span>
+</code></pre></div>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-11-13
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/running-multiple-instances-of-thunderbird/">
+            <h2 class="card-title">Running multiple instances of Thunderbird</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>You can run multiple instances of Thunderbird with different user profiles for each instance, by launching it from command line as:</p>
+
+<pre>[marios@bate ~]$ thunderbird -no-remote -P work &
+[marios@bate ~]$ thunderbird -no-remote -P personal &</pre>
+
+<p>The <code>-P</code> option defines the profile name. If you want to create a new profile, use <code>-P</code> without a name.</p>
+
+<p>NOTE: This article is a short version of <a href="http://kb.mozillazine.org/Run_multiple_copies_of_Thunderbird_at_the_same_time">Run multiple copies of Thunderbird at the same time</a> from the <a href="http://kb.mozillazine.org/">Mozilla Knowledge Base</a>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-09-09
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/login-to-website-with-digest-authentication-in-python/">
+            <h2 class="card-title">Login in to website with Digest authentication in Python</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Websites that use HTTP authentication, can use one of a couple of 
+authentication methods, like Basic or <strong>Digest</strong>. When first opened, the 
+website returns a 401 message, along with a string that contains the 
+type of authentication and the <strong>Realm</strong>, and expects from the user to 
+enter their credentials. Here is how to login with Python to a website 
+that uses Digest.</p>
+
+          </div>
+          <a href="/posts/login-to-website-with-digest-authentication-in-python/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-08-15
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/python/">python</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/mysql-max-allowed-packet/">
+            <h2 class="card-title">max_allowed_packet</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://www.mysqlperformanceblog.com/2014/05/14/max_allowed_packet-and-binary-log-corruption-in-mysql/"><code>max_allowed_packet</code> and binary log corruption in MySQL</a>, 
+at the MySQL Performance Blog.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-05-15
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/mediawiki-upgrade-to-1-19-0-regression/">
             <h2 class="card-title">MediaWiki upgrade to 1.19.0 regression</h2>
           </a>
@@ -243,198 +381,6 @@ timer για κάθε διεπαφή.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/lnx-bbc/">
-            <h2 class="card-title">LNX-BBC</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Η διανομή <strong>LNX-BBC</strong>, προηγουμένως γνωστή ως BBC Linux, ήταν μια 
-μικρού μεγέθους διανομή, ικανή να χωρέσει σε CD-ROM μεγέθους 
-επαγγελματικής κάρτας. Προοριζόταν για Live χρήση, ειδικά για διάσωση 
-ενός συστήματος που δεν λειτουργούσε κανονικά.</p>
-
-<p>Η τελευταία έκδοση κυκλοφόρησε το 2005. </p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-04-17
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/xfree86-3/">
-            <h2 class="card-title">XFree86 3</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Ο εξυπηρετητής X <strong>XFree86 3</strong> είναι η παλιά και πλέον παρωχημένη έκδοση της σειράς XFree 86. Η τελευταία έκδοση είναι
-η <a href="/posts/xfree86-4/">4.8.0</a>, η οποία όμως δεν είναι προς τα πίσω συμβατή με την έκδοση 3. Η έκδοση 3 είναι πιθανόν να
-βρεθεί σε παλιά συστήματα, με κάρτες γραφικών που δεν υποστηρίζονται από τους νεότερους εξυπηρετητές XFree86 4 και
-<a href="/posts/x-org/">X.Org</a>. Από το 2004 περίπου, και οι δύο εκδόσεις του XFree 86 έχουν αντικατασταθεί από τον X.Org, σε
-όλες τις διανομές. </p>
-
-<h2>Ρύθμιση</h2>
-
-<p>Η ρύθμιση του XFree86 3 μπορεί να γίνει είτε με επεξεργασία του αρχείου ρυθμίσεων, είτε με χρήση βοηθητικών εργαλείων,
-όπως τα <a href="/posts/xf86config/">xf86config</a>, <code>Xconfigurator</code>και <code>XF86Setup</code>.</p>
-
-<h2>Αρχείο ρυθμίσεων</h2>
-
-<p>Το αρχείο ρυθμίσεων του XFree 86 3 ονομάζεται <code>XF86Config</code>, και συνήθως βρίσκεται στο <code>/etc</code> ή στο <code>/etc/X11</code>. Ωστόσο,
-η παρουσία αυτού του αρχείου σε ένα σύστημα δεν συνεπάγεται την λειτουργία του XFree 86 3, μια που και η έκδοση 4
-μπορεί να χρησιμοποιεί το ίδιο όνομα για το αρχείο ρυθμίσεών της.</p>
-
-<p>Τα αρχεία ρυθμίσεων των εκδόσεων 3 και 4 είναι παρόμοια. Οι βασικές διαφορές είναι:</p>
-
-<ol>
-<li>Στην έκδοση 3 δεν υπάρχει η λέξη-κλειδί <code>Option</code>, αλλά τα ονόματα 
-των επιλογών και οι τιμές τους συντάσσονται ως ζεύγη κλειδιών-τιμών.</li>
-<li>Στην έκδοση 3 δεν υπάρχει η ενότητα <code>ServerLayout</code>.</li>
-<li>Στην έκδοση 3 δεν υπάρχουν στις ενότητες οι οντότητες <code>Identifier</code> 
-και <code>Driver</code>. Αυτό κάνει την έκδοση 3 λιγότερο ευέλικτη, αφού σε 
-κάθε αρχείο ρυθμίσεων μπορεί να οριστεί μόνο μία φορά κάθε συσκευή 
-(π.χ. μόνο ένα πληκτρολόγιο, μόνο ένα ποντίκι, μόνο μία κάρτα 
-γραφικών).</li>
-<li>Στην έκδοση 3 οι ρυθμίσεις του ποντικιού ανήκουν στην ενότητα <code>Pointer</code>, 
-ενώ στην 4 ανήκουν στην <code>InputDevice</code>, όπως και του πληκτρολογίου. </li>
-</ol>
-
-<h2>Εργαλείο XFree86</h2>
-
-<p>Για μια αρχική ρύθμιση του XFree86, ενώ δεν τρέχει ο εξυπηρετητής, εκτελέστε:</p>
-
-<div class="codehilite"><pre><span></span><code>XFree86 -configure
-</code></pre></div>
-
-<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code>XFree86Config.new</code> μέσα 
-στον φάκελο <code>/root</code>, το οποίο μπορείτε να χρησιμοποιήσετε για να 
-προσθέσετε τις δικές σας τροποποιήσεις.</p>
-
-<h2>Δείτε επίσης</h2>
-
-<ul>
-<li>Ιστότοπος <a href="http://www.xfree86.org/">xfree86.org</a></li>
-<li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-4/">XFree86 4</a>, <a href="/posts/x-org/">X.Org</a>,
-<a href="/posts/accelerated-x/">Accelerated-X</a>. </li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-04-04
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/etc-x11-xorg-conf/">
-            <h2 class="card-title">/etc/X11/xorg.conf</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Το αρχείο <code>xorg.conf</code> στον φάκελο <code>/etc/X11</code> (ή ενδεχομένως στο <code>/etc</code>) 
-είναι το αρχείο ρυθμίσεων του εξυπηρετητή γραφικών <a href="/docs/x.org.el.html">X.Org</a>.</p>
-
-<h2>Σύνταξη</h2>
-
-<p>Το περιεχόμενο του αρχείου χωρίζεται σε ενότητες (sections), οι οποίες 
-ελέγχουν διαφορετικές πτυχές της λειτουργίας του γραφικού περιβάλλοντος. </p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-04-04
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/xfree86-4/">
-            <h2 class="card-title">XFree86 4</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Ο εξυπηρετητής X <strong>XFree86 4</strong>, στην έκδοση 4.8.0 είναι η τελευταία κυκλοφορία της σειράς XFree 86. Γύρω στο 2004, για
-λόγους αδειοδότησης του λογισμικού, οι περισσότερες διανομές υιοθέτησαν τον <a href="/posts/x-org/">X.Org</a>. Έκτοτε, ο XFree 86
-συνέχισε να αναπτύσσεται για μερικά χρόνια ακόμα. Η τελευταία έκδοση κυκλοφόρησε τον Δεκέμβριο του 2008. </p>
-
-<h2>Ρύθμιση</h2>
-
-<p>Η ρύθμιση του XFree86 4 μπορεί να γίνει είτε με επεξεργασία του αρχείου ρυθμίσεων, είτε με βοηθητικά εργαλεία, όπως το
-<code>XFree86</code> που εγκαθίσταται μαζί με τον εξυπηρετητή, το <a href="/posts/system-config-display/">system-config-display</a> (σε
-συστήματα Red Hat, Fedora ή CentOS) και το <code>xf86cfg</code>.</p>
-
-<h2>Αρχείο ρυθμίσεων</h2>
-
-<p>Το αρχείο ρυθμίσεων του εξυπηρετητή <strong>XFree86 4</strong> ονομάζεται συνήθως <code>XF86Config-4</code> και βρίσκεται στο <code>/etc</code> ή στο
-<code>/etc/X11</code>. Για λόγους συμβατότητας με την προηγούμενη έκδοση <a href="/posts/xfree86-3/">XFree86 3</a>, μπορεί να ονομάζεται και
-<code>XF86Config</code>.</p>
-
-<p>Η σύνταξη του αρχείου ρυθμίσεων είναι ίδια με του εξυπηρετητή <a href="/posts/x-org/">X.Org</a>, μια που ο X.Org αποτελεί συνέχεια
-του XFree86 4. Για περισσότερες λεπτομέρειες δείτε το <code>/etc/X11/xorg.conf</code>.</p>
-
-<h2>Εργαλείο XFree86</h2>
-
-<p>Για μια αρχική ρύθμιση του XFree86, ενώ δεν τρέχει ο εξυπηρετητής, εκτελέστε:</p>
-
-<div class="codehilite"><pre><span></span><code>XFree86 -configure
-</code></pre></div>
-
-<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code>XFree86Config.new</code> μέσα 
-στον φάκελο <code>/root</code>, το οποίο μπορείτε να χρησιμοποιήσετε για να 
-προσθέσετε τις δικές σας τροποποιήσεις.</p>
-
-<h2>Δείτε επίσης</h2>
-
-<ul>
-<li>Ιστότοπος <a href="http://www.xfree86.org/">xfree86.org</a></li>
-<li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-3/">XFree86 3</a>, <a href="/posts/x-org/">X.Org</a>,
-<a href="/posts/accelerated-x/">Accelerated-X</a>.</li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-04-04
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -632,6 +578,12 @@ timer για κάθε διεπαφή.</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

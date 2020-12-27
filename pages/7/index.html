@@ -40,6 +40,32 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/centos-install-request-tracker-4/">
+            <h2 class="card-title">Installation of Request Tracker 4 on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://binarynature.blogspot.com/2013/05/install-request-tracker-4.html">Install Request Tracker 4</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-08-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/ocs-inventory-ng/">
             <h2 class="card-title">OCS Inventory NG</h2>
           </a>
@@ -267,55 +293,25 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/centos-6-nfs-server/">
-            <h2 class="card-title">Set up CentOS 6 as NFS Server</h2>
+          <a href="/posts/etc-modprobe-d/">
+            <h2 class="card-title">/etc/modprobe.d/</h2>
           </a>
 
           
           <div class="card-text">
-            <p>These are minimal instructions on how to set up an NFS server running on 
-CentOS 6. </p>
+            <p>On CentOS and probably other RedHat-based distributions, <code>/etc/modprobe.d/</code> 
+is the directory which contains configurations for loading kernel modules, 
+module aliases and module blacklists, that are specific to the host, and not 
+shipped by packages (those should go in <a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a>.</p>
 
-<ol>
-<li><p>Install the required packages:</p>
+<p>Module configurations from both directories are read by default, unless 
+<a href="/docs/dracut.html">dracut</a> is run in <em>generic</em> mode.</p>
 
-<pre><code>yum install nfs-utils nfs-utils-lib
-</code></pre></li>
-<li><p>Enable and start the required services:</p>
+<h2>See also</h2>
 
-<pre><code>chkconfig rpcbind on 
-chkconfig nfs on
-
-service rpcbind restart
-service nfs restart
-</code></pre></li>
-<li><p>Create shares by editing: <code>/etc/exports</code></p></li>
-</ol>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-07-09
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/virtualbox/">
-            <h2 class="card-title">VirtualBox</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://lostogre.wordpress.com/2010/12/12/clustering-virtualbox-on-ubuntu-lucid-10-04-server-part-1/">Clustering VirtualBox on Ubuntu Lucid (10.04) server</a></li>
+<ul>
+<li><a href="/docs/dracut.html">dracut</a></li>
+<li><a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a></li>
 </ul>
 
           </div>
@@ -324,7 +320,7 @@ service nfs restart
         <div class="card-footer text-muted">
           
             <span class="mr-2">
-              <b>Posted</b>: 2014-07-02
+              <b>Posted</b>: 2014-07-12
             </span>
           
           
@@ -528,6 +524,12 @@ service nfs restart
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

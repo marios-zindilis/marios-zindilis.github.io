@@ -40,6 +40,172 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/kmotion/">
+            <h2 class="card-title">Kmotion</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><strong>Kmotion</strong> is a web interface for <strong>Motion</strong>.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="/posts/motion/">Motion</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-03
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/hpacucli/">
+            <h2 class="card-title">hpacucli</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>hpacucli</code> allows control of the RAID array controllers on HP servers.</p>
+
+<h2>Installation on CentOS</h2>
+
+<ol>
+<li>Download RPM from HP's website (free account required).</li>
+<li><p>Install, e.g:</p>
+
+<pre><code>yum install hpacucli-9.40-12.0.x86_64.rpm
+</code></pre></li>
+</ol>
+
+<h2>Usage</h2>
+
+<h3>Status of All Controllers</h3>
+
+<p>To display the status of all RAID controllers:</p>
+
+<pre><code>hpacucli ctrl all show status
+</code></pre>
+
+<p>Example output:</p>
+
+<pre><code>Smart Array P410i in Slot 0 (Embedded)
+   Controller Status: OK
+   Cache Status: OK
+   Battery/Capacitor Status: OK
+</code></pre>
+
+<h3>Configuration of All Controllers</h3>
+
+<p>To display the configuration of all RAID controllers:</p>
+
+<pre><code>hpacucli ctrl all show config
+</code></pre>
+
+<p>Example output:</p>
+
+<pre><code>Smart Array P410i in Slot 0 (Embedded)    (sn: 5001438001AD7D90)
+
+   array A (SAS, Unused Space: 0  MB)
+
+
+      logicaldrive 1 (136.7 GB, RAID 1, OK)
+
+      physicaldrive 1I:1:1 (port 1I:box 1:bay 1, SAS, 146 GB, OK)
+      physicaldrive 1I:1:2 (port 1I:box 1:bay 2, SAS, 146 GB, OK)
+
+   SEP (Vendor ID PMCSIERA, Model  SRC 8x6G) 250 (WWID: 5123432101AB8D8F)
+</code></pre>
+
+<h3>Status of Logical Drives</h3>
+
+<p>To display the status of all logical drives on a specific controller:</p>
+
+<pre><code>hpacucli ctrl slot=0 ld all show status
+</code></pre>
+
+<p>Example output:</p>
+
+<pre><code>   logicaldrive 1 (136.7 GB, 1): OK
+</code></pre>
+
+<h3>Status of all physical drives</h3>
+
+<p>To display the status of all physical drives on a specific controller:</p>
+
+<pre><code>hpacucli ctrl slot=0 pd all show status
+</code></pre>
+
+<p>Example output:</p>
+
+<pre><code>   physicaldrive 1I:1:1 (port 1I:box 1:bay 1, 146 GB): OK
+   physicaldrive 1I:1:2 (port 1I:box 1:bay 2, 146 GB): OK
+</code></pre>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="http://www.thegeekstuff.com/2014/07/hpacucli-examples/">17 hpacucli Command Examples for Linux on HP Servers</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/champions-of-regnum/">
+            <h2 class="card-title">Champions of Regnum</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><strong>Champions of Regnum</strong> is a free-to-play MMORPG, available for Linux, 
+Windows and MAC OS X.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://www.championsofregnum.com">Champions of Regnum Website</a></li>
+<li><a href="http://www.championsofregnum.com/index.php?l=1&amp;sec=6">Champions of Regnum Download</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-01
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/puppet/">
             <h2 class="card-title">Puppet</h2>
           </a>
@@ -271,191 +437,6 @@ or removed from the output.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/dm-cache/">
-            <h2 class="card-title">dm-cache</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.linuxjournal.com/content/advanced-hard-drive-caching-techniques">Advanced Hard Drive Caching Technologies</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-26
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/centos-6-install-motion/">
-            <h2 class="card-title">Install Motion on CentOS 6</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>These are some very very brief instructions on how to install 
-<a href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">Motion</a> 
-on a CentOS 6 system. </p>
-
-<h2>Install Prerequisites</h2>
-
-<pre><code>yum -y install gcc make
-yum -y install libjpeg-turbo libjpeg-turbo-devel
-</code></pre>
-
-<h2>Install Motion</h2>
-
-<p>Download Motion, e.g. as a <code>.tgz</code> from SourceForge:</p>
-
-<pre><code>cd /root/
-wget http://downloads.sourceforge.net/project/motion/motion%20-%203.2/3.2.12/motion-3.2.12.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fmotion%2Ffiles%2Fmotion%2520-%25203.2%2F3.2.12%2F&amp;ts=1385393313&amp;use_mirror=garr
-</code></pre>
-
-<p>Untar:</p>
-
-<pre><code>tar zxvf motion-3.2.12.tar.gz
-</code></pre>
-
-<p>Install:</p>
-
-<pre><code>cd /root/motion-3.2.12/
-./configure
-make
-make install
-</code></pre>
-
-<p>This will install motion in its default location, in subdirectories of 
-<code>/usr/local/</code>, e.g:</p>
-
-<ul>
-<li><code>/usr/local/bin/</code> for executables,</li>
-<li><code>/usr/local/man/</code> for man pages,</li>
-<li><code>/usr/local/etc/</code> for configuration files,</li>
-<li><code>/usr/local/docs/</code> for documentation,</li>
-<li><code>/usr/local/share/</code> for configuration examples, etc.</li>
-</ul>
-
-<p>Finally, before starting <code>motion</code> you need to copy the default 
-configuration file <code>motion-dist.conf</code> to <code>motion.conf</code> (by default in 
-<code>/usr/local/etc/</code>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-25
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/centos-6-prepare-new-server/">
-            <h2 class="card-title">Preparing a new CentOS 6 Server</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>These are some reminders to myself, to apply my personal preferences when 
-installing a new server based on CentOS 6.</p>
-
-<ol>
-<li><p>Make booting verbose, remove the portion <code>rgbh quiet</code> from the 
-<code>kernel</code> line in <code>/boot/grub/grub.conf</code>.</p></li>
-<li><p>Install misc tools:</p>
-
-<pre><code>yum -y install vim
-yum -y install wget
-yum -y install mlocate
-yum -y install iptraf
-yum -y install iotraf
-yum -y install man
-yum -y install nmap
-</code></pre></li>
-<li><p>CRON Configuration: Sometimes fresh Minimal CentOS installations don't 
-come with Cron pre-installed. In such a case: </p>
-
-<pre><code>yum -y install cronie cronie-anacron crontabs
-</code></pre>
-
-<p>Then activate and enable the service:</p>
-
-<pre><code>chkconfig crond on
-service crond start
-</code></pre></li>
-<li><p>SNMP Configuration:</p>
-
-<pre><code>yum -y install net-snmp
-chkconfig snmpd on
-</code></pre>
-
-<p>In <code>/etc/snmp/snmpd.conf</code> change the community to something other than the 
-default <code>public</code>, for example change the line:</p>
-
-<pre><code>com2sec notConfigUser  default       public
-</code></pre>
-
-<p>To something like:</p>
-
-<pre><code>com2sec notConfigUser  default       My_pr1vate_c0mmunity
-</code></pre>
-
-<p>Also, if you are using an NMS like Zenoss that can poll all sorts of 
-information from the device via SNMP, you can greatly expand the range of 
-data available with commenting out the following two lines...</p>
-
-<pre><code>view    systemview    included   .1.3.6.1.2.1.1
-view    systemview    included   .1.3.6.1.2.1.25.1.1
-</code></pre>
-
-<p>...and substituting them with:</p>
-
-<pre><code>view    systemview    included   .1
-</code></pre></li>
-<li><p>Disable console blanking by editing <code>/boot/grub/grub.conf</code> and adding the 
-following at the end of the <code>kernel</code> line:</p>
-
-<pre><code>consoleblank=0
-</code></pre></li>
-</ol>
-
-<h2>Sources</h2>
-
-<ul>
-<li>For the console blanking tip: <a href="http://utcc.utoronto.ca/~cks/space/blog/linux/ConsoleBlankingOff">You want to turn console blanking off on your Linux servers</a>.</li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-25
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -653,6 +634,12 @@ following at the end of the <code>kernel</code> line:</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

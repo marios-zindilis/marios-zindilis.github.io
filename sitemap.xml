@@ -18,6 +18,10 @@
    </url>
 
    <url>
+      <loc>https://zindilis.com/posts/etc-sysconfig-iptables/</loc>
+   </url>
+
+   <url>
       <loc>https://zindilis.com/posts/cisco-late-collission/</loc>
    </url>
 
@@ -410,6 +414,10 @@
    </url>
 
    <url>
+      <loc>https://zindilis.com/posts/etc-snmp-snmpd-conf/</loc>
+   </url>
+
+   <url>
       <loc>https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</loc>
    </url>
 
@@ -643,6 +651,10 @@
 
    <url>
       <loc>https://zindilis.com/posts/backuppc/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/etc-pam-d/</loc>
    </url>
 
    <url>
@@ -1186,6 +1198,10 @@
    </url>
 
    <url>
+      <loc>https://zindilis.com/posts/etc-modprobe-d/</loc>
+   </url>
+
+   <url>
       <loc>https://zindilis.com/posts/virsh/</loc>
    </url>
 
@@ -1207,6 +1223,10 @@
 
    <url>
       <loc>https://zindilis.com/posts/opendcim/</loc>
+   </url>
+
+   <url>
+      <loc>https://zindilis.com/posts/etc-sysconfig-network-scripts-ifcfg-eth0/</loc>
    </url>
 
    <url>

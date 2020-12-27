@@ -40,6 +40,245 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/facepalm-of-the-day/">
+            <h2 class="card-title">Facepalm of the day</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Cisco switches will allow you to add a Vlan to one or more interfaces, even if the Vlan does not exist on the device.
+MAC addresses will then appear in the MAC database as expected, but traffic will not flow.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-03-27
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/μεταβλητές-περιβάλλοντος/">
+            <h2 class="card-title">Μεταβλητές περιβάλλοντος</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Ένας κατάλογος με μεταβλητές περιβάλλοντος, με περιγραφή των περιεχομένων τους. 
+Ο κατάλογος δεν είναι πλήρης, ούτε και υπάρχουν όλες οι μεταβλητές σε όλες τις 
+διανομές, ή σε όλες τις εκδόσεις της ίδιας διανομής.</p>
+
+<table class='table'>
+    <thead>
+        <tr>
+            <th> Όνομα </th>
+            <th> Περιγραφή</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>$BASH_VERSINFO</code></td>
+            <td>Περιέχει μόνο την κύρια έκδοση του Bash, π.χ. <code>4</code>.</td>
+        <tr>
+            <td><code>$BASH_VERSION</code></td>
+            <td>Περιέχει την πλήρη έκδοση του Bash, π.χ. <code>4.2.45(1)-release</code></td>
+        </tr>
+        <tr>
+            <td><code>$EDITOR</code></td>
+            <td>Περιέχει την προτίμηση σε επεξεργαστή κειμένου (π.χ. Vi, Emacs).</td>
+        </tr>
+        <tr>
+            <td><code>$LANG</code></td>
+            <td>Περιέχει το locale που χρησιμοποιείται στο σύστημα σε περίπτωση που δεν 
+                είναι ορισμένες οι μεταβλητές τοπικότητας (μπορείτε να τις δείτε με 
+                την εντολή <code>locale</code>).</td>
+        </tr>
+        <tr>
+            <td><code>$MAILCHECK</code></td>
+            <td>Καθορίζει πόσο συχνά (σε δευτερόλεπτα) το BASH θα ελέγχει αν ο χρήστης έχει 
+                email, οπότε και εμφανίζει ένα μήνυμα όμοιο με <code>You have new mail in /var/spool/mail/root</code> 
+                πριν από το prompt.</td>
+        </tr>
+        <tr>
+            <th> <code>$OLDPWD</code></th>
+            <td> Περιέχει την απόλυτη διαδρομή του αμέσως προηγούμενου φακέλου στον οποίο βρισκόταν ο χρήστης.</td>
+        </tr>
+        <tr>
+            <th> <code>$PATH </code></th>
+            <td> Μια λίστα από διαδρομές φακέλων (χωρισμένες μεταξύ τους με διπλή τελεία 
+                <code>:</code>), στους οποίους αναζητά το κέλυφος τα εκτελέσιμα αρχεία 
+                των εντολών που πληκτρολογεί ο χρήστης. Αν υπάρχουν περισσότερα από ένα 
+                εκτελέσιμα με το ίδιο όνομα, έχει προτεραιότητα εκείνο του οποίου η 
+                διαδρομή συναντάται νωρίτερα στην <code>$PATH</code>.</td>
+        </tr>
+        <tr>
+            <th> <code>$PWD</code></th>
+            <td> Περιέχει την απόλυτη διαδρομή του φακέλου στον οποίο βρίσκεται εκείνη τη στιγμή ο χρήστης.</td>
+        </tr>
+        <tr>
+            <th> <code>$SHELL</code></th>
+            <td> Περιέχει την απόλυτη διαδρομή του κελύφους που χρησιμοποιείται. Στις περισσότερες 
+                διανομές, από προεπιλογή είναι το <code>/bin/bash</code>.</td>
+        </tr>
+        <tr>
+            <th> <code>$XDISPLAYMANAGER</code></th>
+            <td> Η τιμή είναι είτε <code>XDM</code>, είτε <code>GDM</code>, είτε <code>KDM</code>, 
+                ανάλογα με τον προεπιλεγμένο διαχειριστή παραθύρων του γραφικού περιβάλλοντος. 
+                Η τιμή συχνά καθορίζεται μέσα στο αρχείο <code>/etc/sysconfig/desktop</code>.</td>
+        </tr>
+        <tr>
+            <th> <code>$HOME</code></th>
+            <td> Η μεταβλητή `$HOME` περιέχει τη διαδρομή για τον προσωπικό 
+                φάκελο του χρήστη. Μπορεί να φανεί χρήσιμη σε περιβάλλοντα στα 
+                οποία οι προσωπικοί φάκελοι των χρηστών συνδέονται σε πολλά 
+                συστήματα ταυτόχρονα μέσω δικτύου (για παράδειγμα μέσω NFS), 
+                και η σύνδεση γίνεται σε διαδρομή διαφορετική από την 
+                προεπιλεγμένη, για παράδειγμα στο <code>/usr/homes</code> αντί 
+                στο <code>/home</code>.</td>
+        </tr>
+    </tbody>
+</table>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-03-07
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/etc-deluser-conf/">
+            <h2 class="card-title">/etc/deluser.conf</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>/etc/deluser.conf</code> configuration file contains the defaults for 
+<code>deluser</code>, the tool for deleting users from a system usually found on 
+Debian-based systems. An example of the file:</p>
+
+<pre><code># /etc/deluser.conf: `deluser' configuration.
+
+# Remove home directory and mail spool when user is removed
+REMOVE_HOME = 0
+
+# Remove all files on the system owned by the user to be removed
+REMOVE_ALL_FILES = 0
+
+# Backup files before removing them. This options has only an effect if
+# REMOVE_HOME or REMOVE_ALL_FILES is set.
+BACKUP = 0
+
+# target directory for the backup file
+BACKUP_TO = "."
+
+# delete a group even there are still users in this group
+ONLY_IF_EMPTY = 0
+
+# exclude these filesystem types when searching for files of a user to backup
+EXCLUDE_FSTYPES = "(proc|sysfs|usbfs|devpts|tmpfs)"
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-02-16
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/rpm/">
+            <h2 class="card-title">rpm</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Στις διανομές που είναι βασισμένες στο Red Hat (Fedora, CentOS, και εν μέρει 
+Mandriva, OpenSUSE) το πρόγραμμα rpm μπορεί να διαχειριστεί πακέτα λογισμικού.</p>
+
+<h2>Επιλογές</h2>
+
+<table class='table table-bordered table-sm'>
+    <thead>
+        <tr><th> Επιλογή </th><th> Περιγραφή</th></tr>
+    </thead>
+<tbody>
+<tr>
+<td><code>--checksig</code></td>
+<td>Εντοπίζει την ψηφιακή υπογραφή ενός πακέτου <code>.rpm</code> ώστε να διαπιστωθεί η αυθεντικότητά του.
+</td></tr>
+<tr>
+<td> <code>-e</code> </td>
+<td> Απεγκαθιστά ένα πακέτο.
+</td></tr>
+<tr>
+<td> <code>-F</code> </td>
+<td> Αναβαθμίζει ένα πακέτο <b>μόνο</b> αν αυτό προϋπάρχει σε προηγούμενη έκδοση.
+</td></tr>
+<tr>
+<td> <code>-i</code> </td>
+<td> Εγκαθιστά ένα πακέτο <b>για πρώτη φορά</b>, δηλαδή δεν πρέπει στο σύστημα να υπάρχει ήδη πακέτο με το ίδιο όνομα. Αν υπάρχει τέτοιο πακέτο και είναι σε προηγούμενη έκδοση, <b>δεν το αναβαθμίζει</b>.
+</td></tr>
+<tr>
+<td><code>-i&nbsp;--test</code></td>
+<td>Χωρίς να εγκαθιστά το πακέτο, ελέγχει αν είναι δυνατή η εγκατάσταση. Ο πιο χρήσιμος έλεγχος που εκτελεί είναι για την ικανοποίηση των εξαρτήσεων.
+</td></tr>
+<tr>
+<td> <code>-q</code> </td>
+<td> Εξετάζει ένα πακέτο. Αν είναι εγκατεστημένο, επιστρέφει τον αριθμό έκδοσης.
+</td></tr>
+<tr>
+<td> <code>-qa</code> </td>
+<td> Επιστρέφει μια λίστα με όλα τα εγκατεστημένα πακέτα. Χρήσιμο αν θέλετε να πάρετε αυτή τη λίστα και να εγκαταστήσετε ακριβώς τα ίδια πακέτα σε ένα άλλο σύστημα.
+</td></tr>
+<tr>
+<td> <code>-qi</code> </td>
+<td> Επιστρέφει πληροφορίες για ένα εγκατεστημένο πακέτο.  Η έξοδος είναι παρόμοια με εκείνη της εντολής <code>yum info</code>.
+</td></tr>
+<tr>
+<td> <code>-U</code> </td>
+<td> Εγκαθιστά ένα πακέτο, ή αν υπάρχει σε προηγούμενη έκδοση το αναβαθμίζει.
+</td></tr></tbody></table>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-02-16
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/yum-el/">
             <h2 class="card-title">yum</h2>
           </a>
@@ -160,6 +399,59 @@ with <code>n</code>, and to the previous one with <code>N</code>.</p>
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/etc-sysconfig-iptables/">
+            <h2 class="card-title">/etc/sysconfig/iptables</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το αρχείο κανόνων του <code>iptables</code>.</p>
+
+<h2>Παραδείγματα</h2>
+
+<h3>Πρόσβαση ιστού</h3>
+
+<p>Μετά την εγκατάσταση κάποιου εξυπηρετητή ιστού (Apache, Lighttp, κλπ) 
+πρέπει να ανοίξετε την θύρα στην οποία «ακούει» ο εξυπηρετητής. Από 
+προεπιλογή είναι η 80. Ο πιο κάτω κανόνας στο αρχείο <code>/etc/sysconfig/iptables</code> 
+ανοίγει την πρόσβαση στη θύρα 80, ανεξάρτητα από την IP που ζητά πρόσβαση:</p>
+
+<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+</code></pre>
+
+<h3>Απομακρυσμένη πρόσβαση (ssh)</h3>
+
+<p>Για να επιτρέψετε την απομακρυσμένη πρόσβαση από οποιαδήποτε IP, μπορείτε να χρησιμοποιήσετε τον ίδιο κανόνα με το προηγούμενο παράδειγμα, αλλάζοντας απλά τον αριθμό της θύρας σε 22 (προεπιλεγμένη θύρα για το ssh). Για περισσότερη ασφάλεια, μπορείτε να περιορίσετε τις διευθύνσεις IP που θα έχουν δικαίωμα ssh στο σύστημα: </p>
+
+<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --source 192.168.0.0/16 --dport 22 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j DROP
+</code></pre>
+
+<p>Στο πιο πάνω παράδειγμα, ο πρώτος κανόνας επιτρέπει την πρόσβαση σε οποιαδήποτε IP ξεκινά από «192.168», και την απαγορεύει σε οποιαδήποτε άλλη. </p>
+
+<h3>Αποτροπή αποστολής email</h3>
+
+<p>Αν δεν θέλετε οι χρήστες του συστήματος να στέλνουν email από το σύστημα, μπορείτε να απαγορεύσετε την έξοδο της θύρας 25: </p>
+
+<pre><code>-A OUTPUT -p tcp -m tcp --sport 25 -j DROP
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-02-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cream/">
             <h2 class="card-title">Cream</h2>
           </a>
@@ -250,252 +542,6 @@ project has been abandoned.</p>
           
             <span class="mr-2">
               <b>Posted</b>: 2012-01-31
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/etc-my-cnf/">
-            <h2 class="card-title">/etc/my.cnf</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Το αρχείο <code>/etc/my.cnf</code> περιέχει τις ρυθμίσεις του MySQL Server.</p>
-
-<p>Παράδειγμα αρχείου με τις προεπιλεγμένες ρυθμίσεις, από σύστημα με 
-Centos 4 και MySQL Server 4:</p>
-
-<pre><code>[mysqld]
-datadir=/var/lib/mysql
-socket=/var/lib/mysql/mysql.sock
-user=mysql
-# Default to using old password format for compatibility with mysql 3.x
-# clients (those using the mysqlclient10 compatibility package).
-old_passwords=1
-
-# Disabling symbolic-links is recommended to prevent assorted security risks;
-# to do so, uncomment this line:
-# symbolic-links=0
-
-[mysqld_safe]
-err-log=/var/log/mysqld.log
-pid-file=/var/run/mysqld/mysqld.pid
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-12-19
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/διαχείριση-χρηστών-στην-mysql/">
-            <h2 class="card-title">Διαχείριση χρηστών στην MySQL</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Μερικές εντολές για διαχείριση χρηστών στο διαδραστικό περιβάλλον γραμμής εντολών της MySQL 5. </p>
-
-<h2>Δημιουργία χρήστη</h2>
-
-<p>Στη γραμμή εντολών της MySQL:</p>
-
-<pre><code>create user 'username'@'localhost' identified by 'password';
-</code></pre>
-
-<h2>Διαγραφή χρήστη</h2>
-
-<p>Αν ο χρήστης διαγραφεί απλά με:</p>
-
-<pre><code>delete from mysql.users where User='username';
-</code></pre>
-
-<p>τότε μετά δεν επιτρέπεται η δημιουργία του ξανά, εκτός και αν γίνει:</p>
-
-<pre><code>flush privileges;
-</code></pre>
-
-<h2>Καθορισμός δικαιωμάτων</h2>
-
-<p>Καθορισμός δικαιωμάτων του χρήση σε συγκεκριμένη βάση/πίνακες:</p>
-
-<pre><code>grant all privileges on database.table to 'username'@'localhost';
-</code></pre>
-
-<p>Το database.table μπορεί να είναι <code>database.*</code> για όλους τους πίνακες στη 
-database ή <code>*.*</code> για όλους τους πίνακες σε όλες τις βάσεις.</p>
-
-<p>Αν χρησιμοποιείτε τον ίδιο χρήστη για πολλές βάσεις δεδομένων, μπορείτε να 
-δείτε τι δικαιώματα έχει σε κάθε μία εκτελώντας:</p>
-
-<pre><code>show grants for 'username'@'localhost';
-</code></pre>
-
-<h2>Αλλαγή συνθηματικού</h2>
-
-<p>SET PASSWORD FOR 'username'@'localhost' = PASSWORD('new-password');</p>
-
-<h2>Σημειώσεις για την MySQL 4</h2>
-
-<p>Η MySQL 4 δεν υποστηρίζεται πλέον, όμως πολλοί εξυπηρετητές την έχουν 
-εγκατεστημένη για λόγους συμβατότητας με παλιές εφαρμογές. Σε αυτή την έκδοση, 
-η δημιουργία του χρήστη και η απόδοση δικαιωμάτων γίνεται σε ένα βήμα, απλά με 
-την εντολή <code>GRANT</code>. Για παράδειγμα, η ακόλουθη εντολή ταυτόχρονα δημιουργεί 
-τον χρήστη αν αυτός δεν υπάρχει, και του δίνει όλα τα δικαιώματα πάνω στη βάση 
-δεδομένων <code>database</code>:</p>
-
-<pre><code>grant all privileges on database.* to 'username'@'localhost' identified by 'password';
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-11-20
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/mysql/">mysql</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/εγκατάσταση-guake-σε-centos6/">
-            <h2 class="card-title">Εγκατάσταση Guake σε CentOS6</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Το <a href="http://guake.org/" title="Guake Terminal">Guake</a> είναι ένα μικρό εργαλείο το οποίο κάθεται στην περιοχή ειδοποιήσεων του GNOME2 (ή του GNOME3 με Fallback), και ανοίγει το τερματικό μόνο με την πίεση του πλήκτρου F12. Το βρίσκω εξαιρετικά χρήσιμο εργαλείο, και το έχω εγκατεστημένο σε όλα μου τα συστήματα. </p>
-
-          </div>
-          <a href="/posts/εγκατάσταση-guake-σε-centos6/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-11-19
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/getfacl/">
-            <h2 class="card-title">getfacl</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Μερικά συστήματα αρχείων όπως τα ext2, ext3, ext4, ReiserFS, JFS, XFS, 
-υποστηρίζουν τον ορισμό επιπλέον ιδιοτήτων-δικαιωμάτων πρόσβασης στα 
-αρχεία, τα οποία λειτουργούν ως λίστες ελέγχου πρόσβασης (Access 
-Control Lists). Στα συστήματα αυτά, η εντολή <code>getfacl</code> δείχνει αυτά τα 
-δικαιώματα ανά χρήστη.</p>
-
-<p>Σε ένα αρχείο στο οποίο δεν έχουν οριστεί κανόνες ACL επιπλέον από τα 
-απλά δικαιώματα πρόσβασης, το αποτέλεσμα της <code>getfacl</code> είναι αντίστοιχο 
-με την έξοδο της <code>ls -l</code>:</p>
-
-<p>{% highlight bash %}
-$ ls -l route.pdf 
--rw-rw-r-- 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf
-$ getfacl route.pdf</p>
-
-<h1>file: route.pdf</h1>
-
-<h1>owner: mariosz</h1>
-
-<h1>group: mariosz</h1>
-
-<p>user::rw-
-group::rw-
-other::r--
-{% endhighlight %}</p>
-
-<p>Αν σε αυτό το αρχείο οριστούν δικαιώματα ACL, τότε πλέον αλλάζουν τα 
-αποτελέσματα και των δύο εντολών, και το αρχείο συμπεριφέρεται διαφορετικά:</p>
-
-<p>{% highlight bash %}
-$ setfacl -m user:another:r-- route.pdf </p>
-
-<p>$ ls -l route.pdf
--rw-rw-r--+ 1 mariosz mariosz 6619763 Sep 21 16:30 route.pdf</p>
-
-<p>$ getfacl route.pdf </p>
-
-<h1>file: route.pdf</h1>
-
-<h1>owner: mariosz</h1>
-
-<h1>group: mariosz</h1>
-
-<p>user::rw-
-user:another:r--
-group::rw-
-mask::rw-
-other::r--
-{% endhighlight %}</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-11-05
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/links-for-week-43-2011/">
-            <h2 class="card-title">Ενδιαφέροντες σύνδεσμοι (2011, εβδ#43)</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Interesting links.</p>
-
-          </div>
-          <a href="/posts/links-for-week-43-2011/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-10-29
             </span>
           
           
@@ -699,6 +745,12 @@ other::r--
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

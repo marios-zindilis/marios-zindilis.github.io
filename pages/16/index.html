@@ -40,6 +40,90 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/regular-expressions/">
+            <h2 class="card-title">Regular Expressions</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://www.regexr.com/">RegExr</a> an online tool to help you build 
+regular expressions.</li>
+<li><a href="http://regex.alf.nu/">Regex Golf</a> an online Regex Golf game to 
+help you sharpen your regex-building skills.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-16
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/zenoss-cannot-set-device-ip/">
+            <h2 class="card-title">Cannot set device IP in Zenoss</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>In Zenoss, there is a chance that you might get a failure to set or change the IP of a device in the web interface.
+This sometimes happens because that specific IP address is already assigned to one of the <em>subinterfaces</em> (typically a
+Vlan interface) of another device. In this case, you will just get an error that Zenoss <code>Failed to set IP Address</code>. </p>
+
+<p>If you try to set or change the IP address from ZenDMD, then the error is a little bit more informative:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;web-server.zindilis.net&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Device</span><span class="o">.</span><span class="n">setManageIp</span><span class="p">(</span><span class="s1">&#39;1.2.3.4&#39;</span><span class="p">)</span>
+<span class="mi">2014</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">11</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">30</span> <span class="n">WARNING</span> <span class="n">zen</span><span class="o">.</span><span class="n">Device</span> <span class="n">The</span> <span class="n">IP</span> <span class="n">address</span> <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">assigned</span>
+<span class="s1">&#39;The IP address 1.2.3.4 is already assigned&#39;</span>
+</code></pre></div>
+
+<p>The problem here is that you can't find an IP by searching for it in the web interface, if that IP is assigned to a
+subinterface. Enter ZenDMD! Here's how to search of a specific IP, in all the interfaces of all the devices:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">dmd</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevices_recursive</span><span class="p">():</span>
+<span class="o">...</span>      <span class="k">for</span> <span class="n">Interface</span> <span class="ow">in</span> <span class="n">Device</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">interfaces</span><span class="p">():</span> 
+<span class="o">...</span>           <span class="k">if</span> <span class="n">Interface</span><span class="o">.</span><span class="n">getIpAddress</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">Interface</span><span class="o">.</span><span class="n">getIpAddress</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;1.2.3.4&#39;</span><span class="p">):</span>
+<span class="o">...</span>                <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">Interface</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">Interface</span><span class="o">.</span><span class="n">getIpAddress</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Running the above, will return a result similar to:</p>
+
+<pre><code>router-1.zindilis.net Fa0/1.900 1.2.3.4
+</code></pre>
+
+<p>This tells you the device on which that IP address exists, and the specific subinterface on which it is assigned to.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-15
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/mysql-mysqldump/">
             <h2 class="card-title">mysqldump</h2>
           </a>
@@ -381,73 +465,6 @@ with <code>image=</code>, followed by the path to the kernel file. For example:<
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/tailf/">
-            <h2 class="card-title">tailf</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><code>tailf</code> does the same thing as <code>tail -f</code>: it displays the last lines of 
-a file, and then <em>follows</em> the file as it grows, and displays new lines 
-as they are appended to it. Compared to <code>tail -f</code>, it uses less 
-resources on the system, by not reading from the disk while the text 
-file is not updated.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="/posts/tail/"><code>tail</code></a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-01-02
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-enable-secret/">
-            <h2 class="card-title">enable secret</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The <code>enable secret</code> command makes the device ask for a password to allow 
-the user to enter the global configuration mode. Compared to <code>enable 
-password</code>, it has the advantage that it stores the password in the 
-configuration as an MD5 hash, as opposed to clear text.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href='/posts/cisco-enable-password/'><code>enable password</code></a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-01-02
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -645,6 +662,12 @@ configuration as an MD5 hash, as opposed to clear text.</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

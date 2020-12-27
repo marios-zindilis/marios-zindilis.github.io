@@ -40,6 +40,174 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/cisco-switchport-port-security-mac-address-sticky/">
+            <h2 class="card-title">switchport port-security mac-address sticky</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>switchport port-security mac-address sticky</code> καθορίζει ότι οι φυσικές διευθύνσεις MAC που δικαιούνται να
+επικοινωνούν μέσω της συγκεκριμένης διεπαφής, είναι αυτές που είναι ήδη συνδεδεμένες, ή οι πρώτες που θα συνδεθούν.
+Απαιτείται πρώτα να οριστεί η συγκεκριμένη διεπαφή ως access:
+<a href="/posts/cisco-switchport-mode-access/">switchport mode access</a> 
+και να ενεργοποιηθεί σ' αυτήν η ασφάλεια διεπαφής: <a href="/posts/cisco-switchport-port-security/">switchport port-security</a>. </p>
+
+<p>Εναλλακτικά, μπορείτε να καθορίσετε ρητά ότι η διεπαφή θα επιτρέπει μόνο συγκεκριμένες φυσικές διευθύνσεις MAC που θα
+ορίσετε, με την εντολή <code>switchport port-security mac-address $MAC-ADDRESS</code>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-service-timestamps-log-datetime/">
+            <h2 class="card-title">service timestamps log datetime</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>service timestamps log datetime</code> καθορίζει την εμφάνιση των ημερομηνιών στα μηνύματα 
+αποσφαλμάτωσης στο τερματικό, σε εμφάνιση ημερομηνίας και ώρας, σε 
+αντίθεση με την εναλλακτική που είναι η εμφάνιση σε διάρκεια συνεχόμενης 
+λειτουργίας της συσκευής από την τελευταία εκκίνηση (uptime). Ένα παράδειγμα 
+εξόδου αποσφαλμάτωσης με αυτή την εμφάνιση των ημερομηνιών είναι:</p>
+
+<pre><code>Jan  5 19:34:18: tcp2: I ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 1368141491
+        DATA 2 ACK 946277077 PSH  WIN 56000
+Jan  5 19:34:18: tcp2: O ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 946277077
+        DATA 2 ACK 1368141493 PSH  WIN 3843
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">
+            <h2 class="card-title">switchport trunk encapsulation negotiate</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Καθορίζει το encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία 
+ήδη λειτουργεί ως trunk. Η τιμή negotiate αναγκάζει τη διεπαφή να 
+διαπραγματευτεί ανάμεσα σε <code>dot1q</code> και <code>isl</code> με τη συνδεδεμένη στο άλλο 
+άκρο του trunk συσκευή.</p>
+
+<h2>Δείτε επίσης</h2>
+
+<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές, 
+από τις οποίες η <code>negotiate</code> περιγράφεται σε αυτό το άρθρο. Για τις 
+άλλες δύο τιμές, δείτε:</p>
+
+<ul>
+<li><a href="/posts/cisco-switchport-trunk-encapsulation-dot1q/">switchport trunk encapsulation dot1q</a> 
+για την τιμή <code>dot1q</code>, η οποία είναι και η μοναδική που 
+χρησιμοποιείται πλέον πρακτικά, και</li>
+<li><a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-switchport-trunk-encapsulation-dot1q/">
+            <h2 class="card-title">switchport trunk encapsulation dot1q</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>switchport trunk encapsulation dot1q</code> καθορίζει το 
+encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία ήδη 
+λειτουργεί ως trunk. Η παράμετρος <code>dot1q</code> καθορίζει την τιμή στο 
+πρότυπο IEEE 802.1q.</p>
+
+<p>Υπάρχουν δύο πρότυπα λειτουργίας για διεπαφές trunk, το 802.1q και το ISL. Το πρότυπο ISL (Inter-Switch Link) αναπτύχθηκε από τη Cisco πολύ νωρίτερα από το 802.1q. Μια βασική του διαφορά από το 802.1q είναι ότι περικλείει το Ethernet Frame σε ένα επιπλέον ζεύγος header και trailer. Αντίθετα, το 802.1q προσθέτει μόνο ένα επιπλέον πεδίο στο υφιστάμενο header του Ethernet frame, και αναγκαστικά επανυπολογίζει το Frame Check Sequence (FCS) στο trailer.</p>
+
+<p>Πρακτικά, το ISL δεν χρησιμοποιείται πλέον σήμερα, και σε νεότερες συσκευές η ίδια η Cisco έχει σταματήσει να το υποστηρίζει. Αναφέρεται ακόμα στην τεκμηρίωση για σκοπούς συμβατότητας με παλαιότερες συσκευές. Οι συσκευές που δεν προσφέρουν άλλη δυνατότητα ρύθμισης, λειτουργούν από προεπιλογή σε dot1q. </p>
+
+<h2>Δείτε επίσης</h2>
+
+<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές. 
+Η βασική εναλλακτική του <code>dot1q</code> είναι η <a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a>, 
+και για αυτόματη διαπραγμάτευση του encapsulation μεταξύ των δύο συσκευών δείτε το 
+<a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">switchport trunk encapsulation negotiate</a>. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-switchport-mode-access/">
+            <h2 class="card-title">switchport mode access</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>switchport mode access</code> ορίζει ότι μια διεπαφή θα συνδέεται μόνο με 
+μία συσκευή και μόνο σε ένα VLAN.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cisco-switchport-trunk-encapsulation-isl/">
             <h2 class="card-title">switchport trunk encapsulation isl</h2>
           </a>
@@ -248,161 +416,6 @@ some special effects to them.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-12/">
-            <h2 class="card-title">Reading #12</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Reading material.</p>
-
-          </div>
-          <a href="/posts/reading-12/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-08-18
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/mediawiki-διαγραφή-άρθρου-από-βάση-δεδομένων/">
-            <h2 class="card-title">MediaWiki: Διαγραφή άρθρου από τη βάση δεδομένων</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Υπάρχουν περιπτώσεις στο MediaWiki που ένα άρθρο δεν μπορεί να διαγραφεί μέσω της συνηθισμένης διεπαφής, οπότε
-χρειάζεται σκάλισμα της βάσης δεδομένων. Αυτός ο οδηγός περιγράφει τον τρόπο.</p>
-
-          </div>
-          <a href="/posts/mediawiki-διαγραφή-άρθρου-από-βάση-δεδομένων/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-08-15
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/hive-rise/">
-            <h2 class="card-title">Hive Rise</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><strong>Hive Rise</strong> used to be a fast paced strategy game that run on both 
-Windows and Linux. It seems to have been abandoned, and the domain of 
-its former website hiverise.com is now for sale.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-08-15
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-11/">
-            <h2 class="card-title">Reading #11</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Weekend: reading time. Here are some suggestions:</p>
-
-<h3>Security:</h3>
-
-<ul>
-<li><a href="https://web.archive.org/web/20111116195537/http://www.dailytech.com/Exclusive+British+Police+Duped+by+LulzSec+Into+Arresting+the+Wrong+Guy/article22280.htm">Exclusive: British Police Duped by LulzSec Into Arresting the Wrong Guy</a></li>
-<li><a href="http://nakedsecurity.sophos.com/2011/07/28/topiary-have-the-police-arrested-the-right-man/">Topiary: did police arrest the wrong man in LulzSec investigation?</a></li>
-<li><a href="http://sunbeltblog.blogspot.com/2011/07/activate-skype-or-not.html">"Activate Skype". Or not...</a></li>
-<li><a href="http://www.eweek.com/c/a/Security/Anonymous-Claims-Network-Breach-of-FBI-Security-Contractor-ManTech-693504/">Anonymous Claims Network Breach of FBI Security Contractor ManTech</a></li>
-<li><a href="http://nakedsecurity.sophos.com/2011/07/11/david-beckhams-website-defaced-by-hackers/">David Beckham's website defaced by hackers</a></li>
-<li><a href="http://9gag.com/gag/139688/">Credit card numbers' explanation</a> and the <a href="http://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a></li>
-</ul>
-
-<h3>Networking:</h3>
-
-<ul><li><a href="http://www.itpro.co.uk/635284/bt-and-virgin-losing-thousands-of-customers">BT and Virgin are losing many thousands of customers, results reveal</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-07-31
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-10/">
-            <h2 class="card-title">Reading #10</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <h3>Linux</h3>
-
-<p>I finished reading Sams - Teach yourself Red Hat Linux. This book tries to cover the very basics of a wide range of topics, from installation and basic usage on the desktop and on the console, to systems administration, user management, nfs, smb, web and ftp serving and basic security. Therefore, this is a good book for the beginner who aims high. So, I should have read it a few years ago - I felt bored at times.</p>
-
-<h3>More Google+ hoopla:</h3>
-
-<ul><li><a href="http://www.techrepublic.com/blog/google-in-the-enterprise/gmail-8217s-new-look-why-did-they-do-it-and-what-8217s-next/174">Gmail’s new look: Why did they do it and what’s next?</a></li>
-</ul>
-
-<h3>Misc</h3>
-
-<ul><li><a href="http://www.bbc.co.uk/news/uk-england-leeds-14039229">Geocaching: the unintended results</a>. This lead me to spend some time on <a href="http://www.geocaching.com/">geocaching.com</a>. Good for the adventurous.</li>
-<li><a href="http://asia.cnet.com/top-10-geek-lovers-61990429.htm">Top 10 geek lovers</a>.</li>
-<li>Also, not really a reading recommendation, but I thought <a href="http://hellpizza.com/">this</a> was fun. They have a half-sized pizza called 333.</li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-07-21
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -600,6 +613,12 @@ its former website hiverise.com is now for sale.</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

@@ -40,6 +40,257 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/easy_install/">
+            <h2 class="card-title">easy_install</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>easy_install</code> is a tool for installing Python modules from PyPI.</p>
+
+<h2>Installation on CentOS</h2>
+
+<p>On CentOS, <code>easy_install</code> is provided by the package <code>python-setuptools</code>:</p>
+
+<pre><code>yum whatprovides */easy_install
+... 
+python-setuptools-0.6.10-3.el6.noarch : Easily build and distribute Python packages
+</code></pre>
+
+<p>To install it:</p>
+
+<pre><code>yum -y install python-setuptools
+</code></pre>
+
+<p>You can then use it to install a module, by just providing the module 
+name as the only parameter, e.g:</p>
+
+<pre><code>easy_install markdown2
+</code></pre>
+
+<h2>Usage</h2>
+
+<p>To install a Python module from PyPI:</p>
+
+<pre><code>sudo easy_install module_name
+</code></pre>
+
+<p>To upgrade:</p>
+
+<pre><code>sudo easy_install --upgrade module_name
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/samba-security-options/">
+            <h2 class="card-title">Samba security Options</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>security</code> option in the <code>[Global]</code> section of Samba configuration 
+defines what type of authentication is required for users to access 
+shares. There are five possible values for this option: Share, User, 
+Server, Domain and ADS.</p>
+
+<p>Of the five possible values, the last three (Server, Domain and ADS) 
+delegate authentication to another server on the network, and thus 
+require additional configuration.</p>
+
+<h2><code>security = Server</code></h2>
+
+<p>This option makes the Samba server ask another server to authenticate 
+the user before granting access to the requested share.</p>
+
+<h2><code>security = Domain</code></h2>
+
+<p>This option makes the Samba server a full member of a Domain, and asks 
+a Domain Controller to authenticate the user before granting access to 
+the requested share. A couple more options are required for Domain 
+security to work: <code>workgroup</code> (to define the domain), <code>password server</code> 
+(to define the Domain Controller) and <code>encrypt passwords</code> to be set to 
+<code>Yes</code> (or <code>True</code> or <code>1</code>).</p>
+
+<p>It is also required that the Samba server is joined in a Domain, which 
+can be done by any user with Domain Administration privileges (in the 
+following example, the user obiwan):</p>
+
+<pre><code>net join member -U obiwan
+</code></pre>
+
+<h2><code>security = ADS</code></h2>
+
+<p>This option works similar to the <code>Domain</code> option, and requires the same 
+additional options to be set, but uses an Active Directory server for 
+authentication, and utilizes newer AD protocols.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/etc-hosts-allow/">
+            <h2 class="card-title">/etc/hosts.allow</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p class='lead'>File <code>/etc/hosts.allow</code> is one of the configuration 
+files of <b>TCP Wrappers</b>, effective either to servers launched via a 
+superserver such as <code>inetd</code>, or to servers that use 
+<code>libwrap</code>, such as the OpenSSH server (when compiled with 
+<code>--with-libwrap</code>, which is usually the default).</p>
+
+<p>The general syntax of the file is:</p>
+
+<pre><code>server: hosts
+</code></pre>
+
+<p>The <code>hosts</code> is a comma separated list, that can include full IP 
+addresses, partial IP addresses, IP subnets in CIDR notation, 
+FQDNs, or domains. For example, the following line limits access to the 
+<code>sshd</code> server to a single host specified by IP, and to a subnet:</p>
+
+<pre><code>sshd: 8.8.8.1 10.1.0.0/24
+</code></pre>
+
+<p>Note that in order for any definitions in <code>/etc/hosts.allow</code> to be 
+effective, the rest of the hosts <strong>need to be prohibited</strong> in 
+<code>/etc/hosts.deny</code>. Since <code>/etc/hosts.allow</code> takes precedence, it is safe 
+to disallow every host in <code>/etc/hosts.deny</code> and only selectively allow 
+specific access to the server in <code>/etc/hosts.allow</code>. To deny all hosts 
+except those specified in <code>/etc/hosts.allow</code>, add in <code>/etc/hosts.deny</code>:</p>
+
+<pre><code>sshd: ALL
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/zenoss-zendmd-get-events/">
+            <h2 class="card-title">Get Zenoss Events from ZenDMD</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">Globals</span>
+<span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
+<span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
+
+<span class="n">Events</span> <span class="o">=</span> <span class="n">DMD</span><span class="o">.</span><span class="n">ZenEventManager</span><span class="o">.</span><span class="n">getEventList</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Each <code>Event</code> in <code>Events</code> (iterable) offers:</p>
+
+<ul>
+<li><code>__ac_permissions__</code></li>
+<li><code>__allow_access_to_unprotected_subobjects__</code></li>
+<li><code>__doc__</code></li>
+<li><code>__implemented__</code></li>
+<li><code>__init__</code></li>
+<li><code>__module__</code></li>
+<li><code>__providedBy__</code></li>
+<li><code>__provides__</code></li>
+<li><code>_action</code></li>
+<li><code>_baseurl</code></li>
+<li><code>_clearClasses</code></li>
+<li><code>_fields</code></li>
+<li><code>_zem</code></li>
+<li><code>clearClasses</code></li>
+<li><code>component</code></li>
+<li><code>count</code></li>
+<li><code>device</code></li>
+<li><code>eventClass</code></li>
+<li><code>eventKey</code></li>
+<li><code>eventPermission</code></li>
+<li><code>eventState</code></li>
+<li><code>evid</code></li>
+<li><code>firstTime</code></li>
+<li><code>getCssClass</code></li>
+<li><code>getDataList</code></li>
+<li><code>getDedupFields</code></li>
+<li><code>getEventData</code></li>
+<li><code>getEventDetailHref</code></li>
+<li><code>getEventFields</code></li>
+<li><code>getStateFor</code></li>
+<li><code>getStateToCopy</code></li>
+<li><code>getStateToCopyFor</code></li>
+<li><code>getTypeToCopy</code></li>
+<li><code>getTypeToCopyFor</code></li>
+<li><code>jellyFor</code></li>
+<li><code>lastTime</code></li>
+<li><code>processUniqueID</code></li>
+<li><code>setCopyableState</code></li>
+<li><code>setStateFor</code></li>
+<li><code>severity</code></li>
+<li><code>summary</code></li>
+<li><code>unjellyFor</code></li>
+<li><code>updateFromDict</code></li>
+<li><code>updateFromFields</code></li>
+<li><code>zem</code></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/zenoss-zendmd-get-devices/">
             <h2 class="card-title">Get Devices from Zenoss with ZenDMD</h2>
           </a>
@@ -459,144 +710,6 @@ thing to do. It is therefore an exercise in futility, but it helps with my chron
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/how-to-create-a-large-mysql-db-for-tests/">
-            <h2 class="card-title">How to create a large MySQL database for tests</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>I wanted to create a fairly big MySQL database (~30GB on disk) for 
-tests. I created a '<code>test</code>' database, and a '<code>table2</code>' table, with a 
-'<code>content</code>' field with datatype <code>TEXT</code>. Here's what I run from Bash:</p>
-
-<div class="codehilite"><pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
-<span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span> of <span class="m">500000</span><span class="p">;</span> <span class="se">\</span>
-mysql -u root -D <span class="nb">test</span> -e <span class="se">\</span>
-<span class="s2">&quot;INSERT INTO table2 (content) VALUES (&#39;`cat /var/log/messages | tr -d \&#39;`&#39;)&quot;</span><span class="p">;</span> <span class="se">\</span>
-<span class="k">done</span>
-</code></pre></div>
-
-<p>This took a few hours to finish, while creating data at a rate of 100MBytes per minute on my test server. The size of the database was 30GB.</p>
-
-<p>This did the job but it was too slow. The <strong>better way to do it</strong>, 
-would be to run the above command for far less repetitions, say 
-100000, to create a smaller table, then copy that table in the same 
-database as many times as required for the entire database to reach 
-the desirable size, like:</p>
-
-<div class="codehilite"><pre><span></span><code><span class="k">create</span> <span class="n">table2</span> <span class="k">like</span> <span class="k">table</span><span class="p">;</span>
-<span class="k">insert</span> <span class="k">into</span> <span class="n">table2</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span><span class="p">;</span>
-</code></pre></div>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-11-13
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/running-multiple-instances-of-thunderbird/">
-            <h2 class="card-title">Running multiple instances of Thunderbird</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>You can run multiple instances of Thunderbird with different user profiles for each instance, by launching it from command line as:</p>
-
-<pre>[marios@bate ~]$ thunderbird -no-remote -P work &
-[marios@bate ~]$ thunderbird -no-remote -P personal &</pre>
-
-<p>The <code>-P</code> option defines the profile name. If you want to create a new profile, use <code>-P</code> without a name.</p>
-
-<p>NOTE: This article is a short version of <a href="http://kb.mozillazine.org/Run_multiple_copies_of_Thunderbird_at_the_same_time">Run multiple copies of Thunderbird at the same time</a> from the <a href="http://kb.mozillazine.org/">Mozilla Knowledge Base</a>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-09-09
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/login-to-website-with-digest-authentication-in-python/">
-            <h2 class="card-title">Login in to website with Digest authentication in Python</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Websites that use HTTP authentication, can use one of a couple of 
-authentication methods, like Basic or <strong>Digest</strong>. When first opened, the 
-website returns a 401 message, along with a string that contains the 
-type of authentication and the <strong>Realm</strong>, and expects from the user to 
-enter their credentials. Here is how to login with Python to a website 
-that uses Digest.</p>
-
-          </div>
-          <a href="/posts/login-to-website-with-digest-authentication-in-python/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-08-15
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/python/">python</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/mysql-max-allowed-packet/">
-            <h2 class="card-title">max_allowed_packet</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.mysqlperformanceblog.com/2014/05/14/max_allowed_packet-and-binary-log-corruption-in-mysql/"><code>max_allowed_packet</code> and binary log corruption in MySQL</a>, 
-at the MySQL Performance Blog.</li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-05-15
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -794,6 +907,12 @@ at the MySQL Performance Blog.</li>
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

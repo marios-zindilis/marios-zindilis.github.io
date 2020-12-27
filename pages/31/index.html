@@ -40,6 +40,170 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/free/">
+            <h2 class="card-title">free</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το πρόγραμμα γραμμής εντολών <code>free</code> εμφανίζει πληροφορίες για τη χρήση της μνήμης RAM και της προσωρινής μνήμης swap. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-07-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/subversion/">
+            <h2 class="card-title">Subversion (ελληνικά)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Μερικές οδηγίες για την εγκατάσταση και λειτουργία του Subversion. Οι 
+οδηγίες είναι για Ubuntu 10.10, μπορεί να λειτουργούν αυτούσιες ή 
+παρόμοιες και σε άλλες εκδόσεις ή διανομές.</p>
+
+<p>Εγκατάσταση του Subversion:</p>
+
+<div class="codehilite"><pre><span></span><code>sudo apt-get install subversion
+</code></pre></div>
+
+<p>Στη συνέχεια, βρείτε το URL που θέλετε να κάνετε checkout, π.χ: 
+http://mediawiki.googlecode.com/svn/trunk/extensions/geshi/. 
+Μεταβείτε στο φάκελο που θέλετε να κατεβάσετε τα αρχεία:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> Downloads
+</code></pre></div>
+
+<p>και εκτελέστε:</p>
+
+<div class="codehilite"><pre><span></span><code>svn checkout http://mediawiki.googlecode.com/svn/trunk/extensions/geshi/
+</code></pre></div>
+
+<p>Όλα τα αρχεία κάτω από τον φάκελο 
+http://mediawiki.googlecode.com/svn/trunk/extensions/geshi/ 
+θα έχουν τώρα αντιγραφεί στον τοπικό φάκελο Downloads/geshi. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-07-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/ναυτίλος-μαζική-σμίκρυνση-εικόνων/">
+            <h2 class="card-title">Ναυτίλος: Μαζική σμίκρυνση εικόνων</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Σε αυτό το άρθρο περιγράφω τη δημιουργία μιας εντολής για μαζική σμίκρυνση εικόνων, η οποία εμφανίζεται όταν κάνουμε
+δεξί κλικ σε ένα παράθυρο του Ναυτίλου.</p>
+
+          </div>
+          <a href="/posts/ναυτίλος-μαζική-σμίκρυνση-εικόνων/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-06-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-login-local/">
+            <h2 class="card-title">login local</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Καθορίζει ότι η σύνδεση των χρηστών στη συσκευή μέσω της συγκεκριμένης 
+γραμμής θα γίνεται με πιστοποίηση έναντι της τοπικής βάσης δεδομένων 
+ονομάτων χρήστη και συνθηματικών, σε αντίθεση π.χ. με το <code>login tacacs</code>. </p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-06-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-mac-address-table-aging-time/">
+            <h2 class="card-title">mac-address-table aging-time</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Με την εντολή αυτή μπορείτε να καθορίσετε αν και κάθε πόσο χρόνο θα 
+διαγράφονται οι καταγραφές στον πίνακα διευθύνσεων MAC (MAC address 
+table) μιας συσκευής. Αν δοθεί η τιμή 0, τότε δεν διαγράφονται <strong>ποτέ</strong> 
+οι καταγραφές, αλλιώς αν δοθεί ένας ακέραιος, τότε καταγράφονται σε 
+τόσα <i>δευτερόλεπτα</i> όσα ο ακέραιος που δόθηκε. Για παράδειγμα:</p>
+
+<pre><code>cisco(config)#mac-address-table aging-time 600
+</code></pre>
+
+<p>Η πιο πάνω εντολή θα ορίσει τη διάρκεια παραμονής των διευθύνσεων MAC 
+σε δέκα λεπτά.</p>
+
+<dl>
+<dt> Προεπιλογή
+</dt><dd> Η προεπιλεγμένη τιμή της μεταβλητής <code>$TIME</code> στις συσκευές Cisco είναι 300, δηλαδή 5 λεπτά.
+</dd><dt> Εξαιρέσεις
+</dt><dd> Μερικές παλιότερες συσκευές δεν υποστηρίζουν την τιμή 0, δηλαδή δεν υποστηρίζουν την απενεργοποίηση της διαγραφής των διευθύνσεων από τον πίνακα. Σε αυτή την περίπτωση, η πλησιέστερη λύση είναι ο ορισμός της μεταβλητής $TIME στην μεγαλύτερη τιμή που επιτρέπει η συσκευή.
+</dd></dl>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-06-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/mediawiki-εμφάνιση-περιεχομένου-μόνο-σε-συνδεμένους/">
             <h2 class="card-title">MediaWiki: Εμφάνιση περιεχομένου μόνο σε συνδεδεμένους χρήστες</h2>
           </a>
@@ -175,132 +339,6 @@ might not result in a monster post soon.</p>
           
             <span class="mr-2">
               <b>Posted</b>: 2011-04-01
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-6/">
-            <h2 class="card-title">Reading #6</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Today's reading recommendations.</p>
-
-          </div>
-          <a href="/posts/reading-6/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-03-30
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/καινούριο-κοσκινάκι-dell-inspiron-n5010/">
-            <h2 class="card-title">Καινούριο κοσκινάκι: Dell Inspiron N5010</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Πήρα το <a href="http://www.eshopcy.com.cy/show.phtml?id=PER.902013">Dell Inspiron N5010</a>. Σε αυτό το άρθρο
-περιγράφω τα χαρακτηριστικά του, και την εγκατάσταση λογισμικού.</p>
-
-          </div>
-          <a href="/posts/καινούριο-κοσκινάκι-dell-inspiron-n5010/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-03-28
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-5/">
-            <h2 class="card-title">Reading #5</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Today's reading material.</p>
-
-          </div>
-          <a href="/posts/reading-5/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-03-27
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-4/">
-            <h2 class="card-title">Reading #4</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Day off, got to strike out some of the items in the to-read list.</p>
-
-          </div>
-          <a href="/posts/reading-4/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-03-23
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/γιατί-το-wordpress-δεν-παίζεται-1/">
-            <h2 class="card-title">Γιατί το WordPress δεν παίζεται #1</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Ή αλλιώς, πώς να φτιάξετε έναν φάκελο με αρχεία για κατέβασμα από το ιστολόγιό σας.</p>
-
-          </div>
-          <a href="/posts/γιατί-το-wordpress-δεν-παίζεται-1/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-03-22
             </span>
           
           
@@ -504,6 +542,12 @@ might not result in a monster post soon.</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

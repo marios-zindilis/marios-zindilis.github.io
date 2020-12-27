@@ -40,6 +40,73 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/tailf/">
+            <h2 class="card-title">tailf</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>tailf</code> does the same thing as <code>tail -f</code>: it displays the last lines of 
+a file, and then <em>follows</em> the file as it grows, and displays new lines 
+as they are appended to it. Compared to <code>tail -f</code>, it uses less 
+resources on the system, by not reading from the disk while the text 
+file is not updated.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="/posts/tail/"><code>tail</code></a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-enable-secret/">
+            <h2 class="card-title">enable secret</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>enable secret</code> command makes the device ask for a password to allow 
+the user to enter the global configuration mode. Compared to <code>enable 
+password</code>, it has the advantage that it stores the password in the 
+configuration as an MD5 hash, as opposed to clear text.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href='/posts/cisco-enable-password/'><code>enable password</code></a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cisco-enable-password/">
             <h2 class="card-title">enable password</h2>
           </a>
@@ -196,6 +263,133 @@ to the email address defined after the <code>!</code>.</li>
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/etc-pam-d/">
+            <h2 class="card-title">/etc/pam.d/</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Files in <code>/etc/pam.d/</code> are configurations for <abbr title='Pluggable 
+Authentication Modules'>PAM</abbr> stacks. The generic syntax of a line 
+in those files is:</p>
+
+<pre><code>management_group control_flag module [options]
+</code></pre>
+
+<p>More on <code>management_group</code> and <code>control_flag</code> further in this article. 
+The <code>module</code> is the name of the PAM file to be used. The <code>options</code> are 
+not required, and are either generic ones or module-specific.</p>
+
+<h2><code>management_group</code></h2>
+
+<p>The value of <code>management_group</code> can be one of:</p>
+
+<ul>
+<li><code>auth</code> (for authentication)</li>
+<li><code>account</code> (for account management)</li>
+<li><code>session</code> (for session management)</li>
+<li><code>password</code> (for password managemet)</li>
+</ul>
+
+<h3><code>auth</code></h3>
+
+<p>The <code>auth</code> group is used for user authentication, and is mostly used by 
+tools like <code>login</code> for CLI authentication or XDM or similar for logging 
+in to a desktop environment.</p>
+
+<h3><code>passwd</code></h3>
+
+<p>The <code>passwd</code> group is used for user password management, and is most 
+likely utilized by tools like <code>passwd</code>.</p>
+
+<h3><code>session</code></h3>
+
+<p>The <code>session</code> group manages user sessions. It may verify the existence 
+of a user's home directory or even create it if it does not exist, it 
+can mount partitions that are specific to a user, etc. It will also 
+clean up the user's session after he/she has logged out.</p>
+
+<h2><code>control_flag</code></h2>
+
+<p>The value of <code>control_flag</code> can be one of:</p>
+
+<ul>
+<li><code>requisite</code></li>
+<li><code>required</code></li>
+<li><code>optional</code></li>
+<li><code>sufficient</code></li>
+</ul>
+
+<h3><code>requisite</code></h3>
+
+<p>The <code>requisite</code> flag makes a check necessary but not enough. This means 
+that a <code>requisite</code> check <strong>must</strong> succeed for the stack to go on, but 
+the success of the entire stack depends on further checks. In 
+pseudocode:</p>
+
+<pre><code>IF SUCCESS:
+    GOTO NEXT LINE
+ELSE:
+    FAIL
+</code></pre>
+
+<h3><code>required</code></h3>
+
+<p>The <code>required</code> flag makes a check necessary for the success of the 
+entire stack, while it allows for the execution of the next checks. In 
+pseudocode:</p>
+
+<pre><code>IF SUCCESS:
+    GOTO NEXT LINE
+ELSE:
+    GOTO NEXT LINE
+FINALLY:
+    FAIL
+</code></pre>
+
+<h3><code>sufficient</code></h3>
+
+<p>The <code>sufficient</code> flag makes a check stop the execution of the stack if 
+that check succeeds, otherwise execution continues. In pseudocode:</p>
+
+<pre><code>IF SUCCESS:
+    STOP STACK EXECUTION
+ELSE:
+    GOTO NEXT LINE
+</code></pre>
+
+<h3><code>optional</code></h3>
+
+<p>The <code>optional</code> flag does not affect the execution of the stack, unless 
+the check is the last one in the stack, in which case the success of 
+the entire stack is the same as the success of the last check. In 
+pseudocode:</p>
+
+<pre><code>IF SUCCESS:
+    GOTO NEXT LINE
+ELSE:
+    GOTO NEXT LINE
+</code></pre>
+
+<p>Note that the pseudocode above does not include the exception that 
+happens when the <code>optional</code> check is that last in the stack.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/syslog/">
             <h2 class="card-title">syslog</h2>
           </a>
@@ -307,99 +501,6 @@ again between two subnets.</p>
           
             <span class="mr-2">
               <b>Posted</b>: 2013-12-31
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-banner-motd/">
-            <h2 class="card-title">Cisco: banner motd</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>With <code>banner motd</code> you can define a message that will be displayed to 
-the user when she connects to the device in any way (both to VTY and to 
-console lines). The difference of this command with <code>banner login</code> is 
-that the message defined with <code>banner login</code> will only display on 
-connections to VTY lines.</p>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="/posts/cisco-banner-login/">banner login</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-show-post-security/">
-            <h2 class="card-title">Cisco: show port-security</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><code>show port-security</code> displays a table with brief information on the 
-status of all ports on which port-security rules have been configured.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-alias/">
-            <h2 class="card-title">alias (Cisco command)</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Example: </p>
-
-<pre><code>cisco(config)#alias exec save copy running-config startup-config
-</code></pre>
-
-<p>The example above will make the word <code>save</code> an alias of the longer 
-command <code>copy running-config startup-config</code>. The general form of the 
-command is:</p>
-
-<pre><code>alias MODE ALIAS COMMAND
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-29
             </span>
           
           
@@ -603,6 +704,12 @@ command is:</p>
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

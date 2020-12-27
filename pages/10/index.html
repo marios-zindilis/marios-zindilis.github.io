@@ -40,6 +40,92 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/etc-shadow/">
+            <h2 class="card-title">/etc/shadow</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The fields, delimited by <code>:</code> are:</p>
+
+<ol>
+<li>Username</li>
+<li>Password (hashed)</li>
+<li>Last password change (in days since 1970-01-01)</li>
+</ol>
+
+<h2>Fields</h2>
+
+<p>Notes on specific fields.</p>
+
+<h3>Username</h3>
+
+<p>Fairly straightforward. The lenght used to be restricted to 8 characters 
+maximum in very old distributions, now it's 32 characters on most 
+distributions.</p>
+
+<h3>Password</h3>
+
+<p>An empty field, will allow the user to login without providing a 
+password, whereas a field that starts with, or only contains an asterisk 
+<code>*</code> indicates a disabled account.</p>
+
+<p>The first characters of this field define the hashing algorithm, one of:</p>
+
+<ol>
+<li>MD5 - password starts with <code>$1$</code></li>
+<li>Blowfish - password starts with <code>$2a$</code></li>
+<li>SHA-256 - password starts with <code>$5$</code></li>
+<li>SHA-512 - password starts with <code>$6$</code></li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-04-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/tail/">
+            <h2 class="card-title">tail</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>tail</code> can display the last lines of a text file, and can optionally 
+<em>follow</em> the file and display new lines as they are appended to it.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="/posts/tailf/"><code>tailf</code></a>: a utility that does the same as <code>tail -f</code>, but consumes less resources on the system.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-04-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/rhel-setup-http-repository/">
             <h2 class="card-title">Set up an HTTP Repository from RHEL DVD</h2>
           </a>
@@ -380,65 +466,6 @@ Firefox, and suggestions should now work.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/arp-scan/">
-            <h2 class="card-title">arp-scan</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.unixmen.com/find-ip-conflicts-linux/">How To Find IP Conflicts In Linux</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-03-19
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/mysql-myisamchk/">
-            <h2 class="card-title">myisamchk</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The <code>myisamchk</code> utility comes with a standard MySQL server installation, 
-and can check, repair and optimize MyISAM tables faster than the <code>CHECK 
-TABLE</code>, <code>REPAIR TABLE</code> and <code>OPTIMIZE TABLE</code> SQL commands.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="http://dev.mysql.com/doc/refman/5.0/en/myisamchk.html">myisamchk - MyISAM Table-Maintenance Utility</a></li>
-<li><a href="http://www.techrepublic.com/article/checking-and-repairing-mysql-tables/">Checking and repairing MySQL tables</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-03-16
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -636,6 +663,12 @@ TABLE</code>, <code>REPAIR TABLE</code> and <code>OPTIMIZE TABLE</code> SQL comm
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

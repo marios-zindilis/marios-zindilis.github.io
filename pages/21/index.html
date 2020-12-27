@@ -40,6 +40,268 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/dm-cache/">
+            <h2 class="card-title">dm-cache</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://www.linuxjournal.com/content/advanced-hard-drive-caching-techniques">Advanced Hard Drive Caching Technologies</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-26
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/etc-sysconfig-network-scripts-ifcfg-eth0/">
+            <h2 class="card-title">/etc/sysconfig/network-scripts/ifcfg-eth0</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Example of a network interface configuration file:</p>
+
+<pre><code># Hardware configuration:
+UUID="46e26279-f69b-daf5-1b79-d03677b7178d"
+HWADDR=00:1C:C0:0D:36:C6
+DEVICE="p1p1"
+TYPE="Ethernet"
+ONBOOT="yes"
+NAME=eth0
+NM_CONTROLLED="no"
+
+# IPv4 configuration:
+BOOTPROTO="none"
+IPADDR0="192.168.1.100"
+PREFIX0="24"
+GATEWAY0="192.168.1.1"
+DNS1="192.168.1.53"
+DEFROUTE="yes"
+IPV4_FAILURE_FATAL="yes"
+
+# IPv6 configuration:
+IPV6INIT="yes"
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_PEERDNS=yes
+IPV6_PEERROUTES=yes
+</code></pre>
+
+<h2>Parameters</h2>
+
+<dl class='dl-horizontal'>
+<dt><code>BOOTPROTO</code></dt>
+<dd>Can be set to <code>dhcp</code> if the interface will be 
+automatically configured by a DHCP server, or to <code>static</code> if 
+the interface will have a static IP configuration, or to 
+<code>none</code>.</dd>
+<dt><code>DEFROUTE</code></dt>
+<dd>If set to <code>yes</code>, then during the activation of the 
+interface, a default route towards the associated gateway will be added 
+on the system.</dd>
+<dt><code>HWADDR</code></dt>
+<dd>The MAC Address of the interface, (<code>HWaddr</code> in the 
+output of <code>ifconfig</code>), physically burnt on the device by the 
+manufacturer.</dd>
+<dt><code>NM_CONTROLLED</code></dt>
+<dd>Whether or not the interface is controlled by the NetworkManager 
+service. If set to <code>no</code>, the operation of the interface needs 
+to be controlled elsewise, e.g. with running the <code>network</code> 
+service in the place of NetworkManager.</dd>
+<dt><code>ONBOOT</code></dt>
+<dd>Whether or not the interface should be activated automatically 
+during system startup.</dd>
+</dl>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-26
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/centos-6-install-motion/">
+            <h2 class="card-title">Install Motion on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>These are some very very brief instructions on how to install 
+<a href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">Motion</a> 
+on a CentOS 6 system. </p>
+
+<h2>Install Prerequisites</h2>
+
+<pre><code>yum -y install gcc make
+yum -y install libjpeg-turbo libjpeg-turbo-devel
+</code></pre>
+
+<h2>Install Motion</h2>
+
+<p>Download Motion, e.g. as a <code>.tgz</code> from SourceForge:</p>
+
+<pre><code>cd /root/
+wget http://downloads.sourceforge.net/project/motion/motion%20-%203.2/3.2.12/motion-3.2.12.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fmotion%2Ffiles%2Fmotion%2520-%25203.2%2F3.2.12%2F&amp;ts=1385393313&amp;use_mirror=garr
+</code></pre>
+
+<p>Untar:</p>
+
+<pre><code>tar zxvf motion-3.2.12.tar.gz
+</code></pre>
+
+<p>Install:</p>
+
+<pre><code>cd /root/motion-3.2.12/
+./configure
+make
+make install
+</code></pre>
+
+<p>This will install motion in its default location, in subdirectories of 
+<code>/usr/local/</code>, e.g:</p>
+
+<ul>
+<li><code>/usr/local/bin/</code> for executables,</li>
+<li><code>/usr/local/man/</code> for man pages,</li>
+<li><code>/usr/local/etc/</code> for configuration files,</li>
+<li><code>/usr/local/docs/</code> for documentation,</li>
+<li><code>/usr/local/share/</code> for configuration examples, etc.</li>
+</ul>
+
+<p>Finally, before starting <code>motion</code> you need to copy the default 
+configuration file <code>motion-dist.conf</code> to <code>motion.conf</code> (by default in 
+<code>/usr/local/etc/</code>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/centos-6-prepare-new-server/">
+            <h2 class="card-title">Preparing a new CentOS 6 Server</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>These are some reminders to myself, to apply my personal preferences when 
+installing a new server based on CentOS 6.</p>
+
+<ol>
+<li><p>Make booting verbose, remove the portion <code>rgbh quiet</code> from the 
+<code>kernel</code> line in <code>/boot/grub/grub.conf</code>.</p></li>
+<li><p>Install misc tools:</p>
+
+<pre><code>yum -y install vim
+yum -y install wget
+yum -y install mlocate
+yum -y install iptraf
+yum -y install iotraf
+yum -y install man
+yum -y install nmap
+</code></pre></li>
+<li><p>CRON Configuration: Sometimes fresh Minimal CentOS installations don't 
+come with Cron pre-installed. In such a case: </p>
+
+<pre><code>yum -y install cronie cronie-anacron crontabs
+</code></pre>
+
+<p>Then activate and enable the service:</p>
+
+<pre><code>chkconfig crond on
+service crond start
+</code></pre></li>
+<li><p>SNMP Configuration:</p>
+
+<pre><code>yum -y install net-snmp
+chkconfig snmpd on
+</code></pre>
+
+<p>In <code>/etc/snmp/snmpd.conf</code> change the community to something other than the 
+default <code>public</code>, for example change the line:</p>
+
+<pre><code>com2sec notConfigUser  default       public
+</code></pre>
+
+<p>To something like:</p>
+
+<pre><code>com2sec notConfigUser  default       My_pr1vate_c0mmunity
+</code></pre>
+
+<p>Also, if you are using an NMS like Zenoss that can poll all sorts of 
+information from the device via SNMP, you can greatly expand the range of 
+data available with commenting out the following two lines...</p>
+
+<pre><code>view    systemview    included   .1.3.6.1.2.1.1
+view    systemview    included   .1.3.6.1.2.1.25.1.1
+</code></pre>
+
+<p>...and substituting them with:</p>
+
+<pre><code>view    systemview    included   .1
+</code></pre></li>
+<li><p>Disable console blanking by editing <code>/boot/grub/grub.conf</code> and adding the 
+following at the end of the <code>kernel</code> line:</p>
+
+<pre><code>consoleblank=0
+</code></pre></li>
+</ol>
+
+<h2>Sources</h2>
+
+<ul>
+<li>For the console blanking tip: <a href="http://utcc.utoronto.ca/~cks/space/blog/linux/ConsoleBlankingOff">You want to turn console blanking off on your Linux servers</a>.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/flowchart-and-diagram-editors/">
             <h2 class="card-title">Flowchart and Diagram Editors</h2>
           </a>
@@ -249,228 +511,6 @@ as clear text files.</li>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/linux-show-network-routes/">
-            <h2 class="card-title">Display network routes on Linux</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <h2>With <code>netstat</code></h2>
-
-<p>Run <code>netstat -r</code> or <code>netstat --route</code>. Add <code>-n</code> or <code>--numeric</code> for 
-numeric output. Example from a laptop, on which all traffic is routed 
-out the wireless interface:</p>
-
-<pre><code>marios@rocko ~ $ netstat -rvn
-Kernel IP routing table
-Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
-0.0.0.0         192.168.88.1    0.0.0.0         UG        0 0          0 wlan0
-169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 wlan0
-192.168.88.0    0.0.0.0         255.255.255.0   U         0 0          0 wlan0
-</code></pre>
-
-<h2>With <code>route</code></h2>
-
-<p>Run <code>route</code> with optional <code>-n</code> for numeric output. The result is almost 
-identical to that of <code>netstat</code>. Example from the same machine as above:</p>
-
-<pre><code>marios@rocko ~ $ route -n
-Kernel IP routing table
-Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-0.0.0.0         192.168.88.1    0.0.0.0         UG    0      0        0 wlan0
-169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 wlan0
-192.168.88.0    0.0.0.0         255.255.255.0   U     9      0        0 wlan0
-</code></pre>
-
-<h2>With <code>ip</code></h2>
-
-<p>Run <code>ip route</code>. Example from the same machine as above:</p>
-
-<pre><code>marios@rocko ~ $ ip route
-default via 192.168.88.1 dev wlan0  proto static 
-169.254.0.0/16 dev wlan0  scope link  metric 1000 
-192.168.88.0/24 dev wlan0  proto kernel  scope link  src 192.168.88.253  metric 9
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-17
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/netapp-serial-console-settings/">
-            <h2 class="card-title">Serial Console Settings for NetApp</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <pre><code>Bps/Par/Bits          : 9600 8N1
-Hardware Flow Control : Yes
-Software Flow Control : No
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-17
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/tcptrack/">
-            <h2 class="card-title">tcptrack</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><code>tcptrack</code> is a small network utility that displays network connections 
-on a system. Its output is similar to that of <code>netstat</code>, but it 
-refreshes automatically.</p>
-
-<h2>Installation</h2>
-
-<p>On Ubuntu, it's available from default repositories.</p>
-
-<p>On CentOS, it's available from Repoforge.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="https://web.archive.org/web/20131128075845/http://sickbits.net/tcptrack-simple-tcp-connection-monitor/">TCPTrack - Simple TCP Connection Monitor</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-15
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/linux-disk-performance-benchmarking/">
-            <h2 class="card-title">Disk Performance Benchmarking in Linux</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>This page is a dump of notes on <strong>disk benchmarking in Linux</strong>, and is in great need of editing! Use at own peril.</p>
-
-<ul>
-<li>http://www.westnet.com/~gsmith/content/postgresql/pg-disktesting.htm</li>
-<li>http://archive09.linux.com/feature/139742</li>
-</ul>
-
-<h2><code>hdparm</code></h2>
-
-<h3>Buffered disk reads (bypasses cache)</h3>
-
-<p>This method reads data sequentially from the disk, disregarding file boundaries.</p>
-
-<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ sudo hdparm -t /dev/sdb
-/dev/sdb:
- Timing buffered disk reads: <span class="m">228</span> MB in  <span class="m">3</span>.02 <span class="nv">seconds</span> <span class="o">=</span>  <span class="m">75</span>.52 MB/sec
-</code></pre></div>
-
-<h3>Cached reads</h3>
-
-<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ sudo hdparm -T /dev/sdb
-/dev/sdb:
- Timing cached reads:   <span class="m">3158</span> MB in  <span class="m">2</span>.00 <span class="nv">seconds</span> <span class="o">=</span> <span class="m">1579</span>.16 MB/sec
-</code></pre></div>
-
-<h2><code>dd</code></h2>
-
-<h3>Writes</h3>
-
-<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>testfile <span class="nv">bs</span><span class="o">=</span>8k <span class="nv">count</span><span class="o">=</span>100k<span class="p">;</span> rm -f testfile
-<span class="m">102400</span>+0 records in
-<span class="m">102400</span>+0 records out
-<span class="m">838860800</span> bytes <span class="o">(</span><span class="m">839</span> MB<span class="o">)</span> copied, <span class="m">12</span>.7363 s, <span class="m">65</span>.9 MB/s
-</code></pre></div>
-
-<h3>Writes and Cache-out</h3>
-
-<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ <span class="nb">time</span> sh -c <span class="s2">&quot;dd if=/dev/zero of=testfile bs=8k count=100k; sync&quot;</span> <span class="p">;</span> rm -f testfile
-<span class="m">102400</span>+0 records in
-<span class="m">102400</span>+0 records out
-<span class="m">838860800</span> bytes <span class="o">(</span><span class="m">839</span> MB<span class="o">)</span> copied, <span class="m">12</span>.6832 s, <span class="m">66</span>.1 MB/s
-real    0m19.304s
-user    0m0.020s
-sys 0m1.232s
-</code></pre></div>
-
-<h2>Install iozone</h2>
-
-<ol>
-<li>Go to [http://www.iozone.org/], get link of latest build.</li>
-<li>wget http://www.iozone.org/src/current/iozone-3-420.i386.rpm</li>
-<li>yum install iozone-3-420.i386.rpm</li>
-</ol>
-
-<p>If you also need to create graphs from the results of <code>iozone</code>, you can additionally install <code>gnuplot</code>:</p>
-
-<pre><code>yum install gnuplot
-</code></pre>
-
-<h2>Using iozone</h2>
-
-<ul>
-<li>[http://www.thegeekstuff.com/2011/05/iozone-examples/]</li>
-</ul>
-
-<h2>Bonnie++</h2>
-
-<p>The <code>bonnie++</code> benchmark is available on <a href="/posts/centos-6-enable-epel-repository/">EPEL</a> repository for CentOS. Note
-that it will put load on the system on which it runs, so it's better run during less productive times.</p>
-
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>root@centos-6-3-minimal ~<span class="o">]</span><span class="c1"># bonnie++ -u root</span>
-</code></pre></div>
-
-<p>Bonnie++ will output its data twice, once in an ASCII formatted table, and once more in a single line CSV. Echo the
-contents of the CSV line through bon_csv2html to get a more readable HTML table.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-14
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -668,6 +708,12 @@ contents of the CSV line through bon_csv2html to get a more readable HTML table.
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

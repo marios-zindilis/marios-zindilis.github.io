@@ -40,6 +40,228 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/linux-show-network-routes/">
+            <h2 class="card-title">Display network routes on Linux</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>With <code>netstat</code></h2>
+
+<p>Run <code>netstat -r</code> or <code>netstat --route</code>. Add <code>-n</code> or <code>--numeric</code> for 
+numeric output. Example from a laptop, on which all traffic is routed 
+out the wireless interface:</p>
+
+<pre><code>marios@rocko ~ $ netstat -rvn
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         192.168.88.1    0.0.0.0         UG        0 0          0 wlan0
+169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 wlan0
+192.168.88.0    0.0.0.0         255.255.255.0   U         0 0          0 wlan0
+</code></pre>
+
+<h2>With <code>route</code></h2>
+
+<p>Run <code>route</code> with optional <code>-n</code> for numeric output. The result is almost 
+identical to that of <code>netstat</code>. Example from the same machine as above:</p>
+
+<pre><code>marios@rocko ~ $ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.88.1    0.0.0.0         UG    0      0        0 wlan0
+169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 wlan0
+192.168.88.0    0.0.0.0         255.255.255.0   U     9      0        0 wlan0
+</code></pre>
+
+<h2>With <code>ip</code></h2>
+
+<p>Run <code>ip route</code>. Example from the same machine as above:</p>
+
+<pre><code>marios@rocko ~ $ ip route
+default via 192.168.88.1 dev wlan0  proto static 
+169.254.0.0/16 dev wlan0  scope link  metric 1000 
+192.168.88.0/24 dev wlan0  proto kernel  scope link  src 192.168.88.253  metric 9
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-17
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/netapp-serial-console-settings/">
+            <h2 class="card-title">Serial Console Settings for NetApp</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <pre><code>Bps/Par/Bits          : 9600 8N1
+Hardware Flow Control : Yes
+Software Flow Control : No
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-17
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/tcptrack/">
+            <h2 class="card-title">tcptrack</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>tcptrack</code> is a small network utility that displays network connections 
+on a system. Its output is similar to that of <code>netstat</code>, but it 
+refreshes automatically.</p>
+
+<h2>Installation</h2>
+
+<p>On Ubuntu, it's available from default repositories.</p>
+
+<p>On CentOS, it's available from Repoforge.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="https://web.archive.org/web/20131128075845/http://sickbits.net/tcptrack-simple-tcp-connection-monitor/">TCPTrack - Simple TCP Connection Monitor</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-15
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/linux-disk-performance-benchmarking/">
+            <h2 class="card-title">Disk Performance Benchmarking in Linux</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This page is a dump of notes on <strong>disk benchmarking in Linux</strong>, and is in great need of editing! Use at own peril.</p>
+
+<ul>
+<li>http://www.westnet.com/~gsmith/content/postgresql/pg-disktesting.htm</li>
+<li>http://archive09.linux.com/feature/139742</li>
+</ul>
+
+<h2><code>hdparm</code></h2>
+
+<h3>Buffered disk reads (bypasses cache)</h3>
+
+<p>This method reads data sequentially from the disk, disregarding file boundaries.</p>
+
+<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ sudo hdparm -t /dev/sdb
+/dev/sdb:
+ Timing buffered disk reads: <span class="m">228</span> MB in  <span class="m">3</span>.02 <span class="nv">seconds</span> <span class="o">=</span>  <span class="m">75</span>.52 MB/sec
+</code></pre></div>
+
+<h3>Cached reads</h3>
+
+<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ sudo hdparm -T /dev/sdb
+/dev/sdb:
+ Timing cached reads:   <span class="m">3158</span> MB in  <span class="m">2</span>.00 <span class="nv">seconds</span> <span class="o">=</span> <span class="m">1579</span>.16 MB/sec
+</code></pre></div>
+
+<h2><code>dd</code></h2>
+
+<h3>Writes</h3>
+
+<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>testfile <span class="nv">bs</span><span class="o">=</span>8k <span class="nv">count</span><span class="o">=</span>100k<span class="p">;</span> rm -f testfile
+<span class="m">102400</span>+0 records in
+<span class="m">102400</span>+0 records out
+<span class="m">838860800</span> bytes <span class="o">(</span><span class="m">839</span> MB<span class="o">)</span> copied, <span class="m">12</span>.7363 s, <span class="m">65</span>.9 MB/s
+</code></pre></div>
+
+<h3>Writes and Cache-out</h3>
+
+<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ <span class="nb">time</span> sh -c <span class="s2">&quot;dd if=/dev/zero of=testfile bs=8k count=100k; sync&quot;</span> <span class="p">;</span> rm -f testfile
+<span class="m">102400</span>+0 records in
+<span class="m">102400</span>+0 records out
+<span class="m">838860800</span> bytes <span class="o">(</span><span class="m">839</span> MB<span class="o">)</span> copied, <span class="m">12</span>.6832 s, <span class="m">66</span>.1 MB/s
+real    0m19.304s
+user    0m0.020s
+sys 0m1.232s
+</code></pre></div>
+
+<h2>Install iozone</h2>
+
+<ol>
+<li>Go to [http://www.iozone.org/], get link of latest build.</li>
+<li>wget http://www.iozone.org/src/current/iozone-3-420.i386.rpm</li>
+<li>yum install iozone-3-420.i386.rpm</li>
+</ol>
+
+<p>If you also need to create graphs from the results of <code>iozone</code>, you can additionally install <code>gnuplot</code>:</p>
+
+<pre><code>yum install gnuplot
+</code></pre>
+
+<h2>Using iozone</h2>
+
+<ul>
+<li>[http://www.thegeekstuff.com/2011/05/iozone-examples/]</li>
+</ul>
+
+<h2>Bonnie++</h2>
+
+<p>The <code>bonnie++</code> benchmark is available on <a href="/posts/centos-6-enable-epel-repository/">EPEL</a> repository for CentOS. Note
+that it will put load on the system on which it runs, so it's better run during less productive times.</p>
+
+<div class="codehilite"><pre><span></span><code><span class="o">[</span>root@centos-6-3-minimal ~<span class="o">]</span><span class="c1"># bonnie++ -u root</span>
+</code></pre></div>
+
+<p>Bonnie++ will output its data twice, once in an ASCII formatted table, and once more in a single line CSV. Echo the
+contents of the CSV line through bon_csv2html to get a more readable HTML table.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-14
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/nfs-stack-restart/">
             <h2 class="card-title">Restart entire NFS Stack</h2>
           </a>
@@ -489,326 +711,6 @@ be displayed in the hypervisor's console.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-back-pressure/">
-            <h2 class="card-title">Back-Pressure on Cisco Switches</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The <code>back-pressure</code> feature on Cisco switches is a workaround to the 
-inability to apply proper flow control on half-duplex links. It causes 
-the Cisco switch to send fake packets on the link, thus controlling the 
-transmission from the remote side, since only one side can send at a 
-time on a half-duplex link.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-08
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/cisco/">cisco</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/centos-6-convert-mbr-to-gpt/">
-            <h2 class="card-title">Convert MBR Partition Table to GPT on CentOS 6</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>To have partitions larger than 2 TeraBytes, you need to create a GPT disk, as opposed to an MBR one. This, however, is
-not possible during the installation of CentOS, so you might need to handle it either before the installation (e.g:
-with booting a Live CD that supports GPT and creating the partition table before the installation) or after the
-installation, with the use of <code>gdisk</code>.</p>
-
-<p>Using <code>gdisk</code> is actually very easy, although you should keep in mind that there is no guarrantee that your data will
-be safe.</p>
-
-<p>For this example, installation of CentOS 6.2 was done on a system with one 3 TB disk. During the installation, the
-following partitions were created:</p>
-
-<pre><code>/dev/sda1  0.5 GB /boot
-/dev/sda2 13.0 GB LVM PV (4GB swap, 9GB /root)
-</code></pre>
-
-<p>This left almost all of the 3 TB on the disk available.</p>
-
-<p>After the installation is done, download <code>gdisk</code> for CentOS 6 from OpenSUSE Build Service. You can also find more
-versions of <code>gdisk</code> at <a href="http://www.rodsbooks.com/gdisk/download.html">rodsbooks.com</a>. Example download:</p>
-
-<pre><code>wget http://download.opensuse.org/repositories/home:/srs5694/CentOS_CentOS-6/x86_64/gdisk-0.8.8-133.1.x86_64.rpm
-</code></pre>
-
-<p>After the download completes, install with:</p>
-
-<pre><code>yum install gdisk-0.8.8-133.1.x86_64.rpm
-</code></pre>
-
-<p>You can now very simply convert the MBR partition table to GPT with:</p>
-
-<pre><code>gdisk /dev/sda
-</code></pre>
-
-<p>The new GPT will be available on the next reboot. You can then create 
-a partition bigger than 2 TB in the unallocated space, either with 
-<code>gdisk</code> or with <code>parted</code>, then create a filesystem inside it with <code>mkfs</code>, 
-and finally mount it and start using it! </p>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="http://www.rodsbooks.com/gdisk/">gdisk WebSite</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-06
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/juniper-junos-online-help/">
-            <h2 class="card-title">Juniper JUNOS Online Help</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Juniper devices have extensive help options in the CLI.</p>
-
-<h2>Tip of the day</h2>
-
-<p>To view a very short tip, execute:</p>
-
-<pre><code>marios@juniper&gt; help tip cli
-</code></pre>
-
-<p>This is not exactly a tip <em>of the day</em> - since you actually get a new tip each time you execute that command. Still
-pretty cool though. </p>
-
-<h2>Help with syslog messages</h2>
-
-<p>You can view an explanation of what a syslog message means with <code>help syslog</code>. For example, for the <code>LOGIN_INFORMATION</code>
-message, execute:</p>
-
-<pre><code>marios@juniper&gt; help syslog LOGIN_INFORMATION
-</code></pre>
-
-<h2>Search in help topics</h2>
-
-<p>You can search in help topics with <code>help apropos</code>. This will return a list of help pages that contain the word you
-searched for. For example, you can search for all pages that refer to <code>syslog</code> with:</p>
-
-<pre><code>marios@juniper&gt; help apropos syslog
-</code></pre>
-
-<h2>Topical help</h2>
-
-<p>To get help on a specific topic, start with <code>help topic</code>. For example, for help on <code>syslog</code>, execute:</p>
-
-<pre><code>marios@juniper&gt; help topic system syslog
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-05
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/juniper-acronyms/">
-            <h2 class="card-title">Juniper Acronyms</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>This is a list of acronyms that I come across while reading Juniper 
-documentation. Most should be Juniper-specific, but some may not.</p>
-
-<dl class='dl-horizontal'>
-<!-- APIC: Application-Specific Integrated Circuit -->
-<dt><abbr title='Application-Specific Integrated Circuit'>ASIC</abbr></dt>
-<dd><b>A</b>pplication-<b>S</b>pecific <b>I</b>ntegrated <b>C</b>ircuit</dd>
-<!-- BERT: Bit Error Rate Test -->
-<dt><abbr title='Bit Error Rate Test'>BERT</abbr></dt>
-<dd><b>B</b>it <b>E</b>rror <b>R</b>ate <b>T</b>est</dd>
-<!-- dcd: Device Control Daemon -->
-<dt><abbr title='Device Control Daemon'>dcd</abbr></dt>
-<dd><b>D</b>evice <b>C</b>ontrol <b>D</b>aemon: One of the JUNOS daemons 
-running on the Routing Engine. Handles configuration and maintenance of 
-the interfaces.</dd>
-
-<!-- FEB: Forwarding Engine Board -->
-<dt><abbr title='Forwarding Engine Board'>FEB</abbr></dt>
-<dd><b>F</b>orwarding <b>E</b>ngine <b>B</b>oard: a type of Switching 
-Control Board, found on some devices like M5, M10.</dd>
-
-<!-- FPC: Flexible PIC Concentrator -->
-<dt><abbr title='Flexible PIC Concentrator'>FPC</abbr></dt>
-<dd><b>F</b>lexible <b>P</b>IC <b>C</b>oncentrator, the component that 
-joins multiple PICs on devices that require more than one. In the JUNOS 
-interface naming convention <code>Type-FPC/PIC/Port.Unit</code>, the FPC 
-is the first all-numeric component. For example, interface 
-<code>fe-1/2/3</code> is on <b>FCP 1</b> on the device.</dd>
-
-<!-- LDP: Label Distribution Protocol -->
-<dt><abbr title='Label Distribution Protocol'>LDP</abbr></dt>
-<dd><b>L</b>abel <b>D</b>istribution <b>P</b>rotocol. One of the 
-sources of routes in the routing table, with a preference value of 9.</dd>
-
-<!-- mgd: Management Daemon -->
-<dt><abbr title='Management Daemon'>mgd</abbr></dt>
-<dd><b>M</b>ana<b>g</b>ement <b>D</b>aemon: One of the JUNOS daemons 
-running on the Routing Engine. Manages user access to the device.</dd>
-
-<!-- MMB: Memory Mezzanine Board -->
-<dt><abbr title='Memory Mezzanine Board'>MMB</abbr></dt>
-<dd><b>M</b>emory <b>M</b>ezzanine <b>B</b>oard: a type of Switching 
-Control Board found on some devices like the T320 and the T640. It is 
-integrated in the <abbr title='Flexible PIC Concentrator'>FPC</abbr>.</dd>
-
-<!-- MSDP: Multicast Source Discovery Protocol -->
-<dt><abbr title='Multicast Source Discovery Protocol'>MSDP</abbr></dt>
-<dd><b>M</b>ulticast <b>S</b>ource <b>D</b>iscovery <b>P</b>rotocol. 
-One of the sources of routes in the routing table, with a preference 
-value of 175.</dd>
-
-<!-- PFE: Packet Forwarding Engine -->
-<dt><abbr title='Packet Forwarding Engine'>PFE</abbr></dt>
-<dd><b>P</b>acket <b>F</b>orwarding <b>E</b>ngine: the second part of the 
-Control Plane / Forwarding Plane separation on Juniper devices. This part 
-of the device is mostly hardware.</dd>
-
-<!-- pfed: Packet Forwarding Engine Daemon -->
-<dt><abbr title='Packet Forwarding Engine Daemon'>pfed</abbr></dt>
-<dd><b>P</b>acket <b>F</b>orwarding <b>E</b>ngine <b>D</b>aemon: One of 
-the JUNOS daemons running on the Routing Engine. Manages the 
-communication between the Routing Engine and the Packet Forwarding 
-Engine.</dd>
-
-<!-- PIC: Physical Interface Card -->
-<dt><abbr title='Physical Interface Card'>PIC</abbr></dt>
-<dd><b>P</b>hysical <b>I</b>nterface <b>C</b>ard. Different types of 
-PICs exist, to offer difference connectivity capabilities, for example 
-there are <abbr title='Asynchronous Transfer Mode'>ATM</abbr> PICs, or 
-<abbr title='Synchronous Digital Hierarchy'>SDH</abbr> PICs, which 
-consequently contain different ASICs. In the JUNOS interface naming 
-convention <code>Type-FPC/PIC/Port.Unit</code>, the PIC is the second 
-all-numeric component. For example, interface <code>fe-1/2/3</code> is 
-on <b>PIC 2</b> on the device.</dd>
-
-<!-- PIM: Protocol Independent Multicast -->
-<dt><abbr title='Protocol Independent Multicast'>PIM</abbr></dt>
-<dd><b>P</b>rotocol <b>I</b>ndependent <b>M</b>ulticast. One of the 
-sources of routes in the routing table, with a preference value of 105.</dd>
-
-<!-- RE: Routing Engine -->
-<dt><abbr title='Routing Engine'>RE</abbr></dt>
-<dd><b>R</b>outing <b>E</b>ngine, the first part of the Control Plane / 
-Forwarding Plane separation on Juniper devices. This part of the 
-equation is mostly software. It contains the OS, and this is where the 
-configuration takes place. Physically, it looks like a small PC, with a 
-motherboard, processor, RAM and storage. Some devices have dual REs 
-for redundancy.</dd>
-
-<!-- RSVP: Resource Reservation Protocol -->
-<dt><abbr title='Resource Reservation Protocol'>RSVP</abbr></dt>
-<dd><b>R</b>esource Re<b>s</b>er<b>v</b>ation <b>P</b>rotocol. One of 
-the sources or routes in the routing table, with a preference value of 
-7.</dd>
-
-<!-- rpd: Routing Protocol Daemon -->
-<dt><abbr title='Routing Protocol Daemon'>rpd</abbr></dt>
-<dd><b>R</b>outing <b>P</b>rotocol <b>D</b>aemon: One of the JUNOS 
-daemons running on the Routing Engine. Handles exchange of routing 
-messages, maintenance of routing table, enforcement of routing policies.</dd>
-
-<!-- RPF: Reverse Path Forwarding -->
-<dt><abbr title='Reverse Path Forwarding'>RPF</abbr></dt>
-<dd><b>R</b>everse <b>P</b>ath <b>F</b>orwarding is the process used by 
-Junos to populate the <code>inet.2</code> routing table, used by the 
-router to prevent routing loops in multicast routing protocols.</dd>
-
-<!-- SCB: System Control Board -->
-<dt><abbr title='System Control Board'>SCB</abbr></dt>
-<dd><b>S</b>ystem <b>C</b>ontol <b>B</b>oard: a type of Switching 
-Control Board, found on some devices like the M40.</dd>
-
-<!-- SFM: Switching and Forwarding Module -->
-<dt><abbr title='Switching and Forwarding Module'>SFM</abbr></dt>
-<dd><b>S</b>witching and <b>F</b>orwarding <b>M</b>odule: a type of 
-Switching Control Board, designed so that devices will have two SFMs. 
-Some devices, like the M40e, use the SFMs in Active/Passive mode, 
-whereas others, like the M160, use both in Active/Active mode.</dd>
-
-<!-- SSB: System Switching Board -->
-<dt><abbr title='System Switching Board'>SSB</abbr></dt>
-<dd><b>S</b>ystem <b>S</b>witching <b>B</b>oard: a type of Switching 
-Control Board, found on some devices line the M20. It is designed so 
-that devices will contains two SSBs, in Active/Passive redundancy.</dd>
-
-<!-- SSRAM: Synchronized Static Random Access Memory -->
-<dt><abbr title='Synchronized Static Random Access Memory'>SSRAM</abbr></dt>
-<dd><b>S</b>ynchronized <b>S</b>tatic <b>R</b>andom <b>A</b>ccess 
-<b>M</b>emory. It is a component of the Switching Control Board, and it 
-contains the routing table, pushed to it by the Routing Engine.</dd>
-
-<!-- SCB: Switching Control Board -->
-<dt><abbr title='Switching Control Board'>SCB</abbr></dt>
-<dd><b>S</b>witching <b>C</b>ontrol <b>B</b>oard. This is the heart of 
-the Packet Forwarding Engine. Similarly to the Routing Engine, it 
-contains a processor and RAM, but the purpose of those are to coordinate 
-the operation of the rest of the components of the PFE, rather than 
-actually participating in routing/forwarding decisions.</dd>
-<dt><abbr title='Traffic Engineering Database'>TED</abbr></dt>
-<dd><b>T</b>raffic <b>E</b>ngineering <b>D</b>atabase</dd>
-</dl>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-04
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -1006,6 +908,12 @@ actually participating in routing/forwarding decisions.</dd>
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         

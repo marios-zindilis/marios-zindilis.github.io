@@ -39,6 +39,69 @@
     
       <div class="card my-4">
       
+        <div class="card-body">
+          <a href="/posts/vmware-transparent-page-sharing/">
+            <h2 class="card-title">VMware Transparent Page Sharing</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><strong>Transparent Page Sharing</strong> is a memory-saving technique employeed by 
+VMware ESXi hosts, that runs as a background job on the host and removes 
+duplicates pages of memory, by first comparing a hash of the contents of 
+each page, and then comparing pages the hash of which is identical bit 
+by bit.</p>
+
+<ul>
+<li><a href="http://www.vmwarearena.com/2014/04/vmware-memory-management-part-2-transparent-page-sharing-tps.html">VMware Memory Management Part 2 - Transparent Page Sharing (TPS)</a></li>
+<li><a href="http://theithollow.com/2012/12/memory-de-duplication-in-vmware/">Memory De-duplication on VMware</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-06-11
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/mysql-fabric/">
+            <h2 class="card-title">MySQL Fabric</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>A series of articles at the <a href="http://www.mysqlperformanceblog.com/">MySQL Performance Blog</a> 
+on <strong>MySQL Fabric</strong>:</p>
+
+<ol>
+<li><a href="http://www.mysqlperformanceblog.com/2014/04/25/managing-farms-of-mysql-servers-with-mysql-fabric/">Managing farms of MySQL servers with MySQL Fabric</a></li>
+<li><a href="http://www.mysqlperformanceblog.com/2014/05/15/high-availability-mysql-fabric-part/">High Availability with MySQL Fabric: Part I</a></li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-05-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
         <img class="card-img-top" src="/posts/apache-logs-with-iso-date-format/index.jpg" alt="Card image cap">
       
         <div class="card-body">
@@ -387,92 +450,6 @@ mariosz@super-mario:~$ dirname .bash_aliases
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/etc-shadow/">
-            <h2 class="card-title">/etc/shadow</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The fields, delimited by <code>:</code> are:</p>
-
-<ol>
-<li>Username</li>
-<li>Password (hashed)</li>
-<li>Last password change (in days since 1970-01-01)</li>
-</ol>
-
-<h2>Fields</h2>
-
-<p>Notes on specific fields.</p>
-
-<h3>Username</h3>
-
-<p>Fairly straightforward. The lenght used to be restricted to 8 characters 
-maximum in very old distributions, now it's 32 characters on most 
-distributions.</p>
-
-<h3>Password</h3>
-
-<p>An empty field, will allow the user to login without providing a 
-password, whereas a field that starts with, or only contains an asterisk 
-<code>*</code> indicates a disabled account.</p>
-
-<p>The first characters of this field define the hashing algorithm, one of:</p>
-
-<ol>
-<li>MD5 - password starts with <code>$1$</code></li>
-<li>Blowfish - password starts with <code>$2a$</code></li>
-<li>SHA-256 - password starts with <code>$5$</code></li>
-<li>SHA-512 - password starts with <code>$6$</code></li>
-</ol>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-04-08
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/tail/">
-            <h2 class="card-title">tail</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><code>tail</code> can display the last lines of a text file, and can optionally 
-<em>follow</em> the file and display new lines as they are appended to it.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="/posts/tailf/"><code>tailf</code></a>: a utility that does the same as <code>tail -f</code>, but consumes less resources on the system.</li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-04-05
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -670,6 +647,12 @@ password, whereas a field that starts with, or only contains an asterisk
           
             
               <li class="page-item"><a class="page-link" href="/pages/32/">32</a></li>
+            
+          
+        
+          
+            
+              <li class="page-item"><a class="page-link" href="/pages/33/">33</a></li>
             
           
         
