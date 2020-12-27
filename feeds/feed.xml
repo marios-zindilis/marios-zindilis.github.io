@@ -4,7 +4,7 @@
         <link>https://zindilis.com/</link>
         <description>Personal website of Marios Zindilis</description>
         <atom:link href="https://zindilis.com/feeds/feed.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sun, 27 Dec 2020 18:03:56 UT</lastBuildDate>
+        <lastBuildDate>Sun, 27 Dec 2020 18:15:16 UT</lastBuildDate>
         <item>
             <title>Apache host configuration for a Django website</title>
             <link>https://zindilis.com/posts/apache-host-configuration-for-a-django-website/</link>

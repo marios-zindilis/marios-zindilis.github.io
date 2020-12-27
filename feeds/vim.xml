@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/vim/</link>
         <description>Personal website of Marios Zindilis - Posts tagged vim</description>
         <atom:link href="https://zindilis.com/feeds/vim.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sun, 27 Dec 2020 18:03:58 UT</lastBuildDate>
+        <lastBuildDate>Sun, 27 Dec 2020 18:15:18 UT</lastBuildDate>
         <item>
             <title>My .vimrc</title>
             <link>https://zindilis.com/posts/my-vimrc/</link>
