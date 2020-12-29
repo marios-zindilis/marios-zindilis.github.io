@@ -40,6 +40,50 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/dirname/">
+            <h2 class="card-title">dirname</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>dirname</code> command will give you the path of the file that you provide as 
+parameter, up to its parent directory. If the parameter is an absolute path, 
+the absolute containing directory will be returned, otherwise it will be the 
+relative path.</p>
+
+<p>For example, for the file <code>/home/marios/.bash_aliases</code>:</p>
+
+<p>{% highlight bash %}
+mariosz@super-mario:~$ dirname /home/marios/.bash<em>aliases 
+/home/marios
+mariosz@super-mario:~$ dirname ~/.bash</em>aliases 
+/home/marios
+mariosz@super-mario:~$ dirname .bash_aliases 
+.
+{% endhighlight %}</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://www.cyberciti.biz/faq/unix-get-directory-name-from-path-command/">Unix: Find Directory Name From Path</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-04-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/etc-shadow/">
             <h2 class="card-title">/etc/shadow</h2>
           </a>
@@ -434,32 +478,6 @@ Firefox, and suggestions should now work.</p>
           
             <span class="mr-2">
               <b>Posted</b>: 2014-03-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/sudo/">
-            <h2 class="card-title">sudo</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.tecmint.com/su-vs-sudo-and-how-to-configure-sudo-in-linux/">Difference Between su Vs sudo and How to Configure sudo in Linux</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-03-19
             </span>
           
           

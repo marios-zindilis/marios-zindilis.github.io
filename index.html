@@ -39,6 +39,55 @@
     
       <div class="card my-4">
       
+        <img class="card-img-top" src="/posts/python-validate-that-only-one-of-many-parameters-is-provided/index.jpg" alt="Card image cap">
+      
+        <div class="card-body">
+          <a href="/posts/python-validate-that-only-one-of-many-parameters-is-provided/">
+            <h2 class="card-title">Validate that only one of many parameters was provided in Python</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Sometimes, a function or class constructor can take many possible parameters, but only one parameter can have a value
+at any one time, excluding all others. One way to validate this is included in the Python standard library. Copying
+from the <code>uuid.py</code> module:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">UUID</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">hex</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">bytes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bytes_le</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                       <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                       <span class="o">*</span><span class="p">,</span> <span class="n">is_safe</span><span class="o">=</span><span class="n">SafeUUID</span><span class="o">.</span><span class="n">unknown</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">[</span><span class="nb">hex</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">bytes_le</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;one of the hex, bytes, bytes_le, fields, &#39;</span>
+                            <span class="s1">&#39;or int arguments must be given&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The idea here is that since all <strong>five</strong> mutually exclusive parameters <code>hex</code>, <code>bytes</code>, <code>bytes_le</code>, <code>fields</code> and <code>int</code>
+have a default value of <code>None</code>, when one of them is specified during instatiation, there will then be <strong>four</strong>
+parameters left with value <code>None</code>.</p>
+
+<p>Image credit: <em>Wicklow Mountains</em>, by Marcus Tan. In the Public Domain.
+<a href="https://www.publicdomainpictures.net/en/view-image.php?image=20993&amp;picture=wicklow-mountains">Source</a>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2020-12-29
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/python/">python</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
         <img class="card-img-top" src="/posts/apache-host-configuration-for-a-django-website/index.jpg" alt="Card image cap">
       
         <div class="card-body">
@@ -479,38 +528,6 @@ following policy:</p>
             <a href="/tags/aws-s3/">aws-s3</a>, 
           
             <a href="/tags/aws-cli/">aws-cli</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/create-s3-bucket-with-boto3/">
-            <h2 class="card-title">Create S3 Bucket with Boto3</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>How to use Boto3 to create S3 buckets.</p>
-
-          </div>
-          <a href="/posts/create-s3-bucket-with-boto3/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2017-08-06
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/aws-s3/">aws-s3</a>, 
-          
-            <a href="/tags/boto3/">boto3</a>
           
           
         </div><!-- .card-footer -->

@@ -40,6 +40,51 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/python-colored-output/">
+            <h2 class="card-title">Colored output with Python</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Here's my stupid way of getting colored output from a Python script when 
+run from the command line.</p>
+
+<p>First, define one function per desired color:</p>
+
+<p>{% highlight python %}
+def   blue(message): return '\033[1;34m%s\033[1;m' % (message)
+def  green(message): return '\033[1;32m%s\033[1;m' % (message)
+def    red(message): return '\033[1;41m%s\033[1;m' % (message)
+def yellow(message): return '\033[1;33m%s\033[1;m' % (message)
+{% endhighlight %}</p>
+
+<p>And then in the script, pass the message that you need to appear in 
+color like this:</p>
+
+<p>{% highlight python %}
+print red('File not found!')
+{% endhighlight %}</p>
+
+<p>Note that if the Python script is meant to run via cron, then you will 
+get some ugly text in emails from cron, since escape codes are not interpreted
+or removed from the output.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-26
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/dm-cache/">
             <h2 class="card-title">dm-cache</h2>
           </a>
@@ -467,35 +512,6 @@ as clear text files.</li>
 <ul>
 <li><a href="http://www.danielmiessler.com/study/tcpdump/">A tcpdump Primer</a></li>
 <li><a href="http://blog.cloudflare.com/bpf-the-forgotten-bytecode">BPF - the forgotten bytecode</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-19
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/gedit/">
-            <h2 class="card-title">gedit</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <h2>See also</h2>
-
-<ul>
-<li><a href="https://web.archive.org/web/20140204212941/http://mylinuxbook.com/3-useful-gedit-plugins-for-programmers/">3 Useful Gedit Plugins For Programmers</a></li>
-<li><a href="https://wiki.gnome.org/Apps/Gedit/Plugins/Snippets">Using Snippets</a></li>
 </ul>
 
           </div>

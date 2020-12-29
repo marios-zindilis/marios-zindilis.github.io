@@ -40,6 +40,34 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/annual-loss-expectancy/">
+            <h2 class="card-title">Annual Loss Expectancy</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>In the context of <strong>risk management</strong>, the <strong>annual loss expectancy</strong> is an 
+estimate of the monetary damage to the organization, from the realization of 
+risks, over the course of one year. Calculation of 
+<abbr title="Annual Loss Expectancy">ALE</abbr> happens during a 
+<strong>risk assessment</strong>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-09-20
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/security-links-cheatsheet/">
             <h2 class="card-title">Security Links Cheatsheet</h2>
           </a>
@@ -419,56 +447,6 @@ the <code>interface</code> directive in <code>snmpd.conf</code>, for example:</p
           
             <span class="mr-2">
               <b>Posted</b>: 2015-06-18
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/keepalived/">
-            <h2 class="card-title">keepalived</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Notes:</p>
-
-<ul>
-<li><strong><code>lb_algo</code></strong> determines <em>which</em> real server gets to serve a request, and 
-possible algorithms include round-robin (weighted or not), least-connections 
-(weighted or not), etc (see RHEL docs).</li>
-<li><strong><code>lb_kind</code></strong> determines <em>how</em> the real server receives the request, and 
-the supported methods on RHEL 7 are NAT and DR.</li>
-</ul>
-
-<h2><code>lb_kind DR</code></h2>
-
-<p>Notes:</p>
-
-<ul>
-<li>The load balancers and the real servers need to be on the same network 
-segment</li>
-<li>The Virtual IP is configured on all real servers, and real servers need to 
-be configured to ignore ARP requests for the virtual IP. This can be 
-achieved with either <code>arptables</code>, or <code>iptables</code> or <code>sysctl</code> configuration.</li>
-</ul>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Load_Balancer_Administration/">keepalived documentation for RHEL 7</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2015-05-21
             </span>
           
           

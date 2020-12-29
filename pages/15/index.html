@@ -40,6 +40,73 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/apache-logs-to-remote-syslog/">
+            <h2 class="card-title">Send Apache logs to remote syslog server</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This document briefly describes how to send the logs from Apache to 
+both a remote server, as well as log them locally. There are benefits 
+to both approaches -local and remote logging- and with this method you 
+will have them both.</p>
+
+<p>Two types of logs are described, the <code>CustomLog</code> and the <code>ErrorLog</code>. 
+Also, my preferred method of shipping logs is with <code>nc</code>, due to its 
+simplicity. </p>
+
+<h2><code>CustomLog</code></h2>
+
+<p>The <code>CustomLog</code> is provided by the <code>log_config</code> module, which is 
+included in the default installation of Apache (at least on CentOS 6.5 
+and on Ubuntu 12.10 on which I tested). This module is flexible enough 
+to allow multiple <code>CustomLog</code> directives, so to get Apache to log in 
+both local files and to a remot syslog server you can use two lines:</p>
+
+<pre><code>CustomLog logs/access_log combined
+CustomLog "| nc -u -j syslog.example.com 514" combined
+</code></pre>
+
+<p>You will need to adjust <code>syslog.example.com</code> to  your syslog server, 
+and possibly <code>514</code> to whatever port your server is listening to, if 
+it's not the default 514.</p>
+
+<h2><code>ErrorLog</code></h2>
+
+<p>The <code>ErrorLog</code> is provided by the <code>core</code> module, and unfortunately it's 
+not as flexible as <code>CustomLog</code>, so it doesn't allow multiple <code>ErrorLog</code> 
+directives. If you add more than one, only the one that occures last in 
+the configuration file will be used. Luckily, you can utilize the power 
+of <code>tee</code> to overcome this:</p>
+
+<pre><code>ErrorLog "| tee -a /var/log/httpd/error_log | nc -u -j syslog.example.com 514"
+</code></pre>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://www.fnal.gov/docs/products/apache/syslog_logs_notes.html">Sending web logs to Computer Security</a> 
+from Fermilab, source of the <code>tee</code> tip.</li>
+<li><a href="https://web.archive.org/web/20130222080252/http://mykospark.net/2011/01/apache-httpd-customlog-to-syslog-via-udp/">Apache HTTPD CustomLog to Syslog via UDP</a>, 
+source of the <code>nc -u -j</code> tip.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-11
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/thunderbird/">
             <h2 class="card-title">Mozilla Thunderbird</h2>
           </a>
@@ -619,64 +686,6 @@ website now has a subsection for questions in Greek at ask.fedoraproject.org/el/
           
             <span class="mr-2">
               <b>Posted</b>: 2014-01-21
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/juniper-routing-policy-examples/">
-            <h2 class="card-title">Juniper Routing Policy Examples</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <h2>Match Neighbor IP</h2>
-
-<pre><code>policy-options {
-    policy-statement bgp-incoming {
-        term from-customer-ACME {
-            from neighbor 1.2.3.4;
-            then reject;
-        }
-    }
-}
-</code></pre>
-
-<h2>Multiple Match Conditions</h2>
-
-<p>This policy will accept routes from a specific neighbor only if they 
-are tagged with a specific community:</p>
-
-<pre><code>policy-options {
-    policy-statement bgp-incoming {
-        term from-customer-ACME-accept {
-            from {
-                neighbor 1.2.3.4;
-                community A1com;
-            }
-            then {
-                accept;
-            }
-        term from-customer-ACME-reject {
-            from neighbor 1.2.3.4;
-            then reject;
-            }
-        }
-    }
-}
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-01-20
             </span>
           
           

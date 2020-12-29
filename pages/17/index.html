@@ -40,6 +40,40 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/etc-lilo-conf/">
+            <h2 class="card-title">/etc/lilo.conf</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The LILO bootloader has long been deprecated, in favour of GRUB, 
+however it still has an install base on old systems that remain in 
+production. The <code>/etc/lilo.conf</code> file contains its configuration. After 
+any change in that file, it is necessary to reinstall LILO, by simply 
+running <code>lilo</code>.</p>
+
+<p>Each installed kernel version will have a line in this file, beginning 
+with <code>image=</code>, followed by the path to the kernel file. For example:</p>
+
+<pre><code>image=/boot/bzImage-2.6.28
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/tailf/">
             <h2 class="card-title">tailf</h2>
           </a>
@@ -464,35 +498,6 @@ those are separated by a router, which by default blocks broadcasted
 DHCP requests. It makes sense to install this on a router between two 
 subnets, only one of which has a DHCP server, or on a relay system, 
 again between two subnets.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-31
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/crontab/">
-            <h2 class="card-title">crontab</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><code>crontab</code> can refer to two things:</p>
-
-<ol>
-<li>File <code>/etc/crontab</code>.</li>
-<li>Command <code>crontab</code>.</li>
-</ol>
 
           </div>
           

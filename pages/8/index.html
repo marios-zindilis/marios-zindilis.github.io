@@ -40,6 +40,43 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/etc-modprobe-d/">
+            <h2 class="card-title">/etc/modprobe.d/</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>On CentOS and probably other RedHat-based distributions, <code>/etc/modprobe.d/</code> 
+is the directory which contains configurations for loading kernel modules, 
+module aliases and module blacklists, that are specific to the host, and not 
+shipped by packages (those should go in <a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a>.</p>
+
+<p>Module configurations from both directories are read by default, unless 
+<a href="/docs/dracut.html">dracut</a> is run in <em>generic</em> mode.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="/docs/dracut.html">dracut</a></li>
+<li><a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-07-12
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/centos-6-nfs-server/">
             <h2 class="card-title">Set up CentOS 6 as NFS Server</h2>
           </a>
@@ -340,41 +377,6 @@ that require it.</p>
 <li><a href="http://www.shrubbery.net/rancid/">RANCID Homepage</a></li>
 <li><a href="https://web.archive.org/web/20140713072753/https://www.openlogic.com/wazi/bid/346615/how-to-set-up-and-use-rancid-under-centos">How to set up and use RANCID under CentOS</a></li>
 </ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-06-11
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/vmware-acronyms/">
-            <h2 class="card-title">VMware Acronyms</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>This is a list of acronyms that I come across while reading VMware 
-documentation.</p>
-
-<dl class='dl-horizontal'>
-    <!-- TPS: Transparent Page Sharing -->
-    <dt><abbr title='Transparent Page Sharing'>TPS</abbr></dt>
-    <dd>
-        <b>T</b>ransparent <b>P</b>age <b>S</b>haring is a memory-saving technique that runs as a background job on the
-        host, and deduplicates the contents of RAM on the hypervisor, page by page.
-        <a href='/posts/vmware-transparent-page-sharing/'>Read more on TPS...</a>
-    </dd>
-</dl>
 
           </div>
           

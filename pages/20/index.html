@@ -40,6 +40,40 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/opendcim/">
+            <h2 class="card-title">openDCIM</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>openDCIM is an open source application for <strong>D</strong>ata<strong>C</strong>enter 
+<strong>I</strong>nfrastructure <strong>M</strong>anagement.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="http://www.opendcim.org">openDCIM Website</a></li>
+<li><a href="https://github.com/samilliken/openDCIM">openDCIM on GitHub</a></li>
+<li><a href="http://www.youtube.com/user/openDCIM/videos">openDCIM Video Tutorials on YouTube</a></li>
+<li><a href="/posts/centos-6-install-opendcim-2-1/">openDCIM 2.1 Installation on Centos 6</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/kmotion/">
             <h2 class="card-title">Kmotion</h2>
           </a>
@@ -378,51 +412,6 @@ mysql&gt; SHOW SLAVE STATUS\G
 
 <p>Hopefully your replication will resume after this, and the value of 
 your <code>Seconds_Behind_Master</code> will quickly be depleted.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-26
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/python-colored-output/">
-            <h2 class="card-title">Colored output with Python</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Here's my stupid way of getting colored output from a Python script when 
-run from the command line.</p>
-
-<p>First, define one function per desired color:</p>
-
-<p>{% highlight python %}
-def   blue(message): return '\033[1;34m%s\033[1;m' % (message)
-def  green(message): return '\033[1;32m%s\033[1;m' % (message)
-def    red(message): return '\033[1;41m%s\033[1;m' % (message)
-def yellow(message): return '\033[1;33m%s\033[1;m' % (message)
-{% endhighlight %}</p>
-
-<p>And then in the script, pass the message that you need to appear in 
-color like this:</p>
-
-<p>{% highlight python %}
-print red('File not found!')
-{% endhighlight %}</p>
-
-<p>Note that if the Python script is meant to run via cron, then you will 
-get some ugly text in emails from cron, since escape codes are not interpreted
-or removed from the output.</p>
 
           </div>
           

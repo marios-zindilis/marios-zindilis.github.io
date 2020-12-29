@@ -40,6 +40,45 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/bandwidth-still-relevant/">
+            <h2 class="card-title">Is bandwidth still relevant for web hosting?</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <a href="http://numixproject.org/">Numix Project</a> received some web love lately, mentioned in last Sunday's
+<a href="http://www.jupiterbroadcasting.com/52182/numix-your-linux-las-s31e01/">Linux Action Show</a> web episode, and later on
+<a href="http://itsfoss.com/numix-linux-distribution/">It's F.O.S.S</a> and probably elsewhere, for their announcement to release
+their own Linux distribution. As a result, their website is now down, with the server returning 500:</p>
+
+<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ curl -I numixproject.org
+HTTP/1.0 <span class="m">500</span> Internal Server Error
+</code></pre></div>
+
+<p>...and displaying the message "Bandwidth Limit Exceeded". I would have guessed that with everything-as-a-service and
+the whole Cloud <abbr title='shebang'>#!</abbr>, bandwidth consumtion would have already become irrelevant. </p>
+
+<p>I mean, there's enough BW to feed our amplification attacks (
+<a href="http://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack">400Gbps on CloudFlare</a>, 
+<a href="https://twitter.com/olesovhcom/statuses/433631778620702721">350Gbps on OVH</a>), 
+but not enough to host our websites? Does that not call for a revision of the model?</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-02-28
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/system-v-init/">
             <h2 class="card-title">System V init</h2>
           </a>
@@ -336,73 +375,6 @@ have ports to use on those old types of networks any more.</p>
           
             <span class="mr-2">
               <b>Posted</b>: 2014-02-17
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/apache-logs-to-remote-syslog/">
-            <h2 class="card-title">Send Apache logs to remote syslog server</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>This document briefly describes how to send the logs from Apache to 
-both a remote server, as well as log them locally. There are benefits 
-to both approaches -local and remote logging- and with this method you 
-will have them both.</p>
-
-<p>Two types of logs are described, the <code>CustomLog</code> and the <code>ErrorLog</code>. 
-Also, my preferred method of shipping logs is with <code>nc</code>, due to its 
-simplicity. </p>
-
-<h2><code>CustomLog</code></h2>
-
-<p>The <code>CustomLog</code> is provided by the <code>log_config</code> module, which is 
-included in the default installation of Apache (at least on CentOS 6.5 
-and on Ubuntu 12.10 on which I tested). This module is flexible enough 
-to allow multiple <code>CustomLog</code> directives, so to get Apache to log in 
-both local files and to a remot syslog server you can use two lines:</p>
-
-<pre><code>CustomLog logs/access_log combined
-CustomLog "| nc -u -j syslog.example.com 514" combined
-</code></pre>
-
-<p>You will need to adjust <code>syslog.example.com</code> to  your syslog server, 
-and possibly <code>514</code> to whatever port your server is listening to, if 
-it's not the default 514.</p>
-
-<h2><code>ErrorLog</code></h2>
-
-<p>The <code>ErrorLog</code> is provided by the <code>core</code> module, and unfortunately it's 
-not as flexible as <code>CustomLog</code>, so it doesn't allow multiple <code>ErrorLog</code> 
-directives. If you add more than one, only the one that occures last in 
-the configuration file will be used. Luckily, you can utilize the power 
-of <code>tee</code> to overcome this:</p>
-
-<pre><code>ErrorLog "| tee -a /var/log/httpd/error_log | nc -u -j syslog.example.com 514"
-</code></pre>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="http://www.fnal.gov/docs/products/apache/syslog_logs_notes.html">Sending web logs to Computer Security</a> 
-from Fermilab, source of the <code>tee</code> tip.</li>
-<li><a href="https://web.archive.org/web/20130222080252/http://mykospark.net/2011/01/apache-httpd-customlog-to-syslog-via-udp/">Apache HTTPD CustomLog to Syslog via UDP</a>, 
-source of the <code>nc -u -j</code> tip.</li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-02-11
             </span>
           
           

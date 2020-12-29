@@ -40,6 +40,35 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/gedit/">
+            <h2 class="card-title">gedit</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>See also</h2>
+
+<ul>
+<li><a href="https://web.archive.org/web/20140204212941/http://mylinuxbook.com/3-useful-gedit-plugins-for-programmers/">3 Useful Gedit Plugins For Programmers</a></li>
+<li><a href="https://wiki.gnome.org/Apps/Gedit/Plugins/Snippets">Using Snippets</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-19
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/linux-show-network-routes/">
             <h2 class="card-title">Display network routes on Linux</h2>
           </a>
@@ -670,42 +699,6 @@ file requested on the underlying filesystem. To disable, comment out:</p>
           <b>Tags</b>:
           
             <a href="/tags/zenoss/">zenoss</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/centos-show-ip-address-in-etc-issue/">
-            <h2 class="card-title">Display IP Address in /etc/issue on CentOS</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>I have several CentOS virtual machines that I only fire up when I need 
-to test something, so I don't give them static IPs. For my own 
-convenience, I added the following lines in <code>/etc/rc.local</code>, which 
-get the IP Address that was leased to the machine by the DHCP server, 
-and change <code>/etc/issue</code> to display it:</p>
-
-<p>{% highlight bash %}
-export IPADDR=$(ifconfig eth1 | grep 'inet ' | cut -d ':' -f 2 | cut -d ' ' -f 1)
-sed -i "s/IP Address:.*/IP Address: $IPADDR/" /etc/issue
-{% endhighlight %}</p>
-
-<p>This way, once the VM boots up and gets an IP from DHCP, that IP will 
-be displayed in the hypervisor's console.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-09
-            </span>
           
           
         </div><!-- .card-footer -->

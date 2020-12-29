@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/python/</link>
         <description>Personal website of Marios Zindilis - Posts tagged python</description>
         <atom:link href="https://zindilis.com/feeds/python.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sun, 27 Dec 2020 18:15:17 UT</lastBuildDate>
+        <lastBuildDate>Tue, 29 Dec 2020 08:27:49 UT</lastBuildDate>
         <item>
             <title>Notes and links from PyCon 2015</title>
             <link>https://zindilis.com/posts/notes-and-links-from-pycon-2015/</link>
@@ -34,6 +34,12 @@
             <link>https://zindilis.com/posts/control-vlc-with-python/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/control-vlc-with-python/</guid>
             <pubDate>Sun, 23 Oct 2016 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Validate that only one of many parameters was provided in Python</title>
+            <link>https://zindilis.com/posts/python-validate-that-only-one-of-many-parameters-is-provided/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/python-validate-that-only-one-of-many-parameters-is-provided/</guid>
+            <pubDate>Tue, 29 Dec 2020 00:00:00 UT</pubDate>
         </item>
         
     </channel>

@@ -40,6 +40,56 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/keepalived/">
+            <h2 class="card-title">keepalived</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Notes:</p>
+
+<ul>
+<li><strong><code>lb_algo</code></strong> determines <em>which</em> real server gets to serve a request, and 
+possible algorithms include round-robin (weighted or not), least-connections 
+(weighted or not), etc (see RHEL docs).</li>
+<li><strong><code>lb_kind</code></strong> determines <em>how</em> the real server receives the request, and 
+the supported methods on RHEL 7 are NAT and DR.</li>
+</ul>
+
+<h2><code>lb_kind DR</code></h2>
+
+<p>Notes:</p>
+
+<ul>
+<li>The load balancers and the real servers need to be on the same network 
+segment</li>
+<li>The Virtual IP is configured on all real servers, and real servers need to 
+be configured to ignore ARP requests for the virtual IP. This can be 
+achieved with either <code>arptables</code>, or <code>iptables</code> or <code>sysctl</code> configuration.</li>
+</ul>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Load_Balancer_Administration/">keepalived documentation for RHEL 7</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-05-21
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/unetbootin/">
             <h2 class="card-title">Unetbootin</h2>
           </a>
@@ -341,32 +391,6 @@ Fri May 13 00:00:02 [FAS:diskown.changingOwner:info]: changing ownership for dis
             <ul>
 <li><a href="https://www.youtube.com/watch?v=GrdzX9BNfkg">Introduction and Demo to the Elasticsearch, Logstash and Kibana</a></li>
 <li><a href="http://www.elasticsearch.com/webinars/shield-securing-your-data-in-elasticsearch/?thank-you">Shield: Securing Your Data in Elasticsearch</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2015-03-22
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/faraday/">
-            <h2 class="card-title">Faraday Integrated Penetration-Test Environment</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://holisticinfosec.blogspot.com/2015/03/toolsmith-faraday-ipe-when-tinfoil-wont.html">toolsmith: Faraday IPE - When Tinfoil Won’t Work for Pentesting</a></li>
 </ul>
 
           </div>
