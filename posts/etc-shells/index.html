@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/shells</h1>
+                <h1 class="mt-4" itemprop="name">/etc/shells</h1>
             </header>
-            <p>The <code>/etc/shells</code> file is a list of valid shells on the system. Example from an Ubuntu 12.10 Desktop system:</p>
+            <div itemprop="articleBody">
+                <p>The <code>/etc/shells</code> file is a list of valid shells on the system. Example from an Ubuntu 12.10 Desktop system:</p>
 
 <pre><code># /etc/shells: valid login shells
 /bin/sh
@@ -72,8 +73,9 @@
 <li><a href="http://utcc.utoronto.ca/~cks/space/blog/unix/EtcShellsUsage">What <code>/etc/shells</code> is and isn't</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-03-11</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-03-11">2014-03-11</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

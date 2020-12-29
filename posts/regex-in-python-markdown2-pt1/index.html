@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Regular expressions in python-markdown2 (part 1)</h1>
+                <h1 class="mt-4" itemprop="name">Regular expressions in python-markdown2 (part 1)</h1>
             </header>
-            <p>This article is a look into the performance of one of the regular expressions used in the
+            <div itemprop="articleBody">
+                <p>This article is a look into the performance of one of the regular expressions used in the
 <a href="https://github.com/trentm/python-markdown2">python-markdown2</a> Python module for converting Markdown syntax to HTML. It
 was initially written for pure fun, and in celebration of its own pointlessness, but eventually the changes proposed
 here made it upstream in <a href="https://github.com/trentm/python-markdown2/pull/204">pull request 204</a>.</p>
@@ -102,8 +103,9 @@ half to do it with <code>str.replace()</code>. Thus, for the Python developer ou
 who is pondering on converting 30 million books from Markdown to HTML, the 
 answer is: Go with <code>str.replace()</code>. For the rest of us it's still 42.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2015-11-07</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-11-07">2015-11-07</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

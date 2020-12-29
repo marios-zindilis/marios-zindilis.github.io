@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Send Apache logs to remote syslog server</h1>
+                <h1 class="mt-4" itemprop="name">Send Apache logs to remote syslog server</h1>
             </header>
-            <p>This document briefly describes how to send the logs from Apache to 
+            <div itemprop="articleBody">
+                <p>This document briefly describes how to send the logs from Apache to 
 both a remote server, as well as log them locally. There are benefits 
 to both approaches -local and remote logging- and with this method you 
 will have them both.</p>
@@ -93,8 +94,9 @@ from Fermilab, source of the <code>tee</code> tip.</li>
 source of the <code>nc -u -j</code> tip.</li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-02-11</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-02-11">2014-02-11</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

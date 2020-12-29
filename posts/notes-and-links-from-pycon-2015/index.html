@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Notes and links from PyCon 2015</h1>
+                <h1 class="mt-4" itemprop="name">Notes and links from PyCon 2015</h1>
             </header>
-            <p>These are a couple of random links from things mentioned in talks during PyCon 
+            <div itemprop="articleBody">
+                <p>These are a couple of random links from things mentioned in talks during PyCon 
 2015, which took place in Dublin in October 2015. There were two tracks of 
 talks and two tracks of workshops. One of the non-workshop tracks was almost 
 dedicated to data processing with Python, and the other had various subjects. 
@@ -69,8 +70,9 @@ multithreadded Python software.</li>
 
 <!-- Links -->
 
+            </div>
             <footer>
-                <p>Posted on 2015-10-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-10-25">2015-10-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">My .vimrc</h1>
+                <h1 class="mt-4" itemprop="name">My .vimrc</h1>
             </header>
-            <p>This is my pretty basic <code>~/.virmc</code>. Lines starting with a double quotation mark are comments:</p>
+            <div itemprop="articleBody">
+                <p>This is my pretty basic <code>~/.virmc</code>. Lines starting with a double quotation mark are comments:</p>
 
 <pre><code>" Make text pop out on dark backgrounds:
 set bg=dark
@@ -72,8 +73,9 @@ set modeline
 <p>Image credit: <em>Wild Grazing - Sheep grazing on the southwest coast of Ireland</em>. In the Public Domain.
 <a href="https://www.publicdomainpictures.net/en/view-image.php?image=9953&amp;picture=wild-grazing">Source</a>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2020-12-15</p>
+                <p>Posted on <span itemprop="datePublished" content="2020-12-15">2020-12-15</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

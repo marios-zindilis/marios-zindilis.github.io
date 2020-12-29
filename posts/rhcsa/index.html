@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">RHCSA Notes and Links</h1>
+                <h1 class="mt-4" itemprop="name">RHCSA Notes and Links</h1>
             </header>
-            <p>This is an unsorted list of links for the RHCSA certification.</p>
+            <div itemprop="articleBody">
+                <p>This is an unsorted list of links for the RHCSA certification.</p>
 
 <ul>
 <li><a href="http://www.redhat.com/training/certifications/rhcsa/">RHCSA Certification Overview</a></li>
@@ -78,8 +79,9 @@
 <li><a href="/posts/rhel-setup-ftp-repository/">Set up an FTP Repository from RHEL DVD</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-02-28</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-02-28">2014-02-28</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">keepalived</h1>
+                <h1 class="mt-4" itemprop="name">keepalived</h1>
             </header>
-            <p>Notes:</p>
+            <div itemprop="articleBody">
+                <p>Notes:</p>
 
 <ul>
 <li><strong><code>lb_algo</code></strong> determines <em>which</em> real server gets to serve a request, and 
@@ -76,8 +77,9 @@ achieved with either <code>arptables</code>, or <code>iptables</code> or <code>s
 <li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Load_Balancer_Administration/">keepalived documentation for RHEL 7</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2015-05-21</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-05-21">2015-05-21</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

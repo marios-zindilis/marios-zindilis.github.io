@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Appendices</h1>
+                <h1 class="mt-4" itemprop="name">Appendices</h1>
             </header>
-            <h2>Appendix A: pcalc source code</h2>
+            <div itemprop="articleBody">
+                <h2>Appendix A: pcalc source code</h2>
 
 <p>A perl read-eval-print loop. This makes a very handy calculator on the command 
 line. Example usage:</p>
@@ -121,8 +122,9 @@ $ pcalc <span class="m">2</span>*3
 <li>Example - Finding duplicate keys in two files</li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2016-11-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2016-11-13">2016-11-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

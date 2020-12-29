@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">hpacucli</h1>
+                <h1 class="mt-4" itemprop="name">hpacucli</h1>
             </header>
-            <p><code>hpacucli</code> allows control of the RAID array controllers on HP servers.</p>
+            <div itemprop="articleBody">
+                <p><code>hpacucli</code> allows control of the RAID array controllers on HP servers.</p>
 
 <h2>Installation on CentOS</h2>
 
@@ -130,8 +131,9 @@
 <li><a href="http://www.thegeekstuff.com/2014/07/hpacucli-examples/">17 hpacucli Command Examples for Linux on HP Servers</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-02</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-02">2013-12-02</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

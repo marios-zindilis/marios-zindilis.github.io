@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">reload (εντολή Cisco)</h1>
+                <h1 class="mt-4" itemprop="name">reload (εντολή Cisco)</h1>
             </header>
-            <p>Η εντολή <code>reload</code> αναγκάζει μια συσκευή να επανεκκινήσει. Αν εκτελεστεί 
+            <div itemprop="articleBody">
+                <p>Η εντολή <code>reload</code> αναγκάζει μια συσκευή να επανεκκινήσει. Αν εκτελεστεί 
 χωρίς παραμέτρους, η επανεκκίνηση γίνεται αμέσως.</p>
 
 <p>Με τη χρήση της εντολής <code>reload</code> είναι δυνατό να αποτραπεί η απώλεια της 
@@ -86,8 +87,9 @@ router#
 router#
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2011-07-07</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-07-07">2011-07-07</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

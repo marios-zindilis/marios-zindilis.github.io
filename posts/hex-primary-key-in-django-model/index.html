@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Hexadecimal Primary Key in Django Model</h1>
+                <h1 class="mt-4" itemprop="name">Hexadecimal Primary Key in Django Model</h1>
             </header>
-            <p>The following snippet of code will make the primary key in a Django model to be a hexadecimal string of 8 characters
+            <div itemprop="articleBody">
+                <p>The following snippet of code will make the primary key in a Django model to be a hexadecimal string of 8 characters
 instead of an integer.</p>
 
 <!-- read more -->
@@ -88,8 +89,9 @@ forever.</p>
     <span class="n">first_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span>
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2015-12-06</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-12-06">2015-12-06</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

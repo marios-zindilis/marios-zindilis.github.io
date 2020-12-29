@@ -44,18 +44,20 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Benchmarking the Apache Server</h1>
+                <h1 class="mt-4" itemprop="name">Benchmarking the Apache Server</h1>
             </header>
-            <ul>
+            <div itemprop="articleBody">
+                <ul>
 <li>Using <a href="https://github.com/tarekziade/boom"><code>boom!</code></a>, an Apache benchmarking tool written in Python.</li>
 <li>Using <a href="https://github.com/rakyll/boom"><code>boom</code></a>, a rewrite of <code>boom!</code> in Go.</li>
 <li>Using <code>siege</code>.</li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-10</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-10">2014-01-10</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

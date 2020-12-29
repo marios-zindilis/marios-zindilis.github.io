@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Is bandwidth still relevant for web hosting?</h1>
+                <h1 class="mt-4" itemprop="name">Is bandwidth still relevant for web hosting?</h1>
             </header>
-            <p>The <a href="http://numixproject.org/">Numix Project</a> received some web love lately, mentioned in last Sunday's
+            <div itemprop="articleBody">
+                <p>The <a href="http://numixproject.org/">Numix Project</a> received some web love lately, mentioned in last Sunday's
 <a href="http://www.jupiterbroadcasting.com/52182/numix-your-linux-las-s31e01/">Linux Action Show</a> web episode, and later on
 <a href="http://itsfoss.com/numix-linux-distribution/">It's F.O.S.S</a> and probably elsewhere, for their announcement to release
 their own Linux distribution. As a result, their website is now down, with the server returning 500:</p>
@@ -65,8 +66,9 @@ the whole Cloud <abbr title='shebang'>#!</abbr>, bandwidth consumtion would have
 <a href="https://twitter.com/olesovhcom/statuses/433631778620702721">350Gbps on OVH</a>), 
 but not enough to host our websites? Does that not call for a revision of the model?</p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-02-28</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-02-28">2014-02-28</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

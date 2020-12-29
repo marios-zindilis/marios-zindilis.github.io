@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Preliminaries</h1>
+                <h1 class="mt-4" itemprop="name">Preliminaries</h1>
             </header>
-            <p class="lead">
+            <div itemprop="articleBody">
+                <p class="lead">
 Here's some preliminaries worth noting.
 </p>
 
@@ -175,8 +176,9 @@ DESCRIPTION
 
 <p>Next: <a href="/books/ad-hoc-data-analysis-from-the-unix-command-line/standard-input-standard-output-redirection-and-pipes/">Standard Input, Standard Output, Redirection and Pipes</a></p>
 
+            </div>
             <footer>
-                <p>Posted on 2016-11-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2016-11-13">2016-11-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

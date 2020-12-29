@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/hosts.allow</h1>
+                <h1 class="mt-4" itemprop="name">/etc/hosts.allow</h1>
             </header>
-            <p class='lead'>File <code>/etc/hosts.allow</code> is one of the configuration 
+            <div itemprop="articleBody">
+                <p class='lead'>File <code>/etc/hosts.allow</code> is one of the configuration 
 files of <b>TCP Wrappers</b>, effective either to servers launched via a 
 superserver such as <code>inetd</code>, or to servers that use 
 <code>libwrap</code>, such as the OpenSSH server (when compiled with 
@@ -77,8 +78,9 @@ except those specified in <code>/etc/hosts.allow</code>, add in <code>/etc/hosts
 <pre><code>sshd: ALL
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-10-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-10-25">2013-10-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

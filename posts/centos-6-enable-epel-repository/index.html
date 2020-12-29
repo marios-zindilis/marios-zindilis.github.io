@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Enable EPEL Repository on CentOS 6</h1>
+                <h1 class="mt-4" itemprop="name">Enable EPEL Repository on CentOS 6</h1>
             </header>
-            <p>The most updated information for enabling EPEL should always be at the 
+            <div itemprop="articleBody">
+                <p>The most updated information for enabling EPEL should always be at the 
 <a href="http://fedoraproject.org/wiki/EPEL">Fedora Project's Wiki</a>.</p>
 
 <p>In that page's section "How can I use these extra packages?", there are links 
@@ -64,8 +65,9 @@ to the latest versions for CentOS 6 (and CentOS 5).</p>
 <pre><code>yum install epel-release-*.noarch
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-19</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-19">2013-12-19</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

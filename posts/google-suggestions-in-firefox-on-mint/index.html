@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">How to get Google search suggestions in Firefox on Linux Mint</h1>
+                <h1 class="mt-4" itemprop="name">How to get Google search suggestions in Firefox on Linux Mint</h1>
             </header>
-            <p>The Google search feature is not offered as an option in the version 
+            <div itemprop="articleBody">
+                <p>The Google search feature is not offered as an option in the version 
 of Firefox that comes 
 installed in Linux Mint. You can add it with the <strong>Manage Search 
 Engines</strong> feature, but when you do, you will notice that there are no 
@@ -72,8 +73,9 @@ you find the path. </p>
 <p>...somewhere before the closing <code>&lt;/SearchPlugin&gt;</code> tag. Restart your 
 Firefox, and suggestions should now work.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-03-29</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-03-29">2014-03-29</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

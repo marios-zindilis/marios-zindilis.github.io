@@ -44,16 +44,18 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">login local</h1>
+                <h1 class="mt-4" itemprop="name">login local</h1>
             </header>
-            <p>Καθορίζει ότι η σύνδεση των χρηστών στη συσκευή μέσω της συγκεκριμένης 
+            <div itemprop="articleBody">
+                <p>Καθορίζει ότι η σύνδεση των χρηστών στη συσκευή μέσω της συγκεκριμένης 
 γραμμής θα γίνεται με πιστοποίηση έναντι της τοπικής βάσης δεδομένων 
 ονομάτων χρήστη και συνθηματικών, σε αντίθεση π.χ. με το <code>login tacacs</code>. </p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-06-18</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-06-18">2011-06-18</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

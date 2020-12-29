@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">MySQL Fabric</h1>
+                <h1 class="mt-4" itemprop="name">MySQL Fabric</h1>
             </header>
-            <p>A series of articles at the <a href="http://www.mysqlperformanceblog.com/">MySQL Performance Blog</a> 
+            <div itemprop="articleBody">
+                <p>A series of articles at the <a href="http://www.mysqlperformanceblog.com/">MySQL Performance Blog</a> 
 on <strong>MySQL Fabric</strong>:</p>
 
 <ol>
@@ -56,8 +57,9 @@ on <strong>MySQL Fabric</strong>:</p>
 <li><a href="http://www.mysqlperformanceblog.com/2014/05/15/high-availability-mysql-fabric-part/">High Availability with MySQL Fabric: Part I</a></li>
 </ol>
 
+            </div>
             <footer>
-                <p>Posted on 2014-05-18</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-05-18">2014-05-18</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

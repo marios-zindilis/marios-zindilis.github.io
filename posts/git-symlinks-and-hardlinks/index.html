@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Git, symlinks και hardlinks</h1>
+                <h1 class="mt-4" itemprop="name">Git, symlinks και hardlinks</h1>
             </header>
-            <p><strong>Γρήγορη συμβουλή για το Git</strong>: Ήθελα να συμπεριλάβω σε ένα 
+            <div itemprop="articleBody">
+                <p><strong>Γρήγορη συμβουλή για το Git</strong>: Ήθελα να συμπεριλάβω σε ένα 
 αποθετήριο Git, ένα αρχείο το οποίο τραβούσε το πρόγραμμα από άλλο φάκελο, 
 εκτός του τοπικού αποθετηρίου. Είδα ότι με δημιουργία συμβολικού δεσμού το Git 
 ανέβαζε στο απομακρυσμένο αποθετήριο το αρχείο σαν απλό αρχείο κειμένου, με 
@@ -63,8 +64,9 @@
 
 <p>Μια ακόμα σημείωση, μέχρι πριν την έκδοση 1.6.1, το Git ακολουθούσε τους συμβολικούς δεσμούς, αν αυτοί ήταν φάκελοι αντί για αρχεία. Αυτό διορθώθηκε, και στις πιο πρόσφατες εκδόσεις δεν δουλεύει.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-04-23</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-04-23">2011-04-23</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

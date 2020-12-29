@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Apache host configuration for a Django website</h1>
+                <h1 class="mt-4" itemprop="name">Apache host configuration for a Django website</h1>
             </header>
-            <p>This is the Apache virtual host configuration for an older project that I don't use any more.</p>
+            <div itemprop="articleBody">
+                <p>This is the Apache virtual host configuration for an older project that I don't use any more.</p>
 
 <!-- read more -->
 
@@ -93,8 +94,9 @@ this host also had Apache basic authentication to access the website:</p>
 <p>Image credit: <em>Gardens Of Ireland - Beautiful stairs in Dún Laoghaire, Ireland</em>. In the public domain. 
 <a href="https://www.publicdomainpictures.net/en/view-image.php?image=181320&amp;picture=gardens-of-ireland">Source</a></p>
 
+            </div>
             <footer>
-                <p>Posted on 2020-12-26</p>
+                <p>Posted on <span itemprop="datePublished" content="2020-12-26">2020-12-26</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

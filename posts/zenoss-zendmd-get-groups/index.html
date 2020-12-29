@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Get Device Groups in Zenoss with ZenDMD</h1>
+                <h1 class="mt-4" itemprop="name">Get Device Groups in Zenoss with ZenDMD</h1>
             </header>
-            <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">Globals</span>
+            <div itemprop="articleBody">
+                <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">Globals</span>
 <span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
 <span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
 
@@ -64,8 +65,9 @@
     <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">getPrimaryId</span><span class="p">()</span>
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-11</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-11">2013-11-11</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

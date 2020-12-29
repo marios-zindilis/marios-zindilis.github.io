@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">show ip eigrp interfaces detail</h1>
+                <h1 class="mt-4" itemprop="name">show ip eigrp interfaces detail</h1>
             </header>
-            <p>Εμφανίζει λεπτομέρειες για τις διεπαφές ενός δρομολογητή οι οποίες έχουν 
+            <div itemprop="articleBody">
+                <p>Εμφανίζει λεπτομέρειες για τις διεπαφές ενός δρομολογητή οι οποίες έχουν 
 ρυθμιστεί να συμμετέχουν σε δρομολόγηση EIGRP, είναι σε κατάτασταση 
 Up/Up και δεν είναι Passive. Μεταξύ άλλων, εμφανίζει τις ρυθμίσεις Hello 
 timer για κάθε διεπαφή.</p>
@@ -62,8 +63,9 @@ timer για κάθε διεπαφή.</p>
 <pre><code>show ip eigrp interfaces detail FastEthernet 0/1
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2012-04-28</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-04-28">2012-04-28</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

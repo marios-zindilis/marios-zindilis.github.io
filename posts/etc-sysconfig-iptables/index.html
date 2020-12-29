@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/sysconfig/iptables</h1>
+                <h1 class="mt-4" itemprop="name">/etc/sysconfig/iptables</h1>
             </header>
-            <p>Το αρχείο κανόνων του <code>iptables</code>.</p>
+            <div itemprop="articleBody">
+                <p>Το αρχείο κανόνων του <code>iptables</code>.</p>
 
 <h2>Παραδείγματα</h2>
 
@@ -79,8 +80,9 @@
 <pre><code>-A OUTPUT -p tcp -m tcp --sport 25 -j DROP
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2012-02-08</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-02-08">2012-02-08</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

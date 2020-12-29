@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">bandwidth (Εντολή Cisco)</h1>
+                <h1 class="mt-4" itemprop="name">bandwidth (Εντολή Cisco)</h1>
             </header>
-            <p>Με την εντολή <code>bandwidth</code> μπορείτε να ορίσετε το εύρος ζώνης μιας 
+            <div itemprop="articleBody">
+                <p>Με την εντολή <code>bandwidth</code> μπορείτε να ορίσετε το εύρος ζώνης μιας 
 διεπαφής σε συσκευές Cisco. Η μονάδα μέτρησης είναι Kilobits / Second 
 (Kbps). Αν δεν οριστεί ρητά, το εύρος από προεπιλογή είναι (σε Kbps):</p>
 
@@ -68,8 +69,9 @@ Metric, και μερικών παραμέτρων του QoS και του SNMP
 άλλης από τις τιμές που συνυπολογίζονται στο Metric, για το λόγο ότι το 
 bandwidth επηρεάζει και άλλα πράγματα, άσχετα με την δρομολόγηση. </p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-10-08</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-10-08">2011-10-08</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

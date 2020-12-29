@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">VMware Acronyms</h1>
+                <h1 class="mt-4" itemprop="name">VMware Acronyms</h1>
             </header>
-            <p>This is a list of acronyms that I come across while reading VMware 
+            <div itemprop="articleBody">
+                <p>This is a list of acronyms that I come across while reading VMware 
 documentation.</p>
 
 <dl class='dl-horizontal'>
@@ -61,8 +62,9 @@ documentation.</p>
     </dd>
 </dl>
 
+            </div>
             <footer>
-                <p>Posted on 2014-06-11</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-06-11">2014-06-11</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

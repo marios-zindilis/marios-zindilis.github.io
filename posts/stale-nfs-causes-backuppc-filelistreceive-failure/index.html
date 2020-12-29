@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Stale NFS Causes BackupPC fileListReceive Failure</h1>
+                <h1 class="mt-4" itemprop="name">Stale NFS Causes BackupPC fileListReceive Failure</h1>
             </header>
-            <p>Recently, one of my BackupPC clients running CentOS failed to backup, with the 
+            <div itemprop="articleBody">
+                <p>Recently, one of my BackupPC clients running CentOS failed to backup, with the 
 contents of the host log being:</p>
 
 <pre><code>    2015-06-10 01:40:10 incr backup started back to 2015-05-16 08:56:42 (backup #600) for directory /
@@ -75,8 +76,9 @@ rebooted at the time, problem solved.</p>
 
 <!-- Links -->
 
+            </div>
             <footer>
-                <p>Posted on 2015-06-18</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-06-18">2015-06-18</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

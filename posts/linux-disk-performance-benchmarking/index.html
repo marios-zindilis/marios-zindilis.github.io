@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Disk Performance Benchmarking in Linux</h1>
+                <h1 class="mt-4" itemprop="name">Disk Performance Benchmarking in Linux</h1>
             </header>
-            <p>This page is a dump of notes on <strong>disk benchmarking in Linux</strong>, and is in great need of editing! Use at own peril.</p>
+            <div itemprop="articleBody">
+                <p>This page is a dump of notes on <strong>disk benchmarking in Linux</strong>, and is in great need of editing! Use at own peril.</p>
 
 <ul>
 <li>http://www.westnet.com/~gsmith/content/postgresql/pg-disktesting.htm</li>
@@ -124,8 +125,9 @@ that it will put load on the system on which it runs, so it's better run during 
 <p>Bonnie++ will output its data twice, once in an ASCII formatted table, and once more in a single line CSV. Echo the
 contents of the CSV line through bon_csv2html to get a more readable HTML table.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-14</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-14">2013-11-14</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

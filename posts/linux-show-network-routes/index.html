@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Display network routes on Linux</h1>
+                <h1 class="mt-4" itemprop="name">Display network routes on Linux</h1>
             </header>
-            <h2>With <code>netstat</code></h2>
+            <div itemprop="articleBody">
+                <h2>With <code>netstat</code></h2>
 
 <p>Run <code>netstat -r</code> or <code>netstat --route</code>. Add <code>-n</code> or <code>--numeric</code> for 
 numeric output. Example from a laptop, on which all traffic is routed 
@@ -85,8 +86,9 @@ default via 192.168.88.1 dev wlan0  proto static
 192.168.88.0/24 dev wlan0  proto kernel  scope link  src 192.168.88.253  metric 9
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-17</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-17">2013-11-17</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

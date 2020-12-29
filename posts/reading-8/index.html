@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Reading #8</h1>
+                <h1 class="mt-4" itemprop="name">Reading #8</h1>
             </header>
-            <p>Not much reading done for the past couple of days. I am occupied elsewhere, plus I 'm doing some research that might or
+            <div itemprop="articleBody">
+                <p>Not much reading done for the past couple of days. I am occupied elsewhere, plus I 'm doing some research that might or
 might not result in a monster post soon.</p>
 
 <!-- read more -->
@@ -62,8 +63,9 @@ ubuntu-gr.org mailing list, regarding the popularity-contest package</a>, its <a
 
 <p>Digging a bit further, I found the <a href="http://popcon.ubuntu.com/main/translations/by_inst">list of translations sorted by number of installations</a>, which shows some more realistic results: greek language pack is the 123rd in number of installations (33rd if sorted by "vote", which better indicates recently -less than one month- used installations). 123rd in installations Vs 33rd in usage, I suppose can be interpreted as: "We install less but use more of the installed base", in other words we have more decisive people :)</p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-04-03</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-04-03">2011-04-03</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

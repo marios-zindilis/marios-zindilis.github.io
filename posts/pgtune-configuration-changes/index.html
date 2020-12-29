@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">PostgreSQL Configuration Changes with pgtune</h1>
+                <h1 class="mt-4" itemprop="name">PostgreSQL Configuration Changes with pgtune</h1>
             </header>
-            <p>This is an example run of the <code>pgtune</code> script, which examines a system's 
+            <div itemprop="articleBody">
+                <p>This is an example run of the <code>pgtune</code> script, which examines a system's 
 hardware and proposes changes to PostgreSQL configuration, to better 
 utilize the capabilities of the hardware for the benefit of the database.</p>
 
@@ -77,8 +78,9 @@ service postgresql restart
 &gt; wal_buffers = 8MB
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-10-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-10-25">2013-10-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

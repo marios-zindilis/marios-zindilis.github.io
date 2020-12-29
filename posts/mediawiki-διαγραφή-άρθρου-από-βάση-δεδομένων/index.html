@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">MediaWiki: Διαγραφή άρθρου από τη βάση δεδομένων</h1>
+                <h1 class="mt-4" itemprop="name">MediaWiki: Διαγραφή άρθρου από τη βάση δεδομένων</h1>
             </header>
-            <p>Υπάρχουν περιπτώσεις στο MediaWiki που ένα άρθρο δεν μπορεί να διαγραφεί μέσω της συνηθισμένης διεπαφής, οπότε
+            <div itemprop="articleBody">
+                <p>Υπάρχουν περιπτώσεις στο MediaWiki που ένα άρθρο δεν μπορεί να διαγραφεί μέσω της συνηθισμένης διεπαφής, οπότε
 χρειάζεται σκάλισμα της βάσης δεδομένων. Αυτός ο οδηγός περιγράφει τον τρόπο.</p>
 
 <!-- read more -->
@@ -81,8 +82,9 @@
 
 <p>Τέλος, από τον πίνακα <strong>text</strong> θα πρέπει να διαγράψετε τα κείμενα των παλιών αναθεωρήσεων της σελίδας. Το πεδίο <code>old<em>id</code> αυτού του πίνακα, είναι ίδιο με το <code>rev</em>text<em>id</code> που κρατήσατε προηγουμένως. Μπορείτε λοιπόν να διαγράψετε ένα ένα τα κείμενα, εκτελώντας επανηλειμμένα κάτι σαν <code>DELETE FROM my</em>database.mw<em>text WHERE mw</em>text.old_id = 100</code>, αλλάζωντας το «100» σε ό,τι αντιστοιχεί στα δικά σας δεδομένα.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-08-15</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-08-15">2011-08-15</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

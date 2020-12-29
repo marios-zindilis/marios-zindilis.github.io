@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">getfacl</h1>
+                <h1 class="mt-4" itemprop="name">getfacl</h1>
             </header>
-            <p>Μερικά συστήματα αρχείων όπως τα ext2, ext3, ext4, ReiserFS, JFS, XFS, 
+            <div itemprop="articleBody">
+                <p>Μερικά συστήματα αρχείων όπως τα ext2, ext3, ext4, ReiserFS, JFS, XFS, 
 υποστηρίζουν τον ορισμό επιπλέον ιδιοτήτων-δικαιωμάτων πρόσβασης στα 
 αρχεία, τα οποία λειτουργούν ως λίστες ελέγχου πρόσβασης (Access 
 Control Lists). Στα συστήματα αυτά, η εντολή <code>getfacl</code> δείχνει αυτά τα 
@@ -98,8 +99,9 @@ mask::rw-
 other::r--
 {% endhighlight %}</p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-11-05</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-11-05">2011-11-05</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

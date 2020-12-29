@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Reading #12</h1>
+                <h1 class="mt-4" itemprop="name">Reading #12</h1>
             </header>
-            <p>Reading material.</p>
+            <div itemprop="articleBody">
+                <p>Reading material.</p>
 
 <!-- read more -->
 
@@ -76,8 +77,9 @@
 <ul><li><a href="http://www.smashingmagazine.com/2011/07/08/interview-google-marcin-wichary/">Inside Google’s User Experience Lab: An Interview With Google’s Marcin Wichary</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2011-08-18</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-08-18">2011-08-18</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

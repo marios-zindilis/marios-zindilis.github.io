@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Mount an NTFS disk in Ubuntu</h1>
+                <h1 class="mt-4" itemprop="name">Mount an NTFS disk in Ubuntu</h1>
             </header>
-            <p>On a system that dual boots Windows and Ubuntu, I use this line in <code>/etc/fstab</code> to have the NTFS Windows disk mounted
+            <div itemprop="articleBody">
+                <p>On a system that dual boots Windows and Ubuntu, I use this line in <code>/etc/fstab</code> to have the NTFS Windows disk mounted
 permanently in Ubuntu:</p>
 
 <pre><code>/dev/disk/by-uuid/1EBB57A121AFC448 /mnt/1TB auto nosuid,nodev,nofail,x-gvfs-show,uid=marios,gid=marios,permissions,dmask=022,fmask=133 0 0
@@ -69,8 +70,9 @@ users other than the owner</li>
 <p>Image credit: <em>Library At Trinity College</em>. In the Public Domain.
 <a href="https://www.publicdomainpictures.net/en/view-image.php?image=255082&amp;picture=library-at-trinity-college">Source</a>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2020-12-17</p>
+                <p>Posted on <span itemprop="datePublished" content="2020-12-17">2020-12-17</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Ghost</h1>
+                <h1 class="mt-4" itemprop="name">Ghost</h1>
             </header>
-            <ul>
+            <div itemprop="articleBody">
+                <ul>
 <li><a href="https://community.qualys.com/blogs/laws-of-vulnerabilities/2015/01/27/the-ghost-vulnerability">The GHOST Vulnerability</a>, 
 from the <em>The Laws of Vulnerabilities</em> blog at <em>Qualys</em>.</li>
 <li><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0235">CVE-2015-0235</a> at Mitre, 
@@ -74,8 +75,9 @@ and <a href="http://www.openwall.com/lists/oss-security/2015/01/27/9">cross-post
 <li><a href="http://www.darkreading.com/application-security/ghost-not-so-scary-after-all/d/d-id/1318844?_mc=RSS_DR_EDT">'Ghost' Not So Scary After All</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2015-02-28</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-02-28">2015-02-28</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

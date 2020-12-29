@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Validate that only one of many parameters was provided in Python</h1>
+                <h1 class="mt-4" itemprop="name">Validate that only one of many parameters was provided in Python</h1>
             </header>
-            <p>Sometimes, a function or class constructor can take many possible parameters, but only one parameter can have a value
+            <div itemprop="articleBody">
+                <p>Sometimes, a function or class constructor can take many possible parameters, but only one parameter can have a value
 at any one time, excluding all others. One way to validate this is included in the Python standard library. Copying
 from the <code>uuid.py</code> module:</p>
 
@@ -70,8 +71,9 @@ parameters left with value <code>None</code>.</p>
 <p>Image credit: <em>Wicklow Mountains</em>, by Marcus Tan. In the Public Domain.
 <a href="https://www.publicdomainpictures.net/en/view-image.php?image=20993&amp;picture=wicklow-mountains">Source</a>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2020-12-29</p>
+                <p>Posted on <span itemprop="datePublished" content="2020-12-29">2020-12-29</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

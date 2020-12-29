@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">switchport trunk encapsulation dot1q</h1>
+                <h1 class="mt-4" itemprop="name">switchport trunk encapsulation dot1q</h1>
             </header>
-            <p>Η εντολή <code>switchport trunk encapsulation dot1q</code> καθορίζει το 
+            <div itemprop="articleBody">
+                <p>Η εντολή <code>switchport trunk encapsulation dot1q</code> καθορίζει το 
 encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία ήδη 
 λειτουργεί ως trunk. Η παράμετρος <code>dot1q</code> καθορίζει την τιμή στο 
 πρότυπο IEEE 802.1q.</p>
@@ -64,8 +65,9 @@ encapsulation στο οποίο θα λειτουργεί μια διεπαφή,
 και για αυτόματη διαπραγμάτευση του encapsulation μεταξύ των δύο συσκευών δείτε το 
 <a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">switchport trunk encapsulation negotiate</a>. </p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-09-29</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-09-29">2011-09-29</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Bash: Check that string is IP</h1>
+                <h1 class="mt-4" itemprop="name">Bash: Check that string is IP</h1>
             </header>
-            <p>Assuming that we have a Bash script that accepts a parameter  that is expected to be an IP Address, this article lists
+            <div itemprop="articleBody">
+                <p>Assuming that we have a Bash script that accepts a parameter  that is expected to be an IP Address, this article lists
 a couple of (practically useless) ways of verifying that input <em>without using regular expressions</em>, which is the sane
 thing to do. It is therefore an exercise in futility, but it helps with my chronic allergy to regular expressions.</p>
 
@@ -158,8 +159,9 @@ commented and suggested the use of regular expressions, which in
 retrospect made all the above pretty useless. The expression that I 
 found working best is the one at <a href="http://www.geekzilla.co.uk/View0CBFD9A7-621D-4B0C-9554-91FD48AADC77.htm">IP Address regular expression</a>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-05-10</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-05-10">2013-05-10</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

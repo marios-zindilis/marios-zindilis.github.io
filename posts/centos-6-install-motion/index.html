@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Install Motion on CentOS 6</h1>
+                <h1 class="mt-4" itemprop="name">Install Motion on CentOS 6</h1>
             </header>
-            <p>These are some very very brief instructions on how to install 
+            <div itemprop="articleBody">
+                <p>These are some very very brief instructions on how to install 
 <a href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">Motion</a> 
 on a CentOS 6 system. </p>
 
@@ -94,8 +95,9 @@ make install
 configuration file <code>motion-dist.conf</code> to <code>motion.conf</code> (by default in 
 <code>/usr/local/etc/</code>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-25">2013-11-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

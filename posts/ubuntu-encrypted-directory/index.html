@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Create an encrypted directory on Ubuntu</h1>
+                <h1 class="mt-4" itemprop="name">Create an encrypted directory on Ubuntu</h1>
             </header>
-            <p>These are very brief instructions on how to create an encrypted directory on 
+            <div itemprop="articleBody">
+                <p>These are very brief instructions on how to create an encrypted directory on 
 an Ubuntu system. A usage scenario for this, is that you can keep your files 
 encrypted while stored on a cloud storage service, and decrypt them on-demand 
 only when necessary.</p>
@@ -75,8 +76,9 @@ only when necessary.</p>
 <pre><code>encfs ~/.encrypted ~/visible
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-02-04</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-02-04">2014-02-04</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">yum</h1>
+                <h1 class="mt-4" itemprop="name">yum</h1>
             </header>
-            <p>Το <code>yum</code> είναι ένας μετα-διαχειριστής πακέτων, μπορεί να αναζητήσει για 
+            <div itemprop="articleBody">
+                <p>Το <code>yum</code> είναι ένας μετα-διαχειριστής πακέτων, μπορεί να αναζητήσει για 
 πακέτα λογισμικού σε πηγές που έχει ορίσει ο χρήστης, να τα κατεβάσει 
 από το διαδίκτυο, να επιλύσει τις εξαρτήσεις τους, να τα εγκαταστήσει, 
 και να τα απεγκαταστήσει.</p>
@@ -93,8 +94,9 @@
     <dd> Ίδιο με το <code>yum update --obsoletes</code>.</dd>
 </dl>
 
+            </div>
             <footer>
-                <p>Posted on 2012-02-12</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-02-12">2012-02-12</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

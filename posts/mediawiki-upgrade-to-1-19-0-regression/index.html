@@ -44,19 +44,21 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">MediaWiki upgrade to 1.19.0 regression</h1>
+                <h1 class="mt-4" itemprop="name">MediaWiki upgrade to 1.19.0 regression</h1>
             </header>
-            <p>Upgrade from an earlier version to 1.19.0 breaks some installations, with error:</p>
+            <div itemprop="articleBody">
+                <p>Upgrade from an earlier version to 1.19.0 breaks some installations, with error:</p>
 
 <pre>"Revision::fetchFromConds". Database returned error "1054:
 Unknown column 'rev_sha1' in 'field list' (localhost)".</pre>
 
 <p>This has been <a href="https://bugzilla.wikimedia.org/show_bug.cgi?id=34310" title="MediaWiki Bugzilla BUG 34310">reported as a bug</a>, and <a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/111123" title="MediaWiki Patch 111123 for Bug 34310">fixed in the development branch</a>. Temporary fixes: downgrade back to <a href="http://download.wikimedia.org/mediawiki/1.18/mediawiki-1.18.3.tar.gz" title="MediaWiki 1.18.3 Tarball">1.18.3 (tar.gz)</a> or upgrade to a snapshot of the master branch of <a href="https://toolserver.org/~krinkle/mwSnapshots/" title="MediaWiki development snapshots">1.20alpha</a>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2012-05-11</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-05-11">2012-05-11</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

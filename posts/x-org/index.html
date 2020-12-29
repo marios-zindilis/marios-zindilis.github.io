@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">X.Org</h1>
+                <h1 class="mt-4" itemprop="name">X.Org</h1>
             </header>
-            <p>Ο εξυπηρετητής X <strong>X.Org</strong> χειρίζεται την απεικόνιση του γραφικού περιβάλλοντος. Είναι ο προεπιλεγμένος εξυπηρετητής
+            <div itemprop="articleBody">
+                <p>Ο εξυπηρετητής X <strong>X.Org</strong> χειρίζεται την απεικόνιση του γραφικού περιβάλλοντος. Είναι ο προεπιλεγμένος εξυπηρετητής
 γραφικών των περισσότερων διανομών Linux από το 2004 και μετά, οπότε αντικατέστησε τους <a href="/posts/xfree86-3/">XFree86 3</a>
 και <a href="/posts/xfree86-4/">XFree86 4</a>, για λόγους άδειας χρήσης λογισμικού των τελευταίων.</p>
 
@@ -76,8 +77,9 @@
 <a href="/posts/accelerated-x/">Accelerated-X</a>. </li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2012-04-04</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-04-04">2012-04-04</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

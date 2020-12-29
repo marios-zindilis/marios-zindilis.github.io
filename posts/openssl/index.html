@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">OpenSSL</h1>
+                <h1 class="mt-4" itemprop="name">OpenSSL</h1>
             </header>
-            <ul>
+            <div itemprop="articleBody">
+                <ul>
 <li><p>A useful script that discovers the expiry date for a given certificate: 
 <a href="https://github.com/skx/sysadmin-util/blob/master/ssl-expiry-date" title="ssl-expiry-date">ssl-expiry-date</a>. At some point I slightly modified this script to 
 read a Bind DNS zone file and check each <code>A</code> record for SSL Expiry, for 
@@ -61,8 +62,9 @@ it uses OpenSSL for all its examples:
 
 <!-- Links -->
 
+            </div>
             <footer>
-                <p>Posted on 2015-07-01</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-07-01">2015-07-01</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

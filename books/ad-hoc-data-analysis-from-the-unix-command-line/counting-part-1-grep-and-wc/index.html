@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Counting Part 1 - grep and wc</h1>
+                <h1 class="mt-4" itemprop="name">Counting Part 1 - grep and wc</h1>
             </header>
-            <blockquote>
+            <div itemprop="articleBody">
+                <blockquote>
   <p>"90% of data analysis is counting" - John Rauser</p>
 </blockquote>
 
@@ -88,8 +89,9 @@ count just person records like this:</p>
 there were about 5.9 million people in Washington State in 2000. Also 
 interesting, the average household had <code>59,150/(85,025-59,150) = 2.3</code> people.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2016-11-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2016-11-13">2016-11-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

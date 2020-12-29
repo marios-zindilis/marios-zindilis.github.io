@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Git</h1>
+                <h1 class="mt-4" itemprop="name">Git</h1>
             </header>
-            <h2>See also</h2>
+            <div itemprop="articleBody">
+                <h2>See also</h2>
 
 <ul>
 <li>A series of articles about Git at sitepoint.com:
@@ -67,8 +68,9 @@
 <li><a href="http://gogs.io/">Gogs</a></li>
 </ol>
 
+            </div>
             <footer>
-                <p>Posted on 2014-06-21</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-06-21">2014-06-21</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

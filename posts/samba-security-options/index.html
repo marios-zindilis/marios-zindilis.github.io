@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Samba security Options</h1>
+                <h1 class="mt-4" itemprop="name">Samba security Options</h1>
             </header>
-            <p>The <code>security</code> option in the <code>[Global]</code> section of Samba configuration 
+            <div itemprop="articleBody">
+                <p>The <code>security</code> option in the <code>[Global]</code> section of Samba configuration 
 defines what type of authentication is required for users to access 
 shares. There are five possible values for this option: Share, User, 
 Server, Domain and ADS.</p>
@@ -84,8 +85,9 @@ following example, the user obiwan):</p>
 additional options to be set, but uses an Active Directory server for 
 authentication, and utilizes newer AD protocols.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-10-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-10-25">2013-10-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

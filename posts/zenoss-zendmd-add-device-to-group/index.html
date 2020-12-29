@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Zenoss: Add a device to a Group with ZenDMD</h1>
+                <h1 class="mt-4" itemprop="name">Zenoss: Add a device to a Group with ZenDMD</h1>
             </header>
-            <p>As user <code>zenoss</code> (or whatever user your Zenoss application runs as), run <code>zendmd</code>, and:</p>
+            <div itemprop="articleBody">
+                <p>As user <code>zenoss</code> (or whatever user your Zenoss application runs as), run <code>zendmd</code>, and:</p>
 
 <div class="codehilite"><pre><span></span><code><span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;My Awesome Server&#39;</span><span class="p">)</span>
 <span class="n">Device</span><span class="o">.</span><span class="n">addDeviceGroup</span><span class="p">(</span><span class="s1">&#39;My Wonderful Group&#39;</span><span class="p">)</span>
@@ -59,8 +60,9 @@
 
 <p>This will make the device named <code>My Awesome Server</code> a member of the group named <code>My Wonderful Group</code>. </p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-02-19</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-02-19">2014-02-19</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

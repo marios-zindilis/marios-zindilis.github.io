@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">tailf</h1>
+                <h1 class="mt-4" itemprop="name">tailf</h1>
             </header>
-            <p><code>tailf</code> does the same thing as <code>tail -f</code>: it displays the last lines of 
+            <div itemprop="articleBody">
+                <p><code>tailf</code> does the same thing as <code>tail -f</code>: it displays the last lines of 
 a file, and then <em>follows</em> the file as it grows, and displays new lines 
 as they are appended to it. Compared to <code>tail -f</code>, it uses less 
 resources on the system, by not reading from the disk while the text 
@@ -60,8 +61,9 @@ file is not updated.</p>
 <li><a href="/posts/tail/"><code>tail</code></a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-02</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-02">2014-01-02</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Preparing a new CentOS 6 Server</h1>
+                <h1 class="mt-4" itemprop="name">Preparing a new CentOS 6 Server</h1>
             </header>
-            <p>These are some reminders to myself, to apply my personal preferences when 
+            <div itemprop="articleBody">
+                <p>These are some reminders to myself, to apply my personal preferences when 
 installing a new server based on CentOS 6.</p>
 
 <ol>
@@ -117,8 +118,9 @@ following at the end of the <code>kernel</code> line:</p>
 <li>For the console blanking tip: <a href="http://utcc.utoronto.ca/~cks/space/blog/linux/ConsoleBlankingOff">You want to turn console blanking off on your Linux servers</a>.</li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-25">2013-11-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

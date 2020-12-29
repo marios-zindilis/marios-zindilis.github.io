@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Counting Part 2 - sort and uniq</h1>
+                <h1 class="mt-4" itemprop="name">Counting Part 2 - sort and uniq</h1>
             </header>
-            <p>So far we've seen how to use <code>cut</code>, <code>grep</code> and <code>wc</code> to select and count records 
+            <div itemprop="articleBody">
+                <p>So far we've seen how to use <code>cut</code>, <code>grep</code> and <code>wc</code> to select and count records 
 with certain qualities. But each set of records we'd like to count requires a 
 separate command, as with counting the numbers of male and female names in the 
 most recent example. Combining the <code>uniq</code> and <code>sort</code> commands allows us to 
@@ -230,8 +231,9 @@ F, <span class="m">3966</span>
 M, <span class="m">1051</span>
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2016-11-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2016-11-13">2016-11-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

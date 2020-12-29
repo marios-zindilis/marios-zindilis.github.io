@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Back-end Validation for Django Model Field Choices</h1>
+                <h1 class="mt-4" itemprop="name">Back-end Validation for Django Model Field Choices</h1>
             </header>
-            <p>In Django, you can provide a list of values that a field can have when creating a model. This post shows a way to
+            <div itemprop="articleBody">
+                <p>In Django, you can provide a list of values that a field can have when creating a model. This post shows a way to
 validate the values passed which creating a new instance or saving an existing one.</p>
 
 <!-- read more -->
@@ -197,8 +198,9 @@ example model, we would get the same exception if we ran:</p>
 <p>Using Django's <code>pre_save</code> functionality, you can validate your application's
 input in the back-end, and avoid any surprises. Go forth and validate!</p>
 
+            </div>
             <footer>
-                <p>Posted on 2017-05-04</p>
+                <p>Posted on <span itemprop="datePublished" content="2017-05-04">2017-05-04</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

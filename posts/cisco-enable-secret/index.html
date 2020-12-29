@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">enable secret</h1>
+                <h1 class="mt-4" itemprop="name">enable secret</h1>
             </header>
-            <p>The <code>enable secret</code> command makes the device ask for a password to allow 
+            <div itemprop="articleBody">
+                <p>The <code>enable secret</code> command makes the device ask for a password to allow 
 the user to enter the global configuration mode. Compared to <code>enable 
 password</code>, it has the advantage that it stores the password in the 
 configuration as an MD5 hash, as opposed to clear text.</p>
@@ -59,8 +60,9 @@ configuration as an MD5 hash, as opposed to clear text.</p>
 <li><a href='/posts/cisco-enable-password/'><code>enable password</code></a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-02</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-02">2014-01-02</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

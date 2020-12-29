@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Juniper Routing Policy Examples</h1>
+                <h1 class="mt-4" itemprop="name">Juniper Routing Policy Examples</h1>
             </header>
-            <h2>Match Neighbor IP</h2>
+            <div itemprop="articleBody">
+                <h2>Match Neighbor IP</h2>
 
 <pre><code>policy-options {
     policy-statement bgp-incoming {
@@ -84,8 +85,9 @@ are tagged with a specific community:</p>
 }
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-20</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-20">2014-01-20</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

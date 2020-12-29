@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Cheese</h1>
+                <h1 class="mt-4" itemprop="name">Cheese</h1>
             </header>
-            <p><strong>Cheese</strong> is an application to manage your web camera. It allows you 
+            <div itemprop="articleBody">
+                <p><strong>Cheese</strong> is an application to manage your web camera. It allows you 
 to easily take pictures and record video from your webcam, and apply 
 some special effects to them.</p>
 
@@ -58,8 +59,9 @@ some special effects to them.</p>
 <li><a href="https://wiki.gnome.org/Apps/Cheese">Cheese Website</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2011-08-18</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-08-18">2011-08-18</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

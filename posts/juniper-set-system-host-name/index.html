@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">set system host-name (Juniper Command)</h1>
+                <h1 class="mt-4" itemprop="name">set system host-name (Juniper Command)</h1>
             </header>
-            <p>The <code>set system host-name</code> command defines the name of the device, as 
+            <div itemprop="articleBody">
+                <p>The <code>set system host-name</code> command defines the name of the device, as 
 displayed (among other places) in the command prompt. For example:</p>
 
 <pre><code>marios@juniper&gt; configure
@@ -71,8 +72,9 @@ marios@router-4#
 <li><a href="/posts/cisco-hostname/"><code>hostname</code></a>, the Cisco equivalent</li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-05</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-05">2014-01-05</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

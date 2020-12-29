@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">dracut</h1>
+                <h1 class="mt-4" itemprop="name">dracut</h1>
             </header>
-            <p>Copying from the man page:</p>
+            <div itemprop="articleBody">
+                <p>Copying from the man page:</p>
 
 <blockquote>
   <p><strong>dracut</strong> creates an initial image used by the kernel for preloading the 
@@ -71,8 +72,9 @@
 <pre><code>    hostonly="yes"
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-07-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-07-13">2014-07-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

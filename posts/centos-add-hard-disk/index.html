@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Add a hard disk on a CentOS 6 system</h1>
+                <h1 class="mt-4" itemprop="name">Add a hard disk on a CentOS 6 system</h1>
             </header>
-            <p class="lead">
+            <div itemprop="articleBody">
+                <p class="lead">
   This document shows how to add a 50GB hard disk on a CentOS 6 system, 
   prepare it for usage with 
   <abbr title='Logical Volume Management'>LVM</abbr>, and mount it as the MySQL 
@@ -468,8 +469,9 @@ tmpfs                 947M     0  947M   0% /dev/shm
                        50G  201M   47G   1% /var/lib/mysql
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-02</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-02">2013-11-02</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

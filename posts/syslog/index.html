@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">syslog</h1>
+                <h1 class="mt-4" itemprop="name">syslog</h1>
             </header>
-            <h2><code>syslog</code> facilities</h2>
+            <div itemprop="articleBody">
+                <h2><code>syslog</code> facilities</h2>
 
 <ul>
 <li><code>auth</code>, a.k.a. <code>security</code></li>
@@ -89,8 +90,9 @@
 
 <p><a href="http://nelsonslog.wordpress.com/2013/04/19/faking-out-remote-syslog-via-netcat/">Source</a></p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-31</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-31">2013-12-31</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

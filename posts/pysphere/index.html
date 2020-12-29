@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">PySphere</h1>
+                <h1 class="mt-4" itemprop="name">PySphere</h1>
             </header>
-            <p><strong>PySphere</strong> is a Python API that provides access to vSphere's Web 
+            <div itemprop="articleBody">
+                <p><strong>PySphere</strong> is a Python API that provides access to vSphere's Web 
 Services SDK.</p>
 
 <h2>See also</h2>
@@ -58,8 +59,9 @@ Services SDK.</p>
 <li><a href="/posts/pysphere-get-virtual-machines/">Get Virtual Machines from VMware with PySphere</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-27</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-27">2013-12-27</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

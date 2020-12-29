@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">tcptrack</h1>
+                <h1 class="mt-4" itemprop="name">tcptrack</h1>
             </header>
-            <p><code>tcptrack</code> is a small network utility that displays network connections 
+            <div itemprop="articleBody">
+                <p><code>tcptrack</code> is a small network utility that displays network connections 
 on a system. Its output is similar to that of <code>netstat</code>, but it 
 refreshes automatically.</p>
 
@@ -64,8 +65,9 @@ refreshes automatically.</p>
 <li><a href="https://web.archive.org/web/20131128075845/http://sickbits.net/tcptrack-simple-tcp-connection-monitor/">TCPTrack - Simple TCP Connection Monitor</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-15</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-15">2013-11-15</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

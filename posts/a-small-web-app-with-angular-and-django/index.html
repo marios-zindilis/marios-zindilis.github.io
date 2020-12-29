@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">A small web application with Angular5 and Django</h1>
+                <h1 class="mt-4" itemprop="name">A small web application with Angular5 and Django</h1>
             </header>
-            <p>Django works well as the back-end of an application that uses Angular5 in the front-end. In my attempt to learn
+            <div itemprop="articleBody">
+                <p>Django works well as the back-end of an application that uses Angular5 in the front-end. In my attempt to learn
 Angular5 well enough to build a small proof-of-concept application, I couldn't find a simple working example of a
 combination of the two frameworks, so I created one. I called this the Pizza Maker. It's <a href="https://github.com/marios-zindilis/pizza-maker" title="Pizza Maker">available on GitHub</a>, and
 its documentation is in the <code>README</code>.</p>
@@ -59,8 +60,9 @@ its documentation is in the <code>README</code>.</p>
 
 <!-- Links -->
 
+            </div>
             <footer>
-                <p>Posted on 2018-04-06</p>
+                <p>Posted on <span itemprop="datePublished" content="2018-04-06">2018-04-06</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

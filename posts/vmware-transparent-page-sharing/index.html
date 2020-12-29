@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">VMware Transparent Page Sharing</h1>
+                <h1 class="mt-4" itemprop="name">VMware Transparent Page Sharing</h1>
             </header>
-            <p><strong>Transparent Page Sharing</strong> is a memory-saving technique employeed by 
+            <div itemprop="articleBody">
+                <p><strong>Transparent Page Sharing</strong> is a memory-saving technique employeed by 
 VMware ESXi hosts, that runs as a background job on the host and removes 
 duplicates pages of memory, by first comparing a hash of the contents of 
 each page, and then comparing pages the hash of which is identical bit 
@@ -59,8 +60,9 @@ by bit.</p>
 <li><a href="http://theithollow.com/2012/12/memory-de-duplication-in-vmware/">Memory De-duplication on VMware</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-06-11</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-06-11">2014-06-11</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

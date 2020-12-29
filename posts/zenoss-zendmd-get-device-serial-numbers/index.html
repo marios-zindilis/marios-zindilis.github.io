@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Get all device Serial Numbers from ZenDMD in Zenoss</h1>
+                <h1 class="mt-4" itemprop="name">Get all device Serial Numbers from ZenDMD in Zenoss</h1>
             </header>
-            <p>To get a list of devices in Zenoss that have a <strong>Serial Number</strong> 
+            <div itemprop="articleBody">
+                <p>To get a list of devices in Zenoss that have a <strong>Serial Number</strong> 
 defined, run the following script as user <code>zenoss</code>. It will display the 
 Device Title, the Serial Number, and -as an added bonus- the Hardware 
 Manufacturer.</p>
@@ -66,8 +67,9 @@ Manufacturer.</p>
         <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWSerialNumber</span><span class="p">(),</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWManufacturerName</span><span class="p">()</span>
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-12</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-12">2013-11-12</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

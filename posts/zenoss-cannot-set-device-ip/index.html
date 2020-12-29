@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Cannot set device IP in Zenoss</h1>
+                <h1 class="mt-4" itemprop="name">Cannot set device IP in Zenoss</h1>
             </header>
-            <p>In Zenoss, there is a chance that you might get a failure to set or change the IP of a device in the web interface.
+            <div itemprop="articleBody">
+                <p>In Zenoss, there is a chance that you might get a failure to set or change the IP of a device in the web interface.
 This sometimes happens because that specific IP address is already assigned to one of the <em>subinterfaces</em> (typically a
 Vlan interface) of another device. In this case, you will just get an error that Zenoss <code>Failed to set IP Address</code>. </p>
 
@@ -78,8 +79,9 @@ subinterface. Enter ZenDMD! Here's how to search of a specific IP, in all the in
 
 <p>This tells you the device on which that IP address exists, and the specific subinterface on which it is assigned to.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-15</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-15">2014-01-15</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

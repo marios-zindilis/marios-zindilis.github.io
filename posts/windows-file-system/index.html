@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Windows Filesystem</h1>
+                <h1 class="mt-4" itemprop="name">Windows Filesystem</h1>
             </header>
-            <p>This is a list of noteworthy directories and files on Windows-based operating 
+            <div itemprop="articleBody">
+                <p>This is a list of noteworthy directories and files on Windows-based operating 
 systems. Note that locations might differ between versions of Windows.</p>
 
 <ul>
@@ -59,8 +60,9 @@ location can be on a FAT32 or NTFS partition.</li>
 the Active Directory domain controller SYSVOL. Requires NTFS.</li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-11-01</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-11-01">2014-11-01</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

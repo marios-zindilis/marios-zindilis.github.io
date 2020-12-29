@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Google Servers Migration Paper</h1>
+                <h1 class="mt-4" itemprop="name">Google Servers Migration Paper</h1>
             </header>
-            <p>This has to be the coolest paper I 've read in a long time. It explains 
+            <div itemprop="articleBody">
+                <p>This has to be the coolest paper I 've read in a long time. It explains 
 how a few engineers working at Google, migrated thousands of servers 
 from the ancient RedHat Linux 7.1 to a modern version of Debian, with 
 minimum downtime, by replacing small bits of the operating system at a 
@@ -58,8 +59,9 @@ time, in many many iterations.</p>
 welcome: <a href="http://marc.merlins.org/linux/talks/ProdNG-LCA2014/Paper/ProdNG.pdf">Live upgrading thousands of servers from an ancient Red Hat 
 distribution to 10 year newer Debian based one</a>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-26</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-26">2014-01-26</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

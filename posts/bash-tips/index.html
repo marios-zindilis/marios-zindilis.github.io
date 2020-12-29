@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Bash tips</h1>
+                <h1 class="mt-4" itemprop="name">Bash tips</h1>
             </header>
-            <p>Δύο μικρά tips.</p>
+            <div itemprop="articleBody">
+                <p>Δύο μικρά tips.</p>
 
 <!-- read more -->
 
@@ -96,8 +97,9 @@
 <p>Το <code>echo</code> χρησιμοποιείται για να τυπώνει τον επόμενο αριθμό σε καινούρια 
 γραμμή, αλλιώς εμφανίζονται συνεχόμενα.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2012-04-04</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-04-04">2012-04-04</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

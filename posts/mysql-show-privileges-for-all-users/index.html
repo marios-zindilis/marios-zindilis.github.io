@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Show privileges for all users in MySQL</h1>
+                <h1 class="mt-4" itemprop="name">Show privileges for all users in MySQL</h1>
             </header>
-            <p>Example script:</p>
+            <div itemprop="articleBody">
+                <p>Example script:</p>
 
 <pre><code>mysql   --silent \
         --skip-column-names \
@@ -64,8 +65,9 @@
 
 <p>The <code>mysqldumper</code> user only requires read permissions on the databases.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2015-07-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-07-25">2015-07-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

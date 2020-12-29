@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/my.cnf</h1>
+                <h1 class="mt-4" itemprop="name">/etc/my.cnf</h1>
             </header>
-            <p>Το αρχείο <code>/etc/my.cnf</code> περιέχει τις ρυθμίσεις του MySQL Server.</p>
+            <div itemprop="articleBody">
+                <p>Το αρχείο <code>/etc/my.cnf</code> περιέχει τις ρυθμίσεις του MySQL Server.</p>
 
 <p>Παράδειγμα αρχείου με τις προεπιλεγμένες ρυθμίσεις, από σύστημα με 
 Centos 4 και MySQL Server 4:</p>
@@ -70,8 +71,9 @@ err-log=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2011-12-19</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-12-19">2011-12-19</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

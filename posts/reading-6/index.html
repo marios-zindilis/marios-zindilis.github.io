@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Reading #6</h1>
+                <h1 class="mt-4" itemprop="name">Reading #6</h1>
             </header>
-            <p>Today's reading recommendations.</p>
+            <div itemprop="articleBody">
+                <p>Today's reading recommendations.</p>
 
 <!-- read more -->
 
@@ -97,8 +98,9 @@ permissions for folders containing php files are <code>755</code> or <code>drwxr
 
 <p>In a production environment, one may reduce permissions to some files, e.g. a config.php, to disallow unnecessary access.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-03-30</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-03-30">2011-03-30</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

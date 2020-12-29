@@ -4,7 +4,7 @@
         <link>https://zindilis.com/</link>
         <description>Personal website of Marios Zindilis</description>
         <atom:link href="https://zindilis.com/feeds/feed.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 29 Dec 2020 08:27:48 UT</lastBuildDate>
+        <lastBuildDate>Tue, 29 Dec 2020 08:57:43 UT</lastBuildDate>
         <item>
             <title>Validate that only one of many parameters was provided in Python</title>
             <link>https://zindilis.com/posts/python-validate-that-only-one-of-many-parameters-is-provided/</link>

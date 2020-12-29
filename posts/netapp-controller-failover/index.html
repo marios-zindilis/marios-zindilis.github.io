@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">NetApp Controller Failover</h1>
+                <h1 class="mt-4" itemprop="name">NetApp Controller Failover</h1>
             </header>
-            <p>Check the status with:</p>
+            <div itemprop="articleBody">
+                <p>Check the status with:</p>
 
 <pre><code>cf status
 </code></pre>
@@ -58,8 +59,9 @@
 <pre><code>cf takeover -n
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-21</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-21">2014-01-21</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

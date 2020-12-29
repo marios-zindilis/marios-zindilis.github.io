@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/deluser.conf</h1>
+                <h1 class="mt-4" itemprop="name">/etc/deluser.conf</h1>
             </header>
-            <p>The <code>/etc/deluser.conf</code> configuration file contains the defaults for 
+            <div itemprop="articleBody">
+                <p>The <code>/etc/deluser.conf</code> configuration file contains the defaults for 
 <code>deluser</code>, the tool for deleting users from a system usually found on 
 Debian-based systems. An example of the file:</p>
 
@@ -74,8 +75,9 @@ ONLY_IF_EMPTY = 0
 EXCLUDE_FSTYPES = "(proc|sysfs|usbfs|devpts|tmpfs)"
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2012-02-16</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-02-16">2012-02-16</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

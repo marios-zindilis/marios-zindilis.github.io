@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">easy_install</h1>
+                <h1 class="mt-4" itemprop="name">easy_install</h1>
             </header>
-            <p><code>easy_install</code> is a tool for installing Python modules from PyPI.</p>
+            <div itemprop="articleBody">
+                <p><code>easy_install</code> is a tool for installing Python modules from PyPI.</p>
 
 <h2>Installation on CentOS</h2>
 
@@ -82,8 +83,9 @@ name as the only parameter, e.g:</p>
 <pre><code>sudo easy_install --upgrade module_name
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-10-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-10-25">2013-10-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

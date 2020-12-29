@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Enable logging in MySQL</h1>
+                <h1 class="mt-4" itemprop="name">Enable logging in MySQL</h1>
             </header>
-            <p>These are some haphazardly written notes on logging in MySQL. For consistency, 
+            <div itemprop="articleBody">
+                <p>These are some haphazardly written notes on logging in MySQL. For consistency, 
 create a new subdirectory in <code>/var/log/</code> and assign ownership to the user under 
 which your MySQL server is running - by default that would be the <code>mysql</code> user:</p>
 
@@ -111,8 +112,9 @@ default:</p>
 +---------------------+----------------------------------+
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-07</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-07">2013-12-07</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

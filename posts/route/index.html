@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">route</h1>
+                <h1 class="mt-4" itemprop="name">route</h1>
             </header>
-            <p>Add route to specific network:</p>
+            <div itemprop="articleBody">
+                <p>Add route to specific network:</p>
 
 <pre><code>route add -net 1.2.3.0 netmask 255.255.255.0 dev eth0
 </code></pre>
@@ -58,8 +59,9 @@
 <pre><code>route add default gw 1.2.3.4 eth0
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-03-07</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-03-07">2014-03-07</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

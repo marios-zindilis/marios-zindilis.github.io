@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/filesystems</h1>
+                <h1 class="mt-4" itemprop="name">/etc/filesystems</h1>
             </header>
-            <p>On RedHat, CentOS, and probably other RPM-based distributions, the 
+            <div itemprop="articleBody">
+                <p>On RedHat, CentOS, and probably other RPM-based distributions, the 
 <code>/etc/filesystems</code> file lists the filesystems that are <em>known</em> to the 
 system, i.e. those filesystems that can be mounted without specifying 
 the filesystem type. The contents of that file in a minimal CentOS 
@@ -66,8 +67,9 @@ hfs
 hfsplus
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-03-30</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-03-30">2014-03-30</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

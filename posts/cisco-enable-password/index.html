@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">enable password</h1>
+                <h1 class="mt-4" itemprop="name">enable password</h1>
             </header>
-            <p>The <code>enable password</code> command will make the device ask for a password 
+            <div itemprop="articleBody">
+                <p>The <code>enable password</code> command will make the device ask for a password 
 to allow the user to move up to the global configuration mode. It has 
 the disadvantage of displaying the password in clear text in the 
 configuration. For this reason, is has been deprecated, in favour of 
@@ -61,8 +62,9 @@ older hardware that cannot encrypt the enable password.</p>
 <li><a href='/posts/cisco-enable-secret/'><code>enable secret</code></a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-02</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-02">2014-01-02</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Filesystems</h1>
+                <h1 class="mt-4" itemprop="name">Filesystems</h1>
             </header>
-            <p>This is a random list of filesystems.</p>
+            <div itemprop="articleBody">
+                <p>This is a random list of filesystems.</p>
 
 <ul>
 <li>zfs</li>
@@ -65,8 +66,9 @@
 <li><a href="/posts/drbd/">DRBD</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-08-10</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-08-10">2014-08-10</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

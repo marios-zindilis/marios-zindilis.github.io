@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Rewriting The Data With Inline perl</h1>
+                <h1 class="mt-4" itemprop="name">Rewriting The Data With Inline perl</h1>
             </header>
-            <blockquote>
+            <div itemprop="articleBody">
+                <blockquote>
   <p>"I'm reminded of the day my daughter came in, looked over my shoulder at some 
   Perl 4 code, and said, 'What is that, swearing?'"
   -- Larry Wall</p>
@@ -222,8 +223,9 @@ perl -ne <span class="s1">&#39;$sum += $_; $count++; END {print $sum/$count,&quo
 <span class="m">28357</span>.0393666818
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2016-11-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2016-11-13">2016-11-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

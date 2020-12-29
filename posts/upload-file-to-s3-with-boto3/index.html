@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Upload file to S3 Bucket using Boto3</h1>
+                <h1 class="mt-4" itemprop="name">Upload file to S3 Bucket using Boto3</h1>
             </header>
-            <p>How to upload files to S3 using Boto3, either with the high-level s3 resource or the low-level s3 client.</p>
+            <div itemprop="articleBody">
+                <p>How to upload files to S3 using Boto3, either with the high-level s3 resource or the low-level s3 client.</p>
 
 <!-- read more -->
 
@@ -132,8 +133,9 @@ following policy:</p>
 <span class="p">}</span>
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2017-08-07</p>
+                <p>Posted on <span itemprop="datePublished" content="2017-08-07">2017-08-07</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

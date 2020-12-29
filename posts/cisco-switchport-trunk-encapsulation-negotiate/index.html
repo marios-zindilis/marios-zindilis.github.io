@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">switchport trunk encapsulation negotiate</h1>
+                <h1 class="mt-4" itemprop="name">switchport trunk encapsulation negotiate</h1>
             </header>
-            <p>Καθορίζει το encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία 
+            <div itemprop="articleBody">
+                <p>Καθορίζει το encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία 
 ήδη λειτουργεί ως trunk. Η τιμή negotiate αναγκάζει τη διεπαφή να 
 διαπραγματευτεί ανάμεσα σε <code>dot1q</code> και <code>isl</code> με τη συνδεδεμένη στο άλλο 
 άκρο του trunk συσκευή.</p>
@@ -66,8 +67,9 @@
 <li><a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2011-09-29</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-09-29">2011-09-29</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

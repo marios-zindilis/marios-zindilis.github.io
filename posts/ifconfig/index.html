@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">ifconfig</h1>
+                <h1 class="mt-4" itemprop="name">ifconfig</h1>
             </header>
-            <p>Το εργαλείο γραμμής εντολών ifconfig μπορεί να εμφανίσει πληροφορίες 
+            <div itemprop="articleBody">
+                <p>Το εργαλείο γραμμής εντολών ifconfig μπορεί να εμφανίσει πληροφορίες 
 σχετικά με τις διεπαφές δικτύου του συστήματος, και να κάνει ρυθμίσεις 
 σε αυτές. Για παράδειγμα, μπορείτε να το χρησιμοποιήσετε για να δείτε 
 την διεύθυνση MAC μιας διεπαφής, ή αν υπάρχουν συγκρούσεις πακέτων 
@@ -67,8 +68,9 @@
 <div class="codehilite"><pre><span></span><code>ifconfig eth0 up <span class="m">192</span>.168.2.3 netmask <span class="m">255</span>.255.255.0
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2012-05-10</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-05-10">2012-05-10</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

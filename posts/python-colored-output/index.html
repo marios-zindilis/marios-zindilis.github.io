@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Colored output with Python</h1>
+                <h1 class="mt-4" itemprop="name">Colored output with Python</h1>
             </header>
-            <p>Here's my stupid way of getting colored output from a Python script when 
+            <div itemprop="articleBody">
+                <p>Here's my stupid way of getting colored output from a Python script when 
 run from the command line.</p>
 
 <p>First, define one function per desired color:</p>
@@ -71,8 +72,9 @@ print red('File not found!')
 get some ugly text in emails from cron, since escape codes are not interpreted
 or removed from the output.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-26</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-26">2013-11-26</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

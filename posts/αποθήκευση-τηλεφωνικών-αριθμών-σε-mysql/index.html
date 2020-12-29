@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Αποθήκευση τηλεφωνικών αριθμών σε MySQL</h1>
+                <h1 class="mt-4" itemprop="name">Αποθήκευση τηλεφωνικών αριθμών σε MySQL</h1>
             </header>
-            <p>Γράφω πρώτα το συμπέρασμα, για όποιον βαριέται να διαβάσει το υπόλοιπο κείμενο:</p>
+            <div itemprop="articleBody">
+                <p>Γράφω πρώτα το συμπέρασμα, για όποιον βαριέται να διαβάσει το υπόλοιπο κείμενο:</p>
 
 <p>Αποθηκεύστε τους τηλεφωνικούς αριθμούς ως 
 <code>VARCHAR(20)</code>, εκτός και αν υπάρχει σημαντικός λόγος γιατί να κάνετε 
@@ -81,8 +82,9 @@
 
 <p>Σημειώστε ότι, παρόμοιο σκεπτικό ισχύει και την αποθήκευση Ταχυδρομικού Κώδικα, πόσω μάλλον που μερικές χώρες (π.χ. Ηνωμένο Βασίλειο, Καναδάς) χρησιμοποιούν και γράμματα του αλφαβήτου στους Τ.Κ.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-03-16</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-03-16">2011-03-16</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Joining The Data with join</h1>
+                <h1 class="mt-4" itemprop="name">Joining The Data with join</h1>
             </header>
-            <p><strong>Please note</strong>: <code>join</code> assumes that that input data is sorted based on the key 
+            <div itemprop="articleBody">
+                <p><strong>Please note</strong>: <code>join</code> assumes that that input data is sorted based on the key 
 on which the join is going to take place.</p>
 
 <h2>Delimited data</h2>
@@ -146,8 +147,9 @@ file 2 ("j2").</p>
 <p><code>join</code> assumes that the input data has been sorted by the field to be joined. 
 See section on <code>sort</code> for details.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2016-11-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2016-11-13">2016-11-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

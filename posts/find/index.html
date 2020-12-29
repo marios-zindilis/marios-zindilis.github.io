@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">find (el)</h1>
+                <h1 class="mt-4" itemprop="name">find (el)</h1>
             </header>
-            <p>Το πρόγραμμα <code>find</code> αναζητά αρχεία, μέσα σε κάποια συγκεκριμένη ιεραρχία 
+            <div itemprop="articleBody">
+                <p>Το πρόγραμμα <code>find</code> αναζητά αρχεία, μέσα σε κάποια συγκεκριμένη ιεραρχία 
 φακέλων.</p>
 
 <h2>Χρήση του <code>find</code></h2>
@@ -116,8 +117,9 @@ find Μουσική -name '*(1995)'
 <li>πάρα, πάρα πολλά ακόμα.</li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2011-09-24</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-09-24">2011-09-24</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

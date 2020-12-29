@@ -44,17 +44,19 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Serial Console Settings for NetApp</h1>
+                <h1 class="mt-4" itemprop="name">Serial Console Settings for NetApp</h1>
             </header>
-            <pre><code>Bps/Par/Bits          : 9600 8N1
+            <div itemprop="articleBody">
+                <pre><code>Bps/Par/Bits          : 9600 8N1
 Hardware Flow Control : Yes
 Software Flow Control : No
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-17</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-17">2013-11-17</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

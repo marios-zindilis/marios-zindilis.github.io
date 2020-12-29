@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">web.py Deployment on Ubuntu 14.04</h1>
+                <h1 class="mt-4" itemprop="name">web.py Deployment on Ubuntu 14.04</h1>
             </header>
-            <p>These instructions are a note to myself, on how to get web.py deployed on a new 
+            <div itemprop="articleBody">
+                <p>These instructions are a note to myself, on how to get web.py deployed on a new 
 VM with Ubuntu 14.04, for development:</p>
 
 <div class="codehilite"><pre><span></span><code>sudo apt-get update
@@ -87,8 +88,9 @@ cat <span class="s">&lt;&lt;EOF &gt; index.py</span>
 python index.py
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2015-11-01</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-11-01">2015-11-01</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

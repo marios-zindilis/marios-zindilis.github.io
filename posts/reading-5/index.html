@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Reading #5</h1>
+                <h1 class="mt-4" itemprop="name">Reading #5</h1>
             </header>
-            <p>Today's reading material.</p>
+            <div itemprop="articleBody">
+                <p>Today's reading material.</p>
 
 <!-- read more -->
 
@@ -74,8 +75,9 @@ monitoring but then put it back and said it's a bug, not a feature.</li>
 Wireshark digging into each one.</li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2011-03-27</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-03-27">2011-03-27</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

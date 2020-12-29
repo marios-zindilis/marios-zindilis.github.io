@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Building VMware ESXi 4 Tools on CentOS 6</h1>
+                <h1 class="mt-4" itemprop="name">Building VMware ESXi 4 Tools on CentOS 6</h1>
             </header>
-            <p>CentOS 6 is not directly supported by version 4 of the VMware ESXi hypervisor, 
+            <div itemprop="articleBody">
+                <p>CentOS 6 is not directly supported by version 4 of the VMware ESXi hypervisor, 
 which means that there are no precompiled binaries for the kernel modules 
 required for the VM to talk to the host. This short guide shows you how to 
 manually compile the tools. Note that every time that you upgrade to a newer 
@@ -100,8 +101,9 @@ and extracted, although keeping them will speed up the reinstallation of
 the tools in case you upgrade the kernel to a newer version.</p></li>
 </ol>
 
+            </div>
             <footer>
-                <p>Posted on 2015-04-27</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-04-27">2015-04-27</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

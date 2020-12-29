@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">PostgreSQL</h1>
+                <h1 class="mt-4" itemprop="name">PostgreSQL</h1>
             </header>
-            <h2>Replication</h2>
+            <div itemprop="articleBody">
+                <h2>Replication</h2>
 
 <p>This is the nicest guide for streaming replication that I've found: 
 <a href="http://www.rassoc.com/gregr/weblog/2013/02/16/zero-to-postgresql-streaming-replication-in-10-mins/">Zero to PostgreSQL streaming replication in 10 mins</a>. It is 
@@ -57,8 +58,9 @@ CentOS, which I have noted in the comments of that article. This guide is not
 as clear (for my preference), but it includes some commands to verify that the 
 replication is running: <a href="http://www.unixmen.com/setup-postgresql-replication-centos/">How To Setup PostgreSQL Replication On CentOS</a>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2015-01-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-01-13">2015-01-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

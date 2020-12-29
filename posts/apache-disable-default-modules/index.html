@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Disabling Apache Default Modules</h1>
+                <h1 class="mt-4" itemprop="name">Disabling Apache Default Modules</h1>
             </header>
-            <p>With a default installation of Apache running, a set of modules are configured 
+            <div itemprop="articleBody">
+                <p>With a default installation of Apache running, a set of modules are configured 
 to load automatically, to serve what the server's and the distribution's 
 developers evaluated to be the most common needs. These modules can be (and 
 probably should be) disabled on a production web server. This might save a very 
@@ -235,8 +236,9 @@ file requested on the underlying filesystem. To disable, comment out:</p>
 </code></pre></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-12</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-12">2013-11-12</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

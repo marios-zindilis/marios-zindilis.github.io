@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Basic Authentication with Apache 2</h1>
+                <h1 class="mt-4" itemprop="name">Basic Authentication with Apache 2</h1>
             </header>
-            <p>To enable <strong>basic authentication</strong> with Apache 2:</p>
+            <div itemprop="articleBody">
+                <p>To enable <strong>basic authentication</strong> with Apache 2:</p>
 
 <ol>
 <li><p>Create a set of credentials for the user, using <code>htpasswd</code>. The 
@@ -119,8 +120,9 @@ AuthLDAPURL "ldap://domain-controller.example.com:389/OU=USERS,DC=example,DC=com
 a tutorial with many Apache authentication examples, including Basic.</li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-12</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-12">2013-11-12</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

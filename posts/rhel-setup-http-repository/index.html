@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Set up an HTTP Repository from RHEL DVD</h1>
+                <h1 class="mt-4" itemprop="name">Set up an HTTP Repository from RHEL DVD</h1>
             </header>
-            <p><abbr title='RedHat Enterprise Linux'>RHEL</abbr> can be installed from 
+            <div itemprop="articleBody">
+                <p><abbr title='RedHat Enterprise Linux'>RHEL</abbr> can be installed from 
 various different sources. One of them is over the network, from an HTTP 
 accessible repository. Here's how to create such a repository:</p>
 
@@ -98,8 +99,9 @@ service iptables save
 </code></pre></li>
 </ol>
 
+            </div>
             <footer>
-                <p>Posted on 2014-04-05</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-04-05">2014-04-05</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

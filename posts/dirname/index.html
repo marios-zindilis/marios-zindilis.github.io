@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">dirname</h1>
+                <h1 class="mt-4" itemprop="name">dirname</h1>
             </header>
-            <p>The <code>dirname</code> command will give you the path of the file that you provide as 
+            <div itemprop="articleBody">
+                <p>The <code>dirname</code> command will give you the path of the file that you provide as 
 parameter, up to its parent directory. If the parameter is an absolute path, 
 the absolute containing directory will be returned, otherwise it will be the 
 relative path.</p>
@@ -70,8 +71,9 @@ mariosz@super-mario:~$ dirname .bash_aliases
 <li><a href="http://www.cyberciti.biz/faq/unix-get-directory-name-from-path-command/">Unix: Find Directory Name From Path</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-04-08</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-04-08">2014-04-08</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

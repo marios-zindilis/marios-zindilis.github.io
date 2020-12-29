@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Links to free books</h1>
+                <h1 class="mt-4" itemprop="name">Links to free books</h1>
             </header>
-            <p>This is an unsorted list of links to free books (some libre, some 
+            <div itemprop="articleBody">
+                <p>This is an unsorted list of links to free books (some libre, some 
 gratis, some both) that I find here and there, put here for future 
 reference. Unfortunately, these links tend to break often.</p>
 
@@ -79,8 +80,9 @@ has a list of resources, some of which are links to free books.</li>
 <li><a href="http://www.coderholic.com/free-python-programming-books/">Ten Free Python Programming Books</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-03</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-03">2013-11-03</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

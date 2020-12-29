@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Create S3 Bucket with the AWS CLI</h1>
+                <h1 class="mt-4" itemprop="name">Create S3 Bucket with the AWS CLI</h1>
             </header>
-            <p>The simplest form of using the AWS CLI to create an S3 bucket is:</p>
+            <div itemprop="articleBody">
+                <p>The simplest form of using the AWS CLI to create an S3 bucket is:</p>
 
 <div class="codehilite"><pre><span></span><code>aws s3 mb s3://bucket-name
 </code></pre></div>
@@ -84,8 +85,9 @@ following policy:</p>
 <span class="p">}</span>
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2017-08-06</p>
+                <p>Posted on <span itemprop="datePublished" content="2017-08-06">2017-08-06</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

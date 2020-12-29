@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">web.py Subapplications</h1>
+                <h1 class="mt-4" itemprop="name">web.py Subapplications</h1>
             </header>
-            <p>To better organize your source code in a web.py application, you can break it 
+            <div itemprop="articleBody">
+                <p>To better organize your source code in a web.py application, you can break it 
 down in subapplications. Those subapplications will be imported as Python 
 modules in your main web.py script (which, in the below examples is 
 <code>index.py</code>).</p>
@@ -87,8 +88,9 @@ very beginning of your main application script:</p>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()))))</span>
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2014-04-22</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-04-22">2014-04-22</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,19 +44,21 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">exportfs</h1>
+                <h1 class="mt-4" itemprop="name">exportfs</h1>
             </header>
-            <p><code>exportfs</code> is a helper utility for managing an NFS server.</p>
+            <div itemprop="articleBody">
+                <p><code>exportfs</code> is a helper utility for managing an NFS server.</p>
 
 <p>Used without any parameters, it will just display a list of active 
 exports, and the hosts that are allowed to access them.</p>
 
 <p>Used with the <code>r</code> parameter, it will reread <code>/etc/exports</code>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-27</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-27">2013-12-27</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

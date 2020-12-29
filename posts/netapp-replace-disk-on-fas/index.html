@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Replace Failed Disk on NetApp FAS</h1>
+                <h1 class="mt-4" itemprop="name">Replace Failed Disk on NetApp FAS</h1>
             </header>
-            <p>After physically replacing the disk, the new disk might not be assigned to the 
+            <div itemprop="articleBody">
+                <p>After physically replacing the disk, the new disk might not be assigned to the 
 controller on which the old disk was assigned, depending on the value of the 
 <code>disk.auto_assign</code> option, which you can check with:</p>
 
@@ -79,8 +80,9 @@ Example output:</p>
 Fri May 13 00:00:02 [FAS:diskown.changingOwner:info]: changing ownership for disk 12.34.45 (S/N ABCDEF) from unowned (ID 1234567890) to FAS (ID 0987654321)
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2015-03-30</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-03-30">2015-03-30</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

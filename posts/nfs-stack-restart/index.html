@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Restart entire NFS Stack</h1>
+                <h1 class="mt-4" itemprop="name">Restart entire NFS Stack</h1>
             </header>
-            <pre><code>service nfs stop
+            <div itemprop="articleBody">
+                <pre><code>service nfs stop
 service nfslock stop
 service portmap stop
 service portmap start
@@ -56,8 +57,9 @@ service nfslock start
 service nfs start
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-13">2013-11-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

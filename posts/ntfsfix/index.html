@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">ntfsfix</h1>
+                <h1 class="mt-4" itemprop="name">ntfsfix</h1>
             </header>
-            <p>Το εργαλείο <code>ntfsfix</code> διορθώνει μερικά συνηθισμένα και απλά σφάλματα σε 
+            <div itemprop="articleBody">
+                <p>Το εργαλείο <code>ntfsfix</code> διορθώνει μερικά συνηθισμένα και απλά σφάλματα σε 
 δίσκους NTFS, και αναγκάζει τα Windows να εκτελέσουν το <code>chkdsk</code> την 
 επόμενη φορά που θα εκκινήσουν με τον δίσκο. Μπορεί να βοηθήσει σε 
 περιπτώσεις όπου τα Windows δεν μπορούν να προσαρτήσουν έναν NTFS δίσκο, 
@@ -60,8 +61,9 @@
 <pre><code>ntfsfix /dev/sdb1
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2011-07-05</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-07-05">2011-07-05</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

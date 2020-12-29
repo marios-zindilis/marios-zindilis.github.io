@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/lilo.conf</h1>
+                <h1 class="mt-4" itemprop="name">/etc/lilo.conf</h1>
             </header>
-            <p>The LILO bootloader has long been deprecated, in favour of GRUB, 
+            <div itemprop="articleBody">
+                <p>The LILO bootloader has long been deprecated, in favour of GRUB, 
 however it still has an install base on old systems that remain in 
 production. The <code>/etc/lilo.conf</code> file contains its configuration. After 
 any change in that file, it is necessary to reinstall LILO, by simply 
@@ -60,8 +61,9 @@ with <code>image=</code>, followed by the path to the kernel file. For example:<
 <pre><code>image=/boot/bzImage-2.6.28
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-05</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-05">2014-01-05</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

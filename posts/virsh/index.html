@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">virsh</h1>
+                <h1 class="mt-4" itemprop="name">virsh</h1>
             </header>
-            <p>List all VMs:</p>
+            <div itemprop="articleBody">
+                <p>List all VMs:</p>
 
 <pre><code>    virsh list --all
 </code></pre>
@@ -78,8 +79,9 @@
 <pre><code>    virsh destroy vm.zindilis.net
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-04-09</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-04-09">2014-04-09</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

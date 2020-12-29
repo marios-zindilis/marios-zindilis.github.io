@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/pam.d/</h1>
+                <h1 class="mt-4" itemprop="name">/etc/pam.d/</h1>
             </header>
-            <p>Files in <code>/etc/pam.d/</code> are configurations for <abbr title='Pluggable 
+            <div itemprop="articleBody">
+                <p>Files in <code>/etc/pam.d/</code> are configurations for <abbr title='Pluggable 
 Authentication Modules'>PAM</abbr> stacks. The generic syntax of a line 
 in those files is:</p>
 
@@ -153,8 +154,9 @@ ELSE:
 <p>Note that the pseudocode above does not include the exception that 
 happens when the <code>optional</code> check is that last in the stack.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-31</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-31">2013-12-31</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

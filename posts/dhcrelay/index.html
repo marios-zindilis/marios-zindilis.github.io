@@ -44,18 +44,20 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">dhcrelay</h1>
+                <h1 class="mt-4" itemprop="name">dhcrelay</h1>
             </header>
-            <p><code>dhcrelay</code> acts as a proxy between DHCP clients and a DHCP server, when 
+            <div itemprop="articleBody">
+                <p><code>dhcrelay</code> acts as a proxy between DHCP clients and a DHCP server, when 
 those are separated by a router, which by default blocks broadcasted 
 DHCP requests. It makes sense to install this on a router between two 
 subnets, only one of which has a DHCP server, or on a relay system, 
 again between two subnets.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-31</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-31">2013-12-31</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

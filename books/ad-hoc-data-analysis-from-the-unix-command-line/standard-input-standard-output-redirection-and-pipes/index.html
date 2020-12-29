@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Standard Input, Standard Output, Redirection and Pipes</h1>
+                <h1 class="mt-4" itemprop="name">Standard Input, Standard Output, Redirection and Pipes</h1>
             </header>
-            <blockquote>
+            <div itemprop="articleBody">
+                <blockquote>
   <p>"This is the Unix philosophy: Write programs that do one thing and do it 
   well. Write programs to work together. Write programs to handle text streams, 
   because that is a universal interface." 
@@ -164,8 +165,9 @@ switch to start at line 2. For example:</p>
 
 <p>This output shows only <code>bash</code> processes because of <code>grep</code>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2016-11-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2016-11-13">2016-11-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

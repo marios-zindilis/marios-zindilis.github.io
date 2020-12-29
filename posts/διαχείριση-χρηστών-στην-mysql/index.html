@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Διαχείριση χρηστών στην MySQL</h1>
+                <h1 class="mt-4" itemprop="name">Διαχείριση χρηστών στην MySQL</h1>
             </header>
-            <p>Μερικές εντολές για διαχείριση χρηστών στο διαδραστικό περιβάλλον γραμμής εντολών της MySQL 5. </p>
+            <div itemprop="articleBody">
+                <p>Μερικές εντολές για διαχείριση χρηστών στο διαδραστικό περιβάλλον γραμμής εντολών της MySQL 5. </p>
 
 <h2>Δημιουργία χρήστη</h2>
 
@@ -103,8 +104,9 @@ database ή <code>*.*</code> για όλους τους πίνακες σε όλ
 <pre><code>grant all privileges on database.* to 'username'@'localhost' identified by 'password';
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2011-11-20</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-11-20">2011-11-20</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

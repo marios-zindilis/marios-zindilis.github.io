@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Logging in Linux</h1>
+                <h1 class="mt-4" itemprop="name">Logging in Linux</h1>
             </header>
-            <ul>
+            <div itemprop="articleBody">
+                <ul>
 <li>syslogd, previously the de facto standard Linux implementation, 
 used to be the default on Linux distributions.</li>
 <li>klogd</li>
@@ -171,8 +172,9 @@ is a search tool for logs and other data sources.</li>
 <li><a href="http://xmodulo.com/open-source-log-monitoring-tools-linux.html">What are good open-source log monitoring tools on Linux</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-28</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-28">2014-01-28</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

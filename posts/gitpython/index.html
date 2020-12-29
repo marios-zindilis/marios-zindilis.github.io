@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">GitPython</h1>
+                <h1 class="mt-4" itemprop="name">GitPython</h1>
             </header>
-            <h2>Installation</h2>
+            <div itemprop="articleBody">
+                <h2>Installation</h2>
 
 <p>The easy way is to use one of the utilities provided by Python's 
 <code>setuptools</code>. If you don't have <code>setuptools</code>, you can install them with:</p>
@@ -94,8 +95,9 @@ repo = git.Repo('/home/marios/repositories/test-repo')
 <li><a href="https://groups.google.com/forum/#!forum/git-python">Google Group for Discussions on GitPython</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-06-12</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-06-12">2014-06-12</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

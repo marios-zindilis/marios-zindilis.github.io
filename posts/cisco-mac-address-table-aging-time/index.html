@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">mac-address-table aging-time</h1>
+                <h1 class="mt-4" itemprop="name">mac-address-table aging-time</h1>
             </header>
-            <p>Με την εντολή αυτή μπορείτε να καθορίσετε αν και κάθε πόσο χρόνο θα 
+            <div itemprop="articleBody">
+                <p>Με την εντολή αυτή μπορείτε να καθορίσετε αν και κάθε πόσο χρόνο θα 
 διαγράφονται οι καταγραφές στον πίνακα διευθύνσεων MAC (MAC address 
 table) μιας συσκευής. Αν δοθεί η τιμή 0, τότε δεν διαγράφονται <strong>ποτέ</strong> 
 οι καταγραφές, αλλιώς αν δοθεί ένας ακέραιος, τότε καταγράφονται σε 
@@ -67,8 +68,9 @@ table) μιας συσκευής. Αν δοθεί η τιμή 0, τότε δεν
 </dt><dd> Μερικές παλιότερες συσκευές δεν υποστηρίζουν την τιμή 0, δηλαδή δεν υποστηρίζουν την απενεργοποίηση της διαγραφής των διευθύνσεων από τον πίνακα. Σε αυτή την περίπτωση, η πλησιέστερη λύση είναι ο ορισμός της μεταβλητής $TIME στην μεγαλύτερη τιμή που επιτρέπει η συσκευή.
 </dd></dl>
 
+            </div>
             <footer>
-                <p>Posted on 2011-06-18</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-06-18">2011-06-18</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/X11/xorg.conf</h1>
+                <h1 class="mt-4" itemprop="name">/etc/X11/xorg.conf</h1>
             </header>
-            <p>Το αρχείο <code>xorg.conf</code> στον φάκελο <code>/etc/X11</code> (ή ενδεχομένως στο <code>/etc</code>) 
+            <div itemprop="articleBody">
+                <p>Το αρχείο <code>xorg.conf</code> στον φάκελο <code>/etc/X11</code> (ή ενδεχομένως στο <code>/etc</code>) 
 είναι το αρχείο ρυθμίσεων του εξυπηρετητή γραφικών <a href="/docs/x.org.el.html">X.Org</a>.</p>
 
 <h2>Σύνταξη</h2>
@@ -56,8 +57,9 @@
 <p>Το περιεχόμενο του αρχείου χωρίζεται σε ενότητες (sections), οι οποίες 
 ελέγχουν διαφορετικές πτυχές της λειτουργίας του γραφικού περιβάλλοντος. </p>
 
+            </div>
             <footer>
-                <p>Posted on 2012-04-04</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-04-04">2012-04-04</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

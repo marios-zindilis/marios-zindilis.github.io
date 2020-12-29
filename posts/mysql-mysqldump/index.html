@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">mysqldump</h1>
+                <h1 class="mt-4" itemprop="name">mysqldump</h1>
             </header>
-            <p>These are my favorite MySQL backup and restore one-liners.</p>
+            <div itemprop="articleBody">
+                <p>These are my favorite MySQL backup and restore one-liners.</p>
 
 <h2>Backup</h2>
 
@@ -72,8 +73,9 @@ and prints the duration of the operation in the end.</p>
 <p>This decompresses the dump back in clear text, and feeds it to <code>mysql</code> 
 through <code>pv</code>, which adds the perk of an indication of progress.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-14</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-14">2014-01-14</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

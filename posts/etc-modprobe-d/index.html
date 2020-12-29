@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/modprobe.d/</h1>
+                <h1 class="mt-4" itemprop="name">/etc/modprobe.d/</h1>
             </header>
-            <p>On CentOS and probably other RedHat-based distributions, <code>/etc/modprobe.d/</code> 
+            <div itemprop="articleBody">
+                <p>On CentOS and probably other RedHat-based distributions, <code>/etc/modprobe.d/</code> 
 is the directory which contains configurations for loading kernel modules, 
 module aliases and module blacklists, that are specific to the host, and not 
 shipped by packages (those should go in <a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a>.</p>
@@ -63,8 +64,9 @@ shipped by packages (those should go in <a href="/docs/lfs/usr/lib/modprobe.d/">
 <li><a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-07-12</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-07-12">2014-07-12</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

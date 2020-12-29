@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Skip one record on MySQL replication slave</h1>
+                <h1 class="mt-4" itemprop="name">Skip one record on MySQL replication slave</h1>
             </header>
-            <p>MySQL replication can break for a wide multitude of reasons. The 
+            <div itemprop="articleBody">
+                <p>MySQL replication can break for a wide multitude of reasons. The 
 following is a quick and dirty way to resume replication, if the error 
 that appears in the output of <code>SHOW SLAVE STATUS\G</code> indicates that 
 replication stopped at a specific record. </p>
@@ -69,8 +70,9 @@ mysql&gt; SHOW SLAVE STATUS\G
 <p>Hopefully your replication will resume after this, and the value of 
 your <code>Seconds_Behind_Master</code> will quickly be depleted.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-26</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-26">2013-11-26</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

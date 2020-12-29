@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Regular expressions in python-markdown2 (part 2)</h1>
+                <h1 class="mt-4" itemprop="name">Regular expressions in python-markdown2 (part 2)</h1>
             </header>
-            <p>This article is a look into the performance of one of the
+            <div itemprop="articleBody">
+                <p>This article is a look into the performance of one of the
 regular expressions used in the
 <a href="https://github.com/trentm/python-markdown2" 
 title="python-markdown2 on Github"> python-markdown2</a> Python module for
@@ -206,8 +207,9 @@ methods for substring replacements than regular expressions.</p>
 
 <!-- Links -->
 
+            </div>
             <footer>
-                <p>Posted on 2015-11-22</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-11-22">2015-11-22</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

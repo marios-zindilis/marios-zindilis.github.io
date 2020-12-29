@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Cisco: clock</h1>
+                <h1 class="mt-4" itemprop="name">Cisco: clock</h1>
             </header>
-            <p>With <code>clock</code> you can set the current time and date on a Cisco device. 
+            <div itemprop="articleBody">
+                <p>With <code>clock</code> you can set the current time and date on a Cisco device. 
 For example:</p>
 
 <pre><code>clock set 20:08:56 Sept 21 2010
@@ -76,8 +77,9 @@ for example:</p>
 <pre><code>clock set 20:08:56 21 Sept 2010
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-29</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-29">2013-12-29</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

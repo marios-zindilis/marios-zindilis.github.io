@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Mutagen ID3 Python Library</h1>
+                <h1 class="mt-4" itemprop="name">Mutagen ID3 Python Library</h1>
             </header>
-            <p><strong>Mutagen</strong> is a Python module to handle audio metadata.</p>
+            <div itemprop="articleBody">
+                <p><strong>Mutagen</strong> is a Python module to handle audio metadata.</p>
 
 <h2>UFID: Unique File Identifier</h2>
 
@@ -112,8 +113,9 @@ used, those links would be:
 <p>Note the use of <code>encode()</code> and <code>decode()</code> methods of <code>unicode</code> used for the 
 <code>data</code> part of the frame, as it expects its contents to be bytes.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2015-12-12</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-12-12">2015-12-12</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

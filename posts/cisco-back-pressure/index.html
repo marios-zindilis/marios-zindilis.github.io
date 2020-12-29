@@ -46,18 +46,20 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Back-Pressure on Cisco Switches</h1>
+                <h1 class="mt-4" itemprop="name">Back-Pressure on Cisco Switches</h1>
             </header>
-            <p>The <code>back-pressure</code> feature on Cisco switches is a workaround to the 
+            <div itemprop="articleBody">
+                <p>The <code>back-pressure</code> feature on Cisco switches is a workaround to the 
 inability to apply proper flow control on half-duplex links. It causes 
 the Cisco switch to send fake packets on the link, thus controlling the 
 transmission from the remote side, since only one side can send at a 
 time on a half-duplex link.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-08</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-08">2013-11-08</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

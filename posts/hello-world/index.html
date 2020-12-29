@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Hello, World!</h1>
+                <h1 class="mt-4" itemprop="name">Hello, World!</h1>
             </header>
-            <p>Having the day off today, I got to catch up with some reading that was in the 
+            <div itemprop="articleBody">
+                <p>Having the day off today, I got to catch up with some reading that was in the 
 "to-read" bookmarks (unordered) list:</p>
 
 <ul>
@@ -68,8 +69,9 @@ time to read it.</p>
 feed, compared to Firefox and Opera, which include a default style for that 
 XML type. WTF Google?</p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-02-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-02-25">2011-02-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -46,18 +46,20 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">write erase</h1>
+                <h1 class="mt-4" itemprop="name">write erase</h1>
             </header>
-            <p>Η εντολή <code>write erase</code> διαγράφει την παραμετροποίηση εκκίνησης 
+            <div itemprop="articleBody">
+                <p>Η εντολή <code>write erase</code> διαγράφει την παραμετροποίηση εκκίνησης 
 (startup-config). Αν ακολουθήσει επανεκκίνηση της συσκευής, όλες οι 
 ρυθμίσεις που έχουν γίνει χάνονται οριστικά.</p>
 
 <p>Συνώνυμα: <code>erase startup-config</code> και <code>erase nvram:</code>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-24</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-24">2014-01-24</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

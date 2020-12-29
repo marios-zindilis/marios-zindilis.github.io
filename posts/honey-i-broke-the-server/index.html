@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Honey, I broke the server</h1>
+                <h1 class="mt-4" itemprop="name">Honey, I broke the server</h1>
             </header>
-            <p>Here's how I caused 25 minutes of downtime to my web server today.</p>
+            <div itemprop="articleBody">
+                <p>Here's how I caused 25 minutes of downtime to my web server today.</p>
 
 <!-- read more -->
 
@@ -80,8 +81,9 @@ launch, because I had the inspiration to name those files <code>something.conf</
 prehistoric versions of apache -some 5 years old- and I estimate that this is not an issue for those versions, I assume
 that maybe older versions of Apache ignored unknown instructions and started anyway.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-03-12</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-03-12">2011-03-12</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

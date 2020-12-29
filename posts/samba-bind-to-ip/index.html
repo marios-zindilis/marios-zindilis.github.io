@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Bind Samba server to specific IP</h1>
+                <h1 class="mt-4" itemprop="name">Bind Samba server to specific IP</h1>
             </header>
-            <p>By default, a Samba server will listen for connections on <strong>all</strong> the 
+            <div itemprop="articleBody">
+                <p>By default, a Samba server will listen for connections on <strong>all</strong> the 
 interfaces of the host. This can be verified by:</p>
 
 <pre><code># netstat -tulpn | egrep "samba|smbd|nmbd|winbind"
@@ -81,8 +82,9 @@ article in the Samba Wiki explains a bit more on why it might be
 necessary to have the server listening on the <code>lo</code> interface.</li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-03-14</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-03-14">2014-03-14</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

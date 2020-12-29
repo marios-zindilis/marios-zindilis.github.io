@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">less</h1>
+                <h1 class="mt-4" itemprop="name">less</h1>
             </header>
-            <p><code>less</code>, similarly to <code>more</code>, can display a page-by-page view of a text 
+            <div itemprop="articleBody">
+                <p><code>less</code>, similarly to <code>more</code>, can display a page-by-page view of a text 
 document, on the command line. Compared to <code>more</code>, <code>less</code> has more 
 features, the most significant of which is backwards scrolling. In a 
 sense, <code>less</code> is like a version of <strong>Vi</strong>, but with a restricted 
@@ -79,8 +80,9 @@ with <code>n</code>, and to the previous one with <code>N</code>.</p>
 
 <p>You can exit <code>less</code> with the <strong>q</strong> key, or with <strong>Ctrl+C</strong>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2012-02-09</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-02-09">2012-02-09</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

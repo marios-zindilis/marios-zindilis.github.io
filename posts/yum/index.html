@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">yum</h1>
+                <h1 class="mt-4" itemprop="name">yum</h1>
             </header>
-            <h2>Group Installations</h2>
+            <div itemprop="articleBody">
+                <h2>Group Installations</h2>
 
 <p>On CentOS, RHEL and probably other rpm-based distributions, it is 
 possible to install sets of packages that are teamed together in 
@@ -76,8 +77,9 @@ will be installed with:</p>
 <pre><code>yum groupinstall 'Group Name'
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-03-07</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-03-07">2014-03-07</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

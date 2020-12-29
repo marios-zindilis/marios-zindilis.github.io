@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">tcpdump</h1>
+                <h1 class="mt-4" itemprop="name">tcpdump</h1>
             </header>
-            <p>Notes and links on <code>tcpdump</code>.</p>
+            <div itemprop="articleBody">
+                <p>Notes and links on <code>tcpdump</code>.</p>
 
 <h2>Capture and output at the same time</h2>
 
@@ -74,8 +75,9 @@
 <li><a href="http://blog.cloudflare.com/bpf-the-forgotten-bytecode">BPF - the forgotten bytecode</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-19</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-19">2013-11-19</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

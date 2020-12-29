@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">ntpdate</h1>
+                <h1 class="mt-4" itemprop="name">ntpdate</h1>
             </header>
-            <h2>Troubleshooting <code>no server suitable for synchronization</code></h2>
+            <div itemprop="articleBody">
+                <h2>Troubleshooting <code>no server suitable for synchronization</code></h2>
 
 <p>If you have a cron jon periodically running <code>ntpdate</code> to update the 
 time on a system, you might at some point hit the <code>no server suitable 
@@ -63,8 +64,9 @@ as being <em>too far</em> from its own source. You should then focus on either
 fixing the NTP server itself, or changing your <code>ntpdate</code> target to 
 another system.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-18</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-18">2013-12-18</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

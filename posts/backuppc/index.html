@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">BackupPC</h1>
+                <h1 class="mt-4" itemprop="name">BackupPC</h1>
             </header>
-            <p>Random tips for BackupPC:</p>
+            <div itemprop="articleBody">
+                <p>Random tips for BackupPC:</p>
 
 <ol>
 <li><p>On your client systems (those that will be backed up by BackupPC), rotate 
@@ -78,8 +79,9 @@ backups taken with BackupPC. <a href="https://github.com/marios-zindilis/backupp
 
 <!-- Links -->
 
+            </div>
             <footer>
-                <p>Posted on 2014-12-18</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-12-18">2014-12-18</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

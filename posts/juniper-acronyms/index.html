@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Juniper Acronyms</h1>
+                <h1 class="mt-4" itemprop="name">Juniper Acronyms</h1>
             </header>
-            <p>This is a list of acronyms that I come across while reading Juniper 
+            <div itemprop="articleBody">
+                <p>This is a list of acronyms that I come across while reading Juniper 
 documentation. Most should be Juniper-specific, but some may not.</p>
 
 <dl class='dl-horizontal'>
@@ -190,8 +191,9 @@ actually participating in routing/forwarding decisions.</dd>
 <dd><b>T</b>raffic <b>E</b>ngineering <b>D</b>atabase</dd>
 </dl>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-04</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-04">2013-11-04</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

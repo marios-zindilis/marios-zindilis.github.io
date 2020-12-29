@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Convert MBR Partition Table to GPT on CentOS 6</h1>
+                <h1 class="mt-4" itemprop="name">Convert MBR Partition Table to GPT on CentOS 6</h1>
             </header>
-            <p>To have partitions larger than 2 TeraBytes, you need to create a GPT disk, as opposed to an MBR one. This, however, is
+            <div itemprop="articleBody">
+                <p>To have partitions larger than 2 TeraBytes, you need to create a GPT disk, as opposed to an MBR one. This, however, is
 not possible during the installation of CentOS, so you might need to handle it either before the installation (e.g:
 with booting a Live CD that supports GPT and creating the partition table before the installation) or after the
 installation, with the use of <code>gdisk</code>.</p>
@@ -92,8 +93,9 @@ and finally mount it and start using it! </p>
 <li><a href="http://www.rodsbooks.com/gdisk/">gdisk WebSite</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-06</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-06">2013-11-06</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

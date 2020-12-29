@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Create test databases in MySQL</h1>
+                <h1 class="mt-4" itemprop="name">Create test databases in MySQL</h1>
             </header>
-            <p>Sometimes you need to create a test database on a development MySQL server, to run some tests on, and you want to
+            <div itemprop="articleBody">
+                <p>Sometimes you need to create a test database on a development MySQL server, to run some tests on, and you want to
 populate it with many records, to make your tests more meaningful. This document lists a couple of quick and dirty ways
 that I use to achieve that.</p>
 
@@ -77,8 +78,9 @@ single quote:</p>
 <a href="/posts/how-to-create-a-large-mysql-db-for-tests/">How to create a large MySQL database for tests</a>. That is a painfully
 slow method, but can create tables that are many GigaBytes in size, which might be necessary for some tests.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-04-12</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-04-12">2014-04-12</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

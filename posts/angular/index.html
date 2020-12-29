@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Angular</h1>
+                <h1 class="mt-4" itemprop="name">Angular</h1>
             </header>
-            <h3>Getting Started with Typescript</h3>
+            <div itemprop="articleBody">
+                <h3>Getting Started with Typescript</h3>
 
 <p>A series of videos from codingforentrepreneurs.com on getting started with
 TypeScript.</p>
@@ -119,8 +120,9 @@ ng serve
 <li><a href="https://www.freecodecamp.org/news/angular-tutorial-course/" title="Learn Angular - Full Tutorial Course">Learn Angular - Full Tutorial Course</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2018-02-02</p>
+                <p>Posted on <span itemprop="datePublished" content="2018-02-02">2018-02-02</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

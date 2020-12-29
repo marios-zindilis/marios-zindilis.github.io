@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Raspberry Pi Security Bootstrap</h1>
+                <h1 class="mt-4" itemprop="name">Raspberry Pi Security Bootstrap</h1>
             </header>
-            <p class='lead'>These are my notes on the first steps of improving security on 
+            <div itemprop="articleBody">
+                <p class='lead'>These are my notes on the first steps of improving security on 
 a new Raspberry Pi. The default configuration that an RPi comes with might be 
 suitable for a development environment in a private or isolated network, but 
 if you intend on exposing your RPi to the world then you need to tweak that 
@@ -230,8 +231,9 @@ COMMIT
 more confident that I can assign it a public IP and expose it the the world, 
 without it being a very easy target.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-12-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-12-13">2014-12-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

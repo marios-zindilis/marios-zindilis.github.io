@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">smbpasswd</h1>
+                <h1 class="mt-4" itemprop="name">smbpasswd</h1>
             </header>
-            <p><code>smbpasswd</code> is the Samba equivalent of the system's <code>passwd</code>, it allows 
+            <div itemprop="articleBody">
+                <p><code>smbpasswd</code> is the Samba equivalent of the system's <code>passwd</code>, it allows 
 for the management of Samba user accounts.</p>
 
 <h2>Add a user</h2>
@@ -76,8 +77,9 @@ their password with just:</p>
 <pre><code>obiwan@server ~ $ smbpasswd
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-10-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-10-25">2013-10-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Μεταβλητές περιβάλλοντος</h1>
+                <h1 class="mt-4" itemprop="name">Μεταβλητές περιβάλλοντος</h1>
             </header>
-            <p>Ένας κατάλογος με μεταβλητές περιβάλλοντος, με περιγραφή των περιεχομένων τους. 
+            <div itemprop="articleBody">
+                <p>Ένας κατάλογος με μεταβλητές περιβάλλοντος, με περιγραφή των περιεχομένων τους. 
 Ο κατάλογος δεν είναι πλήρης, ούτε και υπάρχουν όλες οι μεταβλητές σε όλες τις 
 διανομές, ή σε όλες τις εκδόσεις της ίδιας διανομής.</p>
 
@@ -123,8 +124,9 @@
     </tbody>
 </table>
 
+            </div>
             <footer>
-                <p>Posted on 2012-03-07</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-03-07">2012-03-07</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

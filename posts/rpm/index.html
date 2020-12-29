@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">rpm</h1>
+                <h1 class="mt-4" itemprop="name">rpm</h1>
             </header>
-            <p>Στις διανομές που είναι βασισμένες στο Red Hat (Fedora, CentOS, και εν μέρει 
+            <div itemprop="articleBody">
+                <p>Στις διανομές που είναι βασισμένες στο Red Hat (Fedora, CentOS, και εν μέρει 
 Mandriva, OpenSUSE) το πρόγραμμα rpm μπορεί να διαχειριστεί πακέτα λογισμικού.</p>
 
 <h2>Επιλογές</h2>
@@ -95,8 +96,9 @@ Mandriva, OpenSUSE) το πρόγραμμα rpm μπορεί να διαχειρ
 <td> Εγκαθιστά ένα πακέτο, ή αν υπάρχει σε προηγούμενη έκδοση το αναβαθμίζει.
 </td></tr></tbody></table>
 
+            </div>
             <footer>
-                <p>Posted on 2012-02-16</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-02-16">2012-02-16</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

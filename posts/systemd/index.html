@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">systemd</h1>
+                <h1 class="mt-4" itemprop="name">systemd</h1>
             </header>
-            <p>This is an unsorted list of links with content about <strong>systemd</strong>.</p>
+            <div itemprop="articleBody">
+                <p>This is an unsorted list of links with content about <strong>systemd</strong>.</p>
 
 <ul>
 <li><a href="http://utcc.utoronto.ca/~cks/space/blog/linux/SystemdAndBrokenByDesign">'Broken by design: systemd' is itself kind of broken</a></li>
@@ -58,8 +59,9 @@
 <li><a href="https://web.archive.org/web/20140801081106/http://www.openlogic.com/wazi/bid/351296/an-introduction-to-systemd-for-centos-7">An introduction to systemd for CentOS 7</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-02-27</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-02-27">2014-02-27</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

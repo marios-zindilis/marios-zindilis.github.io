@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Display IP Address in /etc/issue on CentOS</h1>
+                <h1 class="mt-4" itemprop="name">Display IP Address in /etc/issue on CentOS</h1>
             </header>
-            <p>I have several CentOS virtual machines that I only fire up when I need 
+            <div itemprop="articleBody">
+                <p>I have several CentOS virtual machines that I only fire up when I need 
 to test something, so I don't give them static IPs. For my own 
 convenience, I added the following lines in <code>/etc/rc.local</code>, which 
 get the IP Address that was leased to the machine by the DHCP server, 
@@ -62,8 +63,9 @@ sed -i "s/IP Address:.*/IP Address: $IPADDR/" /etc/issue
 <p>This way, once the VM boots up and gets an IP from DHCP, that IP will 
 be displayed in the hypervisor's console.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-09</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-09">2013-11-09</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

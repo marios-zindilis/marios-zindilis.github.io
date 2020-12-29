@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Percona Webinar: What I Learned While Migrating MySQL On-Premises To Amazon RDS</h1>
+                <h1 class="mt-4" itemprop="name">Percona Webinar: What I Learned While Migrating MySQL On-Premises To Amazon RDS</h1>
             </header>
-            <p>I miss having the free time to attend Percona Webinars. They are really good. </p>
+            <div itemprop="articleBody">
+                <p>I miss having the free time to attend Percona Webinars. They are really good. </p>
 
 <p>This is a recording from a webinar presented by a Technical Account Manager at 
 Percona, regarding experiences gained from the migration of a sizeable MySQL 
@@ -59,8 +60,9 @@ information, as are Percona webinars, typically. </p>
 
 <iframe width="640" height="480" src="https://www.youtube.com/embed/m7KdRoMciyY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
+            </div>
             <footer>
-                <p>Posted on 2015-10-24</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-10-24">2015-10-24</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

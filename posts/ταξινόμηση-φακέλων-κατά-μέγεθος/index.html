@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Ταξινόμηση φακέλων κατά μέγεθος</h1>
+                <h1 class="mt-4" itemprop="name">Ταξινόμηση φακέλων κατά μέγεθος</h1>
             </header>
-            <p>Μια εντολή για ταξινόμηση των φακέλων κατά μέγεθος στο Bash:</p>
+            <div itemprop="articleBody">
+                <p>Μια εντολή για ταξινόμηση των φακέλων κατά μέγεθος στο Bash:</p>
 
 <pre><code>du -hsm | sort -n
 </code></pre>
@@ -66,8 +67,9 @@
 καθορίζει το delimiter. Αν παραληφθεί, οι φάκελοι στον οποίων το όνομα 
 περιέχονται διαστήματα θεωρούνται πολλαπλά ορίσματα.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2012-02-02</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-02-02">2012-02-02</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

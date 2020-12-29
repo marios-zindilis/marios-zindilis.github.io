@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Εγκατάσταση οδηγών Broadcom σε Fedora 15</h1>
+                <h1 class="mt-4" itemprop="name">Εγκατάσταση οδηγών Broadcom σε Fedora 15</h1>
             </header>
-            <p>Πολλοί φορητοί υπολογιστές έχουν κάρτες της Broadcom για σύνδεση σε ασύρματα δίκτυα. Οι οδηγοί υλικού της Broadcom
+            <div itemprop="articleBody">
+                <p>Πολλοί φορητοί υπολογιστές έχουν κάρτες της Broadcom για σύνδεση σε ασύρματα δίκτυα. Οι οδηγοί υλικού της Broadcom
 διατίθενται μεν δωρέαν, αλλά είναι κλειστού κώδικα, κι έτσι δεν συμπεριλαμβάνονται στην διανομή Fedora. </p>
 
 <!-- read more -->
@@ -67,8 +68,9 @@ yum install b43-fwcutter wget</pre></li>
 σας. Αν δεν έχουν όλα λειτουργήσει σωστά τότε… διαβάστε την τεκμηρίωση, ξεκινώντας από
 <a href="https://web.archive.org/web/20110510161723/http://linuxwireless.org/en/users/Drivers/b43">εδώ</a>.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2011-05-07</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-05-07">2011-05-07</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

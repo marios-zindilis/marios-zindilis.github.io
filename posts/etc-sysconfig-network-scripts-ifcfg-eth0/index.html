@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/sysconfig/network-scripts/ifcfg-eth0</h1>
+                <h1 class="mt-4" itemprop="name">/etc/sysconfig/network-scripts/ifcfg-eth0</h1>
             </header>
-            <p>Example of a network interface configuration file:</p>
+            <div itemprop="articleBody">
+                <p>Example of a network interface configuration file:</p>
 
 <pre><code># Hardware configuration:
 UUID="46e26279-f69b-daf5-1b79-d03677b7178d"
@@ -103,8 +104,9 @@ service in the place of NetworkManager.</dd>
 during system startup.</dd>
 </dl>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-26</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-26">2013-11-26</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

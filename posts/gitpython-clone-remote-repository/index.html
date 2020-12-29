@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Clone a remote repository with GitPython</h1>
+                <h1 class="mt-4" itemprop="name">Clone a remote repository with GitPython</h1>
             </header>
-            <p>Example code:</p>
+            <div itemprop="articleBody">
+                <p>Example code:</p>
 
 <p>{% highlight python %}
 import git</p>
@@ -59,8 +60,9 @@ local = '/home/marios/Tests/gitpython'</p>
 <p>git.Repo.clone_from(remote, local)
 {% endhighlight %}</p>
 
+            </div>
             <footer>
-                <p>Posted on 2015-02-08</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-02-08">2015-02-08</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

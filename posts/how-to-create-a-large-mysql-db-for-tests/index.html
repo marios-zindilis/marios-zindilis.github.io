@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">How to create a large MySQL database for tests</h1>
+                <h1 class="mt-4" itemprop="name">How to create a large MySQL database for tests</h1>
             </header>
-            <p>I wanted to create a fairly big MySQL database (~30GB on disk) for 
+            <div itemprop="articleBody">
+                <p>I wanted to create a fairly big MySQL database (~30GB on disk) for 
 tests. I created a '<code>test</code>' database, and a '<code>table2</code>' table, with a 
 '<code>content</code>' field with datatype <code>TEXT</code>. Here's what I run from Bash:</p>
 
@@ -71,8 +72,9 @@ the desirable size, like:</p>
 <span class="k">insert</span> <span class="k">into</span> <span class="n">table2</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span><span class="p">;</span>
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2012-11-13</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-11-13">2012-11-13</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

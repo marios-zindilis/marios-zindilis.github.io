@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Example queries on the Sakila MySQL database</h1>
+                <h1 class="mt-4" itemprop="name">Example queries on the Sakila MySQL database</h1>
             </header>
-            <p><a href='http://dev.mysql.com/doc/sakila/en/index.html'><b>Sakila</b></a> is a 
+            <div itemprop="articleBody">
+                <p><a href='http://dev.mysql.com/doc/sakila/en/index.html'><b>Sakila</b></a> is a 
 sample database provided by MySQL, meant to be used in tests and documentation 
 examples. This page lists some example queries against that database.</p>
 
@@ -72,8 +73,9 @@ examples. This page lists some example queries against that database.</p>
 <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">film</span> <span class="k">ON</span> <span class="n">film_actor</span><span class="p">.</span><span class="n">film_id</span> <span class="o">=</span> <span class="n">film</span><span class="p">.</span><span class="n">film_id</span><span class="p">;</span>
 </code></pre></div>
 
+            </div>
             <footer>
-                <p>Posted on 2015-07-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-07-25">2015-07-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

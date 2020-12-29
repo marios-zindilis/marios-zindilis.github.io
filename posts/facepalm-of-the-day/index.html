@@ -44,15 +44,17 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Facepalm of the day</h1>
+                <h1 class="mt-4" itemprop="name">Facepalm of the day</h1>
             </header>
-            <p>Cisco switches will allow you to add a Vlan to one or more interfaces, even if the Vlan does not exist on the device.
+            <div itemprop="articleBody">
+                <p>Cisco switches will allow you to add a Vlan to one or more interfaces, even if the Vlan does not exist on the device.
 MAC addresses will then appear in the MAC database as expected, but traffic will not flow.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2012-03-27</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-03-27">2012-03-27</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

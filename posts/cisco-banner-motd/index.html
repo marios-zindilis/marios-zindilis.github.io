@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Cisco: banner motd</h1>
+                <h1 class="mt-4" itemprop="name">Cisco: banner motd</h1>
             </header>
-            <p>With <code>banner motd</code> you can define a message that will be displayed to 
+            <div itemprop="articleBody">
+                <p>With <code>banner motd</code> you can define a message that will be displayed to 
 the user when she connects to the device in any way (both to VTY and to 
 console lines). The difference of this command with <code>banner login</code> is 
 that the message defined with <code>banner login</code> will only display on 
@@ -60,8 +61,9 @@ connections to VTY lines.</p>
 <li><a href="/posts/cisco-banner-login/">banner login</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-29</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-29">2013-12-29</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

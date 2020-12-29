@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/snmp/snmpd.conf</h1>
+                <h1 class="mt-4" itemprop="name">/etc/snmp/snmpd.conf</h1>
             </header>
-            <p>Sometimes, <code>snmpd</code> will report the wrong speed of a network interface. For 
+            <div itemprop="articleBody">
+                <p>Sometimes, <code>snmpd</code> will report the wrong speed of a network interface. For 
 example, the following output shows a speed of 10Mbps, whereas the ethernet 
 port on the server is actually working at 100Mbps:</p>
 
@@ -67,8 +68,9 @@ the <code>interface</code> directive in <code>snmpd.conf</code>, for example:</p
 
 <!-- Links -->
 
+            </div>
             <footer>
-                <p>Posted on 2015-06-18</p>
+                <p>Posted on <span itemprop="datePublished" content="2015-06-18">2015-06-18</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

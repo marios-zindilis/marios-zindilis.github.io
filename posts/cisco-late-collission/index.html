@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">late collision σε συσκευές Cisco</h1>
+                <h1 class="mt-4" itemprop="name">late collision σε συσκευές Cisco</h1>
             </header>
-            <p>Στις συσκευές Cisco, ένας από τους μετρητές που τηρούνται για κάθε 
+            <div itemprop="articleBody">
+                <p>Στις συσκευές Cisco, ένας από τους μετρητές που τηρούνται για κάθε 
 διεπαφή είναι τα <code>late collision</code>. Κατά τη Cisco, αν τηρούνται οι 
 προδιαγραφές καλωδίωσης σε ένα τοπικό δίκτυο, τότε οι πιθανές 
 συγκρούσεις (collisions) θα συμβαίνουν προτού μια διεπαφή στείλει τα 
@@ -62,8 +63,9 @@
 <li>σε ασυμφωνία της ρύθμισης Duplex σε συνδεδεμένες διεπαφές. </li>
 </ol>
 
+            </div>
             <footer>
-                <p>Posted on 2012-05-10</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-05-10">2012-05-10</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

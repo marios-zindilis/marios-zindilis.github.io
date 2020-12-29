@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Bash Special Variables</h1>
+                <h1 class="mt-4" itemprop="name">Bash Special Variables</h1>
             </header>
-            <p class="lead">
+            <div itemprop="articleBody">
+                <p class="lead">
   A couple of notes on special variables available in the Bash shell.
 </p>
 
@@ -99,8 +100,9 @@ else
 fi
 {% endhighlight %}</p>
 
+            </div>
             <footer>
-                <p>Posted on 2013-12-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-12-25">2013-12-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">FTP and ftp</h1>
+                <h1 class="mt-4" itemprop="name">FTP and ftp</h1>
             </header>
-            <p>These are some notes on the <abbr title='File Transfer Protocol'>FTP</abbr> 
+            <div itemprop="articleBody">
+                <p>These are some notes on the <abbr title='File Transfer Protocol'>FTP</abbr> 
 protocol, and on the <code>ftp</code> command line client.</p>
 
 <h2>Active Vs Passive Mode</h2>
@@ -104,8 +105,9 @@ ftp&gt; binary
 ftp&gt;
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-07</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-07">2014-01-07</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

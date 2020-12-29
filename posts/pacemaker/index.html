@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Pacemaker</h1>
+                <h1 class="mt-4" itemprop="name">Pacemaker</h1>
             </header>
-            <p>Pacemaker is a cluster resource manager, commonly used together with <a href="/posts/corosync/">Corosync</a>.</p>
+            <div itemprop="articleBody">
+                <p>Pacemaker is a cluster resource manager, commonly used together with <a href="/posts/corosync/">Corosync</a>.</p>
 
 <h2>See also</h2>
 
@@ -56,8 +57,9 @@
 <li><a href="http://clusterlabs.org/">Project Website</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-03-08</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-03-08">2014-03-08</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

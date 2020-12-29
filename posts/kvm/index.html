@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">KVM (Kernel-based Virtual Machine)</h1>
+                <h1 class="mt-4" itemprop="name">KVM (Kernel-based Virtual Machine)</h1>
             </header>
-            <h2>Links</h2>
+            <div itemprop="articleBody">
+                <h2>Links</h2>
 
 <ul>
 <li><a href="http://www.linux-kvm.org/">linux-kvm.org</a></li>
@@ -61,8 +62,9 @@
 <li><a href="/posts/virsh/">virsh</a></li>
 </ul>
 
+            </div>
             <footer>
-                <p>Posted on 2014-01-08</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-01-08">2014-01-08</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

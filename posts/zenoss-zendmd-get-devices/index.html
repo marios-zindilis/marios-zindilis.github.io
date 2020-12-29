@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Get Devices from Zenoss with ZenDMD</h1>
+                <h1 class="mt-4" itemprop="name">Get Devices from Zenoss with ZenDMD</h1>
             </header>
-            <p>A simple example:</p>
+            <div itemprop="articleBody">
+                <p>A simple example:</p>
 
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
 
@@ -103,8 +104,9 @@ then you can use a different approach:</p>
 my-big-server
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-10-25</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-10-25">2013-10-25</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

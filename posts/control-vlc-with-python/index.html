@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Control VLC with Python</h1>
+                <h1 class="mt-4" itemprop="name">Control VLC with Python</h1>
             </header>
-            <p><a href="http://www.videolan.org/vlc/"><strong>VLC</strong></a> is an amazing media player, or rather a
+            <div itemprop="articleBody">
+                <p><a href="http://www.videolan.org/vlc/"><strong>VLC</strong></a> is an amazing media player, or rather a
 media-related Swiss army knife. It has a surprising number of different control
 <a href="https://wiki.videolan.org/Interfaces/">interfaces</a>, some of which allow 
 access over a network, such as the HTTP, Telnet and RC interfaces. It also has
@@ -144,8 +145,9 @@ is not available in any version of Python earlier than 3.5.</p>
 
 <p>Good luck using this for your scripts :)</p>
 
+            </div>
             <footer>
-                <p>Posted on 2016-10-23</p>
+                <p>Posted on <span itemprop="datePublished" content="2016-10-23">2016-10-23</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

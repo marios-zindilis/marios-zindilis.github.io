@@ -46,11 +46,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Login in to website with Digest authentication in Python</h1>
+                <h1 class="mt-4" itemprop="name">Login in to website with Digest authentication in Python</h1>
             </header>
-            <p>Websites that use HTTP authentication, can use one of a couple of 
+            <div itemprop="articleBody">
+                <p>Websites that use HTTP authentication, can use one of a couple of 
 authentication methods, like Basic or <strong>Digest</strong>. When first opened, the 
 website returns a 401 message, along with a string that contains the 
 type of authentication and the <strong>Realm</strong>, and expects from the user to 
@@ -92,8 +93,9 @@ webpage returned after the authentication, and can be read with
 something like <code>for line in page_content</code> or parsed as 
 HTML/XML.</p>
 
+            </div>
             <footer>
-                <p>Posted on 2012-08-15</p>
+                <p>Posted on <span itemprop="datePublished" content="2012-08-15">2012-08-15</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

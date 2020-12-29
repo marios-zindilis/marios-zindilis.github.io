@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">ISO Date Format in Apache Logs</h1>
+                <h1 class="mt-4" itemprop="name">ISO Date Format in Apache Logs</h1>
             </header>
-            <p>Apache's <code>mod_log_config</code> module (installed by default on CentOS 6) allows for  the <code>CustomLog</code> directive, which in
+            <div itemprop="articleBody">
+                <p>Apache's <code>mod_log_config</code> module (installed by default on CentOS 6) allows for  the <code>CustomLog</code> directive, which in
 turn takes a log format specification. This post shows how to use ISO format for Apache logs.</p>
 
 <!-- read more -->
@@ -90,8 +91,9 @@ specification as:</p>
 <p>Image credit: Part of <em>An unidentified sawmill worker with two large logs...</em>.
 <a href="https://archive.org/details/turnbull_v3_737243">Source</a></p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-05-16</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-05-16">2014-05-16</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

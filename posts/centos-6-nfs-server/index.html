@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Set up CentOS 6 as NFS Server</h1>
+                <h1 class="mt-4" itemprop="name">Set up CentOS 6 as NFS Server</h1>
             </header>
-            <p>These are minimal instructions on how to set up an NFS server running on 
+            <div itemprop="articleBody">
+                <p>These are minimal instructions on how to set up an NFS server running on 
 CentOS 6. </p>
 
 <ol>
@@ -67,8 +68,9 @@ service nfs restart
 <li><p>Create shares by editing: <code>/etc/exports</code></p></li>
 </ol>
 
+            </div>
             <footer>
-                <p>Posted on 2014-07-09</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-07-09">2014-07-09</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

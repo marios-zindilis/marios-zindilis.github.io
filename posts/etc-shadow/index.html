@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">/etc/shadow</h1>
+                <h1 class="mt-4" itemprop="name">/etc/shadow</h1>
             </header>
-            <p>The fields, delimited by <code>:</code> are:</p>
+            <div itemprop="articleBody">
+                <p>The fields, delimited by <code>:</code> are:</p>
 
 <ol>
 <li>Username</li>
@@ -81,8 +82,9 @@ password, whereas a field that starts with, or only contains an asterisk
 <li>SHA-512 - password starts with <code>$6$</code></li>
 </ol>
 
+            </div>
             <footer>
-                <p>Posted on 2014-04-08</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-04-08">2014-04-08</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

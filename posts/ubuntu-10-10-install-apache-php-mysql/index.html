@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Εγκατάσταση Apache, MySQL και PHP σε Ubuntu 10.10</h1>
+                <h1 class="mt-4" itemprop="name">Εγκατάσταση Apache, MySQL και PHP σε Ubuntu 10.10</h1>
             </header>
-            <p>Βήματα για εγκατάσταση της στοίβας λογισμικού σε Ubuntu 10.10:</p>
+            <div itemprop="articleBody">
+                <p>Βήματα για εγκατάσταση της στοίβας λογισμικού σε Ubuntu 10.10:</p>
 
 <h2>Εγκατάσταση Apache 2</h2>
 
@@ -73,8 +74,9 @@
 sudo apt-get install php5-mysql
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2011-10-28</p>
+                <p>Posted on <span itemprop="datePublished" content="2011-10-28">2011-10-28</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

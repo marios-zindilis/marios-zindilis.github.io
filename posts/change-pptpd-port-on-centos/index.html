@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Change pptpd port on CentOS</h1>
+                <h1 class="mt-4" itemprop="name">Change pptpd port on CentOS</h1>
             </header>
-            <p>I was testing Point-to-Point Tunneling today, between a CentOS 6 server running <code>pptpd</code>, and some Mikrotik routers as
+            <div itemprop="articleBody">
+                <p>I was testing Point-to-Point Tunneling today, between a CentOS 6 server running <code>pptpd</code>, and some Mikrotik routers as
 the clients, and I wanted to change the listening port on the <code>pptpd</code> side. After searching and reading a bit of 
 documentation for a while, I was surprised to find that <code>pptpd</code> respects the record for <code>pptp</code> as defined in 
 <code>/etc/services</code>.</p>
@@ -99,8 +100,9 @@ find its port. I wonder which other servers do the same thing.</p>
 <p>Image credit: Part of <em>Variable-Density Tunnel - Wind Tunnel #2</em>, by NASA. In the Public Domain.
 <a href="https://archive.org/details/NIX-EL-1999-00272">Source</a></p>
 
+            </div>
             <footer>
-                <p>Posted on 2014-09-17</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-09-17">2014-09-17</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

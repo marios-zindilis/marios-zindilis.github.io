@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Installation of syslog-ng on CentOS 6</h1>
+                <h1 class="mt-4" itemprop="name">Installation of syslog-ng on CentOS 6</h1>
             </header>
-            <ol>
+            <div itemprop="articleBody">
+                <ol>
 <li>Enable EPEL</li>
 <li>yum install -y syslog-ng</li>
 <li>Configure /etc/syslog-ng/syslog-ng.conf</li>
@@ -58,8 +59,9 @@
 <li><code>service syslog-ng start</code></li>
 </ol>
 
+            </div>
             <footer>
-                <p>Posted on 2014-03-11</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-03-11">2014-03-11</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

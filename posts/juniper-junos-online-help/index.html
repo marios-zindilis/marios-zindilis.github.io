@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Juniper JUNOS Online Help</h1>
+                <h1 class="mt-4" itemprop="name">Juniper JUNOS Online Help</h1>
             </header>
-            <p>Juniper devices have extensive help options in the CLI.</p>
+            <div itemprop="articleBody">
+                <p>Juniper devices have extensive help options in the CLI.</p>
 
 <h2>Tip of the day</h2>
 
@@ -83,8 +84,9 @@ searched for. For example, you can search for all pages that refer to <code>sysl
 <pre><code>marios@juniper&gt; help topic system syslog
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2013-11-05</p>
+                <p>Posted on <span itemprop="datePublished" content="2013-11-05">2013-11-05</span></p>
             </footer>
         </article>
     </div> <!-- .row -->

@@ -44,11 +44,12 @@
       
 <div class="container">
     <div class="row">
-        <article class="col">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
             <header>
-                <h1 class="mt-4">Install packages from RHEL DVD with yum</h1>
+                <h1 class="mt-4" itemprop="name">Install packages from RHEL DVD with yum</h1>
             </header>
-            <p>There are a lot of packages available on the RedHat Enterprise Linux 
+            <div itemprop="articleBody">
+                <p>There are a lot of packages available on the RedHat Enterprise Linux 
 Installation DVD (I count 3764 <code>.rpm</code> files on version 6.5 Beta), and you can 
 mount the DVD on your system and then use it as a repository to install them 
 with <code>yum</code>. To do that:</p>
@@ -101,8 +102,9 @@ can peak at other <code>.repo</code> files in <code>/etc/yum.repos.d/</code>.</p
 Repo        : rhel-media
 </code></pre>
 
+            </div>
             <footer>
-                <p>Posted on 2014-03-31</p>
+                <p>Posted on <span itemprop="datePublished" content="2014-03-31">2014-03-31</span></p>
             </footer>
         </article>
     </div> <!-- .row -->
