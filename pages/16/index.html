@@ -40,6 +40,38 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/netapp-controller-failover/">
+            <h2 class="card-title">NetApp Controller Failover</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Check the status with:</p>
+
+<pre><code>cf status
+</code></pre>
+
+<p>Force a takeover with:</p>
+
+<pre><code>cf takeover -n
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-21
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/juniper-routing-policy-examples/">
             <h2 class="card-title">Juniper Routing Policy Examples</h2>
           </a>
@@ -141,7 +173,7 @@ Vlan interface) of another device. In this case, you will just get an error that
 
 <div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;web-server.zindilis.net&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Device</span><span class="o">.</span><span class="n">setManageIp</span><span class="p">(</span><span class="s1">&#39;1.2.3.4&#39;</span><span class="p">)</span>
-<span class="mi">2014</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">11</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">30</span> <span class="n">WARNING</span> <span class="n">zen</span><span class="o">.</span><span class="n">Device</span> <span class="n">The</span> <span class="n">IP</span> <span class="n">address</span> <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">assigned</span>
+<span class="mi">2014</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">11</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">30</span> <span class="n">WARNING</span> <span class="n">zen</span><span class="o">.</span><span class="n">Device</span> <span class="n">The</span> <span class="n">IP</span> <span class="n">address</span> <span class="mf">1.2.3.4</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">assigned</span>
 <span class="s1">&#39;The IP address 1.2.3.4 is already assigned&#39;</span>
 </code></pre></div>
 
@@ -391,53 +423,6 @@ ftp&gt;
           
             <span class="mr-2">
               <b>Posted</b>: 2014-01-07
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-hostname/">
-            <h2 class="card-title">hostname (Cisco Command)</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The <code>hostname</code> command defines the name of the device. This is the name 
-displayed (among other places) in the command prompt, and in the CDP 
-neighbors list of other devices.</p>
-
-<p>Example:</p>
-
-<pre><code>cisco&gt; enable
-cisco# configure terminal
-cisco(config)# hostname router-5
-router-5(config)#
-</code></pre>
-
-<h2>Juniper Equivalent</h2>
-
-<p>The Juniper equivalent of the <code>hostname</code> command is:</p>
-
-<pre><code>marios@juniper# set system hostname &lt;HOSTNAME&gt;
-</code></pre>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="/posts/juniper-set-system-host-name/"><code>set system host-name</code></a>, the Juniper equivalent</li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-01-05
             </span>
           
           

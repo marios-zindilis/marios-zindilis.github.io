@@ -53,7 +53,7 @@
 tests. I created a '<code>test</code>' database, and a '<code>table2</code>' table, with a 
 '<code>content</code>' field with datatype <code>TEXT</code>. Here's what I run from Bash:</p>
 
-<div class="codehilite"><pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
+<div class="codehilite"><pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i <span class="k">in</span> <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
 <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span> of <span class="m">500000</span><span class="p">;</span> <span class="se">\</span>
 mysql -u root -D <span class="nb">test</span> -e <span class="se">\</span>
 <span class="s2">&quot;INSERT INTO table2 (content) VALUES (&#39;`cat /var/log/messages | tr -d \&#39;`&#39;)&quot;</span><span class="p">;</span> <span class="se">\</span>

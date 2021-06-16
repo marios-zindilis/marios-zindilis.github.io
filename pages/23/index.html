@@ -40,6 +40,47 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/zenoss-zendmd-get-groups/">
+            <h2 class="card-title">Get Device Groups in Zenoss with ZenDMD</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">Globals</span>
+<span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
+<span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
+
+<span class="k">for</span> <span class="n">Group</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">getSubOrganizers</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">Group</span><span class="o">.</span><span class="n">getPrimaryId</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>Get all Devices in specific Group</h2>
+
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">Group</span><span class="o">.</span><span class="n">devices</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">getPrimaryId</span><span class="p">()</span>
+</code></pre></div>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-11
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/centos-show-ip-address-in-etc-issue/">
             <h2 class="card-title">Display IP Address in /etc/issue on CentOS</h2>
           </a>
@@ -441,90 +482,6 @@ has a list of resources, some of which are links to free books.</li>
             <span class="mr-2">
               <b>Posted</b>: 2013-11-03
             </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/juniper-jncia-study-material/">
-            <h2 class="card-title">Study Material for JNCIA</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><abbr title='Juniper Networks Certified Internet Associate'>JNCIA</abbr>-Junos is the entry-level certification of
-Juniper Networks, and a prerequisite for the next level of
-<a href="https://www.juniper.net/us/en/training/certification/certification-tracks/">JNCIS certifications</a>.</p>
-
-<p>Certification is achieved by passing one exam, either JN0-101 (being retired on 2014-01-31 and available to take until
-2014-02-28) or JN0-102 (available to take from 2014-01-31).</p>
-
-<ol>
-<li><a href="https://www.juniper.net/us/en/training/certification/">Juniper's Certification Website</a></li>
-<li><a href="https://web.archive.org/web/20140817123609/https://www.juniper.net/us/en/training/certification/JNCIA_studyguide.pdf">JNCIA Study Guide</a>, free from Juniper's website.</li>
-<li>JNCIA-Junos Study Guide Part 1 and Part 2, free to download from 
-<a href="https://learningportal.juniper.net/juniper/user_fasttrack_home.aspx">Juniper's FastTrack Website</a> 
-(requires free registration, after the registration find the "Study 
-Resources" section).</li>
-</ol>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="https://www.juniper.net/us/en/training/certification/resources_jnciajunos.html">The JNCIA-Junos Objectives</a></li>
-<li><a href="http://forums.juniper.net/">J-Net Community Forums</a></li>
-<li>The <a href="https://learningportal.juniper.net/juniper/user_activity_info.aspx?id=5735">Junosphere</a>, and 
-<a href="https://markom.info/2012/02/the-junosphere-experience-part-one-getting-access/">The Junosphere Experience</a>.</li>
-<li><a href="http://www.itcertificationmaster.com/jncia-junos/">Introduction to JNCIA</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-02
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/juniper/">juniper</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/zenoss-3/">
-            <h2 class="card-title">Zenoss 3 Installation</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="https://web.archive.org/web/20120720024146/http://www.tampabaycomputing.com/blog/setting-up-zenoss-3-2-on-centos-5-6-x64">Setting up Zenoss 3.2 on CentOS 5.6 x64</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-02
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/zenoss/">zenoss</a>
           
           
         </div><!-- .card-footer -->
@@ -975,39 +932,15 @@ tmpfs                 947M     0  947M   0% /dev/shm
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/smbpasswd/">
-            <h2 class="card-title">smbpasswd</h2>
+          <a href="/posts/zenoss-3/">
+            <h2 class="card-title">Zenoss 3 Installation</h2>
           </a>
 
           
           <div class="card-text">
-            <p><code>smbpasswd</code> is the Samba equivalent of the system's <code>passwd</code>, it allows 
-for the management of Samba user accounts.</p>
-
-<h2>Add a user</h2>
-
-<p>To add a user, use <code>smbpasswd</code> with the <code>-a</code> option, and the username as 
-the only required parameter, e.g:</p>
-
-<pre><code>smbpasswd -a obiwan
-</code></pre>
-
-<p>The very first time that you will run <code>smbpasswd</code> it will warn that a 
-user database does not yet exist. This is normal, and <code>smbpasswd</code> will 
-generate that database.</p>
-
-<h2>Change a password</h2>
-
-<p>Users can change their own passwords, and root can change any other 
-user's password. If the Samba server authenticates users against a 
-remote server, the server can be defined with the <code>-r</code> option.</p>
-
-<p>For example, when used with a local user database (i.e. in conjunction 
-with a <code>security = User</code> setting in <code>[Global]</code>), a user can change 
-their password with just:</p>
-
-<pre><code>obiwan@server ~ $ smbpasswd
-</code></pre>
+            <ul>
+<li><a href="https://web.archive.org/web/20120720024146/http://www.tampabaycomputing.com/blog/setting-up-zenoss-3-2-on-centos-5-6-x64">Setting up Zenoss 3.2 on CentOS 5.6 x64</a></li>
+</ul>
 
           </div>
           
@@ -1015,8 +948,66 @@ their password with just:</p>
         <div class="card-footer text-muted">
           
             <span class="mr-2">
-              <b>Posted</b>: 2013-10-25
+              <b>Posted</b>: 2013-11-02
             </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/juniper-jncia-study-material/">
+            <h2 class="card-title">Study Material for JNCIA</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><abbr title='Juniper Networks Certified Internet Associate'>JNCIA</abbr>-Junos is the entry-level certification of
+Juniper Networks, and a prerequisite for the next level of
+<a href="https://www.juniper.net/us/en/training/certification/certification-tracks/">JNCIS certifications</a>.</p>
+
+<p>Certification is achieved by passing one exam, either JN0-101 (being retired on 2014-01-31 and available to take until
+2014-02-28) or JN0-102 (available to take from 2014-01-31).</p>
+
+<ol>
+<li><a href="https://www.juniper.net/us/en/training/certification/">Juniper's Certification Website</a></li>
+<li><a href="https://web.archive.org/web/20140817123609/https://www.juniper.net/us/en/training/certification/JNCIA_studyguide.pdf">JNCIA Study Guide</a>, free from Juniper's website.</li>
+<li>JNCIA-Junos Study Guide Part 1 and Part 2, free to download from 
+<a href="https://learningportal.juniper.net/juniper/user_fasttrack_home.aspx">Juniper's FastTrack Website</a> 
+(requires free registration, after the registration find the "Study 
+Resources" section).</li>
+</ol>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="https://www.juniper.net/us/en/training/certification/resources_jnciajunos.html">The JNCIA-Junos Objectives</a></li>
+<li><a href="http://forums.juniper.net/">J-Net Community Forums</a></li>
+<li>The <a href="https://learningportal.juniper.net/juniper/user_activity_info.aspx?id=5735">Junosphere</a>, and 
+<a href="https://markom.info/2012/02/the-junosphere-experience-part-one-getting-access/">The Junosphere Experience</a>.</li>
+<li><a href="http://www.itcertificationmaster.com/jncia-junos/">Introduction to JNCIA</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-02
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/juniper/">juniper</a>
           
           
         </div><!-- .card-footer -->

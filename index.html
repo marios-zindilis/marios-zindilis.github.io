@@ -39,6 +39,39 @@
     
       <div class="card my-4">
       
+        <img class="card-img-top" src="/posts/django-migrations-tests-runserver-reusable-app/index.jpg" alt="Card image cap">
+      
+        <div class="card-body">
+          <a href="/posts/django-migrations-tests-runserver-reusable-app/">
+            <h2 class="card-title">Migrations, tests and runserver in Django reusable apps</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>How do you create migration files, run unit tests and preview your Django app in the browser when developing a reusable
+app that is not nested inside a Django project?</p>
+
+          </div>
+          <a href="/posts/django-migrations-tests-runserver-reusable-app/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2021-06-16
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/django/">django</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
         <img class="card-img-top" src="/posts/python-validate-that-only-one-of-many-parameters-is-provided/index.jpg" alt="Card image cap">
       
         <div class="card-body">
@@ -465,69 +498,6 @@ following policy:</p>
             <a href="/tags/aws-s3/">aws-s3</a>, 
           
             <a href="/tags/boto3/">boto3</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/create-s3-bucket-with-aws-cli/">
-            <h2 class="card-title">Create S3 Bucket with the AWS CLI</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The simplest form of using the AWS CLI to create an S3 bucket is:</p>
-
-<div class="codehilite"><pre><span></span><code>aws s3 mb s3://bucket-name
-</code></pre></div>
-
-<p>You can optionally specify the region:</p>
-
-<div class="codehilite"><pre><span></span><code>aws s3 mb s3://bucket-name --region eu-west-1
-</code></pre></div>
-
-<p>If you don't specify the region, the default is <code>us-east-1</code> (N. Virginia).</p>
-
-<h3>IAM</h3>
-
-<p>To be able to create buckets, you need an IAM role that has at least the
-following policy:</p>
-
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;Sid&quot;</span><span class="p">:</span> <span class="s2">&quot;AllowCreateS3Bucket&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Effect&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;s3:CreateBucket&quot;</span>
-            <span class="p">],</span>
-            <span class="nt">&quot;Resource&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;arn:aws:s3:::*&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2017-08-06
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/aws-s3/">aws-s3</a>, 
-          
-            <a href="/tags/aws-cli/">aws-cli</a>
           
           
         </div><!-- .card-footer -->

@@ -77,6 +77,35 @@ for vm in vms:
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/exportfs/">
+            <h2 class="card-title">exportfs</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>exportfs</code> is a helper utility for managing an NFS server.</p>
+
+<p>Used without any parameters, it will just display a list of active 
+exports, and the hosts that are allowed to access them.</p>
+
+<p>Used with the <code>r</code> parameter, it will reread <code>/etc/exports</code>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-27
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/bash-special-variables/">
             <h2 class="card-title">Bash Special Variables</h2>
           </a>
@@ -150,32 +179,6 @@ fi
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/perdition/">
-            <h2 class="card-title">Perdition</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://horms.net/projects/perdition/">Perdition, IMAP and POP3 Proxy</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-24
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
           <a href="/posts/vim/">
             <h2 class="card-title">Vim</h2>
           </a>
@@ -206,6 +209,32 @@ fi
           <b>Tags</b>:
           
             <a href="/tags/vim/">vim</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/perdition/">
+            <h2 class="card-title">Perdition</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://horms.net/projects/perdition/">Perdition, IMAP and POP3 Proxy</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-24
+            </span>
           
           
         </div><!-- .card-footer -->
@@ -370,91 +399,6 @@ another system.</p>
           
             <span class="mr-2">
               <b>Posted</b>: 2013-12-18
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/mysql-enable-logging/">
-            <h2 class="card-title">Enable logging in MySQL</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>These are some haphazardly written notes on logging in MySQL. For consistency, 
-create a new subdirectory in <code>/var/log/</code> and assign ownership to the user under 
-which your MySQL server is running - by default that would be the <code>mysql</code> user:</p>
-
-<pre><code>mkdir /var/log/mysqld/
-chown mysql:mysql /var/log/mysqld
-</code></pre>
-
-<p>I like to name the directory <code>mysqld</code> instead of <code>mysql</code>, to clarify 
-that the logs in that directory are those of the <strong>MySQL Server</strong> and 
-not those of the MySQL Client.</p>
-
-<h2>Slow Query Log</h2>
-
-<p>The slow query log contains queries the execution of which took more 
-than the value of the <code>long_query_time</code> variable, which by default is 
-10 seconds. </p>
-
-<p>To enable the slow query log on the next start of <code>mysqld</code>, add the 
-following line in your MySQL server's configuration file (<code>/etc/my.cnf</code> 
-by default), in the <code>[mysqld]</code> section:</p>
-
-<pre><code>slow-query-log
-slow_query_log_file=/var/log/mysqld/slow-queries.log
-</code></pre>
-
-<p>Create the file and assign ownership to the <code>mysql</code> user:</p>
-
-<pre><code>touch /var/log/mysqld/slow-queries.log
-chown mysql:mysql /var/log/mysqld/slow-queries.log
-</code></pre>
-
-<p>Finally, either restart the server to enable the logging, or enable it 
-on the already running server with:</p>
-
-<pre><code>mysql&gt; SET GLOBAL slow_query_log_file='/var/log/mysqld/slow-queries.log';
-mysql&gt; SET GLOBAL slow_query_log=1;
-</code></pre>
-
-<p>In any of those cases, the values of the global variables 
-<code>slow_query_log</code> and <code>slow_query_log_file</code>, should change from the 
-default:</p>
-
-<pre><code>mysql&gt; show variables like 'slow_query_log%';
-+---------------------+----------------------------------+
-| Variable_name       | Value                            |
-+---------------------+----------------------------------+
-| slow_query_log      | OFF                              |
-| slow_query_log_file | /var/run/mysqld/mysqld-slow.log  |
-+---------------------+----------------------------------+
-</code></pre>
-
-<p>To:</p>
-
-<pre><code>mysql&gt; show variables like 'slow_query_log%';
-+---------------------+----------------------------------+
-| Variable_name       | Value                            |
-+---------------------+----------------------------------+
-| slow_query_log      | ON                               |
-| slow_query_log_file | /var/log/mysqld/slow-queries.log |
-+---------------------+----------------------------------+
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-07
             </span>
           
           

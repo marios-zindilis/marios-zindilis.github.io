@@ -139,7 +139,7 @@ file 2 ("j2").</p>
 
 <p>For many files this is best done with a loop:</p>
 
-<div class="codehilite"><pre><span></span><code>$ <span class="k">for</span> i in * <span class="p">;</span> <span class="k">do</span> join -t , -a <span class="m">1</span> -a <span class="m">2</span> -o <span class="m">0</span>,1.2,2.2 J <span class="nv">$i</span> &gt; J <span class="p">;</span> <span class="k">done</span>
+<div class="codehilite"><pre><span></span><code>$ <span class="k">for</span> i <span class="k">in</span> * <span class="p">;</span> <span class="k">do</span> join -t , -a <span class="m">1</span> -a <span class="m">2</span> -o <span class="m">0</span>,1.2,2.2 J <span class="nv">$i</span> &gt; J <span class="p">;</span> <span class="k">done</span>
 </code></pre></div>
 
 <h2>Sorted Data Note</h2>

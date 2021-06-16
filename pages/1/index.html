@@ -71,6 +71,69 @@
     
       <div class="card my-4">
       
+        <div class="card-body">
+          <a href="/posts/create-s3-bucket-with-aws-cli/">
+            <h2 class="card-title">Create S3 Bucket with the AWS CLI</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The simplest form of using the AWS CLI to create an S3 bucket is:</p>
+
+<div class="codehilite"><pre><span></span><code>aws s3 mb s3://bucket-name
+</code></pre></div>
+
+<p>You can optionally specify the region:</p>
+
+<div class="codehilite"><pre><span></span><code>aws s3 mb s3://bucket-name --region eu-west-1
+</code></pre></div>
+
+<p>If you don't specify the region, the default is <code>us-east-1</code> (N. Virginia).</p>
+
+<h3>IAM</h3>
+
+<p>To be able to create buckets, you need an IAM role that has at least the
+following policy:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;Sid&quot;</span><span class="p">:</span> <span class="s2">&quot;AllowCreateS3Bucket&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Effect&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;s3:CreateBucket&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;Resource&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;arn:aws:s3:::*&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2017-08-06
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/aws-s3/">aws-s3</a>, 
+          
+            <a href="/tags/aws-cli/">aws-cli</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
         <img class="card-img-top" src="/posts/django-backend-validation-of-choices/index.jpg" alt="Card image cap">
       
         <div class="card-body">
@@ -477,50 +540,6 @@ instead of an integer.</p>
           <b>Tags</b>:
           
             <a href="/tags/django/">django</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/regex-in-python-markdown2-pt2/">
-            <h2 class="card-title">Regular expressions in python-markdown2 (part 2)</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>This article is a look into the performance of one of the
-regular expressions used in the
-<a href="https://github.com/trentm/python-markdown2" 
-title="python-markdown2 on Github"> python-markdown2</a> Python module for
-converting Markdown syntax to HTML. It was initially written for pure fun, and
-in celebration of its own pointlessness, but eventually the changes proposed
-here made it upstream in
-<a href="https://github.com/trentm/python-markdown2/pull/207" 
-title="python-markdown2 pull request 207">pull request 207</a>.</p>
-
-          </div>
-          <a href="/posts/regex-in-python-markdown2-pt2/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2015-11-22
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/python/">python</a>, 
-          
-            <a href="/tags/markdown2/">markdown2</a>, 
-          
-            <a href="/tags/regular-expressions/">regular-expressions</a>, 
-          
-            <a href="/tags/performance-optimization/">performance-optimization</a>
           
           
         </div><!-- .card-footer -->

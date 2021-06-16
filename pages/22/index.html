@@ -69,6 +69,54 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/tcpdump/">
+            <h2 class="card-title">tcpdump</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Notes and links on <code>tcpdump</code>.</p>
+
+<h2>Capture and output at the same time</h2>
+
+<p>This command will make <code>tcpdump</code> save captured packets in a <code>.pcap</code> file,
+<em>and</em> output their printable format on <code>stdout</code>:</p>
+
+<pre><code>sudo tcpdump -n -s0 -U -vvv tcp port 80 -w - | tee capture.pcap | tcpdump -vvv -n -r -
+</code></pre>
+
+<p>Options:</p>
+
+<pre><code>-n  : numeric output, don't resolve IPs to names, don't resolve ports to service names
+-s0 : don't truncate packets unless they are bigger than 65535 bytes
+-U  : don't buffer output, dump to `.pcap` immediately
+-w  : write `.pcap`
+-r  : read from `.pcap`
+</code></pre>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="http://www.danielmiessler.com/study/tcpdump/">A tcpdump Primer</a></li>
+<li><a href="http://blog.cloudflare.com/bpf-the-forgotten-bytecode">BPF - the forgotten bytecode</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-19
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/linux-show-network-routes/">
             <h2 class="card-title">Display network routes on Linux</h2>
           </a>
@@ -214,14 +262,14 @@ refreshes automatically.</p>
 
 <div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ sudo hdparm -t /dev/sdb
 /dev/sdb:
- Timing buffered disk reads: <span class="m">228</span> MB in  <span class="m">3</span>.02 <span class="nv">seconds</span> <span class="o">=</span>  <span class="m">75</span>.52 MB/sec
+ Timing buffered disk reads: <span class="m">228</span> MB <span class="k">in</span>  <span class="m">3</span>.02 <span class="nv">seconds</span> <span class="o">=</span>  <span class="m">75</span>.52 MB/sec
 </code></pre></div>
 
 <h3>Cached reads</h3>
 
 <div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ sudo hdparm -T /dev/sdb
 /dev/sdb:
- Timing cached reads:   <span class="m">3158</span> MB in  <span class="m">2</span>.00 <span class="nv">seconds</span> <span class="o">=</span> <span class="m">1579</span>.16 MB/sec
+ Timing cached reads:   <span class="m">3158</span> MB <span class="k">in</span>  <span class="m">2</span>.00 <span class="nv">seconds</span> <span class="o">=</span> <span class="m">1579</span>.16 MB/sec
 </code></pre></div>
 
 <h2><code>dd</code></h2>
@@ -229,7 +277,7 @@ refreshes automatically.</p>
 <h3>Writes</h3>
 
 <div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>testfile <span class="nv">bs</span><span class="o">=</span>8k <span class="nv">count</span><span class="o">=</span>100k<span class="p">;</span> rm -f testfile
-<span class="m">102400</span>+0 records in
+<span class="m">102400</span>+0 records <span class="k">in</span>
 <span class="m">102400</span>+0 records out
 <span class="m">838860800</span> bytes <span class="o">(</span><span class="m">839</span> MB<span class="o">)</span> copied, <span class="m">12</span>.7363 s, <span class="m">65</span>.9 MB/s
 </code></pre></div>
@@ -237,7 +285,7 @@ refreshes automatically.</p>
 <h3>Writes and Cache-out</h3>
 
 <div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ <span class="nb">time</span> sh -c <span class="s2">&quot;dd if=/dev/zero of=testfile bs=8k count=100k; sync&quot;</span> <span class="p">;</span> rm -f testfile
-<span class="m">102400</span>+0 records in
+<span class="m">102400</span>+0 records <span class="k">in</span>
 <span class="m">102400</span>+0 records out
 <span class="m">838860800</span> bytes <span class="o">(</span><span class="m">839</span> MB<span class="o">)</span> copied, <span class="m">12</span>.6832 s, <span class="m">66</span>.1 MB/s
 real    0m19.304s
@@ -313,142 +361,6 @@ service nfs start
             <span class="mr-2">
               <b>Posted</b>: 2013-11-13
             </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/apache2-basic-authentication/">
-            <h2 class="card-title">Basic Authentication with Apache 2</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>To enable <strong>basic authentication</strong> with Apache 2:</p>
-
-<ol>
-<li><p>Create a set of credentials for the user, using <code>htpasswd</code>. The 
-syntax is:</p>
-
-<pre><code>htpasswd /path/to/htpasswd/file username
-</code></pre>
-
-<p>If the <code>htpasswd</code> file does not exist yet, pass the additional 
-option <code>-c</code> to create it. For example:</p>
-
-<pre><code>htpasswd /etc/httpd/htpasswd marios
-</code></pre></li>
-<li><p>Enter the user password twice. This will create an entry in that 
-file, with a set of credentials, e.g:</p>
-
-<pre><code>[marios@centos6 ~]$ grep marios /etc/httpd/htpasswd 
-marios:3RoxtKn6QL9Uw
-</code></pre></li>
-<li><p>Basic authentication can be applied to a directory on the web 
-server and its subdirectories with the <code>Directory</code> Apache directive, 
-or to a URL and whatever follows it, with the <code>Location</code> directove. 
-To apply it to a directory, add to your Apache configuration 
-something like:</p>
-
-<pre><code>&lt;Directory /var/www/html/protected&gt;
-    AuthName "Protected"
-    AuthType Basic
-    AuthUserFile /etc/httpd/htpasswd
-    Require user marios
-&lt;/Directory&gt;
-</code></pre>
-
-<p>If you have multiple users, you can specify <code>Require valid-user</code>, 
-in which case all users with credentials in the <code>AuthUserFile</code> 
-will be allowed to login.</p></li>
-</ol>
-
-<p>Optionally, you can further secure that specific directory or location 
-with an <code>AllowFrom</code> directive, and restrict the ranges of IP addresses 
-from which the directory or location will be accessible.</p>
-
-<h2>Basic Authentication Against Active Directory</h2>
-
-<p>To authenticate and authorize users against Active Directory, you will need to
-create an Active Directory user that will be used to bind to AD. In the
-following example, the user is <code>apache_authentication_user</code> and its password is
-<code>apache_authentication_password</code>.</p>
-
-<pre><code>AuthType Basic
-AuthName "Authorized Users Only"
-AuthBasicProvider ldap
-AuthzLDAPAuthoritative on
-AuthLDAPBindDN "CN=apache_authentication_user,OU=system_accounts,DC=example,DC=com"
-AuthLDAPBindPassword apache_authentication_password
-AuthLDAPGroupAttributeIsDN on
-AuthLDAPURL "ldap://domain-controller.example.com:389/OU=USERS,DC=example,DC=com?sAMAccountName?sub?(objectClass=*)"
-&lt;Limit GET POST&gt;
-    require ldap-group CN=sysadmins,OU=GROUPS,DC=example,DC=com
-    require ldap-group CN=finance,OU=GROUPS,DC=example,DC=com
-&lt;/Limit&gt;
-</code></pre>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialApacheAddingLoginSiteProtection.html">Apache Web Login Authentication</a>, 
-a tutorial with many Apache authentication examples, including Basic.</li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-12
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/zenoss-zendmd-get-device-serial-numbers/">
-            <h2 class="card-title">Get all device Serial Numbers from ZenDMD in Zenoss</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>To get a list of devices in Zenoss that have a <strong>Serial Number</strong> 
-defined, run the following script as user <code>zenoss</code>. It will display the 
-Device Title, the Serial Number, and -as an added bonus- the Hardware 
-Manufacturer.</p>
-
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">Globals</span>
-<span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
-<span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
-
-<span class="n">Devices</span> <span class="o">=</span> <span class="n">dmd</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevicesGen</span><span class="p">()</span>
-
-<span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">Devices</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWSerialNumber</span><span class="p">():</span>
-        <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWSerialNumber</span><span class="p">(),</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWManufacturerName</span><span class="p">()</span>
-</code></pre></div>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-12
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/zenoss/">zenoss</a>
           
           
         </div><!-- .card-footer -->
@@ -666,24 +578,119 @@ file requested on the underlying filesystem. To disable, comment out:</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/zenoss-zendmd-get-groups/">
-            <h2 class="card-title">Get Device Groups in Zenoss with ZenDMD</h2>
+          <a href="/posts/apache2-basic-authentication/">
+            <h2 class="card-title">Basic Authentication with Apache 2</h2>
           </a>
 
           
           <div class="card-text">
-            <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">Globals</span>
+            <p>To enable <strong>basic authentication</strong> with Apache 2:</p>
+
+<ol>
+<li><p>Create a set of credentials for the user, using <code>htpasswd</code>. The 
+syntax is:</p>
+
+<pre><code>htpasswd /path/to/htpasswd/file username
+</code></pre>
+
+<p>If the <code>htpasswd</code> file does not exist yet, pass the additional 
+option <code>-c</code> to create it. For example:</p>
+
+<pre><code>htpasswd /etc/httpd/htpasswd marios
+</code></pre></li>
+<li><p>Enter the user password twice. This will create an entry in that 
+file, with a set of credentials, e.g:</p>
+
+<pre><code>[marios@centos6 ~]$ grep marios /etc/httpd/htpasswd 
+marios:3RoxtKn6QL9Uw
+</code></pre></li>
+<li><p>Basic authentication can be applied to a directory on the web 
+server and its subdirectories with the <code>Directory</code> Apache directive, 
+or to a URL and whatever follows it, with the <code>Location</code> directove. 
+To apply it to a directory, add to your Apache configuration 
+something like:</p>
+
+<pre><code>&lt;Directory /var/www/html/protected&gt;
+    AuthName "Protected"
+    AuthType Basic
+    AuthUserFile /etc/httpd/htpasswd
+    Require user marios
+&lt;/Directory&gt;
+</code></pre>
+
+<p>If you have multiple users, you can specify <code>Require valid-user</code>, 
+in which case all users with credentials in the <code>AuthUserFile</code> 
+will be allowed to login.</p></li>
+</ol>
+
+<p>Optionally, you can further secure that specific directory or location 
+with an <code>AllowFrom</code> directive, and restrict the ranges of IP addresses 
+from which the directory or location will be accessible.</p>
+
+<h2>Basic Authentication Against Active Directory</h2>
+
+<p>To authenticate and authorize users against Active Directory, you will need to
+create an Active Directory user that will be used to bind to AD. In the
+following example, the user is <code>apache_authentication_user</code> and its password is
+<code>apache_authentication_password</code>.</p>
+
+<pre><code>AuthType Basic
+AuthName "Authorized Users Only"
+AuthBasicProvider ldap
+AuthzLDAPAuthoritative on
+AuthLDAPBindDN "CN=apache_authentication_user,OU=system_accounts,DC=example,DC=com"
+AuthLDAPBindPassword apache_authentication_password
+AuthLDAPGroupAttributeIsDN on
+AuthLDAPURL "ldap://domain-controller.example.com:389/OU=USERS,DC=example,DC=com?sAMAccountName?sub?(objectClass=*)"
+&lt;Limit GET POST&gt;
+    require ldap-group CN=sysadmins,OU=GROUPS,DC=example,DC=com
+    require ldap-group CN=finance,OU=GROUPS,DC=example,DC=com
+&lt;/Limit&gt;
+</code></pre>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialApacheAddingLoginSiteProtection.html">Apache Web Login Authentication</a>, 
+a tutorial with many Apache authentication examples, including Basic.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-12
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/zenoss-zendmd-get-device-serial-numbers/">
+            <h2 class="card-title">Get all device Serial Numbers from ZenDMD in Zenoss</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>To get a list of devices in Zenoss that have a <strong>Serial Number</strong> 
+defined, run the following script as user <code>zenoss</code>. It will display the 
+Device Title, the Serial Number, and -as an added bonus- the Hardware 
+Manufacturer.</p>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">Globals</span>
 <span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
 <span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
 
-<span class="k">for</span> <span class="n">Group</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">getSubOrganizers</span><span class="p">():</span>
-    <span class="nb">print</span> <span class="n">Group</span><span class="o">.</span><span class="n">getPrimaryId</span><span class="p">()</span>
-</code></pre></div>
+<span class="n">Devices</span> <span class="o">=</span> <span class="n">dmd</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevicesGen</span><span class="p">()</span>
 
-<h2>Get all Devices in specific Group</h2>
-
-<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">Group</span><span class="o">.</span><span class="n">devices</span><span class="p">():</span>
-    <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">getPrimaryId</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">Devices</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWSerialNumber</span><span class="p">():</span>
+        <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWSerialNumber</span><span class="p">(),</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWManufacturerName</span><span class="p">()</span>
 </code></pre></div>
 
           </div>
@@ -692,7 +699,7 @@ file requested on the underlying filesystem. To disable, comment out:</p>
         <div class="card-footer text-muted">
           
             <span class="mr-2">
-              <b>Posted</b>: 2013-11-11
+              <b>Posted</b>: 2013-11-12
             </span>
           
           

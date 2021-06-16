@@ -40,23 +40,45 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/ntfsfix/">
-            <h2 class="card-title">ntfsfix</h2>
+          <a href="/posts/delgroup/">
+            <h2 class="card-title">delgroup</h2>
           </a>
 
           
           <div class="card-text">
-            <p>Το εργαλείο <code>ntfsfix</code> διορθώνει μερικά συνηθισμένα και απλά σφάλματα σε 
-δίσκους NTFS, και αναγκάζει τα Windows να εκτελέσουν το <code>chkdsk</code> την 
-επόμενη φορά που θα εκκινήσουν με τον δίσκο. Μπορεί να βοηθήσει σε 
-περιπτώσεις όπου τα Windows δεν μπορούν να προσαρτήσουν έναν NTFS δίσκο, 
-ή παρουσιάζουν σφάλματα όπως το <code>error "$MFTMirr does not match $MFT"</code>.</p>
+            <p>Το πρόγραμμα <b>delgroup</b> χρησιμοποιείται για τη διαγραφή ομάδων (group)
+χρηστών.</p>
 
-<p>Για να το εκτελέσετε, απλά δώστε του ως παράμετρο το σημείο προσάρτησης 
-του δίσκου που θέλετε να ελέγξετε, π.χ:</p>
+<p>Μπορείτε να δείτε τις ομάδες χρηστών που υπάρχουν στο σύστημα, τον 
+μοναδικό αριθμό ID κάθε ομάδας, και τα μέλη της κάθε ομάδας, στο 
+αρχείο <code>/etc/group</code>. Σε αυτό το αρχείο, οι ομάδες που χρειάζονται για 
+την λειτουργία του συστήματος συνήθως έχουν μοναδικό αριθμό μικρότερο 
+από 500. Μην διαγράψετε αυτές τις ομάδες, εκτός κι αν ξέρετε πραγματικά 
+τι κάνετε.</p>
 
-<pre><code>ntfsfix /dev/sdb1
-</code></pre>
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-07-06
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/free/">
+            <h2 class="card-title">free</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το πρόγραμμα γραμμής εντολών <code>free</code> εμφανίζει πληροφορίες για τη χρήση της μνήμης RAM και της προσωρινής μνήμης swap. </p>
 
           </div>
           
@@ -74,13 +96,23 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/free/">
-            <h2 class="card-title">free</h2>
+          <a href="/posts/ntfsfix/">
+            <h2 class="card-title">ntfsfix</h2>
           </a>
 
           
           <div class="card-text">
-            <p>Το πρόγραμμα γραμμής εντολών <code>free</code> εμφανίζει πληροφορίες για τη χρήση της μνήμης RAM και της προσωρινής μνήμης swap. </p>
+            <p>Το εργαλείο <code>ntfsfix</code> διορθώνει μερικά συνηθισμένα και απλά σφάλματα σε 
+δίσκους NTFS, και αναγκάζει τα Windows να εκτελέσουν το <code>chkdsk</code> την 
+επόμενη φορά που θα εκκινήσουν με τον δίσκο. Μπορεί να βοηθήσει σε 
+περιπτώσεις όπου τα Windows δεν μπορούν να προσαρτήσουν έναν NTFS δίσκο, 
+ή παρουσιάζουν σφάλματα όπως το <code>error "$MFTMirr does not match $MFT"</code>.</p>
+
+<p>Για να το εκτελέσετε, απλά δώστε του ως παράμετρο το σημείο προσάρτησης 
+του δίσκου που θέλετε να ελέγξετε, π.χ:</p>
+
+<pre><code>ntfsfix /dev/sdb1
+</code></pre>
 
           </div>
           
@@ -171,32 +203,6 @@ http://mediawiki.googlecode.com/svn/trunk/extensions/geshi/
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cisco-login-local/">
-            <h2 class="card-title">login local</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Καθορίζει ότι η σύνδεση των χρηστών στη συσκευή μέσω της συγκεκριμένης 
-γραμμής θα γίνεται με πιστοποίηση έναντι της τοπικής βάσης δεδομένων 
-ονομάτων χρήστη και συνθηματικών, σε αντίθεση π.χ. με το <code>login tacacs</code>. </p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-06-18
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
           <a href="/posts/cisco-mac-address-table-aging-time/">
             <h2 class="card-title">mac-address-table aging-time</h2>
           </a>
@@ -221,6 +227,32 @@ table) μιας συσκευής. Αν δοθεί η τιμή 0, τότε δεν
 </dd><dt> Εξαιρέσεις
 </dt><dd> Μερικές παλιότερες συσκευές δεν υποστηρίζουν την τιμή 0, δηλαδή δεν υποστηρίζουν την απενεργοποίηση της διαγραφής των διευθύνσεων από τον πίνακα. Σε αυτή την περίπτωση, η πλησιέστερη λύση είναι ο ορισμός της μεταβλητής $TIME στην μεγαλύτερη τιμή που επιτρέπει η συσκευή.
 </dd></dl>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-06-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-login-local/">
+            <h2 class="card-title">login local</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Καθορίζει ότι η σύνδεση των χρηστών στη συσκευή μέσω της συγκεκριμένης 
+γραμμής θα γίνεται με πιστοποίηση έναντι της τοπικής βάσης δεδομένων 
+ονομάτων χρήστη και συνθηματικών, σε αντίθεση π.χ. με το <code>login tacacs</code>. </p>
 
           </div>
           
@@ -322,32 +354,6 @@ table) μιας συσκευής. Αν δοθεί η τιμή 0, τότε δεν
           
             <span class="mr-2">
               <b>Posted</b>: 2011-04-23
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-8/">
-            <h2 class="card-title">Reading #8</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Not much reading done for the past couple of days. I am occupied elsewhere, plus I 'm doing some research that might or
-might not result in a monster post soon.</p>
-
-          </div>
-          <a href="/posts/reading-8/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-04-03
             </span>
           
           

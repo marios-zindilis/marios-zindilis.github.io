@@ -40,6 +40,46 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/ταξινόμηση-φακέλων-κατά-μέγεθος/">
+            <h2 class="card-title">Ταξινόμηση φακέλων κατά μέγεθος</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Μια εντολή για ταξινόμηση των φακέλων κατά μέγεθος στο Bash:</p>
+
+<pre><code>du -hsm | sort -n
+</code></pre>
+
+<p>Υπολογίζει το μέγεθος όλων των φακέλων σε MegaBytes και τους ταξινομεί 
+σε αύξουσα σειρά μεγέθους. Μια διαφορετική εκδοχή: </p>
+
+<pre><code>du -s * | sort -n | cut -f 2 | xargs -d "\n" du -chs
+</code></pre>
+
+<p>Καλεί δύο φορές το <code>du</code>, την πρώτη για να πάρει τη λίστα με τους 
+φακέλους και το μέγεθος (σε bytes). Ταξινομεί αριθμητικά, και μετά πασάρει τη 
+λίστα με τα ονόματα μόνο των φακέλων -αυτή τη φορά ταξινομημένη κατά μέγεθος- 
+ξανά στο <code>du</code>. Η επιλογή <code>-d "\n"</code> του <code>xargs</code> 
+καθορίζει το delimiter. Αν παραληφθεί, οι φάκελοι στον οποίων το όνομα 
+περιέχονται διαστήματα θεωρούνται πολλαπλά ορίσματα.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-02-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/fedora-16-εγκατάσταση-apache-mysql-php/">
             <h2 class="card-title">Εγκατάσταση Apache, MySQL και PHP σε Fedora 16</h2>
           </a>
@@ -374,48 +414,6 @@ sudo apt-get install php5-mysql
           
             <span class="mr-2">
               <b>Posted</b>: 2011-10-16
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-bandwidth/">
-            <h2 class="card-title">bandwidth (Εντολή Cisco)</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Με την εντολή <code>bandwidth</code> μπορείτε να ορίσετε το εύρος ζώνης μιας 
-διεπαφής σε συσκευές Cisco. Η μονάδα μέτρησης είναι Kilobits / Second 
-(Kbps). Αν δεν οριστεί ρητά, το εύρος από προεπιλογή είναι (σε Kbps):</p>
-
-<ul>
-<li>Serial: 1.544</li>
-<li>Ethernet: 10.000</li>
-<li>FastEthernet: 100.000</li>
-<li>GigabitEthernet: 1.000.000 </li>
-</ul>
-
-<p>Η τιμή που ορίζεται με την εντολή <code>bandwidth</code> δεν καθορίζει το 
-πραγματικό λειτουργικό εύρος της διεπαφής, αλλά χρησιμοποιείται μόνο 
-για τον υπολογισμό διαφόρων παραμέτρων, όπως για παράδειγμα του EIGRP 
-Metric, και μερικών παραμέτρων του QoS και του SNMP.</p>
-
-<p>Συγκεκριμένα για το EIGRP Metric, συνίσταται η παραμετροποίηση κάποιας 
-άλλης από τις τιμές που συνυπολογίζονται στο Metric, για το λόγο ότι το 
-bandwidth επηρεάζει και άλλα πράγματα, άσχετα με την δρομολόγηση. </p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-10-08
             </span>
           
           

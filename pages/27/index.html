@@ -40,16 +40,47 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/bash-tips/">
-            <h2 class="card-title">Bash tips</h2>
+          <a href="/posts/etc-x11-xorg-conf/">
+            <h2 class="card-title">/etc/X11/xorg.conf</h2>
           </a>
 
           
           <div class="card-text">
-            <p>Δύο μικρά tips.</p>
+            <p>Το αρχείο <code>xorg.conf</code> στον φάκελο <code>/etc/X11</code> (ή ενδεχομένως στο <code>/etc</code>) 
+είναι το αρχείο ρυθμίσεων του εξυπηρετητή γραφικών <a href="/docs/x.org.el.html">X.Org</a>.</p>
+
+<h2>Σύνταξη</h2>
+
+<p>Το περιεχόμενο του αρχείου χωρίζεται σε ενότητες (sections), οι οποίες 
+ελέγχουν διαφορετικές πτυχές της λειτουργίας του γραφικού περιβάλλοντος. </p>
 
           </div>
-          <a href="/posts/bash-tips/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-04-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/xorgcfg/">
+            <h2 class="card-title">xorgcfg</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το εργαλείο <code>xorgcfg</code> είναι ένα βοήθημα γραφικού περιβάλλοντος για την παραμετροποίηση του
+<a href="/posts/x-org/">εξυπηρετητή γραφικών X.Org</a>, ενόσω αυτός τρέχει. Θεωρείται ξεπερασμένο, και δεν υπάρχει στις πρόσφατες
+εκδόσεις των διανομών Linux. </p>
+
+          </div>
           
         </div><!-- .card-body -->
         <div class="card-footer text-muted">
@@ -502,46 +533,6 @@ project has been abandoned.</p>
           
             <span class="mr-2">
               <b>Posted</b>: 2012-02-08
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/ταξινόμηση-φακέλων-κατά-μέγεθος/">
-            <h2 class="card-title">Ταξινόμηση φακέλων κατά μέγεθος</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Μια εντολή για ταξινόμηση των φακέλων κατά μέγεθος στο Bash:</p>
-
-<pre><code>du -hsm | sort -n
-</code></pre>
-
-<p>Υπολογίζει το μέγεθος όλων των φακέλων σε MegaBytes και τους ταξινομεί 
-σε αύξουσα σειρά μεγέθους. Μια διαφορετική εκδοχή: </p>
-
-<pre><code>du -s * | sort -n | cut -f 2 | xargs -d "\n" du -chs
-</code></pre>
-
-<p>Καλεί δύο φορές το <code>du</code>, την πρώτη για να πάρει τη λίστα με τους 
-φακέλους και το μέγεθος (σε bytes). Ταξινομεί αριθμητικά, και μετά πασάρει τη 
-λίστα με τα ονόματα μόνο των φακέλων -αυτή τη φορά ταξινομημένη κατά μέγεθος- 
-ξανά στο <code>du</code>. Η επιλογή <code>-d "\n"</code> του <code>xargs</code> 
-καθορίζει το delimiter. Αν παραληφθεί, οι φάκελοι στον οποίων το όνομα 
-περιέχονται διαστήματα θεωρούνται πολλαπλά ορίσματα.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-02-02
             </span>
           
           

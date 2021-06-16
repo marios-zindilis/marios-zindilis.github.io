@@ -4,12 +4,18 @@
         <link>https://zindilis.com/tags/aws-s3/</link>
         <description>Personal website of Marios Zindilis - Posts tagged aws-s3</description>
         <atom:link href="https://zindilis.com/feeds/aws-s3.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 29 Dec 2020 08:57:44 UT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Jun 2021 09:43:50 UT</lastBuildDate>
         <item>
             <title>Upload file to S3 Bucket with the AWS CLI</title>
             <link>https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</guid>
             <pubDate>Mon, 07 Aug 2017 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Create S3 Bucket with Boto3</title>
+            <link>https://zindilis.com/posts/create-s3-bucket-with-boto3/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/create-s3-bucket-with-boto3/</guid>
+            <pubDate>Sun, 06 Aug 2017 00:00:00 UT</pubDate>
         </item>
         <item>
             <title>Upload file to S3 Bucket using Boto3</title>
@@ -21,12 +27,6 @@
             <title>Create S3 Bucket with the AWS CLI</title>
             <link>https://zindilis.com/posts/create-s3-bucket-with-aws-cli/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/create-s3-bucket-with-aws-cli/</guid>
-            <pubDate>Sun, 06 Aug 2017 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>Create S3 Bucket with Boto3</title>
-            <link>https://zindilis.com/posts/create-s3-bucket-with-boto3/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/create-s3-bucket-with-boto3/</guid>
             <pubDate>Sun, 06 Aug 2017 00:00:00 UT</pubDate>
         </item>
         

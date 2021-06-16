@@ -40,18 +40,52 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/crontab/">
-            <h2 class="card-title">crontab</h2>
+          <a href="/posts/syslog/">
+            <h2 class="card-title">syslog</h2>
           </a>
 
           
           <div class="card-text">
-            <p><code>crontab</code> can refer to two things:</p>
+            <h2><code>syslog</code> facilities</h2>
+
+<ul>
+<li><code>auth</code>, a.k.a. <code>security</code></li>
+<li><code>authpriv</code></li>
+<li><code>cron</code></li>
+<li><code>daemon</code></li>
+<li><code>kern</code></li>
+<li><code>lrp</code></li>
+<li><code>mail</code></li>
+<li><code>mark</code></li>
+<li><code>news</code></li>
+<li><code>security</code></li>
+<li><code>syslog</code></li>
+<li><code>user</code></li>
+<li><code>uucp</code></li>
+<li><code>local0</code> to <code>local7</code></li>
+</ul>
+
+<h2><code>syslog</code> priorities</h2>
+
+<p>A list of <code>syslog</code> priorities, sorted by importance, ascending:</p>
 
 <ol>
-<li>File <code>/etc/crontab</code>.</li>
-<li>Command <code>crontab</code>.</li>
+<li><code>debug</code></li>
+<li><code>info</code></li>
+<li><code>notice</code></li>
+<li><code>warning</code> (previously <code>warn</code>, now deprecated)</li>
+<li><code>err</code> (previously <code>error</code>, now deprecated)</li>
+<li><code>crit</code></li>
+<li><code>alert</code></li>
+<li><code>emerg</code> (previously <code>panic</code>, now deprecated)</li>
 </ol>
+
+<h2>Send test message to remote syslog server</h2>
+
+<pre><code>echo '&lt;12&gt;sourcehost message text' | nc -v -u -w 0 12.34.56.78 514
+</code></pre>
+
+<p><a href="http://nelsonslog.wordpress.com/2013/04/19/faking-out-remote-syslog-via-netcat/">Source</a></p>
 
           </div>
           
@@ -60,6 +94,84 @@
           
             <span class="mr-2">
               <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/dhcrelay/">
+            <h2 class="card-title">dhcrelay</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>dhcrelay</code> acts as a proxy between DHCP clients and a DHCP server, when 
+those are separated by a router, which by default blocks broadcasted 
+DHCP requests. It makes sense to install this on a router between two 
+subnets, only one of which has a DHCP server, or on a relay system, 
+again between two subnets.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-clock/">
+            <h2 class="card-title">Cisco: clock</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>With <code>clock</code> you can set the current time and date on a Cisco device. 
+For example:</p>
+
+<pre><code>clock set 20:08:56 Sept 21 2010
+</code></pre>
+
+<p>The generic syntax of the command is:</p>
+
+<pre><code>clock set hh:mm:ss MONTH &lt;0-31&gt; YYYY
+</code></pre>
+
+<p>...where:</p>
+
+<ul>
+<li><code>hh</code> is the hour,</li>
+<li><code>mm</code> are the minutes,</li>
+<li><code>ss</code> are the seconds,</li>
+<li><code>MONTH</code> is the month,</li>
+<li><code>&lt;0-31&gt;</code> is the date, an integer between 0 and 31, and </li>
+<li><code>YYYY</code> is the year.</li>
+</ul>
+
+<p>Note that the month and date are also acceptable in the reverse order, 
+for example:</p>
+
+<pre><code>clock set 20:08:56 21 Sept 2010
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-29
             </span>
           
           
@@ -128,6 +240,38 @@ status of all ports on which port-security rules have been configured.</p>
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/cisco-banner-login/">
+            <h2 class="card-title">Cisco: banner login</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>With <code>banner login</code> you can set a message that will be displayed to the 
+user when she connects to a VTY line. </p>
+
+<p>See also <a href="/posts/cisco-banner-motd/">banner motd</a>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-29
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/cisco/">cisco</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cisco-alias/">
             <h2 class="card-title">alias (Cisco command)</h2>
           </a>
@@ -162,118 +306,20 @@ command is:</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cisco-banner-login/">
-            <h2 class="card-title">Cisco: banner login</h2>
+          <a href="/posts/pysphere/">
+            <h2 class="card-title">PySphere</h2>
           </a>
 
           
           <div class="card-text">
-            <p>With <code>banner login</code> you can set a message that will be displayed to the 
-user when she connects to a VTY line. </p>
-
-<p>See also <a href="/posts/cisco-banner-motd/">banner motd</a>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-29
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/cisco/">cisco</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-clock/">
-            <h2 class="card-title">Cisco: clock</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>With <code>clock</code> you can set the current time and date on a Cisco device. 
-For example:</p>
-
-<pre><code>clock set 20:08:56 Sept 21 2010
-</code></pre>
-
-<p>The generic syntax of the command is:</p>
-
-<pre><code>clock set hh:mm:ss MONTH &lt;0-31&gt; YYYY
-</code></pre>
-
-<p>...where:</p>
-
-<ul>
-<li><code>hh</code> is the hour,</li>
-<li><code>mm</code> are the minutes,</li>
-<li><code>ss</code> are the seconds,</li>
-<li><code>MONTH</code> is the month,</li>
-<li><code>&lt;0-31&gt;</code> is the date, an integer between 0 and 31, and </li>
-<li><code>YYYY</code> is the year.</li>
-</ul>
-
-<p>Note that the month and date are also acceptable in the reverse order, 
-for example:</p>
-
-<pre><code>clock set 20:08:56 21 Sept 2010
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/citrix-xenserver-6-2/">
-            <h2 class="card-title">Citrix XenServer 6.2</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <h2>Deprecated Features</h2>
-
-<ul>
-<li><a href="http://support.citrix.com/article/CTX137333">Workload Balancing</a></li>
-<li><a href="http://support.citrix.com/article/CTX137334">Web Self Service</a></li>
-<li><a href="http://support.citrix.com/article/CTX137335">Virtual Machine Protection and Recovery</a></li>
-<li><a href="http://support.citrix.com/article/CTX137336">Distributed Virtual Switch Controller</a></li>
-<li><a href="http://support.citrix.com/article/CTX137337">Integrated StorageLink</a></li>
-<li>XenConvert (P2V)</li>
-</ul>
-
-<h2>Installation Guide</h2>
-
-<ul>
-<li><a href="https://docs.citrix.com/en-us/legacy-archive/downloads/xs-installation-6-2.pdf">Citrix XenServer 6.2.0 Installation Guide</a> (pdf)</li>
-</ul>
+            <p><strong>PySphere</strong> is a Python API that provides access to vSphere's Web 
+Services SDK.</p>
 
 <h2>See also</h2>
 
 <ul>
-<li><a href="http://www.xvpsource.org/">xvpsource</a>, a cross-platform VNC-based 
-and Web-based Management for Citrix XenServer and Xen Cloud 
-Platform. This, according to Citrix, can replace the Web Self 
-Service feature that was removed in XenServer 6.2.</li>
+<li><a href="http://code.google.com/p/pysphere/">PySphere Project Page</a></li>
+<li><a href="/posts/pysphere-get-virtual-machines/">Get Virtual Machines from VMware with PySphere</a></li>
 </ul>
 
           </div>
@@ -318,49 +364,36 @@ Service feature that was removed in XenServer 6.2.</li>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/exportfs/">
-            <h2 class="card-title">exportfs</h2>
+          <a href="/posts/citrix-xenserver-6-2/">
+            <h2 class="card-title">Citrix XenServer 6.2</h2>
           </a>
 
           
           <div class="card-text">
-            <p><code>exportfs</code> is a helper utility for managing an NFS server.</p>
+            <h2>Deprecated Features</h2>
 
-<p>Used without any parameters, it will just display a list of active 
-exports, and the hosts that are allowed to access them.</p>
+<ul>
+<li><a href="http://support.citrix.com/article/CTX137333">Workload Balancing</a></li>
+<li><a href="http://support.citrix.com/article/CTX137334">Web Self Service</a></li>
+<li><a href="http://support.citrix.com/article/CTX137335">Virtual Machine Protection and Recovery</a></li>
+<li><a href="http://support.citrix.com/article/CTX137336">Distributed Virtual Switch Controller</a></li>
+<li><a href="http://support.citrix.com/article/CTX137337">Integrated StorageLink</a></li>
+<li>XenConvert (P2V)</li>
+</ul>
 
-<p>Used with the <code>r</code> parameter, it will reread <code>/etc/exports</code>.</p>
+<h2>Installation Guide</h2>
 
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-27
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/pysphere/">
-            <h2 class="card-title">PySphere</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><strong>PySphere</strong> is a Python API that provides access to vSphere's Web 
-Services SDK.</p>
+<ul>
+<li><a href="https://docs.citrix.com/en-us/legacy-archive/downloads/xs-installation-6-2.pdf">Citrix XenServer 6.2.0 Installation Guide</a> (pdf)</li>
+</ul>
 
 <h2>See also</h2>
 
 <ul>
-<li><a href="http://code.google.com/p/pysphere/">PySphere Project Page</a></li>
-<li><a href="/posts/pysphere-get-virtual-machines/">Get Virtual Machines from VMware with PySphere</a></li>
+<li><a href="http://www.xvpsource.org/">xvpsource</a>, a cross-platform VNC-based 
+and Web-based Management for Citrix XenServer and Xen Cloud 
+Platform. This, according to Citrix, can replace the Web Self 
+Service feature that was removed in XenServer 6.2.</li>
 </ul>
 
           </div>

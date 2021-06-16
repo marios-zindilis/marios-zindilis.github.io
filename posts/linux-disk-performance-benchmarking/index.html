@@ -64,14 +64,14 @@
 
 <div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ sudo hdparm -t /dev/sdb
 /dev/sdb:
- Timing buffered disk reads: <span class="m">228</span> MB in  <span class="m">3</span>.02 <span class="nv">seconds</span> <span class="o">=</span>  <span class="m">75</span>.52 MB/sec
+ Timing buffered disk reads: <span class="m">228</span> MB <span class="k">in</span>  <span class="m">3</span>.02 <span class="nv">seconds</span> <span class="o">=</span>  <span class="m">75</span>.52 MB/sec
 </code></pre></div>
 
 <h3>Cached reads</h3>
 
 <div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ sudo hdparm -T /dev/sdb
 /dev/sdb:
- Timing cached reads:   <span class="m">3158</span> MB in  <span class="m">2</span>.00 <span class="nv">seconds</span> <span class="o">=</span> <span class="m">1579</span>.16 MB/sec
+ Timing cached reads:   <span class="m">3158</span> MB <span class="k">in</span>  <span class="m">2</span>.00 <span class="nv">seconds</span> <span class="o">=</span> <span class="m">1579</span>.16 MB/sec
 </code></pre></div>
 
 <h2><code>dd</code></h2>
@@ -79,7 +79,7 @@
 <h3>Writes</h3>
 
 <div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>testfile <span class="nv">bs</span><span class="o">=</span>8k <span class="nv">count</span><span class="o">=</span>100k<span class="p">;</span> rm -f testfile
-<span class="m">102400</span>+0 records in
+<span class="m">102400</span>+0 records <span class="k">in</span>
 <span class="m">102400</span>+0 records out
 <span class="m">838860800</span> bytes <span class="o">(</span><span class="m">839</span> MB<span class="o">)</span> copied, <span class="m">12</span>.7363 s, <span class="m">65</span>.9 MB/s
 </code></pre></div>
@@ -87,7 +87,7 @@
 <h3>Writes and Cache-out</h3>
 
 <div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ <span class="nb">time</span> sh -c <span class="s2">&quot;dd if=/dev/zero of=testfile bs=8k count=100k; sync&quot;</span> <span class="p">;</span> rm -f testfile
-<span class="m">102400</span>+0 records in
+<span class="m">102400</span>+0 records <span class="k">in</span>
 <span class="m">102400</span>+0 records out
 <span class="m">838860800</span> bytes <span class="o">(</span><span class="m">839</span> MB<span class="o">)</span> copied, <span class="m">12</span>.6832 s, <span class="m">66</span>.1 MB/s
 real    0m19.304s

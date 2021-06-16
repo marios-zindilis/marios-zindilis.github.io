@@ -40,40 +40,70 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/pgtune-configuration-changes/">
-            <h2 class="card-title">PostgreSQL Configuration Changes with pgtune</h2>
+          <a href="/posts/zenoss-zendmd-get-events/">
+            <h2 class="card-title">Get Zenoss Events from ZenDMD</h2>
           </a>
 
           
           <div class="card-text">
-            <p>This is an example run of the <code>pgtune</code> script, which examines a system's 
-hardware and proposes changes to PostgreSQL configuration, to better 
-utilize the capabilities of the hardware for the benefit of the database.</p>
+            <div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
 
-<p>The following configuration differences are from an example of a VM 
-running with 2x Intel Quad @2.33GHz CPUs and 2GB of RAM. The commands 
-run to create the new configuration file with pgtune were:</p>
+<span class="kn">import</span> <span class="nn">Globals</span>
+<span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
+<span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
 
-<pre><code>pgtune -i /var/lib/pgsql/9.2/data/postgresql.conf -o /var/lib/pgsql/9.2/data/postgresql2.conf
-mv postgresql.conf postgresql-factory-default.conf
-mv postgresql2.conf postgresql.conf
-chown postgres:postgres postgresql.conf
-service postgresql restart
-</code></pre>
+<span class="n">Events</span> <span class="o">=</span> <span class="n">DMD</span><span class="o">.</span><span class="n">ZenEventManager</span><span class="o">.</span><span class="n">getEventList</span><span class="p">()</span>
+</code></pre></div>
 
-<h2>Differences</h2>
+<p>Each <code>Event</code> in <code>Events</code> (iterable) offers:</p>
 
-<pre><code>&lt; max_connections = 100
-&gt; max_connections = 80
-&lt; #default_statistics_target = 100  
-&gt; default_statistics_target = 50 
-&lt; #constraint_exclusion = partition
-&gt; constraint_exclusion = on 
-&lt; #effective_cache_size = 128MB
-&gt; effective_cache_size = 1408MB 
-&lt; #wal_buffers = -1
-&gt; wal_buffers = 8MB
-</code></pre>
+<ul>
+<li><code>__ac_permissions__</code></li>
+<li><code>__allow_access_to_unprotected_subobjects__</code></li>
+<li><code>__doc__</code></li>
+<li><code>__implemented__</code></li>
+<li><code>__init__</code></li>
+<li><code>__module__</code></li>
+<li><code>__providedBy__</code></li>
+<li><code>__provides__</code></li>
+<li><code>_action</code></li>
+<li><code>_baseurl</code></li>
+<li><code>_clearClasses</code></li>
+<li><code>_fields</code></li>
+<li><code>_zem</code></li>
+<li><code>clearClasses</code></li>
+<li><code>component</code></li>
+<li><code>count</code></li>
+<li><code>device</code></li>
+<li><code>eventClass</code></li>
+<li><code>eventKey</code></li>
+<li><code>eventPermission</code></li>
+<li><code>eventState</code></li>
+<li><code>evid</code></li>
+<li><code>firstTime</code></li>
+<li><code>getCssClass</code></li>
+<li><code>getDataList</code></li>
+<li><code>getDedupFields</code></li>
+<li><code>getEventData</code></li>
+<li><code>getEventDetailHref</code></li>
+<li><code>getEventFields</code></li>
+<li><code>getStateFor</code></li>
+<li><code>getStateToCopy</code></li>
+<li><code>getStateToCopyFor</code></li>
+<li><code>getTypeToCopy</code></li>
+<li><code>getTypeToCopyFor</code></li>
+<li><code>jellyFor</code></li>
+<li><code>lastTime</code></li>
+<li><code>processUniqueID</code></li>
+<li><code>setCopyableState</code></li>
+<li><code>setStateFor</code></li>
+<li><code>severity</code></li>
+<li><code>summary</code></li>
+<li><code>unjellyFor</code></li>
+<li><code>updateFromDict</code></li>
+<li><code>updateFromFields</code></li>
+<li><code>zem</code></li>
+</ul>
 
           </div>
           
@@ -83,6 +113,11 @@ service postgresql restart
             <span class="mr-2">
               <b>Posted</b>: 2013-10-25
             </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/zenoss/">zenoss</a>
           
           
         </div><!-- .card-footer -->
@@ -205,6 +240,57 @@ authentication, and utilizes newer AD protocols.</p>
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/pgtune-configuration-changes/">
+            <h2 class="card-title">PostgreSQL Configuration Changes with pgtune</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is an example run of the <code>pgtune</code> script, which examines a system's 
+hardware and proposes changes to PostgreSQL configuration, to better 
+utilize the capabilities of the hardware for the benefit of the database.</p>
+
+<p>The following configuration differences are from an example of a VM 
+running with 2x Intel Quad @2.33GHz CPUs and 2GB of RAM. The commands 
+run to create the new configuration file with pgtune were:</p>
+
+<pre><code>pgtune -i /var/lib/pgsql/9.2/data/postgresql.conf -o /var/lib/pgsql/9.2/data/postgresql2.conf
+mv postgresql.conf postgresql-factory-default.conf
+mv postgresql2.conf postgresql.conf
+chown postgres:postgres postgresql.conf
+service postgresql restart
+</code></pre>
+
+<h2>Differences</h2>
+
+<pre><code>&lt; max_connections = 100
+&gt; max_connections = 80
+&lt; #default_statistics_target = 100  
+&gt; default_statistics_target = 50 
+&lt; #constraint_exclusion = partition
+&gt; constraint_exclusion = on 
+&lt; #effective_cache_size = 128MB
+&gt; effective_cache_size = 1408MB 
+&lt; #wal_buffers = -1
+&gt; wal_buffers = 8MB
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/etc-hosts-allow/">
             <h2 class="card-title">/etc/hosts.allow</h2>
           </a>
@@ -248,92 +334,6 @@ except those specified in <code>/etc/hosts.allow</code>, add in <code>/etc/hosts
             <span class="mr-2">
               <b>Posted</b>: 2013-10-25
             </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/zenoss-zendmd-get-events/">
-            <h2 class="card-title">Get Zenoss Events from ZenDMD</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
-
-<span class="kn">import</span> <span class="nn">Globals</span>
-<span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
-<span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
-
-<span class="n">Events</span> <span class="o">=</span> <span class="n">DMD</span><span class="o">.</span><span class="n">ZenEventManager</span><span class="o">.</span><span class="n">getEventList</span><span class="p">()</span>
-</code></pre></div>
-
-<p>Each <code>Event</code> in <code>Events</code> (iterable) offers:</p>
-
-<ul>
-<li><code>__ac_permissions__</code></li>
-<li><code>__allow_access_to_unprotected_subobjects__</code></li>
-<li><code>__doc__</code></li>
-<li><code>__implemented__</code></li>
-<li><code>__init__</code></li>
-<li><code>__module__</code></li>
-<li><code>__providedBy__</code></li>
-<li><code>__provides__</code></li>
-<li><code>_action</code></li>
-<li><code>_baseurl</code></li>
-<li><code>_clearClasses</code></li>
-<li><code>_fields</code></li>
-<li><code>_zem</code></li>
-<li><code>clearClasses</code></li>
-<li><code>component</code></li>
-<li><code>count</code></li>
-<li><code>device</code></li>
-<li><code>eventClass</code></li>
-<li><code>eventKey</code></li>
-<li><code>eventPermission</code></li>
-<li><code>eventState</code></li>
-<li><code>evid</code></li>
-<li><code>firstTime</code></li>
-<li><code>getCssClass</code></li>
-<li><code>getDataList</code></li>
-<li><code>getDedupFields</code></li>
-<li><code>getEventData</code></li>
-<li><code>getEventDetailHref</code></li>
-<li><code>getEventFields</code></li>
-<li><code>getStateFor</code></li>
-<li><code>getStateToCopy</code></li>
-<li><code>getStateToCopyFor</code></li>
-<li><code>getTypeToCopy</code></li>
-<li><code>getTypeToCopyFor</code></li>
-<li><code>jellyFor</code></li>
-<li><code>lastTime</code></li>
-<li><code>processUniqueID</code></li>
-<li><code>setCopyableState</code></li>
-<li><code>setStateFor</code></li>
-<li><code>severity</code></li>
-<li><code>summary</code></li>
-<li><code>unjellyFor</code></li>
-<li><code>updateFromDict</code></li>
-<li><code>updateFromFields</code></li>
-<li><code>zem</code></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-10-25
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/zenoss/">zenoss</a>
           
           
         </div><!-- .card-footer -->
@@ -414,6 +414,56 @@ my-big-server
           <b>Tags</b>:
           
             <a href="/tags/zenoss/">zenoss</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/smbpasswd/">
+            <h2 class="card-title">smbpasswd</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>smbpasswd</code> is the Samba equivalent of the system's <code>passwd</code>, it allows 
+for the management of Samba user accounts.</p>
+
+<h2>Add a user</h2>
+
+<p>To add a user, use <code>smbpasswd</code> with the <code>-a</code> option, and the username as 
+the only required parameter, e.g:</p>
+
+<pre><code>smbpasswd -a obiwan
+</code></pre>
+
+<p>The very first time that you will run <code>smbpasswd</code> it will warn that a 
+user database does not yet exist. This is normal, and <code>smbpasswd</code> will 
+generate that database.</p>
+
+<h2>Change a password</h2>
+
+<p>Users can change their own passwords, and root can change any other 
+user's password. If the Samba server authenticates users against a 
+remote server, the server can be defined with the <code>-r</code> option.</p>
+
+<p>For example, when used with a local user database (i.e. in conjunction 
+with a <code>security = User</code> setting in <code>[Global]</code>), a user can change 
+their password with just:</p>
+
+<pre><code>obiwan@server ~ $ smbpasswd
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-10-25
+            </span>
           
           
         </div><!-- .card-footer -->
@@ -619,6 +669,31 @@ fglrx-amdcccle_12.104-0ubuntu1_amd64.deb
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/centos-6-install-opendcim-2-1/">
+            <h2 class="card-title">openDCIM 2.1 Installation on Centos 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>This is a bottom-up guide for installing <a href="/posts/opendcim/">openDCIM</a> on a system running CentOS 6.x.</p>
+
+          </div>
+          <a href="/posts/centos-6-install-opendcim-2-1/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-05-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/centos-6-install-opendcim/">
             <h2 class="card-title">openDCIM Installation on CentOS 6</h2>
           </a>
@@ -648,58 +723,6 @@ to newer versions.</p>
           
             <span class="mr-2">
               <b>Posted</b>: 2013-05-25
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/centos-6-install-opendcim-2-1/">
-            <h2 class="card-title">openDCIM 2.1 Installation on Centos 6</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>This is a bottom-up guide for installing <a href="/posts/opendcim/">openDCIM</a> on a system running CentOS 6.x.</p>
-
-          </div>
-          <a href="/posts/centos-6-install-opendcim-2-1/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-05-25
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/bash-check-that-string-is-ip/">
-            <h2 class="card-title">Bash: Check that string is IP</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Assuming that we have a Bash script that accepts a parameter  that is expected to be an IP Address, this article lists
-a couple of (practically useless) ways of verifying that input <em>without using regular expressions</em>, which is the sane
-thing to do. It is therefore an exercise in futility, but it helps with my chronic allergy to regular expressions.</p>
-
-          </div>
-          <a href="/posts/bash-check-that-string-is-ip/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-05-10
             </span>
           
           

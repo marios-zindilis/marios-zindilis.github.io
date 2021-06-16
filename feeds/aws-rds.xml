@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/aws-rds/</link>
         <description>Personal website of Marios Zindilis - Posts tagged aws-rds</description>
         <atom:link href="https://zindilis.com/feeds/aws-rds.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 29 Dec 2020 08:57:44 UT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Jun 2021 09:43:49 UT</lastBuildDate>
         <item>
             <title>Percona Webinar: What I Learned While Migrating MySQL On-Premises To Amazon RDS</title>
             <link>https://zindilis.com/posts/migrate-on-premises-mysql-to-rds/</link>

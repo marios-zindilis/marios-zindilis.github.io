@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Migrations, tests and runserver in Django reusable apps</title>
+
+    
+      <meta name="description" content="How to create a minimal manage.py file to make migrations, run tests and run a development server in a reusable Django app.">
+      
+        <meta name="keywords" content="django">
+      
+      <link rel="canonical" href="https://zindilis.com/posts/django-migrations-tests-runserver-reusable-app/" />
+      <meta property="og:title" content="Migrations, tests and runserver in Django reusable apps" />
+<meta property="og:url" content="https://zindilis.com/posts/django-migrations-tests-runserver-reusable-app/" />
+<meta property="og:description" content="How to create a minimal manage.py file to make migrations, run tests and run a development server in a reusable Django app." />
+<meta property="og:type" content="article" />
+<meta property="og:article:published_time" content="2021-06-16" />
+    
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
+            <header>
+                <h1 class="mt-4" itemprop="name">Migrations, tests and runserver in Django reusable apps</h1>
+            </header>
+            <div itemprop="articleBody">
+                <p>How do you create migration files, run unit tests and preview your Django app in the browser when developing a reusable
+app that is not nested inside a Django project?</p>
+
+<!-- read more -->
+
+<p>When first developing a Django-based website, there is typically a Django project and one or more Django apps. The
+Django project provides <code>settings.py</code> for configuring the web application, <code>wsgi.py</code> and <code>asgi.py</code> for deploying it,
+project-level <code>urls.py</code> for routing, and, crucially, <code>manage.py</code> for all the management tasks, like creating migrations,
+migrating, running unit tests, running management commands, running a development web server (<code>runserver</code>), etc.</p>
+
+<p>When developing a <a href="https://docs.djangoproject.com/en/3.2/intro/reusable-apps/" title="How to write reusable apps">reusable Django app though</a>, there is no Django project wrapped around it, so there is no
+<code>manage.py</code> to help with unit tests, migrations and the development server. Fortunately, you can create a variant of the
+default <code>manage.py</code> that also includes all the required contents of the default <code>settings.py</code>. This will work for both
+running unit tests with <code>./manage.py test</code> and with making migrations with <code>./manage.py makemigrations</code>.</p>
+
+<p>Assuming your Django app is named <code>my_reusable_app</code>:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">INSTALLED_APPS</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;my_reusable_app&#39;</span><span class="p">])</span>
+
+<span class="kn">import</span> <span class="nn">django</span>
+<span class="n">django</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">django.core.management</span> <span class="kn">import</span> <span class="n">execute_from_command_line</span>
+<span class="n">execute_from_command_line</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The only setting required for unit tests and migrations is <code>INSTALLED_APPS</code>. You need to tell Python where to import the
+app from, so assuming that you place this <code>manage.py</code> file in the same directory as the app code, you append <code>..</code> to the
+system path.</p>
+
+<p>If you also want to run the development server with <code>./manage.py runserver</code>, you need two additional settings: the
+<code>ROOT_URLCONF</code> setting, and one of either <code>DEBUG=True</code> or a non-empty <code>ALLOWED_HOSTS</code>. Here's a complete example with
+the latter option:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+    <span class="n">INSTALLED_APPS</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;my_reusable_app&#39;</span><span class="p">],</span>
+    <span class="n">ALLOWED_HOSTS</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;localhost&#39;</span><span class="p">],</span>
+    <span class="n">ROOT_URLCONF</span><span class="o">=</span><span class="s1">&#39;urls&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">django</span>
+<span class="n">django</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">django.core.management</span> <span class="kn">import</span> <span class="n">execute_from_command_line</span>
+<span class="n">execute_from_command_line</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</code></pre></div>
+
+<p>You could also place your <code>manage.py</code> file in the parent directory of your app, in which case you would need these two
+changes:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="gd">-sys.path.append(&#39;..&#39;)</span>
+<span class="gi">+sys.path.append(&#39;.&#39;)</span>
+
+<span class="gd">-    ROOT_URLCONF=&#39;urls&#39;,</span>
+<span class="gi">+    ROOT_URLCONF=&#39;my_reusable_app.urls&#39;,</span>
+</code></pre></div>
+
+<p>The utility of running the development server like this is reduced by the lack of a database. If you need a database for
+development, you can add a <code>DATABASES</code> section in the configuration and run <code>./manage.py migrate</code>. I'll leave this one
+as an exercise.</p>
+
+<h2>Source Control and App Installation Artifacts</h2>
+
+<p>Should you include your custom <code>manage.py</code> in source control (e.g. Git), and should you include it in the installation
+files that your users get?</p>
+
+<p>I think you should share your custom <code>manage.py</code> in source control, so that other developers have an easy way to run
+tests and make migrations for code they contribute to the app. It is not technically required, but it is convenient to
+have it.</p>
+
+<p>On the other hand, I think you should exclude this custom <code>manage.py</code> from the installable packages you distribute to
+your users. There's no need to ship this file to customers, as it is only used for development, plus there may be some
+unintended side effects (can't think of any right now, but you never know). If you use <a href="https://pypi.org/project/setuptools/" title="setuptools">setuptools</a> to package your
+reusable Django app, you can add a <code>MANIFEST.in</code> file with a line like this:</p>
+
+<pre><code>exclude my_reusable_app/manage.py
+</code></pre>
+
+<p>That is, assuming <code>MANIFEST.in</code> is in the parent directory of the app code.</p>
+
+<hr>
+
+<p>Image credit: <em>Flowers Of Ireland</em>, by Krista Stith. In the Public Domain.
+<a href="https://www.publicdomainpictures.net/en/view-image.php?image=181317&amp;picture=flowers-of-ireland">Source</a>.</p>
+
+<!-- links -->
+
+            </div>
+            <footer>
+                <p>Posted on <span itemprop="datePublished" content="2021-06-16">2021-06-16</span></p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a> &middot; 
+            <a href="/feeds/feed.xml">RSS</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -40,6 +40,33 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/bash-check-that-string-is-ip/">
+            <h2 class="card-title">Bash: Check that string is IP</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Assuming that we have a Bash script that accepts a parameter  that is expected to be an IP Address, this article lists
+a couple of (practically useless) ways of verifying that input <em>without using regular expressions</em>, which is the sane
+thing to do. It is therefore an exercise in futility, but it helps with my chronic allergy to regular expressions.</p>
+
+          </div>
+          <a href="/posts/bash-check-that-string-is-ip/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-05-10
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/έργα-στο-public-domain-από-1-ιανουαρίου-2013/">
             <h2 class="card-title">Έργα στο Public Domain από 1η Ιανουαρίου 2013</h2>
           </a>
@@ -105,7 +132,7 @@
 tests. I created a '<code>test</code>' database, and a '<code>table2</code>' table, with a 
 '<code>content</code>' field with datatype <code>TEXT</code>. Here's what I run from Bash:</p>
 
-<div class="codehilite"><pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
+<div class="codehilite"><pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i <span class="k">in</span> <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
 <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span> of <span class="m">500000</span><span class="p">;</span> <span class="se">\</span>
 mysql -u root -D <span class="nb">test</span> -e <span class="se">\</span>
 <span class="s2">&quot;INSERT INTO table2 (content) VALUES (&#39;`cat /var/log/messages | tr -d \&#39;`&#39;)&quot;</span><span class="p">;</span> <span class="se">\</span>
@@ -359,45 +386,6 @@ the <code>shutdown</code> command is executed. Note, that this does not happen i
           
             <span class="mr-2">
               <b>Posted</b>: 2012-05-01
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/cisco/">cisco</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-show-ip-eigrp-interfaces-detail/">
-            <h2 class="card-title">show ip eigrp interfaces detail</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Εμφανίζει λεπτομέρειες για τις διεπαφές ενός δρομολογητή οι οποίες έχουν 
-ρυθμιστεί να συμμετέχουν σε δρομολόγηση EIGRP, είναι σε κατάτασταση 
-Up/Up και δεν είναι Passive. Μεταξύ άλλων, εμφανίζει τις ρυθμίσεις Hello 
-timer για κάθε διεπαφή.</p>
-
-<p>Αν ο δρομολογητής έχει πολλές διεπαφές, και το αποτέλεσμα είναι 
-δυσανάγνωστο, μπορείτε να περάσετε ως παράμετρο το όνομα της διεπαφής, 
-για παράδειγμα:</p>
-
-<pre><code>show ip eigrp interfaces detail FastEthernet 0/1
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-04-28
             </span>
           
           

@@ -4,13 +4,7 @@
         <link>https://zindilis.com/tags/zenoss/</link>
         <description>Personal website of Marios Zindilis - Posts tagged zenoss</description>
         <atom:link href="https://zindilis.com/feeds/zenoss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 29 Dec 2020 08:57:44 UT</lastBuildDate>
-        <item>
-            <title>Zenoss 4</title>
-            <link>https://zindilis.com/posts/zenoss-4/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/zenoss-4/</guid>
-            <pubDate>Tue, 04 Feb 2014 00:00:00 UT</pubDate>
-        </item>
+        <lastBuildDate>Wed, 16 Jun 2021 09:43:49 UT</lastBuildDate>
         <item>
             <title>Get Zenoss Events from ZenDMD</title>
             <link>https://zindilis.com/posts/zenoss-zendmd-get-events/</link>
@@ -24,10 +18,10 @@
             <pubDate>Mon, 11 Nov 2013 00:00:00 UT</pubDate>
         </item>
         <item>
-            <title>Get Devices from Zenoss with ZenDMD</title>
-            <link>https://zindilis.com/posts/zenoss-zendmd-get-devices/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/zenoss-zendmd-get-devices/</guid>
-            <pubDate>Fri, 25 Oct 2013 00:00:00 UT</pubDate>
+            <title>Zenoss: Add a device to a Group with ZenDMD</title>
+            <link>https://zindilis.com/posts/zenoss-zendmd-add-device-to-group/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/zenoss-zendmd-add-device-to-group/</guid>
+            <pubDate>Wed, 19 Feb 2014 00:00:00 UT</pubDate>
         </item>
         <item>
             <title>Zenoss 3 Installation</title>
@@ -36,22 +30,28 @@
             <pubDate>Sat, 02 Nov 2013 00:00:00 UT</pubDate>
         </item>
         <item>
-            <title>Zenoss: Add a device to a Group with ZenDMD</title>
-            <link>https://zindilis.com/posts/zenoss-zendmd-add-device-to-group/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/zenoss-zendmd-add-device-to-group/</guid>
-            <pubDate>Wed, 19 Feb 2014 00:00:00 UT</pubDate>
+            <title>Get all device Serial Numbers from ZenDMD in Zenoss</title>
+            <link>https://zindilis.com/posts/zenoss-zendmd-get-device-serial-numbers/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/zenoss-zendmd-get-device-serial-numbers/</guid>
+            <pubDate>Tue, 12 Nov 2013 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Zenoss 4</title>
+            <link>https://zindilis.com/posts/zenoss-4/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/zenoss-4/</guid>
+            <pubDate>Tue, 04 Feb 2014 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Get Devices from Zenoss with ZenDMD</title>
+            <link>https://zindilis.com/posts/zenoss-zendmd-get-devices/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/zenoss-zendmd-get-devices/</guid>
+            <pubDate>Fri, 25 Oct 2013 00:00:00 UT</pubDate>
         </item>
         <item>
             <title>Cannot set device IP in Zenoss</title>
             <link>https://zindilis.com/posts/zenoss-cannot-set-device-ip/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/zenoss-cannot-set-device-ip/</guid>
             <pubDate>Wed, 15 Jan 2014 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>Get all device Serial Numbers from ZenDMD in Zenoss</title>
-            <link>https://zindilis.com/posts/zenoss-zendmd-get-device-serial-numbers/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/zenoss-zendmd-get-device-serial-numbers/</guid>
-            <pubDate>Tue, 12 Nov 2013 00:00:00 UT</pubDate>
         </item>
         
     </channel>

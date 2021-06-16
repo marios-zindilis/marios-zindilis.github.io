@@ -40,6 +40,53 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/cisco-hostname/">
+            <h2 class="card-title">hostname (Cisco Command)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>hostname</code> command defines the name of the device. This is the name 
+displayed (among other places) in the command prompt, and in the CDP 
+neighbors list of other devices.</p>
+
+<p>Example:</p>
+
+<pre><code>cisco&gt; enable
+cisco# configure terminal
+cisco(config)# hostname router-5
+router-5(config)#
+</code></pre>
+
+<h2>Juniper Equivalent</h2>
+
+<p>The Juniper equivalent of the <code>hostname</code> command is:</p>
+
+<pre><code>marios@juniper# set system hostname &lt;HOSTNAME&gt;
+</code></pre>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="/posts/juniper-set-system-host-name/"><code>set system host-name</code></a>, the Juniper equivalent</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-05
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/etc-lilo-conf/">
             <h2 class="card-title">/etc/lilo.conf</h2>
           </a>
@@ -108,74 +155,6 @@ file is not updated.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cisco-enable-secret/">
-            <h2 class="card-title">enable secret</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The <code>enable secret</code> command makes the device ask for a password to allow 
-the user to enter the global configuration mode. Compared to <code>enable 
-password</code>, it has the advantage that it stores the password in the 
-configuration as an MD5 hash, as opposed to clear text.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href='/posts/cisco-enable-password/'><code>enable password</code></a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-01-02
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-enable-password/">
-            <h2 class="card-title">enable password</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The <code>enable password</code> command will make the device ask for a password 
-to allow the user to move up to the global configuration mode. It has 
-the disadvantage of displaying the password in clear text in the 
-configuration. For this reason, is has been deprecated, in favour of 
-<code>enable secret</code>, but still exists in Cisco IOS for compatibility with 
-older hardware that cannot encrypt the enable password.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href='/posts/cisco-enable-secret/'><code>enable secret</code></a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-01-02
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
           <a href="/posts/rhel/">
             <h2 class="card-title">RHEL</h2>
           </a>
@@ -203,6 +182,39 @@ older hardware that cannot encrypt the enable password.</p>
 <li><a href="/posts/rhcsa/">Notes and Links for RHCSA</a></li>
 <li><a href="/posts/rhel-yum-install-from-dvd/">Install packages from RHEL DVD with yum</a></li>
 <li><a href="/posts/rhel-setup-http-repository/">Set up an HTTP Repository from RHEL DVD</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-01-02
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-enable-secret/">
+            <h2 class="card-title">enable secret</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The <code>enable secret</code> command makes the device ask for a password to allow 
+the user to enter the global configuration mode. Compared to <code>enable 
+password</code>, it has the advantage that it stores the password in the 
+configuration as an MD5 hash, as opposed to clear text.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href='/posts/cisco-enable-password/'><code>enable password</code></a></li>
 </ul>
 
           </div>
@@ -253,32 +265,23 @@ certain game level.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/procmail/">
-            <h2 class="card-title">procmail</h2>
+          <a href="/posts/cisco-enable-password/">
+            <h2 class="card-title">enable password</h2>
           </a>
 
           
           <div class="card-text">
-            <h2>Procmail Recipes Syntax</h2>
+            <p>The <code>enable password</code> command will make the device ask for a password 
+to allow the user to move up to the global configuration mode. It has 
+the disadvantage of displaying the password in clear text in the 
+configuration. For this reason, is has been deprecated, in favour of 
+<code>enable secret</code>, but still exists in Cisco IOS for compatibility with 
+older hardware that cannot encrypt the enable password.</p>
 
-<p>Very briefly:</p>
-
-<ul>
-<li>A line starting with <code>:0</code> denotes the beginning of a new recipe.</li>
-<li>A line starting with <code>*</code> denotes the definition of a <em>condition</em> 
-inside a recipe.</li>
-<li><p>The last line of a recipe is the <em>action</em>. Action lines can begin 
-with:</p>
+<h2>See also</h2>
 
 <ul>
-<li><code>/</code> in which case the email is appended to a text file, 
-mbox-style.</li>
-<li><code>|</code> in which case the email is piped to a script for 
-further handling.</li>
-<li><code>! user@example.com</code> in which case the email is forwarded 
-to the email address defined after the <code>!</code>.</li>
-<li><code>{</code> which denotes the beginning of a nested recipe.</li>
-</ul></li>
+<li><a href='/posts/cisco-enable-secret/'><code>enable secret</code></a></li>
 </ul>
 
           </div>
@@ -287,7 +290,7 @@ to the email address defined after the <code>!</code>.</li>
         <div class="card-footer text-muted">
           
             <span class="mr-2">
-              <b>Posted</b>: 2013-12-31
+              <b>Posted</b>: 2014-01-02
             </span>
           
           
@@ -424,52 +427,18 @@ happens when the <code>optional</code> check is that last in the stack.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/syslog/">
-            <h2 class="card-title">syslog</h2>
+          <a href="/posts/crontab/">
+            <h2 class="card-title">crontab</h2>
           </a>
 
           
           <div class="card-text">
-            <h2><code>syslog</code> facilities</h2>
-
-<ul>
-<li><code>auth</code>, a.k.a. <code>security</code></li>
-<li><code>authpriv</code></li>
-<li><code>cron</code></li>
-<li><code>daemon</code></li>
-<li><code>kern</code></li>
-<li><code>lrp</code></li>
-<li><code>mail</code></li>
-<li><code>mark</code></li>
-<li><code>news</code></li>
-<li><code>security</code></li>
-<li><code>syslog</code></li>
-<li><code>user</code></li>
-<li><code>uucp</code></li>
-<li><code>local0</code> to <code>local7</code></li>
-</ul>
-
-<h2><code>syslog</code> priorities</h2>
-
-<p>A list of <code>syslog</code> priorities, sorted by importance, ascending:</p>
+            <p><code>crontab</code> can refer to two things:</p>
 
 <ol>
-<li><code>debug</code></li>
-<li><code>info</code></li>
-<li><code>notice</code></li>
-<li><code>warning</code> (previously <code>warn</code>, now deprecated)</li>
-<li><code>err</code> (previously <code>error</code>, now deprecated)</li>
-<li><code>crit</code></li>
-<li><code>alert</code></li>
-<li><code>emerg</code> (previously <code>panic</code>, now deprecated)</li>
+<li>File <code>/etc/crontab</code>.</li>
+<li>Command <code>crontab</code>.</li>
 </ol>
-
-<h2>Send test message to remote syslog server</h2>
-
-<pre><code>echo '&lt;12&gt;sourcehost message text' | nc -v -u -w 0 12.34.56.78 514
-</code></pre>
-
-<p><a href="http://nelsonslog.wordpress.com/2013/04/19/faking-out-remote-syslog-via-netcat/">Source</a></p>
 
           </div>
           
@@ -487,17 +456,33 @@ happens when the <code>optional</code> check is that last in the stack.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/dhcrelay/">
-            <h2 class="card-title">dhcrelay</h2>
+          <a href="/posts/procmail/">
+            <h2 class="card-title">procmail</h2>
           </a>
 
           
           <div class="card-text">
-            <p><code>dhcrelay</code> acts as a proxy between DHCP clients and a DHCP server, when 
-those are separated by a router, which by default blocks broadcasted 
-DHCP requests. It makes sense to install this on a router between two 
-subnets, only one of which has a DHCP server, or on a relay system, 
-again between two subnets.</p>
+            <h2>Procmail Recipes Syntax</h2>
+
+<p>Very briefly:</p>
+
+<ul>
+<li>A line starting with <code>:0</code> denotes the beginning of a new recipe.</li>
+<li>A line starting with <code>*</code> denotes the definition of a <em>condition</em> 
+inside a recipe.</li>
+<li><p>The last line of a recipe is the <em>action</em>. Action lines can begin 
+with:</p>
+
+<ul>
+<li><code>/</code> in which case the email is appended to a text file, 
+mbox-style.</li>
+<li><code>|</code> in which case the email is piped to a script for 
+further handling.</li>
+<li><code>! user@example.com</code> in which case the email is forwarded 
+to the email address defined after the <code>!</code>.</li>
+<li><code>{</code> which denotes the beginning of a nested recipe.</li>
+</ul></li>
+</ul>
 
           </div>
           
