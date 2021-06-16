@@ -61,7 +61,7 @@ Django project provides <code>settings.py</code> for configuring the web applica
 project-level <code>urls.py</code> for routing, and, crucially, <code>manage.py</code> for all the management tasks, like creating migrations,
 migrating, running unit tests, running management commands, running a development web server (<code>runserver</code>), etc.</p>
 
-<p>When developing a <a href="https://docs.djangoproject.com/en/3.2/intro/reusable-apps/" title="How to write reusable apps">reusable Django app though</a>, there is no Django project wrapped around it, so there is no
+<p>When developing a <a href="https://docs.djangoproject.com/en/3.2/intro/reusable-apps/" title="How to write reusable apps">reusable Django app</a> though, there is no Django project wrapped around it, so there is no
 <code>manage.py</code> to help with unit tests, migrations and the development server. Fortunately, you can create a variant of the
 default <code>manage.py</code> that also includes all the required contents of the default <code>settings.py</code>. This will work for both
 running unit tests with <code>./manage.py test</code> and with making migrations with <code>./manage.py makemigrations</code>.</p>
@@ -114,11 +114,12 @@ the latter option:</p>
 changes:</p>
 
 <div class="codehilite"><pre><span></span><code><span class="gd">-sys.path.append(&#39;..&#39;)</span>
-<span class="gi">+sys.path.append(&#39;.&#39;)</span>
 
 <span class="gd">-    ROOT_URLCONF=&#39;urls&#39;,</span>
 <span class="gi">+    ROOT_URLCONF=&#39;my_reusable_app.urls&#39;,</span>
 </code></pre></div>
+
+<p>You don't need to append anything to the system path in this case, because the currect directory in included by default.</p>
 
 <p>The utility of running the development server like this is reduced by the lack of a database. If you need a database for
 development, you can add a <code>DATABASES</code> section in the configuration and run <code>./manage.py migrate</code>. I'll leave this one

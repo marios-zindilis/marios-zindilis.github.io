@@ -4,7 +4,7 @@
         <link>https://zindilis.com/</link>
         <description>Personal website of Marios Zindilis</description>
         <atom:link href="https://zindilis.com/feeds/feed.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 16 Jun 2021 09:43:47 UT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Jun 2021 09:55:44 UT</lastBuildDate>
         <item>
             <title>Migrations, tests and runserver in Django reusable apps</title>
             <link>https://zindilis.com/posts/django-migrations-tests-runserver-reusable-app/</link>

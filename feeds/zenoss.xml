@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/zenoss/</link>
         <description>Personal website of Marios Zindilis - Posts tagged zenoss</description>
         <atom:link href="https://zindilis.com/feeds/zenoss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 16 Jun 2021 09:43:49 UT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Jun 2021 09:55:46 UT</lastBuildDate>
         <item>
             <title>Get Zenoss Events from ZenDMD</title>
             <link>https://zindilis.com/posts/zenoss-zendmd-get-events/</link>

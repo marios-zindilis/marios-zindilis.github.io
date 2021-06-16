@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/regular-expressions/</link>
         <description>Personal website of Marios Zindilis - Posts tagged regular-expressions</description>
         <atom:link href="https://zindilis.com/feeds/regular-expressions.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 16 Jun 2021 09:43:49 UT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Jun 2021 09:55:46 UT</lastBuildDate>
         <item>
             <title>Regular expressions in python-markdown2 (part 1)</title>
             <link>https://zindilis.com/posts/regex-in-python-markdown2-pt1/</link>

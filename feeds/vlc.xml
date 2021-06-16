@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/vlc/</link>
         <description>Personal website of Marios Zindilis - Posts tagged vlc</description>
         <atom:link href="https://zindilis.com/feeds/vlc.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 16 Jun 2021 09:43:50 UT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Jun 2021 09:55:46 UT</lastBuildDate>
         <item>
             <title>Control VLC with Python</title>
             <link>https://zindilis.com/posts/control-vlc-with-python/</link>
