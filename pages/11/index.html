@@ -40,6 +40,52 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/google-suggestions-in-firefox-on-mint/">
+            <h2 class="card-title">How to get Google search suggestions in Firefox on Linux Mint</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The Google search feature is not offered as an option in the version 
+of Firefox that comes 
+installed in Linux Mint. You can add it with the <strong>Manage Search 
+Engines</strong> feature, but when you do, you will notice that there are no 
+search suggestions when you start typing a search term.</p>
+
+<p>To add Google search suggestions, you need to edit the file 
+<code>google.xml</code>, located in the <code>searchplugins</code> directory, inside your 
+Firefox user profile. In my case, the full path for this file is:</p>
+
+<pre><code>/home/marios/.mozilla/firefox/mwad0hks.default/searchplugins/google.xml
+</code></pre>
+
+<p>Yours should be similar, and the command <code>locate google.xml</code> can help 
+you find the path. </p>
+
+<p>Edit that file, and add the following line:</p>
+
+<pre><code>&lt;Url type="application/x-suggestions+json" method="GET" template="https://www.google.com/complete/search?client=firefox&amp;amp;q={searchTerms}"/&gt;
+</code></pre>
+
+<p>...somewhere before the closing <code>&lt;/SearchPlugin&gt;</code> tag. Restart your 
+Firefox, and suggestions should now work.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-03-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/linux-mint/">
             <h2 class="card-title">Linux Mint</h2>
           </a>
@@ -68,14 +114,14 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/sudo/">
-            <h2 class="card-title">sudo</h2>
+          <a href="/posts/arp-scan/">
+            <h2 class="card-title">arp-scan</h2>
           </a>
 
           
           <div class="card-text">
             <ul>
-<li><a href="http://www.tecmint.com/su-vs-sudo-and-how-to-configure-sudo-in-linux/">Difference Between su Vs sudo and How to Configure sudo in Linux</a></li>
+<li><a href="http://www.unixmen.com/find-ip-conflicts-linux/">How To Find IP Conflicts In Linux</a></li>
 </ul>
 
           </div>
@@ -94,14 +140,14 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/arp-scan/">
-            <h2 class="card-title">arp-scan</h2>
+          <a href="/posts/sudo/">
+            <h2 class="card-title">sudo</h2>
           </a>
 
           
           <div class="card-text">
             <ul>
-<li><a href="http://www.unixmen.com/find-ip-conflicts-linux/">How To Find IP Conflicts In Linux</a></li>
+<li><a href="http://www.tecmint.com/su-vs-sudo-and-how-to-configure-sudo-in-linux/">Difference Between su Vs sudo and How to Configure sudo in Linux</a></li>
 </ul>
 
           </div>
@@ -291,66 +337,15 @@ the LXDE desktop by default. </p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/centos-6-install-syslog-ng/">
-            <h2 class="card-title">Installation of syslog-ng on CentOS 6</h2>
+          <a href="/posts/glusterfs/">
+            <h2 class="card-title">GlusterFS</h2>
           </a>
 
           
           <div class="card-text">
-            <ol>
-<li>Enable EPEL</li>
-<li>yum install -y syslog-ng</li>
-<li>Configure /etc/syslog-ng/syslog-ng.conf</li>
-<li><code>chkconfig syslog-ng on</code></li>
-<li><code>chkconfig rsyslog off</code></li>
-<li><code>service rsyslog stop</code></li>
-<li><code>service syslog-ng start</code></li>
-</ol>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-03-11
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/etc-shells/">
-            <h2 class="card-title">/etc/shells</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The <code>/etc/shells</code> file is a list of valid shells on the system. Example from an Ubuntu 12.10 Desktop system:</p>
-
-<pre><code># /etc/shells: valid login shells
-/bin/sh
-/bin/dash
-/bin/bash
-/bin/rbash
-/usr/bin/screen
-</code></pre>
-
-<p>Example from a CentOS 6 minimal server:</p>
-
-<pre><code>/bin/sh 
-/bin/bash
-/sbin/nologin
-/bin/dash
-</code></pre>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="http://utcc.utoronto.ca/~cks/space/blog/unix/EtcShellsUsage">What <code>/etc/shells</code> is and isn't</a></li>
+            <ul>
+<li><a href="http://www.tecmint.com/introduction-to-glusterfs-file-system-and-installation-on-rhelcentos-and-fedora/">Introduction to GlusterFS (File System) and Installation on RHEL/CentOS and Fedora</a></li>
+<li><a href="http://www.tecmint.com/perform-self-heal-and-re-balance-operations-in-gluster-file-system/">How to Perform Self-Heal and Re-Balance Operations in Gluster File System</a></li>
 </ul>
 
           </div>
@@ -606,7 +601,11 @@ the LXDE desktop by default. </p>
       
         <a href="/tags/angular/">angular</a>, 
       
+        <a href="/tags/aws-cdk/">aws-cdk</a>, 
+      
         <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-ec2/">aws-ec2</a>, 
       
         <a href="/tags/aws-rds/">aws-rds</a>, 
       

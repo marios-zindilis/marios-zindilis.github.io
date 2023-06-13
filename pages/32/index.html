@@ -40,6 +40,43 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/git-symlinks-and-hardlinks/">
+            <h2 class="card-title">Git, symlinks και hardlinks</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><strong>Γρήγορη συμβουλή για το Git</strong>: Ήθελα να συμπεριλάβω σε ένα 
+αποθετήριο Git, ένα αρχείο το οποίο τραβούσε το πρόγραμμα από άλλο φάκελο, 
+εκτός του τοπικού αποθετηρίου. Είδα ότι με δημιουργία συμβολικού δεσμού το Git 
+ανέβαζε στο απομακρυσμένο αποθετήριο το αρχείο σαν απλό αρχείο κειμένου, με 
+περιεχόμενο τη διαδρομή του συνδεδεμένου αρχείου. Με λίγο ψάξιμο βρήκα ότι δεν 
+υπάρχει τρόπος να ακολουθεί το Git τους συμβολικούς δεσμούς, για μερικούς 
+καλούς λόγους, ένας από τους οποίους είναι ότι δημιουργείται ένα τεράστιο κενό 
+ασφαλείας, σε περίπτωση που γίνει check-out σε ένα σύστημα στο οποίο το 
+αρχείο-στόχος του συμβολικού δεσμού μπορεί να έχει εντελώς διαφορετικό 
+περιεχόμενο!</p>
+
+<p>Ωστόσο, μπορείτε να χρησιμοποιήσετε hardlinks, δημιουργώντας τα με: <code>ln /absolute/path/to/destination link-path</code>, με μερικά όμως μειονεκτήματα, ένα από τα οποία είναι ότι κατά το check-out το αρχείο δημιουργείται ως κανονικό αρχείο στο τοπικό αποθετήριο όπου κάνετε check-out και χάνεται η ιδιότητά του ως δεσμός. Αυτό βέβαια λύνει και το πρόβλημα ασφαλείας που ανέφερα πριν.</p>
+
+<p>Μια ακόμα σημείωση, μέχρι πριν την έκδοση 1.6.1, το Git ακολουθούσε τους συμβολικούς δεσμούς, αν αυτοί ήταν φάκελοι αντί για αρχεία. Αυτό διορθώθηκε, και στις πιο πρόσφατες εκδόσεις δεν δουλεύει.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-04-23
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/reading-8/">
             <h2 class="card-title">Reading #8</h2>
           </a>
@@ -273,31 +310,6 @@ might not result in a monster post soon.</p>
           <b>Tags</b>:
           
             <a href="/tags/mysql/">mysql</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/honey-i-broke-the-server/">
-            <h2 class="card-title">Honey, I broke the server</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Here's how I caused 25 minutes of downtime to my web server today.</p>
-
-          </div>
-          <a href="/posts/honey-i-broke-the-server/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-03-12
-            </span>
           
           
         </div><!-- .card-footer -->
@@ -543,7 +555,11 @@ might not result in a monster post soon.</p>
       
         <a href="/tags/angular/">angular</a>, 
       
+        <a href="/tags/aws-cdk/">aws-cdk</a>, 
+      
         <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-ec2/">aws-ec2</a>, 
       
         <a href="/tags/aws-rds/">aws-rds</a>, 
       

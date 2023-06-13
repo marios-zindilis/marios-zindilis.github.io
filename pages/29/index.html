@@ -40,6 +40,31 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/links-for-week-40-2011/">
+            <h2 class="card-title">Ενδιαφέροντες σύνδεσμοι (2011, εβδ#40)</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Interesting links.</p>
+
+          </div>
+          <a href="/posts/links-for-week-40-2011/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-10-08
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cisco-bandwidth/">
             <h2 class="card-title">bandwidth (Εντολή Cisco)</h2>
           </a>
@@ -132,37 +157,6 @@ bandwidth επηρεάζει και άλλα πράγματα, άσχετα με
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cisco-switchport-port-security-mac-address-sticky/">
-            <h2 class="card-title">switchport port-security mac-address sticky</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Η εντολή <code>switchport port-security mac-address sticky</code> καθορίζει ότι οι φυσικές διευθύνσεις MAC που δικαιούνται να
-επικοινωνούν μέσω της συγκεκριμένης διεπαφής, είναι αυτές που είναι ήδη συνδεδεμένες, ή οι πρώτες που θα συνδεθούν.
-Απαιτείται πρώτα να οριστεί η συγκεκριμένη διεπαφή ως access:
-<a href="/posts/cisco-switchport-mode-access/">switchport mode access</a> 
-και να ενεργοποιηθεί σ' αυτήν η ασφάλεια διεπαφής: <a href="/posts/cisco-switchport-port-security/">switchport port-security</a>. </p>
-
-<p>Εναλλακτικά, μπορείτε να καθορίσετε ρητά ότι η διεπαφή θα επιτρέπει μόνο συγκεκριμένες φυσικές διευθύνσεις MAC που θα
-ορίσετε, με την εντολή <code>switchport port-security mac-address $MAC-ADDRESS</code>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-09-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
           <a href="/posts/cisco-switchport-trunk-encapsulation-isl/">
             <h2 class="card-title">switchport trunk encapsulation isl</h2>
           </a>
@@ -235,23 +229,20 @@ encapsulation στο οποίο θα λειτουργεί μια διεπαφή,
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cisco-service-timestamps-log-datetime/">
-            <h2 class="card-title">service timestamps log datetime</h2>
+          <a href="/posts/cisco-switchport-port-security-mac-address-sticky/">
+            <h2 class="card-title">switchport port-security mac-address sticky</h2>
           </a>
 
           
           <div class="card-text">
-            <p>Η εντολή <code>service timestamps log datetime</code> καθορίζει την εμφάνιση των ημερομηνιών στα μηνύματα 
-αποσφαλμάτωσης στο τερματικό, σε εμφάνιση ημερομηνίας και ώρας, σε 
-αντίθεση με την εναλλακτική που είναι η εμφάνιση σε διάρκεια συνεχόμενης 
-λειτουργίας της συσκευής από την τελευταία εκκίνηση (uptime). Ένα παράδειγμα 
-εξόδου αποσφαλμάτωσης με αυτή την εμφάνιση των ημερομηνιών είναι:</p>
+            <p>Η εντολή <code>switchport port-security mac-address sticky</code> καθορίζει ότι οι φυσικές διευθύνσεις MAC που δικαιούνται να
+επικοινωνούν μέσω της συγκεκριμένης διεπαφής, είναι αυτές που είναι ήδη συνδεδεμένες, ή οι πρώτες που θα συνδεθούν.
+Απαιτείται πρώτα να οριστεί η συγκεκριμένη διεπαφή ως access:
+<a href="/posts/cisco-switchport-mode-access/">switchport mode access</a> 
+και να ενεργοποιηθεί σ' αυτήν η ασφάλεια διεπαφής: <a href="/posts/cisco-switchport-port-security/">switchport port-security</a>. </p>
 
-<pre><code>Jan  5 19:34:18: tcp2: I ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 1368141491
-        DATA 2 ACK 946277077 PSH  WIN 56000
-Jan  5 19:34:18: tcp2: O ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 946277077
-        DATA 2 ACK 1368141493 PSH  WIN 3843
-</code></pre>
+<p>Εναλλακτικά, μπορείτε να καθορίσετε ρητά ότι η διεπαφή θα επιτρέπει μόνο συγκεκριμένες φυσικές διευθύνσεις MAC που θα
+ορίσετε, με την εντολή <code>switchport port-security mac-address $MAC-ADDRESS</code>.</p>
 
           </div>
           
@@ -309,6 +300,40 @@ Jan  5 19:34:18: tcp2: O ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 94627707
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/cisco-service-timestamps-log-datetime/">
+            <h2 class="card-title">service timestamps log datetime</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>service timestamps log datetime</code> καθορίζει την εμφάνιση των ημερομηνιών στα μηνύματα 
+αποσφαλμάτωσης στο τερματικό, σε εμφάνιση ημερομηνίας και ώρας, σε 
+αντίθεση με την εναλλακτική που είναι η εμφάνιση σε διάρκεια συνεχόμενης 
+λειτουργίας της συσκευής από την τελευταία εκκίνηση (uptime). Ένα παράδειγμα 
+εξόδου αποσφαλμάτωσης με αυτή την εμφάνιση των ημερομηνιών είναι:</p>
+
+<pre><code>Jan  5 19:34:18: tcp2: I ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 1368141491
+        DATA 2 ACK 946277077 PSH  WIN 56000
+Jan  5 19:34:18: tcp2: O ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 946277077
+        DATA 2 ACK 1368141493 PSH  WIN 3843
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cisco-switchport-port-security/">
             <h2 class="card-title">switchport port-security</h2>
           </a>
@@ -325,96 +350,6 @@ Jan  5 19:34:18: tcp2: O ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 94627707
           
             <span class="mr-2">
               <b>Posted</b>: 2011-09-28
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/find/">
-            <h2 class="card-title">find (el)</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Το πρόγραμμα <code>find</code> αναζητά αρχεία, μέσα σε κάποια συγκεκριμένη ιεραρχία 
-φακέλων.</p>
-
-<h2>Χρήση του <code>find</code></h2>
-
-<p>Στην πιο απλή του μορφή το <code>find</code> μπορεί να εκτελεστεί χωρίς 
-επιλογές/παραμέτρους, οπότε εμφανίζει όλα τα αρχεία που βρίσκονται στον 
-τρέχοντα φάκελο και στους υποφακέλους του, δεδομένου ότι ο χρήστης που 
-εκτελεί την εντολή έχει δικαιώματα ανάγνωσης των περιεχομένων εκείνων 
-των φακέλων.</p>
-
-<p>Σε μια πιο παραμετροποιήσιμη μορφή χρήσης, μπορεί να δεκτεί δύο 
-παραμέτρους: τον φάκελο στον οποίο θα ψάξει (συμπεριλαμβάνοντας και τους 
-υποφακέλους) και ένα μοτίβο (κανονική έκφραση) το οποίο θα προσπαθήσει 
-να ταιρίαξει με τα ονόματα των περιεχόμενων αρχείων και φακέλων.</p>
-
-<p>Για παράδειγμα, η πιο κάτω ιεραρχία φακέλων δείχνει έναν φάκελο με το 
-όνομα «Μουσική», με υποφακέλους με ονόματα καλλιτεχνών, με υποφακέλους 
-με ονόματα δίσκων. Μέσα στα ονόματα των δίσκων συμπεριλαμβάνεται σε 
-παρένθεση η χρονολογία κυκλοφορίας κάθε δίσκου. Σχηματικά:</p>
-
-<pre><code>Μουσική
- |_ Φιλαρμονική Άνω Κάτω Χωριού
-     |_ Κάλαντα (1990)
-     |_ Χαρούμενα τραγούδια (1992)
-     |_ Λυπημένα τραγούδια (1995)
-</code></pre>
-
-<p>Αν θέλετε να βρείτε μέσα σε μια τέτοια δομή φακέλων όλους τους δίσκους 
-που κυκλοφόρησαν, για παράδειγμα, το 1995, θα δίνατε την εντολή:</p>
-
-<p>{% highlight bash %}
-find Μουσική -name '*(1995)'
-{% endhighlight %}</p>
-
-<p>Στην πιο πάνω εντολή, το αστεράκι παίζει το ρόλο του μπαλαντέρ, δηλαδή 
-οποιοδήποτε όνομα αρχείου ή φακέλου μέσα στο «Μουσική» το οποίο ξεκινάει 
-με <em>οτιδήποτε</em> και τελειώνει με «(1995)» θα ταιριάξει.</p>
-
-<p>Αν δίνατε την εντολή <code>find Μουσική</code> (παραλείποντας δηλαδή το 
-όνομα για το οποίο ψάχνετε), θα σας επέστρεφε μια λίστα με <strong>όλα</strong> τα 
-περιεχόμενα, αρχεία και υποφακέλους που περιέχονται στο «Μουσική». Αν 
-δίνατε <code>find -name '*(1970)'</code> (παραλείποντας δηλαδή τον φάκελο 
-στον οποίο θέλετε να ψάξετε), τότε το <code>find</code> ψάχνει απλά στο φάκελο μέσα 
-στον οποίο εκτελέστηκε η εντολή.</p>
-
-<p>Είναι ακόμα δυνατή η αναζήτηση αρχείων βάσει του χρήστη στον οποίο 
-ανήκουν, είτε με την επιλογή <code>-user</code> και παράμετρο το όνομα 
-χρήστη, είτε με την επιλογή <code>-uid</code> και παράμετρο τον αριθμό ID 
-του χρήστη. Αντίστοιχα, για αναζήτηση βάσει του group στο οποίο ανήκουν 
-τα αρχεία/φάκελοι, χρησιμοποιείται η επιλογή <code>-group</code> ή 
-<code>-gid</code>.</p>
-
-<p>Τα πιο πάνω παραδείγμα δείχνουν την πιο στοιχειώδη λειτουργία του 
-<code>find</code>. Πέρα από αυτά, υπάρχουν πάρα πολλές ακόμα παράμετροι, 
-οι οποίες τεκμηριώνονται στο εγχειρίδιο του <code>find</code> (εκτελέστε 
-<code>man find</code>), και οι οποίες επιτρέπουν αρκετά πιο συγκεκριμένο 
-προσδιορισμό των αρχείων που θα επιστραφούν. Συγκεκριμένα, μερικά από τα 
-κριτήρια που μπορείτε να ορίσετε είναι:</p>
-
-<ul>
-<li>αν θα ακολουθούνται οι συμβολικοί σύνδεσμοι,</li>
-<li>το ελάχιστο και το μέγιστο βάθος στην ιεραρχία των υποφακέλων,</li>
-<li>αν θα συνεχίζεται η αναζήτηση και σε άλλα συστήματα αρχείων τα οποία είναι προσαρτημένα στην ιεραρχία φακέλων,</li>
-<li>μέγεθος, ιδιοκτήτης, δικαιώματα πρόσβασης, ημερομηνία δημιουργίας ή τροποποίησης αρχείων, και</li>
-<li>πάρα, πάρα πολλά ακόμα.</li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-09-24
             </span>
           
           
@@ -661,7 +596,11 @@ find Μουσική -name '*(1995)'
       
         <a href="/tags/angular/">angular</a>, 
       
+        <a href="/tags/aws-cdk/">aws-cdk</a>, 
+      
         <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-ec2/">aws-ec2</a>, 
       
         <a href="/tags/aws-rds/">aws-rds</a>, 
       

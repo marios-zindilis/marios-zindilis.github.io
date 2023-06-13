@@ -4,7 +4,19 @@
         <link>https://zindilis.com/tags/cisco/</link>
         <description>Personal website of Marios Zindilis - Posts tagged cisco</description>
         <atom:link href="https://zindilis.com/feeds/cisco.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 16 Jun 2021 09:55:46 UT</lastBuildDate>
+        <lastBuildDate>Tue, 13 Jun 2023 06:22:04 UT</lastBuildDate>
+        <item>
+            <title>show interface (Cisco command)</title>
+            <link>https://zindilis.com/posts/cisco-show-interface/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/cisco-show-interface/</guid>
+            <pubDate>Sun, 09 Mar 2014 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>access-class (Cisco Command)</title>
+            <link>https://zindilis.com/posts/cisco-access-class/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/cisco-access-class/</guid>
+            <pubDate>Mon, 24 Feb 2014 00:00:00 UT</pubDate>
+        </item>
         <item>
             <title>Back-Pressure on Cisco Switches</title>
             <link>https://zindilis.com/posts/cisco-back-pressure/</link>
@@ -36,34 +48,22 @@
             <pubDate>Fri, 24 Jan 2014 00:00:00 UT</pubDate>
         </item>
         <item>
-            <title>Facepalm of the day 2</title>
-            <link>https://zindilis.com/posts/facepalm-of-the-day-2/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/facepalm-of-the-day-2/</guid>
-            <pubDate>Tue, 01 May 2012 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>access-class (Cisco Command)</title>
-            <link>https://zindilis.com/posts/cisco-access-class/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/cisco-access-class/</guid>
-            <pubDate>Mon, 24 Feb 2014 00:00:00 UT</pubDate>
-        </item>
-        <item>
             <title>Cisco: banner login</title>
             <link>https://zindilis.com/posts/cisco-banner-login/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/cisco-banner-login/</guid>
             <pubDate>Sun, 29 Dec 2013 00:00:00 UT</pubDate>
         </item>
         <item>
-            <title>show interface (Cisco command)</title>
-            <link>https://zindilis.com/posts/cisco-show-interface/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/cisco-show-interface/</guid>
-            <pubDate>Sun, 09 Mar 2014 00:00:00 UT</pubDate>
-        </item>
-        <item>
             <title>show vtp status (Cisco)</title>
             <link>https://zindilis.com/posts/cisco-show-vtp-status/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/cisco-show-vtp-status/</guid>
             <pubDate>Mon, 24 Feb 2014 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Facepalm of the day 2</title>
+            <link>https://zindilis.com/posts/facepalm-of-the-day-2/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/facepalm-of-the-day-2/</guid>
+            <pubDate>Tue, 01 May 2012 00:00:00 UT</pubDate>
         </item>
         
     </channel>

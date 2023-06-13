@@ -40,6 +40,44 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/centos-6-install-opendcim/">
+            <h2 class="card-title">openDCIM Installation on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><a href="http://www.opendcim.org/">openDCIM</a> is a free and open source solution
+for <strong>D</strong>ata<strong>C</strong>enter <strong>I</strong>nfrastructure <strong>M</strong>anagement. It is already 
+used by a few organizations, and is quickly improving due to the efforts 
+of its <a href="http://www.opendcim.org/developers.html">developers</a>.</p>
+
+<p>I have written <a href="/posts/centos-6-install-opendcim-2-1/">a complete, bottom-up installation for openDCIM on 
+CentOS</a>. This will get you up 
+to the first screen in the web interface, after which you can follow 
+<a href="http://www.youtube.com/watch?v=XzEI6Z8yhRg">Scott Milliken's video tutorial</a> 
+for the initial settings of the application.</p>
+
+<p>The guide is written for openDCIM 2.1, but should be fairly applicable 
+to newer versions.</p>
+
+<p><a href="/posts/centos-6-install-opendcim-2-1/">Read the full installation guide here</a>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-05-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/bash-check-that-string-is-ip/">
             <h2 class="card-title">Bash: Check that string is IP</h2>
           </a>
@@ -147,8 +185,8 @@ would be to run the above command for far less repetitions, say
 database as many times as required for the entire database to reach 
 the desirable size, like:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">create</span> <span class="n">table2</span> <span class="k">like</span> <span class="k">table</span><span class="p">;</span>
-<span class="k">insert</span> <span class="k">into</span> <span class="n">table2</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w"></span>
+<span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 
           </div>
@@ -358,40 +396,6 @@ Unknown column 'rev_sha1' in 'field list' (localhost)".</pre>
             <span class="mr-2">
               <b>Posted</b>: 2012-05-10
             </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/facepalm-of-the-day-2/">
-            <h2 class="card-title">Facepalm of the day 2</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Cisco devices will commit a command that you typed in configuration mode when you hit Ctrl+Z to fall back to enable
-mode.</p>
-
-<p>For example, while configuring an interface, if you type <code>shutdown</code> and then press Ctrl+Z to exit configuration mode,
-the <code>shutdown</code> command is executed. Note, that this does not happen in PacketTracer, but it does happen in GNS3, and
--of course- on real devices.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-05-01
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/cisco/">cisco</a>
           
           
         </div><!-- .card-footer -->
@@ -637,7 +641,11 @@ the <code>shutdown</code> command is executed. Note, that this does not happen i
       
         <a href="/tags/angular/">angular</a>, 
       
+        <a href="/tags/aws-cdk/">aws-cdk</a>, 
+      
         <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-ec2/">aws-ec2</a>, 
       
         <a href="/tags/aws-rds/">aws-rds</a>, 
       

@@ -4,7 +4,13 @@
         <link>https://zindilis.com/</link>
         <description>Personal website of Marios Zindilis</description>
         <atom:link href="https://zindilis.com/feeds/feed.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 16 Jun 2021 09:55:44 UT</lastBuildDate>
+        <lastBuildDate>Tue, 13 Jun 2023 06:22:03 UT</lastBuildDate>
+        <item>
+            <title>Create an EC2 key pair with ssh-keygen and deploy with AWS CDK</title>
+            <link>https://zindilis.com/posts/create-ec2-key-pair-and-deploy-with-aws-cdk/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/create-ec2-key-pair-and-deploy-with-aws-cdk/</guid>
+            <pubDate>Tue, 13 Jun 2023 00:00:00 UT</pubDate>
+        </item>
         <item>
             <title>Migrations, tests and runserver in Django reusable apps</title>
             <link>https://zindilis.com/posts/django-migrations-tests-runserver-reusable-app/</link>
@@ -54,15 +60,15 @@
             <pubDate>Fri, 02 Feb 2018 00:00:00 UT</pubDate>
         </item>
         <item>
-            <title>Upload file to S3 Bucket with the AWS CLI</title>
-            <link>https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</guid>
-            <pubDate>Mon, 07 Aug 2017 00:00:00 UT</pubDate>
-        </item>
-        <item>
             <title>Upload file to S3 Bucket using Boto3</title>
             <link>https://zindilis.com/posts/upload-file-to-s3-with-boto3/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-boto3/</guid>
+            <pubDate>Mon, 07 Aug 2017 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Upload file to S3 Bucket with the AWS CLI</title>
+            <link>https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</guid>
             <pubDate>Mon, 07 Aug 2017 00:00:00 UT</pubDate>
         </item>
         <item>
@@ -118,12 +124,6 @@
             <link>https://zindilis.com/posts/mutagen/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/mutagen/</guid>
             <pubDate>Sat, 12 Dec 2015 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>Hexadecimal Primary Key in Django Model</title>
-            <link>https://zindilis.com/posts/hex-primary-key-in-django-model/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/hex-primary-key-in-django-model/</guid>
-            <pubDate>Sun, 06 Dec 2015 00:00:00 UT</pubDate>
         </item>
         
     </channel>

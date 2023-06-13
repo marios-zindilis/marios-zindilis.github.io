@@ -4,11 +4,11 @@
         <link>https://zindilis.com/tags/aws-s3/</link>
         <description>Personal website of Marios Zindilis - Posts tagged aws-s3</description>
         <atom:link href="https://zindilis.com/feeds/aws-s3.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 16 Jun 2021 09:55:46 UT</lastBuildDate>
+        <lastBuildDate>Tue, 13 Jun 2023 06:22:03 UT</lastBuildDate>
         <item>
-            <title>Upload file to S3 Bucket with the AWS CLI</title>
-            <link>https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</guid>
+            <title>Upload file to S3 Bucket using Boto3</title>
+            <link>https://zindilis.com/posts/upload-file-to-s3-with-boto3/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-boto3/</guid>
             <pubDate>Mon, 07 Aug 2017 00:00:00 UT</pubDate>
         </item>
         <item>
@@ -18,9 +18,9 @@
             <pubDate>Sun, 06 Aug 2017 00:00:00 UT</pubDate>
         </item>
         <item>
-            <title>Upload file to S3 Bucket using Boto3</title>
-            <link>https://zindilis.com/posts/upload-file-to-s3-with-boto3/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-boto3/</guid>
+            <title>Upload file to S3 Bucket with the AWS CLI</title>
+            <link>https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/upload-file-to-s3-with-aws-cli/</guid>
             <pubDate>Mon, 07 Aug 2017 00:00:00 UT</pubDate>
         </item>
         <item>

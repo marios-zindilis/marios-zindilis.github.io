@@ -81,6 +81,60 @@ the <code>interface</code> directive in <code>snmpd.conf</code>, for example:</p
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/stale-nfs-causes-backuppc-filelistreceive-failure/">
+            <h2 class="card-title">Stale NFS Causes BackupPC fileListReceive Failure</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Recently, one of my BackupPC clients running CentOS failed to backup, with the 
+contents of the host log being:</p>
+
+<pre><code>    2015-06-10 01:40:10 incr backup started back to 2015-05-16 08:56:42 (backup #600) for directory /
+    2015-06-10 21:40:18 Aborting backup up after signal ALRM
+    2015-06-10 21:40:18 Got fatal error during xfer (fileListReceive failed)
+</code></pre>
+
+<p>...and the last bad XferLOG containing:</p>
+
+<pre><code>    fileListReceive() failed
+</code></pre>
+
+<p>This happened a couple of times in a row, and the interval between the start 
+time of the backup and the failure was consistently 20 hours. While checking, 
+I noticed that an <code>rsync</code> process started on the client by BackupPC was running 
+for about a week. I did an <code>strace -p &lt;PID&gt;</code> on the process ID of <code>rsync</code> and 
+noticed that it was trying to <code>stat</code> an old NFS export, mounted from a server 
+that no longer exists. </p>
+
+<p>Although <a href="http://joelinoff.com/blog/?p=356" title="How to fix stale NFS mounts on linux without rebooting">there are other ways to fix this</a>, it was OK for this host to be 
+rebooted at the time, problem solved.</p>
+
+<!-- Links -->
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-06-18
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/backuppc/">backuppc</a>, 
+          
+            <a href="/tags/nfs/">nfs</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/keepalived/">
             <h2 class="card-title">keepalived</h2>
           </a>
@@ -367,59 +421,6 @@ or <a href="http://www.unixmen.com/install-zimbra-collaboration-suite-in-ubuntu/
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/netapp-replace-disk-on-fas/">
-            <h2 class="card-title">Replace Failed Disk on NetApp FAS</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>After physically replacing the disk, the new disk might not be assigned to the 
-controller on which the old disk was assigned, depending on the value of the 
-<code>disk.auto_assign</code> option, which you can check with:</p>
-
-<pre><code>options disk.auto_assign
-</code></pre>
-
-<p>Even if the value of that option is <code>on</code>, the disk might still remain 
-unassigned, in which case you will see a message for unassigned disks in the 
-end of the output of the command:</p>
-
-<pre><code>disk show
-</code></pre>
-
-<p>You can see which disks are unassinged with</p>
-
-<pre><code>disk show -n
-</code></pre>
-
-<p>To assign a disk to a controller, SSH to that controller and do:</p>
-
-<pre><code>disk assign XX.YY.ZZ
-</code></pre>
-
-<p>... where <code>XX.YY.ZZ</code> is the name of the disk, as obtained by <code>disk show -n</code>.
-Example output:</p>
-
-<pre><code>FAS&gt; disk assign 01.23.45
-Fri May 13 00:00:02 [FAS:diskown.changingOwner:info]: changing ownership for disk 12.34.45 (S/N ABCDEF) from unowned (ID 1234567890) to FAS (ID 0987654321)
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2015-03-30
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -660,7 +661,11 @@ Fri May 13 00:00:02 [FAS:diskown.changingOwner:info]: changing ownership for dis
       
         <a href="/tags/angular/">angular</a>, 
       
+        <a href="/tags/aws-cdk/">aws-cdk</a>, 
+      
         <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-ec2/">aws-ec2</a>, 
       
         <a href="/tags/aws-rds/">aws-rds</a>, 
       

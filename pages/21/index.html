@@ -40,32 +40,23 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/mysql-replication-skip-one/">
-            <h2 class="card-title">Skip one record on MySQL replication slave</h2>
+          <a href="/posts/motion/">
+            <h2 class="card-title">Motion</h2>
           </a>
 
           
           <div class="card-text">
-            <p>MySQL replication can break for a wide multitude of reasons. The 
-following is a quick and dirty way to resume replication, if the error 
-that appears in the output of <code>SHOW SLAVE STATUS\G</code> indicates that 
-replication stopped at a specific record. </p>
+            <p><strong>Motion</strong> is a program that runs as a service, monitors the input from 
+cameras, and detects whether or not there is motion. It can then record 
+that input to video or to consecutive screenshots.</p>
 
-<p>It is a <i>dirty</i> way, because immediately after using it the 
-database on the slave becomes different from that on the master by one 
-record. If you can live with that, the skip-one method can help you 
-quickly put the slave back in track.</p>
+<h2>See also</h2>
 
-<p>On the MySQL CLI:</p>
-
-<pre><code>mysql&gt; STOP SLAVE;
-mysql&gt; SET GLOBAL SQL_SLAVE_SKIP_COUNTER = 1;
-mysql&gt; START SLAVE;
-mysql&gt; SHOW SLAVE STATUS\G
-</code></pre>
-
-<p>Hopefully your replication will resume after this, and the value of 
-your <code>Seconds_Behind_Master</code> will quickly be depleted.</p>
+<ul>
+<li><a href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">Motion Project Website</a></li>
+<li><a href="/posts/centos-6-install-motion/">Install Motion on CentOS 6</a></li>
+<li><a href="/posts/kmotion/">Kmotion, a web interface for Motion</a></li>
+</ul>
 
           </div>
           
@@ -73,7 +64,7 @@ your <code>Seconds_Behind_Master</code> will quickly be depleted.</p>
         <div class="card-footer text-muted">
           
             <span class="mr-2">
-              <b>Posted</b>: 2013-11-26
+              <b>Posted</b>: 2013-11-27
             </span>
           
           
@@ -205,15 +196,32 @@ during system startup.</dd>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/dm-cache/">
-            <h2 class="card-title">dm-cache</h2>
+          <a href="/posts/mysql-replication-skip-one/">
+            <h2 class="card-title">Skip one record on MySQL replication slave</h2>
           </a>
 
           
           <div class="card-text">
-            <ul>
-<li><a href="http://www.linuxjournal.com/content/advanced-hard-drive-caching-techniques">Advanced Hard Drive Caching Technologies</a></li>
-</ul>
+            <p>MySQL replication can break for a wide multitude of reasons. The 
+following is a quick and dirty way to resume replication, if the error 
+that appears in the output of <code>SHOW SLAVE STATUS\G</code> indicates that 
+replication stopped at a specific record. </p>
+
+<p>It is a <i>dirty</i> way, because immediately after using it the 
+database on the slave becomes different from that on the master by one 
+record. If you can live with that, the skip-one method can help you 
+quickly put the slave back in track.</p>
+
+<p>On the MySQL CLI:</p>
+
+<pre><code>mysql&gt; STOP SLAVE;
+mysql&gt; SET GLOBAL SQL_SLAVE_SKIP_COUNTER = 1;
+mysql&gt; START SLAVE;
+mysql&gt; SHOW SLAVE STATUS\G
+</code></pre>
+
+<p>Hopefully your replication will resume after this, and the value of 
+your <code>Seconds_Behind_Master</code> will quickly be depleted.</p>
 
           </div>
           
@@ -231,57 +239,15 @@ during system startup.</dd>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/centos-6-install-motion/">
-            <h2 class="card-title">Install Motion on CentOS 6</h2>
+          <a href="/posts/dm-cache/">
+            <h2 class="card-title">dm-cache</h2>
           </a>
 
           
           <div class="card-text">
-            <p>These are some very very brief instructions on how to install 
-<a href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">Motion</a> 
-on a CentOS 6 system. </p>
-
-<h2>Install Prerequisites</h2>
-
-<pre><code>yum -y install gcc make
-yum -y install libjpeg-turbo libjpeg-turbo-devel
-</code></pre>
-
-<h2>Install Motion</h2>
-
-<p>Download Motion, e.g. as a <code>.tgz</code> from SourceForge:</p>
-
-<pre><code>cd /root/
-wget http://downloads.sourceforge.net/project/motion/motion%20-%203.2/3.2.12/motion-3.2.12.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fmotion%2Ffiles%2Fmotion%2520-%25203.2%2F3.2.12%2F&amp;ts=1385393313&amp;use_mirror=garr
-</code></pre>
-
-<p>Untar:</p>
-
-<pre><code>tar zxvf motion-3.2.12.tar.gz
-</code></pre>
-
-<p>Install:</p>
-
-<pre><code>cd /root/motion-3.2.12/
-./configure
-make
-make install
-</code></pre>
-
-<p>This will install motion in its default location, in subdirectories of 
-<code>/usr/local/</code>, e.g:</p>
-
-<ul>
-<li><code>/usr/local/bin/</code> for executables,</li>
-<li><code>/usr/local/man/</code> for man pages,</li>
-<li><code>/usr/local/etc/</code> for configuration files,</li>
-<li><code>/usr/local/docs/</code> for documentation,</li>
-<li><code>/usr/local/share/</code> for configuration examples, etc.</li>
+            <ul>
+<li><a href="http://www.linuxjournal.com/content/advanced-hard-drive-caching-techniques">Advanced Hard Drive Caching Technologies</a></li>
 </ul>
-
-<p>Finally, before starting <code>motion</code> you need to copy the default 
-configuration file <code>motion-dist.conf</code> to <code>motion.conf</code> (by default in 
-<code>/usr/local/etc/</code>.</p>
 
           </div>
           
@@ -289,7 +255,7 @@ configuration file <code>motion-dist.conf</code> to <code>motion.conf</code> (by
         <div class="card-footer text-muted">
           
             <span class="mr-2">
-              <b>Posted</b>: 2013-11-25
+              <b>Posted</b>: 2013-11-26
             </span>
           
           
@@ -390,6 +356,74 @@ following at the end of the <code>kernel</code> line:</p>
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/centos-6-install-motion/">
+            <h2 class="card-title">Install Motion on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>These are some very very brief instructions on how to install 
+<a href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">Motion</a> 
+on a CentOS 6 system. </p>
+
+<h2>Install Prerequisites</h2>
+
+<pre><code>yum -y install gcc make
+yum -y install libjpeg-turbo libjpeg-turbo-devel
+</code></pre>
+
+<h2>Install Motion</h2>
+
+<p>Download Motion, e.g. as a <code>.tgz</code> from SourceForge:</p>
+
+<pre><code>cd /root/
+wget http://downloads.sourceforge.net/project/motion/motion%20-%203.2/3.2.12/motion-3.2.12.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fmotion%2Ffiles%2Fmotion%2520-%25203.2%2F3.2.12%2F&amp;ts=1385393313&amp;use_mirror=garr
+</code></pre>
+
+<p>Untar:</p>
+
+<pre><code>tar zxvf motion-3.2.12.tar.gz
+</code></pre>
+
+<p>Install:</p>
+
+<pre><code>cd /root/motion-3.2.12/
+./configure
+make
+make install
+</code></pre>
+
+<p>This will install motion in its default location, in subdirectories of 
+<code>/usr/local/</code>, e.g:</p>
+
+<ul>
+<li><code>/usr/local/bin/</code> for executables,</li>
+<li><code>/usr/local/man/</code> for man pages,</li>
+<li><code>/usr/local/etc/</code> for configuration files,</li>
+<li><code>/usr/local/docs/</code> for documentation,</li>
+<li><code>/usr/local/share/</code> for configuration examples, etc.</li>
+</ul>
+
+<p>Finally, before starting <code>motion</code> you need to copy the default 
+configuration file <code>motion-dist.conf</code> to <code>motion.conf</code> (by default in 
+<code>/usr/local/etc/</code>.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-25
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/flowchart-and-diagram-editors/">
             <h2 class="card-title">Flowchart and Diagram Editors</h2>
           </a>
@@ -435,41 +469,6 @@ a round-up and overview of flowchart and diagram applications for Linux.</li>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/syslog-ng/">
-            <h2 class="card-title">syslog-ng</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <h2>GUIs compatible with <code>syslog-ng</code></h2>
-
-<ul>
-<li>Splunk</li>
-<li><a href="https://code.google.com/p/enterprise-log-search-and-archive/">Elsa</a></li>
-<li><a href="http://www.elasticsearch.org/">ElasticSearch</a>, although not just a 
-<code>syslog-ng</code> frontend, it can search through the logs if fed to it 
-as clear text files.</li>
-<li><a href="http://graylog2.org/">Graylog2</a></li>
-<li><a href="https://www.fluentd.org/">fluentd</a></li>
-<li><a href="http://loganalyzer.adiscon.com/">LogAnalyzer</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-23
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
           <a href="/posts/top/">
             <h2 class="card-title">top</h2>
           </a>
@@ -496,18 +495,24 @@ as clear text files.</li>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/wowza/">
-            <h2 class="card-title">Wowza</h2>
+          <a href="/posts/syslog-ng/">
+            <h2 class="card-title">syslog-ng</h2>
           </a>
 
           
           <div class="card-text">
-            <ul>
-<li><a href="http://www.void.gr/kargig/blog/2013/11/13/new-traffic-record-for-grnet-noc-streaming-service/">New traffic record for GRNET NOC streaming service</a>, or <em>Scaling Wowza with Varnish proxies</em></li>
-<li><a href="http://www.wowza.com/forums/content.php?510">How to set up Wowza Transcoder NVIDIA NVENC accelerated encoding on CentOS</a></li>
-</ul>
+            <h2>GUIs compatible with <code>syslog-ng</code></h2>
 
-<!-- Links -->
+<ul>
+<li>Splunk</li>
+<li><a href="https://code.google.com/p/enterprise-log-search-and-archive/">Elsa</a></li>
+<li><a href="http://www.elasticsearch.org/">ElasticSearch</a>, although not just a 
+<code>syslog-ng</code> frontend, it can search through the logs if fed to it 
+as clear text files.</li>
+<li><a href="http://graylog2.org/">Graylog2</a></li>
+<li><a href="https://www.fluentd.org/">fluentd</a></li>
+<li><a href="http://loganalyzer.adiscon.com/">LogAnalyzer</a></li>
+</ul>
 
           </div>
           
@@ -515,7 +520,7 @@ as clear text files.</li>
         <div class="card-footer text-muted">
           
             <span class="mr-2">
-              <b>Posted</b>: 2013-11-20
+              <b>Posted</b>: 2013-11-23
             </span>
           
           
@@ -762,7 +767,11 @@ as clear text files.</li>
       
         <a href="/tags/angular/">angular</a>, 
       
+        <a href="/tags/aws-cdk/">aws-cdk</a>, 
+      
         <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-ec2/">aws-ec2</a>, 
       
         <a href="/tags/aws-rds/">aws-rds</a>, 
       

@@ -40,6 +40,43 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/ntpdate/">
+            <h2 class="card-title">ntpdate</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Troubleshooting <code>no server suitable for synchronization</code></h2>
+
+<p>If you have a cron jon periodically running <code>ntpdate</code> to update the 
+time on a system, you might at some point hit the <code>no server suitable 
+for synchronization</code> error. You can gain some insight into the problem 
+with running <code>ntpdate</code> with the <code>-d</code> option, which will show debugging 
+output from the actions of <code>ntpdate</code>, without actually changing the 
+time on the system.</p>
+
+<p>One example cause of this issue is that the value of <strong>strata</strong> exceeds 
+a maximum value, in which case the NTP server is rejected by the system 
+as being <em>too far</em> from its own source. You should then focus on either 
+fixing the NTP server itself, or changing your <code>ntpdate</code> target to 
+another system.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/mysql-enable-logging/">
             <h2 class="card-title">Enable logging in MySQL</h2>
           </a>
@@ -325,32 +362,6 @@ Windows and MAC OS X.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/salt/">
-            <h2 class="card-title">Salt</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.infoworld.com/d/data-center/review-puppet-vs-chef-vs-ansible-vs-salt-231308">Review: Puppet vs. Chef vs. Ansible vs. Salt</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-27
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
           <a href="/posts/ansible/">
             <h2 class="card-title">Ansible</h2>
           </a>
@@ -378,22 +389,43 @@ Windows and MAC OS X.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/motion/">
-            <h2 class="card-title">Motion</h2>
+          <a href="/posts/chef/">
+            <h2 class="card-title">Chef</h2>
           </a>
 
           
           <div class="card-text">
-            <p><strong>Motion</strong> is a program that runs as a service, monitors the input from 
-cameras, and detects whether or not there is motion. It can then record 
-that input to video or to consecutive screenshots.</p>
+            <ul>
+<li><a href="http://www.infoworld.com/d/data-center/review-puppet-vs-chef-vs-ansible-vs-salt-231308" title="Review: Puppet vs. Chef vs. Ansible vs. Salt">Review: Puppet vs. Chef vs. Ansible vs. Salt</a></li>
+<li><a href="https://web.archive.org/web/20140911044700/https://www.getchef.com/blog/2014/09/08/there-is-one-chef-server-and-it-is-open-source/" title="There is one Chef Server, and it is Open Source">There is one Chef Server, and it is Open Source</a></li>
+</ul>
 
-<h2>See also</h2>
+<!-- Links -->
 
-<ul>
-<li><a href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">Motion Project Website</a></li>
-<li><a href="/posts/centos-6-install-motion/">Install Motion on CentOS 6</a></li>
-<li><a href="/posts/kmotion/">Kmotion, a web interface for Motion</a></li>
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-27
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/salt/">
+            <h2 class="card-title">Salt</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://www.infoworld.com/d/data-center/review-puppet-vs-chef-vs-ansible-vs-salt-231308">Review: Puppet vs. Chef vs. Ansible vs. Salt</a></li>
 </ul>
 
           </div>
@@ -425,35 +457,6 @@ that input to video or to consecutive screenshots.</p>
 <li><a href="http://www.tecmint.com/install-puppet-in-centos/">Installing Puppet Master and Agent in RHEL/CentOS 7/6/5</a></li>
 <li><a href="http://terrarum.net/blog/puppet-infrastructure-2015.html">Puppet Infrastructure 2015</a></li>
 </ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-27
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/chef/">
-            <h2 class="card-title">Chef</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.infoworld.com/d/data-center/review-puppet-vs-chef-vs-ansible-vs-salt-231308" title="Review: Puppet vs. Chef vs. Ansible vs. Salt">Review: Puppet vs. Chef vs. Ansible vs. Salt</a></li>
-<li><a href="https://web.archive.org/web/20140911044700/https://www.getchef.com/blog/2014/09/08/there-is-one-chef-server-and-it-is-open-source/" title="There is one Chef Server, and it is Open Source">There is one Chef Server, and it is Open Source</a></li>
-</ul>
-
-<!-- Links -->
 
           </div>
           
@@ -708,7 +711,11 @@ that input to video or to consecutive screenshots.</p>
       
         <a href="/tags/angular/">angular</a>, 
       
+        <a href="/tags/aws-cdk/">aws-cdk</a>, 
+      
         <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-ec2/">aws-ec2</a>, 
       
         <a href="/tags/aws-rds/">aws-rds</a>, 
       

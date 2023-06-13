@@ -40,20 +40,78 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cheese/">
-            <h2 class="card-title">Cheese</h2>
+          <a href="/posts/find/">
+            <h2 class="card-title">find (el)</h2>
           </a>
 
           
           <div class="card-text">
-            <p><strong>Cheese</strong> is an application to manage your web camera. It allows you 
-to easily take pictures and record video from your webcam, and apply 
-some special effects to them.</p>
+            <p>Το πρόγραμμα <code>find</code> αναζητά αρχεία, μέσα σε κάποια συγκεκριμένη ιεραρχία 
+φακέλων.</p>
 
-<h2>See also</h2>
+<h2>Χρήση του <code>find</code></h2>
+
+<p>Στην πιο απλή του μορφή το <code>find</code> μπορεί να εκτελεστεί χωρίς 
+επιλογές/παραμέτρους, οπότε εμφανίζει όλα τα αρχεία που βρίσκονται στον 
+τρέχοντα φάκελο και στους υποφακέλους του, δεδομένου ότι ο χρήστης που 
+εκτελεί την εντολή έχει δικαιώματα ανάγνωσης των περιεχομένων εκείνων 
+των φακέλων.</p>
+
+<p>Σε μια πιο παραμετροποιήσιμη μορφή χρήσης, μπορεί να δεκτεί δύο 
+παραμέτρους: τον φάκελο στον οποίο θα ψάξει (συμπεριλαμβάνοντας και τους 
+υποφακέλους) και ένα μοτίβο (κανονική έκφραση) το οποίο θα προσπαθήσει 
+να ταιρίαξει με τα ονόματα των περιεχόμενων αρχείων και φακέλων.</p>
+
+<p>Για παράδειγμα, η πιο κάτω ιεραρχία φακέλων δείχνει έναν φάκελο με το 
+όνομα «Μουσική», με υποφακέλους με ονόματα καλλιτεχνών, με υποφακέλους 
+με ονόματα δίσκων. Μέσα στα ονόματα των δίσκων συμπεριλαμβάνεται σε 
+παρένθεση η χρονολογία κυκλοφορίας κάθε δίσκου. Σχηματικά:</p>
+
+<pre><code>Μουσική
+ |_ Φιλαρμονική Άνω Κάτω Χωριού
+     |_ Κάλαντα (1990)
+     |_ Χαρούμενα τραγούδια (1992)
+     |_ Λυπημένα τραγούδια (1995)
+</code></pre>
+
+<p>Αν θέλετε να βρείτε μέσα σε μια τέτοια δομή φακέλων όλους τους δίσκους 
+που κυκλοφόρησαν, για παράδειγμα, το 1995, θα δίνατε την εντολή:</p>
+
+<p>{% highlight bash %}
+find Μουσική -name '*(1995)'
+{% endhighlight %}</p>
+
+<p>Στην πιο πάνω εντολή, το αστεράκι παίζει το ρόλο του μπαλαντέρ, δηλαδή 
+οποιοδήποτε όνομα αρχείου ή φακέλου μέσα στο «Μουσική» το οποίο ξεκινάει 
+με <em>οτιδήποτε</em> και τελειώνει με «(1995)» θα ταιριάξει.</p>
+
+<p>Αν δίνατε την εντολή <code>find Μουσική</code> (παραλείποντας δηλαδή το 
+όνομα για το οποίο ψάχνετε), θα σας επέστρεφε μια λίστα με <strong>όλα</strong> τα 
+περιεχόμενα, αρχεία και υποφακέλους που περιέχονται στο «Μουσική». Αν 
+δίνατε <code>find -name '*(1970)'</code> (παραλείποντας δηλαδή τον φάκελο 
+στον οποίο θέλετε να ψάξετε), τότε το <code>find</code> ψάχνει απλά στο φάκελο μέσα 
+στον οποίο εκτελέστηκε η εντολή.</p>
+
+<p>Είναι ακόμα δυνατή η αναζήτηση αρχείων βάσει του χρήστη στον οποίο 
+ανήκουν, είτε με την επιλογή <code>-user</code> και παράμετρο το όνομα 
+χρήστη, είτε με την επιλογή <code>-uid</code> και παράμετρο τον αριθμό ID 
+του χρήστη. Αντίστοιχα, για αναζήτηση βάσει του group στο οποίο ανήκουν 
+τα αρχεία/φάκελοι, χρησιμοποιείται η επιλογή <code>-group</code> ή 
+<code>-gid</code>.</p>
+
+<p>Τα πιο πάνω παραδείγμα δείχνουν την πιο στοιχειώδη λειτουργία του 
+<code>find</code>. Πέρα από αυτά, υπάρχουν πάρα πολλές ακόμα παράμετροι, 
+οι οποίες τεκμηριώνονται στο εγχειρίδιο του <code>find</code> (εκτελέστε 
+<code>man find</code>), και οι οποίες επιτρέπουν αρκετά πιο συγκεκριμένο 
+προσδιορισμό των αρχείων που θα επιστραφούν. Συγκεκριμένα, μερικά από τα 
+κριτήρια που μπορείτε να ορίσετε είναι:</p>
 
 <ul>
-<li><a href="https://wiki.gnome.org/Apps/Cheese">Cheese Website</a></li>
+<li>αν θα ακολουθούνται οι συμβολικοί σύνδεσμοι,</li>
+<li>το ελάχιστο και το μέγιστο βάθος στην ιεραρχία των υποφακέλων,</li>
+<li>αν θα συνεχίζεται η αναζήτηση και σε άλλα συστήματα αρχείων τα οποία είναι προσαρτημένα στην ιεραρχία φακέλων,</li>
+<li>μέγεθος, ιδιοκτήτης, δικαιώματα πρόσβασης, ημερομηνία δημιουργίας ή τροποποίησης αρχείων, και</li>
+<li>πάρα, πάρα πολλά ακόμα.</li>
 </ul>
 
           </div>
@@ -62,7 +120,7 @@ some special effects to them.</p>
         <div class="card-footer text-muted">
           
             <span class="mr-2">
-              <b>Posted</b>: 2011-08-18
+              <b>Posted</b>: 2011-09-24
             </span>
           
           
@@ -112,6 +170,38 @@ some special effects to them.</p>
 
           </div>
           <a href="/posts/reading-12/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-08-18
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cheese/">
+            <h2 class="card-title">Cheese</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><strong>Cheese</strong> is an application to manage your web camera. It allows you 
+to easily take pictures and record video from your webcam, and apply 
+some special effects to them.</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="https://wiki.gnome.org/Apps/Cheese">Cheese Website</a></li>
+</ul>
+
+          </div>
           
         </div><!-- .card-body -->
         <div class="card-footer text-muted">
@@ -345,46 +435,6 @@ Virtualization Format</a>, η οποία υποστηρίζεται επιπλέ
 διαλέξετε το αρχείο <code>.ova</code> που δημιουργήσατε με την προηγούμενη 
 διαδικασία. Το VirtualBox θα χρειαστεί και πάλι μερικά λεπτά για να 
 δημιουργήσει την μηχανή.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-07-06
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/reading-9/">
-            <h2 class="card-title">Reading #9</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>A reading post!</p>
-
-<h3>Google+ hoopla:</h3>
-
-<ul><li><a href="http://www.techrepublic.com/blog/hiner/why-google-plus-is-about-to-change-the-web-as-we-know-it/8642">Why Google Plus is about to change the Web as we know it</a></li>
-<li><a href="http://www.techrepublic.com/blog/google-in-the-enterprise/four-ways-google-will-end-up-in-your-workplace/169">Four ways Google+ will end up in your workplace</a></li>
-<li><a href="http://gigaom.com/2011/06/28/why-google-plus-wont-hurt-facebook-but-skype-will-hate-it/">Why Google+ won’t hurt Facebook, but Skype will hate it</a></li>
-<li><a href="https://web.archive.org/web/20110706062639/http://socialmediatoday.com/jasonbaer/313225/why-google-has-hammer-make-businesses-use-google-plus">Why Google Has the Hammer To Make Businesses Use Google Plus</a></li>
-<li><a href="http://howto.cnet.com/8301-11310_39-20076422-285/7-google-essentials/">7 Google+ essentials</a></li>
-</ul>
-
-<h3>Misc geeky readings:</h3>
-
-<ul><li><a href="http://www.techrepublic.com/blog/10things/10-things-browser-developers-need-to-focus-on/2574">10 things browser developers need to focus on</a></li>
-<li><a href="http://www.techrepublic.com/blog/programming-and-development/is-open-source-no-longer-a-differentiator/4368">Is open source no longer a differentiator?</a></li>
-<li><a href="http://www.techrepublic.com/blog/webmaster/this-is-why-your-website-sucks/469">This is why your website sucks</a></li>
-</ul>
 
           </div>
           
@@ -639,7 +689,11 @@ Virtualization Format</a>, η οποία υποστηρίζεται επιπλέ
       
         <a href="/tags/angular/">angular</a>, 
       
+        <a href="/tags/aws-cdk/">aws-cdk</a>, 
+      
         <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-ec2/">aws-ec2</a>, 
       
         <a href="/tags/aws-rds/">aws-rds</a>, 
       

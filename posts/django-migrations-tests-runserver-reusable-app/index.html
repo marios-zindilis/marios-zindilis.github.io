@@ -113,10 +113,10 @@ the latter option:</p>
 <p>You could also place your <code>manage.py</code> file in the parent directory of your app, in which case you would need these two
 changes:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="gd">-sys.path.append(&#39;..&#39;)</span>
+<div class="codehilite"><pre><span></span><code><span class="gd">-sys.path.append(&#39;..&#39;)</span><span class="w"></span>
 
-<span class="gd">-    ROOT_URLCONF=&#39;urls&#39;,</span>
-<span class="gi">+    ROOT_URLCONF=&#39;my_reusable_app.urls&#39;,</span>
+<span class="gd">-    ROOT_URLCONF=&#39;urls&#39;,</span><span class="w"></span>
+<span class="gi">+    ROOT_URLCONF=&#39;my_reusable_app.urls&#39;,</span><span class="w"></span>
 </code></pre></div>
 
 <p>You don't need to append anything to the system path in this case, because the currect directory in included by default.</p>

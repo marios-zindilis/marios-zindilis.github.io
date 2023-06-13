@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/zindilis.com.css">
+    <title>Create an EC2 key pair with ssh-keygen and deploy with AWS CDK</title>
+
+    
+      <meta name="description" content="How to create an EC2 key pair with ssh-keygen and deploy with AWS CDK">
+      
+        <meta name="keywords" content="aws-ec2, aws-cdk">
+      
+      <link rel="canonical" href="https://zindilis.com/posts/create-ec2-key-pair-and-deploy-with-aws-cdk/" />
+      <meta property="og:title" content="Create an EC2 key pair with ssh-keygen and deploy with AWS CDK" />
+<meta property="og:url" content="https://zindilis.com/posts/create-ec2-key-pair-and-deploy-with-aws-cdk/" />
+<meta property="og:description" content="How to create an EC2 key pair with ssh-keygen and deploy with AWS CDK" />
+<meta property="og:type" content="article" />
+<meta property="og:article:published_time" content="2023-06-13" />
+    
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav id="top-nav" class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">Marios Zindilis</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/projects/">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+      
+<div class="container">
+    <div class="row">
+        <article class="col" itemscope itemtype="https://schema.org/BlogPosting">
+            <header>
+                <h1 class="mt-4" itemprop="name">Create an EC2 key pair with ssh-keygen and deploy with AWS CDK</h1>
+            </header>
+            <div itemprop="articleBody">
+                <p>You can create a key pair that will be used to SSH into EC2 instances with:</p>
+
+<pre><code>ssh-keygen -m PEM -b 4096 -f ~/.ssh/my-key-pair -t rsa
+</code></pre>
+
+<p>This will create two files in <code>~/.ssh/</code>, one with the private key named <code>my-key-pair</code> and one with the public key named
+<code>my-key-pair.pub</code>. Parameters:</p>
+
+<ul>
+<li><code>-m</code>: The key format.</li>
+<li><code>-t</code>: The key type. At the time of this writing on 2023-06-13, EC2 supports RSA and ED25519 keys.</li>
+<li><code>-b</code>: The key bits. </li>
+<li><code>-f</code>: The file name in which the key will be stored. Two files will be generated, one for the private and one for the
+public key.</li>
+</ul>
+
+<p>You can use the public key to create an EC2 key pair and associate it with your EC2 instances. Here's a minimal CDK code
+snippet for this:</p>
+
+<div class="codehilite"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Stack</span><span class="p">,</span> <span class="nx">StackProps</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;aws-cdk-lib&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">ec2</span> <span class="kr">from</span> <span class="s1">&#39;aws-cdk-lib/aws-ec2&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Construct</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;constructs&#39;</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">MyStack</span> <span class="k">extends</span> <span class="nx">Stack</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span><span class="nx">scope</span>: <span class="kt">Construct</span><span class="p">,</span> <span class="nx">id</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">props?</span>: <span class="kt">StackProps</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">props</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">cfnKeyPair</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ec2</span><span class="p">.</span><span class="nx">CfnKeyPair</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;MyCfnKeyPair&#39;</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">keyName</span><span class="o">:</span> <span class="s1">&#39;keyName&#39;</span><span class="p">,</span>
+      <span class="nx">publicKeyMaterial</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s1">&#39;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCtS/sY98Yk6RqJXrWQIqMrRoesRKTI0s6xRUlSPJzx7G8kbWKEH1YS+kE0xFOfdbo/MpXpU&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;yFf9vTIKS5HEG5ZKhFnLpbh3fBBfFmkFNazJcxpyu4yGQyy8SEhavM8xMl1NCpIhBmg8fccn78FwHVjrwBDaXlLkCkHkQf5AM+Fgx2lEOuSNz&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;4NmIvDBAEzJi8gixgKlZM5wnyEOHXyUQ04Xs+vS6RHLxmBQ90ncmMga9FhflqfmSC8r/1uMVQYgW+8/pXOGvbMRmdy9zxxnIz6EBcNtAyWhGO&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;sWB743fdXpCpbIqtiMXImkpjnItU15ar9ij+vkgB5nKBBqFbIvlQ0IKYZ5VJxZMFlpRNZAVyEDedcDWSvc8As5APYau/UgdEv73ingEZpqZR5&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;VcpKQfP4F3psgHtIO+cyPvKss0Q0vKPMwmpl7z5RRcbKxWGXizsQ+B9kvVs3HzK8gu4qaDW1RbEyWkdIzOkV+ovnhqzbn9o6078hkdIU62wix&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;k7fI9ugiOEFLoTiiAUo2H/nQ+Z06I+rxrOgF3ucGpBmAm6VaIO0upjysbKL+g05WRj5BKsHp2a2DfMlzp+TcDbpMcy/4YXYwA+BGIilIKeFbR&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;AkWDT6MP/mLfh0ud4+xZpdymS1Qvq4AzasRVQatVWZpaVWOpGzjF5KJkzhWz4DHAnL5Q== m@e&#39;</span>
+      <span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>References:</p>
+
+<ul>
+<li><a href="https://docs.aws.amazon.com/cdk/api/v1/docs/@aws-cdk_aws-ec2.CfnKeyPair.html">CfnKeyPair (construct)</a> in the CDK documentation.</li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon EC2 key pairs and Linux instances</a> in the EC2 user guide.</li>
+</ul>
+
+<p>Image credit: <em>Kylemore Abbey</em>, by Lode Van de Velde. In the Public Domain.
+<a href="https://www.publicdomainpictures.net/en/view-image.php?image=69064&amp;picture=kylemore-abbey">Source</a>.</p>
+
+            </div>
+            <footer>
+                <p>Posted on <span itemprop="datePublished" content="2023-06-13">2023-06-13</span></p>
+            </footer>
+        </article>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+
+    </main>
+
+    <footer id="site-footer" class="footer mt-auto py-3">
+      <div class="container d-flex justify-content-between">
+        <div>Marios Zindilis</div>
+        <div>
+          powered by <a href="https://github.com/marios-zindilis/phlooph">phlooph</a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/zindilis" title="Marios Zindilis LinkedIn Profile">LinkedIn</a> &middot; 
+            <a href="https://github.com/marios-zindilis" title="Marios Zindilis GitHub Page">GitHub</a> &middot; 
+            <a href="/feeds/feed.xml">RSS</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>

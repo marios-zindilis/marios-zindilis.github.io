@@ -40,15 +40,22 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/rancid/">
-            <h2 class="card-title">RANCID</h2>
+          <a href="/posts/vmware-memory-ballooning/">
+            <h2 class="card-title">VMware Memory Balloning</h2>
           </a>
 
           
           <div class="card-text">
-            <ul>
-<li><a href="http://www.shrubbery.net/rancid/">RANCID Homepage</a></li>
-<li><a href="https://web.archive.org/web/20140713072753/https://www.openlogic.com/wazi/bid/346615/how-to-set-up-and-use-rancid-under-centos">How to set up and use RANCID under CentOS</a></li>
+            <p><strong>Memory Balloning</strong> is a memory reclamation technique employeed by 
+VMware ESXi hosts, that is triggered by high memory utilization on the 
+host and aims to reclaim unused memory on some VMs, for use in others 
+that require it.</p>
+
+<h2>Read more</h2>
+
+<ul>
+<li><a href="http://www.vmwarearena.com/2014/05/vmware-memory-management-part-3-memory-ballooning.html">VMware Memory Management Part 3 - Memory Ballooning</a></li>
+<li><a href="http://theithollow.com/2012/12/vmware-ballooning-explained/">VMware Ballooning Explained</a></li>
 </ul>
 
           </div>
@@ -67,22 +74,21 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/vmware-memory-ballooning/">
-            <h2 class="card-title">VMware Memory Balloning</h2>
+          <a href="/posts/vmware-transparent-page-sharing/">
+            <h2 class="card-title">VMware Transparent Page Sharing</h2>
           </a>
 
           
           <div class="card-text">
-            <p><strong>Memory Balloning</strong> is a memory reclamation technique employeed by 
-VMware ESXi hosts, that is triggered by high memory utilization on the 
-host and aims to reclaim unused memory on some VMs, for use in others 
-that require it.</p>
-
-<h2>Read more</h2>
+            <p><strong>Transparent Page Sharing</strong> is a memory-saving technique employeed by 
+VMware ESXi hosts, that runs as a background job on the host and removes 
+duplicates pages of memory, by first comparing a hash of the contents of 
+each page, and then comparing pages the hash of which is identical bit 
+by bit.</p>
 
 <ul>
-<li><a href="http://www.vmwarearena.com/2014/05/vmware-memory-management-part-3-memory-ballooning.html">VMware Memory Management Part 3 - Memory Ballooning</a></li>
-<li><a href="http://theithollow.com/2012/12/vmware-ballooning-explained/">VMware Ballooning Explained</a></li>
+<li><a href="http://www.vmwarearena.com/2014/04/vmware-memory-management-part-2-transparent-page-sharing-tps.html">VMware Memory Management Part 2 - Transparent Page Sharing (TPS)</a></li>
+<li><a href="http://theithollow.com/2012/12/memory-de-duplication-in-vmware/">Memory De-duplication on VMware</a></li>
 </ul>
 
           </div>
@@ -119,6 +125,33 @@ documentation.</p>
         <a href='/posts/vmware-transparent-page-sharing/'>Read more on TPS...</a>
     </dd>
 </dl>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-06-11
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/rancid/">
+            <h2 class="card-title">RANCID</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <ul>
+<li><a href="http://www.shrubbery.net/rancid/">RANCID Homepage</a></li>
+<li><a href="https://web.archive.org/web/20140713072753/https://www.openlogic.com/wazi/bid/346615/how-to-set-up-and-use-rancid-under-centos">How to set up and use RANCID under CentOS</a></li>
+</ul>
 
           </div>
           
@@ -355,63 +388,6 @@ slow method, but can create tables that are many GigaBytes in size, which might 
           <b>Tags</b>:
           
             <a href="/tags/mysql/">mysql</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/zentyal/">
-            <h2 class="card-title">Zentyal</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.zentyal.org/">zentyal.org</a></li>
-</ul>
-
-<h2>See Also</h2>
-
-<p>This is a series of articles for setting up a network with Zentyal acting as 
-the Primary Domain Controller, published at <a href="http://www.tecmint.com/">tecmint.com</a>:</p>
-
-<ol>
-<li><a href="http://www.tecmint.com/install-zentyal-as-primary-domain-controller-and-integrate-windows-system/">Install Zentyal as PDC (Primary Domain Controller) and Integrate Windows 
-System</a></li>
-<li><a href="http://www.tecmint.com/how-to-manage-zentyal-primary-domain-controller-from-windows/">How to Manage Zentyal PDC (Primary Domain Controller) from Windows System</a></li>
-<li><a href="http://www.tecmint.com/creating-organizational-units-and-enableing-group-policy-in-zentyal/">Creating Organizational Units (OU) and Enabling GPO (Group Policy) in 
-Zentyal PDC Server</a></li>
-<li><a href="http://www.tecmint.com/setup-file-sharing-in-zentyal-3-4-pdc/">Setup File Sharing and Permissions for All Users in Zentyal 3.4 PDC</a></li>
-<li><a href="http://www.tecmint.com/integrate-ubuntu-system-in-zentyal-pdc/">Integrate Ubuntu System in Zentyal PDC (Primary Domain Controller)</a></li>
-<li><a href="http://www.tecmint.com/integrate-centos-in-zentyal-pdc/">Integrate CentOS/RedHat/Fedora in Zentyal PDC (Primary Domain Controller)</a></li>
-<li><a href="http://www.tecmint.com/integrate-ubuntu-14-04-to-zentyal-pdc/">Integrate Ubuntu 14.04 (Trusty Tahr) to Zentyal PDC (Primary Domain Controller)</a></li>
-<li><a href="http://www.tecmint.com/installing-ftp-server-and-mapping-ftp-directories-in-zentyal-pdc-part-8/">Installing FTP Server and Mapping FTP Directories in Zentyal PDC</a></li>
-<li><a href="http://www.tecmint.com/install-and-configure-web-services-on-zentyal/">Install and Configure Web Services (Apache Virtual Hosting) on Zentyal 
-Server</a></li>
-<li><a href="http://www.tecmint.com/enabling-userdir-and-password-protect-web-directoires-on-zentyal/">Enabling UserDir and Password Protect Web Directories on Zentyal Webserver</a></li>
-<li><a href="http://www.tecmint.com/installing-pydio-file-sharing-on-zentyal-webserver/">Installing Pydio File Sharing Platform on Zentyal 3.4 Webserver</a></li>
-<li><a href="http://www.tecmint.com/install-openvpn-server-on-zentyal/">How to Install and Configure OpenVPN Server on Zentyal 3.4 PDC</a></li>
-<li><a href="http://www.tecmint.com/configure-zentyal-as-backup-domain-controller/">Install and Configure Zentyal Linux 3.5 as A BDC (Backup Domain Controller)</a></li>
-<li><a href="http://www.tecmint.com/join-centos-7-to-zentyal-pdc/">Joining CentOS 7 Desktop to Zentyal PDC (Primary Domain Controller)</a></li>
-</ol>
-
-<p>Articles for Zentyal 3.5, released on July 1st 2014:</p>
-
-<ul>
-<li><a href="http://www.tecmint.com/configure-zentyal-as-backup-domain-controller/">Install and Configure Zentyal Linux 3.5 as A BDC (Backup Domain Controller)</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-04-09
-            </span>
           
           
         </div><!-- .card-footer -->
@@ -657,7 +633,11 @@ Server</a></li>
       
         <a href="/tags/angular/">angular</a>, 
       
+        <a href="/tags/aws-cdk/">aws-cdk</a>, 
+      
         <a href="/tags/aws-cli/">aws-cli</a>, 
+      
+        <a href="/tags/aws-ec2/">aws-ec2</a>, 
       
         <a href="/tags/aws-rds/">aws-rds</a>, 
       
