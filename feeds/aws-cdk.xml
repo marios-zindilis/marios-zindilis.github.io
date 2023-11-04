@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/aws-cdk/</link>
         <description>Personal website of Marios Zindilis - Posts tagged aws-cdk</description>
         <atom:link href="https://zindilis.com/feeds/aws-cdk.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sat, 04 Nov 2023 15:01:53 UT</lastBuildDate>
+        <lastBuildDate>Sat, 04 Nov 2023 15:13:21 UT</lastBuildDate>
         <item>
             <title>Create an EC2 key pair with ssh-keygen and deploy with AWS CDK</title>
             <link>https://zindilis.com/posts/create-ec2-key-pair-and-deploy-with-aws-cdk/</link>
