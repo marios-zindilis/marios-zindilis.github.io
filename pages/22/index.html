@@ -40,6 +40,41 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/syslog-ng/">
+            <h2 class="card-title">syslog-ng</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>GUIs compatible with <code>syslog-ng</code></h2>
+
+<ul>
+<li>Splunk</li>
+<li><a href="https://code.google.com/p/enterprise-log-search-and-archive/">Elsa</a></li>
+<li><a href="http://www.elasticsearch.org/">ElasticSearch</a>, although not just a 
+<code>syslog-ng</code> frontend, it can search through the logs if fed to it 
+as clear text files.</li>
+<li><a href="http://graylog2.org/">Graylog2</a></li>
+<li><a href="https://www.fluentd.org/">fluentd</a></li>
+<li><a href="http://loganalyzer.adiscon.com/">LogAnalyzer</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-23
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/wowza/">
             <h2 class="card-title">Wowza</h2>
           </a>
@@ -614,99 +649,6 @@ file requested on the underlying filesystem. To disable, comment out:</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/apache2-basic-authentication/">
-            <h2 class="card-title">Basic Authentication with Apache 2</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>To enable <strong>basic authentication</strong> with Apache 2:</p>
-
-<ol>
-<li><p>Create a set of credentials for the user, using <code>htpasswd</code>. The 
-syntax is:</p>
-
-<pre><code>htpasswd /path/to/htpasswd/file username
-</code></pre>
-
-<p>If the <code>htpasswd</code> file does not exist yet, pass the additional 
-option <code>-c</code> to create it. For example:</p>
-
-<pre><code>htpasswd /etc/httpd/htpasswd marios
-</code></pre></li>
-<li><p>Enter the user password twice. This will create an entry in that 
-file, with a set of credentials, e.g:</p>
-
-<pre><code>[marios@centos6 ~]$ grep marios /etc/httpd/htpasswd 
-marios:3RoxtKn6QL9Uw
-</code></pre></li>
-<li><p>Basic authentication can be applied to a directory on the web 
-server and its subdirectories with the <code>Directory</code> Apache directive, 
-or to a URL and whatever follows it, with the <code>Location</code> directove. 
-To apply it to a directory, add to your Apache configuration 
-something like:</p>
-
-<pre><code>&lt;Directory /var/www/html/protected&gt;
-    AuthName "Protected"
-    AuthType Basic
-    AuthUserFile /etc/httpd/htpasswd
-    Require user marios
-&lt;/Directory&gt;
-</code></pre>
-
-<p>If you have multiple users, you can specify <code>Require valid-user</code>, 
-in which case all users with credentials in the <code>AuthUserFile</code> 
-will be allowed to login.</p></li>
-</ol>
-
-<p>Optionally, you can further secure that specific directory or location 
-with an <code>AllowFrom</code> directive, and restrict the ranges of IP addresses 
-from which the directory or location will be accessible.</p>
-
-<h2>Basic Authentication Against Active Directory</h2>
-
-<p>To authenticate and authorize users against Active Directory, you will need to
-create an Active Directory user that will be used to bind to AD. In the
-following example, the user is <code>apache_authentication_user</code> and its password is
-<code>apache_authentication_password</code>.</p>
-
-<pre><code>AuthType Basic
-AuthName "Authorized Users Only"
-AuthBasicProvider ldap
-AuthzLDAPAuthoritative on
-AuthLDAPBindDN "CN=apache_authentication_user,OU=system_accounts,DC=example,DC=com"
-AuthLDAPBindPassword apache_authentication_password
-AuthLDAPGroupAttributeIsDN on
-AuthLDAPURL "ldap://domain-controller.example.com:389/OU=USERS,DC=example,DC=com?sAMAccountName?sub?(objectClass=*)"
-&lt;Limit GET POST&gt;
-    require ldap-group CN=sysadmins,OU=GROUPS,DC=example,DC=com
-    require ldap-group CN=finance,OU=GROUPS,DC=example,DC=com
-&lt;/Limit&gt;
-</code></pre>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialApacheAddingLoginSiteProtection.html">Apache Web Login Authentication</a>, 
-a tutorial with many Apache authentication examples, including Basic.</li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-12
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -966,6 +908,8 @@ a tutorial with many Apache authentication examples, including Basic.</li>
         <a href="/tags/django/">django</a>, 
       
         <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/imdb/">imdb</a>, 
       
         <a href="/tags/juniper/">juniper</a>, 
       

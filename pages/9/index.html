@@ -40,6 +40,74 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/gitpython/">
+            <h2 class="card-title">GitPython</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Installation</h2>
+
+<p>The easy way is to use one of the utilities provided by Python's 
+<code>setuptools</code>. If you don't have <code>setuptools</code>, you can install them with:</p>
+
+<p>{% highlight bash %}
+sudo apt-get install python-setuptools
+{% endhighlight %}</p>
+
+<p>...or with:</p>
+
+<p>{% highlight bash %}
+sudo yum install python-setuptools
+{% endhighlight %}</p>
+
+<p>... depending on your platform. You can then install GitPython with: </p>
+
+<p>{% highlight bash %}
+sudo easy_install GitPython
+{% endhighlight %}</p>
+
+<p>After that, it will be available for you to import and use:</p>
+
+<p>{% highlight python %}
+import git
+{% endhighlight %}</p>
+
+<h2>Usage</h2>
+
+<h3>Initialize a Repository Object</h3>
+
+<p>If you have a local directory that has already been initialized as a 
+Git repository (hint: it should contain a <code>.git</code> subdirectory), then 
+you can simply create an object of it:</p>
+
+<p>{% highlight python %}
+import git
+repo = git.Repo('/home/marios/repositories/test-repo')
+{% endhighlight %}</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="https://groups.google.com/forum/#!forum/git-python">Google Group for Discussions on GitPython</a></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-06-12
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/vmware-transparent-page-sharing/">
             <h2 class="card-title">VMware Transparent Page Sharing</h2>
           </a>
@@ -341,60 +409,6 @@ very beginning of your main application script:</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/mysql-create-test-database/">
-            <h2 class="card-title">Create test databases in MySQL</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Sometimes you need to create a test database on a development MySQL server, to run some tests on, and you want to
-populate it with many records, to make your tests more meaningful. This document lists a couple of quick and dirty ways
-that I use to achieve that.</p>
-
-<h2>Using <code>/usr/share/dict/words</code></h2>
-
-<p>On most Linux distributions, there is a file at <code>/usr/share/dict/words</code> which contains a list of words, each on a
-separate line. On my Linux Mint 15 installation, I count more than 99000 lines. The following commands will put those
-words in a table called <code>words</code>, in a database called <code>test</code>, one word per table row.</p>
-
-<p>Create the table:</p>
-
-<pre><code>mysql&gt; CREATE TABLE words (id INT AUTO_INCREMENT, word VARCHAR(256));
-</code></pre>
-
-<p>Populate the table with the words. I 'm using double quotes to wrap the words, since many of them already contain a
-single quote:</p>
-
-<pre><code>while read word; do mysql test -e "INSERT INTO words (word) VALUES (\"$word\")"; done &lt; /usr/share/dict/words
-</code></pre>
-
-<h2>Using <code>/var/log/messages</code></h2>
-
-<p>I have also used the contents of <code>/var/log/messages</code> to populate a table, and that is documented in the blog post
-<a href="/posts/how-to-create-a-large-mysql-db-for-tests/">How to create a large MySQL database for tests</a>. That is a painfully
-slow method, but can create tables that are many GigaBytes in size, which might be necessary for some tests.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-04-12
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/mysql/">mysql</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -654,6 +668,8 @@ slow method, but can create tables that are many GigaBytes in size, which might 
         <a href="/tags/django/">django</a>, 
       
         <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/imdb/">imdb</a>, 
       
         <a href="/tags/juniper/">juniper</a>, 
       

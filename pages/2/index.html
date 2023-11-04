@@ -40,6 +40,92 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/mutagen/">
+            <h2 class="card-title">Mutagen ID3 Python Library</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><strong>Mutagen</strong> is a Python module to handle audio metadata.</p>
+
+<h2>UFID: Unique File Identifier</h2>
+
+<p>The unique file identifier is a reference to an external database that may 
+contain more information about the work tagged with it. Like many ID3 tags, it 
+can have multiple values. For example, you can link the song "<em>Black Sabbath</em>" 
+by "Black Sabbath" as <code>mt0030286828</code> in <a href="http://www.allmusic.com/" title="AllMusic">AllMusic</a>, and as 
+<code>153a3596-af03-36ed-976a-83fec8745732</code> in <a href="https://musicbrainz.org/" title="MusicBrainz">MusicBrainz</a>. </p>
+
+<p>Note that according to the <a href="http://id3.org/id3v2.4.0-frames">definition of the UFID ID3 frame</a>, the URLs 
+should not be queries themselves. I guess that it might be a feature of the
+software that reads this tag to transform it to direct links. In the example
+used, those links would be: 
+<a href="http://www.allmusic.com/song/black-sabbath-mt0030286828">http://www.allmusic.com/song/black-sabbath-mt0030286828</a> and 
+<a href="https://musicbrainz.org/work/153a3596-af03-36ed-976a-83fec8745732">https://musicbrainz.org/work/153a3596-af03-36ed-976a-83fec8745732</a>.</p>
+
+<p>Let's see how to write UFID and read it back in Python, with Mutagen.</p>
+
+<p>{% highlight python %}</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>from mutagen import id3
+      song = id3.ID3('test.mp3')</p>
+      
+      <h1>Note that there is no <code>UFID</code> tag in the beginning:</h1>
+      
+      <p>song.keys()
+      dict_keys(['TPE1', 'TALB', 'APIC:', 'TDRC', 'TRCK', 'TPE2', 'TPOS', 'TIT2'])</p>
+      
+      <h1>Let's add two references:</h1>
+      
+      <p>am<em>url = 'http://www.allmusic.com/'
+      am</em>ref = 'mt0030286828'
+      mb<em>url = 'https://musicbrainz.org/'
+      mb</em>ref = '153a3596-af03-36ed-976a-83fec8745732'
+      song.add(id3.UFID(owner=am<em>url, data=am</em>ref.encode()))
+      song.add(id3.UFID(owner=mb<em>url, data=mb</em>ref.encode()))</p>
+      
+      <h1>There are now two UFIDs:</h1>
+      
+      <p>song.keys()
+      dict_keys(['UFID:https://musicbrainz.org/', 'TRCK', 'TPE1', 'UFID:http://www.allmusic.com/', 'TPE2', 'TALB', 'TIT2', 'APIC:', 'TPOS', 'TDRC'])</p>
+      
+      <h1>Read them back:</h1>
+      
+      <p>song['UFID:https://musicbrainz.org/']
+      UFID(owner='https://musicbrainz.org/', data=b'153a3596-af03-36ed-976a-83fec8745732')
+      song['UFID:https://musicbrainz.org/'].owner
+      'https://musicbrainz.org/'
+      song['UFID:https://musicbrainz.org/'].data
+      b'153a3596-af03-36ed-976a-83fec8745732'
+      song['UFID:https://musicbrainz.org/'].data.decode()
+      '153a3596-af03-36ed-976a-83fec8745732'
+      {% endhighlight %}</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Note the use of <code>encode()</code> and <code>decode()</code> methods of <code>unicode</code> used for the 
+<code>data</code> part of the frame, as it expects its contents to be bytes.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-12-12
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/hex-primary-key-in-django-model/">
             <h2 class="card-title">Hexadecimal Primary Key in Django Model</h2>
           </a>
@@ -381,38 +467,6 @@ risks, over the course of one year. Calculation of
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/annual-rate-of-occurence/">
-            <h2 class="card-title">Annual Rate of Occurrence</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>In the context of <strong>risk management</strong>, the <strong>annual rate of occurrence</strong> is an 
-estimate of the repetitions of the realization of a risk, over the period of a 
-year. The relationship between 
-<abbr title="Annual Rate of Occurrence">ARO</abbr>, 
-<abbr title="Single Loss Expectancy">SLE</abbr> and 
-<abbr title="Annual Loss Expectancy">ALE</abbr> is:</p>
-
-<pre><code>    ALE = SLE * ARO
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2015-09-20
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -672,6 +726,8 @@ year. The relationship between
         <a href="/tags/django/">django</a>, 
       
         <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/imdb/">imdb</a>, 
       
         <a href="/tags/juniper/">juniper</a>, 
       

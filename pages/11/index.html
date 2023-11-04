@@ -40,6 +40,46 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/etc-filesystems/">
+            <h2 class="card-title">/etc/filesystems</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>On RedHat, CentOS, and probably other RPM-based distributions, the 
+<code>/etc/filesystems</code> file lists the filesystems that are <em>known</em> to the 
+system, i.e. those filesystems that can be mounted without specifying 
+the filesystem type. The contents of that file in a minimal CentOS 
+installation are:</p>
+
+<pre><code>[root@c6min ~]# cat /etc/filesystems
+ext4
+ext3
+ext2
+nodev proc
+nodev devpts
+iso9660
+vfat
+hfs
+hfsplus
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-03-30
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/google-suggestions-in-firefox-on-mint/">
             <h2 class="card-title">How to get Google search suggestions in Firefox on Linux Mint</h2>
           </a>
@@ -334,52 +374,6 @@ the LXDE desktop by default. </p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/etc-shells/">
-            <h2 class="card-title">/etc/shells</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>The <code>/etc/shells</code> file is a list of valid shells on the system. Example from an Ubuntu 12.10 Desktop system:</p>
-
-<pre><code># /etc/shells: valid login shells
-/bin/sh
-/bin/dash
-/bin/bash
-/bin/rbash
-/usr/bin/screen
-</code></pre>
-
-<p>Example from a CentOS 6 minimal server:</p>
-
-<pre><code>/bin/sh 
-/bin/bash
-/sbin/nologin
-/bin/dash
-</code></pre>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="http://utcc.utoronto.ca/~cks/space/blog/unix/EtcShellsUsage">What <code>/etc/shells</code> is and isn't</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-03-11
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -639,6 +633,8 @@ the LXDE desktop by default. </p>
         <a href="/tags/django/">django</a>, 
       
         <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/imdb/">imdb</a>, 
       
         <a href="/tags/juniper/">juniper</a>, 
       

@@ -4,7 +4,13 @@
         <link>https://zindilis.com/</link>
         <description>Personal website of Marios Zindilis</description>
         <atom:link href="https://zindilis.com/feeds/feed.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sat, 04 Nov 2023 12:28:34 UT</lastBuildDate>
+        <lastBuildDate>Sat, 04 Nov 2023 13:38:05 UT</lastBuildDate>
+        <item>
+            <title>IMDB non-commercial datasets schema</title>
+            <link>https://zindilis.com/posts/imdb-non-commercial-datasets-schema/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/imdb-non-commercial-datasets-schema/</guid>
+            <pubDate>Sat, 04 Nov 2023 00:00:00 UT</pubDate>
+        </item>
         <item>
             <title>Create an EC2 key pair with ssh-keygen and deploy with AWS CDK</title>
             <link>https://zindilis.com/posts/create-ec2-key-pair-and-deploy-with-aws-cdk/</link>
@@ -118,12 +124,6 @@
             <link>https://zindilis.com/posts/control-vlc-with-python/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/control-vlc-with-python/</guid>
             <pubDate>Sun, 23 Oct 2016 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>Mutagen ID3 Python Library</title>
-            <link>https://zindilis.com/posts/mutagen/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/mutagen/</guid>
-            <pubDate>Sat, 12 Dec 2015 00:00:00 UT</pubDate>
         </item>
         
     </channel>

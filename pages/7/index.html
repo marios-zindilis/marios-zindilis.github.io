@@ -39,6 +39,36 @@
     
       <div class="card my-4">
       
+        <img class="card-img-top" src="/posts/change-pptpd-port-on-centos/index.jpg" alt="Card image cap">
+      
+        <div class="card-body">
+          <a href="/posts/change-pptpd-port-on-centos/">
+            <h2 class="card-title">Change pptpd port on CentOS</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>I was testing Point-to-Point Tunneling today, between a CentOS 6 server running <code>pptpd</code>, and some Mikrotik routers as
+the clients, and I wanted to change the listening port on the <code>pptpd</code> side. After searching and reading a bit of 
+documentation for a while, I was surprised to find that <code>pptpd</code> respects the record for <code>pptp</code> as defined in 
+<code>/etc/services</code>.</p>
+
+          </div>
+          <a href="/posts/change-pptpd-port-on-centos/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-09-17
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
         <div class="card-body">
           <a href="/posts/lpic2-revision/">
             <h2 class="card-title">LPIC-2 Revision</h2>
@@ -427,43 +457,6 @@ list was compiled before the exam objectives' revision in October 2013.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/etc-modprobe-d/">
-            <h2 class="card-title">/etc/modprobe.d/</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>On CentOS and probably other RedHat-based distributions, <code>/etc/modprobe.d/</code> 
-is the directory which contains configurations for loading kernel modules, 
-module aliases and module blacklists, that are specific to the host, and not 
-shipped by packages (those should go in <a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a>.</p>
-
-<p>Module configurations from both directories are read by default, unless 
-<a href="/docs/dracut.html">dracut</a> is run in <em>generic</em> mode.</p>
-
-<h2>See also</h2>
-
-<ul>
-<li><a href="/docs/dracut.html">dracut</a></li>
-<li><a href="/docs/lfs/usr/lib/modprobe.d/">/usr/lib/modprobe.d/</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-07-12
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -723,6 +716,8 @@ shipped by packages (those should go in <a href="/docs/lfs/usr/lib/modprobe.d/">
         <a href="/tags/django/">django</a>, 
       
         <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/imdb/">imdb</a>, 
       
         <a href="/tags/juniper/">juniper</a>, 
       

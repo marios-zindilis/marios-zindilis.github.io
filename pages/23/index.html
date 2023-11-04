@@ -40,6 +40,99 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/apache2-basic-authentication/">
+            <h2 class="card-title">Basic Authentication with Apache 2</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>To enable <strong>basic authentication</strong> with Apache 2:</p>
+
+<ol>
+<li><p>Create a set of credentials for the user, using <code>htpasswd</code>. The 
+syntax is:</p>
+
+<pre><code>htpasswd /path/to/htpasswd/file username
+</code></pre>
+
+<p>If the <code>htpasswd</code> file does not exist yet, pass the additional 
+option <code>-c</code> to create it. For example:</p>
+
+<pre><code>htpasswd /etc/httpd/htpasswd marios
+</code></pre></li>
+<li><p>Enter the user password twice. This will create an entry in that 
+file, with a set of credentials, e.g:</p>
+
+<pre><code>[marios@centos6 ~]$ grep marios /etc/httpd/htpasswd 
+marios:3RoxtKn6QL9Uw
+</code></pre></li>
+<li><p>Basic authentication can be applied to a directory on the web 
+server and its subdirectories with the <code>Directory</code> Apache directive, 
+or to a URL and whatever follows it, with the <code>Location</code> directove. 
+To apply it to a directory, add to your Apache configuration 
+something like:</p>
+
+<pre><code>&lt;Directory /var/www/html/protected&gt;
+    AuthName "Protected"
+    AuthType Basic
+    AuthUserFile /etc/httpd/htpasswd
+    Require user marios
+&lt;/Directory&gt;
+</code></pre>
+
+<p>If you have multiple users, you can specify <code>Require valid-user</code>, 
+in which case all users with credentials in the <code>AuthUserFile</code> 
+will be allowed to login.</p></li>
+</ol>
+
+<p>Optionally, you can further secure that specific directory or location 
+with an <code>AllowFrom</code> directive, and restrict the ranges of IP addresses 
+from which the directory or location will be accessible.</p>
+
+<h2>Basic Authentication Against Active Directory</h2>
+
+<p>To authenticate and authorize users against Active Directory, you will need to
+create an Active Directory user that will be used to bind to AD. In the
+following example, the user is <code>apache_authentication_user</code> and its password is
+<code>apache_authentication_password</code>.</p>
+
+<pre><code>AuthType Basic
+AuthName "Authorized Users Only"
+AuthBasicProvider ldap
+AuthzLDAPAuthoritative on
+AuthLDAPBindDN "CN=apache_authentication_user,OU=system_accounts,DC=example,DC=com"
+AuthLDAPBindPassword apache_authentication_password
+AuthLDAPGroupAttributeIsDN on
+AuthLDAPURL "ldap://domain-controller.example.com:389/OU=USERS,DC=example,DC=com?sAMAccountName?sub?(objectClass=*)"
+&lt;Limit GET POST&gt;
+    require ldap-group CN=sysadmins,OU=GROUPS,DC=example,DC=com
+    require ldap-group CN=finance,OU=GROUPS,DC=example,DC=com
+&lt;/Limit&gt;
+</code></pre>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialApacheAddingLoginSiteProtection.html">Apache Web Login Authentication</a>, 
+a tutorial with many Apache authentication examples, including Basic.</li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-11-12
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/zenoss-zendmd-get-device-serial-numbers/">
             <h2 class="card-title">Get all device Serial Numbers from ZenDMD in Zenoss</h2>
           </a>
@@ -978,59 +1071,6 @@ tmpfs                 947M     0  947M   0% /dev/shm
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/juniper-jncia-study-material/">
-            <h2 class="card-title">Study Material for JNCIA</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p><abbr title='Juniper Networks Certified Internet Associate'>JNCIA</abbr>-Junos is the entry-level certification of
-Juniper Networks, and a prerequisite for the next level of
-<a href="https://www.juniper.net/us/en/training/certification/certification-tracks/">JNCIS certifications</a>.</p>
-
-<p>Certification is achieved by passing one exam, either JN0-101 (being retired on 2014-01-31 and available to take until
-2014-02-28) or JN0-102 (available to take from 2014-01-31).</p>
-
-<ol>
-<li><a href="https://www.juniper.net/us/en/training/certification/">Juniper's Certification Website</a></li>
-<li><a href="https://web.archive.org/web/20140817123609/https://www.juniper.net/us/en/training/certification/JNCIA_studyguide.pdf">JNCIA Study Guide</a>, free from Juniper's website.</li>
-<li>JNCIA-Junos Study Guide Part 1 and Part 2, free to download from 
-<a href="https://learningportal.juniper.net/juniper/user_fasttrack_home.aspx">Juniper's FastTrack Website</a> 
-(requires free registration, after the registration find the "Study 
-Resources" section).</li>
-</ol>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="https://www.juniper.net/us/en/training/certification/resources_jnciajunos.html">The JNCIA-Junos Objectives</a></li>
-<li><a href="http://forums.juniper.net/">J-Net Community Forums</a></li>
-<li>The <a href="https://learningportal.juniper.net/juniper/user_activity_info.aspx?id=5735">Junosphere</a>, and 
-<a href="https://markom.info/2012/02/the-junosphere-experience-part-one-getting-access/">The Junosphere Experience</a>.</li>
-<li><a href="http://www.itcertificationmaster.com/jncia-junos/">Introduction to JNCIA</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-02
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/juniper/">juniper</a>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -1290,6 +1330,8 @@ Resources" section).</li>
         <a href="/tags/django/">django</a>, 
       
         <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/imdb/">imdb</a>, 
       
         <a href="/tags/juniper/">juniper</a>, 
       

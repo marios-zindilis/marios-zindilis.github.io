@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/zenoss/</link>
         <description>Personal website of Marios Zindilis - Posts tagged zenoss</description>
         <atom:link href="https://zindilis.com/feeds/zenoss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sat, 04 Nov 2023 12:28:35 UT</lastBuildDate>
+        <lastBuildDate>Sat, 04 Nov 2023 13:38:06 UT</lastBuildDate>
         <item>
             <title>Zenoss: Add a device to a Group with ZenDMD</title>
             <link>https://zindilis.com/posts/zenoss-zendmd-add-device-to-group/</link>

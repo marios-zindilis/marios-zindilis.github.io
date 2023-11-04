@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/backuppc/</link>
         <description>Personal website of Marios Zindilis - Posts tagged backuppc</description>
         <atom:link href="https://zindilis.com/feeds/backuppc.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sat, 04 Nov 2023 12:28:35 UT</lastBuildDate>
+        <lastBuildDate>Sat, 04 Nov 2023 13:38:06 UT</lastBuildDate>
         <item>
             <title>Stale NFS Causes BackupPC fileListReceive Failure</title>
             <link>https://zindilis.com/posts/stale-nfs-causes-backuppc-filelistreceive-failure/</link>

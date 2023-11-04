@@ -40,6 +40,60 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/mysql-create-test-database/">
+            <h2 class="card-title">Create test databases in MySQL</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Sometimes you need to create a test database on a development MySQL server, to run some tests on, and you want to
+populate it with many records, to make your tests more meaningful. This document lists a couple of quick and dirty ways
+that I use to achieve that.</p>
+
+<h2>Using <code>/usr/share/dict/words</code></h2>
+
+<p>On most Linux distributions, there is a file at <code>/usr/share/dict/words</code> which contains a list of words, each on a
+separate line. On my Linux Mint 15 installation, I count more than 99000 lines. The following commands will put those
+words in a table called <code>words</code>, in a database called <code>test</code>, one word per table row.</p>
+
+<p>Create the table:</p>
+
+<pre><code>mysql&gt; CREATE TABLE words (id INT AUTO_INCREMENT, word VARCHAR(256));
+</code></pre>
+
+<p>Populate the table with the words. I 'm using double quotes to wrap the words, since many of them already contain a
+single quote:</p>
+
+<pre><code>while read word; do mysql test -e "INSERT INTO words (word) VALUES (\"$word\")"; done &lt; /usr/share/dict/words
+</code></pre>
+
+<h2>Using <code>/var/log/messages</code></h2>
+
+<p>I have also used the contents of <code>/var/log/messages</code> to populate a table, and that is documented in the blog post
+<a href="/posts/how-to-create-a-large-mysql-db-for-tests/">How to create a large MySQL database for tests</a>. That is a painfully
+slow method, but can create tables that are many GigaBytes in size, which might be necessary for some tests.</p>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2014-04-12
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/mysql/">mysql</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/zentyal/">
             <h2 class="card-title">Zentyal</h2>
           </a>
@@ -479,46 +533,6 @@ global variables and recursion.</li>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/etc-filesystems/">
-            <h2 class="card-title">/etc/filesystems</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>On RedHat, CentOS, and probably other RPM-based distributions, the 
-<code>/etc/filesystems</code> file lists the filesystems that are <em>known</em> to the 
-system, i.e. those filesystems that can be mounted without specifying 
-the filesystem type. The contents of that file in a minimal CentOS 
-installation are:</p>
-
-<pre><code>[root@c6min ~]# cat /etc/filesystems
-ext4
-ext3
-ext2
-nodev proc
-nodev devpts
-iso9660
-vfat
-hfs
-hfsplus
-</code></pre>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2014-03-30
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -778,6 +792,8 @@ hfsplus
         <a href="/tags/django/">django</a>, 
       
         <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/imdb/">imdb</a>, 
       
         <a href="/tags/juniper/">juniper</a>, 
       

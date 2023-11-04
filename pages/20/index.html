@@ -40,6 +40,44 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/centos-6-enable-epel-repository/">
+            <h2 class="card-title">Enable EPEL Repository on CentOS 6</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>The most updated information for enabling EPEL should always be at the 
+<a href="http://fedoraproject.org/wiki/EPEL">Fedora Project's Wiki</a>.</p>
+
+<p>In that page's section "How can I use these extra packages?", there are links 
+to the latest versions for CentOS 6 (and CentOS 5).</p>
+
+<p>In that page, download the <code>.noarch</code> file, for example:</p>
+
+<pre><code>wget http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+</code></pre>
+
+<p>Then, install with <code>yum</code>:</p>
+
+<pre><code>yum install epel-release-*.noarch
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-19
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/ntpdate/">
             <h2 class="card-title">ntpdate</h2>
           </a>
@@ -441,36 +479,6 @@ Windows and MAC OS X.</p>
         </div><!-- .card-footer -->
       </div><!-- .card -->
     
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/puppet/">
-            <h2 class="card-title">Puppet</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <ul>
-<li><a href="http://www.infoworld.com/d/data-center/review-puppet-vs-chef-vs-ansible-vs-salt-231308">Review: Puppet vs. Chef vs. Ansible vs. Salt</a></li>
-<li><a href="http://xmodulo.com/2014/08/install-puppet-server-client-centos-rhel.html">How to install Puppet server and client on CentOS and RHEL</a></li>
-<li><a href="http://sysphere.org/~anrxc/j/archives/2013/06/24/hosting_with_puppet_-_design/index.html">Hosting with Puppet - Design</a></li>
-<li><a href="http://www.tecmint.com/install-puppet-in-centos/">Installing Puppet Master and Agent in RHEL/CentOS 7/6/5</a></li>
-<li><a href="http://terrarum.net/blog/puppet-infrastructure-2015.html">Puppet Infrastructure 2015</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-11-27
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
 
       <nav aria-label="page navigation">
         <ul class="pagination justify-content-center mb-4">
@@ -730,6 +738,8 @@ Windows and MAC OS X.</p>
         <a href="/tags/django/">django</a>, 
       
         <a href="/tags/firefox/">firefox</a>, 
+      
+        <a href="/tags/imdb/">imdb</a>, 
       
         <a href="/tags/juniper/">juniper</a>, 
       
