@@ -59,15 +59,68 @@ information, including legal, at <a href="https://developer.imdb.com/non-commerc
 
 <p>There are 7 files provided, at the time of writing this article:</p>
 
-<ol>
-<li><code>name.basics.tsv.gz</code></li>
-<li><code>title.akas.tsv.gz</code></li>
-<li><code>title.basics.tsv.gz</code></li>
-<li><code>title.crew.tsv.gz</code></li>
-<li><code>title.episode.tsv.gz</code></li>
-<li><code>title.principals.tsv.gz</code></li>
-<li><code>title.ratings.tsv.gz</code></li>
-</ol>
+<table class="table">
+<thead>
+<tr>
+  <th>#</th>
+  <th>Name</th>
+  <th>Compressed size (MB)</th>
+  <th>Uncompressed size (MB)</th>
+  <th>Number of rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><code>name.basics.tsv.gz</code></td>
+  <td>245</td>
+  <td>753</td>
+  <td>12,981,035</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>title.akas.tsv.gz</code></td>
+  <td>305</td>
+  <td>1783</td>
+  <td>37,728,267</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>title.basics.tsv.gz</code></td>
+  <td>172</td>
+  <td>841</td>
+  <td>10,285,368</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>title.crew.tsv.gz</code></td>
+  <td>66</td>
+  <td>325</td>
+  <td>10,285,368</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>title.episode.tsv.gz</code></td>
+  <td>41</td>
+  <td>196</td>
+  <td>7,844,603</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>title.principals.tsv.gz</code></td>
+  <td>436</td>
+  <td>2475</td>
+  <td>58,914,239</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>title.ratings.tsv.gz</code></td>
+  <td>7</td>
+  <td>23</td>
+  <td>1,366,240</td>
+</tr>
+</tbody>
+</table>
 
 <p>There are 2 unique alphanumeric identifiers in those files:</p>
 
@@ -144,6 +197,391 @@ Table title_ratings {
   numVotes number
 }
 </code></pre>
+
+<h2>5 First Rows</h2>
+
+<p>Here's a sample of the data, these are the first 5 rows from each export.</p>
+
+<h3>name.basics.tsv</h3>
+
+<table class="table">
+<thead>
+<tr>
+  <th>nconst</th>
+  <th>primaryName</th>
+  <th>birthYear</th>
+  <th>deathYear</th>
+  <th>primaryProfession</th>
+  <th>knownForTitles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>nm0000001</td>
+  <td>Fred Astaire</td>
+  <td>1899</td>
+  <td>1987</td>
+  <td>soundtrack,actor,miscellaneous</td>
+  <td>tt0050419,tt0053137,tt0072308,tt0031983</td>
+</tr>
+<tr>
+  <td>nm0000002</td>
+  <td>Lauren Bacall</td>
+  <td>1924</td>
+  <td>2014</td>
+  <td>actress,soundtrack</td>
+  <td>tt0075213,tt0037382,tt0038355,tt0117057</td>
+</tr>
+<tr>
+  <td>nm0000003</td>
+  <td>Brigitte Bardot</td>
+  <td>1934</td>
+  <td>\N</td>
+  <td>actress,soundtrack,music_department</td>
+  <td>tt0054452,tt0056404,tt0057345,tt0049189</td>
+</tr>
+<tr>
+  <td>nm0000004</td>
+  <td>John Belushi</td>
+  <td>1949</td>
+  <td>1982</td>
+  <td>actor,soundtrack,writer</td>
+  <td>tt0080455,tt0072562,tt0077975,tt0078723</td>
+</tr>
+<tr>
+  <td>nm0000005</td>
+  <td>Ingmar Bergman</td>
+  <td>1918</td>
+  <td>2007</td>
+  <td>writer,director,actor</td>
+  <td>tt0083922,tt0069467,tt0050986,tt0050976</td>
+</tr>
+</tbody>
+</table>
+
+<h3>title.akas.tsv</h3>
+
+<table class="table">
+<thead>
+<tr>
+  <th>titleId</th>
+  <th>ordering</th>
+  <th>title</th>
+  <th>region</th>
+  <th>language</th>
+  <th>types</th>
+  <th>attributes</th>
+  <th>isOriginalTitle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>tt0000001</td>
+  <td>1</td>
+  <td>Карменсіта</td>
+  <td>UA</td>
+  <td>\N</td>
+  <td>imdbDisplay</td>
+  <td>\N</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>tt0000001</td>
+  <td>2</td>
+  <td>Carmencita</td>
+  <td>DE</td>
+  <td>\N</td>
+  <td>\N</td>
+  <td>literal title</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>tt0000001</td>
+  <td>3</td>
+  <td>Carmencita - spanyol tánc</td>
+  <td>HU</td>
+  <td>\N</td>
+  <td>imdbDisplay</td>
+  <td>\N</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>tt0000001</td>
+  <td>4</td>
+  <td>Καρμενσίτα</td>
+  <td>GR</td>
+  <td>\N</td>
+  <td>imdbDisplay</td>
+  <td>\N</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>tt0000001</td>
+  <td>5</td>
+  <td>Карменсита</td>
+  <td>RU</td>
+  <td>\N</td>
+  <td>imdbDisplay</td>
+  <td>\N</td>
+  <td>0</td>
+</tr>
+</tbody>
+</table>
+
+<h3>title.basics.tsv</h3>
+
+<table class="table">
+<thead>
+<tr>
+  <th>tconst</th>
+  <th>titleType</th>
+  <th>primaryTitle</th>
+  <th>originalTitle</th>
+  <th>isAdult</th>
+  <th>startYear</th>
+  <th>endYear</th>
+  <th>runtimeMinutes</th>
+  <th>genres</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>tt0000001</td>
+  <td>short</td>
+  <td>Carmencita</td>
+  <td>Carmencita</td>
+  <td>0</td>
+  <td>1894</td>
+  <td>\N</td>
+  <td>1</td>
+  <td>Documentary,Short</td>
+</tr>
+<tr>
+  <td>tt0000002</td>
+  <td>short</td>
+  <td>Le clown et ses chiens</td>
+  <td>Le clown et ses chiens</td>
+  <td>0</td>
+  <td>1892</td>
+  <td>\N</td>
+  <td>5</td>
+  <td>Animation,Short</td>
+</tr>
+<tr>
+  <td>tt0000003</td>
+  <td>short</td>
+  <td>Pauvre Pierrot</td>
+  <td>Pauvre Pierrot</td>
+  <td>0</td>
+  <td>1892</td>
+  <td>\N</td>
+  <td>4</td>
+  <td>Animation,Comedy,Romance</td>
+</tr>
+<tr>
+  <td>tt0000004</td>
+  <td>short</td>
+  <td>Un bon bock</td>
+  <td>Un bon bock</td>
+  <td>0</td>
+  <td>1892</td>
+  <td>\N</td>
+  <td>12</td>
+  <td>Animation,Short</td>
+</tr>
+<tr>
+  <td>tt0000005</td>
+  <td>short</td>
+  <td>Blacksmith Scene</td>
+  <td>Blacksmith Scene</td>
+  <td>0</td>
+  <td>1893</td>
+  <td>\N</td>
+  <td>1</td>
+  <td>Comedy,Short</td>
+</tr>
+</tbody>
+</table>
+
+<h3>title.crew.tsv</h3>
+
+<table class="table">
+<thead>
+<tr>
+  <th>tconst</th>
+  <th>directors</th>
+  <th>writers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>tt0000001</td>
+  <td>nm0005690</td>
+  <td>\N</td>
+</tr>
+<tr>
+  <td>tt0000002</td>
+  <td>nm0721526</td>
+  <td>\N</td>
+</tr>
+<tr>
+  <td>tt0000003</td>
+  <td>nm0721526</td>
+  <td>\N</td>
+</tr>
+<tr>
+  <td>tt0000004</td>
+  <td>nm0721526</td>
+  <td>\N</td>
+</tr>
+<tr>
+  <td>tt0000005</td>
+  <td>nm0005690</td>
+  <td>\N</td>
+</tr>
+</tbody>
+</table>
+
+<h3>title.episode.tsv</h3>
+
+<table class="table">
+<thead>
+<tr>
+  <th>tconst</th>
+  <th>parentTconst</th>
+  <th>seasonNumber</th>
+  <th>episodeNumber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>tt0041951</td>
+  <td>tt0041038</td>
+  <td>1</td>
+  <td>9</td>
+</tr>
+<tr>
+  <td>tt0042816</td>
+  <td>tt0989125</td>
+  <td>1</td>
+  <td>17</td>
+</tr>
+<tr>
+  <td>tt0042889</td>
+  <td>tt0989125</td>
+  <td>\N</td>
+  <td>\N</td>
+</tr>
+<tr>
+  <td>tt0043426</td>
+  <td>tt0040051</td>
+  <td>3</td>
+  <td>42</td>
+</tr>
+<tr>
+  <td>tt0043631</td>
+  <td>tt0989125</td>
+  <td>2</td>
+  <td>16</td>
+</tr>
+</tbody>
+</table>
+
+<h3>title.principals.tsv</h3>
+
+<table class="table">
+<thead>
+<tr>
+  <th>tconst</th>
+  <th>ordering</th>
+  <th>nconst</th>
+  <th>category</th>
+  <th>job</th>
+  <th>characters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>tt0000001</td>
+  <td>1</td>
+  <td>nm1588970</td>
+  <td>self</td>
+  <td>\N</td>
+  <td>["Self"]</td>
+</tr>
+<tr>
+  <td>tt0000001</td>
+  <td>2</td>
+  <td>nm0005690</td>
+  <td>director</td>
+  <td>\N</td>
+  <td>\N</td>
+</tr>
+<tr>
+  <td>tt0000001</td>
+  <td>3</td>
+  <td>nm0374658</td>
+  <td>cinematographer</td>
+  <td>director of photography</td>
+  <td>\N</td>
+</tr>
+<tr>
+  <td>tt0000002</td>
+  <td>1</td>
+  <td>nm0721526</td>
+  <td>director</td>
+  <td>\N</td>
+  <td>\N</td>
+</tr>
+<tr>
+  <td>tt0000002</td>
+  <td>2</td>
+  <td>nm1335271</td>
+  <td>composer</td>
+  <td>\N</td>
+  <td>\N</td>
+</tr>
+</tbody>
+</table>
+
+<h3>title.ratings.tsv</h3>
+
+<table class="table">
+<thead>
+<tr>
+  <th>tconst</th>
+  <th>averageRating</th>
+  <th>numVotes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>tt0000001</td>
+  <td>5.7</td>
+  <td>2004</td>
+</tr>
+<tr>
+  <td>tt0000002</td>
+  <td>5.8</td>
+  <td>269</td>
+</tr>
+<tr>
+  <td>tt0000003</td>
+  <td>6.5</td>
+  <td>1903</td>
+</tr>
+<tr>
+  <td>tt0000004</td>
+  <td>5.5</td>
+  <td>178</td>
+</tr>
+<tr>
+  <td>tt0000005</td>
+  <td>6.2</td>
+  <td>2685</td>
+</tr>
+</tbody>
+</table>
 
             </div>
             <footer>

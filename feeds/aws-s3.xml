@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/aws-s3/</link>
         <description>Personal website of Marios Zindilis - Posts tagged aws-s3</description>
         <atom:link href="https://zindilis.com/feeds/aws-s3.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sat, 04 Nov 2023 13:38:06 UT</lastBuildDate>
+        <lastBuildDate>Sat, 04 Nov 2023 15:01:53 UT</lastBuildDate>
         <item>
             <title>Upload file to S3 Bucket using Boto3</title>
             <link>https://zindilis.com/posts/upload-file-to-s3-with-boto3/</link>

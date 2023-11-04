@@ -4,7 +4,7 @@
         <link>https://zindilis.com/tags/mysql/</link>
         <description>Personal website of Marios Zindilis - Posts tagged mysql</description>
         <atom:link href="https://zindilis.com/feeds/mysql.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sat, 04 Nov 2023 13:38:05 UT</lastBuildDate>
+        <lastBuildDate>Sat, 04 Nov 2023 15:01:53 UT</lastBuildDate>
         <item>
             <title>Percona Webinar: What I Learned While Migrating MySQL On-Premises To Amazon RDS</title>
             <link>https://zindilis.com/posts/migrate-on-premises-mysql-to-rds/</link>
