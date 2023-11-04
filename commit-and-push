@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+git add --all
+git commit --all --message "$(date +'%F-%T')"
+git push
+
