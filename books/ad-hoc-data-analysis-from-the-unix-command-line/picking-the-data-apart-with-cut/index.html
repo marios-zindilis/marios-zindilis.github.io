@@ -58,52 +58,62 @@ bit of data from each record. The argument <code>-c106-107</code> instructs <cod
 the 106th through 107th characters of each line. The <code>head</code> command prints just 
 the first few lines of a file (or its standard input).</p>
 
-<div class="codehilite"><pre><span></span><code>$ census_data&gt;grep <span class="s2">&quot;^H&quot;</span> pums_53.dat  <span class="p">|</span> cut -c106-107 <span class="p">|</span> head -5
+<div class="codehilite">
+<pre><span></span><code>$ census_data&gt;grep <span class="s2">&quot;^H&quot;</span> pums_53.dat  <span class="p">|</span> cut -c106-107 <span class="p">|</span> head -5
 <span class="m">03</span> 
 <span class="m">02</span> 
 <span class="m">03</span> 
 <span class="m">02</span> 
 <span class="m">02</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>You can give <code>cut</code> a comma separated list to pull out multiple ranges. To see 
 the household id along with the number of occupants of the household:</p>
 
-<div class="codehilite"><pre><span></span><code>$ census_data&gt;grep <span class="s2">&quot;^H&quot;</span> pums_53.dat  <span class="p">|</span> cut -c2-8,106-107 <span class="p">|</span> head -5
+<div class="codehilite">
+<pre><span></span><code>$ census_data&gt;grep <span class="s2">&quot;^H&quot;</span> pums_53.dat  <span class="p">|</span> cut -c2-8,106-107 <span class="p">|</span> head -5
 <span class="m">000011703</span> 
 <span class="m">000024602</span> 
 <span class="m">000231203</span> 
 <span class="m">000242102</span> 
 <span class="m">000250202</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The <code>-c</code> argument is used for working with so called "fixed-width" data. Data 
 where the columns of a record are found at certain offset in bytes from the 
 beginning of a record. Fixed width data abounds on a Unix system. <code>ls -l</code> 
 writes its output in a fixed width format:</p>
 
-<div class="codehilite"><pre><span></span><code>$ ls -l /etc <span class="p">|</span> head -5
+<div class="codehilite">
+<pre><span></span><code>$ ls -l /etc <span class="p">|</span> head -5
 total <span class="m">6548</span> 
 -rw-r--r--    <span class="m">1</span> root     root          <span class="m">46</span> Dec  <span class="m">4</span> <span class="m">12</span>:23 adjtime 
 drwxr-xr-x    <span class="m">4</span> root     root        <span class="m">4096</span> Oct  <span class="m">8</span>  <span class="m">2003</span> alchemist 
 -rw-r--r--    <span class="m">1</span> root     root        <span class="m">1048</span> Aug <span class="m">31</span>  <span class="m">2001</span> aliases 
 -rw-r--r--    <span class="m">1</span> root     root       <span class="m">12288</span> Oct  <span class="m">8</span>  <span class="m">2003</span> aliases.db
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>As does <code>ps</code>:</p>
 
-<div class="codehilite"><pre><span></span><code>$ ps -u<span class="err">&#39;</span>
+<div class="codehilite">
+<pre><span></span><code>$ ps -u<span class="err">&#39;</span>
 USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND 
 jrauser  <span class="m">26870</span>  <span class="m">0</span>.0  <span class="m">0</span>.1  <span class="m">2576</span> <span class="m">1388</span> pts/0    S    <span class="m">09</span>:45   <span class="m">0</span>:00 /bin/bash 
 jrauser   <span class="m">8943</span>  <span class="m">0</span>.0  <span class="m">0</span>.0  <span class="m">2820</span>  <span class="m">880</span> pts/0    R    <span class="m">12</span>:58   <span class="m">0</span>:00 ps -u
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Returning to the question of how many 1 person households are there in 
 Washington:</p>
 
-<div class="codehilite"><pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat  <span class="p">|</span> cut -c106-107 <span class="p">|</span> grep -c <span class="m">01</span>
+<div class="codehilite">
+<pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat  <span class="p">|</span> cut -c106-107 <span class="p">|</span> grep -c <span class="m">01</span>
 <span class="m">7192</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>7,192, or about 28% of households have only one occupant.</p>
 
@@ -112,31 +122,37 @@ Washington:</p>
 <p>In delimited data, elements of a record are separated by a special 
 <strong>delimiter</strong> character. In the password file, fields are delimited by colons:</p>
 
-<div class="codehilite"><pre><span></span><code>$ head -5 /etc/passwd
+<div class="codehilite">
+<pre><span></span><code>$ head -5 /etc/passwd
 root:x:0:0:root:/:/bin/bash 
 bin:x:1:1:bin:/bin:/sbin/nologin 
 daemon:x:2:2:daemon:/sbin:/sbin/nologin 
 adm:x:3:4:adm:/var/adm:/sbin/nologin 
 lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The 7th column of the password file is the user's login shell. How many people 
 use bash as their shell?</p>
 
-<div class="codehilite"><pre><span></span><code>$ cut -d: -f7 /etc/passwd <span class="p">|</span> grep -c /bin/bash 
+<div class="codehilite">
+<pre><span></span><code>$ cut -d: -f7 /etc/passwd <span class="p">|</span> grep -c /bin/bash 
 <span class="m">170</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>You can give either <code>-c</code> or <code>-f</code> a comma separated list, so to see a few users 
 that use <code>tcsh</code> as their shell:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cut -d: -f1,7 /etc/passwd <span class="p">|</span> grep /bin/tcsh <span class="p">|</span> head -5
+<div class="codehilite">
+<pre><span></span><code>$ cut -d: -f1,7 /etc/passwd <span class="p">|</span> grep /bin/tcsh <span class="p">|</span> head -5
 iglass:/bin/tcsh
 svowell:/bin/tcsh
 dsedaris:/bin/tcsh
 skine:/bin/tcsh
 jhitt:/bin/tcsh
-</code></pre></div>
+</code></pre>
+</div>
 
 <h3>Tricky delimiters</h3>
 
@@ -150,17 +166,20 @@ command can give you insight into the precise formatting of a file. For
 instance I have a file which maps first names to genders (with 95% 
 probability). When casually inspected, it looks like fixed width data:</p>
 
-<div class="codehilite"><pre><span></span><code>$ head -5 gender.txt
+<div class="codehilite">
+<pre><span></span><code>$ head -5 gender.txt
 AARON           M 
 ABBEY           F 
 ABBIE           F 
 ABBY            F 
 ABDUL           M
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>But on closer inspection there are tab characters delimiting the columns:</p>
 
-<div class="codehilite"><pre><span></span><code>$ od -bc gender.txt <span class="p">|</span> head
+<div class="codehilite">
+<pre><span></span><code>$ od -bc gender.txt <span class="p">|</span> head
 <span class="m">0000000</span> <span class="m">101</span> <span class="m">101</span> <span class="m">122</span> <span class="m">117</span> <span class="m">116</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">011</span> <span class="m">115</span> <span class="m">012</span> <span class="m">101</span> <span class="m">102</span> 
           A   A   R   O   N                          <span class="se">\t</span>   M   <span class="se">\n</span>  A   B 
 <span class="m">0000020</span> <span class="m">102</span> <span class="m">105</span> <span class="m">131</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">011</span> <span class="m">106</span> <span class="m">012</span> <span class="m">101</span> <span class="m">102</span> <span class="m">102</span> <span class="m">111</span> 
@@ -171,7 +190,8 @@ ABDUL           M
                              <span class="se">\t</span>   F  <span class="se">\n</span>   A   B   D   U   L 
 <span class="m">0000100</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">011</span> <span class="m">115</span> <span class="m">012</span> <span class="m">101</span> <span class="m">102</span> <span class="m">105</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> <span class="m">040</span> 
                      <span class="se">\t</span>   M  <span class="se">\n</span>   A   B   E
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The first thing to do is read your system's manpage on <code>cut</code>: it may already 
 delimit by tab by default. If not, it requires a bit of trickery to get a tab 
@@ -188,13 +208,15 @@ other white space separating pieces of the command line.</p>
 following commands. Between the double quotes I typed <code>control-v</code> and then hit 
 tab.</p>
 
-<div class="codehilite"><pre><span></span><code>$ wc -l gender.txt
+<div class="codehilite">
+<pre><span></span><code>$ wc -l gender.txt
 <span class="m">5017</span> gender.txt 
 $ cut -d<span class="s2">&quot; &quot;</span> -f2 gender.txt <span class="p">|</span> grep M <span class="p">|</span> wc -l 
 <span class="m">1051</span> 
 $ cut -d<span class="s2">&quot; &quot;</span> -f2 gender.txt <span class="p">|</span> grep F <span class="p">|</span> wc -l 
 <span class="m">3966</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Apparently there's much more variation in female names than male names.</p>
 

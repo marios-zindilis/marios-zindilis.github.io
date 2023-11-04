@@ -51,14 +51,16 @@
                 <h1 class="mt-4" itemprop="name">Get Zenoss Events from ZenDMD</h1>
             </header>
             <div itemprop="articleBody">
-                <div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+                <div class="codehilite">
+<pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
 
 <span class="kn">import</span> <span class="nn">Globals</span>
 <span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
 <span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
 
 <span class="n">Events</span> <span class="o">=</span> <span class="n">DMD</span><span class="o">.</span><span class="n">ZenEventManager</span><span class="o">.</span><span class="n">getEventList</span><span class="p">()</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Each <code>Event</code> in <code>Events</code> (iterable) offers:</p>
 

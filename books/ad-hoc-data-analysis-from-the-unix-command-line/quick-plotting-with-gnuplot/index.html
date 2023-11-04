@@ -57,15 +57,18 @@ time a person leaves for work and their income. Income is recorded in columns
 encoded in ten minute intervals. This pipeline extracts, cleans and formats the 
 data:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c196-198,297-303 <span class="p">|</span> grep -v <span class="s2">&quot;^000&quot;</span> <span class="p">|</span> 
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c196-198,297-303 <span class="p">|</span> grep -v <span class="s2">&quot;^000&quot;</span> <span class="p">|</span> 
 grep -v <span class="s2">&quot; </span>$<span class="s2">&quot;</span> <span class="p">|</span> perl -pe <span class="s1">&#39;substr($_,3,0)=&quot; &quot;;&#39;</span> &gt; time_vs_income
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The <code>grep</code>s knock out records for which either field is null, and the perl 
 script inserts a space between the two columns so <code>gnuplot</code> can parse the 
 columns apart. Plotting in gnuplot is simple:</p>
 
-<div class="codehilite"><pre><span></span><code>$ gnuplot
+<div class="codehilite">
+<pre><span></span><code>$ gnuplot
 
         G N U P L O T
         Linux version <span class="m">3</span>.7 patchlevel <span class="m">1</span>
@@ -73,7 +76,8 @@ columns apart. Plotting in gnuplot is simple:</p>
 
 Terminal <span class="nb">type</span> <span class="nb">set</span> to <span class="s1">&#39;x11&#39;</span>
 gnuplot&gt; plot <span class="s1">&#39;time_vs_income&#39;</span> with points
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>And the resulting plot:</p>
 
@@ -86,10 +90,12 @@ have higher incomes. It would be interesting to compute the average income in
 each time bucket, but that makes a pretty hairy command line perl script. Here 
 is it in all its gruesome glory:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c196-198,297-303 <span class="p">|</span> grep -v <span class="s2">&quot;^000&quot;</span> <span class="p">|</span> 
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c196-198,297-303 <span class="p">|</span> grep -v <span class="s2">&quot;^000&quot;</span> <span class="p">|</span> 
 grep -v <span class="s2">&quot; </span>$<span class="s2">&quot;</span> <span class="p">|</span> perl -ne <span class="s1">&#39;/(\d{3})(\d{7})/; $sum{$1}+=$2; $count{$1}++; END { foreach $k</span>
 <span class="s1">(keys(%count)) {print $k,&quot; &quot;,$sum{$k}/$count{$k},&quot;\n&quot;}}&#39;</span> <span class="p">|</span> sort -n &gt; time_vs_avgincome
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>You can plot the result for yourself if you're curious.</p>
 
@@ -101,7 +107,8 @@ born citizen. We can apply the usual tricks with <code>cut</code>, <code>grep</c
 <code>uniq</code>, but it's a bit hard to see the patterns when scrolling back and forth 
 in text output, it would nicer if we could see a plot.</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c78-81 <span class="p">|</span> grep -v <span class="m">0000</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> head -10
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c78-81 <span class="p">|</span> grep -v <span class="m">0000</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> head -10
  <span class="m">2</span> <span class="m">1910</span>
  <span class="m">7</span> <span class="m">1914</span>
 <span class="m">12</span> <span class="m">1919</span>
@@ -111,21 +118,26 @@ in text output, it would nicer if we could see a plot.</p>
  <span class="m">7</span> <span class="m">1923</span>
  <span class="m">5</span> <span class="m">1924</span>
  <span class="m">8</span> <span class="m">1925</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Gnuplot is a fine graphing tool for this purpose, but it wants the category 
 label to come first, and the count to come second, so we need to write a perl 
 script to reverse <code>uniq</code>'s output and stick the result in a file. See 
 <code>perlrun(1)</code> for details on the <code>-a</code> and <code>-F</code> options to perl.</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c78-81 <span class="p">|</span> grep -v <span class="m">0000</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span>
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c78-81 <span class="p">|</span> grep -v <span class="m">0000</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span>
 perl -lape <span class="s1">&#39;chomp $F[-1]; $_ = join &quot; &quot;, reverse @F&#39;</span> &gt; year_of_immigration
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Now we can make a bar chart from the contents of the file with gnuplot.</p>
 
-<div class="codehilite"><pre><span></span><code>gnuplot&gt; plot <span class="s1">&#39;year_of_immigration&#39;</span> with impulses
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code>gnuplot&gt; plot <span class="s1">&#39;year_of_immigration&#39;</span> with impulses
+</code></pre>
+</div>
 
 <p>Here's the graph gnuplot creates:</p>
 

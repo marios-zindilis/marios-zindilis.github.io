@@ -4,7 +4,43 @@
         <link>https://zindilis.com/tags/mysql/</link>
         <description>Personal website of Marios Zindilis - Posts tagged mysql</description>
         <atom:link href="https://zindilis.com/feeds/mysql.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 13 Jun 2023 06:22:03 UT</lastBuildDate>
+        <lastBuildDate>Sat, 04 Nov 2023 12:17:15 UT</lastBuildDate>
+        <item>
+            <title>Percona Webinar: What I Learned While Migrating MySQL On-Premises To Amazon RDS</title>
+            <link>https://zindilis.com/posts/migrate-on-premises-mysql-to-rds/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/migrate-on-premises-mysql-to-rds/</guid>
+            <pubDate>Sat, 24 Oct 2015 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Διαχείριση χρηστών στην MySQL</title>
+            <link>https://zindilis.com/posts/διαχείριση-χρηστών-στην-mysql/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/διαχείριση-χρηστών-στην-mysql/</guid>
+            <pubDate>Sun, 20 Nov 2011 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Create test databases in MySQL</title>
+            <link>https://zindilis.com/posts/mysql-create-test-database/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/mysql-create-test-database/</guid>
+            <pubDate>Sat, 12 Apr 2014 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Αποθήκευση τηλεφωνικών αριθμών σε MySQL</title>
+            <link>https://zindilis.com/posts/αποθήκευση-τηλεφωνικών-αριθμών-σε-mysql/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/αποθήκευση-τηλεφωνικών-αριθμών-σε-mysql/</guid>
+            <pubDate>Wed, 16 Mar 2011 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>Example queries on the Sakila MySQL database</title>
+            <link>https://zindilis.com/posts/mysql-sakila-example-queries/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/mysql-sakila-example-queries/</guid>
+            <pubDate>Sat, 25 Jul 2015 00:00:00 UT</pubDate>
+        </item>
+        <item>
+            <title>mysqlhotcopy</title>
+            <link>https://zindilis.com/posts/mysql-mysqlhotcopy/</link>
+            <guid isPermaLink="true">https://zindilis.com/posts/mysql-mysqlhotcopy/</guid>
+            <pubDate>Thu, 29 Jan 2015 00:00:00 UT</pubDate>
+        </item>
         <item>
             <title>MySQL Workbench</title>
             <link>https://zindilis.com/posts/mysql-workbench/</link>
@@ -18,46 +54,10 @@
             <pubDate>Sat, 25 Jul 2015 00:00:00 UT</pubDate>
         </item>
         <item>
-            <title>Create test databases in MySQL</title>
-            <link>https://zindilis.com/posts/mysql-create-test-database/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/mysql-create-test-database/</guid>
-            <pubDate>Sat, 12 Apr 2014 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>Example queries on the Sakila MySQL database</title>
-            <link>https://zindilis.com/posts/mysql-sakila-example-queries/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/mysql-sakila-example-queries/</guid>
-            <pubDate>Sat, 25 Jul 2015 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>Διαχείριση χρηστών στην MySQL</title>
-            <link>https://zindilis.com/posts/διαχείριση-χρηστών-στην-mysql/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/διαχείριση-χρηστών-στην-mysql/</guid>
-            <pubDate>Sun, 20 Nov 2011 00:00:00 UT</pubDate>
-        </item>
-        <item>
             <title>mysqldump</title>
             <link>https://zindilis.com/posts/mysql-mysqldump/</link>
             <guid isPermaLink="true">https://zindilis.com/posts/mysql-mysqldump/</guid>
             <pubDate>Tue, 14 Jan 2014 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>Αποθήκευση τηλεφωνικών αριθμών σε MySQL</title>
-            <link>https://zindilis.com/posts/αποθήκευση-τηλεφωνικών-αριθμών-σε-mysql/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/αποθήκευση-τηλεφωνικών-αριθμών-σε-mysql/</guid>
-            <pubDate>Wed, 16 Mar 2011 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>mysqlhotcopy</title>
-            <link>https://zindilis.com/posts/mysql-mysqlhotcopy/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/mysql-mysqlhotcopy/</guid>
-            <pubDate>Thu, 29 Jan 2015 00:00:00 UT</pubDate>
-        </item>
-        <item>
-            <title>Percona Webinar: What I Learned While Migrating MySQL On-Premises To Amazon RDS</title>
-            <link>https://zindilis.com/posts/migrate-on-premises-mysql-to-rds/</link>
-            <guid isPermaLink="true">https://zindilis.com/posts/migrate-on-premises-mysql-to-rds/</guid>
-            <pubDate>Sat, 24 Oct 2015 00:00:00 UT</pubDate>
         </item>
         
     </channel>

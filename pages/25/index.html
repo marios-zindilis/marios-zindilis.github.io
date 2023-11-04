@@ -170,12 +170,14 @@ thing to do. It is therefore an exercise in futility, but it helps with my chron
 tests. I created a '<code>test</code>' database, and a '<code>table2</code>' table, with a 
 '<code>content</code>' field with datatype <code>TEXT</code>. Here's what I run from Bash:</p>
 
-<div class="codehilite"><pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i <span class="k">in</span> <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
+<div class="codehilite">
+<pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i <span class="k">in</span> <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
 <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span> of <span class="m">500000</span><span class="p">;</span> <span class="se">\</span>
 mysql -u root -D <span class="nb">test</span> -e <span class="se">\</span>
 <span class="s2">&quot;INSERT INTO table2 (content) VALUES (&#39;`cat /var/log/messages | tr -d \&#39;`&#39;)&quot;</span><span class="p">;</span> <span class="se">\</span>
 <span class="k">done</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>This took a few hours to finish, while creating data at a rate of 100MBytes per minute on my test server. The size of the database was 30GB.</p>
 
@@ -185,9 +187,11 @@ would be to run the above command for far less repetitions, say
 database as many times as required for the entire database to reach 
 the desirable size, like:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w"></span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w"></span>
 <span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
           </div>
           
@@ -327,6 +331,51 @@ Unknown column 'rev_sha1' in 'field list' (localhost)".</pre>
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/ifconfig/">
+            <h2 class="card-title">ifconfig</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το εργαλείο γραμμής εντολών ifconfig μπορεί να εμφανίσει πληροφορίες 
+σχετικά με τις διεπαφές δικτύου του συστήματος, και να κάνει ρυθμίσεις 
+σε αυτές. Για παράδειγμα, μπορείτε να το χρησιμοποιήσετε για να δείτε 
+την διεύθυνση MAC μιας διεπαφής, ή αν υπάρχουν συγκρούσεις πακέτων 
+μεταξύ του συστήματος και της επόμενης συσκευής δικτύου (collissions).</p>
+
+<p>Αν χρησιμοποιηθεί χωρίς καμμιά παράμετρο, απλά εμφανίζει όλες τις 
+διεπαφές δικτύου και μερικές πληροφορίες για αυτές. Για να δείτε 
+πληροφορίες για μια μόνο διεπαφή, δώστε το όνομά της μετά την εντολή, 
+δηλαδή:</p>
+
+<div class="codehilite">
+<pre><span></span><code>ifconfig eth0
+</code></pre>
+</div>
+
+<p>Ενεργοποίηση μιας διεπαφής και ανάθεση της διεύθυνσης δικτύου 192.168.2.3/24:</p>
+
+<div class="codehilite">
+<pre><span></span><code>ifconfig eth0 up <span class="m">192</span>.168.2.3 netmask <span class="m">255</span>.255.255.0
+</code></pre>
+</div>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-05-10
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cisco-late-collission/">
             <h2 class="card-title">late collision σε συσκευές Cisco</h2>
           </a>
@@ -346,47 +395,6 @@ Unknown column 'rev_sha1' in 'field list' (localhost)".</pre>
 <li>μεγαλύτερο μήκος καλωδίων από εκείνο που ορίζουν τα πρότυπα, ή</li>
 <li>σε ασυμφωνία της ρύθμισης Duplex σε συνδεδεμένες διεπαφές. </li>
 </ol>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-05-10
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/ifconfig/">
-            <h2 class="card-title">ifconfig</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Το εργαλείο γραμμής εντολών ifconfig μπορεί να εμφανίσει πληροφορίες 
-σχετικά με τις διεπαφές δικτύου του συστήματος, και να κάνει ρυθμίσεις 
-σε αυτές. Για παράδειγμα, μπορείτε να το χρησιμοποιήσετε για να δείτε 
-την διεύθυνση MAC μιας διεπαφής, ή αν υπάρχουν συγκρούσεις πακέτων 
-μεταξύ του συστήματος και της επόμενης συσκευής δικτύου (collissions).</p>
-
-<p>Αν χρησιμοποιηθεί χωρίς καμμιά παράμετρο, απλά εμφανίζει όλες τις 
-διεπαφές δικτύου και μερικές πληροφορίες για αυτές. Για να δείτε 
-πληροφορίες για μια μόνο διεπαφή, δώστε το όνομά της μετά την εντολή, 
-δηλαδή:</p>
-
-<div class="codehilite"><pre><span></span><code>ifconfig eth0
-</code></pre></div>
-
-<p>Ενεργοποίηση μιας διεπαφής και ανάθεση της διεύθυνσης δικτύου 192.168.2.3/24:</p>
-
-<div class="codehilite"><pre><span></span><code>ifconfig eth0 up <span class="m">192</span>.168.2.3 netmask <span class="m">255</span>.255.255.0
-</code></pre></div>
 
           </div>
           

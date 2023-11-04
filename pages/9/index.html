@@ -40,22 +40,21 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/vmware-memory-ballooning/">
-            <h2 class="card-title">VMware Memory Balloning</h2>
+          <a href="/posts/vmware-transparent-page-sharing/">
+            <h2 class="card-title">VMware Transparent Page Sharing</h2>
           </a>
 
           
           <div class="card-text">
-            <p><strong>Memory Balloning</strong> is a memory reclamation technique employeed by 
-VMware ESXi hosts, that is triggered by high memory utilization on the 
-host and aims to reclaim unused memory on some VMs, for use in others 
-that require it.</p>
-
-<h2>Read more</h2>
+            <p><strong>Transparent Page Sharing</strong> is a memory-saving technique employeed by 
+VMware ESXi hosts, that runs as a background job on the host and removes 
+duplicates pages of memory, by first comparing a hash of the contents of 
+each page, and then comparing pages the hash of which is identical bit 
+by bit.</p>
 
 <ul>
-<li><a href="http://www.vmwarearena.com/2014/05/vmware-memory-management-part-3-memory-ballooning.html">VMware Memory Management Part 3 - Memory Ballooning</a></li>
-<li><a href="http://theithollow.com/2012/12/vmware-ballooning-explained/">VMware Ballooning Explained</a></li>
+<li><a href="http://www.vmwarearena.com/2014/04/vmware-memory-management-part-2-transparent-page-sharing-tps.html">VMware Memory Management Part 2 - Transparent Page Sharing (TPS)</a></li>
+<li><a href="http://theithollow.com/2012/12/memory-de-duplication-in-vmware/">Memory De-duplication on VMware</a></li>
 </ul>
 
           </div>
@@ -74,21 +73,22 @@ that require it.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/vmware-transparent-page-sharing/">
-            <h2 class="card-title">VMware Transparent Page Sharing</h2>
+          <a href="/posts/vmware-memory-ballooning/">
+            <h2 class="card-title">VMware Memory Balloning</h2>
           </a>
 
           
           <div class="card-text">
-            <p><strong>Transparent Page Sharing</strong> is a memory-saving technique employeed by 
-VMware ESXi hosts, that runs as a background job on the host and removes 
-duplicates pages of memory, by first comparing a hash of the contents of 
-each page, and then comparing pages the hash of which is identical bit 
-by bit.</p>
+            <p><strong>Memory Balloning</strong> is a memory reclamation technique employeed by 
+VMware ESXi hosts, that is triggered by high memory utilization on the 
+host and aims to reclaim unused memory on some VMs, for use in others 
+that require it.</p>
+
+<h2>Read more</h2>
 
 <ul>
-<li><a href="http://www.vmwarearena.com/2014/04/vmware-memory-management-part-2-transparent-page-sharing-tps.html">VMware Memory Management Part 2 - Transparent Page Sharing (TPS)</a></li>
-<li><a href="http://theithollow.com/2012/12/memory-de-duplication-in-vmware/">Memory De-duplication on VMware</a></li>
+<li><a href="http://www.vmwarearena.com/2014/05/vmware-memory-management-part-3-memory-ballooning.html">VMware Memory Management Part 3 - Memory Ballooning</a></li>
+<li><a href="http://theithollow.com/2012/12/vmware-ballooning-explained/">VMware Ballooning Explained</a></li>
 </ul>
 
           </div>
@@ -292,11 +292,13 @@ again. If you still get that error, and assuming your subapplications are in
 the same directory as your main application, you can try this ugly hack in the 
 very beginning of your main application script:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">inspect</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()))))</span>
-</code></pre></div>
+</code></pre>
+</div>
 
           </div>
           

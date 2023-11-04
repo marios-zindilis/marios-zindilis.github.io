@@ -114,14 +114,14 @@ Firefox, and suggestions should now work.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/arp-scan/">
-            <h2 class="card-title">arp-scan</h2>
+          <a href="/posts/sudo/">
+            <h2 class="card-title">sudo</h2>
           </a>
 
           
           <div class="card-text">
             <ul>
-<li><a href="http://www.unixmen.com/find-ip-conflicts-linux/">How To Find IP Conflicts In Linux</a></li>
+<li><a href="http://www.tecmint.com/su-vs-sudo-and-how-to-configure-sudo-in-linux/">Difference Between su Vs sudo and How to Configure sudo in Linux</a></li>
 </ul>
 
           </div>
@@ -140,14 +140,14 @@ Firefox, and suggestions should now work.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/sudo/">
-            <h2 class="card-title">sudo</h2>
+          <a href="/posts/arp-scan/">
+            <h2 class="card-title">arp-scan</h2>
           </a>
 
           
           <div class="card-text">
             <ul>
-<li><a href="http://www.tecmint.com/su-vs-sudo-and-how-to-configure-sudo-in-linux/">Difference Between su Vs sudo and How to Configure sudo in Linux</a></li>
+<li><a href="http://www.unixmen.com/find-ip-conflicts-linux/">How To Find IP Conflicts In Linux</a></li>
 </ul>
 
           </div>
@@ -337,15 +337,34 @@ the LXDE desktop by default. </p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/glusterfs/">
-            <h2 class="card-title">GlusterFS</h2>
+          <a href="/posts/etc-shells/">
+            <h2 class="card-title">/etc/shells</h2>
           </a>
 
           
           <div class="card-text">
-            <ul>
-<li><a href="http://www.tecmint.com/introduction-to-glusterfs-file-system-and-installation-on-rhelcentos-and-fedora/">Introduction to GlusterFS (File System) and Installation on RHEL/CentOS and Fedora</a></li>
-<li><a href="http://www.tecmint.com/perform-self-heal-and-re-balance-operations-in-gluster-file-system/">How to Perform Self-Heal and Re-Balance Operations in Gluster File System</a></li>
+            <p>The <code>/etc/shells</code> file is a list of valid shells on the system. Example from an Ubuntu 12.10 Desktop system:</p>
+
+<pre><code># /etc/shells: valid login shells
+/bin/sh
+/bin/dash
+/bin/bash
+/bin/rbash
+/usr/bin/screen
+</code></pre>
+
+<p>Example from a CentOS 6 minimal server:</p>
+
+<pre><code>/bin/sh 
+/bin/bash
+/sbin/nologin
+/bin/dash
+</code></pre>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="http://utcc.utoronto.ca/~cks/space/blog/unix/EtcShellsUsage">What <code>/etc/shells</code> is and isn't</a></li>
 </ul>
 
           </div>

@@ -54,17 +54,20 @@
 <p>A perl read-eval-print loop. This makes a very handy calculator on the command 
 line. Example usage:</p>
 
-<div class="codehilite"><pre><span></span><code>$ pcalc <span class="m">1</span>+2
+<div class="codehilite">
+<pre><span></span><code>$ pcalc <span class="m">1</span>+2
 <span class="m">3</span>
 $ pcalc <span class="s2">&quot;2*2&quot;</span>
 <span class="m">4</span>
 $ pcalc <span class="m">2</span>*3
 <span class="m">6</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Source:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/opt/third-party/bin/perl</span>
+<div class="codehilite">
+<pre><span></span><code><span class="ch">#!/opt/third-party/bin/perl</span>
 <span class="k">use</span> <span class="nn">strict</span><span class="p">;</span>
 <span class="k">if</span> <span class="p">(</span><span class="nv">$#ARGV</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">eval_print</span><span class="p">(</span><span class="nb">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="nv">@ARGV</span><span class="p">))</span>
@@ -87,7 +90,8 @@ $ pcalc <span class="m">2</span>*3
     <span class="k">print</span> <span class="nv">$result</span><span class="p">,</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Appendix B: Random unfinished ideas</h2>
 
@@ -101,13 +105,17 @@ $ pcalc <span class="m">2</span>*3
 
 <h4>Example - killing processes by name</h4>
 
-<div class="codehilite"><pre><span></span><code><span class="nb">kill</span> <span class="sb">`</span>ps auxww <span class="p">|</span> grep httpd <span class="p">|</span> grep -v grep <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code><span class="nb">kill</span> <span class="sb">`</span>ps auxww <span class="p">|</span> grep httpd <span class="p">|</span> grep -v grep <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+</code></pre>
+</div>
 
 <h4>Example - tailing the most recent log file in one easy step</h4>
 
-<div class="codehilite"><pre><span></span><code>tail -f <span class="sb">`</span>ls -rt *log <span class="p">|</span> tail -1<span class="sb">`</span>
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code>tail -f <span class="sb">`</span>ls -rt *log <span class="p">|</span> tail -1<span class="sb">`</span>
+</code></pre>
+</div>
 
 <h3>James' xargs trick</h3>
 

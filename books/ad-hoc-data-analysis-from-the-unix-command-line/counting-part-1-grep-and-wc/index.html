@@ -62,16 +62,20 @@ is, perhaps, the other 90%.</p>
 <em>word count</em>. By default, <code>wc</code> prints the number of lines, words, and 
 characters in a file.</p>
 
-<div class="codehilite"><pre><span></span><code>$ wc pums_53.dat
+<div class="codehilite">
+<pre><span></span><code>$ wc pums_53.dat
 <span class="m">85025</span> <span class="m">1219861</span> <span class="m">25659175</span> pums_53.dat
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Nearly always we just want to count the number of lines (records), which can be 
 done by giving the <code>-l</code> option to <code>wc</code>:</p>
 
-<div class="codehilite"><pre><span></span><code>$ wc -l pums_53.dat
+<div class="codehilite">
+<pre><span></span><code>$ wc -l pums_53.dat
 <span class="m">85025</span> pums_53.dat
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Example - Using grep to select a subset</h2>
 
@@ -81,9 +85,11 @@ records, one for households and one for persons. The first character of a
 record, an H or P, indicates which kind of record it is. We can <code>grep</code> for and 
 count just person records like this:</p>
 
-<div class="codehilite"><pre><span></span><code>$ grep -c <span class="s2">&quot;^P&quot;</span> pums_53.dat
+<div class="codehilite">
+<pre><span></span><code>$ grep -c <span class="s2">&quot;^P&quot;</span> pums_53.dat
 <span class="m">59150</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The caret <code>^</code> means that the <code>P</code> must occur at the beginning of the line. So 
 there were about 5.9 million people in Washington State in 2000. Also 

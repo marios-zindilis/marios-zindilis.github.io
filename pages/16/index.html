@@ -196,20 +196,24 @@ Vlan interface) of another device. In this case, you will just get an error that
 
 <p>If you try to set or change the IP address from ZenDMD, then the error is a little bit more informative:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;web-server.zindilis.net&#39;</span><span class="p">)</span>
+<div class="codehilite">
+<pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;web-server.zindilis.net&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Device</span><span class="o">.</span><span class="n">setManageIp</span><span class="p">(</span><span class="s1">&#39;1.2.3.4&#39;</span><span class="p">)</span>
 <span class="mi">2014</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">11</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">30</span> <span class="n">WARNING</span> <span class="n">zen</span><span class="o">.</span><span class="n">Device</span> <span class="n">The</span> <span class="n">IP</span> <span class="n">address</span> <span class="mf">1.2.3.4</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">assigned</span>
 <span class="s1">&#39;The IP address 1.2.3.4 is already assigned&#39;</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The problem here is that you can't find an IP by searching for it in the web interface, if that IP is assigned to a
 subinterface. Enter ZenDMD! Here's how to search of a specific IP, in all the interfaces of all the devices:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">dmd</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevices_recursive</span><span class="p">():</span>
+<div class="codehilite">
+<pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">dmd</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevices_recursive</span><span class="p">():</span>
 <span class="o">...</span>      <span class="k">for</span> <span class="n">Interface</span> <span class="ow">in</span> <span class="n">Device</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">interfaces</span><span class="p">():</span> 
 <span class="o">...</span>           <span class="k">if</span> <span class="n">Interface</span><span class="o">.</span><span class="n">getIpAddress</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">Interface</span><span class="o">.</span><span class="n">getIpAddress</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;1.2.3.4&#39;</span><span class="p">):</span>
 <span class="o">...</span>                <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">Interface</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">Interface</span><span class="o">.</span><span class="n">getIpAddress</span><span class="p">()</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Running the above, will return a result similar to:</p>
 
@@ -251,8 +255,10 @@ subinterface. Enter ZenDMD! Here's how to search of a specific IP, in all the in
 
 <p>To back up a database named <code>stuff</code>:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="nb">time</span> mysqldump -u root -p stuff <span class="p">|</span> gzip &gt; stuff.sql.gz
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code><span class="nb">time</span> mysqldump -u root -p stuff <span class="p">|</span> gzip &gt; stuff.sql.gz
+</code></pre>
+</div>
 
 <p>This pipes the clear text output from <code>mysqldump</code> directly into <code>gzip</code>, 
 and prints the duration of the operation in the end.</p>
@@ -261,8 +267,10 @@ and prints the duration of the operation in the end.</p>
 
 <p>To restore the <code>stuff</code> database:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="nb">time</span> gunzip -c stuff.sql.gz <span class="p">|</span> pv <span class="p">|</span> mysql -u root -p stuff
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code><span class="nb">time</span> gunzip -c stuff.sql.gz <span class="p">|</span> pv <span class="p">|</span> mysql -u root -p stuff
+</code></pre>
+</div>
 
 <p>This decompresses the dump back in clear text, and feeds it to <code>mysql</code> 
 through <code>pv</code>, which adds the perk of an indication of progress.</p>

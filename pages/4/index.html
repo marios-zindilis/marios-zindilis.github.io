@@ -40,47 +40,6 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/etc-snmp-snmpd-conf/">
-            <h2 class="card-title">/etc/snmp/snmpd.conf</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Sometimes, <code>snmpd</code> will report the wrong speed of a network interface. For 
-example, the following output shows a speed of 10Mbps, whereas the ethernet 
-port on the server is actually working at 100Mbps:</p>
-
-<pre><code>    IF-MIB::ifIndex.2 = INTEGER: 2
-    IF-MIB::ifDescr.2 = STRING: eth0
-    IF-MIB::ifType.2 = INTEGER: ethernetCsmacd(6)
-    IF-MIB::ifMtu.2 = INTEGER: 1500
-    IF-MIB::ifSpeed.2 = Gauge32: 10000000
-</code></pre>
-
-<p>The <a href="http://www.net-snmp.org/wiki/index.php/FAQ:Agent_36" title="Wrong speed/type of network interfaces">Net-SNMP documentation mentions this</a>. This can be manually fixed with 
-the <code>interface</code> directive in <code>snmpd.conf</code>, for example:</p>
-
-<pre><code>    interface eth0 6 100000000
-</code></pre>
-
-<!-- Links -->
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2015-06-18
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
           <a href="/posts/stale-nfs-causes-backuppc-filelistreceive-failure/">
             <h2 class="card-title">Stale NFS Causes BackupPC fileListReceive Failure</h2>
           </a>
@@ -127,6 +86,47 @@ rebooted at the time, problem solved.</p>
             <a href="/tags/backuppc/">backuppc</a>, 
           
             <a href="/tags/nfs/">nfs</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/etc-snmp-snmpd-conf/">
+            <h2 class="card-title">/etc/snmp/snmpd.conf</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Sometimes, <code>snmpd</code> will report the wrong speed of a network interface. For 
+example, the following output shows a speed of 10Mbps, whereas the ethernet 
+port on the server is actually working at 100Mbps:</p>
+
+<pre><code>    IF-MIB::ifIndex.2 = INTEGER: 2
+    IF-MIB::ifDescr.2 = STRING: eth0
+    IF-MIB::ifType.2 = INTEGER: ethernetCsmacd(6)
+    IF-MIB::ifMtu.2 = INTEGER: 1500
+    IF-MIB::ifSpeed.2 = Gauge32: 10000000
+</code></pre>
+
+<p>The <a href="http://www.net-snmp.org/wiki/index.php/FAQ:Agent_36" title="Wrong speed/type of network interfaces">Net-SNMP documentation mentions this</a>. This can be manually fixed with 
+the <code>interface</code> directive in <code>snmpd.conf</code>, for example:</p>
+
+<pre><code>    interface eth0 6 100000000
+</code></pre>
+
+<!-- Links -->
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-06-18
+            </span>
           
           
         </div><!-- .card-footer -->
@@ -216,6 +216,37 @@ installating from an optical drive was not an option:</p>
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/vmware-evaluation-expired/">
+            <h2 class="card-title">Features disabled when VMware Evaluation Expires</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>As a note to myself and a future reference, here is a list of features of VMware ESXi 6 that get disabled when the 
+60-day evaluation period expires.</p>
+
+          </div>
+          <a href="/posts/vmware-evaluation-expired/" class="btn btn-primary">Read More &rarr;</a>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2015-04-27
+            </span>
+          
+          
+          <b>Tags</b>:
+          
+            <a href="/tags/vmware/">vmware</a>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/vmware-build-vmware-4-tools-on-centos-6/">
             <h2 class="card-title">Building VMware ESXi 4 Tools on CentOS 6</h2>
           </a>
@@ -282,37 +313,6 @@ the tools in case you upgrade the kernel to a newer version.</p></li>
             <span class="mr-2">
               <b>Posted</b>: 2015-04-27
             </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/vmware-evaluation-expired/">
-            <h2 class="card-title">Features disabled when VMware Evaluation Expires</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>As a note to myself and a future reference, here is a list of features of VMware ESXi 6 that get disabled when the 
-60-day evaluation period expires.</p>
-
-          </div>
-          <a href="/posts/vmware-evaluation-expired/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2015-04-27
-            </span>
-          
-          
-          <b>Tags</b>:
-          
-            <a href="/tags/vmware/">vmware</a>
           
           
         </div><!-- .card-footer -->

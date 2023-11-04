@@ -62,20 +62,24 @@ perl, you should learn at least a little bit. If you invoke perl like
 <code>perl -n -e '#a perl statement'</code> the <code>-n</code> option causes perl to wrap your <code>-e</code> 
 argument in a implicit <code>while</code> loop like this:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
    <span class="c1"># a perl statement</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>This loop reads standard input a line at a time into the variable <code>$_</code>, and 
 then executes the statement(s) give by the <code>-e</code> argument. Given <code>-p</code> instead of 
 <code>-n</code>, perl to adds a <code>print</code> statement to the loop as well:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
    <span class="c1"># a perl statement</span>
    <span class="k">print</span> <span class="nv">$_</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Example - Using perl to create an indicator variable</h2>
 
@@ -83,32 +87,38 @@ then executes the statement(s) give by the <code>-e</code> argument. Given <code
 where 11 and above indicates a college degree. Let's condense this to a single 
 indicator variable for completed college or not. The raw data:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54 <span class="p">|</span> head -5
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54 <span class="p">|</span> head -5
 <span class="m">12</span>
 <span class="m">11</span>
 <span class="m">06</span>
 <span class="m">03</span>
 <span class="m">08</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>And once passed through the perl script:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54 <span class="p">|</span> 
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54 <span class="p">|</span> 
 perl -ne <span class="s1">&#39;print $_&gt;=11?1:0,&quot;\n&quot;&#39;</span> <span class="p">|</span> head -5
 <span class="m">1</span>
 <span class="m">1</span>
 <span class="m">0</span>
 <span class="m">0</span>
 <span class="m">0</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>And the final result:</p>
 
-<div class="codehilite"><pre><span></span><code>~/census_data&gt;cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54 <span class="p">|</span>
+<div class="codehilite">
+<pre><span></span><code>~/census_data&gt;cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54 <span class="p">|</span>
 perl -ne <span class="s1">&#39;print $_&gt;=11?1:0,&quot;\n&quot;&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c
 <span class="m">37507</span> <span class="m">0</span>
 <span class="m">21643</span> <span class="m">1</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>About 36% of Washingtonians have a college degree.</p>
 
@@ -120,14 +130,16 @@ encoded as a series of categories in columns 191-192, where category 9
 indicates a bicycle. We'll use an inline perl script to rewrite both education 
 level and mode of transportation:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54,191-192 <span class="p">|</span> 
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c53-54,191-192 <span class="p">|</span> 
 perl -ne <span class="s1">&#39;print substr($_,0,2)&gt;=11?1:0,substr($_,2,2)==9?1:0,&quot;\n&quot;;&#39;</span> <span class="p">|</span> 
 sort <span class="p">|</span> uniq -c 
 <span class="m">37452</span> <span class="m">00</span>
    <span class="m">55</span> <span class="m">01</span>
 <span class="m">21532</span> <span class="m">10</span>
   <span class="m">111</span> <span class="m">11</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p><code>55/(55+36447) = 0.15%</code> of non college educated people ride their bike to work. 
 <code>111/(111+20219) = 0.56%</code> of college educated people ride their bike to work.</p>
@@ -143,27 +155,32 @@ long and it would be hard to quickly see the pattern. We can use perl to round
 the income data down to the nearest $10,000 on the fly. Before the inline perl 
 script:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> head -4
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> head -4
 <span class="m">0018000</span>
 <span class="m">0004100</span>
 <span class="m">0004300</span>
 <span class="m">0005300</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>And after:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> 
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> 
 perl -pe <span class="s1">&#39;$_=10000*int($_/10000).&quot;\n&quot;&#39;</span> <span class="p">|</span> head -4
 <span class="m">10000</span>
 <span class="m">0</span>
 <span class="m">0</span>
 <span class="m">0</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>And finally, the distribution (up to $100,000). The extra <code>grep [0-9]</code> ensures 
 that blank records are not considered in the distribution.</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span>
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span>
 perl -pe <span class="s1">&#39;$_=10000*int($_/10000).&quot;\n&quot;&#39;</span> <span class="p">|</span> sort -n <span class="p">|</span> uniq -c <span class="p">|</span> head -12
    <span class="m">20</span> -10000
 <span class="m">15193</span>      <span class="m">0</span>
@@ -177,7 +194,8 @@ perl -pe <span class="s1">&#39;$_=10000*int($_/10000).&quot;\n&quot;&#39;</span>
   <span class="m">521</span>  <span class="m">80000</span>
   <span class="m">326</span>  <span class="m">90000</span>
   <span class="m">283</span> <span class="m">100000</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Example - Finding the median (or any percentile) of a distribution</h2>
 
@@ -187,19 +205,23 @@ first uses <code>cat -n</code>. If given the <code>-n</code> option, <code>cat</
 each line. We see that there are 46,359 non blank records, so the 23179th one 
 in sorted order is the median.</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> wc -l
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> wc -l
 <span class="m">46359</span> 
 $ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> sort <span class="p">|</span> 
 cat -n <span class="p">|</span> grep <span class="s2">&quot;^ *23179&quot;</span>
 <span class="m">23179</span> <span class="m">0019900</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>An even simpler method, using head and tail:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> sort <span class="p">|</span>
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> sort <span class="p">|</span>
 head -23179<span class="p">|</span> tail -1
 <span class="m">0019900</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The median income in Washington state in 2000 was $19,900.</p>
 
@@ -208,20 +230,24 @@ head -23179<span class="p">|</span> tail -1
 <p>What about the average? One way to compute the average is to accumulate a 
 running sum with perl, and do the division by hand at the end:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> 
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> 
 perl -ne <span class="s1">&#39;print  $sum+=$_,&quot;\n&quot;;&#39;</span> <span class="p">|</span> cat -n <span class="p">|</span> tail -1
 <span class="m">46359</span> <span class="m">1314603988</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>$1314603988/ 46359 = $28357.0393666818</p>
 
 <p>You could also get perl to do this division with an <code>END</code> block which perl will 
 execute only after it has exhausted standard input:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> 
+<div class="codehilite">
+<pre><span></span><code>$ cat pums_53.dat <span class="p">|</span> grep <span class="s2">&quot;^P&quot;</span> <span class="p">|</span> cut -c297-303 <span class="p">|</span> grep <span class="o">[</span><span class="m">0</span>-9<span class="o">]</span> <span class="p">|</span> 
 perl -ne <span class="s1">&#39;$sum += $_; $count++; END {print $sum/$count,&quot;\n&quot;;}&#39;</span> 
 <span class="m">28357</span>.0393666818
-</code></pre></div>
+</code></pre>
+</div>
 
             </div>
             <footer>

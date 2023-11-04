@@ -40,23 +40,42 @@
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cream/">
-            <h2 class="card-title">Cream</h2>
+          <a href="/posts/etc-sysconfig-iptables/">
+            <h2 class="card-title">/etc/sysconfig/iptables</h2>
           </a>
 
           
           <div class="card-text">
-            <p><strong>Cream</strong> is an advanced text editor, created on top of <a href="/posts/vim/">Vim</a>, and works on Windows, Linux and FreeBSD. As
-of the latest update of this document (see bottom of page for date), the <a href="http://cream.cvs.sourceforge.net/viewvc/cream/cream/" title="Cream CVS">code commits</a> suggest that the
-project has been abandoned.</p>
+            <p>Το αρχείο κανόνων του <code>iptables</code>.</p>
 
-<h2>See Also</h2>
+<h2>Παραδείγματα</h2>
 
-<ul>
-<li><a href="http://cream.sourceforge.net/">Project Page on Sourceforge</a></li>
-</ul>
+<h3>Πρόσβαση ιστού</h3>
 
-<!-- Links -->
+<p>Μετά την εγκατάσταση κάποιου εξυπηρετητή ιστού (Apache, Lighttp, κλπ) 
+πρέπει να ανοίξετε την θύρα στην οποία «ακούει» ο εξυπηρετητής. Από 
+προεπιλογή είναι η 80. Ο πιο κάτω κανόνας στο αρχείο <code>/etc/sysconfig/iptables</code> 
+ανοίγει την πρόσβαση στη θύρα 80, ανεξάρτητα από την IP που ζητά πρόσβαση:</p>
+
+<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+</code></pre>
+
+<h3>Απομακρυσμένη πρόσβαση (ssh)</h3>
+
+<p>Για να επιτρέψετε την απομακρυσμένη πρόσβαση από οποιαδήποτε IP, μπορείτε να χρησιμοποιήσετε τον ίδιο κανόνα με το προηγούμενο παράδειγμα, αλλάζοντας απλά τον αριθμό της θύρας σε 22 (προεπιλεγμένη θύρα για το ssh). Για περισσότερη ασφάλεια, μπορείτε να περιορίσετε τις διευθύνσεις IP που θα έχουν δικαίωμα ssh στο σύστημα: </p>
+
+<pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --source 192.168.0.0/16 --dport 22 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j DROP
+</code></pre>
+
+<p>Στο πιο πάνω παράδειγμα, ο πρώτος κανόνας επιτρέπει την πρόσβαση σε οποιαδήποτε IP ξεκινά από «192.168», και την απαγορεύει σε οποιαδήποτε άλλη. </p>
+
+<h3>Αποτροπή αποστολής email</h3>
+
+<p>Αν δεν θέλετε οι χρήστες του συστήματος να στέλνουν email από το σύστημα, μπορείτε να απαγορεύσετε την έξοδο της θύρας 25: </p>
+
+<pre><code>-A OUTPUT -p tcp -m tcp --sport 25 -j DROP
+</code></pre>
 
           </div>
           

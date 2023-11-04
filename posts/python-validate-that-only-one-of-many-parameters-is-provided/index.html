@@ -55,21 +55,23 @@
 at any one time, excluding all others. One way to validate this is included in the Python standard library. Copying
 from the <code>uuid.py</code> module:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">UUID</span><span class="p">:</span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">class</span> <span class="nc">UUID</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">hex</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">bytes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bytes_le</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                        <span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                        <span class="o">*</span><span class="p">,</span> <span class="n">is_safe</span><span class="o">=</span><span class="n">SafeUUID</span><span class="o">.</span><span class="n">unknown</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">[</span><span class="nb">hex</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">bytes_le</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;one of the hex, bytes, bytes_le, fields, &#39;</span>
                             <span class="s1">&#39;or int arguments must be given&#39;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The idea here is that since all <strong>five</strong> mutually exclusive parameters <code>hex</code>, <code>bytes</code>, <code>bytes_le</code>, <code>fields</code> and <code>int</code>
 have a default value of <code>None</code>, when one of them is specified during instatiation, there will then be <strong>four</strong>
 parameters left with value <code>None</code>.</p>
 
 <p>Image credit: <em>Wicklow Mountains</em>, by Marcus Tan. In the Public Domain.
-<a href="https://www.publicdomainpictures.net/en/view-image.php?image=20993&amp;picture=wicklow-mountains">Source</a>.</p>
+<a href="https://www.publicdomainpictures.net/en/view-image.php?image=20993&picture=wicklow-mountains">Source</a>.</p>
 
             </div>
             <footer>

@@ -62,11 +62,13 @@
 δηλώσετε ως <code>global</code> την μεταβλητή <code>$wgUser</code> μέσα 
 στη συνάρτηση <code>execute()</code>. Για παράδειγμα:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="x">function execute() {</span>
+<div class="codehilite">
+<pre><span></span><code><span class="x">function execute() {</span>
 <span class="x">    global $wgUser, $wgSitename;</span>
 <span class="x">    // ακολουθεί η υπόλοιπη συνάρτηση execute</span>
 <span class="x">}</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Στη συνέχεια, στο σημείο όπου θέλετε να εμφανίσετε το ελεγχόμενο 
 περιεχόμενο, θα χρησιμοποιήσετε τις συναρτήσεις <code>isAnon()</code> 
@@ -74,14 +76,16 @@
 παράδειγμα, για να εμφανίσετε έναν κρυφό σύνδεσμο μόνο στους 
 συνδεδεμένους χρήστες:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">html</span><span class="p">(</span><span class="s1">&#39;reporttime&#39;</span><span class="p">);</span> 
+<div class="codehilite">
+<pre><span></span><code><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">html</span><span class="p">(</span><span class="s1">&#39;reporttime&#39;</span><span class="p">);</span> 
 <span class="k">if</span><span class="p">(</span><span class="nv">$wgUser</span><span class="o">-&gt;</span><span class="na">isLoggedIn</span><span class="p">()){</span> 
 <span class="cp">?&gt;</span><span class="x"></span>
 <span class="x">  // περιεχόμενο που θα εμφανίζεται μόνο σε συνδεδεμένους χρήστες</span>
 <span class="cp">&lt;?php</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
             </div>
             <footer>

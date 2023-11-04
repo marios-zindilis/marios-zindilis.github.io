@@ -77,9 +77,11 @@
 <a href="http://itsfoss.com/numix-linux-distribution/">It's F.O.S.S</a> and probably elsewhere, for their announcement to release
 their own Linux distribution. As a result, their website is now down, with the server returning 500:</p>
 
-<div class="codehilite"><pre><span></span><code>mariosz@super-mario:~$ curl -I numixproject.org
+<div class="codehilite">
+<pre><span></span><code>mariosz@super-mario:~$ curl -I numixproject.org
 HTTP/1.0 <span class="m">500</span> Internal Server Error
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>...and displaying the message "Bandwidth Limit Exceeded". I would have guessed that with everything-as-a-service and
 the whole Cloud <abbr title='shebang'>#!</abbr>, bandwidth consumtion would have already become irrelevant. </p>
@@ -249,15 +251,16 @@ interfaces is <code>ip access-group</code>.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cisco-default-interface/">
-            <h2 class="card-title">default interface (Cisco Command)</h2>
+          <a href="/posts/cisco-show-vtp-status/">
+            <h2 class="card-title">show vtp status (Cisco)</h2>
           </a>
 
           
           <div class="card-text">
-            <p>The <code>default-interface</code> command removes configuration from an interface, 
-and returns it to its defaults. Note that by default, interfaces are <strong>not</strong> 
-shutdown.</p>
+            <p>Notes on the <code>show vtp status</code> command on Cisco devices.</p>
+
+<p>The value of <code>configuration last changed by</code> shows the source of the 
+most recent updates to the Vlan list.</p>
 
           </div>
           
@@ -280,16 +283,15 @@ shutdown.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cisco-show-vtp-status/">
-            <h2 class="card-title">show vtp status (Cisco)</h2>
+          <a href="/posts/cisco-default-interface/">
+            <h2 class="card-title">default interface (Cisco Command)</h2>
           </a>
 
           
           <div class="card-text">
-            <p>Notes on the <code>show vtp status</code> command on Cisco devices.</p>
-
-<p>The value of <code>configuration last changed by</code> shows the source of the 
-most recent updates to the Vlan list.</p>
+            <p>The <code>default-interface</code> command removes configuration from an interface, 
+and returns it to its defaults. Note that by default, interfaces are <strong>not</strong> 
+shutdown.</p>
 
           </div>
           
@@ -361,10 +363,12 @@ have ports to use on those old types of networks any more.</p>
           <div class="card-text">
             <p>As user <code>zenoss</code> (or whatever user your Zenoss application runs as), run <code>zendmd</code>, and:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;My Awesome Server&#39;</span><span class="p">)</span>
+<div class="codehilite">
+<pre><span></span><code><span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;My Awesome Server&#39;</span><span class="p">)</span>
 <span class="n">Device</span><span class="o">.</span><span class="n">addDeviceGroup</span><span class="p">(</span><span class="s1">&#39;My Wonderful Group&#39;</span><span class="p">)</span>
 <span class="n">commit</span><span class="p">()</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>This will make the device named <code>My Awesome Server</code> a member of the group named <code>My Wonderful Group</code>. </p>
 

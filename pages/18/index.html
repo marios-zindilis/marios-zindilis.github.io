@@ -40,6 +40,79 @@
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/procmail/">
+            <h2 class="card-title">procmail</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <h2>Procmail Recipes Syntax</h2>
+
+<p>Very briefly:</p>
+
+<ul>
+<li>A line starting with <code>:0</code> denotes the beginning of a new recipe.</li>
+<li>A line starting with <code>*</code> denotes the definition of a <em>condition</em> 
+inside a recipe.</li>
+<li><p>The last line of a recipe is the <em>action</em>. Action lines can begin 
+with:</p>
+
+<ul>
+<li><code>/</code> in which case the email is appended to a text file, 
+mbox-style.</li>
+<li><code>|</code> in which case the email is piped to a script for 
+further handling.</li>
+<li><code>! user@example.com</code> in which case the email is forwarded 
+to the email address defined after the <code>!</code>.</li>
+<li><code>{</code> which denotes the beginning of a nested recipe.</li>
+</ul></li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/crontab/">
+            <h2 class="card-title">crontab</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p><code>crontab</code> can refer to two things:</p>
+
+<ol>
+<li>File <code>/etc/crontab</code>.</li>
+<li>Command <code>crontab</code>.</li>
+</ol>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-31
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/dhcrelay/">
             <h2 class="card-title">dhcrelay</h2>
           </a>
@@ -68,213 +141,39 @@ again between two subnets.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/syslog/">
-            <h2 class="card-title">syslog</h2>
+          <a href="/posts/cisco-clock/">
+            <h2 class="card-title">Cisco: clock</h2>
           </a>
 
           
           <div class="card-text">
-            <h2><code>syslog</code> facilities</h2>
+            <p>With <code>clock</code> you can set the current time and date on a Cisco device. 
+For example:</p>
+
+<pre><code>clock set 20:08:56 Sept 21 2010
+</code></pre>
+
+<p>The generic syntax of the command is:</p>
+
+<pre><code>clock set hh:mm:ss MONTH &lt;0-31&gt; YYYY
+</code></pre>
+
+<p>...where:</p>
 
 <ul>
-<li><code>auth</code>, a.k.a. <code>security</code></li>
-<li><code>authpriv</code></li>
-<li><code>cron</code></li>
-<li><code>daemon</code></li>
-<li><code>kern</code></li>
-<li><code>lrp</code></li>
-<li><code>mail</code></li>
-<li><code>mark</code></li>
-<li><code>news</code></li>
-<li><code>security</code></li>
-<li><code>syslog</code></li>
-<li><code>user</code></li>
-<li><code>uucp</code></li>
-<li><code>local0</code> to <code>local7</code></li>
+<li><code>hh</code> is the hour,</li>
+<li><code>mm</code> are the minutes,</li>
+<li><code>ss</code> are the seconds,</li>
+<li><code>MONTH</code> is the month,</li>
+<li><code>&lt;0-31&gt;</code> is the date, an integer between 0 and 31, and </li>
+<li><code>YYYY</code> is the year.</li>
 </ul>
 
-<h2><code>syslog</code> priorities</h2>
+<p>Note that the month and date are also acceptable in the reverse order, 
+for example:</p>
 
-<p>A list of <code>syslog</code> priorities, sorted by importance, ascending:</p>
-
-<ol>
-<li><code>debug</code></li>
-<li><code>info</code></li>
-<li><code>notice</code></li>
-<li><code>warning</code> (previously <code>warn</code>, now deprecated)</li>
-<li><code>err</code> (previously <code>error</code>, now deprecated)</li>
-<li><code>crit</code></li>
-<li><code>alert</code></li>
-<li><code>emerg</code> (previously <code>panic</code>, now deprecated)</li>
-</ol>
-
-<h2>Send test message to remote syslog server</h2>
-
-<pre><code>echo '&lt;12&gt;sourcehost message text' | nc -v -u -w 0 12.34.56.78 514
+<pre><code>clock set 20:08:56 21 Sept 2010
 </code></pre>
-
-<p><a href="http://nelsonslog.wordpress.com/2013/04/19/faking-out-remote-syslog-via-netcat/">Source</a></p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-31
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/etc-pam-d/">
-            <h2 class="card-title">/etc/pam.d/</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Files in <code>/etc/pam.d/</code> are configurations for <abbr title='Pluggable 
-Authentication Modules'>PAM</abbr> stacks. The generic syntax of a line 
-in those files is:</p>
-
-<pre><code>management_group control_flag module [options]
-</code></pre>
-
-<p>More on <code>management_group</code> and <code>control_flag</code> further in this article. 
-The <code>module</code> is the name of the PAM file to be used. The <code>options</code> are 
-not required, and are either generic ones or module-specific.</p>
-
-<h2><code>management_group</code></h2>
-
-<p>The value of <code>management_group</code> can be one of:</p>
-
-<ul>
-<li><code>auth</code> (for authentication)</li>
-<li><code>account</code> (for account management)</li>
-<li><code>session</code> (for session management)</li>
-<li><code>password</code> (for password managemet)</li>
-</ul>
-
-<h3><code>auth</code></h3>
-
-<p>The <code>auth</code> group is used for user authentication, and is mostly used by 
-tools like <code>login</code> for CLI authentication or XDM or similar for logging 
-in to a desktop environment.</p>
-
-<h3><code>passwd</code></h3>
-
-<p>The <code>passwd</code> group is used for user password management, and is most 
-likely utilized by tools like <code>passwd</code>.</p>
-
-<h3><code>session</code></h3>
-
-<p>The <code>session</code> group manages user sessions. It may verify the existence 
-of a user's home directory or even create it if it does not exist, it 
-can mount partitions that are specific to a user, etc. It will also 
-clean up the user's session after he/she has logged out.</p>
-
-<h2><code>control_flag</code></h2>
-
-<p>The value of <code>control_flag</code> can be one of:</p>
-
-<ul>
-<li><code>requisite</code></li>
-<li><code>required</code></li>
-<li><code>optional</code></li>
-<li><code>sufficient</code></li>
-</ul>
-
-<h3><code>requisite</code></h3>
-
-<p>The <code>requisite</code> flag makes a check necessary but not enough. This means 
-that a <code>requisite</code> check <strong>must</strong> succeed for the stack to go on, but 
-the success of the entire stack depends on further checks. In 
-pseudocode:</p>
-
-<pre><code>IF SUCCESS:
-    GOTO NEXT LINE
-ELSE:
-    FAIL
-</code></pre>
-
-<h3><code>required</code></h3>
-
-<p>The <code>required</code> flag makes a check necessary for the success of the 
-entire stack, while it allows for the execution of the next checks. In 
-pseudocode:</p>
-
-<pre><code>IF SUCCESS:
-    GOTO NEXT LINE
-ELSE:
-    GOTO NEXT LINE
-FINALLY:
-    FAIL
-</code></pre>
-
-<h3><code>sufficient</code></h3>
-
-<p>The <code>sufficient</code> flag makes a check stop the execution of the stack if 
-that check succeeds, otherwise execution continues. In pseudocode:</p>
-
-<pre><code>IF SUCCESS:
-    STOP STACK EXECUTION
-ELSE:
-    GOTO NEXT LINE
-</code></pre>
-
-<h3><code>optional</code></h3>
-
-<p>The <code>optional</code> flag does not affect the execution of the stack, unless 
-the check is the last one in the stack, in which case the success of 
-the entire stack is the same as the success of the last check. In 
-pseudocode:</p>
-
-<pre><code>IF SUCCESS:
-    GOTO NEXT LINE
-ELSE:
-    GOTO NEXT LINE
-</code></pre>
-
-<p>Note that the pseudocode above does not include the exception that 
-happens when the <code>optional</code> check is that last in the stack.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-31
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-banner-motd/">
-            <h2 class="card-title">Cisco: banner motd</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>With <code>banner motd</code> you can define a message that will be displayed to 
-the user when she connects to the device in any way (both to VTY and to 
-console lines). The difference of this command with <code>banner login</code> is 
-that the message defined with <code>banner login</code> will only display on 
-connections to VTY lines.</p>
-
-<h2>See Also</h2>
-
-<ul>
-<li><a href="/posts/cisco-banner-login/">banner login</a></li>
-</ul>
 
           </div>
           
@@ -309,6 +208,40 @@ command is:</p>
 
 <pre><code>alias MODE ALIAS COMMAND
 </code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2013-12-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/cisco-banner-motd/">
+            <h2 class="card-title">Cisco: banner motd</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>With <code>banner motd</code> you can define a message that will be displayed to 
+the user when she connects to the device in any way (both to VTY and to 
+console lines). The difference of this command with <code>banner login</code> is 
+that the message defined with <code>banner login</code> will only display on 
+connections to VTY lines.</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="/posts/cisco-banner-login/">banner login</a></li>
+</ul>
 
           </div>
           
@@ -383,68 +316,37 @@ status of all ports on which port-security rules have been configured.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cisco-clock/">
-            <h2 class="card-title">Cisco: clock</h2>
+          <a href="/posts/citrix-xenserver-6-2/">
+            <h2 class="card-title">Citrix XenServer 6.2</h2>
           </a>
 
           
           <div class="card-text">
-            <p>With <code>clock</code> you can set the current time and date on a Cisco device. 
-For example:</p>
-
-<pre><code>clock set 20:08:56 Sept 21 2010
-</code></pre>
-
-<p>The generic syntax of the command is:</p>
-
-<pre><code>clock set hh:mm:ss MONTH &lt;0-31&gt; YYYY
-</code></pre>
-
-<p>...where:</p>
+            <h2>Deprecated Features</h2>
 
 <ul>
-<li><code>hh</code> is the hour,</li>
-<li><code>mm</code> are the minutes,</li>
-<li><code>ss</code> are the seconds,</li>
-<li><code>MONTH</code> is the month,</li>
-<li><code>&lt;0-31&gt;</code> is the date, an integer between 0 and 31, and </li>
-<li><code>YYYY</code> is the year.</li>
+<li><a href="http://support.citrix.com/article/CTX137333">Workload Balancing</a></li>
+<li><a href="http://support.citrix.com/article/CTX137334">Web Self Service</a></li>
+<li><a href="http://support.citrix.com/article/CTX137335">Virtual Machine Protection and Recovery</a></li>
+<li><a href="http://support.citrix.com/article/CTX137336">Distributed Virtual Switch Controller</a></li>
+<li><a href="http://support.citrix.com/article/CTX137337">Integrated StorageLink</a></li>
+<li>XenConvert (P2V)</li>
 </ul>
 
-<p>Note that the month and date are also acceptable in the reverse order, 
-for example:</p>
+<h2>Installation Guide</h2>
 
-<pre><code>clock set 20:08:56 21 Sept 2010
-</code></pre>
+<ul>
+<li><a href="https://docs.citrix.com/en-us/legacy-archive/downloads/xs-installation-6-2.pdf">Citrix XenServer 6.2.0 Installation Guide</a> (pdf)</li>
+</ul>
 
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2013-12-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/exportfs/">
-            <h2 class="card-title">exportfs</h2>
-          </a>
+<h2>See also</h2>
 
-          
-          <div class="card-text">
-            <p><code>exportfs</code> is a helper utility for managing an NFS server.</p>
-
-<p>Used without any parameters, it will just display a list of active 
-exports, and the hosts that are allowed to access them.</p>
-
-<p>Used with the <code>r</code> parameter, it will reread <code>/etc/exports</code>.</p>
+<ul>
+<li><a href="http://www.xvpsource.org/">xvpsource</a>, a cross-platform VNC-based 
+and Web-based Management for Citrix XenServer and Xen Cloud 
+Platform. This, according to Citrix, can replace the Web Self 
+Service feature that was removed in XenServer 6.2.</li>
+</ul>
 
           </div>
           

@@ -61,7 +61,8 @@ count many groups at once.</p>
 from its standard input to its standard output, but if a line is identical to 
 the immediately preceding line, the duplicate line is not written. For example:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat foo
+<div class="codehilite">
+<pre><span></span><code>$ cat foo
 a 
 a
 a
@@ -76,30 +77,36 @@ a
 b
 a
 c
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Note that <code>a</code> is written twice because <code>uniq</code> compares only to the immediately 
 preceding line. If the data is sorted first, we get each distinct record just 
 once:</p>
 
-<div class="codehilite"><pre><span></span><code>$ sort foo <span class="p">|</span> uniq
+<div class="codehilite">
+<pre><span></span><code>$ sort foo <span class="p">|</span> uniq
 a
 b
 c
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Finally, giving the <code>-c</code> option causes <code>uniq</code> to write counts associated with 
 each distinct entry:</p>
 
-<div class="codehilite"><pre><span></span><code>$ sort foo <span class="p">|</span> uniq -c
+<div class="codehilite">
+<pre><span></span><code>$ sort foo <span class="p">|</span> uniq -c
 <span class="m">6</span> a
 <span class="m">2</span> b
 <span class="m">1</span> c
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Sorting a CSV file by an arbitrary column is easy as well:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat file.csv
+<div class="codehilite">
+<pre><span></span><code>$ cat file.csv
 a, <span class="m">10</span>, <span class="m">0</span>.5
 b, <span class="m">20</span>, <span class="m">0</span>.1
 c, <span class="m">14</span>, <span class="m">0</span>.01
@@ -109,9 +116,11 @@ f, <span class="m">1</span>,  <span class="m">0</span>.34
 g, <span class="m">75</span>, <span class="m">1</span>.0
 h, <span class="m">3</span>,  <span class="m">2</span>.0
 i, <span class="m">12</span>, <span class="m">1</span>.5
-</code></pre></div>
+</code></pre>
+</div>
 
-<div class="codehilite"><pre><span></span><code>$ sort -n -t<span class="s2">&quot;,&quot;</span> -k <span class="m">2</span> file.csv
+<div class="codehilite">
+<pre><span></span><code>$ sort -n -t<span class="s2">&quot;,&quot;</span> -k <span class="m">2</span> file.csv
 f, <span class="m">1</span>,  <span class="m">0</span>.34
 h, <span class="m">3</span>,  <span class="m">2</span>.0
 a, <span class="m">10</span>, <span class="m">0</span>.5
@@ -121,9 +130,11 @@ b, <span class="m">20</span>, <span class="m">0</span>.1
 d, <span class="m">55</span>, <span class="m">0</span>.23
 g, <span class="m">75</span>, <span class="m">1</span>.0
 e, <span class="m">94</span>, <span class="m">0</span>.78
-</code></pre></div>
+</code></pre>
+</div>
 
-<div class="codehilite"><pre><span></span><code>$ sort -n -t<span class="s2">&quot;,&quot;</span> -k <span class="m">3</span> file.csv
+<div class="codehilite">
+<pre><span></span><code>$ sort -n -t<span class="s2">&quot;,&quot;</span> -k <span class="m">3</span> file.csv
 c, <span class="m">14</span>, <span class="m">0</span>.01
 b, <span class="m">20</span>, <span class="m">0</span>.1
 d, <span class="m">55</span>, <span class="m">0</span>.23
@@ -133,7 +144,8 @@ e, <span class="m">94</span>, <span class="m">0</span>.78
 g, <span class="m">75</span>, <span class="m">1</span>.0
 i, <span class="m">12</span>, <span class="m">1</span>.5
 h, <span class="m">3</span>,  <span class="m">2</span>.0
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Example - Creating a histogram</h2>
 
@@ -142,17 +154,20 @@ create histograms from virtually any record oriented text data. Returning to
 the name-to-gender mapping of the previous chapter, we could have gotten the 
 count of male and female names in one command like this:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cut -d<span class="s2">&quot; &quot;</span> -f2 gender.txt <span class="p">|</span> sort <span class="p">|</span> uniq -c
+<div class="codehilite">
+<pre><span></span><code>$ cut -d<span class="s2">&quot; &quot;</span> -f2 gender.txt <span class="p">|</span> sort <span class="p">|</span> uniq -c
 <span class="m">3966</span> F
 <span class="m">1051</span> M
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Example - Creating another histogram</h2>
 
 <p>And returning to the census data, we can now easily compute the complete 
 distribution of occupants per household:</p>
 
-<div class="codehilite"><pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat  <span class="p">|</span> cut -c106-107 <span class="p">|</span> sort <span class="p">|</span> uniq -c
+<div class="codehilite">
+<pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat  <span class="p">|</span> cut -c106-107 <span class="p">|</span> sort <span class="p">|</span> uniq -c
 <span class="m">1796</span> <span class="m">00</span>
 <span class="m">7192</span> <span class="m">01</span>
 <span class="m">7890</span> <span class="m">02</span>
@@ -167,7 +182,8 @@ distribution of occupants per household:</p>
   <span class="m">14</span> <span class="m">11</span>
    <span class="m">3</span> <span class="m">12</span>
    <span class="m">3</span> <span class="m">13</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Example - Verifying a primary key</h2>
 
@@ -177,9 +193,11 @@ a dataset. In the above example, why are there 1,796 households with 0
 occupants? As another example of quickly verifying the integrity of data, let's 
 make sure that household id is truly a unique identifier:</p>
 
-<div class="codehilite"><pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat <span class="p">|</span> cut -c2-8 <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> grep -v <span class="s2">&quot;^ *1 &quot;</span> <span class="p">|</span> wc -l
+<div class="codehilite">
+<pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat <span class="p">|</span> cut -c2-8 <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> grep -v <span class="s2">&quot;^ *1 &quot;</span> <span class="p">|</span> wc -l
 <span class="m">0</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>This <code>grep</code> invocation will print only lines that do not (because of the <code>-v</code> 
 flag) begin with a series of spaces followed by a <code>1</code> (the count from 
@@ -202,7 +220,8 @@ and I like to give the <code>-r</code> option to reverse the sort so that the ou
 sorted in descending order, but this just a stylistic issue. For example, here 
 is the distribution of household heating fuel from most common to least common:</p>
 
-<div class="codehilite"><pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat <span class="p">|</span> cut -c132 <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -rn
+<div class="codehilite">
+<pre><span></span><code>$ grep <span class="s2">&quot;^H&quot;</span> pums_53.dat <span class="p">|</span> cut -c132 <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -rn
 <span class="m">12074</span> <span class="m">3</span>
  <span class="m">7007</span> <span class="m">1</span>
  <span class="m">3161</span> 
@@ -213,7 +232,8 @@ is the distribution of household heating fuel from most common to least common:<
    <span class="m">43</span> <span class="m">9</span>
     <span class="m">6</span> <span class="m">5</span>
     <span class="m">4</span> <span class="m">7</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Type 3, electricity, is most common, followed by type 1, gas. Type 7 is solar 
 power.</p>
@@ -225,10 +245,12 @@ convert the output if further operations on the output are wanted. Here we use
 a bit of <strong>inline perl</strong> to rewrite the lines and reverse the order of the 
 fields:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cut -d<span class="s2">&quot; &quot;</span> -f2 gender.txt <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> perl -pe <span class="s1">&#39;s/^\s*([0-9]+) (\S+).*/$2, $1/&#39;</span> 
+<div class="codehilite">
+<pre><span></span><code>$ cut -d<span class="s2">&quot; &quot;</span> -f2 gender.txt <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> perl -pe <span class="s1">&#39;s/^\s*([0-9]+) (\S+).*/$2, $1/&#39;</span> 
 F, <span class="m">3966</span>
 M, <span class="m">1051</span>
-</code></pre></div>
+</code></pre>
+</div>
 
             </div>
             <footer>

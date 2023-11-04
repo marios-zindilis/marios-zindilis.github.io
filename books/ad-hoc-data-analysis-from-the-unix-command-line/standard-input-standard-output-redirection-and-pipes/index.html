@@ -66,9 +66,11 @@ case characters:</p>
 
 <p>You type:</p>
 
-<div class="codehilite"><pre><span></span><code>$ tr <span class="s2">&quot;[:lower:]&quot;</span> <span class="s2">&quot;[:upper:]&quot;</span>
+<div class="codehilite">
+<pre><span></span><code>$ tr <span class="s2">&quot;[:lower:]&quot;</span> <span class="s2">&quot;[:upper:]&quot;</span>
 hello
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>You get:</p>
 
@@ -77,8 +79,10 @@ hello
 
 <p>Then type:</p>
 
-<div class="codehilite"><pre><span></span><code>i feel like shouting
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code>i feel like shouting
+</code></pre>
+</div>
 
 <p>You get:</p>
 
@@ -95,11 +99,13 @@ talk about <strong>redirecting</strong> the output of <code>tr</code> to a file.
 
 <p>You type:</p>
 
-<div class="codehilite"><pre><span></span><code>$ tr a-z A-Z &gt; tr_output
+<div class="codehilite">
+<pre><span></span><code>$ tr a-z A-Z &gt; tr_output
 this is a <span class="nb">test</span>
 <span class="o">[</span>ctrl-d<span class="o">]</span>
 $ cat tr_output
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>You get:</p>
 
@@ -111,33 +117,41 @@ input if not given a file. For example, the <code>grep</code> command searches a
 a string and prints the lines that match. If I wanted to find my entry in the 
 password file I might say:</p>
 
-<div class="codehilite"><pre><span></span><code>$ grep jrauser /etc/passwd
+<div class="codehilite">
+<pre><span></span><code>$ grep jrauser /etc/passwd
 jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>But I could also redirect a file to <code>grep</code>'s standard input using the <code>&lt;</code> 
 operator. You can see that the <code>&lt;</code> and <code>&gt;</code> operators are like little arrows 
 that indicate the flow of data.</p>
 
-<div class="codehilite"><pre><span></span><code>$ grep jrauser &lt; /etc/passwd
+<div class="codehilite">
+<pre><span></span><code>$ grep jrauser &lt; /etc/passwd
 jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>You can use the pipe <code>|</code> operator to connect the standard output of one command 
 to the standard input of the next. The <code>cat</code> command reads a file and writes it 
 to its standard output, so yet another way to find my entry in the password 
 file is:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat /etc/passwd <span class="p">|</span> grep jrauser
+<div class="codehilite">
+<pre><span></span><code>$ cat /etc/passwd <span class="p">|</span> grep jrauser
 jrauser:x:7777:100:John Rauser:/home/jrauser:/bin/bash
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>For a slightly more interesting example, the <code>mail</code> command will send a message 
 it reads from standard input. Let's send my entry in the password file to me in 
 an email.</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat /etc/passwd <span class="p">|</span> grep jrauser <span class="p">|</span> mail -s <span class="s2">&quot;passwd entry&quot;</span> jrauser@example.com
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code>$ cat /etc/passwd <span class="p">|</span> grep jrauser <span class="p">|</span> mail -s <span class="s2">&quot;passwd entry&quot;</span> jrauser@example.com
+</code></pre>
+</div>
 
 <h2>Using output with headers</h2>
 
@@ -145,23 +159,27 @@ an email.</p>
 header describing the data, and subsequent lines that are the data. An example 
 is <code>ps</code>:</p>
 
-<div class="codehilite"><pre><span></span><code>$ ps <span class="p">|</span> head -5
+<div class="codehilite">
+<pre><span></span><code>$ ps <span class="p">|</span> head -5
   PID TTY           TIME CMD
 <span class="m">22313</span> ttys000    <span class="m">0</span>:00.86 -bash
 <span class="m">31537</span> ttys001    <span class="m">0</span>:00.06 -bash
 <span class="m">22341</span> ttys002    <span class="m">0</span>:00.28 -bash
 <span class="m">70093</span> ttys002    <span class="m">0</span>:00.00 head -5
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>If you wish to manipulate the data but not the header use <code>tail</code> with the <code>-n</code> 
 switch to start at line 2. For example:</p>
 
-<div class="codehilite"><pre><span></span><code>$ ps <span class="p">|</span> tail -n +2 <span class="p">|</span> grep bash <span class="p">|</span> head -5
+<div class="codehilite">
+<pre><span></span><code>$ ps <span class="p">|</span> tail -n +2 <span class="p">|</span> grep bash <span class="p">|</span> head -5
 <span class="m">22313</span> ttys000    <span class="m">0</span>:00.86 -bash
 <span class="m">31537</span> ttys001    <span class="m">0</span>:00.06 -bash
 <span class="m">22341</span> ttys002    <span class="m">0</span>:00.28 -bash
 <span class="m">70120</span> ttys002    <span class="m">0</span>:00.00 -bash
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>This output shows only <code>bash</code> processes because of <code>grep</code>.</p>
 

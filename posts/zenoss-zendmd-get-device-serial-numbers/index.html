@@ -56,7 +56,8 @@ defined, run the following script as user <code>zenoss</code>. It will display t
 Device Title, the Serial Number, and -as an added bonus- the Hardware 
 Manufacturer.</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">Globals</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">Globals</span>
 <span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
 <span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
 
@@ -65,7 +66,8 @@ Manufacturer.</p>
 <span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">Devices</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWSerialNumber</span><span class="p">():</span>
         <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWSerialNumber</span><span class="p">(),</span> <span class="n">Device</span><span class="o">.</span><span class="n">getHWManufacturerName</span><span class="p">()</span>
-</code></pre></div>
+</code></pre>
+</div>
 
             </div>
             <footer>

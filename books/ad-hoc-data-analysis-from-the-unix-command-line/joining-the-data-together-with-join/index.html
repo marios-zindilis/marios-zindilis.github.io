@@ -57,7 +57,8 @@ on which the join is going to take place.</p>
 <p>In delimited data, elements of a record are separated by a special 'delimiter' 
 character. In the CSV files, fields are delimited by commas or tabs:</p>
 
-<div class="codehilite"><pre><span></span><code>$ cat j1
+<div class="codehilite">
+<pre><span></span><code>$ cat j1
 <span class="m">1</span>,a
 <span class="m">1</span>,b
 <span class="m">2</span>,c
@@ -68,9 +69,11 @@ character. In the CSV files, fields are delimited by commas or tabs:</p>
 <span class="m">4</span>,h
 <span class="m">4</span>,i
 <span class="m">5</span>,j
-</code></pre></div>
+</code></pre>
+</div>
 
-<div class="codehilite"><pre><span></span><code>$ cat j2
+<div class="codehilite">
+<pre><span></span><code>$ cat j2
 <span class="m">1</span>,A
 <span class="m">1</span>,B
 <span class="m">1</span>,C
@@ -81,9 +84,11 @@ character. In the CSV files, fields are delimited by commas or tabs:</p>
 <span class="m">5</span>,H
 <span class="m">6</span>,I
 <span class="m">6</span>,J
-</code></pre></div>
+</code></pre>
+</div>
 
-<div class="codehilite"><pre><span></span><code>$ join -t , -a <span class="m">1</span> -a <span class="m">2</span> -o <span class="m">0</span>,1.2,2.2 j1 j2
+<div class="codehilite">
+<pre><span></span><code>$ join -t , -a <span class="m">1</span> -a <span class="m">2</span> -o <span class="m">0</span>,1.2,2.2 j1 j2
 <span class="m">1</span>,a,A
 <span class="m">1</span>,a,B
 <span class="m">1</span>,a,C
@@ -105,7 +110,8 @@ character. In the CSV files, fields are delimited by commas or tabs:</p>
 <span class="m">5</span>,j,H
 <span class="m">6</span>,,I
 <span class="m">6</span>,,J
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Explanation of options:</p>
 
@@ -127,20 +133,26 @@ file 2 ("j2").</p>
 
 <p>To join several files you can loop through them.</p>
 
-<div class="codehilite"><pre><span></span><code>$ join -t , -a <span class="m">1</span> -a <span class="m">2</span> -o <span class="m">0</span>,1.2,2.2 j1 j2 &gt; J
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code>$ join -t , -a <span class="m">1</span> -a <span class="m">2</span> -o <span class="m">0</span>,1.2,2.2 j1 j2 &gt; J
+</code></pre>
+</div>
 
 <p>File "J" is now the full outer join of "j1", "j2".</p>
 
-<div class="codehilite"><pre><span></span><code>$ join -t , -a <span class="m">1</span> -a <span class="m">2</span> -o <span class="m">0</span>,1.2,2.2 J j3 &gt; J
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code>$ join -t , -a <span class="m">1</span> -a <span class="m">2</span> -o <span class="m">0</span>,1.2,2.2 J j3 &gt; J
+</code></pre>
+</div>
 
 <p>and so on through j4, j5&hellip;</p>
 
 <p>For many files this is best done with a loop:</p>
 
-<div class="codehilite"><pre><span></span><code>$ <span class="k">for</span> i <span class="k">in</span> * <span class="p">;</span> <span class="k">do</span> join -t , -a <span class="m">1</span> -a <span class="m">2</span> -o <span class="m">0</span>,1.2,2.2 J <span class="nv">$i</span> &gt; J <span class="p">;</span> <span class="k">done</span>
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code>$ <span class="k">for</span> i <span class="k">in</span> * <span class="p">;</span> <span class="k">do</span> join -t , -a <span class="m">1</span> -a <span class="m">2</span> -o <span class="m">0</span>,1.2,2.2 J <span class="nv">$i</span> &gt; J <span class="p">;</span> <span class="k">done</span>
+</code></pre>
+</div>
 
 <h2>Sorted Data Note</h2>
 

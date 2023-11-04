@@ -57,21 +57,25 @@ examples. This page lists some example queries against that database.</p>
 
 <p>Get a non-normalized selection of actors and films in which they played:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span><span class="w">  </span><span class="n">actor</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">SELECT</span><span class="w">  </span><span class="n">actor</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span>
 <span class="w">        </span><span class="n">actor</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span>
 <span class="w">        </span><span class="n">film</span><span class="p">.</span><span class="n">title</span><span class="w"> </span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="n">film</span><span class="p">,</span><span class="w"> </span><span class="n">film_actor</span><span class="w"> </span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">film_actor</span><span class="p">.</span><span class="n">actor_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actor</span><span class="p">.</span><span class="n">actor_id</span><span class="w"> </span>
 <span class="k">AND</span><span class="w"> </span><span class="n">film_actor</span><span class="p">.</span><span class="n">film_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">film</span><span class="p">.</span><span class="n">film_id</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Get the same result with double <code>INNER JOIN</code>:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">actor</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">actor</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">film</span><span class="p">.</span><span class="n">title</span><span class="w"> </span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">actor</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">actor</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">film</span><span class="p">.</span><span class="n">title</span><span class="w"> </span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">film_actor</span><span class="w"> </span>
 <span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">actor</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">film_actor</span><span class="p">.</span><span class="n">actor_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actor</span><span class="p">.</span><span class="n">actor_id</span><span class="w"> </span>
 <span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">film</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">film_actor</span><span class="p">.</span><span class="n">film_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">film</span><span class="p">.</span><span class="n">film_id</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
             </div>
             <footer>

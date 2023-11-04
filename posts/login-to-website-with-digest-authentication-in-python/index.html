@@ -63,10 +63,12 @@ that uses Digest.</p>
 <p>First, verify the authentication type and get the Realm with 
 <code>curl</code>. The option <code>-I</code> only fetches the headers:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>marios@zindilis.net<span class="o">]</span>$ curl -I http://example.com
+<div class="codehilite">
+<pre><span></span><code><span class="o">[</span>marios@zindilis.net<span class="o">]</span>$ curl -I http://example.com
 HTTP/1.1 <span class="m">401</span> Unauthorized
 WWW-Authenticate: Digest <span class="nv">realm</span><span class="o">=</span><span class="s2">&quot;Example Realm&quot;</span>,  <span class="nv">nonce</span><span class="o">=</span><span class="s2">&quot;1a7278f234efe7894dfd823&quot;</span>, <span class="nv">algorithm</span><span class="o">=</span>MD5, <span class="nv">qop</span><span class="o">=</span><span class="s2">&quot;auth&quot;</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The significant parts from the output above is that the HTTP 
 Authentication method is <code>Digest</code> and that the realm is 
@@ -74,7 +76,8 @@ Authentication method is <code>Digest</code> and that the realm is
 
 <p>Now the Python part:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">urllib2</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">urllib2</span>
 
 <span class="n">URL</span>      <span class="o">=</span> <span class="s1">&#39;http://example.com&#39;</span>
 <span class="n">Realm</span>    <span class="o">=</span> <span class="s1">&#39;Example Realm&#39;</span>
@@ -86,7 +89,8 @@ Authentication method is <code>Digest</code> and that the realm is
 <span class="n">opener</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">authhandler</span><span class="p">)</span>
 <span class="n">urllib2</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span><span class="n">opener</span><span class="p">)</span>
 <span class="n">page_content</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The <code>page_content</code> variable now contains the contents of the 
 webpage returned after the authentication, and can be read with 

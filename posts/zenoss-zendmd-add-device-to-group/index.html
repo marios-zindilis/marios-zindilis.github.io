@@ -53,10 +53,12 @@
             <div itemprop="articleBody">
                 <p>As user <code>zenoss</code> (or whatever user your Zenoss application runs as), run <code>zendmd</code>, and:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;My Awesome Server&#39;</span><span class="p">)</span>
+<div class="codehilite">
+<pre><span></span><code><span class="n">Device</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="s1">&#39;My Awesome Server&#39;</span><span class="p">)</span>
 <span class="n">Device</span><span class="o">.</span><span class="n">addDeviceGroup</span><span class="p">(</span><span class="s1">&#39;My Wonderful Group&#39;</span><span class="p">)</span>
 <span class="n">commit</span><span class="p">()</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>This will make the device named <code>My Awesome Server</code> a member of the group named <code>My Wonderful Group</code>. </p>
 

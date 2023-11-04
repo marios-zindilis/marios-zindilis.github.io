@@ -132,6 +132,40 @@ bandwidth επηρεάζει και άλλα πράγματα, άσχετα με
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/cisco-service-timestamps-log-datetime/">
+            <h2 class="card-title">service timestamps log datetime</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Η εντολή <code>service timestamps log datetime</code> καθορίζει την εμφάνιση των ημερομηνιών στα μηνύματα 
+αποσφαλμάτωσης στο τερματικό, σε εμφάνιση ημερομηνίας και ώρας, σε 
+αντίθεση με την εναλλακτική που είναι η εμφάνιση σε διάρκεια συνεχόμενης 
+λειτουργίας της συσκευής από την τελευταία εκκίνηση (uptime). Ένα παράδειγμα 
+εξόδου αποσφαλμάτωσης με αυτή την εμφάνιση των ημερομηνιών είναι:</p>
+
+<pre><code>Jan  5 19:34:18: tcp2: I ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 1368141491
+        DATA 2 ACK 946277077 PSH  WIN 56000
+Jan  5 19:34:18: tcp2: O ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 946277077
+        DATA 2 ACK 1368141493 PSH  WIN 3843
+</code></pre>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2011-09-29
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/cisco-switchport-mode-access/">
             <h2 class="card-title">switchport mode access</h2>
           </a>
@@ -191,27 +225,29 @@ bandwidth επηρεάζει και άλλα πράγματα, άσχετα με
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cisco-switchport-trunk-encapsulation-dot1q/">
-            <h2 class="card-title">switchport trunk encapsulation dot1q</h2>
+          <a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">
+            <h2 class="card-title">switchport trunk encapsulation negotiate</h2>
           </a>
 
           
           <div class="card-text">
-            <p>Η εντολή <code>switchport trunk encapsulation dot1q</code> καθορίζει το 
-encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία ήδη 
-λειτουργεί ως trunk. Η παράμετρος <code>dot1q</code> καθορίζει την τιμή στο 
-πρότυπο IEEE 802.1q.</p>
-
-<p>Υπάρχουν δύο πρότυπα λειτουργίας για διεπαφές trunk, το 802.1q και το ISL. Το πρότυπο ISL (Inter-Switch Link) αναπτύχθηκε από τη Cisco πολύ νωρίτερα από το 802.1q. Μια βασική του διαφορά από το 802.1q είναι ότι περικλείει το Ethernet Frame σε ένα επιπλέον ζεύγος header και trailer. Αντίθετα, το 802.1q προσθέτει μόνο ένα επιπλέον πεδίο στο υφιστάμενο header του Ethernet frame, και αναγκαστικά επανυπολογίζει το Frame Check Sequence (FCS) στο trailer.</p>
-
-<p>Πρακτικά, το ISL δεν χρησιμοποιείται πλέον σήμερα, και σε νεότερες συσκευές η ίδια η Cisco έχει σταματήσει να το υποστηρίζει. Αναφέρεται ακόμα στην τεκμηρίωση για σκοπούς συμβατότητας με παλαιότερες συσκευές. Οι συσκευές που δεν προσφέρουν άλλη δυνατότητα ρύθμισης, λειτουργούν από προεπιλογή σε dot1q. </p>
+            <p>Καθορίζει το encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία 
+ήδη λειτουργεί ως trunk. Η τιμή negotiate αναγκάζει τη διεπαφή να 
+διαπραγματευτεί ανάμεσα σε <code>dot1q</code> και <code>isl</code> με τη συνδεδεμένη στο άλλο 
+άκρο του trunk συσκευή.</p>
 
 <h2>Δείτε επίσης</h2>
 
-<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές. 
-Η βασική εναλλακτική του <code>dot1q</code> είναι η <a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a>, 
-και για αυτόματη διαπραγμάτευση του encapsulation μεταξύ των δύο συσκευών δείτε το 
-<a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">switchport trunk encapsulation negotiate</a>. </p>
+<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές, 
+από τις οποίες η <code>negotiate</code> περιγράφεται σε αυτό το άρθρο. Για τις 
+άλλες δύο τιμές, δείτε:</p>
+
+<ul>
+<li><a href="/posts/cisco-switchport-trunk-encapsulation-dot1q/">switchport trunk encapsulation dot1q</a> 
+για την τιμή <code>dot1q</code>, η οποία είναι και η μοναδική που 
+χρησιμοποιείται πλέον πρακτικά, και</li>
+<li><a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a></li>
+</ul>
 
           </div>
           
@@ -260,63 +296,27 @@ encapsulation στο οποίο θα λειτουργεί μια διεπαφή,
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">
-            <h2 class="card-title">switchport trunk encapsulation negotiate</h2>
+          <a href="/posts/cisco-switchport-trunk-encapsulation-dot1q/">
+            <h2 class="card-title">switchport trunk encapsulation dot1q</h2>
           </a>
 
           
           <div class="card-text">
-            <p>Καθορίζει το encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία 
-ήδη λειτουργεί ως trunk. Η τιμή negotiate αναγκάζει τη διεπαφή να 
-διαπραγματευτεί ανάμεσα σε <code>dot1q</code> και <code>isl</code> με τη συνδεδεμένη στο άλλο 
-άκρο του trunk συσκευή.</p>
+            <p>Η εντολή <code>switchport trunk encapsulation dot1q</code> καθορίζει το 
+encapsulation στο οποίο θα λειτουργεί μια διεπαφή, η οποία ήδη 
+λειτουργεί ως trunk. Η παράμετρος <code>dot1q</code> καθορίζει την τιμή στο 
+πρότυπο IEEE 802.1q.</p>
+
+<p>Υπάρχουν δύο πρότυπα λειτουργίας για διεπαφές trunk, το 802.1q και το ISL. Το πρότυπο ISL (Inter-Switch Link) αναπτύχθηκε από τη Cisco πολύ νωρίτερα από το 802.1q. Μια βασική του διαφορά από το 802.1q είναι ότι περικλείει το Ethernet Frame σε ένα επιπλέον ζεύγος header και trailer. Αντίθετα, το 802.1q προσθέτει μόνο ένα επιπλέον πεδίο στο υφιστάμενο header του Ethernet frame, και αναγκαστικά επανυπολογίζει το Frame Check Sequence (FCS) στο trailer.</p>
+
+<p>Πρακτικά, το ISL δεν χρησιμοποιείται πλέον σήμερα, και σε νεότερες συσκευές η ίδια η Cisco έχει σταματήσει να το υποστηρίζει. Αναφέρεται ακόμα στην τεκμηρίωση για σκοπούς συμβατότητας με παλαιότερες συσκευές. Οι συσκευές που δεν προσφέρουν άλλη δυνατότητα ρύθμισης, λειτουργούν από προεπιλογή σε dot1q. </p>
 
 <h2>Δείτε επίσης</h2>
 
-<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές, 
-από τις οποίες η <code>negotiate</code> περιγράφεται σε αυτό το άρθρο. Για τις 
-άλλες δύο τιμές, δείτε:</p>
-
-<ul>
-<li><a href="/posts/cisco-switchport-trunk-encapsulation-dot1q/">switchport trunk encapsulation dot1q</a> 
-για την τιμή <code>dot1q</code>, η οποία είναι και η μοναδική που 
-χρησιμοποιείται πλέον πρακτικά, και</li>
-<li><a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a></li>
-</ul>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2011-09-29
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/cisco-service-timestamps-log-datetime/">
-            <h2 class="card-title">service timestamps log datetime</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Η εντολή <code>service timestamps log datetime</code> καθορίζει την εμφάνιση των ημερομηνιών στα μηνύματα 
-αποσφαλμάτωσης στο τερματικό, σε εμφάνιση ημερομηνίας και ώρας, σε 
-αντίθεση με την εναλλακτική που είναι η εμφάνιση σε διάρκεια συνεχόμενης 
-λειτουργίας της συσκευής από την τελευταία εκκίνηση (uptime). Ένα παράδειγμα 
-εξόδου αποσφαλμάτωσης με αυτή την εμφάνιση των ημερομηνιών είναι:</p>
-
-<pre><code>Jan  5 19:34:18: tcp2: I ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 1368141491
-        DATA 2 ACK 946277077 PSH  WIN 56000
-Jan  5 19:34:18: tcp2: O ESTAB 192.168.2.100:44268 192.168.2.222:23 seq 946277077
-        DATA 2 ACK 1368141493 PSH  WIN 3843
-</code></pre>
+<p>Η εντολή <code>switchport trunk encapsulation</code> μπορεί να πάρει τρεις τιμές. 
+Η βασική εναλλακτική του <code>dot1q</code> είναι η <a href="/posts/cisco-switchport-trunk-encapsulation-isl/">switchport trunk encapsulation isl</a>, 
+και για αυτόματη διαπραγμάτευση του encapsulation μεταξύ των δύο συσκευών δείτε το 
+<a href="/posts/cisco-switchport-trunk-encapsulation-negotiate/">switchport trunk encapsulation negotiate</a>. </p>
 
           </div>
           

@@ -63,14 +63,16 @@ looking at the documentation is terrifying...</p>
 <p>I experimented with controlling VLC from Python using VLC's <a href="https://wiki.videolan.org/documentation:modules/rc/">Remote Control Interface</a>, and wrote a small
 proof-of-concept code snippet. Here's how to use it:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">vlc</span> <span class="kn">import</span> <span class="n">VLC</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">from</span> <span class="nn">vlc</span> <span class="kn">import</span> <span class="n">VLC</span>
 
 <span class="n">vlc</span> <span class="o">=</span> <span class="n">VLC</span><span class="p">()</span>
 <span class="n">vlc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;/path/to/some/file.avi&#39;</span><span class="p">)</span>
 <span class="n">vlc</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
 <span class="n">vlc</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
 <span class="n">vlc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The code is not production-grade. I will not be developing this any more, so I
 am putting it here for anyone to grap and hopefully do something useful with. 
@@ -80,7 +82,8 @@ is not available in any version of Python earlier than 3.5.</p>
 
 <p>Here's the library/wrapper, drop it anywhere in your Python <code>PATH</code>:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">socket</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
 
 
@@ -141,7 +144,8 @@ is not available in any version of Python earlier than 3.5.</p>
 
     <span class="k">def</span> <span class="nf">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="s1">&#39;shutdown&#39;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Good luck using this for your scripts :)</p>
 

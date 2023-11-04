@@ -164,7 +164,8 @@ rm __init__.py
 </code></pre></li>
 <li><p>Fix the location of <code>settings</code> in <code>manage.py</code>. Here's the diff: </p>
 
-<div class="codehilite"><pre><span></span><code><span class="gd">--- manage.py-orig  2017-01-05 07:02:21.078737918 +0000</span><span class="w"></span>
+<div class="codehilite">
+<pre><span></span><code><span class="gd">--- manage.py-orig  2017-01-05 07:02:21.078737918 +0000</span><span class="w"></span>
 <span class="gi">+++ manage.py   2017-01-05 07:02:35.314857268 +0000</span><span class="w"></span>
 <span class="gu">@@ -3,7 +3,7 @@</span><span class="w"></span>
 <span class="w"> </span>import sys<span class="w"></span>
@@ -175,10 +176,12 @@ rm __init__.py
 <span class="w"> </span>    try:<span class="w"></span>
 <span class="w"> </span>        from django.core.management import execute_from_command_line<span class="w"></span>
 <span class="w"> </span>    except ImportError:<span class="w"></span>
-</code></pre></div></li>
+</code></pre>
+</div></li>
 <li><p>Fix <code>settings.py</code>. Here's the diff:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="gd">--- settings.py-orig    2017-01-06 01:06:54.082362856 +0000</span><span class="w"></span>
+<div class="codehilite">
+<pre><span></span><code><span class="gd">--- settings.py-orig    2017-01-06 01:06:54.082362856 +0000</span><span class="w"></span>
 <span class="gi">+++ settings.py 2017-01-06 01:07:27.427015777 +0000</span><span class="w"></span>
 <span class="gu">@@ -49,7 +49,7 @@</span><span class="w"></span>
 <span class="w"> </span>    &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,<span class="w"></span>
@@ -195,7 +198,8 @@ rm __init__.py
 
 <span class="gd">-WSGI_APPLICATION = &#39;something_awesome.wsgi.application&#39;</span><span class="w"></span>
 <span class="gi">+WSGI_APPLICATION = &#39;wsgi.application&#39;</span><span class="w"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>If you are using SQLite as the database, then by default the location of
 the <code>sqlite</code> file will be in the parent directory of <code>settings.py</code>. Now
@@ -213,7 +217,8 @@ that anymore, you want the database file to be in the same directory as
 </code></pre></li>
 <li><p>Fix <code>wsgi.py</code>. Here's the diff:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="gd">--- wsgi.py-orig    2017-01-06 01:09:38.145285387 +0000</span><span class="w"></span>
+<div class="codehilite">
+<pre><span></span><code><span class="gd">--- wsgi.py-orig    2017-01-06 01:09:38.145285387 +0000</span><span class="w"></span>
 <span class="gi">+++ wsgi.py 2017-01-06 01:09:56.393573270 +0000</span><span class="w"></span>
 <span class="gu">@@ -11,6 +11,6 @@</span><span class="w"></span>
 
@@ -221,7 +226,8 @@ that anymore, you want the database file to be in the same directory as
 
 <span class="gd">-os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;something_awesome.settings&quot;)</span><span class="w"></span>
 <span class="gi">+os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;settings&quot;)</span><span class="w"></span>
-</code></pre></div></li>
+</code></pre>
+</div></li>
 <li><p>At this point you have a Django project with a <em>flat</em> file structure, with
 no directory occupying the cool name that you came up with. You can now
 create an app called whatever you want, e.g:</p>

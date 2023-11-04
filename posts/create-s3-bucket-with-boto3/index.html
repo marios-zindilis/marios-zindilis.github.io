@@ -59,21 +59,25 @@
 
 <p>The simplest way to create a bucket using Boto3 is:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
 <span class="n">s3</span><span class="o">.</span><span class="n">create_bucket</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">&#39;bucket-name&#39;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The <code>create_bucket</code> method takes a few parameters, but only <code>Bucket</code> is
 mandatory. You can optionally specify the region:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
 <span class="n">s3</span><span class="o">.</span><span class="n">create_bucket</span><span class="p">(</span>
     <span class="n">Bucket</span><span class="o">=</span><span class="s1">&#39;a-bucket-made-in-ireland&#39;</span><span class="p">,</span>
     <span class="n">CreateBucketConfiguration</span><span class="o">=</span><span class="p">{</span>
         <span class="s1">&#39;LocationConstraint&#39;</span><span class="p">:</span> <span class="s1">&#39;eu-west-1&#39;</span><span class="p">})</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>If you don't specify the region, the default is <code>us-east-1</code> (N. Virginia).</p>
 
@@ -83,14 +87,17 @@ mandatory. You can optionally specify the region:</p>
 the high-level resource, except that the client returns a dictionary that
 contains the response from the S3 API:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">create_bucket</span><span class="p">(</span><span class="s1">&#39;bucket-name&#39;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The response of the above call will be something like:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<div class="codehilite">
+<pre><span></span><code><span class="p">{</span>
     <span class="sa">u</span><span class="s1">&#39;Location&#39;</span><span class="p">:</span> <span class="s1">&#39;/bucket-name&#39;</span><span class="p">,</span>
     <span class="s1">&#39;ResponseMetadata&#39;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s1">&#39;HTTPStatusCode&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
@@ -107,26 +114,30 @@ contains the response from the S3 API:</p>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h3>Using a Pre-Signed URL</h3>
 
 <p>You can generate a pre-signed URL for creating a bucket, and call it:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
 <span class="n">url</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">generate_presigned_url</span><span class="p">(</span><span class="s1">&#39;create_bucket&#39;</span><span class="p">,</span> <span class="n">Params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Bucket&#39;</span><span class="p">:</span> <span class="s1">&#39;bucket-name&#39;</span><span class="p">})</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h3>IAM</h3>
 
 <p>To be able to create buckets, you need an IAM role that has at least the
 following policy:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="codehilite">
+<pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
@@ -141,7 +152,8 @@ following policy:</p>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
             </div>
             <footer>

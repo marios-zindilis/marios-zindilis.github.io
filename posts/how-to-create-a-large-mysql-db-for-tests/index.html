@@ -53,12 +53,14 @@
 tests. I created a '<code>test</code>' database, and a '<code>table2</code>' table, with a 
 '<code>content</code>' field with datatype <code>TEXT</code>. Here's what I run from Bash:</p>
 
-<div class="codehilite"><pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i <span class="k">in</span> <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
+<div class="codehilite">
+<pre><span></span><code>marios@mysql-server:~$ <span class="nb">time</span> <span class="k">for</span> i <span class="k">in</span> <span class="sb">`</span>seq <span class="m">1</span> <span class="m">500000</span><span class="sb">`</span><span class="p">;</span> <span class="se">\</span>
 <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span> of <span class="m">500000</span><span class="p">;</span> <span class="se">\</span>
 mysql -u root -D <span class="nb">test</span> -e <span class="se">\</span>
 <span class="s2">&quot;INSERT INTO table2 (content) VALUES (&#39;`cat /var/log/messages | tr -d \&#39;`&#39;)&quot;</span><span class="p">;</span> <span class="se">\</span>
 <span class="k">done</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>This took a few hours to finish, while creating data at a rate of 100MBytes per minute on my test server. The size of the database was 30GB.</p>
 
@@ -68,9 +70,11 @@ would be to run the above command for far less repetitions, say
 database as many times as required for the entire database to reach 
 the desirable size, like:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w"></span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w"></span>
 <span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
             </div>
             <footer>

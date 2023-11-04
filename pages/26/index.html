@@ -169,15 +169,19 @@ timer για κάθε διεπαφή.</p>
       <div class="card my-4">
       
         <div class="card-body">
-          <a href="/posts/xorgcfg/">
-            <h2 class="card-title">xorgcfg</h2>
+          <a href="/posts/xf86config/">
+            <h2 class="card-title">xf86config</h2>
           </a>
 
           
           <div class="card-text">
-            <p>Το εργαλείο <code>xorgcfg</code> είναι ένα βοήθημα γραφικού περιβάλλοντος για την παραμετροποίηση του
-<a href="/posts/x-org/">εξυπηρετητή γραφικών X.Org</a>, ενόσω αυτός τρέχει. Θεωρείται ξεπερασμένο, και δεν υπάρχει στις πρόσφατες
-εκδόσεις των διανομών Linux. </p>
+            <p>Το <code>xf86config</code> είναι ένα βοηθητικό εργαλείο για την αρχική ρύθμιση του εξυπηρετητή γραφικών
+<a href="/posts/xfree86-3/">XFree86 3</a>. Έχει το ίδιο όνομα με το αρχείο ρυθμίσεων του εξυπηρετητή (<code>XF86Config</code>), αλλά με
+διαφορετική χρήση πεζών και κεφαλαίων.</p>
+
+<p>Τόσο το εργαλείο αυτό όσο και η έκδοση 3 του εξυπηρετητή θεωρούνται ξεπερασμένα (προς όφελος του
+<a href="/posts/x-org/">X.Org</a>), και αν χρειαστείτε να το χρησιμοποιήσετε σε κάποιο απαρχαιωμένα σύστημα είναι πολύ πιθανό να
+μην μπορείτε καν να το βρείτε για να το εγκαταστήσετε.</p>
 
           </div>
           
@@ -225,6 +229,58 @@ timer για κάθε διεπαφή.</p>
       <div class="card my-4">
       
         <div class="card-body">
+          <a href="/posts/x-org/">
+            <h2 class="card-title">X.Org</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Ο εξυπηρετητής X <strong>X.Org</strong> χειρίζεται την απεικόνιση του γραφικού περιβάλλοντος. Είναι ο προεπιλεγμένος εξυπηρετητής
+γραφικών των περισσότερων διανομών Linux από το 2004 και μετά, οπότε αντικατέστησε τους <a href="/posts/xfree86-3/">XFree86 3</a>
+και <a href="/posts/xfree86-4/">XFree86 4</a>, για λόγους άδειας χρήσης λογισμικού των τελευταίων.</p>
+
+<h2>Ρύθμιση</h2>
+
+<p>Η ρύθμιση του X.Org μπορεί να γίνει είτε με επεξεργασία του αρχείου ρυθμίσεων, είτε με βοηθητικά εργαλεία, όπως το
+<code>Xorg</code> που εγκαθίσταται μαζί με τον εξυπηρετητή, το <a href="/posts/system-config-display/">system-config-display</a> (σε
+συστήματα Red Hat, Fedora ή CentOS) και το <a href="/posts/xorgcfg/">xorgcfg</a>.</p>
+
+<h2>Εργαλείο Xorg</h2>
+
+<p>Για μια αρχική ρύθμιση του X.Org, ενώ δεν τρέχει ο εξυπηρετητής, εκτελέστε:</p>
+
+<div class="codehilite">
+<pre><span></span><code>Xorg -configure
+</code></pre>
+</div>
+
+<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code>xorg.conf.new</code> μέσα στον φάκελο <code>/root</code>, το οποίο μπορείτε να
+χρησιμοποιήσετε για να προσθέσετε τις δικές σας τροποποιήσεις.</p>
+
+<h2>Δείτε επίσης</h2>
+
+<ul>
+<li>Ιστότοπος <a href="http://www.x.org/">x.org</a></li>
+<li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-3/">XFree86 3</a>, <a href="/posts/xfree86-4/">XFree86 4</a>,
+<a href="/posts/accelerated-x/">Accelerated-X</a>. </li>
+</ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-04-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
           <a href="/posts/system-config-display/">
             <h2 class="card-title">system-config-display</h2>
           </a>
@@ -233,104 +289,6 @@ timer για κάθε διεπαφή.</p>
           <div class="card-text">
             <p>Το <code>system-config-display</code> είναι ένα βοηθητικό εργαλείο γραφικού περιβάλλοντος, 
 για την παραμετροποίηση του εξυπηρετητή γραφικών <a href="/posts/x-org/" title="X.Org">X.Org</a> ή <a href="/posts/xfree86-4/" title="XFree86 4">XFree86 4</a>.</p>
-
-          </div>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-04-04
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/bash-tips/">
-            <h2 class="card-title">Bash tips</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Δύο μικρά tips.</p>
-
-          </div>
-          <a href="/posts/bash-tips/" class="btn btn-primary">Read More &rarr;</a>
-          
-        </div><!-- .card-body -->
-        <div class="card-footer text-muted">
-          
-            <span class="mr-2">
-              <b>Posted</b>: 2012-04-04
-            </span>
-          
-          
-        </div><!-- .card-footer -->
-      </div><!-- .card -->
-    
-      <div class="card my-4">
-      
-        <div class="card-body">
-          <a href="/posts/xfree86-3/">
-            <h2 class="card-title">XFree86 3</h2>
-          </a>
-
-          
-          <div class="card-text">
-            <p>Ο εξυπηρετητής X <strong>XFree86 3</strong> είναι η παλιά και πλέον παρωχημένη έκδοση της σειράς XFree 86. Η τελευταία έκδοση είναι
-η <a href="/posts/xfree86-4/">4.8.0</a>, η οποία όμως δεν είναι προς τα πίσω συμβατή με την έκδοση 3. Η έκδοση 3 είναι πιθανόν να
-βρεθεί σε παλιά συστήματα, με κάρτες γραφικών που δεν υποστηρίζονται από τους νεότερους εξυπηρετητές XFree86 4 και
-<a href="/posts/x-org/">X.Org</a>. Από το 2004 περίπου, και οι δύο εκδόσεις του XFree 86 έχουν αντικατασταθεί από τον X.Org, σε
-όλες τις διανομές. </p>
-
-<h2>Ρύθμιση</h2>
-
-<p>Η ρύθμιση του XFree86 3 μπορεί να γίνει είτε με επεξεργασία του αρχείου ρυθμίσεων, είτε με χρήση βοηθητικών εργαλείων,
-όπως τα <a href="/posts/xf86config/">xf86config</a>, <code>Xconfigurator</code>και <code>XF86Setup</code>.</p>
-
-<h2>Αρχείο ρυθμίσεων</h2>
-
-<p>Το αρχείο ρυθμίσεων του XFree 86 3 ονομάζεται <code>XF86Config</code>, και συνήθως βρίσκεται στο <code>/etc</code> ή στο <code>/etc/X11</code>. Ωστόσο,
-η παρουσία αυτού του αρχείου σε ένα σύστημα δεν συνεπάγεται την λειτουργία του XFree 86 3, μια που και η έκδοση 4
-μπορεί να χρησιμοποιεί το ίδιο όνομα για το αρχείο ρυθμίσεών της.</p>
-
-<p>Τα αρχεία ρυθμίσεων των εκδόσεων 3 και 4 είναι παρόμοια. Οι βασικές διαφορές είναι:</p>
-
-<ol>
-<li>Στην έκδοση 3 δεν υπάρχει η λέξη-κλειδί <code>Option</code>, αλλά τα ονόματα 
-των επιλογών και οι τιμές τους συντάσσονται ως ζεύγη κλειδιών-τιμών.</li>
-<li>Στην έκδοση 3 δεν υπάρχει η ενότητα <code>ServerLayout</code>.</li>
-<li>Στην έκδοση 3 δεν υπάρχουν στις ενότητες οι οντότητες <code>Identifier</code> 
-και <code>Driver</code>. Αυτό κάνει την έκδοση 3 λιγότερο ευέλικτη, αφού σε 
-κάθε αρχείο ρυθμίσεων μπορεί να οριστεί μόνο μία φορά κάθε συσκευή 
-(π.χ. μόνο ένα πληκτρολόγιο, μόνο ένα ποντίκι, μόνο μία κάρτα 
-γραφικών).</li>
-<li>Στην έκδοση 3 οι ρυθμίσεις του ποντικιού ανήκουν στην ενότητα <code>Pointer</code>, 
-ενώ στην 4 ανήκουν στην <code>InputDevice</code>, όπως και του πληκτρολογίου. </li>
-</ol>
-
-<h2>Εργαλείο XFree86</h2>
-
-<p>Για μια αρχική ρύθμιση του XFree86, ενώ δεν τρέχει ο εξυπηρετητής, εκτελέστε:</p>
-
-<div class="codehilite"><pre><span></span><code>XFree86 -configure
-</code></pre></div>
-
-<p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code>XFree86Config.new</code> μέσα 
-στον φάκελο <code>/root</code>, το οποίο μπορείτε να χρησιμοποιήσετε για να 
-προσθέσετε τις δικές σας τροποποιήσεις.</p>
-
-<h2>Δείτε επίσης</h2>
-
-<ul>
-<li>Ιστότοπος <a href="http://www.xfree86.org/">xfree86.org</a></li>
-<li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-4/">XFree86 4</a>, <a href="/posts/x-org/">X.Org</a>,
-<a href="/posts/accelerated-x/">Accelerated-X</a>. </li>
-</ul>
 
           </div>
           
@@ -377,8 +335,10 @@ timer για κάθε διεπαφή.</p>
 
 <p>Για μια αρχική ρύθμιση του XFree86, ενώ δεν τρέχει ο εξυπηρετητής, εκτελέστε:</p>
 
-<div class="codehilite"><pre><span></span><code>XFree86 -configure
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code>XFree86 -configure
+</code></pre>
+</div>
 
 <p>Αυτό θα δημιουργήσει ένα αρχείο με το όνομα <code>XFree86Config.new</code> μέσα 
 στον φάκελο <code>/root</code>, το οποίο μπορείτε να χρησιμοποιήσετε για να 
@@ -391,6 +351,32 @@ timer για κάθε διεπαφή.</p>
 <li>Άλλοι εξυπηρετητές γραφικών: <a href="/posts/xfree86-3/">XFree86 3</a>, <a href="/posts/x-org/">X.Org</a>,
 <a href="/posts/accelerated-x/">Accelerated-X</a>.</li>
 </ul>
+
+          </div>
+          
+        </div><!-- .card-body -->
+        <div class="card-footer text-muted">
+          
+            <span class="mr-2">
+              <b>Posted</b>: 2012-04-04
+            </span>
+          
+          
+        </div><!-- .card-footer -->
+      </div><!-- .card -->
+    
+      <div class="card my-4">
+      
+        <div class="card-body">
+          <a href="/posts/xorgcfg/">
+            <h2 class="card-title">xorgcfg</h2>
+          </a>
+
+          
+          <div class="card-text">
+            <p>Το εργαλείο <code>xorgcfg</code> είναι ένα βοήθημα γραφικού περιβάλλοντος για την παραμετροποίηση του
+<a href="/posts/x-org/">εξυπηρετητή γραφικών X.Org</a>, ενόσω αυτός τρέχει. Θεωρείται ξεπερασμένο, και δεν υπάρχει στις πρόσφατες
+εκδόσεις των διανομών Linux. </p>
 
           </div>
           

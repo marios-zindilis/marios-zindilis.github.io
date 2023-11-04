@@ -74,9 +74,11 @@ spaces. It is a Python port of the Perl code mentioned by
 
 <p>The initial post in that thread was replacing tabs like this:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/perl -pi</span>
+<div class="codehilite">
+<pre><span></span><code><span class="ch">#!/usr/bin/perl -pi</span>
 <span class="sr">s/\t/    /</span><span class="p">;</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>That code misses one point: if there is any string before a tab, it will simply 
 add four spaces after that string. However, that is not how tabs work. What 
@@ -84,8 +86,10 @@ should happen is that enough spaces should be added, until the length of the
 initial string plus the newly added spaces, add up to the next multiple of 
 four. So, the suggested substitution in Perl becomes:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="sr">s/(.*?)\t/$1.(&#39; &#39; x (4-length($1)%4))/ge</span><span class="p">;</span>
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code><span class="sr">s/(.*?)\t/$1.(&#39; &#39; x (4-length($1)%4))/ge</span><span class="p">;</span>
+</code></pre>
+</div>
 
 <p>There are two flags used there: <code>g</code> applies the substitution for all matches of 
 the left pattern (<code>(.*?)\t</code>). Without that flag, only the first match would be 
@@ -97,7 +101,8 @@ Without this flag, the second part would be handled as a raw string.</p>
 
 <p>Here is the Python code, cleaned up a little:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">DEFAULT_TAB_LENGTH</span> <span class="o">=</span> <span class="mi">4</span>
 
 <span class="n">_detab_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(.*?)\t&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
@@ -109,7 +114,8 @@ Without this flag, the second part would be handled as a raw string.</p>
     <span class="k">if</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">text</span>
     <span class="k">return</span> <span class="n">_detab_re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="n">_detab_sub</span><span class="p">,</span> <span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h4>Explanation</h4>
 
@@ -130,7 +136,8 @@ requiring the <code>[0]</code> subscription.</p>
 <p>Here is a Python snippet that does the same thing as the previous one, without 
 using regular expressions:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="n">DEFAULT_TAB_LENGTH</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="codehilite">
+<pre><span></span><code><span class="n">DEFAULT_TAB_LENGTH</span> <span class="o">=</span> <span class="mi">4</span>
 
 <span class="k">def</span> <span class="nf">_detab_no_re_sub</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
@@ -149,7 +156,8 @@ using regular expressions:</p>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
         <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_detab_no_re_sub</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
     <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h4>Performance</h4>
 
@@ -158,7 +166,8 @@ dismissed the difference between a substring substitution with <code>re.sub()</c
 versus <code>str.replace()</code> as being negligible, but in this case it seems that it 
 is more substantial. This simple example already indicates some difference:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<div class="codehilite">
+<pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">We are</span>
 <span class="s1">        NOT</span>
 <span class="s1">in Kansas</span>
@@ -170,12 +179,14 @@ is more substantial. This simple example already indicates some difference:</p>
 
 <span class="o">%</span><span class="n">timeit</span> <span class="n">_detab_no_re</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="mi">100000</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">3.82</span> <span class="n">us</span> <span class="n">per</span> <span class="n">loop</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>To test a larger example, I took <a href="/static/etc/bzip2.c" title="bzip2.c Source Code">this version of the source code of bzip2</a>
 which uses three spaces for indentation, and made some substitutions in it:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="c1"># Change some spaces in the beginning of lines with tabs:</span>
+<div class="codehilite">
+<pre><span></span><code><span class="c1"># Change some spaces in the beginning of lines with tabs:</span>
 sed -i <span class="s1">&#39;s/^   /\t/&#39;</span> bzip2.c 
 sed -i <span class="s1">&#39;s/^\t   /\t\t/&#39;</span> bzip2.c
 <span class="c1"># Lines with tabs:</span>
@@ -184,18 +195,21 @@ grep -c <span class="s1">&#39;\t&#39;</span> bzip2.c
 <span class="c1"># Total lines:</span>
 wc -l bzip2.c 
 <span class="m">6998</span> bzip2.c
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Timing test with this file:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="p">(</span><span class="s1">&#39;bzip2.c&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<div class="codehilite">
+<pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="p">(</span><span class="s1">&#39;bzip2.c&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 <span class="o">%</span><span class="n">timeit</span> <span class="n">_detab</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="mi">10</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">90.1</span> <span class="n">ms</span> <span class="n">per</span> <span class="n">loop</span>
 
 <span class="o">%</span><span class="n">timeit</span> <span class="n">_detab_no_re</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="mi">100</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">11</span> <span class="n">ms</span> <span class="n">per</span> <span class="n">loop</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>That is significant difference, not using regular expressions makes the 
 process about 8 times faster.</p>

@@ -57,26 +57,31 @@
 
 <h3>Using the High-Level S3 Resource</h3>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
 <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
 <span class="n">s3</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="s1">&#39;bucket-name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Key</span><span class="o">=</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="n">Body</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The last statement returns an <code>s3.Object</code> instance for the file.</p>
 
 <h3>Using the Low-Level S3 Client</h3>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
 <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
 <span class="n">s3</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">&#39;bucket-name&#39;</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="n">Body</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>The response of the above call will be something like:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<div class="codehilite">
+<pre><span></span><code><span class="p">{</span>
     <span class="sa">u</span><span class="s1">&#39;ETag&#39;</span><span class="p">:</span> <span class="s1">&#39;&quot;123412349d1bbd07abcd65819a54321&quot;&#39;</span><span class="p">,</span> 
     <span class="s1">&#39;ResponseMetadata&#39;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s1">&#39;HTTPStatusCode&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> 
@@ -93,7 +98,8 @@
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h3>Upload String as File</h3>
 
@@ -102,21 +108,24 @@ the SDK methods require a file-like object, you can convert the string to that
 form with either <code>StringIO</code> (in Python2) or <code>io</code> (in Python3). For example, in
 Python2:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="kn">import</span> <span class="nn">StringIO</span>
 
 <span class="n">my_string</span> <span class="o">=</span> <span class="s1">&#39;Something I want to save on S3.&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
 <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
 <span class="n">s3</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="s1">&#39;bucket-name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Key</span><span class="o">=</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="n">Body</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h3>IAM</h3>
 
 <p>To be able to upload files, you need an IAM role that has at least the
 following policy:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="codehilite">
+<pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
@@ -131,7 +140,8 @@ following policy:</p>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
             </div>
             <footer>

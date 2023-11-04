@@ -58,7 +58,8 @@ validate the values passed which creating a new instance or saving an existing o
 
 <p>For example, here's a minimalistic model for storing musicians:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 
 <span class="k">class</span> <span class="nc">Artist</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -70,7 +71,8 @@ validate the values passed which creating a new instance or saving an existing o
 
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
     <span class="nb">type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">TYPE_CHOICES</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Using this code in the Admin interface, as well as in Forms, will make the
 "Type" field be represented as a drop-down box. Therefore, if all input comes
@@ -102,7 +104,8 @@ just before a model instance is saved to the database.</p>
 
 <p>Here's the example model, with the signal connected to it:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 
 <span class="k">class</span> <span class="nc">Artist</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -117,12 +120,14 @@ just before a model instance is saved to the database.</p>
 
 
 <span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">pre_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">validate_artist_name_choice</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">Artist</span><span class="p">)</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>That last line will call a function named <code>validate_artist_name_choice</code> just
 before an Artist is saved in the database. Let's write that function:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">validate_artist_name_choice</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">def</span> <span class="nf">validate_artist_name_choice</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">valid_types</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">sender</span><span class="o">.</span><span class="n">TYPE_CHOICES</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_types</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span>
@@ -130,7 +135,8 @@ before an Artist is saved in the database. Let's write that function:</p>
             <span class="s1">&#39;Artist Type &quot;</span><span class="si">{}</span><span class="s1">&quot; is not one of the permitted values: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">instance</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
                <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">valid_types</span><span class="p">)))</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>This function can be anywhere in your code, as long as you can import it in the
 model. Personally, if a <code>pre_save</code> function is specific to one model, I like to
@@ -139,7 +145,8 @@ put it in the same module as the model itself, but that's just my preference.</p
 <p>So let's try to create a couple of Artists and see what happens. In this
 example, my App is called "v".</p>
 
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">v.models</span> <span class="kn">import</span> <span class="n">Artist</span>
+<div class="codehilite">
+<pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">v.models</span> <span class="kn">import</span> <span class="n">Artist</span>
 <span class="o">&gt;&gt;&gt;</span> 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">some_artist</span> <span class="o">=</span> <span class="n">Artist</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Some Artist&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Person&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">some_artist</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -159,7 +166,8 @@ example, my App is called "v".</p>
   <span class="n">File</span> <span class="s2">&quot;/home/vs/Tests/validator/v/models.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">14</span><span class="p">,</span> <span class="ow">in</span> <span class="n">validate_artist_name_choice</span>
     <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">valid_types</span><span class="p">)))</span>
 <span class="n">django</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Artist Type &quot;Alien Lifeform&quot; is not one of the permitted values: Person, Group, Other&#39;</span><span class="p">]</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Brilliant! We now have a expressive exception that we can catch in our views or
 scripts or whatever else we want to use to create model instances. This
@@ -167,19 +175,24 @@ exception is thrown either when we call the <code>.save()</code> method of a mod
 instance, or when we use the <code>.create()</code> method of a model class. Using the
 example model, we would get the same exception if we ran:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="n">Artist</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Some Other Artist&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Alien Lifeform&#39;</span><span class="p">)</span>
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code><span class="n">Artist</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Some Other Artist&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Alien Lifeform&#39;</span><span class="p">)</span>
+</code></pre>
+</div>
 
 <p>Or even:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="n">Artist</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Some Other Artist&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Alien Lifeform&#39;</span><span class="p">)</span>
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code><span class="n">Artist</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Some Other Artist&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Alien Lifeform&#39;</span><span class="p">)</span>
+</code></pre>
+</div>
 
 <h2>Test It!</h2>
 
 <p>Here's a test that triggers the exception:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
+<div class="codehilite">
+<pre><span></span><code><span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
 <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Artist</span>
 
@@ -191,7 +204,8 @@ example model, we would get the same exception if we ran:</p>
     <span class="k">def</span> <span class="nf">test_artist_type_choice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">ValidationError</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">test_artist</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Conclusion</h2>
 

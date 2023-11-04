@@ -55,7 +55,8 @@
 
 <p>Για να δημιουργήσετε έναν υποφάκελο με αρχεία προς κατέβασμα από το ιστολόγιό σας, φτιάξτε τον υποφάκελο στον εξυπηρετητή, και προσθέστε αυτούσιο ή προσαρμοσμένο το εξής αρχείο ως <code>index.php</code>:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="codehilite">
+<pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nb">define</span><span class="p">(</span><span class="s1">&#39;WP_USE_THEMES&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
 <span class="c1">// Αλλάξτε την πιο κάτω γραμμή αν χρειάζεται, </span>
 <span class="c1">// για να δείχνει την πραγματική τοποθεσία του αρχείου</span>
@@ -78,7 +79,8 @@
       <span class="nb">closedir</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="nx">get_footer</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Αν έχετε <code>.htaccess</code> στο ιστολόγιό σας, ίσως χρειάζεται να το 
 τροποιήσετε για να μην συμπεριλαμβάνει τον νέο σας υποφάκελο, 

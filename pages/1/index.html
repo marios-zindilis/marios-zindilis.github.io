@@ -62,7 +62,8 @@ S3, for example:</p>
 <p>To be able to upload files, you need an IAM role that has at least the
 following policy:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="codehilite">
+<pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
@@ -77,7 +78,8 @@ following policy:</p>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
           </div>
           
@@ -142,13 +144,17 @@ following policy:</p>
           <div class="card-text">
             <p>The simplest form of using the AWS CLI to create an S3 bucket is:</p>
 
-<div class="codehilite"><pre><span></span><code>aws s3 mb s3://bucket-name
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code>aws s3 mb s3://bucket-name
+</code></pre>
+</div>
 
 <p>You can optionally specify the region:</p>
 
-<div class="codehilite"><pre><span></span><code>aws s3 mb s3://bucket-name --region eu-west-1
-</code></pre></div>
+<div class="codehilite">
+<pre><span></span><code>aws s3 mb s3://bucket-name --region eu-west-1
+</code></pre>
+</div>
 
 <p>If you don't specify the region, the default is <code>us-east-1</code> (N. Virginia).</p>
 
@@ -157,7 +163,8 @@ following policy:</p>
 <p>To be able to create buckets, you need an IAM role that has at least the
 following policy:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="codehilite">
+<pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
@@ -172,7 +179,8 @@ following policy:</p>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
+</code></pre>
+</div>
 
           </div>
           

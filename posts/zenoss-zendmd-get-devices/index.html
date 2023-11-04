@@ -53,47 +53,57 @@
             <div itemprop="articleBody">
                 <p>A simple example:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<div class="codehilite">
+<pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
 
 <span class="kn">import</span> <span class="nn">Globals</span>
 <span class="kn">from</span> <span class="nn">Products.ZenUtils.ZenScriptBase</span> <span class="kn">import</span> <span class="n">ZenScriptBase</span>
 <span class="n">DMD</span> <span class="o">=</span> <span class="n">ZenScriptBase</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dmd</span>
 
 <span class="n">Devices</span> <span class="o">=</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevicesGen</span><span class="p">()</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Filter by Device Class</h2>
 
 <p>If you only want to select the devices from a specific class, for 
 example the class <code>/Servers/Linux</code>, you could do:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getOrganizer</span><span class="p">(</span><span class="s1">&#39;/Servers/Linux&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getOrganizer</span><span class="p">(</span><span class="s1">&#39;/Servers/Linux&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
     <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>Otherwise, if you want to separate that specific class name out of a 
 list of <em>all</em> the devices, you could do:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Devices</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">Device</span><span class="o">.</span><span class="n">getDeviceClassName</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;/Server/Linux&#39;</span><span class="p">):</span>
         <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Get Devices by Group</h2>
 
 <p>If you only want to select the devices from a specific group, for example the 
 group <code>/Customers/VIP/Acme</code> you could do:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">Customers</span><span class="o">.</span><span class="n">VIP</span><span class="o">.</span><span class="n">Acme</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">Customers</span><span class="o">.</span><span class="n">VIP</span><span class="o">.</span><span class="n">Acme</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
     <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <p>If your group contains whitespace, for exampe <code>/Customers/VIP/Acme Anvils</code>, 
 then you can use a different approach:</p>
 
-<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">Customers</span><span class="o">.</span><span class="n">VIP</span><span class="p">,</span> <span class="s1">&#39;Acme Anvils&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
+<div class="codehilite">
+<pre><span></span><code><span class="k">for</span> <span class="n">Device</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">DMD</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">Customers</span><span class="o">.</span><span class="n">VIP</span><span class="p">,</span> <span class="s1">&#39;Acme Anvils&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getSubDevices</span><span class="p">():</span>
     <span class="nb">print</span> <span class="n">Device</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">Device</span><span class="o">.</span><span class="n">manageIp</span>
-</code></pre></div>
+</code></pre>
+</div>
 
 <h2>Find Specific Device</h2>
 
